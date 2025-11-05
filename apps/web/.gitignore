@@ -1,0 +1,5 @@
+# Entornos
+.env.local
+
+# Caché de GIFs (no versionar)
+public/cached-gifs/

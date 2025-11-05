@@ -10,7 +10,15 @@ const nextConfig = {
 
   // Image optimization
   images: {
-    domains: ['localhost', '127.0.0.1'],
+    domains: ['localhost', '127.0.0.1', 'v2.exercisedb.io'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'v2.exercisedb.io',
+        port: '',
+        pathname: '/image/**',
+      },
+    ],
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],

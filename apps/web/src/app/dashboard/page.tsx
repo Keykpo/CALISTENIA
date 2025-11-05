@@ -11,7 +11,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import CircularSkillTree from '@/components/CircularSkillTree';
+import SkillPathReference from '@/components/SkillPathReference';
 import AchievementPanel from '@/components/AchievementPanel';
 import UserProfile from '@/components/UserProfile';
 import { 
@@ -437,7 +437,8 @@ export default function DashboardPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <CircularSkillTree userId={session?.user?.id} />
+                {/* Reemplazado: eliminamos el árbol de habilidades y mostramos layout estático */}
+                <SkillPathReference />
               </CardContent>
             </Card>
           </TabsContent>

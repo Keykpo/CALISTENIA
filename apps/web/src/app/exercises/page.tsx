@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { useRouter } from 'next/navigation';
 import exercises from '../../../public/exercises.json';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -34,6 +35,10 @@ type Exercise = {
   equipment: string[];
   expReward: number;
   coinsReward: number;
+  howTo?: string;
+  gifUrl?: string;
+  thumbnailUrl?: string;
+  videoUrl?: string | null;
 };
 
 const difficultyColors = {
@@ -61,6 +66,7 @@ const categoryLabels = {
 };
 
 export default function ExercisesPage() {
+  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>('all');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -268,14 +274,14 @@ export default function ExercisesPage() {
                   ))}
                 </div>
 
-                {/* View Guide Button */}
+                {/* View Guide Button (modal) and Full Guide link */}
                 <Dialog>
                   <DialogTrigger asChild>
                     <Button className="w-full" onClick={() => setSelectedExercise(exercise)}>
-                      Ver Guía
+                      Ver detalles rápidos
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+                  <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto rounded-xl">
                     <DialogHeader>
                       <DialogTitle className="text-2xl">{selectedExercise?.name}</DialogTitle>
                       <DialogDescription>
@@ -305,6 +311,7 @@ export default function ExercisesPage() {
                     </DialogHeader>
 
                     <div className="space-y-6 mt-4">
+                      
                       {/* Description */}
                       <div>
                         <h3 className="font-semibold text-lg mb-2">Descripción</h3>
@@ -372,29 +379,53 @@ export default function ExercisesPage() {
                         </div>
                       </div>
 
-                      {/* Instructions placeholder */}
+                      {/* Instructions */}
                       <div>
                         <h3 className="font-semibold text-lg mb-2">Cómo Realizar</h3>
-                        <div className="bg-muted p-4 rounded-lg">
-                          <p className="text-sm text-muted-foreground mb-2">
-                            <strong>Paso 1:</strong> Lee cuidadosamente la descripción del
-                            ejercicio
-                          </p>
-                          <p className="text-sm text-muted-foreground mb-2">
-                            <strong>Paso 2:</strong> Asegúrate de tener el equipamiento necesario
-                          </p>
-                          <p className="text-sm text-muted-foreground mb-2">
-                            <strong>Paso 3:</strong> Realiza un calentamiento previo adecuado
-                          </p>
-                          <p className="text-sm text-muted-foreground">
-                            <strong>Paso 4:</strong> Ejecuta el movimiento con control y buena
-                            técnica
-                          </p>
-                        </div>
+                        {selectedExercise?.instructions && selectedExercise.instructions.length > 0 ? (
+                          <div className="bg-muted p-4 rounded-lg">
+                            <ol className="list-decimal list-inside space-y-1 text-sm">
+                              {selectedExercise.instructions.map((step, idx) => (
+                                <li key={idx} className="text-muted-foreground">{step}</li>
+                              ))}
+                            </ol>
+                          </div>
+                        ) : selectedExercise?.howTo ? (
+                          <div className="bg-muted p-4 rounded-lg">
+                            <p className="text-sm text-muted-foreground whitespace-pre-line">
+                              {selectedExercise.howTo}
+                            </p>
+                          </div>
+                        ) : (
+                          <div className="bg-muted p-4 rounded-lg">
+                            <p className="text-sm text-muted-foreground">
+                              No hay instrucciones disponibles aún para este ejercicio.
+                            </p>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </DialogContent>
                 </Dialog>
+
+                <Button
+                  variant="default"
+                  className="w-full mt-2"
+                  onClick={() => {
+                    const slug = exercise.name
+                      .trim()
+                      .toLowerCase()
+                      .replace(/[^a-z0-9]+/g, '-');
+                    router.push(`/guides/${slug}`);
+                  }}
+                >
+                  {/* icon + label for better visual affordance */}
+                  <span className="inline-flex items-center gap-2">
+                    {/* Using an emoji as a lightweight icon to avoid new imports */}
+                    <span role="img" aria-label="book">📘</span>
+                    Ver Guía Completa
+                  </span>
+                </Button>
               </div>
             </CardContent>
           </Card>

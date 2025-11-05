@@ -109,7 +109,7 @@ function normalizeItem(ex) {
 function main() {
   const sourcePath = path.resolve('C:/Users/FRAN/cp/EJERCICIOS COMPLETOS.json');
   const source2Path = path.resolve('C:/Users/FRAN/cp/EJERCICIOS COMPLETOS 2.json');
-  const targetPath = path.resolve('calisthenics-platform/apps/web/public/exercises.json');
+  const targetPath = path.resolve(__dirname, '../public/exercises.json');
 
   const raw = fs.readFileSync(sourcePath, 'utf8');
   const firstBrace = raw.indexOf('{');
@@ -135,10 +135,52 @@ function main() {
   }
   const result = Array.from(dedupMap.values());
 
-  fs.writeFileSync(targetPath, JSON.stringify(result, null, 2) + '\n', 'utf8');
-  console.log(`Extraídos ${parsed.length} objetos (fuente1=${parsed1.length}, fuente2=${parsed2.length}); escritos ${result.length} únicos en ${targetPath}`);
+  // Merge media from exercises_COMPLETE_with_media.json
+  const mediaPath = path.resolve('C:/Users/FRAN/cp/exercises_COMPLETE_with_media.json');
+  let media = [];
+  if (fs.existsSync(mediaPath)) {
+    try {
+      media = JSON.parse(fs.readFileSync(mediaPath, 'utf8'));
+    } catch (e) {
+      console.warn('No se pudo parsear exercises_COMPLETE_with_media.json:', e.message);
+      media = [];
+    }
+  } else {
+    console.warn('No se encontró exercises_COMPLETE_with_media.json en', mediaPath);
+  }
+
+  const mediaById = new Map(media.map((m) => [m.id, m]));
+  const merged = result.map((item) => {
+    const m = mediaById.get(item.id);
+    if (!m) return item;
+    const updated = { ...item };
+    if (m.gifUrl !== undefined) updated.gifUrl = m.gifUrl;
+    if (m.thumbnailUrl !== undefined) updated.thumbnailUrl = m.thumbnailUrl;
+    if (m.videoUrl !== undefined) updated.videoUrl = m.videoUrl; // puede ser null
+    if ((!updated.howTo || String(updated.howTo).trim() === '') && typeof m.howTo === 'string') {
+      updated.howTo = m.howTo;
+    }
+    if ((!updated.description || String(updated.description).trim() === '') && typeof m.description === 'string') {
+      updated.description = m.description;
+    }
+    if (!Array.isArray(updated.muscleGroups) && Array.isArray(m.muscleGroups)) {
+      updated.muscleGroups = m.muscleGroups;
+    }
+    if (!Array.isArray(updated.equipment) && Array.isArray(m.equipment)) {
+      updated.equipment = m.equipment;
+    }
+    return updated;
+  });
+
+  // Append media-only exercises not present in normalized result
+  const resultIds = new Set(result.map((e) => e.id));
+  const additions = media.filter((m) => !resultIds.has(m.id));
+  const finalOutput = [...merged, ...additions];
+
+  fs.writeFileSync(targetPath, JSON.stringify(finalOutput, null, 2) + '\n', 'utf8');
+  console.log(`Extraídos ${parsed.length} objetos (fuente1=${parsed1.length}, fuente2=${parsed2.length}); escritos ${finalOutput.length} (incluye merge de media) en ${targetPath}`);
   const logPath = path.resolve('C:/Users/FRAN/cp/normalize_log.txt');
-  fs.writeFileSync(logPath, `firstBrace=${firstBrace}\nbraceCount=${braceCount}\npieces=${pieces.length}\nparsed1=${parsed1.length}\nparsed2=${parsed2.length}\nparsedTotal=${parsed.length}\nresult=${result.length}\n`, 'utf8');
+  fs.writeFileSync(logPath, `firstBrace=${firstBrace}\nbraceCount=${braceCount}\npieces=${pieces.length}\nparsed1=${parsed1.length}\nparsed2=${parsed2.length}\nparsedTotal=${parsed.length}\nresult_before_merge=${result.length}\nfinalOutput=${finalOutput.length}\n`, 'utf8');
 }
 
 main();

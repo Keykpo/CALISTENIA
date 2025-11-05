@@ -550,8 +550,14 @@ export default function SkillPathHorizontal({ userId }: SkillPathProps) {
       acc[s.branch].push(s);
     }
     for (const key of Object.keys(acc)) {
-      // Orden principal por dificultad (rango) de F → S
+      // Priorizar orden explícito si existe; de lo contrario usar rango y prerequisitos
       acc[key] = acc[key].sort((a, b) => {
+        const ao = (a as any).order ?? null;
+        const bo = (b as any).order ?? null;
+        if (ao != null && bo != null && ao !== bo) return ao - bo;
+        if (ao != null && bo == null) return -1;
+        if (ao == null && bo != null) return 1;
+
         const ra = getSkillRank(a);
         const rb = getSkillRank(b);
         const ia = allRanks.indexOf(ra as typeof allRanks[number]);
