@@ -1,20 +1,41 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
+import os from 'os';
 
-const CACHE_DIR = path.join(process.cwd(), 'public', 'cached-gifs');
+// Fuerza runtime Node.js (evita edge runtime) para compatibilidad con fs
+export const runtime = 'nodejs';
+
+// En producción/serverless (p.ej. Vercel) el sistema de archivos es de solo lectura,
+// pero se permite escribir en /tmp. Usamos /tmp para cachear GIFs allí.
+const isServerless = process.env.VERCEL === '1' || process.env.CF_PAGES === '1' || process.env.NODE_ENV === 'production';
+const CACHE_DIR = isServerless
+  ? path.join(os.tmpdir(), 'cached-gifs')
+  : path.join(process.cwd(), 'public', 'cached-gifs');
 const MAP_PATH = path.join(process.cwd(), 'public', 'exercise-gif-map.json');
+const EXERCISES_JSON_PATH = path.join(process.cwd(), 'public', 'exercises.json');
+const EXERCISES_COMPLETE_CANDIDATES = [
+  process.env.COMPLETE_MEDIA_PATH,
+  'C:/Users/FRAN/cp/exercisedb-api-main/media/exercises_COMPLETE_with_GIFS_FINAL_1.json',
+  'C:/Users/FRAN/cp/exercises_COMPLETE_with_media.json',
+].filter(Boolean) as string[];
+// Directorio local con GIFs provistos por el usuario
+const LOCAL_MEDIA_DIR = 'C:\\Users\\FRAN\\cp\\exercisedb-api-main\\media';
 const USAGE_DIR = path.join(process.cwd(), 'public', 'server-store');
 const USAGE_FILE = path.join(USAGE_DIR, 'rapidapi_usage.json');
 const PLACEHOLDER_PATH = path.join(process.cwd(), 'public', 'placeholder-exercise.gif');
 
-if (!fs.existsSync(CACHE_DIR)) {
-  fs.mkdirSync(CACHE_DIR, { recursive: true });
-}
+try {
+  if (!fs.existsSync(CACHE_DIR)) {
+    fs.mkdirSync(CACHE_DIR, { recursive: true });
+  }
+} catch {}
 
-if (!fs.existsSync(USAGE_DIR)) {
-  fs.mkdirSync(USAGE_DIR, { recursive: true });
-}
+try {
+  if (!fs.existsSync(USAGE_DIR)) {
+    fs.mkdirSync(USAGE_DIR, { recursive: true });
+  }
+} catch {}
 
 type UsageStore = {
   monthKey: string; // e.g. '2025-11'
@@ -72,11 +93,24 @@ function serveGifFile(filePath: string) {
     return new NextResponse(buf, {
       headers: {
         'Content-Type': 'image/gif',
-        'Cache-Control': 'public, max-age=31536000, immutable',
+        // Incluir s-maxage para permitir cache CDN (Vercel/Cloudflare)
+        'Cache-Control': 'public, max-age=31536000, s-maxage=86400, immutable',
       },
     });
   } catch (e) {
     return new NextResponse('GIF not available', { status: 404 });
+  }
+}
+
+function safeWriteCache(filePath: string, data: Buffer) {
+  try {
+    const dir = path.dirname(filePath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(filePath, data);
+  } catch (e) {
+    console.warn(`⚠️ No se pudo escribir en cache (${filePath}): ${String(e)}`);
   }
 }
 
@@ -105,12 +139,12 @@ export async function GET(
           const gifResponse = await fetch(mapped.gifUrl, { headers: { Accept: 'image/*,*/*;q=0.8' } });
           if (gifResponse.ok && (gifResponse.headers.get('content-type') || '').includes('image')) {
             const gifBuffer = await gifResponse.arrayBuffer();
-            fs.writeFileSync(cachedFilePath, Buffer.from(gifBuffer));
+            safeWriteCache(cachedFilePath, Buffer.from(gifBuffer));
             console.log(`💾 Guardado en cache (mapping.gifUrl): ${exerciseId}`);
             return new NextResponse(gifBuffer, {
               headers: {
                 'Content-Type': 'image/gif',
-                'Cache-Control': 'public, max-age=31536000, immutable',
+                'Cache-Control': 'public, max-age=31536000, s-maxage=86400, immutable',
               },
             });
           }
@@ -129,12 +163,12 @@ export async function GET(
                 const gifResponse = await fetch(gifUrl, { headers: { Accept: 'image/*,*/*;q=0.8' } });
                 if (gifResponse.ok && (gifResponse.headers.get('content-type') || '').includes('image')) {
                   const gifBuffer = await gifResponse.arrayBuffer();
-                  fs.writeFileSync(cachedFilePath, Buffer.from(gifBuffer));
+                  safeWriteCache(cachedFilePath, Buffer.from(gifBuffer));
                   console.log(`💾 Guardado en cache (mapping.exerciseId): ${exerciseId}`);
                   return new NextResponse(gifBuffer, {
                     headers: {
                       'Content-Type': 'image/gif',
-                      'Cache-Control': 'public, max-age=31536000, immutable',
+                      'Cache-Control': 'public, max-age=31536000, s-maxage=86400, immutable',
                     },
                   });
                 }
@@ -148,6 +182,103 @@ export async function GET(
     }
   } catch (e) {
     console.warn(`⚠️ No se pudo leer mapping: ${String(e)}`);
+  }
+
+  // Intentar usar exercises.json (id interno -> gifUrl) como fallback directo
+  try {
+    if (fs.existsSync(EXERCISES_JSON_PATH)) {
+      const arr = JSON.parse(fs.readFileSync(EXERCISES_JSON_PATH, 'utf-8')) as Array<any>;
+      const item = Array.isArray(arr) ? arr.find((x) => String(x?.id) === exerciseId) : null;
+      const gifUrl: string | undefined = item?.gifUrl || item?.thumbnailUrl || item?.imageUrl;
+      if (gifUrl) {
+        console.log(`📚 Usando gifUrl desde exercises.json para ${exerciseId}: ${gifUrl}`);
+        // Intentar resolver localmente si el gifUrl proviene de exercisedb.io/dev
+        try {
+          const tokenMatch = gifUrl.match(/(?:\/image\/|\/media\/)([A-Za-z0-9]+)(?:\.gif)?$/);
+          const token = tokenMatch ? tokenMatch[1] : undefined;
+          if (token) {
+            const localCandidate = path.join(LOCAL_MEDIA_DIR, `${token}.gif`);
+            if (fs.existsSync(localCandidate)) {
+              console.log(`🖼️ Sirviendo archivo local por token: ${localCandidate}`);
+              const buf = fs.readFileSync(localCandidate);
+              // Cachear bajo id interno
+              safeWriteCache(cachedFilePath, buf);
+              return new NextResponse(buf, {
+                headers: {
+                  'Content-Type': 'image/gif',
+                  'Cache-Control': 'public, max-age=31536000, s-maxage=86400, immutable',
+                },
+              });
+            }
+          }
+        } catch (e) {
+          console.warn(`⚠️ Falló intento de servir local por token para ${exerciseId}: ${String(e)}`);
+        }
+
+        // Si no hay archivo local, intentar descargar remota
+        const gifResponse = await fetch(gifUrl, { headers: { Accept: 'image/*,*/*;q=0.8' } });
+        if (gifResponse.ok && (gifResponse.headers.get('content-type') || '').includes('image')) {
+          const gifBuffer = await gifResponse.arrayBuffer();
+          safeWriteCache(cachedFilePath, Buffer.from(gifBuffer));
+          console.log(`💾 Guardado en cache (exercises.json): ${exerciseId}`);
+          return new NextResponse(gifBuffer, {
+            headers: {
+              'Content-Type': 'image/gif',
+              'Cache-Control': 'public, max-age=31536000, s-maxage=86400, immutable',
+            },
+          });
+        }
+      }
+    }
+  } catch (e) {
+    console.warn(`⚠️ Falló fallback exercises.json para ${exerciseId}: ${String(e)}`);
+  }
+
+  // Fallback adicional: usar exercises_COMPLETE_with_* JSON (fuera de apps/web) para resolver token y servir local
+  try {
+    const completePath = EXERCISES_COMPLETE_CANDIDATES.find((p) => {
+      try { return p && fs.existsSync(p); } catch { return false; }
+    });
+    if (completePath) {
+      console.log(`📘 Leyendo media completa desde: ${completePath}`);
+      const arr = JSON.parse(fs.readFileSync(completePath, 'utf-8')) as Array<any>;
+      const item = Array.isArray(arr) ? arr.find((x) => String(x?.id) === exerciseId) : null;
+      const gifUrl: string | undefined = item?.gifUrl || item?.thumbnailUrl || item?.imageUrl;
+      if (gifUrl) {
+        console.log(`📘 Usando gifUrl desde exercises_COMPLETE_with_media.json para ${exerciseId}: ${gifUrl}`);
+        const tokenMatch = gifUrl.match(/(?:\/image\/|\/media\/)([A-Za-z0-9-]+)(?:\.gif)?$/);
+        const token = tokenMatch ? tokenMatch[1] : undefined;
+        if (token) {
+          const localCandidate = path.join(LOCAL_MEDIA_DIR, `${token}.gif`);
+          if (fs.existsSync(localCandidate)) {
+            const buf = fs.readFileSync(localCandidate);
+            safeWriteCache(cachedFilePath, buf);
+            console.log(`💾 Cacheado desde local (complete.json+token): ${exerciseId} -> ${token}.gif`);
+            return new NextResponse(buf, {
+              headers: {
+                'Content-Type': 'image/gif',
+                'Cache-Control': 'public, max-age=31536000, s-maxage=86400, immutable',
+              },
+            });
+          }
+        }
+        // Si no hay token local, intentar descarga remota
+        const gifResponse = await fetch(gifUrl, { headers: { Accept: 'image/*,*/*;q=0.8' } });
+        if (gifResponse.ok && (gifResponse.headers.get('content-type') || '').includes('image')) {
+          const gifBuffer = await gifResponse.arrayBuffer();
+          safeWriteCache(cachedFilePath, Buffer.from(gifBuffer));
+          console.log(`💾 Guardado en cache (complete.json remoto): ${exerciseId}`);
+          return new NextResponse(gifBuffer, {
+            headers: {
+              'Content-Type': 'image/gif',
+              'Cache-Control': 'public, max-age=31536000, s-maxage=86400, immutable',
+            },
+          });
+        }
+      }
+    }
+  } catch (e) {
+    console.warn(`⚠️ Falló fallback exercises_COMPLETE_with_media.json para ${exerciseId}: ${String(e)}`);
   }
 
   // 0) Intentar API local (exercisedb-api-main) primero si está disponible
@@ -166,12 +297,12 @@ export async function GET(
           const contentType = gifResponse.headers.get('content-type') || '';
           if (contentType.includes('image')) {
             const gifBuffer = await gifResponse.arrayBuffer();
-            fs.writeFileSync(cachedFilePath, Buffer.from(gifBuffer));
+            safeWriteCache(cachedFilePath, Buffer.from(gifBuffer));
             console.log(`💾 Guardado en cache (local): ${exerciseId}`);
             return new NextResponse(gifBuffer, {
               headers: {
                 'Content-Type': 'image/gif',
-                'Cache-Control': 'public, max-age=31536000, immutable',
+                'Cache-Control': 'public, max-age=31536000, s-maxage=86400, immutable',
               },
             });
           }
@@ -201,12 +332,12 @@ export async function GET(
           const contentType = gifResponse.headers.get('content-type') || '';
           if (contentType.includes('image')) {
             const gifBuffer = await gifResponse.arrayBuffer();
-            fs.writeFileSync(cachedFilePath, Buffer.from(gifBuffer));
+            safeWriteCache(cachedFilePath, Buffer.from(gifBuffer));
             console.log(`💾 Guardado en cache (exercisedb.dev): ${exerciseId}`);
             return new NextResponse(gifBuffer, {
               headers: {
                 'Content-Type': 'image/gif',
-                'Cache-Control': 'public, max-age=31536000, immutable',
+                'Cache-Control': 'public, max-age=31536000, s-maxage=86400, immutable',
               },
             });
           }
@@ -297,13 +428,13 @@ export async function GET(
     const gifBuffer = await gifResponse.arrayBuffer();
     
     // PASO 3: Guardar en cache
-    fs.writeFileSync(cachedFilePath, Buffer.from(gifBuffer));
+    safeWriteCache(cachedFilePath, Buffer.from(gifBuffer));
     console.log(`💾 Guardado en cache: ${exerciseId}`);
     
     return new NextResponse(gifBuffer, {
       headers: {
         'Content-Type': 'image/gif',
-        'Cache-Control': 'public, max-age=31536000, immutable',
+        'Cache-Control': 'public, max-age=31536000, s-maxage=86400, immutable',
       },
     });
     

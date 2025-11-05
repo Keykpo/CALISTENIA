@@ -99,11 +99,20 @@ export default function ExercisesPage() {
 
   return (
     <div className="container mx-auto py-8 px-4">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-2">Biblioteca de Ejercicios</h1>
-        <p className="text-muted-foreground">
-          Explora los {exercises.length} ejercicios disponibles y aprende cómo realizarlos
-        </p>
+      <div className="mb-8 flex items-center justify-between gap-4">
+        <div>
+          <h1 className="text-4xl font-bold mb-2">Biblioteca de Ejercicios</h1>
+          <p className="text-muted-foreground">
+            Explora los {exercises.length} ejercicios disponibles y aprende cómo realizarlos
+          </p>
+        </div>
+        <Button
+          className="shrink-0"
+          onClick={() => router.push('/dashboard')}
+          variant="default"
+        >
+          Ir al Dashboard
+        </Button>
       </div>
 
       {/* Stats Cards */}

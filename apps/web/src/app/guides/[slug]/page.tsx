@@ -59,14 +59,24 @@ const rankByDifficulty: Record<Difficulty, string> = {
 // Manejo de imagen con fallback (endpoint interno → externo → placeholder)
 function GuideImage({ exercise, title }: { exercise: Exercise; title: string }) {
   const internalSrc = `/api/exercise-gif/${String(exercise.id)}`;
+  const externalSrc = exercise.gifUrl || exercise.thumbnailUrl || null;
   const [src, setSrc] = useState<string>(internalSrc);
+  const [attempt, setAttempt] = useState<number>(0);
 
   useEffect(() => {
+    // Reiniciar a la fuente interna cuando cambie el ejercicio
     setSrc(internalSrc);
+    setAttempt(0);
   }, [internalSrc]);
 
   const handleError = () => {
-    // Si el endpoint interno no responde, usar un placeholder neutral
+    // 1º intento: si el endpoint interno falla, probar el gifUrl/thumbnailUrl del ejercicio
+    if (attempt === 0 && externalSrc) {
+      setAttempt(1);
+      setSrc(String(externalSrc));
+      return;
+    }
+    // 2º intento: placeholder neutral
     setSrc('/placeholder-exercise.svg');
   };
 
