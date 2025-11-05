@@ -1,0 +1,851 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ================================
+// USER MANAGEMENT
+// ================================
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  username  String?  @unique
+  firstName String?
+  lastName  String?
+  avatar    String?
+  bio       String?
+  
+  // Authentication
+  password     String?
+  emailVerified DateTime?
+  isActive     Boolean   @default(true)
+  resetToken   String?
+  resetTokenExpiry DateTime?
+  
+  // Profile info
+  dateOfBirth DateTime?
+  gender      Gender?
+  height      Float? // in cm
+  weight      Float? // in kg
+  fitnessLevel FitnessLevel @default(BEGINNER)
+  goals       String // JSON string for SQLite compatibility
+  
+  // User's primary goal
+  primaryGoalId String?
+  hasCompletedAssessment Boolean @default(false)
+  assessmentDate DateTime?
+  
+  // RPG System
+  totalXP      Int @default(0) // Total experience points earned
+  currentLevel Int @default(1) // Overall user level
+  virtualCoins Int @default(0) // Virtual currency for rewards
+  totalStrength Int @default(0) // Total strength points accumulated from completed skills
+  
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relations
+  accounts         Account[]
+  sessions         Session[]
+  workoutSessions  WorkoutSession[]
+  courseEnrollments CourseEnrollment[]
+  progressEntries  ProgressEntry[]
+  posts           Post[]
+  comments        Comment[]
+  likes           Like[]
+  achievements    UserAchievement[]
+  subscriptions   Subscription[]
+  userSkills      UserSkill[]
+  trainingGoals   TrainingGoal[]
+  primaryGoal     TrainingGoal? @relation("PrimaryGoal", fields: [primaryGoalId], references: [id])
+  
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+// ================================
+// WORKOUTS & EXERCISES
+// ================================
+
+model Exercise {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  instructions String // JSON string for SQLite compatibility
+  
+  // Media
+  videoUrl    String?
+  imageUrl    String?
+  thumbnailUrl String?
+  
+  // Exercise details
+  category    ExerciseCategory
+  difficulty  Difficulty
+  muscleGroups String // JSON string for SQLite compatibility
+  equipment   String // JSON string for SQLite compatibility
+  
+  // Metadata
+  duration    Int? // in seconds
+  calories    Int? // estimated calories burned
+  
+  // Timestamps
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  workoutExercises WorkoutExercise[]
+  sessionExercises SessionExercise[]
+  exerciseSkills   ExerciseSkill[]
+  
+  @@map("exercises")
+}
+
+model Workout {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  
+  // Workout details
+  difficulty  Difficulty
+  duration    Int? // estimated duration in minutes
+  calories    Int? // estimated calories burned
+  
+  // Media
+  imageUrl    String?
+  thumbnailUrl String?
+  
+  // Metadata
+  isPublic    Boolean @default(true)
+  tags        String // JSON string for SQLite compatibility
+  
+  // Timestamps
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  exercises   WorkoutExercise[]
+  sessions    WorkoutSession[]
+  
+  @@map("workouts")
+}
+
+model WorkoutExercise {
+  id         String @id @default(cuid())
+  workoutId  String
+  exerciseId String
+  order      Int
+  
+  // Exercise parameters
+  sets       Int?
+  reps       Int?
+  duration   Int? // in seconds
+  restTime   Int? // in seconds
+  weight     Float? // in kg
+  notes      String?
+  
+  workout    Workout  @relation(fields: [workoutId], references: [id], onDelete: Cascade)
+  exercise   Exercise @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
+  
+  @@unique([workoutId, exerciseId, order])
+  @@map("workout_exercises")
+}
+
+// ================================
+// WORKOUT SESSIONS & TRACKING
+// ================================
+
+model WorkoutSession {
+  id        String   @id @default(cuid())
+  userId    String
+  workoutId String?
+  
+  // Session details
+  name      String?
+  startTime DateTime
+  endTime   DateTime?
+  duration  Int? // actual duration in seconds
+  calories  Int? // actual calories burned
+  notes     String?
+  
+  // Session status
+  status    SessionStatus @default(IN_PROGRESS)
+  
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relations
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  workout   Workout? @relation(fields: [workoutId], references: [id])
+  exercises SessionExercise[]
+  
+  @@map("workout_sessions")
+}
+
+model SessionExercise {
+  id        String @id @default(cuid())
+  sessionId String
+  exerciseId String
+  order     Int
+  
+  // Performed parameters
+  sets      Int?
+  reps      Int?
+  duration  Int? // in seconds
+  weight    Float? // in kg
+  notes     String?
+  completed Boolean @default(false)
+  
+  session   WorkoutSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  exercise  Exercise @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
+  
+  @@unique([sessionId, exerciseId, order])
+  @@map("session_exercises")
+}
+
+// ================================
+// COURSES & LEARNING
+// ================================
+
+model Course {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  content     String? // Rich text content
+  
+  // Course details
+  difficulty  Difficulty
+  duration    Int? // estimated duration in hours
+  price       Float? // price in cents
+  
+  // Media
+  imageUrl    String?
+  thumbnailUrl String?
+  trailerUrl  String?
+  
+  // Course status
+  isPublished Boolean @default(false)
+  isActive    Boolean @default(true)
+  
+  // Metadata
+  tags        String // JSON string for SQLite compatibility
+  category    CourseCategory
+  
+  // Timestamps
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  lessons     Lesson[]
+  enrollments CourseEnrollment[]
+  
+  @@map("courses")
+}
+
+model Lesson {
+  id          String   @id @default(cuid())
+  courseId    String
+  title       String
+  description String?
+  content     String? // Rich text content
+  order       Int
+  
+  // Lesson details
+  duration    Int? // duration in minutes
+  
+  // Media
+  videoUrl    String?
+  imageUrl    String?
+  
+  // Lesson status
+  isPublished Boolean @default(false)
+  isFree      Boolean @default(false)
+  
+  // Timestamps
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  course      Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  progress    LessonProgress[]
+  
+  @@unique([courseId, order])
+  @@map("lessons")
+}
+
+model CourseEnrollment {
+  id         String   @id @default(cuid())
+  userId     String
+  courseId   String
+  
+  // Enrollment details
+  enrolledAt DateTime @default(now())
+  completedAt DateTime?
+  progress   Float @default(0) // percentage 0-100
+  
+  // Payment info
+  paymentId  String?
+  amount     Float? // amount paid in cents
+  
+  user       User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  course     Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId, courseId])
+  @@map("course_enrollments")
+}
+
+model LessonProgress {
+  id         String   @id @default(cuid())
+  userId     String
+  lessonId   String
+  
+  // Progress details
+  completed  Boolean @default(false)
+  watchTime  Int @default(0) // in seconds
+  completedAt DateTime?
+  
+  // Timestamps
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  
+  lesson     Lesson @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId, lessonId])
+  @@map("lesson_progress")
+}
+
+// ================================
+// PROGRESS TRACKING
+// ================================
+
+model ProgressEntry {
+  id        String   @id @default(cuid())
+  userId    String
+  
+  // Progress data
+  type      ProgressType
+  value     Float
+  unit      String?
+  notes     String?
+  
+  // Media
+  imageUrl  String?
+  
+  // Timestamps
+  date      DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("progress_entries")
+}
+
+// ================================
+// COMMUNITY & SOCIAL
+// ================================
+
+model Post {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String?
+  content   String
+  
+  // Media
+  imageUrl  String?
+  videoUrl  String?
+  
+  // Post metadata
+  category  PostCategory?
+  tags      String // JSON string for SQLite compatibility
+  
+  // Engagement
+  likesCount    Int @default(0)
+  commentsCount Int @default(0)
+  
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relations
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  comments  Comment[]
+  likes     Like[]
+  
+  @@map("posts")
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  userId    String
+  postId    String
+  content   String
+  
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relations
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post      Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  
+  @@map("comments")
+}
+
+model Like {
+  id     String @id @default(cuid())
+  userId String
+  postId String
+  
+  // Timestamps
+  createdAt DateTime @default(now())
+  
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post   Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId, postId])
+  @@map("likes")
+}
+
+// ================================
+// GAMIFICATION & ACHIEVEMENTS
+// ================================
+
+model Achievement {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  
+  // Achievement details
+  type        AchievementType
+  target      Float? // target value to unlock
+  unit        String?
+  
+  // Media
+  iconUrl     String?
+  badgeUrl    String?
+  
+  // Metadata
+  points      Int @default(0)
+  rarity      AchievementRarity @default(COMMON)
+  
+  // Timestamps
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  userAchievements UserAchievement[]
+  
+  @@map("achievements")
+}
+
+model UserAchievement {
+  id            String   @id @default(cuid())
+  userId        String
+  achievementId String
+  
+  // Achievement progress
+  progress      Float @default(0)
+  completed     Boolean @default(false)
+  completedAt   DateTime?
+  
+  // Timestamps
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  user          User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  achievement   Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId, achievementId])
+  @@map("user_achievements")
+}
+
+// ================================
+// SUBSCRIPTIONS & PAYMENTS
+// ================================
+
+model Subscription {
+  id        String   @id @default(cuid())
+  userId    String
+  
+  // Subscription details
+  plan      SubscriptionPlan
+  status    SubscriptionStatus
+  
+  // Billing
+  stripeCustomerId     String?
+  stripeSubscriptionId String?
+  stripePriceId        String?
+  
+  // Dates
+  startDate    DateTime @default(now())
+  endDate      DateTime?
+  cancelledAt  DateTime?
+  
+  // Timestamps
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  
+  user         User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId])
+  @@map("subscriptions")
+}
+
+// ================================
+// SKILLS & PROGRESSION SYSTEM
+// ================================
+
+model Skill {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  category    SkillCategory
+  difficulty  Difficulty
+  branch      SkillBranch // New: RPG branch classification
+  
+  // Progression requirements
+  requiredStrength    Int @default(0) // 0-100 scale
+  requiredEndurance   Int @default(0) // 0-100 scale
+  requiredFlexibility Int @default(0) // 0-100 scale
+  requiredBalance     Int @default(0) // 0-100 scale
+  
+  // New: Strength system for progression
+  strengthRequired Int @default(0) // Minimum strength points needed to unlock this skill
+  strengthGained   Int @default(1) // Strength points gained when completing this skill
+  
+  // RPG System
+  xpReward     Int @default(0) // XP awarded when skill is completed
+  coinReward   Int @default(0) // Virtual coins awarded when skill is completed
+  order        Int @default(0) // Order within the branch for progression
+  
+  // Mission/Quest requirements
+
+  requiredReps Int? // Required reps to complete
+  requiredDuration Int? // Required duration in seconds
+  requiredDays Int @default(1) // Required days to demonstrate consistency
+  
+  // Visual representation
+  iconUrl     String?
+  imageUrl    String?
+  
+  // Timestamps
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  prerequisites    SkillPrerequisite[] @relation("SkillPrerequisites")
+  dependentSkills  SkillPrerequisite[] @relation("PrerequisiteSkills")
+  exerciseSkills   ExerciseSkill[]
+  userSkills       UserSkill[]
+  trainingGoals    TrainingGoal[]
+  
+  @@map("skills")
+}
+
+model SkillPrerequisite {
+  id             String @id @default(cuid())
+  skillId        String
+  prerequisiteId String
+  
+  skill          Skill @relation("SkillPrerequisites", fields: [skillId], references: [id], onDelete: Cascade)
+  prerequisite   Skill @relation("PrerequisiteSkills", fields: [prerequisiteId], references: [id], onDelete: Cascade)
+  
+  @@unique([skillId, prerequisiteId])
+  @@map("skill_prerequisites")
+}
+
+model ExerciseSkill {
+  id         String @id @default(cuid())
+  exerciseId String
+  skillId    String
+  
+  // How much this exercise contributes to the skill
+  strengthContribution    Int @default(0) // 0-100
+  enduranceContribution   Int @default(0) // 0-100
+  flexibilityContribution Int @default(0) // 0-100
+  balanceContribution     Int @default(0) // 0-100
+  
+  exercise   Exercise @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
+  skill      Skill @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  
+  @@unique([exerciseId, skillId])
+  @@map("exercise_skills")
+}
+
+model UserSkill {
+  id      String @id @default(cuid())
+  userId  String
+  skillId String
+  
+  // User's progress in this skill
+  strengthLevel    Int @default(0) // 0-100
+  enduranceLevel   Int @default(0) // 0-100
+  flexibilityLevel Int @default(0) // 0-100
+  balanceLevel     Int @default(0) // 0-100
+  
+  // RPG Progress tracking
+  currentSets      Int @default(0) // Current sets completed
+  currentReps      Int @default(0) // Current reps completed
+  currentDuration  Int @default(0) // Current duration in seconds
+  daysCompleted    Int @default(0) // Days with successful completion
+  completionProgress Float @default(0.0) // 0.0 to 1.0 completion percentage
+  
+  // Skill status
+  isUnlocked Boolean @default(false)
+  unlockedAt DateTime?
+  isCompleted Boolean @default(false) // New: tracks if skill mission is completed
+  completedAt DateTime?
+  
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  skill     Skill @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId, skillId])
+  @@map("user_skills")
+}
+
+// ================================
+// SKILLS CALIBRATION (Hexagon normalization targets)
+// ================================
+
+model SkillsCalibration {
+  axis        String   @id // e.g., fuerzaRelativa, resistenciaMuscular, controlEquilibrio, movilidadArticular, tensionCorporal, tecnica
+  targetValue Float
+  p25         Float?
+  p50         Float?
+  p75         Float?
+  p90         Float?
+  samples     Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("skills_calibration")
+}
+
+// ================================
+// TRAINING GOALS & PROGRAMS
+// ================================
+
+model TrainingGoal {
+  id          String   @id @default(cuid())
+  userId      String
+  
+  // Goal details
+  name        String   // e.g., "Tuck Planche", "Handstand", "Muscle-up"
+  description String?
+  targetSkillId String? // Optional: link to a specific skill
+  
+  // Goal parameters
+  difficulty  Difficulty
+  estimatedWeeks Int?  // Estimated time to achieve
+  
+  // Progress tracking
+  isActive    Boolean @default(true)
+  progress    Float @default(0) // 0-100 percentage
+  startedAt   DateTime @default(now())
+  completedAt DateTime?
+  
+  // Timestamps
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  user        User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  targetSkill Skill? @relation(fields: [targetSkillId], references: [id])
+  usersWithPrimaryGoal User[] @relation("PrimaryGoal")
+  
+  @@map("training_goals")
+}
+
+// ================================
+// ENUMS
+// ================================
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+  PREFER_NOT_TO_SAY
+}
+
+enum FitnessLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+  EXPERT
+}
+
+enum ExerciseCategory {
+  STRENGTH
+  CARDIO
+  FLEXIBILITY
+  BALANCE
+  ENDURANCE
+  MOBILITY
+  WARM_UP
+  COOL_DOWN
+}
+
+enum Difficulty {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+  EXPERT
+}
+
+enum MuscleGroup {
+  CHEST
+  BACK
+  SHOULDERS
+  ARMS
+  CORE
+  LEGS
+  GLUTES
+  FULL_BODY
+}
+
+enum Equipment {
+  NONE
+  PULL_UP_BAR
+  RESISTANCE_BANDS
+  DUMBBELLS
+  KETTLEBELL
+  YOGA_MAT
+  FOAM_ROLLER
+  MEDICINE_BALL
+}
+
+enum SessionStatus {
+  PLANNED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum CourseCategory {
+  BEGINNER_GUIDE
+  TECHNIQUE
+  NUTRITION
+  MOBILITY
+  STRENGTH_BUILDING
+  ADVANCED_SKILLS
+  INJURY_PREVENTION
+}
+
+enum ProgressType {
+  WEIGHT
+  BODY_FAT
+  MUSCLE_MASS
+  MEASUREMENTS
+  PERFORMANCE
+  PHOTOS
+  CUSTOM
+}
+
+enum PostCategory {
+  PROGRESS
+  QUESTION
+  TIP
+  MOTIVATION
+  ACHIEVEMENT
+  GENERAL
+}
+
+enum AchievementType {
+  WORKOUT_COUNT
+  EXERCISE_MASTERY
+  STREAK
+  PROGRESS_MILESTONE
+  COURSE_COMPLETION
+  COMMUNITY_ENGAGEMENT
+  SPECIAL_EVENT
+}
+
+enum AchievementRarity {
+  COMMON
+  UNCOMMON
+  RARE
+  EPIC
+  LEGENDARY
+}
+
+enum SubscriptionPlan {
+  FREE
+  BASIC
+  PREMIUM
+  ELITE
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  CANCELLED
+  EXPIRED
+  PAST_DUE
+  INCOMPLETE
+}
+
+enum SkillCategory {
+  BASIC_MOVEMENTS
+  PUSH_MOVEMENTS
+  PULL_MOVEMENTS
+  CORE_STRENGTH
+  LEG_STRENGTH
+  FLEXIBILITY
+  BALANCE
+  ADVANCED_SKILLS
+  DYNAMIC_MOVEMENTS
+  STATIC_ELEMENTS // New: for advanced static holds
+}
+
+enum SkillBranch {
+  EMPUJE        // Push branch (Flexiones, Fondos, etc.)
+  TRACCION      // Pull branch (Dominadas, Muscle-ups, etc.)
+  CORE          // Core branch (Planchas, L-sits, Dragon flags, etc.)
+  EQUILIBRIO    // Balance/Handstands branch (Pino, Caminata, etc.)
+  TREN_INFERIOR // Lower body branch (Sentadillas, Pistols, etc.)
+  ESTATICOS     // Static elements branch (Planche, Front lever, etc.)
+  CALENTAMIENTO // Warm-up and mobility branch
+}

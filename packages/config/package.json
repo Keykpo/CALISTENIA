@@ -1,0 +1,31 @@
+{
+  "name": "@calisthenics/config",
+  "version": "0.1.0",
+  "description": "Shared configuration for Calisthenics Platform",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rimraf dist",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "config",
+    "configuration",
+    "calisthenics",
+    "shared"
+  ],
+  "author": "Calisthenics Platform Team",
+  "license": "MIT",
+  "devDependencies": {
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.3"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "files": [
+    "dist/**/*"
+  ]
+}

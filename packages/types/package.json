@@ -1,0 +1,31 @@
+{
+  "name": "@calisthenics/types",
+  "version": "0.1.0",
+  "description": "Shared TypeScript types for Calisthenics Platform",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rimraf dist",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "typescript",
+    "types",
+    "calisthenics",
+    "shared"
+  ],
+  "author": "Calisthenics Platform Team",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "rimraf": "^5.0.5"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "files": [
+    "dist/**/*"
+  ]
+}
