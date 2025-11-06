@@ -210,11 +210,18 @@ export default function CoursesPage() {
 
   const getLevelText = (level: string) => {
     switch (level) {
-      case 'beginner': return 'Beginner';
-      case 'intermediate': return 'Intermediate';
-      case 'advanced': return 'Advanced';
+      case 'beginner': return 'D';
+      case 'intermediate': return 'B';
+      case 'advanced': return 'A';
       default: return level;
     }
+  };
+
+  // Human-readable labels for level (used in selectors)
+  const levelLabels: Record<'beginner'|'intermediate'|'advanced', string> = {
+    beginner: 'Beginner',
+    intermediate: 'Intermediate',
+    advanced: 'Advanced',
   };
 
   const categories = [...new Set(courses.map(course => course.category))];
@@ -285,9 +292,9 @@ export default function CoursesPage() {
               className="px-3 py-2 border border-input bg-background rounded-md text-sm"
             >
               <option value="all">All levels</option>
-              <option value="beginner">Beginner</option>
-              <option value="intermediate">Intermediate</option>
-              <option value="advanced">Advanced</option>
+              <option value="beginner">D (Beginner)</option>
+              <option value="intermediate">B (Intermediate)</option>
+              <option value="advanced">A (Advanced)</option>
             </select>
 
             {/* Category Filter */}

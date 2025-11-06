@@ -19,6 +19,7 @@ import {
   Star,
   Award
 } from 'lucide-react';
+import { RankDS, rankDSToValue } from '@/lib/rank';
 
 interface UserInfo {
   id: string;
@@ -106,13 +107,26 @@ export default function UserProfile({ userId }: UserProfileProps) {
       tecnica: 3,
     };
   });
-  type RankPM = 'F-'|'F'|'F+'|'E-'|'E'|'E+'|'D-'|'D'|'D+'|'C-'|'C'|'C+'|'B-'|'B'|'B+'|'A-'|'A'|'A+'|'S-'|'S'|'S+';
-  const RANKS_PM: RankPM[] = ['F-','F','F+','E-','E','E+','D-','D','D+','C-','C','C+','B-','B','B+','A-','A','A+','S-','S','S+'];
-  const [hexRanks, setHexRanks] = useState<{[k in keyof HexagonValues]: RankPM}>(() => {
+  const RANKS_DS: RankDS[] = ['D','C','B','A','S'];
+  const [hexRanks, setHexRanks] = useState<{[k in keyof HexagonValues]: RankDS}>(() => {
     if (typeof window !== 'undefined') {
       const saved = window.localStorage.getItem('skillsHexagonRanks');
       if (saved) {
-        try { return JSON.parse(saved) as {[k in keyof HexagonValues]: RankPM}; } catch {}
+        try {
+          const raw = JSON.parse(saved) as {[k in keyof HexagonValues]: string};
+          const toDS = (v: string): RankDS => {
+            const m = String(v).match(/[DCBAS]/);
+            return (m ? (m[0] as RankDS) : 'C');
+          };
+          return {
+            fuerzaRelativa: toDS(raw.fuerzaRelativa),
+            resistenciaMuscular: toDS(raw.resistenciaMuscular),
+            controlEquilibrio: toDS(raw.controlEquilibrio),
+            movilidadArticular: toDS(raw.movilidadArticular),
+            tensionCorporal: toDS(raw.tensionCorporal),
+            tecnica: toDS(raw.tecnica),
+          } as {[k in keyof HexagonValues]: RankDS};
+        } catch {}
       }
     }
     return {
@@ -142,12 +156,6 @@ export default function UserProfile({ userId }: UserProfileProps) {
 
   // Mapear a valores 0-100 para el hexágono
   const starToValue = (n: number) => Math.max(0, Math.min(5, n)) * 20;
-  const rankToValuePM = (r: RankPM) => {
-    const idx = RANKS_PM.indexOf(r);
-    if (idx === -1) return 0;
-    // Escala: inicia en 10 y sube en pasos de 5; máximo 100
-    return Math.min(100, 10 + idx * 5);
-  };
   const hexValuesFromStars: HexagonValues = {
     fuerzaRelativa: starToValue(hexStars.fuerzaRelativa),
     resistenciaMuscular: starToValue(hexStars.resistenciaMuscular),
@@ -157,12 +165,12 @@ export default function UserProfile({ userId }: UserProfileProps) {
     tecnica: starToValue(hexStars.tecnica),
   };
   const hexValuesFromRanks: HexagonValues = {
-    fuerzaRelativa: rankToValuePM(hexRanks.fuerzaRelativa),
-    resistenciaMuscular: rankToValuePM(hexRanks.resistenciaMuscular),
-    controlEquilibrio: rankToValuePM(hexRanks.controlEquilibrio),
-    movilidadArticular: rankToValuePM(hexRanks.movilidadArticular),
-    tensionCorporal: rankToValuePM(hexRanks.tensionCorporal),
-    tecnica: rankToValuePM(hexRanks.tecnica),
+    fuerzaRelativa: rankDSToValue(hexRanks.fuerzaRelativa),
+    resistenciaMuscular: rankDSToValue(hexRanks.resistenciaMuscular),
+    controlEquilibrio: rankDSToValue(hexRanks.controlEquilibrio),
+    movilidadArticular: rankDSToValue(hexRanks.movilidadArticular),
+    tensionCorporal: rankDSToValue(hexRanks.tensionCorporal),
+    tecnica: rankDSToValue(hexRanks.tecnica),
   };
 
   // Comparación por fecha: snapshots en localStorage
@@ -289,27 +297,6 @@ export default function UserProfile({ userId }: UserProfileProps) {
     return () => clearInterval(interval);
   }, [autoSnapshot, lastAutoSnapshotTs, snapshots, hexStars]);
 
-  // Controles de escala personalizada para rangos
-  const [scaleBase, setScaleBase] = useState<number>(() => {
-    if (typeof window !== 'undefined') {
-      const v = window.localStorage.getItem('skillsHexagonScaleBase');
-      if (v) return Number(v);
-    }
-    return 10;
-  });
-  const [scaleStep, setScaleStep] = useState<number>(() => {
-    if (typeof window !== 'undefined') {
-      const v = window.localStorage.getItem('skillsHexagonScaleStep');
-      if (v) return Number(v);
-    }
-    return 5;
-  });
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.localStorage.setItem('skillsHexagonScaleBase', String(scaleBase));
-      window.localStorage.setItem('skillsHexagonScaleStep', String(scaleStep));
-    }
-  }, [scaleBase, scaleStep]);
   useEffect(() => {
     if (!persistServer) return;
     (async () => {
@@ -328,11 +315,7 @@ export default function UserProfile({ userId }: UserProfileProps) {
       } catch {}
     })();
   }, [persistServer]);
-  const rankToValuePMWithScale = (r: RankPM) => {
-    const idx = RANKS_PM.indexOf(r);
-    if (idx === -1) return 0;
-    return Math.min(100, Math.max(0, scaleBase + idx * scaleStep));
-  };
+  // Eliminada la escala personalizada de subniveles; DS usa valores representativos fijos.
 
   const fetchUserProfile = async () => {
     try {
@@ -583,8 +566,8 @@ export default function UserProfile({ userId }: UserProfileProps) {
                 <div className="text-2xl font-bold">
                   {Math.round(skillStats.completionRate)}%
                 </div>
-                <p className="text-sm text-gray-600">Tasa de Completado</p>
-                <p className="text-xs text-gray-500">Habilidades</p>
+                <p className="text-sm text-gray-600">Completion Rate</p>
+                <p className="text-xs text-gray-500">Skills</p>
               </CardContent>
             </Card>
           </div>
@@ -596,7 +579,7 @@ export default function UserProfile({ userId }: UserProfileProps) {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Star className="h-5 w-5 text-indigo-600" />
-                Hexágono de Habilidades (Calistenia)
+                Skills Hexagon (Calisthenics)
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -606,12 +589,12 @@ export default function UserProfile({ userId }: UserProfileProps) {
                     <SkillsHexagon
                       values={hexagonValues ?? hexValuesFromStars}
                       secondaryValues={{
-                        fuerzaRelativa: rankToValuePMWithScale(hexRanks.fuerzaRelativa),
-                        resistenciaMuscular: rankToValuePMWithScale(hexRanks.resistenciaMuscular),
-                        controlEquilibrio: rankToValuePMWithScale(hexRanks.controlEquilibrio),
-                        movilidadArticular: rankToValuePMWithScale(hexRanks.movilidadArticular),
-                        tensionCorporal: rankToValuePMWithScale(hexRanks.tensionCorporal),
-                        tecnica: rankToValuePMWithScale(hexRanks.tecnica),
+                        fuerzaRelativa: rankDSToValue(hexRanks.fuerzaRelativa),
+                        resistenciaMuscular: rankDSToValue(hexRanks.resistenciaMuscular),
+                        controlEquilibrio: rankDSToValue(hexRanks.controlEquilibrio),
+                        movilidadArticular: rankDSToValue(hexRanks.movilidadArticular),
+                        tensionCorporal: rankDSToValue(hexRanks.tensionCorporal),
+                        tecnica: rankDSToValue(hexRanks.tecnica),
                       }}
                       size={360}
                       gridLevels={5}
@@ -638,7 +621,7 @@ export default function UserProfile({ userId }: UserProfileProps) {
                         className={`px-3 py-1 rounded text-sm ${compareMode==='rank'?'bg-indigo-100 text-indigo-700':'bg-gray-100 text-gray-700'}`}
                         onClick={() => setCompareMode('rank')}
                       >
-                        Rangos F–S
+                        Rangos D–S
                       </button>
                       <button
                         className={`px-3 py-1 rounded text-sm ${compareMode==='time'?'bg-green-100 text-green-700':'bg-gray-100 text-gray-700'}`}
@@ -648,24 +631,6 @@ export default function UserProfile({ userId }: UserProfileProps) {
                       </button>
                     </div>
                   </div>
-                  {/* Controles de escala personalizada (cuando se compara por rango) */}
-                  {compareMode === 'rank' && (
-                    <div className="flex items-center gap-3">
-                      <span className="text-xs text-gray-600">Escala:</span>
-                      <label className="text-xs text-gray-600">Base
-                        <input type="number" min={0} max={50} value={scaleBase} onChange={(e)=>setScaleBase(Number(e.target.value))} className="ml-1 w-16 bg-gray-100 border border-gray-300 rounded px-2 py-1 text-xs" />
-                      </label>
-                      <label className="text-xs text-gray-600">Paso
-                        <input type="number" min={1} max={20} value={scaleStep} onChange={(e)=>setScaleStep(Number(e.target.value))} className="ml-1 w-16 bg-gray-100 border border-gray-300 rounded px-2 py-1 text-xs" />
-                      </label>
-                      <button
-                        onClick={() => { setScaleBase(0); setScaleStep(Math.round(100 / (RANKS_PM.length - 1))); }}
-                        className="text-xs px-2 py-1 rounded bg-indigo-100 text-indigo-700 border border-indigo-300"
-                      >
-                        Preset F-→0 / S+→100
-                      </button>
-                    </div>
-                  )}
                   {([
                     ['fuerzaRelativa', 'Fuerza relativa'],
                     ['resistenciaMuscular', 'Resistencia muscular'],
@@ -694,11 +659,11 @@ export default function UserProfile({ userId }: UserProfileProps) {
                           {compareMode === 'rank' ? (
                             <select
                               value={hexRanks[key]}
-                              onChange={(e) => setHexRanks((prev) => ({ ...prev, [key]: e.target.value as RankPM }))}
+                              onChange={(e) => setHexRanks((prev) => ({ ...prev, [key]: e.target.value as RankDS }))}
                               className="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded border border-gray-300"
-                              aria-label="Rango F-S con subniveles"
+                              aria-label="Rango D-S"
                             >
-                              {RANKS_PM.map((r) => (
+                              {RANKS_DS.map((r) => (
                                 <option key={r} value={r}>{r}</option>
                               ))}
                             </select>
@@ -751,7 +716,7 @@ export default function UserProfile({ userId }: UserProfileProps) {
                       </div>
                       <div className="text-xs text-gray-500">
                         {compareMode === 'rank'
-                          ? 'Comparación: Estrellas vs Rango F–S (con subniveles)'
+                          ? 'Comparación: Estrellas vs Rango D–S'
                           : (snapshotForAge
                             ? `Comparación: Hoy vs ${selectedAge === 'custom' ? (selectedDate || 'fecha personalizada') : (selectedAge === '7d' ? 'hace 7 días' : selectedAge === '1m' ? 'hace 1 mes' : 'hace 1 año')}`
                             : (selectedAge === 'custom' ? 'No hay snapshot para esa fecha seleccionada' : 'No hay snapshot guardado para esa fecha'))}

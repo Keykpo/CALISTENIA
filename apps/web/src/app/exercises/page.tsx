@@ -29,7 +29,8 @@ type Exercise = {
   name: string;
   description: string;
   category: string;
-  difficulty: string;
+  difficulty?: string; // legacy field from JSON
+  rank?: 'F' | 'E' | 'D' | 'C' | 'B' | 'A' | 'S';
   unit: string;
   muscleGroups: string[];
   equipment: string[];
@@ -41,20 +42,93 @@ type Exercise = {
   videoUrl?: string | null;
 };
 
-const difficultyColors = {
-  BEGINNER: 'bg-green-500',
-  NOVICE: 'bg-blue-500',
-  INTERMEDIATE: 'bg-yellow-500',
-  ADVANCED: 'bg-orange-500',
-  EXPERT: 'bg-red-500',
+// Map legacy difficulty to a rank letter (approximate)
+// Parse difficulty strings into rank letters.
+// Supports formats like "D (Beginner)", "C (Novice)", and plain descriptors.
+const rankFromDifficulty = (d?: string): Exercise['rank'] => {
+  if (!d) return undefined;
+  const raw = d.trim();
+  const upper = raw.toUpperCase();
+
+  // 1) Prefer leading rank letter (A/B/C/D/S/F/E)
+  const mLetter = upper.match(/^\s*([F|E|D|C|B|A|S])\b/);
+  if (mLetter) {
+    const letter = mLetter[1] as Exercise['rank'];
+    return letter;
+  }
+
+  // 2) If there is a descriptor in parentheses, use it
+  const mParen = upper.match(/\(([^)]+)\)/);
+  const desc = (mParen?.[1] || upper).trim();
+
+  // 3) Map descriptors to ranks
+  switch (desc) {
+    case 'BEGINNER':
+      return 'D';
+    case 'NOVICE':
+      return 'C';
+    case 'INTERMEDIATE':
+      return 'B';
+    case 'ADVANCED':
+      return 'A';
+    case 'EXPERT':
+      return 'S';
+    default:
+      return undefined;
+  }
 };
 
-const difficultyLabels = {
-  BEGINNER: 'Beginner',
-  NOVICE: 'Novice',
-  INTERMEDIATE: 'Intermediate',
-  ADVANCED: 'Advanced',
-  EXPERT: 'Expert',
+const rankColors: Record<NonNullable<Exercise['rank']>, string> = {
+  F: 'bg-green-500',
+  E: 'bg-teal-500',
+  D: 'bg-blue-500',
+  C: 'bg-yellow-500',
+  B: 'bg-orange-500',
+  A: 'bg-red-500',
+  S: 'bg-purple-600',
+};
+
+// Etiquetas visibles por letra (letra + descripción en inglés)
+const rankLabels: Record<NonNullable<Exercise['rank']>, string> = {
+  F: 'Beginner',
+  E: 'Beginner',
+  D: 'Beginner',
+  C: 'Novice',
+  B: 'Intermediate',
+  A: 'Advanced',
+  S: 'Expert',
+};
+
+// Normaliza rangos: F/E→D, D→C, C→B
+// Normaliza rangos: colapsa F/E ? D; mantiene el resto igual
+const normalizeRank = (r?: Exercise['rank']): Exercise['rank'] | undefined => {
+  switch (r) {
+    case 'F':
+    case 'E':
+      return 'D';
+    case 'D':
+    case 'C':
+    case 'B':
+    case 'A':
+    case 'S':
+      return r;
+    default:
+      return r;
+  }
+};
+
+// Formato de visualización: solo la letra del rango normalizado
+const formatRank = (rank?: Exercise['rank'], difficulty?: string): string => {
+  const raw = (rank ?? rankFromDifficulty(difficulty)) as Exercise['rank'] | undefined;
+  const normalized = normalizeRank(raw) as NonNullable<Exercise['rank']> | undefined;
+  return normalized ? `${normalized} (${rankLabels[normalized] ?? normalized})` : 'Unknown';
+};
+
+// Get badge color class for rank
+const getRankColorClass = (rank?: Exercise['rank'], difficulty?: string): string => {
+  const raw = (rank ?? rankFromDifficulty(difficulty)) as Exercise['rank'] | undefined;
+  const normalized = normalizeRank(raw) as NonNullable<Exercise['rank']> | undefined;
+  return normalized ? `${rankColors[normalized]} text-white` : 'bg-gray-500 text-white';
 };
 
 const categoryLabels = {
@@ -68,32 +142,41 @@ const categoryLabels = {
 export default function ExercisesPage() {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedDifficulty, setSelectedDifficulty] = useState<string>('all');
+  const [selectedRank, setSelectedRank] = useState<string>('all');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedExercise, setSelectedExercise] = useState<Exercise | null>(null);
 
   const filteredExercises = useMemo(() => {
-    return (exercises as Exercise[]).filter((exercise) => {
-      const matchesSearch = exercise.name
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase());
-      const matchesDifficulty =
-        selectedDifficulty === 'all' || exercise.difficulty === selectedDifficulty;
-      const matchesCategory =
-        selectedCategory === 'all' || exercise.category === selectedCategory;
+    return (exercises as Exercise[])
+      .map((e) => ({
+        ...e,
+        rank: e.rank ?? rankFromDifficulty(e.difficulty),
+      }))
+      .filter((exercise) => {
+        const matchesSearch = exercise.name
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase());
+        const effectiveRank = normalizeRank(exercise.rank);
+        const matchesRank = selectedRank === 'all' || effectiveRank === selectedRank;
+        const matchesCategory =
+          selectedCategory === 'all' || exercise.category === selectedCategory;
 
-      return matchesSearch && matchesDifficulty && matchesCategory;
-    });
-  }, [searchTerm, selectedDifficulty, selectedCategory]);
+        return matchesSearch && matchesRank && matchesCategory;
+      });
+  }, [searchTerm, selectedRank, selectedCategory]);
 
   const stats = useMemo(() => {
+    const normalized = (exercises as Exercise[])
+      .map((e) => normalizeRank(e.rank ?? rankFromDifficulty(e.difficulty)))
+      .filter(Boolean) as NonNullable<Exercise['rank']>[];
+    const count = (r: NonNullable<Exercise['rank']>) => normalized.filter((x) => x === r).length;
     return {
-      total: exercises.length,
-      beginner: exercises.filter((e: Exercise) => e.difficulty === 'BEGINNER').length,
-      novice: exercises.filter((e: Exercise) => e.difficulty === 'NOVICE').length,
-      intermediate: exercises.filter((e: Exercise) => e.difficulty === 'INTERMEDIATE').length,
-      advanced: exercises.filter((e: Exercise) => e.difficulty === 'ADVANCED').length,
-      expert: exercises.filter((e: Exercise) => e.difficulty === 'EXPERT').length,
+      total: normalized.length,
+      D: count('D'),
+      C: count('C'),
+      B: count('B'),
+      A: count('A'),
+      S: count('S'),
     };
   }, []);
 
@@ -115,7 +198,7 @@ export default function ExercisesPage() {
         </Button>
       </div>
 
-      {/* Stats Cards */}
+      {/* Stats Cards by Rank (normalized to D → S) */}
       <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
         <Card>
           <CardHeader className="p-4">
@@ -125,44 +208,45 @@ export default function ExercisesPage() {
             <p className="text-2xl font-bold">{stats.total}</p>
           </CardContent>
         </Card>
+        
         <Card>
           <CardHeader className="p-4">
-            <CardTitle className="text-sm">Beginner</CardTitle>
+            <CardTitle className="text-sm">D</CardTitle>
           </CardHeader>
           <CardContent className="p-4 pt-0">
-            <p className="text-2xl font-bold text-green-500">{stats.beginner}</p>
+            <p className="text-2xl font-bold text-blue-500">{stats.D}</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="p-4">
-            <CardTitle className="text-sm">Novice</CardTitle>
+            <CardTitle className="text-sm">C</CardTitle>
           </CardHeader>
           <CardContent className="p-4 pt-0">
-            <p className="text-2xl font-bold text-blue-500">{stats.novice}</p>
+            <p className="text-2xl font-bold text-yellow-500">{stats.C}</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="p-4">
-            <CardTitle className="text-sm">Intermediate</CardTitle>
+            <CardTitle className="text-sm">B</CardTitle>
           </CardHeader>
           <CardContent className="p-4 pt-0">
-            <p className="text-2xl font-bold text-yellow-500">{stats.intermediate}</p>
+            <p className="text-2xl font-bold text-orange-500">{stats.B}</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="p-4">
-            <CardTitle className="text-sm">Advanced</CardTitle>
+            <CardTitle className="text-sm">A</CardTitle>
           </CardHeader>
           <CardContent className="p-4 pt-0">
-            <p className="text-2xl font-bold text-orange-500">{stats.advanced}</p>
+            <p className="text-2xl font-bold text-red-500">{stats.A}</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="p-4">
-            <CardTitle className="text-sm">Expert</CardTitle>
+            <CardTitle className="text-sm">S</CardTitle>
           </CardHeader>
           <CardContent className="p-4 pt-0">
-            <p className="text-2xl font-bold text-red-500">{stats.expert}</p>
+            <p className="text-2xl font-bold text-purple-600">{stats.S}</p>
           </CardContent>
         </Card>
       </div>
@@ -183,18 +267,18 @@ export default function ExercisesPage() {
               />
             </div>
             <div>
-              <label className="text-sm font-medium mb-2 block">Difficulty</label>
-              <Select value={selectedDifficulty} onValueChange={setSelectedDifficulty}>
+              <label className="text-sm font-medium mb-2 block">Rank</label>
+              <Select value={selectedRank} onValueChange={setSelectedRank}>
                 <SelectTrigger>
                   <SelectValue placeholder="All" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All</SelectItem>
-                  <SelectItem value="BEGINNER">Beginner</SelectItem>
-                  <SelectItem value="NOVICE">Novice</SelectItem>
-                  <SelectItem value="INTERMEDIATE">Intermediate</SelectItem>
-                  <SelectItem value="ADVANCED">Advanced</SelectItem>
-                  <SelectItem value="EXPERT">Expert</SelectItem>
+                  <SelectItem value="D">D (Beginner)</SelectItem>
+                  <SelectItem value="C">C (Novice)</SelectItem>
+                  <SelectItem value="B">B (Intermediate)</SelectItem>
+                  <SelectItem value="A">A (Advanced)</SelectItem>
+                  <SelectItem value="S">S (Expert)</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -235,12 +319,8 @@ export default function ExercisesPage() {
                 <div className="flex-1">
                   <CardTitle className="text-lg mb-2">{exercise.name}</CardTitle>
                   <div className="flex flex-wrap gap-2 mb-2">
-                    <Badge
-                      className={`${
-                        difficultyColors[exercise.difficulty as keyof typeof difficultyColors]
-                      } text-white`}
-                    >
-                      {difficultyLabels[exercise.difficulty as keyof typeof difficultyLabels]}
+                    <Badge className={getRankColorClass(exercise.rank, exercise.difficulty)}>
+                      {formatRank(exercise.rank, exercise.difficulty)}
                     </Badge>
                     <Badge variant="outline">
                       {categoryLabels[exercise.category as keyof typeof categoryLabels]}
@@ -297,18 +377,8 @@ export default function ExercisesPage() {
                       <DialogTitle className="text-2xl">{selectedExercise?.name}</DialogTitle>
                       <DialogDescription>
                         <div className="flex flex-wrap gap-2 mt-2">
-                          <Badge
-                            className={`${
-                              difficultyColors[
-                                selectedExercise?.difficulty as keyof typeof difficultyColors
-                              ]
-                            } text-white`}
-                          >
-                            {
-                              difficultyLabels[
-                                selectedExercise?.difficulty as keyof typeof difficultyLabels
-                              ]
-                            }
+                          <Badge className={getRankColorClass(selectedExercise?.rank, selectedExercise?.difficulty)}>
+                            {formatRank(selectedExercise?.rank, selectedExercise?.difficulty)}
                           </Badge>
                           <Badge variant="outline">
                             {
@@ -456,3 +526,4 @@ export default function ExercisesPage() {
     </div>
   );
 }
+

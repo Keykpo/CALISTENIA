@@ -277,7 +277,7 @@ export default function Ranking({ currentUserId }: RankingProps) {
                   Rank #{currentUserRank.rank}
                 </Badge>
                 <p className="text-sm text-gray-600 mt-1">
-                  {currentUserRank.unlockedSkills} habilidades desbloqueadas
+                  {currentUserRank.unlockedSkills} skills unlocked
                 </p>
               </div>
             </div>
@@ -286,7 +286,7 @@ export default function Ranking({ currentUserId }: RankingProps) {
             <div className="mt-4 space-y-3">
               {/* Habilidades */}
               <div>
-                <h4 className="text-sm font-semibold text-gray-700 mb-2">Habilidades por Categoría</h4>
+                <h4 className="text-sm font-semibold text-gray-700 mb-2">Skills by Category</h4>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                   {Object.entries(currentUserRank.skillLevels).map(([skill, level]) => (
                     <div key={skill} className="text-center p-2 bg-white rounded">
@@ -300,7 +300,7 @@ export default function Ranking({ currentUserId }: RankingProps) {
               {/* Ejercicios recientes */}
               {currentUserRank.exerciseRecords && currentUserRank.exerciseRecords.length > 0 && (
                 <div>
-                  <h4 className="text-sm font-semibold text-gray-700 mb-2">Ejercicios Recientes</h4>
+                  <h4 className="text-sm font-semibold text-gray-700 mb-2">Recent Exercises</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                     {currentUserRank.exerciseRecords.slice(0, 4).map((record, index) => (
                       <div key={index} className="text-center p-2 bg-white rounded border">
@@ -349,7 +349,7 @@ export default function Ranking({ currentUserId }: RankingProps) {
                       {user.name}
                     </h3>
                     <p className="text-sm text-gray-600">
-                      {user.totalScore} puntos • {user.unlockedSkills} habilidades
+                      {user.totalScore} points • {user.unlockedSkills} skills
                     </p>
                   </div>
                 </div>

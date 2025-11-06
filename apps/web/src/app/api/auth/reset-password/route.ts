@@ -1,70 +1,69 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
-import bcrypt from 'bcryptjs';
 import { z } from 'zod';
+import bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
 
-const resetPasswordSchema = z.object({
-  token: z.string().min(1, 'Token requerido'),
-  password: z.string().min(6, 'La contraseña debe tener al menos 6 caracteres'),
+const resetSchema = z.object({
+  token: z.string().min(1, 'Missing token'),
+  password: z.string().min(8, 'Password must be at least 8 characters'),
 });
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    
-    // Validar datos de entrada
-    const validatedData = resetPasswordSchema.parse(body);
-    
-    // Buscar usuario con el token válido
+    const data = resetSchema.parse(body);
+
     const user = await prisma.user.findFirst({
       where: {
-        resetToken: validatedData.token,
-        resetTokenExpiry: {
-          gt: new Date(), // Token no expirado
-        },
+        resetToken: data.token,
+        resetTokenExpiry: { gt: new Date() },
       },
     });
-    
+
     if (!user) {
-      return NextResponse.json(
-        { error: 'Token inválido o expirado' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Invalid or expired token' }, { status: 400 });
     }
-    
-    // Hashear nueva contraseña
-    const hashedPassword = await bcrypt.hash(validatedData.password, 12);
-    
-    // Actualizar contraseña y limpiar token
+
+    const hashed = await bcrypt.hash(data.password, 10);
+
     await prisma.user.update({
       where: { id: user.id },
       data: {
-        password: hashedPassword,
+        password: hashed,
         resetToken: null,
         resetTokenExpiry: null,
       },
     });
-    
-    return NextResponse.json(
-      { message: 'Contraseña restablecida exitosamente' },
-      { status: 200 }
-    );
-    
+
+    return NextResponse.json({ message: 'Password reset successfully' });
   } catch (error) {
-    console.error('Error en reset password:', error);
-    
     if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: 'Datos inválidos', details: error.errors },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: error.issues[0]?.message || 'Invalid input' }, { status: 400 });
     }
-    
-    return NextResponse.json(
-      { error: 'Error interno del servidor' },
-      { status: 500 }
-    );
+    console.error('Reset password error:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
+
+export async function GET(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const token = searchParams.get('token');
+    if (!token) return NextResponse.json({ valid: false }, { status: 400 });
+
+    const user = await prisma.user.findFirst({
+      where: {
+        resetToken: token,
+        resetTokenExpiry: { gt: new Date() },
+      },
+      select: { id: true },
+    });
+
+    return NextResponse.json({ valid: !!user });
+  } catch (error) {
+    console.error('Validate reset token error:', error);
+    return NextResponse.json({ valid: false }, { status: 500 });
   }
 }

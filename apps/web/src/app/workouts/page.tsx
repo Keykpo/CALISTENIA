@@ -8,24 +8,24 @@ import { Dumbbell, Clock, Target, TrendingUp } from 'lucide-react';
 const workoutCategories = [
   {
     id: 'beginner',
-    title: 'Principiante',
-    description: 'Rutinas básicas para empezar tu journey en calistenia',
+    title: 'Beginner',
+    description: 'Basic routines to start your calisthenics journey',
     icon: Target,
     workouts: 12,
     duration: '15-30 min',
   },
   {
     id: 'intermediate',
-    title: 'Intermedio',
-    description: 'Ejercicios más desafiantes para progresar',
+    title: 'Intermediate',
+    description: 'More challenging exercises to progress',
     icon: TrendingUp,
     workouts: 18,
     duration: '30-45 min',
   },
   {
     id: 'advanced',
-    title: 'Avanzado',
-    description: 'Movimientos complejos y rutinas intensas',
+    title: 'Advanced',
+    description: 'Complex movements and intense routines',
     icon: Dumbbell,
     workouts: 15,
     duration: '45-60 min',
@@ -36,24 +36,24 @@ const featuredWorkouts = [
   {
     id: 1,
     title: 'Push-up Progression',
-    description: 'Domina las flexiones desde cero hasta variaciones avanzadas',
-    level: 'Principiante',
+    description: 'Master push-ups from zero to advanced variations',
+    level: 'Beginner',
     duration: '20 min',
     exercises: 8,
   },
   {
     id: 2,
     title: 'Pull-up Mastery',
-    description: 'Desarrolla fuerza en la espalda y brazos con dominadas',
-    level: 'Intermedio',
+    description: 'Develop back and arm strength with pull-ups',
+    level: 'Intermediate',
     duration: '35 min',
     exercises: 12,
   },
   {
     id: 3,
     title: 'Handstand Journey',
-    description: 'Aprende a hacer el pino paso a paso',
-    level: 'Avanzado',
+    description: 'Learn to handstand step by step',
+    level: 'Advanced',
     duration: '45 min',
     exercises: 15,
   },
@@ -70,10 +70,10 @@ export default function WorkoutsPage() {
           <div className="container">
             <div className="mx-auto max-w-3xl text-center">
               <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-                Entrenamientos de <span className="text-primary">Calistenia</span>
+                Calisthenics <span className="text-primary">Workouts</span>
               </h1>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                Descubre rutinas estructuradas para todos los niveles. Desde principiante hasta atleta avanzado.
+                Discover structured routines for all levels — from beginner to advanced athlete.
               </p>
             </div>
           </div>
@@ -83,7 +83,7 @@ export default function WorkoutsPage() {
         <section className="py-16">
           <div className="container">
             <h2 className="text-3xl font-bold text-center mb-12">
-              Categorías de Entrenamiento
+              Training Categories
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -100,11 +100,11 @@ export default function WorkoutsPage() {
                     </CardHeader>
                     <CardContent className="text-center space-y-2">
                       <div className="flex justify-between text-sm text-muted-foreground">
-                        <span>{category.workouts} entrenamientos</span>
+                        <span>{category.workouts} workouts</span>
                         <span>{category.duration}</span>
                       </div>
                       <Button className="w-full mt-4">
-                        Explorar Rutinas
+                        Explore Routines
                       </Button>
                     </CardContent>
                   </Card>
@@ -118,7 +118,7 @@ export default function WorkoutsPage() {
         <section className="py-16 bg-muted/50">
           <div className="container">
             <h2 className="text-3xl font-bold text-center mb-12">
-              Entrenamientos Destacados
+              Featured Workouts
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -140,10 +140,10 @@ export default function WorkoutsPage() {
                   <CardContent>
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-muted-foreground">
-                        {workout.exercises} ejercicios
+                        {workout.exercises} exercises
                       </span>
                       <Button size="sm">
-                        Comenzar
+                        Start
                       </Button>
                     </div>
                   </CardContent>
@@ -158,17 +158,17 @@ export default function WorkoutsPage() {
           <div className="container">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="text-3xl font-bold mb-4">
-                ¿Listo para empezar?
+                Ready to get started?
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                Crea tu cuenta y accede a todos nuestros entrenamientos personalizados.
+                Create your account and access all our personalized workouts.
               </p>
               <div className="flex gap-4 justify-center">
                 <Button size="lg" asChild>
-                  <Link href="/auth/signup">Crear Cuenta</Link>
+                  <Link href="/auth/signup">Create Account</Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
-                  <Link href="/auth/signin">Iniciar Sesión</Link>
+                  <Link href="/auth/signin">Sign In</Link>
                 </Button>
               </div>
             </div>

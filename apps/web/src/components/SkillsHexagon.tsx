@@ -21,12 +21,12 @@ interface SkillsHexagonProps {
 }
 
 const AXES = [
-  { key: 'fuerzaRelativa', label: 'Fuerza relativa' },
-  { key: 'resistenciaMuscular', label: 'Resistencia muscular' },
-  { key: 'controlEquilibrio', label: 'Control y equilibrio' },
-  { key: 'movilidadArticular', label: 'Movilidad articular' },
-  { key: 'tensionCorporal', label: 'Tensión corporal / core' },
-  { key: 'tecnica', label: 'Técnica / Habilidad específica' },
+  { key: 'fuerzaRelativa', label: 'Relative strength' },
+  { key: 'resistenciaMuscular', label: 'Muscular endurance' },
+  { key: 'controlEquilibrio', label: 'Control & balance' },
+  { key: 'movilidadArticular', label: 'Joint mobility' },
+  { key: 'tensionCorporal', label: 'Body tension / core' },
+  { key: 'tecnica', label: 'Technique / specific skill' },
 ] as const;
 
 export default function SkillsHexagon({ values, size = 360, gridLevels = 4, secondaryValues, primaryColor = '#6366F1', secondaryColor = '#F59E0B' }: SkillsHexagonProps) {

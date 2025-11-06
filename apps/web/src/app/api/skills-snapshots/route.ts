@@ -62,3 +62,22 @@ export async function POST(req: NextRequest) {
     return new Response(JSON.stringify({ error: 'Server error' }), { status: 500 });
   }
 }
+
+export async function DELETE(req: NextRequest) {
+  try {
+    const body = await req.json();
+    const userId: string = body.userId || 'anon';
+    const ts: number = body.ts;
+    if (typeof ts !== 'number') {
+      return new Response(JSON.stringify({ error: 'Invalid ts' }), { status: 400 });
+    }
+    const store = await ensureStore();
+    const list = store[userId] || [];
+    const next = list.filter((s) => s.ts !== ts);
+    store[userId] = next;
+    await saveStore(store);
+    return new Response(JSON.stringify({ ok: true, count: next.length }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+  } catch (e) {
+    return new Response(JSON.stringify({ error: 'Server error' }), { status: 500 });
+  }
+}

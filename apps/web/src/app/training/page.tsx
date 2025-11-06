@@ -47,7 +47,7 @@ type GoalKey =
 type FitnessLevel = 'principiante' | 'intermedio' | 'avanzado';
 
 // Rank system for exercises
-type Rank = 'F' | 'E' | 'D' | 'C' | 'B' | 'A' | 'S';
+type Rank = 'D' | 'C' | 'B' | 'A' | 'S';
 
 interface Exercise {
   name: string;
@@ -156,7 +156,7 @@ const getRankForExercise = (exercise: Exercise, level: FitnessLevel, index: numb
   if (exercise.rank) return exercise.rank;
   // For each level, we progressively increase difficulty across the 4 exercises
   const rankByLevel: Record<FitnessLevel, Rank[]> = {
-    principiante: ['F', 'E', 'D', 'C'],
+    principiante: ['D', 'C', 'B', 'A'],
     intermedio: ['D', 'C', 'B', 'A'],
     avanzado: ['C', 'B', 'A', 'S'],
   };
@@ -175,15 +175,19 @@ const withRanks = (level: FitnessLevel, exercises: Exercise[]): Exercise[] => {
 // Map rank to a human-readable difficulty in English
 const getDifficultyLabelByRank = (rank: Rank): string => {
   const map: Record<Rank, string> = {
-    F: 'Very easy',
-    E: 'Easy',
-    D: 'Moderate',
-    C: 'Challenging',
-    B: 'Hard',
-    A: 'Very hard',
-    S: 'Elite',
+    D: 'Beginner',
+    C: 'Novice',
+    B: 'Intermediate',
+    A: 'Advanced',
+    S: 'Expert',
   };
   return map[rank];
+};
+
+// Visible label combining rank letter with description in parentheses
+const formatRankWithLabel = (rank: Rank): string => {
+  const label = getDifficultyLabelByRank(rank);
+  return `${rank} (${label})`;
 };
 
 export default function TrainingPage() {
@@ -314,9 +318,9 @@ export default function TrainingPage() {
                     onChange={(e) => setFitnessLevel(e.target.value as FitnessLevel)}
                     className="w-full p-2 border rounded-md"
                   >
-                    <option value="principiante">Beginner</option>
-                    <option value="intermedio">Intermediate</option>
-                    <option value="avanzado">Advanced</option>
+                    <option value="principiante">D (Beginner)</option>
+                    <option value="intermedio">B (Intermediate)</option>
+                    <option value="avanzado">A (Advanced)</option>
                   </select>
                 </div>
 
@@ -339,7 +343,7 @@ export default function TrainingPage() {
                             <goal.icon className="h-4 w-4" />
                             <span className="font-medium text-sm">{goal.name}</span>
                             <Badge variant={goal.difficulty === 'advanced' ? 'destructive' : goal.difficulty === 'intermediate' ? 'default' : 'secondary'} className="ml-auto text-xs">
-                              {goal.difficulty === 'beginner' ? 'Beginner' : goal.difficulty === 'intermediate' ? 'Intermediate' : 'Advanced'}
+                              {goal.difficulty === 'beginner' ? 'D' : goal.difficulty === 'intermediate' ? 'B' : 'A'}
                             </Badge>
                           </div>
                         </button>
@@ -364,7 +368,7 @@ export default function TrainingPage() {
                             <goal.icon className="h-4 w-4" />
                             <span className="font-medium text-sm">{goal.name}</span>
                             <Badge variant={goal.difficulty === 'advanced' ? 'destructive' : goal.difficulty === 'intermediate' ? 'default' : 'secondary'} className="ml-auto text-xs">
-                              {goal.difficulty === 'beginner' ? 'Beginner' : goal.difficulty === 'intermediate' ? 'Intermediate' : 'Advanced'}
+                              {goal.difficulty === 'beginner' ? 'D' : goal.difficulty === 'intermediate' ? 'B' : 'A'}
                             </Badge>
                           </div>
                         </button>
@@ -389,7 +393,7 @@ export default function TrainingPage() {
                             <goal.icon className="h-4 w-4" />
                             <span className="font-medium text-sm">{goal.name}</span>
                             <Badge variant={goal.difficulty === 'advanced' ? 'destructive' : goal.difficulty === 'intermediate' ? 'default' : 'secondary'} className="ml-auto text-xs">
-                              {goal.difficulty === 'beginner' ? 'Beginner' : goal.difficulty === 'intermediate' ? 'Intermediate' : 'Advanced'}
+                              {goal.difficulty === 'beginner' ? 'D' : goal.difficulty === 'intermediate' ? 'B' : 'A'}
                             </Badge>
                           </div>
                         </button>
@@ -425,7 +429,7 @@ export default function TrainingPage() {
                           <div className="flex-1">
                             <h3 className="font-semibold text-lg mb-2 flex items-center">
                               <span>{exercise.name}</span>
-                              <Badge variant="outline" className="ml-2">Rank {rank}</Badge>
+                              <Badge variant="outline" className="ml-2">{formatRankWithLabel(rank)}</Badge>
                             </h3>
                             <p className="text-gray-600 text-sm mb-3">{exercise.description}</p>
                             <div className="flex flex-wrap gap-4 text-sm">
