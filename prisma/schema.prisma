@@ -63,6 +63,8 @@ model User {
   comments          Comment[]
   likes             Like[]
   achievements      UserAchievement[]
+  workoutHistory    WorkoutHistory[]
+  dailyMissions     DailyMission[]
   subscriptions     Subscription[]
   userSkills        UserSkill[]
   trainingGoals     TrainingGoal[]
@@ -242,6 +244,7 @@ model WorkoutSession {
   user      User              @relation(fields: [userId], references: [id], onDelete: Cascade)
   workout   Workout?          @relation(fields: [workoutId], references: [id])
   exercises SessionExercise[]
+  histories WorkoutHistory[]
 
   @@map("workout_sessions")
 }
@@ -522,6 +525,58 @@ model UserAchievement {
 
   @@unique([userId, achievementId])
   @@map("user_achievements")
+}
+
+// ================================
+// WORKOUT COMPLETIONS HISTORY
+// ================================
+
+model WorkoutHistory {
+  id        String  @id @default(cuid())
+  userId    String
+  sessionId String?
+
+  // Completion summary
+  completedAt DateTime   @default(now())
+  difficulty  Difficulty
+  streakBonus Int        @default(0)
+  xpEarned    Int        @default(0)
+  coinsEarned Int        @default(0)
+
+  // Hexagon delta applied on completion (JSON string for SQLite)
+  hexagonDelta String
+  summary      String?
+
+  // Relations
+  user    User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  session WorkoutSession? @relation(fields: [sessionId], references: [id])
+
+  @@map("workout_history")
+}
+
+// ================================
+// DAILY MISSIONS
+// ================================
+
+model DailyMission {
+  id          String   @id @default(cuid())
+  userId      String
+  date        DateTime
+  type        String
+  description String
+  target      Int?
+  progress    Int      @default(0)
+  completed   Boolean  @default(false)
+  rewardXP    Int      @default(0)
+  rewardCoins Int      @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, date, type])
+  @@map("daily_missions")
 }
 
 // ================================

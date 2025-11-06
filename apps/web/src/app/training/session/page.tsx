@@ -21,27 +21,24 @@ export default function TrainingSessionPage() {
   useEffect(() => {
     async function load() {
       try {
-        // Fetch a simple session plan (fallback to demo data)
-        const res = await fetch('/api/workouts?limit=1');
+        // Fetch generated training plan based on goal/level
+        const res = await fetch('/api/training/plan?goal=strength&level=BEGINNER&durationMin=30');
         if (res.ok) {
-          // Minimal demo plan
-          setExercises([
-            { id: '1', name: 'Jumping Jacks', durationSec: 60 },
-            { id: '2', name: 'Push-ups', reps: 12 },
-            { id: '3', name: 'Plank', durationSec: 45 },
-          ]);
-        } else {
-          setExercises([
-            { id: '1', name: 'Squats', reps: 15 },
-            { id: '2', name: 'Pull-ups (assisted)', reps: 8 },
-            { id: '3', name: 'Hollow Hold', durationSec: 30 },
-          ]);
+          const data = await res.json();
+          const ex: Exercise[] = [
+            ...data.plan.warmup,
+            ...data.plan.main,
+            ...data.plan.finisher,
+          ];
+          setExercises(ex);
+          return;
         }
       } catch {
+        // Fallback demo plan
         setExercises([
-          { id: '1', name: 'Squats', reps: 15 },
-          { id: '2', name: 'Pull-ups (assisted)', reps: 8 },
-          { id: '3', name: 'Hollow Hold', durationSec: 30 },
+          { id: 'warmup_jumping_jacks', name: 'Jumping Jacks', durationSec: 60 },
+          { id: 'push_standard', name: 'Flexiones Completas', reps: 12 },
+          { id: 'core_plank', name: 'Plancha', durationSec: 45 },
         ]);
       }
     }

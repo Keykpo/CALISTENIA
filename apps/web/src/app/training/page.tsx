@@ -198,6 +198,11 @@ export default function TrainingPage() {
   const [coins, setCoins] = useState(0);
   const [sessionExp, setSessionExp] = useState(0);
   const [sessionCoins, setSessionCoins] = useState(0);
+  const [completionSummary, setCompletionSummary] = useState<null | {
+    xpEarned: number;
+    coinsEarned: number;
+    streakBonus: number;
+  }>(null);
 
   // Load saved data on component mount
   useEffect(() => {
@@ -237,6 +242,37 @@ export default function TrainingPage() {
     setCompletedExercises(new Set());
     setSessionExp(0);
     setSessionCoins(0);
+    setCompletionSummary(null);
+  };
+
+  const mapLevelToDifficulty = (lvl: FitnessLevel) => {
+    const m: Record<FitnessLevel, 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED'> = {
+      principiante: 'BEGINNER',
+      intermedio: 'INTERMEDIATE',
+      avanzado: 'ADVANCED',
+    };
+    return m[lvl] ?? 'BEGINNER';
+  };
+
+  const completeSession = async () => {
+    try {
+      const done = exercises.filter((e) => completedExercises.has(e.name));
+      const payload = {
+        difficulty: mapLevelToDifficulty(fitnessLevel),
+        exercises: done.map((e) => ({ name: e.name, sets: e.sets, rank: e.rank })),
+      };
+      const res = await fetch('/api/workout/complete?userId=local-dev', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (data?.success) {
+        setCompletionSummary({ xpEarned: data.xpEarned, coinsEarned: data.coinsEarned, streakBonus: data.streakBonus });
+      }
+    } catch (e) {
+      console.error('Error completing workout:', e);
+    }
   };
 
   return (
@@ -492,10 +528,18 @@ export default function TrainingPage() {
                         <span>Exercises completed: {completedExercises.size}</span>
                         <span className="text-blue-600">+{sessionExp} EXP</span>
                         <span className="text-yellow-600">+{sessionCoins} coins</span>
+                        {completionSummary && (
+                          <span className="text-green-700">Saved: +{completionSummary.xpEarned} XP, +{completionSummary.coinsEarned} coins (streak +{completionSummary.streakBonus}%)</span>
+                        )}
                       </div>
-                      <Button onClick={resetSession} variant="outline" size="sm">
-                        New Session
-                      </Button>
+                      <div className="space-x-2">
+                        <Button onClick={completeSession} variant="default" size="sm">
+                          Complete Session
+                        </Button>
+                        <Button onClick={resetSession} variant="outline" size="sm">
+                          New Session
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 )}

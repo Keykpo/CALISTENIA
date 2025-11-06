@@ -2,7 +2,7 @@
 
 import { useSession, signOut } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -35,9 +35,14 @@ import AssessmentModal from '@/components/AssessmentModal';
 import HexagonRadar from '@/components/HexagonRadar';
 
 export default function DashboardPage() {
-  const { data: session, status } = useSession();
+  const isProd = process.env.NODE_ENV === 'production';
+  const sessionHook = isProd ? useSession() : { data: null, status: 'unauthenticated' as const };
+  const session = sessionHook.data as any;
+  const status = sessionHook.status as 'authenticated' | 'unauthenticated' | 'loading';
   const router = useRouter();
   const searchParams = useSearchParams();
+  // Fallback userId for local dev when NextAuth is not available
+  const computedUserId = (session?.user?.id as string) || (searchParams?.get('userId') || 'local-dev');
   const [isEditing, setIsEditing] = useState(false);
   const [showAssessment, setShowAssessment] = useState(false);
   const [hasCompletedAssessment, setHasCompletedAssessment] = useState(false);
@@ -67,11 +72,108 @@ export default function DashboardPage() {
     skillTechnique: number;
   }>(null);
 
-  useEffect(() => {
-    if (status === 'unauthenticated') {
-      router.push('/auth/signin');
-      return;
+  const [dashboard, setDashboard] = useState<null | {
+    success: boolean;
+    stats: { totalXP: number; level: number; coins: number };
+    hexagon: any;
+    recentWorkouts: any[];
+    missionsToday: any[];
+    recentAchievements: any[];
+    weeklyProgress: Record<string, number>;
+  }>(null);
+
+  const [completingMissionId, setCompletingMissionId] = useState<string | null>(null);
+  const [generatingMissions, setGeneratingMissions] = useState<boolean>(false);
+  const [genInfo, setGenInfo] = useState<{ status?: string; detail?: string } | null>(null);
+  const autoGenRef = useRef(false);
+
+  const reloadDashboard = async () => {
+    try {
+      const res = await fetch(`/api/dashboard`, {
+        headers: { 'x-user-id': computedUserId },
+        cache: 'no-store',
+      });
+      const data = await res.json();
+      if (data?.success) {
+        setDashboard(data);
+        if (data.hexagon) {
+          setHexProfile({
+            relativeStrength: data.hexagon.relativeStrength ?? 0,
+            muscularEndurance: (data.hexagon.endurance ?? 0),
+            balanceControl: data.hexagon.balanceControl ?? 0,
+            jointMobility: (data.hexagon.mobility ?? 0),
+            bodyTension: data.hexagon.bodyTension ?? 0,
+            skillTechnique: data.hexagon.skillTechnique ?? 0,
+          });
+        }
+      }
+    } catch (e) {
+      // ignore errores locales
     }
+  };
+
+  const completeMission = async (missionId: string) => {
+    try {
+      setCompletingMissionId(missionId);
+      const res = await fetch(`/api/missions/complete` , {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-user-id': computedUserId },
+        body: JSON.stringify({ missionId })
+      });
+      // ignoramos respuesta detallada, refrescamos dashboard
+      await reloadDashboard();
+    } catch (e) {
+      // noop
+    } finally {
+      setCompletingMissionId(null);
+    }
+  };
+
+  const generateMissions = async () => {
+    try {
+      setGeneratingMissions(true);
+      setGenInfo({ status: 'start', detail: `userId=${computedUserId}` });
+      console.log('[Dashboard] generateMissions:start', { userId: computedUserId });
+      const res = await fetch(`/api/missions/daily?userId=${encodeURIComponent(computedUserId)}`, {
+        headers: { 'x-user-id': computedUserId },
+        cache: 'no-store',
+      });
+      console.log('[Dashboard] generateMissions:response', { ok: res.ok, status: res.status });
+      setGenInfo({ status: res.ok ? 'ok' : 'error', detail: `status=${res.status}` });
+      if (res.ok) {
+        const data = await res.json();
+        console.log('[Dashboard] generateMissions:data', { count: Array.isArray(data?.missions) ? data.missions.length : null });
+        setGenInfo({ status: 'ok', detail: `count=${Array.isArray(data?.missions) ? data.missions.length : 'null'}` });
+        if (data?.missions) {
+          // Actualiza inmediatamente las misiones en UI para evitar condiciones de carrera
+          setDashboard(prev => {
+            const base = prev ?? {
+              success: true,
+              stats: { totalXP: 0, level: 1, coins: 0 },
+              hexagon: null,
+              recentWorkouts: [],
+              missionsToday: [],
+              recentAchievements: [],
+              weeklyProgress: {},
+            };
+            return { ...base, missionsToday: data.missions };
+          });
+        }
+      }
+      // Luego refrescamos el dashboard completo
+      await reloadDashboard();
+    } catch (e) {
+      console.error('[Dashboard] generateMissions:error', e);
+      setGenInfo({ status: 'error', detail: String(e) });
+    } finally {
+      setGeneratingMissions(false);
+      console.log('[Dashboard] generateMissions:end');
+      setGenInfo(prev => ({ status: 'done', detail: prev?.detail }));
+    }
+  };
+
+  useEffect(() => {
+    // No redirección dura: permitir fallback local sin sesión
 
     // Set greeting based on time of day
     const hour = new Date().getHours();
@@ -90,12 +192,22 @@ export default function DashboardPage() {
         name: session.user.name || '',
         email: session.user.email || ''
       }));
-      
-      // Check if user has completed assessment
-      checkAssessmentStatus();
-      // Load hexagon profile
-      fetchHexagonProfile();
     }
+
+    // Cargar datos del dashboard (con fallback de userId)
+    reloadDashboard();
+
+    // Solo auto-generar misiones en producción para evitar dobles ejecuciones en Strict Mode
+    if (process.env.NODE_ENV === 'production') {
+      if (!autoGenRef.current) {
+        autoGenRef.current = true;
+        generateMissions();
+      }
+    }
+
+    // Estado de assessment (opcional para mostrar modales)
+    checkAssessmentStatus();
+    fetchHexagonProfile();
   }, [status, router, session]);
 
   const checkAssessmentStatus = async () => {
@@ -192,7 +304,7 @@ export default function DashboardPage() {
     }));
   };
 
-  if (status === 'loading') {
+  if (status === 'loading' && !dashboard) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
@@ -200,13 +312,10 @@ export default function DashboardPage() {
     );
   }
 
-  if (!session) {
-    return null;
-  }
-
-  const userInitials = session.user?.name
+  const displayName = session?.user?.name || 'Guest';
+  const userInitials = session?.user?.name
     ? session.user.name.split(' ').map(n => n[0]).join('').toUpperCase()
-    : (session.user?.email?.[0]?.toUpperCase() || 'U');
+    : (session?.user?.email?.[0]?.toUpperCase() || 'U');
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
@@ -242,14 +351,14 @@ export default function DashboardPage() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
                   <Avatar className="h-20 w-20">
-                    <AvatarImage src={session.user?.image || ''} />
+                    <AvatarImage src={session?.user?.image || ''} />
                     <AvatarFallback className="text-xl font-semibold">
                       {userInitials}
                     </AvatarFallback>
                   </Avatar>
                   <div>
                     <h2 className="text-3xl font-bold text-gray-900">
-                      {greeting}, {session.user?.name || 'User'}!
+                      {greeting}, {displayName}!
                     </h2>
                     <p className="text-gray-600">
                       Welcome to your calisthenics dashboard
@@ -257,7 +366,7 @@ export default function DashboardPage() {
                     <div className="flex items-center mt-2 space-x-2">
                       <Badge variant="secondary">
                         <User className="h-3 w-3 mr-1" />
-                        {session.user?.username || 'No username'}
+                      {session?.user?.username || 'Invitado'}
                       </Badge>
                       <Badge variant="outline">
                         Level: Beginner
@@ -314,14 +423,14 @@ export default function DashboardPage() {
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">
-                    Workouts Completed
+                    Coins
                   </CardTitle>
                   <Dumbbell className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">0</div>
+                  <div className="text-2xl font-bold">{dashboard?.stats?.coins ?? 0}</div>
                   <p className="text-xs text-muted-foreground">
-                    +0% from last month
+                    Virtual coins available
                   </p>
                 </CardContent>
               </Card>
@@ -329,14 +438,14 @@ export default function DashboardPage() {
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">
-                    Total Time
+                    Total XP
                   </CardTitle>
                   <Clock className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">0h</div>
+                  <div className="text-2xl font-bold">{dashboard?.stats?.totalXP ?? 0}</div>
                   <p className="text-xs text-muted-foreground">
-                    Accumulated training time
+                    Experience points
                   </p>
                 </CardContent>
               </Card>
@@ -344,14 +453,14 @@ export default function DashboardPage() {
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">
-                    Current Streak
+                    Level
                   </CardTitle>
                   <TrendingUp className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">0</div>
+                  <div className="text-2xl font-bold">{dashboard?.stats?.level ?? 1}</div>
                   <p className="text-xs text-muted-foreground">
-                    consecutive days
+                    Current level
                   </p>
                 </CardContent>
               </Card>
@@ -364,7 +473,7 @@ export default function DashboardPage() {
                   <Trophy className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">0</div>
+                  <div className="text-2xl font-bold">{dashboard?.recentAchievements?.length ?? 0}</div>
                   <p className="text-xs text-muted-foreground">
                     achievements unlocked
                   </p>
@@ -412,15 +521,32 @@ export default function DashboardPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-center py-8 text-gray-500">
-                    <Activity className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                    <p className="text-lg font-medium mb-2">
-                      Start your first workout!
-                    </p>
-                    <p className="text-sm">
-                      When you complete workouts, your progress and stats will appear here.
-                    </p>
-                  </div>
+                  {dashboard?.recentWorkouts?.length ? (
+                    <div className="space-y-3">
+                      {dashboard.recentWorkouts.map((w: any) => (
+                        <div key={w.id} className="flex items-center justify-between border-b pb-2">
+                          <div className="flex items-center gap-3">
+                            <Activity className="h-5 w-5 text-muted-foreground" />
+                            <div>
+                              <div className="font-medium">Workout #{w.id}</div>
+                              <div className="text-xs text-muted-foreground">{new Date(w.completedAt).toLocaleString()}</div>
+                            </div>
+                          </div>
+                          <Badge variant="secondary">+{w.totalXP ?? 0} XP</Badge>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-center py-8 text-gray-500">
+                      <Activity className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                      <p className="text-lg font-medium mb-2">
+                        Start your first workout!
+                      </p>
+                      <p className="text-sm">
+                        When you complete workouts, your progress and stats will appear here.
+                      </p>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             </div>
@@ -429,25 +555,102 @@ export default function DashboardPage() {
             <div className="mt-8">
               <Card>
                 <CardHeader>
-                  <CardTitle>Your Goals</CardTitle>
+                  <CardTitle>Today’s Missions</CardTitle>
                   <CardDescription>
-                    Define and track your fitness goals
+                    Complete missions to earn rewards
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-center py-8 text-gray-500">
-                    <Target className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                    <p className="text-lg font-medium mb-2">
-                      You have no defined goals
-                    </p>
-                    <p className="text-sm mb-4">
-                      Set specific goals to stay motivated and track progress.
-                    </p>
-                    <Button variant="black">
-                      <Target className="h-4 w-4 mr-2" />
-                      Set Goals
-                    </Button>
-                  </div>
+                  {dashboard?.missionsToday?.length ? (
+                    <div className="space-y-3">
+                      {dashboard.missionsToday.map((m: any) => (
+                        <div key={m.id} className="flex items-center justify-between border-b pb-2">
+                          <div>
+                            <div className="font-medium">{m.title || 'Mission'}</div>
+                            <div className="text-xs text-muted-foreground">Reward: {m.rewardXP ?? 0} XP, {m.rewardCoins ?? 0} coins</div>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <Badge variant={m.completed ? 'secondary' : 'outline'}>
+                              {m.completed ? 'Completed' : `${m.progress ?? 0}/${m.target ?? 1}`}
+                            </Badge>
+                            <Button
+                              size="sm"
+                              variant="black"
+                              disabled={!!m.completed || completingMissionId === m.id}
+                              onClick={() => completeMission(m.id)}
+                            >
+                              {completingMissionId === m.id ? 'Completing...' : 'Complete'}
+                            </Button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-center py-8 text-gray-500">
+                      <Target className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                      <p className="text-lg font-medium mb-2">
+                        No missions yet for today
+                      </p>
+                      <p className="text-sm mb-4">
+                        Come back after completing a training session.
+                      </p>
+                      <Button
+                        variant="black"
+                        onClick={() => {
+                          try {
+                            console.log('[Dashboard] Generate Missions click', { userId: computedUserId });
+                            setGeneratingMissions(true);
+                            // ejecutamos y luego el propio generateMissions hará el reset
+                            generateMissions();
+                          } catch (e) {
+                            console.error('[Dashboard] Generate Missions error on click', e);
+                            setGeneratingMissions(false);
+                          }
+                        }}
+                        disabled={generatingMissions}
+                      >
+                        <Target className="h-4 w-4 mr-2" />
+                        {generatingMissions ? 'Generating...' : 'Generate Missions'}
+                      </Button>
+                      {genInfo?.status && (
+                        <div className="mt-2 text-xs text-gray-500">
+                          {`Status: ${genInfo.status}${genInfo.detail ? ` (${genInfo.detail})` : ''}`}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Weekly Progress */}
+            <div className="mt-8">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Weekly Progress</CardTitle>
+                  <CardDescription>
+                    Workouts completed per day
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {dashboard?.weeklyProgress ? (
+                    <div className="flex items-end gap-4">
+                      {Object.entries(dashboard.weeklyProgress).map(([day, count]) => (
+                        <div key={day} className="flex flex-col items-center">
+                          <div className="text-xs text-muted-foreground mb-1">{day.slice(0,3)}</div>
+                          <div className="w-6 h-24 bg-gray-200 rounded flex items-end overflow-hidden">
+                            <div
+                              className="bg-indigo-600 w-6"
+                              style={{ height: `${Math.min(100, (Number(count) || 0) * 25)}%` }}
+                            />
+                          </div>
+                          <div className="text-xs mt-1">{Number(count) || 0}</div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-sm text-gray-500">No weekly data yet.</div>
+                  )}
                 </CardContent>
               </Card>
             </div>
@@ -490,7 +693,19 @@ export default function DashboardPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <AchievementPanel userId={session?.user?.id} />
+                {/* Pasamos userId con fallback local */}
+                <AchievementPanel userId={computedUserId} />
+                {dashboard?.recentAchievements?.length ? (
+                  <div className="mt-6 space-y-2">
+                    <div className="text-sm text-muted-foreground">Recent achievements</div>
+                    {dashboard.recentAchievements.map((ua: any) => (
+                      <div key={ua.id} className="flex items-center justify-between border-b pb-2">
+                        <div className="font-medium">{ua.achievement?.name ?? 'Achievement'}</div>
+                        <div className="text-xs text-muted-foreground">{ua.completedAt ? new Date(ua.completedAt).toLocaleString() : ''}</div>
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
               </CardContent>
             </Card>
           </TabsContent>
