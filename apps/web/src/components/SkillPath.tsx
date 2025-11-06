@@ -33,7 +33,7 @@ interface SkillPathProps {
 
 const branchLabels: Record<Exclude<Branch, 'PULL'>, string> = {
   EMPUJE: 'Push',
-  TRACCION: 'Tracción',
+  TRACCION: 'Pull',
   CORE: 'Core',
   EQUILIBRIO: 'Balance',
   TREN_INFERIOR: 'Lower Body',

@@ -43,8 +43,8 @@ interface Course {
 const sampleCourses: Course[] = [
   {
     id: '1',
-    title: 'Fundamentos de Calistenia',
-    description: 'Aprende los movimientos básicos y construye una base sólida para tu entrenamiento de calistenia.',
+    title: 'Calisthenics Fundamentals',
+    description: 'Learn the basic movements and build a solid foundation for your calisthenics training.',
     level: 'beginner',
     duration: 8,
     lessonsCount: 24,
@@ -53,15 +53,15 @@ const sampleCourses: Course[] = [
     price: 49.99,
     thumbnail: '/api/placeholder/400/250',
     instructor: 'Carlos Mendez',
-    category: 'Básico',
+    category: 'Basic',
     isEnrolled: true,
     progress: 65,
-    tags: ['flexiones', 'dominadas', 'sentadillas', 'plancha']
+    tags: ['push-ups', 'pull-ups', 'squats', 'plank']
   },
   {
     id: '2',
-    title: 'Dominadas: De Cero a Héroe',
-    description: 'Programa completo para dominar las dominadas desde nivel principiante hasta variaciones avanzadas.',
+    title: 'Pull-ups: From Zero to Hero',
+    description: 'Complete program to master pull-ups from beginner level to advanced variations.',
     level: 'intermediate',
     duration: 12,
     lessonsCount: 36,
@@ -70,14 +70,14 @@ const sampleCourses: Course[] = [
     price: 79.99,
     thumbnail: '/api/placeholder/400/250',
     instructor: 'Ana Rodriguez',
-    category: 'Fuerza Superior',
+    category: 'Upper Body Strength',
     isEnrolled: false,
-    tags: ['dominadas', 'fuerza', 'espalda', 'bíceps']
+    tags: ['pull-ups', 'strength', 'back', 'biceps']
   },
   {
     id: '3',
     title: 'Handstand Mastery',
-    description: 'Aprende a hacer el pino perfecto con progresiones sistemáticas y ejercicios específicos.',
+    description: 'Learn to do the perfect handstand with systematic progressions and specific exercises.',
     level: 'advanced',
     duration: 16,
     lessonsCount: 48,
@@ -86,15 +86,15 @@ const sampleCourses: Course[] = [
     price: 99.99,
     thumbnail: '/api/placeholder/400/250',
     instructor: 'Miguel Santos',
-    category: 'Equilibrio',
+    category: 'Balance',
     isEnrolled: true,
     progress: 25,
-    tags: ['handstand', 'equilibrio', 'core', 'hombros']
+    tags: ['handstand', 'balance', 'core', 'shoulders']
   },
   {
     id: '4',
     title: 'Muscle-Up Progression',
-    description: 'Desarrolla la fuerza y técnica necesaria para realizar muscle-ups perfectos.',
+    description: 'Develop the strength and technique needed to perform perfect muscle-ups.',
     level: 'advanced',
     duration: 10,
     lessonsCount: 30,
@@ -103,14 +103,14 @@ const sampleCourses: Course[] = [
     price: 89.99,
     thumbnail: '/api/placeholder/400/250',
     instructor: 'David Lopez',
-    category: 'Fuerza Combinada',
+    category: 'Combined Strength',
     isEnrolled: false,
-    tags: ['muscle-up', 'transición', 'fuerza', 'técnica']
+    tags: ['muscle-up', 'transition', 'strength', 'technique']
   },
   {
     id: '5',
-    title: 'Flexibilidad y Movilidad',
-    description: 'Mejora tu rango de movimiento y previene lesiones con rutinas de flexibilidad específicas.',
+    title: 'Flexibility and Mobility',
+    description: 'Improve your range of motion and prevent injuries with specific flexibility routines.',
     level: 'beginner',
     duration: 6,
     lessonsCount: 18,
@@ -119,15 +119,15 @@ const sampleCourses: Course[] = [
     price: 39.99,
     thumbnail: '/api/placeholder/400/250',
     instructor: 'Laura Martinez',
-    category: 'Movilidad',
+    category: 'Mobility',
     isEnrolled: true,
     progress: 90,
-    tags: ['flexibilidad', 'movilidad', 'estiramiento', 'recuperación']
+    tags: ['flexibility', 'mobility', 'stretching', 'recovery']
   },
   {
     id: '6',
-    title: 'Calistenia Femenina',
-    description: 'Programa especializado diseñado específicamente para mujeres que quieren dominar la calistenia.',
+    title: 'Women’s Calisthenics',
+    description: 'Specialized program designed specifically for women who want to master calisthenics.',
     level: 'intermediate',
     duration: 14,
     lessonsCount: 42,
@@ -136,9 +136,9 @@ const sampleCourses: Course[] = [
     price: 69.99,
     thumbnail: '/api/placeholder/400/250',
     instructor: 'Sofia Herrera',
-    category: 'Especializado',
+    category: 'Specialized',
     isEnrolled: false,
-    tags: ['femenino', 'fuerza', 'técnica', 'progresión']
+    tags: ['female', 'strength', 'technique', 'progression']
   }
 ];
 
@@ -210,9 +210,9 @@ export default function CoursesPage() {
 
   const getLevelText = (level: string) => {
     switch (level) {
-      case 'beginner': return 'Principiante';
-      case 'intermediate': return 'Intermedio';
-      case 'advanced': return 'Avanzado';
+      case 'beginner': return 'Beginner';
+      case 'intermediate': return 'Intermediate';
+      case 'advanced': return 'Advanced';
       default: return level;
     }
   };
@@ -223,9 +223,9 @@ export default function CoursesPage() {
     <div className="container mx-auto px-4 py-8">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Cursos de Calistenia</h1>
+        <h1 className="text-3xl font-bold mb-2">Calisthenics Courses</h1>
         <p className="text-muted-foreground">
-          Desarrolla tus habilidades con nuestros cursos estructurados y progresivos
+          Develop your skills with our structured, progressive courses
         </p>
       </div>
 
@@ -235,21 +235,21 @@ export default function CoursesPage() {
           <CardContent className="p-4 text-center">
             <BookOpen className="h-8 w-8 text-blue-600 mx-auto mb-2" />
             <p className="text-2xl font-bold">{courses.length}</p>
-            <p className="text-sm text-muted-foreground">Cursos Disponibles</p>
+            <p className="text-sm text-muted-foreground">Available Courses</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="p-4 text-center">
             <Users className="h-8 w-8 text-green-600 mx-auto mb-2" />
             <p className="text-2xl font-bold">{courses.reduce((sum, course) => sum + course.studentsCount, 0).toLocaleString()}</p>
-            <p className="text-sm text-muted-foreground">Estudiantes Activos</p>
+            <p className="text-sm text-muted-foreground">Active Students</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="p-4 text-center">
             <Trophy className="h-8 w-8 text-yellow-600 mx-auto mb-2" />
             <p className="text-2xl font-bold">{courses.filter(c => c.isEnrolled).length}</p>
-            <p className="text-sm text-muted-foreground">Mis Cursos</p>
+            <p className="text-sm text-muted-foreground">My Courses</p>
           </CardContent>
         </Card>
         <Card>
@@ -258,7 +258,7 @@ export default function CoursesPage() {
             <p className="text-2xl font-bold">
               {Math.round(courses.filter(c => c.isEnrolled && c.progress).reduce((sum, c) => sum + (c.progress || 0), 0) / courses.filter(c => c.isEnrolled && c.progress).length) || 0}%
             </p>
-            <p className="text-sm text-muted-foreground">Progreso Promedio</p>
+            <p className="text-sm text-muted-foreground">Average Progress</p>
           </CardContent>
         </Card>
       </div>
@@ -271,7 +271,7 @@ export default function CoursesPage() {
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
-                placeholder="Buscar cursos..."
+                placeholder="Search courses..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10"
@@ -284,10 +284,10 @@ export default function CoursesPage() {
               onChange={(e) => setSelectedLevel(e.target.value)}
               className="px-3 py-2 border border-input bg-background rounded-md text-sm"
             >
-              <option value="all">Todos los niveles</option>
-              <option value="beginner">Principiante</option>
-              <option value="intermediate">Intermedio</option>
-              <option value="advanced">Avanzado</option>
+              <option value="all">All levels</option>
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
             </select>
 
             {/* Category Filter */}
@@ -296,7 +296,7 @@ export default function CoursesPage() {
               onChange={(e) => setSelectedCategory(e.target.value)}
               className="px-3 py-2 border border-input bg-background rounded-md text-sm"
             >
-              <option value="all">Todas las categorías</option>
+              <option value="all">All categories</option>
               {categories.map(category => (
                 <option key={category} value={category}>{category}</option>
               ))}
@@ -311,7 +311,7 @@ export default function CoursesPage() {
                 onChange={(e) => setShowEnrolledOnly(e.target.checked)}
                 className="rounded border-input"
               />
-              <label htmlFor="enrolled" className="text-sm">Solo mis cursos</label>
+              <label htmlFor="enrolled" className="text-sm">Only my courses</label>
             </div>
           </div>
         </CardContent>
@@ -328,7 +328,7 @@ export default function CoursesPage() {
               {course.isEnrolled && (
                 <Badge className="absolute top-2 right-2 bg-green-600">
                   <CheckCircle className="h-3 w-3 mr-1" />
-                  Inscrito
+                  Enrolled
                 </Badge>
               )}
               <Badge className={`absolute top-2 left-2 ${getLevelColor(course.level)}`}>
@@ -354,7 +354,7 @@ export default function CoursesPage() {
               {course.isEnrolled && course.progress !== undefined && (
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span>Progreso</span>
+                    <span>Progress</span>
                     <span>{course.progress}%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
@@ -370,15 +370,15 @@ export default function CoursesPage() {
               <div className="grid grid-cols-2 gap-4 text-sm text-muted-foreground">
                 <div className="flex items-center gap-1">
                   <Clock className="h-4 w-4" />
-                  {course.duration} semanas
+                  {course.duration} weeks
                 </div>
                 <div className="flex items-center gap-1">
                   <BookOpen className="h-4 w-4" />
-                  {course.lessonsCount} lecciones
+                  {course.lessonsCount} lessons
                 </div>
                 <div className="flex items-center gap-1">
                   <Users className="h-4 w-4" />
-                  {course.studentsCount.toLocaleString()} estudiantes
+                  {course.studentsCount.toLocaleString()} students
                 </div>
                 <div className="font-semibold text-primary">
                   ${course.price}
@@ -412,12 +412,12 @@ export default function CoursesPage() {
                 {course.isEnrolled ? (
                   <>
                     <Play className="mr-2 h-4 w-4" />
-                    Continuar Curso
+                    Continue Course
                   </>
                 ) : (
                   <>
                     <Lock className="mr-2 h-4 w-4" />
-                    Inscribirse
+                    Enroll
                   </>
                 )}
               </Button>
@@ -430,9 +430,9 @@ export default function CoursesPage() {
       {filteredCourses.length === 0 && (
         <div className="text-center py-12">
           <BookOpen className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-          <h3 className="text-lg font-semibold mb-2">No se encontraron cursos</h3>
+          <h3 className="text-lg font-semibold mb-2">No courses found</h3>
           <p className="text-muted-foreground">
-            Intenta ajustar tus filtros de búsqueda
+            Try adjusting your search filters
           </p>
         </div>
       )}

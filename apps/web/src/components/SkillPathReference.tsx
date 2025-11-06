@@ -15,7 +15,7 @@ function MainCard({ title }: { title: string }) {
           <Badge variant="outline" className="text-[10px] px-2 py-0.5 border-sky-300 text-sky-700">Rank F</Badge>
         </div>
         <div className="mt-3">
-          <Button variant="link" className="px-0 text-sky-700">Ver guía detallada</Button>
+          <Button variant="link" className="px-0 text-sky-700">View detailed guide</Button>
         </div>
       </CardContent>
     </Card>

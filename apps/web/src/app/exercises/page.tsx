@@ -50,19 +50,19 @@ const difficultyColors = {
 };
 
 const difficultyLabels = {
-  BEGINNER: 'Principiante',
-  NOVICE: 'Novato',
-  INTERMEDIATE: 'Intermedio',
-  ADVANCED: 'Avanzado',
-  EXPERT: 'Experto',
+  BEGINNER: 'Beginner',
+  NOVICE: 'Novice',
+  INTERMEDIATE: 'Intermediate',
+  ADVANCED: 'Advanced',
+  EXPERT: 'Expert',
 };
 
 const categoryLabels = {
-  STRENGTH: 'Fuerza',
+  STRENGTH: 'Strength',
   CORE: 'Core',
-  BALANCE: 'Equilibrio',
-  SKILL_STATIC: 'Habilidad Estática',
-  WARM_UP: 'Calentamiento',
+  BALANCE: 'Balance',
+  SKILL_STATIC: 'Static Skill',
+  WARM_UP: 'Warm-up',
 };
 
 export default function ExercisesPage() {
@@ -101,17 +101,17 @@ export default function ExercisesPage() {
     <div className="container mx-auto py-8 px-4">
       <div className="mb-8 flex items-center justify-between gap-4">
         <div>
-          <h1 className="text-4xl font-bold mb-2">Biblioteca de Ejercicios</h1>
+          <h1 className="text-4xl font-bold mb-2">Exercise Library</h1>
           <p className="text-muted-foreground">
-            Explora los {exercises.length} ejercicios disponibles y aprende cómo realizarlos
+            Explore the {exercises.length} available exercises and learn how to perform them
           </p>
         </div>
         <Button
           className="shrink-0"
           onClick={() => router.push('/dashboard')}
-          variant="default"
+          variant="black"
         >
-          Ir al Dashboard
+          Go to Dashboard
         </Button>
       </div>
 
@@ -127,7 +127,7 @@ export default function ExercisesPage() {
         </Card>
         <Card>
           <CardHeader className="p-4">
-            <CardTitle className="text-sm">Principiante</CardTitle>
+            <CardTitle className="text-sm">Beginner</CardTitle>
           </CardHeader>
           <CardContent className="p-4 pt-0">
             <p className="text-2xl font-bold text-green-500">{stats.beginner}</p>
@@ -135,7 +135,7 @@ export default function ExercisesPage() {
         </Card>
         <Card>
           <CardHeader className="p-4">
-            <CardTitle className="text-sm">Novato</CardTitle>
+            <CardTitle className="text-sm">Novice</CardTitle>
           </CardHeader>
           <CardContent className="p-4 pt-0">
             <p className="text-2xl font-bold text-blue-500">{stats.novice}</p>
@@ -143,7 +143,7 @@ export default function ExercisesPage() {
         </Card>
         <Card>
           <CardHeader className="p-4">
-            <CardTitle className="text-sm">Intermedio</CardTitle>
+            <CardTitle className="text-sm">Intermediate</CardTitle>
           </CardHeader>
           <CardContent className="p-4 pt-0">
             <p className="text-2xl font-bold text-yellow-500">{stats.intermediate}</p>
@@ -151,7 +151,7 @@ export default function ExercisesPage() {
         </Card>
         <Card>
           <CardHeader className="p-4">
-            <CardTitle className="text-sm">Avanzado</CardTitle>
+            <CardTitle className="text-sm">Advanced</CardTitle>
           </CardHeader>
           <CardContent className="p-4 pt-0">
             <p className="text-2xl font-bold text-orange-500">{stats.advanced}</p>
@@ -159,7 +159,7 @@ export default function ExercisesPage() {
         </Card>
         <Card>
           <CardHeader className="p-4">
-            <CardTitle className="text-sm">Experto</CardTitle>
+            <CardTitle className="text-sm">Expert</CardTitle>
           </CardHeader>
           <CardContent className="p-4 pt-0">
             <p className="text-2xl font-bold text-red-500">{stats.expert}</p>
@@ -170,46 +170,48 @@ export default function ExercisesPage() {
       {/* Filters */}
       <Card className="mb-8">
         <CardHeader>
-          <CardTitle>Filtros</CardTitle>
+          <CardTitle>Filters</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label className="text-sm font-medium mb-2 block">Buscar</label>
+              <label className="text-sm font-medium mb-2 block">Search</label>
               <Input
-                placeholder="Nombre del ejercicio..."
+                placeholder="Exercise name..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
             <div>
-              <label className="text-sm font-medium mb-2 block">Dificultad</label>
+              <label className="text-sm font-medium mb-2 block">Difficulty</label>
               <Select value={selectedDifficulty} onValueChange={setSelectedDifficulty}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Todas" />
+                  <SelectValue placeholder="All" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">Todas</SelectItem>
-                  <SelectItem value="BEGINNER">Principiante</SelectItem>
-                  <SelectItem value="NOVICE">Novato</SelectItem>
-                  <SelectItem value="INTERMEDIATE">Intermedio</SelectItem>
-                  <SelectItem value="ADVANCED">Avanzado</SelectItem>
-                  <SelectItem value="EXPERT">Experto</SelectItem>
+                  <SelectItem value="all">All</SelectItem>
+                  <SelectItem value="BEGINNER">Beginner</SelectItem>
+                  <SelectItem value="NOVICE">Novice</SelectItem>
+                  <SelectItem value="INTERMEDIATE">Intermediate</SelectItem>
+                  <SelectItem value="ADVANCED">Advanced</SelectItem>
+                  <SelectItem value="EXPERT">Expert</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <div>
-              <label className="text-sm font-medium mb-2 block">Categoría</label>
+              <label className="text-sm font-medium mb-2 block">Category</label>
               <Select value={selectedCategory} onValueChange={setSelectedCategory}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Todas" />
+                  <SelectValue placeholder="All" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">Todas</SelectItem>
-                  <SelectItem value="STRENGTH">Fuerza</SelectItem>
+                  <SelectItem value="all">All</SelectItem>
+                  <SelectItem value="STRENGTH">Strength</SelectItem>
                   <SelectItem value="CORE">Core</SelectItem>
-                  <SelectItem value="BALANCE">Equilibrio</SelectItem>
-                  <SelectItem value="SKILL_STATIC">Habilidad Estática</SelectItem>
+                  <SelectItem value="CARDIO">Cardio</SelectItem>
+                  <SelectItem value="BALANCE">Balance</SelectItem>
+                  <SelectItem value="SKILL_STATIC">Static Skill</SelectItem>
+                  <SelectItem value="WARM_UP">Warm-up</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -220,7 +222,7 @@ export default function ExercisesPage() {
       {/* Results count */}
       <div className="mb-4">
         <p className="text-sm text-muted-foreground">
-          Mostrando {filteredExercises.length} de {exercises.length} ejercicios
+          Showing {filteredExercises.length} of {exercises.length} exercises
         </p>
       </div>
 
@@ -258,7 +260,7 @@ export default function ExercisesPage() {
                   </div>
                   <div className="flex items-center gap-2">
                     <Coins className="w-4 h-4 text-amber-500" />
-                    <span className="font-semibold">{exercise.coinsReward} Monedas</span>
+                    <span className="font-semibold">{exercise.coinsReward} Coins</span>
                   </div>
                 </div>
 
@@ -270,7 +272,7 @@ export default function ExercisesPage() {
                     <Clock className="w-4 h-4 text-purple-500" />
                   )}
                   <span>
-                    {exercise.unit === 'reps' ? 'Repeticiones' : 'Tiempo (segundos)'}
+                    {exercise.unit === 'reps' ? 'Repetitions' : 'Time (seconds)'}
                   </span>
                 </div>
 
@@ -286,8 +288,8 @@ export default function ExercisesPage() {
                 {/* View Guide Button (modal) and Full Guide link */}
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button className="w-full" onClick={() => setSelectedExercise(exercise)}>
-                      Ver detalles rápidos
+                    <Button className="w-full" variant="black" onClick={() => setSelectedExercise(exercise)}>
+                      View Quick Details
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto rounded-xl">
@@ -323,13 +325,13 @@ export default function ExercisesPage() {
                       
                       {/* Description */}
                       <div>
-                        <h3 className="font-semibold text-lg mb-2">Descripción</h3>
+                        <h3 className="font-semibold text-lg mb-2">Description</h3>
                         <p className="text-muted-foreground">{selectedExercise?.description}</p>
                       </div>
 
                       {/* Rewards */}
                       <div>
-                        <h3 className="font-semibold text-lg mb-2">Recompensas</h3>
+                        <h3 className="font-semibold text-lg mb-2">Rewards</h3>
                         <div className="flex gap-4">
                           <div className="flex items-center gap-2">
                             <Trophy className="w-5 h-5 text-yellow-500" />
@@ -338,7 +340,7 @@ export default function ExercisesPage() {
                           <div className="flex items-center gap-2">
                             <Coins className="w-5 h-5 text-amber-500" />
                             <span className="font-semibold">
-                              {selectedExercise?.coinsReward} Monedas
+                              {selectedExercise?.coinsReward} Coins
                             </span>
                           </div>
                         </div>
@@ -346,17 +348,17 @@ export default function ExercisesPage() {
 
                       {/* Type */}
                       <div>
-                        <h3 className="font-semibold text-lg mb-2">Tipo de Medición</h3>
+                        <h3 className="font-semibold text-lg mb-2">Measurement Type</h3>
                         <div className="flex items-center gap-2">
                           {selectedExercise?.unit === 'reps' ? (
                             <>
                               <Repeat className="w-5 h-5 text-blue-500" />
-                              <span>Por Repeticiones</span>
+                              <span>By Repetitions</span>
                             </>
                           ) : (
                             <>
                               <Clock className="w-5 h-5 text-purple-500" />
-                              <span>Por Tiempo (segundos)</span>
+                              <span>By Time (seconds)</span>
                             </>
                           )}
                         </div>
@@ -364,7 +366,7 @@ export default function ExercisesPage() {
 
                       {/* Muscle Groups */}
                       <div>
-                        <h3 className="font-semibold text-lg mb-2">Grupos Musculares</h3>
+                        <h3 className="font-semibold text-lg mb-2">Muscle Groups</h3>
                         <div className="flex flex-wrap gap-2">
                           {selectedExercise?.muscleGroups.map((muscle) => (
                             <Badge key={muscle} variant="secondary">
@@ -376,12 +378,12 @@ export default function ExercisesPage() {
 
                       {/* Equipment */}
                       <div>
-                        <h3 className="font-semibold text-lg mb-2">Equipamiento</h3>
+                        <h3 className="font-semibold text-lg mb-2">Equipment</h3>
                         <div className="flex flex-wrap gap-2">
                           {selectedExercise?.equipment.map((equip) => (
                             <Badge key={equip} variant="outline">
                               {equip === 'NONE'
-                                ? 'Sin Equipamiento'
+                                ? 'No Equipment'
                                 : equip.replace(/_/g, ' ')}
                             </Badge>
                           ))}
@@ -390,7 +392,7 @@ export default function ExercisesPage() {
 
                       {/* Instructions */}
                       <div>
-                        <h3 className="font-semibold text-lg mb-2">Cómo Realizar</h3>
+                        <h3 className="font-semibold text-lg mb-2">How To Perform</h3>
                         {selectedExercise?.instructions && selectedExercise.instructions.length > 0 ? (
                           <div className="bg-muted p-4 rounded-lg">
                             <ol className="list-decimal list-inside space-y-1 text-sm">
@@ -408,7 +410,7 @@ export default function ExercisesPage() {
                         ) : (
                           <div className="bg-muted p-4 rounded-lg">
                             <p className="text-sm text-muted-foreground">
-                              No hay instrucciones disponibles aún para este ejercicio.
+                              No instructions available yet for this exercise.
                             </p>
                           </div>
                         )}
@@ -418,7 +420,7 @@ export default function ExercisesPage() {
                 </Dialog>
 
                 <Button
-                  variant="default"
+                  variant="black"
                   className="w-full mt-2"
                   onClick={() => {
                     const slug = exercise.name
@@ -432,7 +434,7 @@ export default function ExercisesPage() {
                   <span className="inline-flex items-center gap-2">
                     {/* Using an emoji as a lightweight icon to avoid new imports */}
                     <span role="img" aria-label="book">📘</span>
-                    Ver Guía Completa
+                    View Full Guide
                   </span>
                 </Button>
               </div>
@@ -446,7 +448,7 @@ export default function ExercisesPage() {
         <Card className="mt-8">
           <CardContent className="py-12 text-center">
             <p className="text-lg text-muted-foreground">
-              No se encontraron ejercicios con los filtros seleccionados
+              No exercises found with the selected filters
             </p>
           </CardContent>
         </Card>

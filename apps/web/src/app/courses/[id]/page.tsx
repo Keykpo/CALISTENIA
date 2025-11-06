@@ -71,8 +71,8 @@ interface Course {
 // Sample course data
 const sampleCourse: Course = {
   id: '1',
-  title: 'Fundamentos de Calistenia',
-  description: 'Aprende los movimientos básicos y construye una base sólida para tu entrenamiento de calistenia. Este curso te llevará desde los conceptos fundamentales hasta ejercicios más complejos, desarrollando fuerza, resistencia y técnica.',
+  title: 'Calisthenics Fundamentals',
+  description: 'Learn the basic movements and build a solid foundation for your calisthenics training. This course will take you from fundamental concepts to more complex exercises, developing strength, endurance, and technique.',
   level: 'beginner',
   duration: 8,
   lessonsCount: 24,
@@ -81,24 +81,24 @@ const sampleCourse: Course = {
   price: 49.99,
   thumbnail: '/api/placeholder/400/250',
   instructor: 'Carlos Mendez',
-  instructorBio: 'Entrenador certificado con más de 10 años de experiencia en calistenia y fitness funcional.',
+  instructorBio: 'Certified coach with more than 10 years of experience in calisthenics and functional fitness.',
   instructorAvatar: '/api/placeholder/100/100',
-  category: 'Básico',
+  category: 'Basic',
   isEnrolled: true,
   progress: 65,
-  tags: ['flexiones', 'dominadas', 'sentadillas', 'plancha'],
+  tags: ['push-ups', 'pull-ups', 'squats', 'plank'],
   objectives: [
-    'Dominar los movimientos básicos de calistenia',
-    'Desarrollar fuerza funcional y resistencia',
-    'Aprender progresiones seguras y efectivas',
-    'Crear rutinas de entrenamiento personalizadas',
-    'Entender los principios de la biomecánica'
+    'Master the basic calisthenics movements',
+    'Develop functional strength and endurance',
+    'Learn safe and effective progressions',
+    'Create personalized training routines',
+    'Understand the principles of biomechanics'
   ],
   requirements: [
-    'No se requiere experiencia previa',
-    'Acceso a una barra de dominadas (opcional)',
-    'Espacio para ejercitarse en casa',
-    'Motivación para entrenar consistentemente'
+    'No prior experience required',
+    'Access to a pull-up bar (optional)',
+    'Space to exercise at home',
+    'Motivation to train consistently'
   ],
   certificate: true,
   createdAt: '2024-01-15',
@@ -106,8 +106,8 @@ const sampleCourse: Course = {
   lessons: [
     {
       id: '1',
-      title: 'Introducción a la Calistenia',
-      description: 'Conoce los fundamentos y beneficios de la calistenia',
+      title: 'Introduction to Calisthenics',
+      description: 'Learn the fundamentals and benefits of calisthenics',
       duration: 15,
       type: 'video',
       isCompleted: true,
@@ -116,8 +116,8 @@ const sampleCourse: Course = {
     },
     {
       id: '2',
-      title: 'Calentamiento y Movilidad',
-      description: 'Rutina completa de calentamiento para prevenir lesiones',
+      title: 'Warm-up and Mobility',
+      description: 'Complete warm-up routine to prevent injuries',
       duration: 20,
       type: 'video',
       isCompleted: true,
@@ -126,8 +126,8 @@ const sampleCourse: Course = {
     },
     {
       id: '3',
-      title: 'Flexiones Básicas',
-      description: 'Aprende la técnica correcta de las flexiones',
+      title: 'Basic Push-ups',
+      description: 'Learn the correct push-up technique',
       duration: 25,
       type: 'exercise',
       isCompleted: true,
@@ -136,8 +136,8 @@ const sampleCourse: Course = {
     },
     {
       id: '4',
-      title: 'Progresiones de Flexiones',
-      description: 'Variaciones y progresiones para mejorar tu fuerza',
+      title: 'Push-up Progressions',
+      description: 'Variations and progressions to improve your strength',
       duration: 30,
       type: 'video',
       isCompleted: false,
@@ -146,8 +146,8 @@ const sampleCourse: Course = {
     },
     {
       id: '5',
-      title: 'Sentadillas y Variaciones',
-      description: 'Fortalece tus piernas con diferentes tipos de sentadillas',
+      title: 'Squats and Variations',
+      description: 'Strengthen your legs with different types of squats',
       duration: 35,
       type: 'exercise',
       isCompleted: false,
@@ -156,8 +156,8 @@ const sampleCourse: Course = {
     },
     {
       id: '6',
-      title: 'Plancha y Core',
-      description: 'Desarrolla un core fuerte con ejercicios de plancha',
+      title: 'Plank and Core',
+      description: 'Develop a strong core with plank exercises',
       duration: 25,
       type: 'video',
       isCompleted: false,
@@ -166,8 +166,8 @@ const sampleCourse: Course = {
     },
     {
       id: '7',
-      title: 'Introducción a las Dominadas',
-      description: 'Preparación y progresiones para tu primera dominada',
+      title: 'Introduction to Pull-ups',
+      description: 'Preparation and progressions for your first pull-up',
       duration: 40,
       type: 'video',
       isCompleted: false,
@@ -176,8 +176,8 @@ const sampleCourse: Course = {
     },
     {
       id: '8',
-      title: 'Evaluación Semana 1',
-      description: 'Prueba tus conocimientos de la primera semana',
+      title: 'Week 1 Assessment',
+      description: 'Test your knowledge from the first week',
       duration: 10,
       type: 'quiz',
       isCompleted: false,
@@ -206,7 +206,7 @@ export default function CoursePage() {
         <div className="flex items-center justify-center min-h-[400px]">
           <div className="text-center">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-            <p className="text-muted-foreground">Cargando curso...</p>
+            <p className="text-muted-foreground">Loading course...</p>
           </div>
         </div>
       </div>
@@ -222,14 +222,14 @@ export default function CoursePage() {
       <div className="container mx-auto px-4 py-8">
         <div className="text-center py-12">
           <BookOpen className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-          <h3 className="text-lg font-semibold mb-2">Curso no encontrado</h3>
+          <h3 className="text-lg font-semibold mb-2">Course not found</h3>
           <p className="text-muted-foreground mb-4">
-            El curso que buscas no existe o ha sido eliminado
+            The course you are looking for does not exist or has been removed
           </p>
           <Link href="/courses">
             <Button>
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Volver a Cursos
+              Back to Courses
             </Button>
           </Link>
         </div>
@@ -248,9 +248,9 @@ export default function CoursePage() {
 
   const getLevelText = (level: string) => {
     switch (level) {
-      case 'beginner': return 'Principiante';
-      case 'intermediate': return 'Intermedio';
-      case 'advanced': return 'Avanzado';
+      case 'beginner': return 'Beginner';
+      case 'intermediate': return 'Intermediate';
+      case 'advanced': return 'Advanced';
       default: return level;
     }
   };
@@ -268,9 +268,9 @@ export default function CoursePage() {
   const getTypeText = (type: string) => {
     switch (type) {
       case 'video': return 'Video';
-      case 'exercise': return 'Ejercicio';
-      case 'reading': return 'Lectura';
-      case 'quiz': return 'Evaluación';
+      case 'exercise': return 'Exercise';
+      case 'reading': return 'Reading';
+      case 'quiz': return 'Quiz';
       default: return type;
     }
   };
@@ -284,7 +284,7 @@ export default function CoursePage() {
         <Link href="/courses">
           <Button variant="ghost" className="mb-4">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Volver a Cursos
+            Back to Courses
           </Button>
         </Link>
       </div>
@@ -319,21 +319,21 @@ export default function CoursePage() {
                 <Users className="h-4 w-4" />
                 <span className="font-semibold">{course.studentsCount.toLocaleString()}</span>
               </div>
-              <p className="text-sm text-muted-foreground">Estudiantes</p>
+              <p className="text-sm text-muted-foreground">Students</p>
             </div>
             <div className="text-center">
               <div className="flex items-center justify-center gap-1 mb-1">
                 <Clock className="h-4 w-4" />
                 <span className="font-semibold">{course.duration}</span>
               </div>
-              <p className="text-sm text-muted-foreground">Semanas</p>
+              <p className="text-sm text-muted-foreground">Weeks</p>
             </div>
             <div className="text-center">
               <div className="flex items-center justify-center gap-1 mb-1">
                 <BookOpen className="h-4 w-4" />
                 <span className="font-semibold">{course.lessonsCount}</span>
               </div>
-              <p className="text-sm text-muted-foreground">Lecciones</p>
+              <p className="text-sm text-muted-foreground">Lessons</p>
             </div>
           </div>
 
@@ -342,14 +342,14 @@ export default function CoursePage() {
             <Card className="mb-6">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-semibold">Tu Progreso</h3>
+                  <h3 className="font-semibold">Your Progress</h3>
                   <span className="text-sm text-muted-foreground">
-                    {completedLessons} de {course.lessonsCount} lecciones completadas
+                    {completedLessons} of {course.lessonsCount} lessons completed
                   </span>
                 </div>
                 <Progress value={course.progress} className="mb-2" />
                 <p className="text-sm text-muted-foreground">
-                  {course.progress}% completado
+                  {course.progress}% completed
                 </p>
               </CardContent>
             </Card>
@@ -371,11 +371,11 @@ export default function CoursePage() {
                 {course.isEnrolled ? (
                   <Button className="w-full" size="lg">
                     <Play className="mr-2 h-4 w-4" />
-                    Continuar Curso
+                    Continue Course
                   </Button>
                 ) : (
                   <Button className="w-full" size="lg">
-                    Inscribirse Ahora
+                    Enroll Now
                   </Button>
                 )}
               </div>
@@ -384,21 +384,21 @@ export default function CoursePage() {
               <div className="space-y-3 mb-6">
                 <div className="flex items-center gap-2 text-sm">
                   <Calendar className="h-4 w-4 text-muted-foreground" />
-                  <span>Acceso de por vida</span>
+                  <span>Lifetime access</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <Download className="h-4 w-4 text-muted-foreground" />
-                  <span>Recursos descargables</span>
+                  <span>Downloadable resources</span>
                 </div>
                 {course.certificate && (
                   <div className="flex items-center gap-2 text-sm">
                     <Award className="h-4 w-4 text-muted-foreground" />
-                    <span>Certificado de finalización</span>
+                    <span>Certificate of completion</span>
                   </div>
                 )}
                 <div className="flex items-center gap-2 text-sm">
                   <Share2 className="h-4 w-4 text-muted-foreground" />
-                  <span>Acceso móvil y desktop</span>
+                  <span>Mobile and desktop access</span>
                 </div>
               </div>
 
@@ -423,18 +423,18 @@ export default function CoursePage() {
       {/* Course Content Tabs */}
       <Tabs defaultValue="lessons" className="w-full">
         <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="lessons">Lecciones</TabsTrigger>
-          <TabsTrigger value="overview">Descripción</TabsTrigger>
+          <TabsTrigger value="lessons">Lessons</TabsTrigger>
+          <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="instructor">Instructor</TabsTrigger>
-          <TabsTrigger value="reviews">Reseñas</TabsTrigger>
+          <TabsTrigger value="reviews">Reviews</TabsTrigger>
         </TabsList>
 
         <TabsContent value="lessons" className="mt-6">
           <Card>
             <CardHeader>
-              <CardTitle>Contenido del Curso</CardTitle>
+              <CardTitle>Course Content</CardTitle>
               <CardDescription>
-                {course.lessonsCount} lecciones • {course.duration} semanas de contenido
+                {course.lessonsCount} lessons • {course.duration} weeks of content
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -492,7 +492,7 @@ export default function CoursePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card>
               <CardHeader>
-                <CardTitle>Objetivos del Curso</CardTitle>
+                <CardTitle>Course Objectives</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2">
@@ -508,7 +508,7 @@ export default function CoursePage() {
 
             <Card>
               <CardHeader>
-                <CardTitle>Requisitos</CardTitle>
+                <CardTitle>Requirements</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2">
@@ -553,21 +553,21 @@ export default function CoursePage() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                     <div className="text-center">
                       <p className="text-2xl font-bold">10+</p>
-                      <p className="text-sm text-muted-foreground">Años de experiencia</p>
-                    </div>
-                    <div className="text-center">
-                      <p className="text-2xl font-bold">5,000+</p>
-                      <p className="text-sm text-muted-foreground">Estudiantes</p>
-                    </div>
-                    <div className="text-center">
-                      <p className="text-2xl font-bold">4.9</p>
-                      <p className="text-sm text-muted-foreground">Calificación promedio</p>
-                    </div>
-                  </div>
+                  <p className="text-sm text-muted-foreground">Years of experience</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-2xl font-bold">5,000+</p>
+                  <p className="text-sm text-muted-foreground">Students</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-2xl font-bold">4.9</p>
+                  <p className="text-sm text-muted-foreground">Average rating</p>
+                </div>
+              </div>
 
-                  <Button variant="outline">
-                    Ver más cursos del instructor
-                  </Button>
+              <Button variant="outline">
+                View more courses from the instructor
+              </Button>
                 </div>
               </div>
             </CardContent>
@@ -577,17 +577,17 @@ export default function CoursePage() {
         <TabsContent value="reviews" className="mt-6">
           <Card>
             <CardHeader>
-              <CardTitle>Reseñas de Estudiantes</CardTitle>
+              <CardTitle>Student Reviews</CardTitle>
               <CardDescription>
-                Calificación promedio: {course.rating}/5 ({course.studentsCount} reseñas)
+                Average rating: {course.rating}/5 ({course.studentsCount} reviews)
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="text-center py-12">
                 <Star className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-                <h3 className="text-lg font-semibold mb-2">Próximamente</h3>
+                <h3 className="text-lg font-semibold mb-2">Coming soon</h3>
                 <p className="text-muted-foreground">
-                  Las reseñas estarán disponibles pronto
+                  Reviews will be available soon
                 </p>
               </div>
             </CardContent>

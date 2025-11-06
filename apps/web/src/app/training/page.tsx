@@ -70,31 +70,31 @@ interface Goal {
 // Goals array with all objectives
 const GOALS: Goal[] = [
   // Basic strength goals
-  { key: 'fuerza_general', name: 'Fuerza General', description: 'Desarrolla fuerza básica de cuerpo completo', icon: Dumbbell, category: 'strength', difficulty: 'beginner' },
-  { key: 'dominadas', name: 'Dominadas', description: 'Domina las dominadas perfectas', icon: TrendingUp, category: 'strength', difficulty: 'beginner' },
+  { key: 'fuerza_general', name: 'General Strength', description: 'Build full-body basic strength', icon: Dumbbell, category: 'strength', difficulty: 'beginner' },
+  { key: 'dominadas', name: 'Pull-ups', description: 'Master perfect pull-ups', icon: TrendingUp, category: 'strength', difficulty: 'beginner' },
   
   // Advanced calisthenics goals
-  { key: 'handstand', name: 'Handstand', description: 'Equilibrio perfecto en parada de manos', icon: Target, category: 'strength', difficulty: 'intermediate' },
-  { key: 'muscle_up', name: 'Muscle Up', description: 'Transición explosiva de dominada a fondo', icon: Zap, category: 'strength', difficulty: 'advanced' },
-  { key: 'planche', name: 'Planche', description: 'Equilibrio horizontal avanzado', icon: Star, category: 'strength', difficulty: 'advanced' },
-  { key: 'front_lever', name: 'Front Lever', description: 'Palanca frontal perfecta', icon: Trophy, category: 'strength', difficulty: 'advanced' },
-  { key: 'back_lever', name: 'Back Lever', description: 'Palanca posterior con control total', icon: Trophy, category: 'strength', difficulty: 'advanced' },
-  { key: 'human_flag', name: 'Human Flag', description: 'Bandera humana lateral', icon: Trophy, category: 'strength', difficulty: 'advanced' },
-  { key: 'dragon_flag', name: 'Dragon Flag', description: 'Bandera del dragón para core extremo', icon: Flame, category: 'strength', difficulty: 'advanced' },
-  { key: 'one_arm_pullup', name: 'Dominada a Un Brazo', description: 'Fuerza unilateral máxima', icon: Trophy, category: 'strength', difficulty: 'advanced' },
-  { key: 'pistol_squat', name: 'Pistol Squat', description: 'Sentadilla a una pierna perfecta', icon: Target, category: 'strength', difficulty: 'intermediate' },
+  { key: 'handstand', name: 'Handstand', description: 'Perfect balance in handstand', icon: Target, category: 'strength', difficulty: 'intermediate' },
+  { key: 'muscle_up', name: 'Muscle Up', description: 'Explosive transition from pull-up to dip', icon: Zap, category: 'strength', difficulty: 'advanced' },
+  { key: 'planche', name: 'Planche', description: 'Advanced horizontal balance', icon: Star, category: 'strength', difficulty: 'advanced' },
+  { key: 'front_lever', name: 'Front Lever', description: 'Perfect front lever', icon: Trophy, category: 'strength', difficulty: 'advanced' },
+  { key: 'back_lever', name: 'Back Lever', description: 'Full control back lever', icon: Trophy, category: 'strength', difficulty: 'advanced' },
+  { key: 'human_flag', name: 'Human Flag', description: 'Side human flag', icon: Trophy, category: 'strength', difficulty: 'advanced' },
+  { key: 'dragon_flag', name: 'Dragon Flag', description: 'Dragon flag for extreme core strength', icon: Flame, category: 'strength', difficulty: 'advanced' },
+  { key: 'one_arm_pullup', name: 'One-arm Pull-up', description: 'Maximum unilateral strength', icon: Trophy, category: 'strength', difficulty: 'advanced' },
+  { key: 'pistol_squat', name: 'Pistol Squat', description: 'Perfect single-leg squat', icon: Target, category: 'strength', difficulty: 'intermediate' },
   
   // Flexibility goals
-  { key: 'flexibilidad', name: 'Flexibilidad General', description: 'Mejora tu rango de movimiento', icon: StretchHorizontal, category: 'flexibility', difficulty: 'beginner' },
-  { key: 'bridge', name: 'Bridge', description: 'Puente completo para flexibilidad de espalda', icon: StretchHorizontal, category: 'flexibility', difficulty: 'intermediate' },
-  { key: 'front_split', name: 'Split Frontal', description: 'Apertura frontal completa', icon: StretchHorizontal, category: 'flexibility', difficulty: 'intermediate' },
-  { key: 'side_split', name: 'Split Lateral', description: 'Apertura lateral perfecta', icon: StretchHorizontal, category: 'flexibility', difficulty: 'intermediate' },
-  { key: 'press_to_handstand', name: 'Press to Handstand', description: 'Transición fluida a handstand', icon: Star, category: 'flexibility', difficulty: 'advanced' },
+  { key: 'flexibilidad', name: 'General Flexibility', description: 'Improve your range of motion', icon: StretchHorizontal, category: 'flexibility', difficulty: 'beginner' },
+  { key: 'bridge', name: 'Bridge', description: 'Full bridge for back flexibility', icon: StretchHorizontal, category: 'flexibility', difficulty: 'intermediate' },
+  { key: 'front_split', name: 'Front Split', description: 'Complete front split', icon: StretchHorizontal, category: 'flexibility', difficulty: 'intermediate' },
+  { key: 'side_split', name: 'Side Split', description: 'Perfect side split', icon: StretchHorizontal, category: 'flexibility', difficulty: 'intermediate' },
+  { key: 'press_to_handstand', name: 'Press to Handstand', description: 'Smooth transition to handstand', icon: Star, category: 'flexibility', difficulty: 'advanced' },
   
   // Conditioning goals
-  { key: 'weight_loss', name: 'Pérdida de Peso', description: 'Quema grasa y mejora composición corporal', icon: Flame, category: 'conditioning', difficulty: 'beginner' },
-  { key: 'muscle_gain', name: 'Ganancia Muscular', description: 'Hipertrofia con calistenia', icon: Dumbbell, category: 'conditioning', difficulty: 'intermediate' },
-  { key: 'endurance', name: 'Resistencia', description: 'Mejora tu capacidad cardiovascular', icon: Heart, category: 'conditioning', difficulty: 'beginner' },
+  { key: 'weight_loss', name: 'Weight Loss', description: 'Burn fat and improve body composition', icon: Flame, category: 'conditioning', difficulty: 'beginner' },
+  { key: 'muscle_gain', name: 'Muscle Gain', description: 'Hypertrophy with calisthenics', icon: Dumbbell, category: 'conditioning', difficulty: 'intermediate' },
+  { key: 'endurance', name: 'Endurance', description: 'Improve your cardiovascular capacity', icon: Heart, category: 'conditioning', difficulty: 'beginner' },
 ];
 
 // Reward system based on fitness level and goal type
@@ -172,16 +172,16 @@ const withRanks = (level: FitnessLevel, exercises: Exercise[]): Exercise[] => {
   }));
 };
 
-// Map rank to a human-readable difficulty in Spanish
+// Map rank to a human-readable difficulty in English
 const getDifficultyLabelByRank = (rank: Rank): string => {
   const map: Record<Rank, string> = {
-    F: 'Muy fácil',
-    E: 'Fácil',
-    D: 'Moderado',
-    C: 'Desafiante',
-    B: 'Difícil',
-    A: 'Muy difícil',
-    S: 'Élite',
+    F: 'Very easy',
+    E: 'Easy',
+    D: 'Moderate',
+    C: 'Challenging',
+    B: 'Hard',
+    A: 'Very hard',
+    S: 'Elite',
   };
   return map[rank];
 };
@@ -241,8 +241,8 @@ export default function TrainingPage() {
       
       <main className="container mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Entrenamiento Personalizado</h1>
-          <p className="text-lg text-gray-600">Selecciona tu objetivo y nivel para obtener una rutina personalizada</p>
+  <h1 className="text-4xl font-bold text-gray-900 mb-4">Personalized Training</h1>
+  <p className="text-lg text-gray-600">Select your goal and level to get a personalized routine</p>
         </div>
 
         {/* Stats Summary */}
@@ -252,7 +252,7 @@ export default function TrainingPage() {
               <div className="flex items-center space-x-2">
                 <Trophy className="h-5 w-5 text-yellow-500" />
                 <div>
-                  <p className="text-sm text-gray-600">EXP Total</p>
+                  <p className="text-sm text-gray-600">Total EXP</p>
                   <p className="text-2xl font-bold">{totalExp}</p>
                 </div>
               </div>
@@ -264,7 +264,7 @@ export default function TrainingPage() {
               <div className="flex items-center space-x-2">
                 <Coins className="h-5 w-5 text-yellow-600" />
                 <div>
-                  <p className="text-sm text-gray-600">Monedas</p>
+                  <p className="text-sm text-gray-600">Coins</p>
                   <p className="text-2xl font-bold">{coins}</p>
                 </div>
               </div>
@@ -276,7 +276,7 @@ export default function TrainingPage() {
               <div className="flex items-center space-x-2">
                 <Zap className="h-5 w-5 text-blue-500" />
                 <div>
-                  <p className="text-sm text-gray-600">EXP Sesión</p>
+                  <p className="text-sm text-gray-600">Session EXP</p>
                   <p className="text-2xl font-bold text-blue-600">{sessionExp}</p>
                 </div>
               </div>
@@ -288,7 +288,7 @@ export default function TrainingPage() {
               <div className="flex items-center space-x-2">
                 <Coins className="h-5 w-5 text-green-500" />
                 <div>
-                  <p className="text-sm text-gray-600">Monedas Sesión</p>
+                  <p className="text-sm text-gray-600">Session Coins</p>
                   <p className="text-2xl font-bold text-green-600">{sessionCoins}</p>
                 </div>
               </div>
@@ -303,27 +303,27 @@ export default function TrainingPage() {
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
                   <Target className="h-5 w-5" />
-                  <span>Selecciona tu Objetivo</span>
+                  <span>Select Your Goal</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2 mb-6">
-                  <label className="text-sm font-medium">Nivel de Fitness</label>
+                  <label className="text-sm font-medium">Fitness Level</label>
                   <select 
                     value={fitnessLevel} 
                     onChange={(e) => setFitnessLevel(e.target.value as FitnessLevel)}
                     className="w-full p-2 border rounded-md"
                   >
-                    <option value="principiante">Principiante</option>
-                    <option value="intermedio">Intermedio</option>
-                    <option value="avanzado">Avanzado</option>
+                    <option value="principiante">Beginner</option>
+                    <option value="intermedio">Intermediate</option>
+                    <option value="avanzado">Advanced</option>
                   </select>
                 </div>
 
                 {/* Goal Categories */}
                 <div className="space-y-4">
                   <div>
-                    <h3 className="font-semibold text-sm text-gray-700 mb-2">FUERZA</h3>
+                    <h3 className="font-semibold text-sm text-gray-700 mb-2">STRENGTH</h3>
                     <div className="space-y-1">
                       {GOALS.filter(g => g.category === 'strength').map((goal) => (
                         <button
@@ -339,7 +339,7 @@ export default function TrainingPage() {
                             <goal.icon className="h-4 w-4" />
                             <span className="font-medium text-sm">{goal.name}</span>
                             <Badge variant={goal.difficulty === 'advanced' ? 'destructive' : goal.difficulty === 'intermediate' ? 'default' : 'secondary'} className="ml-auto text-xs">
-                              {goal.difficulty === 'beginner' ? 'Básico' : goal.difficulty === 'intermediate' ? 'Inter' : 'Avanz'}
+                              {goal.difficulty === 'beginner' ? 'Beginner' : goal.difficulty === 'intermediate' ? 'Intermediate' : 'Advanced'}
                             </Badge>
                           </div>
                         </button>
@@ -348,7 +348,7 @@ export default function TrainingPage() {
                   </div>
 
                   <div>
-                    <h3 className="font-semibold text-sm text-gray-700 mb-2">FLEXIBILIDAD</h3>
+                    <h3 className="font-semibold text-sm text-gray-700 mb-2">FLEXIBILITY</h3>
                     <div className="space-y-1">
                       {GOALS.filter(g => g.category === 'flexibility').map((goal) => (
                         <button
@@ -364,7 +364,7 @@ export default function TrainingPage() {
                             <goal.icon className="h-4 w-4" />
                             <span className="font-medium text-sm">{goal.name}</span>
                             <Badge variant={goal.difficulty === 'advanced' ? 'destructive' : goal.difficulty === 'intermediate' ? 'default' : 'secondary'} className="ml-auto text-xs">
-                              {goal.difficulty === 'beginner' ? 'Básico' : goal.difficulty === 'intermediate' ? 'Inter' : 'Avanz'}
+                              {goal.difficulty === 'beginner' ? 'Beginner' : goal.difficulty === 'intermediate' ? 'Intermediate' : 'Advanced'}
                             </Badge>
                           </div>
                         </button>
@@ -373,7 +373,7 @@ export default function TrainingPage() {
                   </div>
 
                   <div>
-                    <h3 className="font-semibold text-sm text-gray-700 mb-2">ACONDICIONAMIENTO</h3>
+                    <h3 className="font-semibold text-sm text-gray-700 mb-2">CONDITIONING</h3>
                     <div className="space-y-1">
                       {GOALS.filter(g => g.category === 'conditioning').map((goal) => (
                         <button
@@ -389,7 +389,7 @@ export default function TrainingPage() {
                             <goal.icon className="h-4 w-4" />
                             <span className="font-medium text-sm">{goal.name}</span>
                             <Badge variant={goal.difficulty === 'advanced' ? 'destructive' : goal.difficulty === 'intermediate' ? 'default' : 'secondary'} className="ml-auto text-xs">
-                              {goal.difficulty === 'beginner' ? 'Básico' : goal.difficulty === 'intermediate' ? 'Inter' : 'Avanz'}
+                              {goal.difficulty === 'beginner' ? 'Beginner' : goal.difficulty === 'intermediate' ? 'Intermediate' : 'Advanced'}
                             </Badge>
                           </div>
                         </button>
@@ -425,13 +425,13 @@ export default function TrainingPage() {
                           <div className="flex-1">
                             <h3 className="font-semibold text-lg mb-2 flex items-center">
                               <span>{exercise.name}</span>
-                              <Badge variant="outline" className="ml-2">Rango {rank}</Badge>
+                              <Badge variant="outline" className="ml-2">Rank {rank}</Badge>
                             </h3>
                             <p className="text-gray-600 text-sm mb-3">{exercise.description}</p>
                             <div className="flex flex-wrap gap-4 text-sm">
                               <span className="flex items-center space-x-1">
                                 <Target className="h-4 w-4" />
-                                <span>{exercise.sets} series</span>
+                                <span>{exercise.sets} sets</span>
                               </span>
                               <span className="flex items-center space-x-1">
                                 <Zap className="h-4 w-4" />
@@ -439,11 +439,11 @@ export default function TrainingPage() {
                               </span>
                               <span className="flex items-center space-x-1">
                                 <Clock className="h-4 w-4" />
-                                <span>{exercise.rest} descanso</span>
+                                <span>{exercise.rest} rest</span>
                               </span>
                               <span className="flex items-center space-x-1">
                                 <Star className="h-4 w-4 text-indigo-500" />
-                                <span>Dificultad: {difficultyText}</span>
+                                <span>Difficulty: {difficultyText}</span>
                               </span>
                             </div>
                             <div className="flex items-center space-x-4 mt-2 text-sm">
@@ -453,7 +453,7 @@ export default function TrainingPage() {
                               </span>
                               <span className="flex items-center space-x-1 text-yellow-600">
                                 <Coins className="h-4 w-4" />
-                                <span>+{reward.coins} monedas</span>
+                                <span>+{reward.coins} coins</span>
                               </span>
                             </div>
                           </div>
@@ -467,10 +467,10 @@ export default function TrainingPage() {
                             {isCompleted ? (
                               <>
                                 <CheckCircle className="h-4 w-4 mr-1" />
-                                Completado
+                                Completed
                               </>
                             ) : (
-                              'Completar'
+                              'Complete'
                             )}
                           </Button>
                         </div>
@@ -482,15 +482,15 @@ export default function TrainingPage() {
                 {/* Session Summary */}
                 {completedExercises.size > 0 && (
                   <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                    <h3 className="font-semibold mb-2">Resumen de la Sesión</h3>
+                    <h3 className="font-semibold mb-2">Session Summary</h3>
                     <div className="flex items-center justify-between">
                       <div className="flex space-x-4 text-sm">
-                        <span>Ejercicios completados: {completedExercises.size}</span>
+                        <span>Exercises completed: {completedExercises.size}</span>
                         <span className="text-blue-600">+{sessionExp} EXP</span>
-                        <span className="text-yellow-600">+{sessionCoins} monedas</span>
+                        <span className="text-yellow-600">+{sessionCoins} coins</span>
                       </div>
                       <Button onClick={resetSession} variant="outline" size="sm">
-                        Nueva Sesión
+                        New Session
                       </Button>
                     </div>
                   </div>

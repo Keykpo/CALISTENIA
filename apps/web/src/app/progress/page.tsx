@@ -72,7 +72,7 @@ const sampleStats: WorkoutStats = {
   currentStreak: 12,
   longestStreak: 28,
   averageWorkoutTime: 30,
-  favoriteCategory: 'Fuerza Superior',
+  favoriteCategory: 'Upper Body Strength',
   weeklyGoal: 5,
   weeklyProgress: 3
 };
@@ -136,12 +136,12 @@ const sampleAchievements: Achievement[] = [
 ];
 
 const sampleSkills: SkillProgress[] = [
-  { skill: 'Flexiones', level: 8, maxLevel: 10, progress: 80, category: 'Fuerza Superior' },
-  { skill: 'Dominadas', level: 6, maxLevel: 10, progress: 60, category: 'Fuerza Superior' },
-  { skill: 'Sentadillas', level: 9, maxLevel: 10, progress: 90, category: 'Fuerza Inferior' },
-  { skill: 'Plancha', level: 7, maxLevel: 10, progress: 70, category: 'Core' },
-  { skill: 'Handstand', level: 3, maxLevel: 10, progress: 30, category: 'Equilibrio' },
-  { skill: 'Muscle-up', level: 2, maxLevel: 10, progress: 20, category: 'Fuerza Combinada' }
+  { skill: 'Push-ups', level: 8, maxLevel: 10, progress: 80, category: 'Upper Body Strength' },
+  { skill: 'Pull-ups', level: 6, maxLevel: 10, progress: 60, category: 'Upper Body Strength' },
+  { skill: 'Squats', level: 9, maxLevel: 10, progress: 90, category: 'Lower Body Strength' },
+  { skill: 'Plank', level: 7, maxLevel: 10, progress: 70, category: 'Core' },
+  { skill: 'Handstand', level: 3, maxLevel: 10, progress: 30, category: 'Balance' },
+  { skill: 'Muscle-up', level: 2, maxLevel: 10, progress: 20, category: 'Combined Strength' }
 ];
 
 export default function ProgressPage() {
@@ -192,9 +192,9 @@ export default function ProgressPage() {
     <div className="container mx-auto px-4 py-8">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Mi Progreso</h1>
+        <h1 className="text-3xl font-bold mb-2">My Progress</h1>
         <p className="text-muted-foreground">
-          Seguimiento detallado de tu evolución en calistenia
+          Detailed tracking of your calisthenics progress
         </p>
       </div>
 
@@ -204,11 +204,11 @@ export default function ProgressPage() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Entrenamientos</p>
+                <p className="text-sm font-medium text-muted-foreground">Workouts</p>
                 <p className="text-2xl font-bold">{stats.totalWorkouts}</p>
                 <div className="flex items-center gap-1 text-sm text-green-600">
                   {getChangeIndicator(stats.totalWorkouts, 120)}
-                  <span>+7 esta semana</span>
+                  <span>+7 this week</span>
                 </div>
               </div>
               <Target className="h-8 w-8 text-blue-600" />
@@ -220,11 +220,11 @@ export default function ProgressPage() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Tiempo Total</p>
+                <p className="text-sm font-medium text-muted-foreground">Total Time</p>
                 <p className="text-2xl font-bold">{Math.round(stats.totalMinutes / 60)}h</p>
                 <div className="flex items-center gap-1 text-sm text-green-600">
                   {getChangeIndicator(stats.totalMinutes, 3600)}
-                  <span>+4h esta semana</span>
+                  <span>+4h this week</span>
                 </div>
               </div>
               <Clock className="h-8 w-8 text-green-600" />
@@ -236,11 +236,11 @@ export default function ProgressPage() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Calorías</p>
+                <p className="text-sm font-medium text-muted-foreground">Calories</p>
                 <p className="text-2xl font-bold">{stats.totalCalories.toLocaleString()}</p>
                 <div className="flex items-center gap-1 text-sm text-green-600">
                   {getChangeIndicator(stats.totalCalories, 15000)}
-                  <span>+680 esta semana</span>
+                  <span>+680 this week</span>
                 </div>
               </div>
               <Flame className="h-8 w-8 text-orange-600" />
@@ -252,11 +252,11 @@ export default function ProgressPage() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Racha Actual</p>
+                <p className="text-sm font-medium text-muted-foreground">Current Streak</p>
                 <p className="text-2xl font-bold">{stats.currentStreak}</p>
                 <div className="flex items-center gap-1 text-sm text-muted-foreground">
                   <Trophy className="h-4 w-4" />
-                  <span>Máx: {stats.longestStreak} días</span>
+                  <span>Max: {stats.longestStreak} days</span>
                 </div>
               </div>
               <Activity className="h-8 w-8 text-purple-600" />
@@ -270,17 +270,17 @@ export default function ProgressPage() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Target className="h-5 w-5" />
-            Meta Semanal
+            Weekly Goal
           </CardTitle>
           <CardDescription>
-            Progreso hacia tu objetivo de {stats.weeklyGoal} entrenamientos por semana
+            Progress toward your goal of {stats.weeklyGoal} workouts per week
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <span className="text-sm font-medium">
-                {stats.weeklyProgress} de {stats.weeklyGoal} entrenamientos
+                {stats.weeklyProgress} of {stats.weeklyGoal} workouts
               </span>
               <span className="text-sm text-muted-foreground">
                 {Math.round((stats.weeklyProgress / stats.weeklyGoal) * 100)}%
@@ -289,8 +289,8 @@ export default function ProgressPage() {
             <Progress value={(stats.weeklyProgress / stats.weeklyGoal) * 100} />
             <p className="text-sm text-muted-foreground">
               {stats.weeklyGoal - stats.weeklyProgress > 0 
-                ? `Te faltan ${stats.weeklyGoal - stats.weeklyProgress} entrenamientos para completar tu meta`
-                : '¡Felicidades! Has completado tu meta semanal'
+                ? `You need ${stats.weeklyGoal - stats.weeklyProgress} more workouts to complete your goal`
+                : "Congrats! You've completed your weekly goal"
               }
             </p>
           </div>
@@ -300,10 +300,10 @@ export default function ProgressPage() {
       {/* Main Content Tabs */}
       <Tabs defaultValue="overview" className="w-full">
         <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="overview">Resumen</TabsTrigger>
-          <TabsTrigger value="charts">Gráficos</TabsTrigger>
-          <TabsTrigger value="skills">Habilidades</TabsTrigger>
-          <TabsTrigger value="achievements">Logros</TabsTrigger>
+          <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="charts">Charts</TabsTrigger>
+          <TabsTrigger value="skills">Skills</TabsTrigger>
+          <TabsTrigger value="achievements">Achievements</TabsTrigger>
         </TabsList>
 
         <TabsContent value="overview" className="mt-6">
@@ -311,17 +311,17 @@ export default function ProgressPage() {
             {/* Recent Activity */}
             <Card>
               <CardHeader>
-                <CardTitle>Actividad Reciente</CardTitle>
-                <CardDescription>Tus últimos entrenamientos</CardDescription>
+                <CardTitle>Recent Activity</CardTitle>
+                <CardDescription>Your latest workouts</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   {[
-                    { date: 'Hoy', workout: 'Fuerza Superior', duration: 35, calories: 280 },
-                    { date: 'Ayer', workout: 'Core Intensivo', duration: 25, calories: 200 },
-                    { date: '2 días', workout: 'Piernas y Glúteos', duration: 40, calories: 320 },
-                    { date: '3 días', workout: 'Flexibilidad', duration: 20, calories: 120 },
-                    { date: '4 días', workout: 'HIIT Calistenia', duration: 30, calories: 300 }
+                    { date: 'Today', workout: 'Upper Body Strength', duration: 35, calories: 280 },
+                    { date: 'Yesterday', workout: 'Core Intensive', duration: 25, calories: 200 },
+                    { date: '2 days ago', workout: 'Legs and Glutes', duration: 40, calories: 320 },
+                    { date: '3 days ago', workout: 'Flexibility', duration: 20, calories: 120 },
+                    { date: '4 days ago', workout: 'Calisthenics HIIT', duration: 30, calories: 300 }
                   ].map((activity, index) => (
                     <div key={index} className="flex items-center justify-between p-3 rounded-lg border">
                       <div className="flex items-center gap-3">
@@ -346,17 +346,17 @@ export default function ProgressPage() {
             {/* Personal Records */}
             <Card>
               <CardHeader>
-                <CardTitle>Récords Personales</CardTitle>
-                <CardDescription>Tus mejores marcas</CardDescription>
+                <CardTitle>Personal Records</CardTitle>
+                <CardDescription>Your best performances</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   {[
-                    { exercise: 'Flexiones consecutivas', record: '45', date: '15 Mar 2024' },
-                    { exercise: 'Plancha (tiempo)', record: '2:30', date: '12 Mar 2024' },
-                    { exercise: 'Dominadas consecutivas', record: '12', date: '10 Mar 2024' },
-                    { exercise: 'Sentadillas consecutivas', record: '100', date: '8 Mar 2024' },
-                    { exercise: 'Entrenamiento más largo', record: '65min', date: '5 Mar 2024' }
+                    { exercise: 'Consecutive push-ups', record: '45', date: '15 Mar 2024' },
+                    { exercise: 'Plank (time)', record: '2:30', date: '12 Mar 2024' },
+                    { exercise: 'Consecutive pull-ups', record: '12', date: '10 Mar 2024' },
+                    { exercise: 'Consecutive squats', record: '100', date: '8 Mar 2024' },
+                    { exercise: 'Longest workout', record: '65min', date: '5 Mar 2024' }
                   ].map((record, index) => (
                     <div key={index} className="flex items-center justify-between p-3 rounded-lg border">
                       <div>
@@ -384,21 +384,21 @@ export default function ProgressPage() {
                 size="sm"
                 onClick={() => setSelectedPeriod('week')}
               >
-                Semana
+                Week
               </Button>
               <Button
                 variant={selectedPeriod === 'month' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setSelectedPeriod('month')}
               >
-                Mes
+                Month
               </Button>
               <Button
                 variant={selectedPeriod === 'year' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setSelectedPeriod('year')}
               >
-                Año
+                Year
               </Button>
             </div>
 
@@ -409,7 +409,7 @@ export default function ProgressPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <BarChart3 className="h-5 w-5" />
-                    Entrenamientos por Semana
+                    Workouts per Week
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -421,7 +421,7 @@ export default function ProgressPage() {
                           style={{ height: `${(data.workouts / 7) * 200}px` }}
                         />
                         <span className="text-xs text-muted-foreground">
-                          {new Date(data.date).toLocaleDateString('es', { day: '2-digit', month: '2-digit' })}
+                          {new Date(data.date).toLocaleDateString('en', { day: '2-digit', month: '2-digit' })}
                         </span>
                         <span className="text-xs font-medium">{data.workouts}</span>
                       </div>
@@ -435,7 +435,7 @@ export default function ProgressPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <LineChart className="h-5 w-5" />
-                    Calorías Quemadas
+                    Calories Burned
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -447,7 +447,7 @@ export default function ProgressPage() {
                           style={{ height: `${(data.calories / 1000) * 200}px` }}
                         />
                         <span className="text-xs text-muted-foreground">
-                          {new Date(data.date).toLocaleDateString('es', { day: '2-digit', month: '2-digit' })}
+                          {new Date(data.date).toLocaleDateString('en', { day: '2-digit', month: '2-digit' })}
                         </span>
                         <span className="text-xs font-medium">{data.calories}</span>
                       </div>
@@ -461,17 +461,17 @@ export default function ProgressPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <PieChart className="h-5 w-5" />
-                    Distribución por Categoría
+                    Category Distribution
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     {[
-                      { category: 'Fuerza Superior', percentage: 35, color: 'bg-blue-500' },
+                      { category: 'Upper Body Strength', percentage: 35, color: 'bg-blue-500' },
                       { category: 'Core', percentage: 25, color: 'bg-green-500' },
-                      { category: 'Fuerza Inferior', percentage: 20, color: 'bg-yellow-500' },
+                      { category: 'Lower Body Strength', percentage: 20, color: 'bg-yellow-500' },
                       { category: 'Cardio', percentage: 15, color: 'bg-red-500' },
-                      { category: 'Flexibilidad', percentage: 5, color: 'bg-purple-500' }
+                      { category: 'Flexibility', percentage: 5, color: 'bg-purple-500' }
                     ].map((item) => (
                       <div key={item.category} className="flex items-center gap-3">
                         <div className={`w-4 h-4 rounded ${item.color}`} />
@@ -493,7 +493,7 @@ export default function ProgressPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Calendar className="h-5 w-5" />
-                    Resumen Mensual
+                    Monthly Summary
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -501,21 +501,21 @@ export default function ProgressPage() {
                     <div className="grid grid-cols-2 gap-4">
                       <div className="text-center p-4 rounded-lg bg-muted/50">
                         <p className="text-2xl font-bold text-blue-600">23</p>
-                        <p className="text-sm text-muted-foreground">Entrenamientos</p>
+                        <p className="text-sm text-muted-foreground">Workouts</p>
                       </div>
                       <div className="text-center p-4 rounded-lg bg-muted/50">
                         <p className="text-2xl font-bold text-green-600">12h</p>
-                        <p className="text-sm text-muted-foreground">Tiempo total</p>
+                        <p className="text-sm text-muted-foreground">Total time</p>
                       </div>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="text-center p-4 rounded-lg bg-muted/50">
                         <p className="text-2xl font-bold text-orange-600">2,840</p>
-                        <p className="text-sm text-muted-foreground">Calorías</p>
+                        <p className="text-sm text-muted-foreground">Calories</p>
                       </div>
                       <div className="text-center p-4 rounded-lg bg-muted/50">
                         <p className="text-2xl font-bold text-purple-600">31min</p>
-                        <p className="text-sm text-muted-foreground">Promedio</p>
+                        <p className="text-sm text-muted-foreground">Average</p>
                       </div>
                     </div>
                   </div>
@@ -534,25 +534,25 @@ export default function ProgressPage() {
                     <CardTitle className="text-lg">{skill.skill}</CardTitle>
                     <Badge variant="outline">{skill.category}</Badge>
                   </div>
-                  <CardDescription>
-                    Nivel {skill.level} de {skill.maxLevel}
+                    <CardDescription>
+                    Level {skill.level} of {skill.maxLevel}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <Progress value={skill.progress} />
                     <div className="flex justify-between text-sm text-muted-foreground">
-                      <span>Progreso: {skill.progress}%</span>
+                      <span>Progress: {skill.progress}%</span>
                       <span>
                         {skill.level < skill.maxLevel 
-                          ? `${100 - skill.progress}% para siguiente nivel`
-                          : 'Nivel máximo alcanzado'
+                          ? `${100 - skill.progress}% to next level`
+                          : 'Max level reached'
                         }
                       </span>
                     </div>
                     {skill.level < skill.maxLevel && (
                       <Button variant="outline" size="sm" className="w-full">
-                        Ver ejercicios para mejorar
+                        View exercises to improve
                       </Button>
                     )}
                   </div>
@@ -577,7 +577,7 @@ export default function ProgressPage() {
                       <div className="flex items-center gap-2">
                         {getCategoryIcon(achievement.category)}
                         <span className="text-xs text-muted-foreground">
-                          Desbloqueado el {new Date(achievement.unlockedAt).toLocaleDateString('es')}
+                          Unlocked on {new Date(achievement.unlockedAt).toLocaleDateString('en')}
                         </span>
                       </div>
                     </div>
@@ -591,9 +591,9 @@ export default function ProgressPage() {
 
             {/* Locked Achievements */}
             {[
-              { title: 'Súper Racha', description: 'Entrena 30 días consecutivos', icon: '🔥' },
-              { title: 'Velocista', description: 'Completa un entrenamiento en menos de 15 minutos', icon: '⚡' },
-              { title: 'Resistencia', description: 'Entrena por más de 90 minutos', icon: '🏃' }
+              { title: 'Super Streak', description: 'Train 30 days in a row', icon: '🔥' },
+              { title: 'Sprinter', description: 'Complete a workout in under 15 minutes', icon: '⚡' },
+              { title: 'Endurance', description: 'Train for more than 90 minutes', icon: '🏃' }
             ].map((locked, index) => (
               <Card key={`locked-${index}`} className="relative overflow-hidden opacity-60">
                 <CardContent className="p-6">
@@ -605,7 +605,7 @@ export default function ProgressPage() {
                         {locked.description}
                       </p>
                       <Badge variant="secondary" className="text-xs">
-                        Bloqueado
+                        Locked
                       </Badge>
                     </div>
                   </div>

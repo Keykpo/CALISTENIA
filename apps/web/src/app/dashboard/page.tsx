@@ -236,6 +236,7 @@ export default function DashboardPage() {
                 <Button 
                   onClick={() => isEditing ? handleSave() : setIsEditing(true)}
                   className={isEditing ? "bg-green-600 hover:bg-green-700" : ""}
+                  variant="black"
                 >
                   {isEditing ? (
                     <>
@@ -354,6 +355,7 @@ export default function DashboardPage() {
                     className="w-full justify-start" 
                     size="lg"
                     onClick={handleStartTraining}
+                    variant="black"
                   >
                     <Activity className="h-5 w-5 mr-3" />
                     Iniciar Entrenamiento
@@ -409,7 +411,7 @@ export default function DashboardPage() {
                     <p className="text-sm mb-4">
                       Establece metas específicas para mantener tu motivación y seguir tu progreso.
                     </p>
-                    <Button>
+                    <Button variant="black">
                       <Target className="h-4 w-4 mr-2" />
                       Definir Objetivos
                     </Button>
