@@ -617,7 +617,7 @@ export default function DashboardPage() {
                       {dashboard.missionsToday.map((m: any) => (
                         <div key={m.id} className="flex items-center justify-between border-b pb-2">
                           <div>
-                            <div className="font-medium">{m.title || 'Mission'}</div>
+                            <div className="font-medium">{m.description || 'Mission'}</div>
                             <div className="text-xs text-muted-foreground">Reward: {m.rewardXP ?? 0} XP, {m.rewardCoins ?? 0} coins</div>
                           </div>
                           <div className="flex items-center gap-3">
