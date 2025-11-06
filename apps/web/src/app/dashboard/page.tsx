@@ -86,14 +86,20 @@ export default function DashboardPage() {
   const [generatingMissions, setGeneratingMissions] = useState<boolean>(false);
   const [genInfo, setGenInfo] = useState<{ status?: string; detail?: string } | null>(null);
   const autoGenRef = useRef(false);
+  const prevMissionRef = useRef<Record<string, { progress: number; completed: boolean }>>({});
+  const initLoadRef = useRef(false);
+  const reloadSeqRef = useRef(0);
 
   const reloadDashboard = async () => {
     try {
+      const seq = ++reloadSeqRef.current;
       const res = await fetch(`/api/dashboard`, {
         headers: { 'x-user-id': computedUserId },
         cache: 'no-store',
       });
       const data = await res.json();
+      // Ignora respuestas obsoletas si hubo múltiples reloads en carrera
+      if (seq !== reloadSeqRef.current) return;
       if (data?.success) {
         setDashboard(data);
         if (data.hexagon) {
@@ -115,13 +121,56 @@ export default function DashboardPage() {
   const completeMission = async (missionId: string) => {
     try {
       setCompletingMissionId(missionId);
+      // Optimistic UI update: marcar como completada antes del fetch
+      setDashboard(prev => {
+        if (!prev) return prev;
+        // Guarda estado previo para posible reversión
+        const targetMission = (prev.missionsToday || []).find((m: any) => String(m.id) === String(missionId));
+        if (targetMission) {
+          prevMissionRef.current[String(missionId)] = {
+            progress: targetMission.progress ?? 0,
+            completed: !!targetMission.completed,
+          };
+        }
+        const updated = (prev.missionsToday || []).map((m: any) =>
+          m.id === missionId ? { ...m, completed: true, progress: m.target ?? 1 } : m
+        );
+        return { ...prev, missionsToday: updated };
+      });
       const res = await fetch(`/api/missions/complete` , {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-user-id': computedUserId },
-        body: JSON.stringify({ missionId })
+        body: JSON.stringify({ missionId, userId: computedUserId })
       });
-      // ignoramos respuesta detallada, refrescamos dashboard
-      await reloadDashboard();
+      // Procesa respuesta antes de refrescar
+      if (res.ok) {
+        const data = await res.json();
+        console.log('[completeMission] response', { status: res.status, body: data });
+        // Si el backend confirma completion, mantenemos estado y refrescamos
+        if (data?.success) {
+          await reloadDashboard();
+        } else {
+          // Si hubo error, revertimos el optimismo
+          setDashboard(prev => {
+            if (!prev) return prev;
+            const prevState = prevMissionRef.current[String(missionId)];
+            const updated = (prev.missionsToday || []).map((m: any) =>
+              m.id === missionId ? { ...m, completed: prevState?.completed ?? false, progress: prevState?.progress ?? 0 } : m
+            );
+            return { ...prev, missionsToday: updated };
+          });
+        }
+      } else {
+        // Error HTTP: revertir optimismo
+        setDashboard(prev => {
+          if (!prev) return prev;
+          const prevState = prevMissionRef.current[String(missionId)];
+          const updated = (prev.missionsToday || []).map((m: any) =>
+            m.id === missionId ? { ...m, completed: prevState?.completed ?? false, progress: prevState?.progress ?? 0 } : m
+          );
+          return { ...prev, missionsToday: updated };
+        });
+      }
     } catch (e) {
       // noop
     } finally {
@@ -174,6 +223,8 @@ export default function DashboardPage() {
 
   useEffect(() => {
     // No redirección dura: permitir fallback local sin sesión
+    if (initLoadRef.current) return;
+    initLoadRef.current = true;
 
     // Set greeting based on time of day
     const hour = new Date().getHours();
@@ -185,7 +236,7 @@ export default function DashboardPage() {
       setGreeting('Good evening');
     }
 
-    // Initialize profile data from session
+    // Initialize profile data from session once
     if (session?.user) {
       setProfileData(prev => ({
         ...prev,
@@ -208,7 +259,7 @@ export default function DashboardPage() {
     // Estado de assessment (opcional para mostrar modales)
     checkAssessmentStatus();
     fetchHexagonProfile();
-  }, [status, router, session]);
+  }, [status]);
 
   const checkAssessmentStatus = async () => {
     try {
@@ -577,9 +628,9 @@ export default function DashboardPage() {
                               size="sm"
                               variant="black"
                               disabled={!!m.completed || completingMissionId === m.id}
-                              onClick={() => completeMission(m.id)}
+                              onClick={() => completeMission(String(m.id))}
                             >
-                              {completingMissionId === m.id ? 'Completing...' : 'Complete'}
+                              {m.completed ? 'Completed' : (completingMissionId === m.id ? 'Completing...' : 'Complete')}
                             </Button>
                           </div>
                         </div>
