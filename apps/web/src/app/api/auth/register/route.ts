@@ -1,61 +1,61 @@
-import { NextRequest, NextResponse } from 'next/server';
-import bcrypt from 'bcryptjs';
-import { z } from 'zod';
-import { prisma } from '@/lib/prisma';
-import { registerSchema } from '@/lib/validations';
+﻿import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
+import bcrypt from "bcryptjs";
+import { prisma } from "@/lib/prisma";
 
-export async function POST(request: NextRequest) {
+export const runtime = "nodejs";
+
+const registerSchema = z.object({
+  email: z.string().email(),
+  password: z
+    .string()
+    .min(6, "La contraseña debe tener al menos 6 caracteres"),
+  firstName: z.string().optional(),
+  lastName: z.string().optional(),
+  username: z.string().optional(),
+});
+
+export async function POST(req: NextRequest) {
+  // En producción, deshabilitar por seguridad si no está gestionado por backend dedicado
+  if (process.env.NODE_ENV === "production") {
+    return NextResponse.json(
+      { error: "Endpoint no disponible en producción" },
+      { status: 404 }
+    );
+  }
+
   try {
-    const body = await request.json();
-    
-    // Validar datos de entrada
-    const validatedData = registerSchema.parse(body);
-    
-    // Verificar si el usuario ya existe
-    const existingUser = await prisma.user.findUnique({
-      where: { email: validatedData.email },
-    });
+    const json = await req.json();
+    const data = registerSchema.parse(json);
 
-    if (existingUser) {
+    // Verificar si el usuario ya existe
+    const existing = await prisma.user.findUnique({
+      where: { email: data.email },
+      select: { id: true },
+    });
+    if (existing) {
       return NextResponse.json(
-        { error: 'Ya existe un usuario con este email' },
-        { status: 400 }
+        { error: "El email ya está registrado" },
+        { status: 409 }
       );
     }
 
-    // Verificar si el username ya existe (si se proporciona)
-    if (validatedData.username) {
-      const existingUsername = await prisma.user.findUnique({
-        where: { username: validatedData.username },
-      });
+    // Hash de contraseña
+    const hashedPassword = await bcrypt.hash(data.password, 10);
 
-      if (existingUsername) {
-        return NextResponse.json(
-          { error: 'Ya existe un usuario con este nombre de usuario' },
-          { status: 400 }
-        );
-      }
-    }
-
-    // Hash de la contraseña
-    const hashedPassword = await bcrypt.hash(validatedData.password, 12);
-
-    // Crear el usuario
+    // Crear usuario con campos requeridos por el esquema
     const user = await prisma.user.create({
       data: {
-        email: validatedData.email,
+        email: data.email,
+        firstName: data.firstName ?? null,
+        lastName: data.lastName ?? null,
+        username: (data.username ?? data.email.split("@")[0]).toLowerCase(),
         password: hashedPassword,
-        firstName: validatedData.firstName,
-        lastName: validatedData.lastName || null,
-        username: validatedData.username || validatedData.email.split('@')[0],
-        goals: '[]', // JSON string vacío para SQLite
-        isActive: true,
-        emailVerified: new Date(), // Marcar email como verificado para permitir auto-login
-        // Campos RPG obligatorios
-        totalXP: 0,
-        currentLevel: 1,
-        virtualCoins: 0,
-        totalStrength: 0,
+        // Para permitir login de desarrollo inmediato
+        emailVerified: new Date(),
+        // Campos requeridos
+        goals: JSON.stringify([]),
+        // Valores por defecto del sistema RPG ya definidos en el esquema
       },
       select: {
         id: true,
@@ -68,25 +68,26 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json(
-      { 
-        message: 'Usuario creado exitosamente',
-        user 
-      },
+      { message: "Usuario creado exitosamente", user },
       { status: 201 }
     );
-
-  } catch (error) {
-    console.error('Error en registro:', error);
-    
-    if (error instanceof z.ZodError) {
+  } catch (err: any) {
+    if (err instanceof z.ZodError) {
       return NextResponse.json(
-        { error: 'Datos inválidos', details: error.errors },
+        { error: "Datos inválidos", details: err.errors },
         { status: 400 }
       );
     }
-
+    // Prisma error de única clave
+    if ((err as any)?.code === "P2002") {
+      return NextResponse.json(
+        { error: "Usuario ya existe" },
+        { status: 409 }
+      );
+    }
+    console.error("Register error:", err);
     return NextResponse.json(
-      { error: 'Error interno del servidor' },
+      { error: "Error interno del servidor" },
       { status: 500 }
     );
   }

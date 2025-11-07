@@ -1,8 +1,8 @@
-'use client';
+﻿'use client';
 
 import { useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
-import exercises from '../../../public/exercises.json';
+import exercises from '@/data/exercises.json';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -88,7 +88,7 @@ const rankColors: Record<NonNullable<Exercise['rank']>, string> = {
   S: 'bg-purple-600',
 };
 
-// Etiquetas visibles por letra (letra + descripción en inglés)
+// Etiquetas visibles por letra (letra + descripciÃ³n en inglÃ©s)
 const rankLabels: Record<NonNullable<Exercise['rank']>, string> = {
   F: 'Beginner',
   E: 'Beginner',
@@ -99,7 +99,7 @@ const rankLabels: Record<NonNullable<Exercise['rank']>, string> = {
   S: 'Expert',
 };
 
-// Normaliza rangos: F/E→D, D→C, C→B
+// Normaliza rangos: F/Eâ†’D, Dâ†’C, Câ†’B
 // Normaliza rangos: colapsa F/E ? D; mantiene el resto igual
 const normalizeRank = (r?: Exercise['rank']): Exercise['rank'] | undefined => {
   switch (r) {
@@ -117,7 +117,7 @@ const normalizeRank = (r?: Exercise['rank']): Exercise['rank'] | undefined => {
   }
 };
 
-// Formato de visualización: solo la letra del rango normalizado
+// Formato de visualizaciÃ³n: solo la letra del rango normalizado
 const formatRank = (rank?: Exercise['rank'], difficulty?: string): string => {
   const raw = (rank ?? rankFromDifficulty(difficulty)) as Exercise['rank'] | undefined;
   const normalized = normalizeRank(raw) as NonNullable<Exercise['rank']> | undefined;
@@ -198,7 +198,7 @@ export default function ExercisesPage() {
         </Button>
       </div>
 
-      {/* Stats Cards by Rank (normalized to D → S) */}
+      {/* Stats Cards by Rank (normalized to D â†’ S) */}
       <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
         <Card>
           <CardHeader className="p-4">
@@ -503,7 +503,7 @@ export default function ExercisesPage() {
                   {/* icon + label for better visual affordance */}
                   <span className="inline-flex items-center gap-2">
                     {/* Using an emoji as a lightweight icon to avoid new imports */}
-                    <span role="img" aria-label="book">📘</span>
+                    <span role="img" aria-label="book">ðŸ“˜</span>
                     View Full Guide
                   </span>
                 </Button>
@@ -526,4 +526,6 @@ export default function ExercisesPage() {
     </div>
   );
 }
+
+
 

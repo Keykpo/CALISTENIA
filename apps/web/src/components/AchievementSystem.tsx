@@ -275,8 +275,6 @@ export default function AchievementSystem({ userStats, onAchievementUnlock }: Ac
     return (achievement.progress / achievement.requirement.value) * 100;
   };
 
-  const IconComponent = achievementIcons[achievement.type] || Trophy;
-
   return (
     <div className="space-y-6">
       {/* Achievement Notification */}
