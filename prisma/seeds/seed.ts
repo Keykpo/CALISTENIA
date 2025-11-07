@@ -1,17 +1,17 @@
-﻿import { PrismaClient } from '@prisma/client';
-import { skillsFromExercises, skillCounts } from './skills-from-exercises-en';
+import { PrismaClient } from '@prisma/client';
+import { skillsFromExercises, skillCounts } from './skills-from-exercises';
 import { allAchievements } from './achievements-data';
 
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log('ðŸŒ± Starting database seeding...\n');
+  console.log('🌱 Starting database seeding...\n');
 
   try {
     // ==========================================
     // SEED SKILLS
     // ==========================================
-    console.log('ðŸ“š Seeding skills from exercises...');
+    console.log('📚 Seeding skills from exercises...');
     console.log(`Total skills to seed: ${skillCounts.total}`);
     console.log(`  - Advanced: ${skillCounts.advanced}`);
     console.log(`  - Expert: ${skillCounts.expert}`);
@@ -36,13 +36,13 @@ async function main() {
         });
 
         createdSkills[skill.name] = skill.id;
-        console.log(`  âœ“ ${skill.name} (${skill.branch}, ${skill.difficulty})`);
+        console.log(`  ✓ ${skill.name} (${skill.branch}, ${skill.difficulty})`);
       } catch (error) {
-        console.error(`  âœ— Failed to create skill: ${skillData.name}`, error);
+        console.error(`  ✗ Failed to create skill: ${skillData.name}`, error);
       }
     }
 
-    console.log(`\nâœ… Created ${Object.keys(createdSkills).length} skills\n`);
+    console.log(`\n✅ Created ${Object.keys(createdSkills).length} skills\n`);
 
     // Step 2: Create prerequisite relationships
     console.log('Creating prerequisite relationships...');
@@ -55,7 +55,7 @@ async function main() {
 
       const skillId = createdSkills[skillData.name];
       if (!skillId) {
-        console.warn(`  âš  Skill not found: ${skillData.name}`);
+        console.warn(`  ⚠ Skill not found: ${skillData.name}`);
         continue;
       }
 
@@ -63,7 +63,7 @@ async function main() {
         const prereqId = createdSkills[prereqName];
 
         if (!prereqId) {
-          console.warn(`  âš  Prerequisite not found: ${prereqName} for ${skillData.name}`);
+          console.warn(`  ⚠ Prerequisite not found: ${prereqName} for ${skillData.name}`);
           continue;
         }
 
@@ -83,19 +83,19 @@ async function main() {
           });
 
           prerequisiteCount++;
-          console.log(`  âœ“ ${skillData.name} â†’ ${prereqName}`);
+          console.log(`  ✓ ${skillData.name} → ${prereqName}`);
         } catch (error) {
-          console.error(`  âœ— Failed to create prerequisite: ${skillData.name} â†’ ${prereqName}`, error);
+          console.error(`  ✗ Failed to create prerequisite: ${skillData.name} → ${prereqName}`, error);
         }
       }
     }
 
-    console.log(`\nâœ… Created ${prerequisiteCount} prerequisite relationships\n`);
+    console.log(`\n✅ Created ${prerequisiteCount} prerequisite relationships\n`);
 
     // ==========================================
     // SEED ACHIEVEMENTS
     // ==========================================
-    console.log('ðŸ† Seeding achievements...');
+    console.log('🏆 Seeding achievements...');
 
     let achievementCount = 0;
     for (const achievementData of allAchievements) {
@@ -107,25 +107,25 @@ async function main() {
         });
 
         achievementCount++;
-        console.log(`  âœ“ ${achievementData.name} (${achievementData.rarity})`);
+        console.log(`  ✓ ${achievementData.name} (${achievementData.rarity})`);
       } catch (error) {
-        console.error(`  âœ— Failed to create achievement: ${achievementData.name}`, error);
+        console.error(`  ✗ Failed to create achievement: ${achievementData.name}`, error);
       }
     }
 
-    console.log(`\nâœ… Created ${achievementCount} achievements\n`);
+    console.log(`\n✅ Created ${achievementCount} achievements\n`);
 
     // ==========================================
     // SUMMARY
     // ==========================================
-    console.log('ðŸ“Š Seeding Summary:');
+    console.log('📊 Seeding Summary:');
     console.log(`  Skills: ${Object.keys(createdSkills).length}`);
     console.log(`  Prerequisites: ${prerequisiteCount}`);
     console.log(`  Achievements: ${achievementCount}`);
-    console.log('\nâœ¨ Database seeding completed successfully!\n');
+    console.log('\n✨ Database seeding completed successfully!\n');
 
   } catch (error) {
-    console.error('âŒ Error during seeding:', error);
+    console.error('❌ Error during seeding:', error);
     throw error;
   }
 }
@@ -138,4 +138,3 @@ main()
   .finally(async () => {
     await prisma.$disconnect();
   });
-

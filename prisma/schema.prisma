@@ -49,6 +49,10 @@ model User {
   virtualCoins  Int @default(0) // Virtual currency for rewards
   totalStrength Int @default(0) // Total strength points accumulated from completed skills
 
+  // Streak System
+  dailyStreak           Int       @default(0) // Current daily mission streak
+  lastDailyCompletedAt  DateTime? // Last time all daily missions were completed
+
   // Timestamps
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

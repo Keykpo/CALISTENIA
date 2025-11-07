@@ -135,6 +135,8 @@ export async function GET(req: NextRequest) {
         totalXP: user?.totalXP ?? 0,
         level: user?.currentLevel ?? 1,
         coins: user?.virtualCoins ?? 0,
+        dailyStreak: user?.dailyStreak ?? 0,
+        lastDailyCompletedAt: user?.lastDailyCompletedAt,
       },
       hexagon: hex ?? null,
       recentWorkouts,
