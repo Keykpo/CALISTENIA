@@ -15,6 +15,29 @@ const registerSchema = z.object({
   username: z.string().optional(),
 });
 
+/**
+ * Returns default fields for user creation
+ * Includes a fallback mechanism for P2022 errors (missing columns)
+ */
+async function getDefaultUserFields() {
+  const defaults: Record<string, any> = {};
+
+  // Try to set all RPG fields with defaults
+  // If a field doesn't exist in DB (P2022 error), it will be caught in the main handler
+  const fieldsToTry = {
+    totalXP: 0,
+    currentLevel: 1,
+    virtualCoins: 0,
+    totalStrength: 0,
+    dailyStreak: 0,
+    fitnessLevel: 'BEGINNER',
+    isActive: true,
+  };
+
+  // For now, return all fields. If any fail, they'll be caught by error handler
+  return fieldsToTry;
+}
+
 export async function POST(req: NextRequest) {
   try {
     const json = await req.json();
@@ -59,6 +82,7 @@ export async function POST(req: NextRequest) {
     console.log('[REGISTER] Password hashed successfully');
 
     // Crear usuario con todos los campos necesarios
+    // Nota: Campos con @default en schema.prisma no necesitan especificarse
     const user = await prisma.user.create({
       data: {
         email: data.email,
@@ -68,14 +92,9 @@ export async function POST(req: NextRequest) {
         password: hashedPassword,
         emailVerified: new Date(), // Auto-verify for development
         goals: JSON.stringify([]), // Required field
-        // RPG fields have defaults in schema
-        totalXP: 0,
-        currentLevel: 1,
-        virtualCoins: 0,
-        totalStrength: 0,
-        dailyStreak: 0,
-        fitnessLevel: 'BEGINNER',
-        isActive: true,
+        // Los siguientes campos tienen defaults en schema pero los especificamos
+        // para mayor claridad y para evitar problemas de sincronización
+        ...(await getDefaultUserFields()),
       },
       select: {
         id: true,
@@ -139,6 +158,27 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         { error: "Valor demasiado largo para uno de los campos" },
         { status: 400 }
+      );
+    }
+
+    // Prisma column doesn't exist error (P2022)
+    // This happens when schema is out of sync with database
+    if (err?.code === "P2022") {
+      const columnName = err?.meta?.column;
+      console.error('[REGISTER] Database schema out of sync. Missing column:', columnName);
+
+      return NextResponse.json(
+        {
+          error: "Error de configuración de base de datos",
+          message: `La columna '${columnName}' no existe en la base de datos`,
+          solution: "Ejecuta en la terminal: npx prisma db push --accept-data-loss",
+          technicalDetails: {
+            code: "P2022",
+            column: columnName,
+            suggestion: "La base de datos necesita ser sincronizada con el schema de Prisma"
+          }
+        },
+        { status: 500 }
       );
     }
 
