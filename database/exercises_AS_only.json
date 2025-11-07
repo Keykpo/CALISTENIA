@@ -1,0 +1,1058 @@
+[
+  {
+    "id": "skill_back_lever_adv_tuck",
+    "name": "Advanced Tuck Back Lever",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
+    "category": "SKILL_STATIC",
+    "difficulty": "S (Expert)",
+    "unit": "seconds",
+    "muscleGroups": [
+      "BACK",
+      "BICEPS",
+      "SHOULDERS"
+    ],
+    "equipment": [
+      "PULL_UP_BAR",
+      "RINGS"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "gifUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "skill_front_lever_adv_tuck",
+    "name": "Advanced Tuck Front Lever",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
+    "category": "SKILL_STATIC",
+    "difficulty": "A (Advanced)",
+    "unit": "seconds",
+    "muscleGroups": [
+      "BACK",
+      "CORE",
+      "BICEPS"
+    ],
+    "equipment": [
+      "PULL_UP_BAR",
+      "RINGS"
+    ],
+    "expReward": 26,
+    "coinsReward": 13,
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "gifUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "skill_planche_adv_tuck",
+    "name": "Advanced Tuck Planche",
+    "description": "Advanced static hold that builds straight‑arm pressing strength and full‑body anti‑extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
+    "category": "SKILL_STATIC",
+    "difficulty": "S (Expert)",
+    "unit": "seconds",
+    "muscleGroups": [
+      "SHOULDERS",
+      "CHEST",
+      "CORE",
+      "TRICEPS"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Hands shoulder‑width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced‑tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath‑holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
+    "gifUrl": "https://static.exercisedb.dev/media/LYJodFS.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/LYJodFS.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "archer-pull-up",
+    "name": "Archer Pull Up",
+    "description": "High‑tension pulling pattern where lats and upper back drive the motion with strict scapular control. Focus on keeping elbows tracking and the ribcage down to avoid compensations. Develops strength for unilateral and explosive progressions.",
+    "category": "STRENGTH",
+    "difficulty": "A (Advanced)",
+    "unit": "reps",
+    "muscleGroups": [
+      "Lats",
+      "Biceps",
+      "Forearms"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 26,
+    "coinsReward": 13,
+    "howTo": "1) Setup: Grip the bar/rings firmly; set scapulae down and back.\n2) Descent/Ascent: Pull by bringing the chest toward the hands while keeping ribs down; lower under control.\n2) Cues: 'Lead with the elbows', 'keep forearms vertical', 'stay tight in the midline'.\n2) Errors: Flaring elbows, kipping unintentionally, craning the neck.",
+    "gifUrl": "https://static.exercisedb.dev/media/72BC5Za.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/72BC5Za.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "archer-push-up",
+    "name": "Archer Push Up",
+    "description": "High‑tension horizontal/vertical pressing emphasizing scapular stability and full‑body bracing. Chest, anterior deltoids and triceps drive the movement while the core prevents sag or flaring. Bridges the gap to ring variations and straight‑arm strength.",
+    "category": "STRENGTH",
+    "difficulty": "A (Advanced)",
+    "unit": "reps",
+    "muscleGroups": [
+      "Pectorals",
+      "Triceps",
+      "Shoulders",
+      "Core"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 26,
+    "coinsReward": 13,
+    "howTo": "1) Setup: Hands slightly wider than shoulders; screw palms into the floor; elbows fully extended.\n2) Descent/Ascent: Keep ribs down and glutes tight; press through full range without elbow flare.\n2) Cues: 'Spread the floor', 'stack shoulders over wrists', 'move as one piece'.\n2) Errors: Hip sag, shrugging shoulders, partial reps.",
+    "gifUrl": "https://static.exercisedb.dev/media/A9qxk2F.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/A9qxk2F.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "back-lever",
+    "name": "Back Lever",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
+    "category": "STRENGTH",
+    "difficulty": "S (Expert)",
+    "unit": "reps",
+    "muscleGroups": [
+      "Upper Back",
+      "Biceps",
+      "Forearms",
+      "Core"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "gifUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "skill_back_lever_one_leg",
+    "name": "Back Lever (Una Pierna)",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
+    "category": "SKILL_STATIC",
+    "difficulty": "S (Expert)",
+    "unit": "seconds",
+    "muscleGroups": [
+      "BACK",
+      "BICEPS",
+      "SHOULDERS"
+    ],
+    "equipment": [
+      "PULL_UP_BAR",
+      "RINGS"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "gifUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "pull_l_sit",
+    "name": "L-Sit Pull-Ups",
+    "description": "High‑tension pulling pattern where lats and upper back drive the motion with strict scapular control. Focus on keeping elbows tracking and the ribcage down to avoid compensations. Develops strength for unilateral and explosive progressions.",
+    "category": "STRENGTH",
+    "difficulty": "A (Advanced)",
+    "unit": "reps",
+    "muscleGroups": [
+      "BACK",
+      "BICEPS",
+      "CORE",
+      "HIP_FLEXORS"
+    ],
+    "equipment": [
+      "PULL_UP_BAR"
+    ],
+    "expReward": 26,
+    "coinsReward": 13,
+    "howTo": "1) Setup: Grip the bar/rings firmly; set scapulae down and back.\n2) Descent/Ascent: Pull by bringing the chest toward the hands while keeping ribs down; lower under control.\n2) Cues: 'Lead with the elbows', 'keep forearms vertical', 'stay tight in the midline'.\n2) Errors: Flaring elbows, kipping unintentionally, craning the neck.",
+    "gifUrl": "https://static.exercisedb.dev/media/mExgrF9.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/mExgrF9.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "push_pseudo_planche",
+    "name": "Flexiones Pseudo Planche",
+    "description": "Advanced static hold that builds straight‑arm pressing strength and full‑body anti‑extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
+    "category": "STRENGTH",
+    "difficulty": "S (Expert)",
+    "unit": "reps",
+    "muscleGroups": [
+      "SHOULDERS",
+      "CHEST",
+      "TRICEPS",
+      "CORE"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Hands shoulder‑width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced‑tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath‑holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
+    "gifUrl": "https://static.exercisedb.dev/media/gw9PqGk.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/gw9PqGk.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "frog-planche",
+    "name": "Frog Planche",
+    "description": "Advanced static hold that builds straight‑arm pressing strength and full‑body anti‑extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
+    "category": "CORE",
+    "difficulty": "S (Expert)",
+    "unit": "reps",
+    "muscleGroups": [
+      "Abs",
+      "Shoulders",
+      "Chest",
+      "Triceps"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Hands shoulder‑width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced‑tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath‑holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
+    "gifUrl": "https://static.exercisedb.dev/media/rQhGcin.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/rQhGcin.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "front-lever",
+    "name": "Front Lever",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
+    "category": "CORE",
+    "difficulty": "A (Advanced)",
+    "unit": "reps",
+    "muscleGroups": [
+      "Abs",
+      "Lats",
+      "Shoulders",
+      "Forearms"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 26,
+    "coinsReward": 13,
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "gifUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "skill_front_lever_one_leg",
+    "name": "Front Lever (Una Pierna)",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
+    "category": "SKILL_STATIC",
+    "difficulty": "A (Advanced)",
+    "unit": "seconds",
+    "muscleGroups": [
+      "BACK",
+      "CORE",
+      "BICEPS"
+    ],
+    "equipment": [
+      "PULL_UP_BAR",
+      "RINGS"
+    ],
+    "expReward": 26,
+    "coinsReward": 13,
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "gifUrl": "https://static.exercisedb.dev/media/hbY9wqG.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/hbY9wqG.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "front-lever-reps",
+    "name": "Front Lever Reps",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
+    "category": "STRENGTH",
+    "difficulty": "A (Advanced)",
+    "unit": "reps",
+    "muscleGroups": [
+      "Upper Back",
+      "Core",
+      "Shoulders"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 26,
+    "coinsReward": 13,
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "gifUrl": "https://static.exercisedb.dev/media/hbY9wqG.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/hbY9wqG.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "skill_back_lever",
+    "name": "Full Back Lever",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
+    "category": "SKILL_STATIC",
+    "difficulty": "S (Expert)",
+    "unit": "seconds",
+    "muscleGroups": [
+      "BACK",
+      "BICEPS",
+      "SHOULDERS"
+    ],
+    "equipment": [
+      "PULL_UP_BAR",
+      "RINGS"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "gifUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "skill_front_lever",
+    "name": "Full Front Lever",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
+    "category": "SKILL_STATIC",
+    "difficulty": "A (Advanced)",
+    "unit": "seconds",
+    "muscleGroups": [
+      "BACK",
+      "CORE",
+      "BICEPS"
+    ],
+    "equipment": [
+      "PULL_UP_BAR",
+      "RINGS"
+    ],
+    "expReward": 26,
+    "coinsReward": 13,
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "gifUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "skill_planche",
+    "name": "Full Planche",
+    "description": "Advanced static hold that builds straight‑arm pressing strength and full‑body anti‑extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
+    "category": "CORE",
+    "difficulty": "S (Expert)",
+    "unit": "reps",
+    "muscleGroups": [
+      "Abs",
+      "Shoulders",
+      "Chest",
+      "Triceps"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Hands shoulder‑width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced‑tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath‑holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
+    "gifUrl": "https://static.exercisedb.dev/media/YZ4961r.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/YZ4961r.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "full-planche-push-up",
+    "name": "Full Planche Push-up",
+    "description": "Advanced static hold that builds straight‑arm pressing strength and full‑body anti‑extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
+    "category": "STRENGTH",
+    "difficulty": "S (Expert)",
+    "unit": "reps",
+    "muscleGroups": [
+      "Pectorals",
+      "Shoulders",
+      "Triceps",
+      "Core"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Hands shoulder‑width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced‑tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath‑holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
+    "gifUrl": "https://static.exercisedb.dev/media/gw9PqGk.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/gw9PqGk.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "handstand-push-up",
+    "name": "Handstand Push-up",
+    "description": "Upside‑down straight‑arm hold emphasizing shoulder stacking, wrist tolerance, and core rigidity. Promotes balanced line, active shoulders, and fine control through the hands. Builds control for advanced freestanding and press handstand work.",
+    "category": "STRENGTH",
+    "difficulty": "S (Expert)",
+    "unit": "reps",
+    "muscleGroups": [
+      "Triceps",
+      "Shoulders",
+      "Chest",
+      "Core"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Hands slightly wider than shoulders; screw palms into the floor; elbows fully extended.\n2) Descent/Ascent: Keep ribs down and glutes tight; press through full range without elbow flare.\n2) Cues: 'Spread the floor', 'stack shoulders over wrists', 'move as one piece'.\n2) Errors: Hip sag, shrugging shoulders, partial reps.",
+    "gifUrl": "https://static.exercisedb.dev/media/rQxwMxO.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/rQxwMxO.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "kipping-muscle-up",
+    "name": "Kipping Muscle Up",
+    "description": "Advanced bodyweight pattern requiring high scapular control, full‑body tension and precise leverage. Keep elbows locked (if straight‑arm), brace the core, and maintain clean lines to handle the increased torque.",
+    "category": "STRENGTH",
+    "difficulty": "S (Expert)",
+    "unit": "reps",
+    "muscleGroups": [
+      "Lats",
+      "Biceps",
+      "Triceps",
+      "Shoulders",
+      "Core"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Create full‑body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
+    "gifUrl": "https://static.exercisedb.dev/media/pM07UxU.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/pM07UxU.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "kipping-muscle-up-with-triple",
+    "name": "Kipping Muscle Up With Triple",
+    "description": "Advanced bodyweight pattern requiring high scapular control, full‑body tension and precise leverage. Keep elbows locked (if straight‑arm), brace the core, and maintain clean lines to handle the increased torque.",
+    "category": "STRENGTH",
+    "difficulty": "S (Expert)",
+    "unit": "reps",
+    "muscleGroups": [
+      "Lats",
+      "Biceps",
+      "Triceps",
+      "Shoulders",
+      "Core"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Create full‑body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
+    "gifUrl": "https://static.exercisedb.dev/media/znf7t8E.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/znf7t8E.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "core_l_sit",
+    "name": "L-Sit",
+    "description": "High‑tension core position that teaches rib‑to‑pelvis connection and scapular control. Maintaining a consistent hollow line prevents spinal extension and improves transfer to skills and levers.",
+    "category": "CORE",
+    "difficulty": "A (Advanced)",
+    "unit": "seconds",
+    "muscleGroups": [],
+    "equipment": [
+      "PARALLEL_BARS",
+      "FLOOR"
+    ],
+    "expReward": 26,
+    "coinsReward": 13,
+    "howTo": "1) Setup: Posterior pelvic tilt (ribs down), arms locked as needed; reach long through shoulders.\n2) Hold: Keep constant tension; no lumbar arch. Point toes and squeeze quads/glutes.\n2) Cues: 'Navel to spine', 'long line', 'keep shoulders active'.\n2) Errors: Back arch, bent elbows (when not intended), broken line.",
+    "gifUrl": null,
+    "thumbnailUrl": null,
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "core_l_sit_one_leg",
+    "name": "L-Sit (Una Pierna)",
+    "description": "High‑tension core position that teaches rib‑to‑pelvis connection and scapular control. Maintaining a consistent hollow line prevents spinal extension and improves transfer to skills and levers.",
+    "category": "CORE",
+    "difficulty": "A (Advanced)",
+    "unit": "seconds",
+    "muscleGroups": [],
+    "equipment": [
+      "PARALLEL_BARS",
+      "FLOOR"
+    ],
+    "expReward": 26,
+    "coinsReward": 13,
+    "howTo": "1) Setup: Posterior pelvic tilt (ribs down), arms locked as needed; reach long through shoulders.\n2) Hold: Keep constant tension; no lumbar arch. Point toes and squeeze quads/glutes.\n2) Cues: 'Navel to spine', 'long line', 'keep shoulders active'.\n2) Errors: Back arch, bent elbows (when not intended), broken line.",
+    "gifUrl": null,
+    "thumbnailUrl": null,
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "l_sit_parallel_bars",
+    "name": "L-Sit en Paralelas",
+    "description": "High‑tension core position that teaches rib‑to‑pelvis connection and scapular control. Maintaining a consistent hollow line prevents spinal extension and improves transfer to skills and levers.",
+    "category": "SKILL_STATIC",
+    "difficulty": "A (Advanced)",
+    "unit": "seconds",
+    "muscleGroups": [
+      "CORE",
+      "HIP_FLEXORS",
+      "SHOULDERS",
+      "TRICEPS"
+    ],
+    "equipment": [
+      "PARALLEL_BARS"
+    ],
+    "expReward": 26,
+    "coinsReward": 13,
+    "howTo": "1) Setup: Posterior pelvic tilt (ribs down), arms locked as needed; reach long through shoulders.\n2) Hold: Keep constant tension; no lumbar arch. Point toes and squeeze quads/glutes.\n2) Cues: 'Navel to spine', 'long line', 'keep shoulders active'.\n2) Errors: Back arch, bent elbows (when not intended), broken line.",
+    "gifUrl": "https://static.exercisedb.dev/media/jTkSc6o.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/jTkSc6o.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "l_sit_floor",
+    "name": "L-Sit en Suelo",
+    "description": "High‑tension core position that teaches rib‑to‑pelvis connection and scapular control. Maintaining a consistent hollow line prevents spinal extension and improves transfer to skills and levers.",
+    "category": "SKILL_STATIC",
+    "difficulty": "A (Advanced)",
+    "unit": "seconds",
+    "muscleGroups": [
+      "CORE",
+      "HIP_FLEXORS",
+      "SHOULDERS",
+      "TRICEPS"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 26,
+    "coinsReward": 13,
+    "howTo": "1) Setup: Posterior pelvic tilt (ribs down), arms locked as needed; reach long through shoulders.\n2) Hold: Keep constant tension; no lumbar arch. Point toes and squeeze quads/glutes.\n2) Cues: 'Navel to spine', 'long line', 'keep shoulders active'.\n2) Errors: Back arch, bent elbows (when not intended), broken line.",
+    "gifUrl": "https://static.exercisedb.dev/media/UpWmA5E.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/UpWmA5E.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "l-sit-on-floor",
+    "name": "L-sit On Floor",
+    "description": "High‑tension core position that teaches rib‑to‑pelvis connection and scapular control. Maintaining a consistent hollow line prevents spinal extension and improves transfer to skills and levers.",
+    "category": "CORE",
+    "difficulty": "A (Advanced)",
+    "unit": "reps",
+    "muscleGroups": [
+      "Abs",
+      "Hip Flexors"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 26,
+    "coinsReward": 13,
+    "howTo": "1) Setup: Posterior pelvic tilt (ribs down), arms locked as needed; reach long through shoulders.\n2) Hold: Keep constant tension; no lumbar arch. Point toes and squeeze quads/glutes.\n2) Cues: 'Navel to spine', 'long line', 'keep shoulders active'.\n2) Errors: Back arch, bent elbows (when not intended), broken line.",
+    "gifUrl": "https://static.exercisedb.dev/media/UpWmA5E.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/UpWmA5E.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "lean-planche",
+    "name": "Lean Planche",
+    "description": "Advanced static hold that builds straight‑arm pressing strength and full‑body anti‑extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
+    "category": "CORE",
+    "difficulty": "S (Expert)",
+    "unit": "reps",
+    "muscleGroups": [
+      "Abs",
+      "Shoulders",
+      "Chest",
+      "Triceps"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Hands shoulder‑width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced‑tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath‑holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
+    "gifUrl": "https://static.exercisedb.dev/media/LYJodFS.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/LYJodFS.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "muscle-up",
+    "name": "Muscle Up",
+    "description": "Advanced bodyweight pattern requiring high scapular control, full‑body tension and precise leverage. Keep elbows locked (if straight‑arm), brace the core, and maintain clean lines to handle the increased torque.",
+    "category": "STRENGTH",
+    "difficulty": "S (Expert)",
+    "unit": "reps",
+    "muscleGroups": [
+      "Lats",
+      "Biceps",
+      "Triceps",
+      "Shoulders",
+      "Chest"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Create full‑body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
+    "gifUrl": "https://static.exercisedb.dev/media/yJUHKTn.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/yJUHKTn.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "skill_muscle_up",
+    "name": "Muscle Up (Final Integration)",
+    "description": "Advanced bodyweight pattern requiring high scapular control, full‑body tension and precise leverage. Keep elbows locked (if straight‑arm), brace the core, and maintain clean lines to handle the increased torque.",
+    "category": "STRENGTH",
+    "difficulty": "S (Expert)",
+    "unit": "reps",
+    "muscleGroups": [
+      "BACK",
+      "CHEST",
+      "TRICEPS",
+      "BICEPS",
+      "CORE"
+    ],
+    "equipment": [
+      "PULL_UP_BAR"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Create full‑body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
+    "gifUrl": "https://static.exercisedb.dev/media/Af0EW2I.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/Af0EW2I.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "skill_muscle_up_negative",
+    "name": "Negative Muscle Up",
+    "description": "Advanced bodyweight pattern requiring high scapular control, full‑body tension and precise leverage. Keep elbows locked (if straight‑arm), brace the core, and maintain clean lines to handle the increased torque.",
+    "category": "STRENGTH",
+    "difficulty": "S (Expert)",
+    "unit": "reps",
+    "muscleGroups": [
+      "BACK",
+      "CHEST",
+      "TRICEPS",
+      "BICEPS",
+      "CORE"
+    ],
+    "equipment": [
+      "PULL_UP_BAR"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Create full‑body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
+    "gifUrl": "https://static.exercisedb.dev/media/Af0EW2I.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/Af0EW2I.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "skill_planche_lean",
+    "name": "Planche Lean",
+    "description": "Advanced static hold that builds straight‑arm pressing strength and full‑body anti‑extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
+    "category": "SKILL_STATIC",
+    "difficulty": "S (Expert)",
+    "unit": "seconds",
+    "muscleGroups": [
+      "SHOULDERS",
+      "CORE",
+      "WRISTS"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Hands shoulder‑width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced‑tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath‑holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
+    "gifUrl": "https://static.exercisedb.dev/media/LYJodFS.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/LYJodFS.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "plyo-push-up",
+    "name": "Plyo Push Up",
+    "description": "High‑tension horizontal/vertical pressing emphasizing scapular stability and full‑body bracing. Chest, anterior deltoids and triceps drive the movement while the core prevents sag or flaring. Bridges the gap to ring variations and straight‑arm strength.",
+    "category": "STRENGTH",
+    "difficulty": "A (Advanced)",
+    "unit": "reps",
+    "muscleGroups": [
+      "Pectorals",
+      "Triceps",
+      "Shoulders",
+      "Core"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 26,
+    "coinsReward": 13,
+    "howTo": "1) Setup: Hands slightly wider than shoulders; screw palms into the floor; elbows fully extended.\n2) Descent/Ascent: Keep ribs down and glutes tight; press through full range without elbow flare.\n2) Cues: 'Spread the floor', 'stack shoulders over wrists', 'move as one piece'.\n2) Errors: Hip sag, shrugging shoulders, partial reps.",
+    "gifUrl": "https://static.exercisedb.dev/media/Snj1wSv.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/Snj1wSv.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "row_tuck_front_lever",
+    "name": "Remos en Tuck Front Lever",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
+    "category": "STRENGTH",
+    "difficulty": "A (Advanced)",
+    "unit": "reps",
+    "muscleGroups": [],
+    "equipment": [
+      "PULL_UP_BAR",
+      "RINGS"
+    ],
+    "expReward": 26,
+    "coinsReward": 13,
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "gifUrl": null,
+    "thumbnailUrl": null,
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "standing-archer",
+    "name": "Standing Archer",
+    "description": "Advanced bodyweight pattern requiring high scapular control, full‑body tension and precise leverage. Keep elbows locked (if straight‑arm), brace the core, and maintain clean lines to handle the increased torque.",
+    "category": "STRENGTH",
+    "difficulty": "A (Advanced)",
+    "unit": "reps",
+    "muscleGroups": [
+      "Upper Back",
+      "Shoulders",
+      "Biceps",
+      "Forearms"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 26,
+    "coinsReward": 13,
+    "howTo": "1) Setup: Create full‑body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
+    "gifUrl": "https://static.exercisedb.dev/media/JF8AkMX.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/JF8AkMX.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "skill_back_lever_straddle",
+    "name": "Straddle Back Lever",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
+    "category": "SKILL_STATIC",
+    "difficulty": "S (Expert)",
+    "unit": "seconds",
+    "muscleGroups": [
+      "BACK",
+      "BICEPS",
+      "SHOULDERS"
+    ],
+    "equipment": [
+      "PULL_UP_BAR",
+      "RINGS"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "gifUrl": "https://static.exercisedb.dev/media/HfqciZF.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/HfqciZF.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "skill_front_lever_straddle",
+    "name": "Straddle Front Lever",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
+    "category": "SKILL_STATIC",
+    "difficulty": "A (Advanced)",
+    "unit": "seconds",
+    "muscleGroups": [
+      "BACK",
+      "CORE",
+      "BICEPS"
+    ],
+    "equipment": [
+      "PULL_UP_BAR",
+      "RINGS"
+    ],
+    "expReward": 26,
+    "coinsReward": 13,
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "gifUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "skill_planche_straddle",
+    "name": "Straddle Planche",
+    "description": "Advanced static hold that builds straight‑arm pressing strength and full‑body anti‑extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
+    "category": "CORE",
+    "difficulty": "S (Expert)",
+    "unit": "reps",
+    "muscleGroups": [
+      "Abs",
+      "Shoulders",
+      "Triceps",
+      "Chest"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Hands shoulder‑width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced‑tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath‑holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
+    "gifUrl": "https://static.exercisedb.dev/media/BL3GHeY.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/BL3GHeY.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "stretched-full-planche-push-up",
+    "name": "Stretched Full Planche Push-up",
+    "description": "Advanced static hold that builds straight‑arm pressing strength and full‑body anti‑extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
+    "category": "STRENGTH",
+    "difficulty": "S (Expert)",
+    "unit": "reps",
+    "muscleGroups": [
+      "Pectorals",
+      "Shoulders",
+      "Triceps",
+      "Core"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Hands shoulder‑width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced‑tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath‑holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
+    "gifUrl": "https://static.exercisedb.dev/media/mAYqY4M.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/mAYqY4M.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "superman-push-up",
+    "name": "Superman Push-up",
+    "description": "High‑tension horizontal/vertical pressing emphasizing scapular stability and full‑body bracing. Chest, anterior deltoids and triceps drive the movement while the core prevents sag or flaring. Bridges the gap to ring variations and straight‑arm strength.",
+    "category": "STRENGTH",
+    "difficulty": "A (Advanced)",
+    "unit": "reps",
+    "muscleGroups": [
+      "Pectorals",
+      "Core",
+      "Shoulders"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 26,
+    "coinsReward": 13,
+    "howTo": "1) Setup: Hands slightly wider than shoulders; screw palms into the floor; elbows fully extended.\n2) Descent/Ascent: Keep ribs down and glutes tight; press through full range without elbow flare.\n2) Cues: 'Spread the floor', 'stack shoulders over wrists', 'move as one piece'.\n2) Errors: Hip sag, shrugging shoulders, partial reps.",
+    "gifUrl": "https://static.exercisedb.dev/media/4GqRrAk.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/4GqRrAk.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "skill_back_lever_tuck",
+    "name": "Tuck Back Lever",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
+    "category": "SKILL_STATIC",
+    "difficulty": "S (Expert)",
+    "unit": "seconds",
+    "muscleGroups": [
+      "BACK",
+      "BICEPS",
+      "SHOULDERS"
+    ],
+    "equipment": [
+      "PULL_UP_BAR",
+      "RINGS"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "gifUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "skill_front_lever_tuck",
+    "name": "Tuck Front Lever",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
+    "category": "SKILL_STATIC",
+    "difficulty": "A (Advanced)",
+    "unit": "seconds",
+    "muscleGroups": [
+      "BACK",
+      "CORE",
+      "BICEPS"
+    ],
+    "equipment": [
+      "PULL_UP_BAR",
+      "RINGS"
+    ],
+    "expReward": 26,
+    "coinsReward": 13,
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "gifUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "core_l_sit_tuck",
+    "name": "Tuck L-Sit",
+    "description": "High‑tension core position that teaches rib‑to‑pelvis connection and scapular control. Maintaining a consistent hollow line prevents spinal extension and improves transfer to skills and levers.",
+    "category": "CORE",
+    "difficulty": "A (Advanced)",
+    "unit": "seconds",
+    "muscleGroups": [],
+    "equipment": [
+      "PARALLEL_BARS",
+      "FLOOR"
+    ],
+    "expReward": 26,
+    "coinsReward": 13,
+    "howTo": "1) Setup: Posterior pelvic tilt (ribs down), arms locked as needed; reach long through shoulders.\n2) Hold: Keep constant tension; no lumbar arch. Point toes and squeeze quads/glutes.\n2) Cues: 'Navel to spine', 'long line', 'keep shoulders active'.\n2) Errors: Back arch, bent elbows (when not intended), broken line.",
+    "gifUrl": null,
+    "thumbnailUrl": null,
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "skill_planche_tuck",
+    "name": "Tuck Planche",
+    "description": "Advanced static hold that builds straight‑arm pressing strength and full‑body anti‑extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
+    "category": "SKILL_STATIC",
+    "difficulty": "S (Expert)",
+    "unit": "seconds",
+    "muscleGroups": [
+      "SHOULDERS",
+      "CHEST",
+      "CORE",
+      "TRICEPS"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Hands shoulder‑width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced‑tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath‑holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
+    "gifUrl": "https://static.exercisedb.dev/media/YZ4961r.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/YZ4961r.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "core_v_sit",
+    "name": "V-Sit",
+    "description": "Advanced bodyweight pattern requiring high scapular control, full‑body tension and precise leverage. Keep elbows locked (if straight‑arm), brace the core, and maintain clean lines to handle the increased torque.",
+    "category": "CORE",
+    "difficulty": "S (Expert)",
+    "unit": "seconds",
+    "muscleGroups": [],
+    "equipment": [
+      "FLOOR",
+      "PARALLEL_BARS"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Create full‑body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
+    "gifUrl": null,
+    "thumbnailUrl": null,
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "v_sit",
+    "name": "V-Sit",
+    "description": "Advanced bodyweight pattern requiring high scapular control, full‑body tension and precise leverage. Keep elbows locked (if straight‑arm), brace the core, and maintain clean lines to handle the increased torque.",
+    "category": "SKILL_STATIC",
+    "difficulty": "S (Expert)",
+    "unit": "seconds",
+    "muscleGroups": [
+      "CORE",
+      "HIP_FLEXORS",
+      "SHOULDERS"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Create full‑body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
+    "gifUrl": "https://static.exercisedb.dev/media/ZuXu4Eq.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/ZuXu4Eq.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  },
+  {
+    "id": "v-sit-on-floor",
+    "name": "V-sit On Floor",
+    "description": "Advanced bodyweight pattern requiring high scapular control, full‑body tension and precise leverage. Keep elbows locked (if straight‑arm), brace the core, and maintain clean lines to handle the increased torque.",
+    "category": "CORE",
+    "difficulty": "S (Expert)",
+    "unit": "reps",
+    "muscleGroups": [
+      "Abs",
+      "Hip Flexors"
+    ],
+    "equipment": [
+      "NONE"
+    ],
+    "expReward": 38,
+    "coinsReward": 19,
+    "howTo": "1) Setup: Create full‑body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
+    "gifUrl": "https://static.exercisedb.dev/media/ZuXu4Eq.gif",
+    "thumbnailUrl": "https://static.exercisedb.dev/media/ZuXu4Eq.gif",
+    "videoUrl": null,
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
+  }
+]
