@@ -58,6 +58,12 @@ export default function DashboardPage() {
       if (res.ok) {
         const data = await res.json();
         setUserData(data);
+
+        // Check if user needs to complete assessment
+        if (!data.user?.fitnessLevel) {
+          router.push('/onboarding/assessment');
+          return;
+        }
       }
     } catch (error) {
       console.error('Error fetching dashboard data:', error);
