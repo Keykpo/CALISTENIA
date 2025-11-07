@@ -131,7 +131,7 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
           </CardHeader>
           <CardContent>
             <div className="flex justify-center">
-              <HexagonRadar data={hexagonData} size={300} />
+              <HexagonRadar values={hexagonData} size={300} />
             </div>
           </CardContent>
         </Card>

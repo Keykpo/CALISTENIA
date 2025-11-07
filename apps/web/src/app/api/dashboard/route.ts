@@ -131,11 +131,24 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json({
       success: true,
+      user: {
+        id: user?.id,
+        email: user?.email,
+        firstName: user?.firstName,
+        lastName: user?.lastName,
+        username: user?.username,
+        height: user?.height,
+        weight: user?.weight,
+        fitnessLevel: user?.fitnessLevel,
+        gender: user?.gender,
+        createdAt: user?.createdAt,
+      },
       stats: {
         totalXP: user?.totalXP ?? 0,
         level: user?.currentLevel ?? 1,
         coins: user?.virtualCoins ?? 0,
         dailyStreak: user?.dailyStreak ?? 0,
+        totalStrength: user?.totalStrength ?? 0,
         lastDailyCompletedAt: user?.lastDailyCompletedAt,
       },
       hexagon: hex ?? null,
