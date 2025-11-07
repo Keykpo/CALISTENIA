@@ -84,24 +84,27 @@ export default function RegisterPage() {
         throw new Error(data.error || 'Error al crear la cuenta');
       }
 
+      // Use redirectTo from API response or default to assessment
+      const redirectPath = data.redirectTo || '/onboarding/assessment';
+
       setSuccess('¡Cuenta creada exitosamente! Iniciando sesión...');
-      
+
       // Auto-login después del registro exitoso
       const result = await signIn('credentials', {
         email: formData.email,
         password: formData.password,
-        callbackUrl: '/dashboard',
+        callbackUrl: redirectPath,
         redirect: false,
       });
-      
+
       if (result?.error) {
         setSuccess('Cuenta creada exitosamente. Redirigiendo al login...');
         setTimeout(() => {
           router.push('/auth/signin?message=account-created');
         }, 2000);
       } else {
-        // Redirigir al dashboard si el auto-login fue exitoso
-        window.location.href = '/dashboard';
+        // Redirigir al cuestionario de evaluación si el auto-login fue exitoso
+        window.location.href = redirectPath;
       }
 
     } catch (err) {

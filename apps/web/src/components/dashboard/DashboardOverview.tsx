@@ -3,6 +3,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import {
   TrendingUp,
   Zap,
@@ -11,9 +12,11 @@ import {
   Target,
   Calendar,
   Activity,
-  RefreshCw
+  RefreshCw,
+  AlertCircle
 } from 'lucide-react';
 import HexagonRadar from '../HexagonRadar';
+import Link from 'next/link';
 
 interface DashboardOverviewProps {
   userData: any;
@@ -53,6 +56,24 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
 
   return (
     <div className="space-y-6">
+      {/* Assessment Alert */}
+      {!userData?.user?.hasCompletedAssessment && (
+        <Alert className="border-blue-200 bg-blue-50">
+          <AlertCircle className="h-4 w-4 text-blue-600" />
+          <AlertTitle className="text-blue-900">Completa tu Evaluación Inicial</AlertTitle>
+          <AlertDescription className="text-blue-800">
+            <p className="mb-3">
+              Para obtener rutinas personalizadas según tu nivel y objetivos, completa el cuestionario de evaluación.
+            </p>
+            <Link href="/onboarding/assessment">
+              <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
+                Ir al Cuestionario
+              </Button>
+            </Link>
+          </AlertDescription>
+        </Alert>
+      )}
+
       {/* Stats Grid */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {/* Level Card */}

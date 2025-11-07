@@ -62,7 +62,7 @@ export async function GET(req: NextRequest) {
               type: 'complete_exercises',
               description: 'Completa 3 ejercicios hoy',
               target: 3,
-              rewardXP: 20,
+              rewardXP: 25,
               rewardCoins: 10,
             },
             {
@@ -71,8 +71,8 @@ export async function GET(req: NextRequest) {
               type: 'core_focus',
               description: 'Incluye 1 ejercicio de CORE',
               target: 1,
-              rewardXP: 15,
-              rewardCoins: 5,
+              rewardXP: 20,
+              rewardCoins: 8,
             },
             {
               userId,
@@ -80,8 +80,8 @@ export async function GET(req: NextRequest) {
               type: 'hydration',
               description: 'Hidrátate durante el entrenamiento',
               target: null,
-              rewardXP: 5,
-              rewardCoins: 0,
+              rewardXP: 10,
+              rewardCoins: 5,
             },
           ],
           skipDuplicates: true,
@@ -129,6 +129,11 @@ export async function GET(req: NextRequest) {
       counts[k] = (counts[k] ?? 0) + 1;
     }
 
+    // Check if user has completed assessment
+    const hasCompletedAssessment = await prisma.userAssessment.findFirst({
+      where: { userId },
+    });
+
     return NextResponse.json({
       success: true,
       user: {
@@ -142,6 +147,7 @@ export async function GET(req: NextRequest) {
         fitnessLevel: user?.fitnessLevel,
         gender: user?.gender,
         createdAt: user?.createdAt,
+        hasCompletedAssessment: !!hasCompletedAssessment,
       },
       stats: {
         totalXP: user?.totalXP ?? 0,
@@ -167,15 +173,15 @@ export async function GET(req: NextRequest) {
         const fallback: DevMission[] = [
           {
             id: `${baseId}-1`, userId, date: today, type: 'complete_exercises',
-            description: 'Completa 3 ejercicios hoy', target: 3, progress: 0, completed: false, rewardXP: 20, rewardCoins: 10,
+            description: 'Completa 3 ejercicios hoy', target: 3, progress: 0, completed: false, rewardXP: 25, rewardCoins: 10,
           },
           {
             id: `${baseId}-2`, userId, date: today, type: 'core_focus',
-            description: 'Incluye 1 ejercicio de CORE', target: 1, progress: 0, completed: false, rewardXP: 15, rewardCoins: 5,
+            description: 'Incluye 1 ejercicio de CORE', target: 1, progress: 0, completed: false, rewardXP: 20, rewardCoins: 8,
           },
           {
             id: `${baseId}-3`, userId, date: today, type: 'hydration',
-            description: 'Hidrátate durante el entrenamiento', target: null, progress: 0, completed: false, rewardXP: 5, rewardCoins: 0,
+            description: 'Hidrátate durante el entrenamiento', target: null, progress: 0, completed: false, rewardXP: 10, rewardCoins: 5,
           },
         ];
         saveDailyMissions(userId, fallback);

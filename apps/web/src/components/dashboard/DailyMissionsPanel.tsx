@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import toast from 'react-hot-toast';
 import {
   Target,
   CheckCircle2,
@@ -12,7 +13,8 @@ import {
   Award,
   RefreshCw,
   Flame,
-  TrendingUp
+  TrendingUp,
+  Coins
 } from 'lucide-react';
 
 interface Mission {
@@ -35,6 +37,7 @@ export default function DailyMissionsPanel({ userId, onMissionComplete }: DailyM
   const [missions, setMissions] = useState<Mission[]>([]);
   const [loading, setLoading] = useState(true);
   const [completing, setCompleting] = useState<string | null>(null);
+  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
     fetchMissions();
@@ -82,14 +85,48 @@ export default function DailyMissionsPanel({ userId, onMissionComplete }: DailyM
             )
           );
 
+          // Show success toast
+          toast.success(`¡Misión completada! +${data.rewards?.xp || 0} XP y +${data.rewards?.coins || 0} monedas`);
+
           // Notify parent
           onMissionComplete?.();
         }
       }
     } catch (error) {
       console.error('Error completing mission:', error);
+      toast.error("No se pudo completar la misión");
     } finally {
       setCompleting(null);
+    }
+  };
+
+  const refreshMissions = async () => {
+    try {
+      setRefreshing(true);
+      const res = await fetch('/api/missions/refresh', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-user-id': userId,
+        },
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        setMissions(data.missions || []);
+        toast.success(data.message || "¡Misiones actualizadas exitosamente!");
+
+        // Notify parent to refresh coins
+        onMissionComplete?.();
+      } else {
+        toast.error(data.error || "No se pudieron generar nuevas misiones");
+      }
+    } catch (error) {
+      console.error('Error refreshing missions:', error);
+      toast.error("No se pudo refrescar las misiones");
+    } finally {
+      setRefreshing(false);
     }
   };
 
@@ -176,10 +213,13 @@ export default function DailyMissionsPanel({ userId, onMissionComplete }: DailyM
             <Button
               variant="outline"
               size="sm"
-              onClick={fetchMissions}
-              disabled={loading}
+              onClick={refreshMissions}
+              disabled={refreshing || loading}
+              className="gap-2"
             >
-              <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+              <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
+              <Coins className="w-4 h-4" />
+              <span>3</span>
             </Button>
           </div>
         </CardHeader>
@@ -280,9 +320,11 @@ export default function DailyMissionsPanel({ userId, onMissionComplete }: DailyM
             <div className="text-center py-12">
               <Target className="w-16 h-16 mx-auto text-slate-300 mb-4" />
               <p className="text-slate-500 mb-4">No hay misiones disponibles hoy</p>
-              <Button onClick={fetchMissions} variant="outline">
-                <RefreshCw className="w-4 h-4 mr-2" />
+              <Button onClick={refreshMissions} variant="outline" disabled={refreshing} className="gap-2">
+                <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
                 Generar Misiones
+                <Coins className="w-4 h-4 ml-2" />
+                <span>3</span>
               </Button>
             </div>
           )}
