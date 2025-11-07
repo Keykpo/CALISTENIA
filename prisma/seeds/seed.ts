@@ -1,5 +1,5 @@
-﻿import { PrismaClient } from '@prisma/client';
-import { skillsFromExercises, skillCounts } from './skills-from-exercises-en';
+import { PrismaClient } from '@prisma/client';
+import { skillsFromExercises, skillCounts } from './skills-from-exercises';
 import { allAchievements } from './achievements-data';
 
 const prisma = new PrismaClient();

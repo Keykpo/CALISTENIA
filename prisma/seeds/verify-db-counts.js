@@ -3,6 +3,14 @@ const { PrismaClient } = require('@prisma/client');
 async function main() {
   const prisma = new PrismaClient();
   try {
+    console.log('DATABASE_URL =', process.env.DATABASE_URL);
+
+    // List tables to diagnose schema state
+    const tables = await prisma.$queryRawUnsafe(
+      "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;"
+    );
+    console.log('Tables in dev.db:', tables.map(t => t.name));
+
     const skills = await prisma.skill.count();
     const achievements = await prisma.achievement.count();
     const prerequisites = await prisma.skillPrerequisite.count();
@@ -14,7 +22,7 @@ async function main() {
     const sampleSkills = await prisma.skill.findMany({
       take: 5,
       orderBy: { id: 'asc' },
-      select: { id: true, name: true },
+      select: { id: true, name: true, branch: true },
     });
     console.log('Sample skills:', sampleSkills);
   } catch (e) {
