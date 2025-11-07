@@ -118,7 +118,7 @@ export async function POST(req: NextRequest) {
     const allMissionsToday = await prisma.dailyMission.findMany({
       where: { userId, date: today },
     });
-    const allCompleted = allMissionsToday.every((m) => m.id === missionIdStr || m.completed);
+    const allCompleted = allMissionsToday.every((m: any) => m.id === missionIdStr || m.completed);
 
     let newStreak = user.dailyStreak ?? 0;
     let lastCompleted = user.lastDailyCompletedAt;
