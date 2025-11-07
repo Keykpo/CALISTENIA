@@ -112,7 +112,8 @@ export async function POST(req: NextRequest) {
       {
         success: true,
         message: "Usuario creado exitosamente",
-        user
+        user,
+        redirectTo: '/onboarding/assessment'
       },
       { status: 201 }
     );
