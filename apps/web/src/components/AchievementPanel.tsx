@@ -82,7 +82,10 @@ export default function AchievementPanel({ userId }: AchievementPanelProps) {
 
   const fetchAchievements = async () => {
     try {
-      const response = await fetch('/api/user/achievements');
+      const url = userId
+        ? `/api/user/achievements?userId=${encodeURIComponent(userId)}`
+        : '/api/user/achievements';
+      const response = await fetch(url);
       if (response.ok) {
         const data = await response.json();
         setAchievements(data.achievements);
@@ -97,7 +100,10 @@ export default function AchievementPanel({ userId }: AchievementPanelProps) {
 
   const checkForNewAchievements = async () => {
     try {
-      const response = await fetch('/api/user/achievements', {
+      const url = userId
+        ? `/api/user/achievements?userId=${encodeURIComponent(userId)}`
+        : '/api/user/achievements';
+      const response = await fetch(url, {
         method: 'POST',
       });
       if (response.ok) {

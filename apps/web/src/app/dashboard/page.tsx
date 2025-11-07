@@ -11,7 +11,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import SkillPathReference from '@/components/SkillPathReference';
+import SkillTree from '@/components/SkillTree';
 import AchievementPanel from '@/components/AchievementPanel';
 import UserProfile from '@/components/UserProfile';
 import { 
@@ -725,8 +725,8 @@ export default function DashboardPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                {/* Reemplazado: eliminamos el árbol de habilidades y mostramos layout estático */}
-                <SkillPathReference />
+                {/* Renderiza el árbol de habilidades dinámico con prerequisitos y progreso */}
+                <SkillTree userId={computedUserId} />
               </CardContent>
             </Card>
           </TabsContent>
