@@ -187,10 +187,16 @@ export async function GET(req: NextRequest) {
       // Generar misiones adaptativas según nivel
       const adaptiveMissions = generateAdaptiveMissions(userId, today, level, hexProfile);
 
-      await prisma.dailyMission.createMany({
-        data: adaptiveMissions,
-        skipDuplicates: true,
+      // SQLite doesn't support skipDuplicates, so we check first
+      const existingCheck = await prisma.dailyMission.findFirst({
+        where: { userId, date: today }
       });
+
+      if (!existingCheck) {
+        await prisma.dailyMission.createMany({
+          data: adaptiveMissions,
+        });
+      }
     }
 
     const missions = await prisma.dailyMission.findMany({ where: { userId, date: today } });

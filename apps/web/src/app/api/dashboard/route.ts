@@ -54,38 +54,44 @@ export async function GET(req: NextRequest) {
     let missionsToday = await prisma.dailyMission.findMany({ where: { userId, date: today }, orderBy: { createdAt: 'asc' } });
     if (missionsToday.length === 0) {
       try {
-        await prisma.dailyMission.createMany({
-          data: [
-            {
-              userId,
-              date: today,
-              type: 'complete_exercises',
-              description: 'Completa 3 ejercicios hoy',
-              target: 3,
-              rewardXP: 25,
-              rewardCoins: 10,
-            },
-            {
-              userId,
-              date: today,
-              type: 'core_focus',
-              description: 'Incluye 1 ejercicio de CORE',
-              target: 1,
-              rewardXP: 20,
-              rewardCoins: 8,
-            },
-            {
-              userId,
-              date: today,
-              type: 'hydration',
-              description: 'Hidrátate durante el entrenamiento',
-              target: null,
-              rewardXP: 10,
-              rewardCoins: 5,
-            },
-          ],
-          skipDuplicates: true,
+        // Check if missions already exist before creating (SQLite doesn't support skipDuplicates)
+        const existingMissions = await prisma.dailyMission.findFirst({
+          where: { userId, date: today }
         });
+
+        if (!existingMissions) {
+          await prisma.dailyMission.createMany({
+            data: [
+              {
+                userId,
+                date: today,
+                type: 'complete_exercises',
+                description: 'Completa 3 ejercicios hoy',
+                target: 3,
+                rewardXP: 25,
+                rewardCoins: 10,
+              },
+              {
+                userId,
+                date: today,
+                type: 'core_focus',
+                description: 'Incluye 1 ejercicio de CORE',
+                target: 1,
+                rewardXP: 20,
+                rewardCoins: 8,
+              },
+              {
+                userId,
+                date: today,
+                type: 'hydration',
+                description: 'Hidrátate durante el entrenamiento',
+                target: null,
+                rewardXP: 10,
+                rewardCoins: 5,
+              },
+            ],
+          });
+        }
       } catch (e) {
         // ignore insertion error in dev
       }

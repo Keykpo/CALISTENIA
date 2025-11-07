@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
+import toast from 'react-hot-toast';
 import {
   Trophy,
   Award,
@@ -13,7 +14,9 @@ import {
   Sparkles,
   Lock,
   RefreshCw,
-  Target
+  Target,
+  CheckCircle,
+  Link as LinkIcon
 } from 'lucide-react';
 
 interface Achievement {
@@ -25,10 +28,25 @@ interface Achievement {
   unit?: string;
   points: number;
   rarity: string;
+  level?: number;
+  chainName?: string;
   iconUrl?: string;
   isUnlocked?: boolean;
   progress?: number;
   unlockedAt?: string;
+}
+
+interface ActiveAchievement {
+  achievement: Achievement;
+  userAchievement: {
+    id: string;
+    progress: number;
+    completed: boolean;
+    completedAt?: string;
+  } | null;
+  chainName: string;
+  isActive: boolean;
+  chainCompleted?: boolean;
 }
 
 interface AchievementsViewProps {
@@ -36,22 +54,22 @@ interface AchievementsViewProps {
 }
 
 const RARITY_CONFIG = {
-  COMMON: {
+  NOVICE: {
     color: 'bg-slate-100 text-slate-800 border-slate-300',
     icon: Star,
     bgGradient: 'from-slate-50 to-slate-100',
   },
-  UNCOMMON: {
+  INTERMEDIATE: {
     color: 'bg-green-100 text-green-800 border-green-300',
     icon: Award,
     bgGradient: 'from-green-50 to-green-100',
   },
-  RARE: {
+  ADVANCED: {
     color: 'bg-blue-100 text-blue-800 border-blue-300',
     icon: Trophy,
     bgGradient: 'from-blue-50 to-blue-100',
   },
-  EPIC: {
+  EXPERT: {
     color: 'bg-purple-100 text-purple-800 border-purple-300',
     icon: Sparkles,
     bgGradient: 'from-purple-50 to-purple-100',
@@ -63,64 +81,69 @@ const RARITY_CONFIG = {
   },
 };
 
-const TYPE_NAMES = {
-  EXERCISE_MASTERY: 'Maestría de Ejercicios',
-  WORKOUT_COUNT: 'Entrenamientos',
-  STREAK: 'Rachas',
-  PROGRESS_MILESTONE: 'Hitos de Progreso',
-  COURSE_COMPLETION: 'Cursos',
-  COMMUNITY_ENGAGEMENT: 'Comunidad',
-  SPECIAL_EVENT: 'Eventos Especiales',
-};
-
 export default function AchievementsView({ userId }: AchievementsViewProps) {
-  const [achievements, setAchievements] = useState<Achievement[]>([]);
+  const [activeAchievements, setActiveAchievements] = useState<ActiveAchievement[]>([]);
+  const [stats, setStats] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState<'ALL' | 'UNLOCKED' | 'LOCKED'>('ALL');
+  const [completing, setCompleting] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchAchievements();
+    fetchActiveAchievements();
   }, [userId]);
 
-  const fetchAchievements = async () => {
+  const fetchActiveAchievements = async () => {
     try {
       setLoading(true);
-      const res = await fetch('/api/achievements', {
+      const res = await fetch('/api/achievements/active', {
         headers: { 'x-user-id': userId },
       });
 
       if (res.ok) {
         const data = await res.json();
-        setAchievements(data.achievements || []);
+        setActiveAchievements(data.activeAchievements || []);
+        setStats(data.stats || null);
       }
     } catch (error) {
-      console.error('Error fetching achievements:', error);
+      console.error('Error fetching active achievements:', error);
+      toast.error('Error al cargar los logros');
     } finally {
       setLoading(false);
     }
   };
 
-  // Filter achievements
-  const filteredAchievements = achievements.filter(a => {
-    if (filter === 'UNLOCKED') return a.isUnlocked;
-    if (filter === 'LOCKED') return !a.isUnlocked;
-    return true;
-  });
+  const handleCompleteAchievement = async (achievementId: string) => {
+    try {
+      setCompleting(achievementId);
+      const res = await fetch('/api/achievements/complete', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-user-id': userId,
+        },
+        body: JSON.stringify({ achievementId }),
+      });
 
-  // Calculate stats
-  const totalAchievements = achievements.length;
-  const unlockedCount = achievements.filter(a => a.isUnlocked).length;
-  const totalPoints = achievements
-    .filter(a => a.isUnlocked)
-    .reduce((sum, a) => sum + a.points, 0);
-  const maxPoints = achievements.reduce((sum, a) => sum + a.points, 0);
+      const data = await res.json();
 
-  // Group by type
-  const achievementsByType = achievements.reduce((acc, achievement) => {
-    if (!acc[achievement.type]) acc[achievement.type] = [];
-    acc[achievement.type].push(achievement);
-    return acc;
-  }, {} as Record<string, Achievement[]>);
+      if (res.ok && data.success) {
+        toast.success(data.message || '¡Logro completado!');
+
+        if (data.unlockedNext) {
+          toast.success('🎉 ' + data.unlockedNext.message, { duration: 5000 });
+        }
+
+        // Refresh achievements
+        await fetchActiveAchievements();
+      } else {
+        toast.error(data.error || 'Error al completar el logro');
+      }
+    } catch (error) {
+      console.error('Error completing achievement:', error);
+      toast.error('Error al completar el logro');
+    } finally {
+      setCompleting(null);
+    }
+  };
 
   if (loading) {
     return (
@@ -142,16 +165,16 @@ export default function AchievementsView({ userId }: AchievementsViewProps) {
         <Card>
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-slate-600">
-              Logros Desbloqueados
+              Logros Completados
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex items-baseline gap-2">
-              <span className="text-3xl font-bold text-green-600">{unlockedCount}</span>
-              <span className="text-slate-500">/ {totalAchievements}</span>
+              <span className="text-3xl font-bold text-green-600">{stats?.completed || 0}</span>
+              <span className="text-slate-500">/ {stats?.total || 0}</span>
             </div>
             <Progress
-              value={(unlockedCount / totalAchievements) * 100}
+              value={stats?.completionPercentage || 0}
               className="mt-2 h-2"
             />
           </CardContent>
@@ -160,14 +183,16 @@ export default function AchievementsView({ userId }: AchievementsViewProps) {
         <Card>
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-slate-600">
-              Puntos Totales
+              Cadenas Activas
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex items-baseline gap-2">
-              <Trophy className="w-5 h-5 text-amber-500" />
-              <span className="text-3xl font-bold text-amber-600">{totalPoints}</span>
-              <span className="text-slate-500">/ {maxPoints}</span>
+              <LinkIcon className="w-5 h-5 text-blue-500" />
+              <span className="text-3xl font-bold text-blue-600">
+                {activeAchievements.filter(a => a.isActive).length}
+              </span>
+              <span className="text-slate-500">/ {stats?.chainsCount || 0}</span>
             </div>
           </CardContent>
         </Card>
@@ -180,92 +205,75 @@ export default function AchievementsView({ userId }: AchievementsViewProps) {
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-blue-600">
-              {Math.round((unlockedCount / totalAchievements) * 100)}%
+              {stats?.completionPercentage || 0}%
             </div>
             <Progress
-              value={(unlockedCount / totalAchievements) * 100}
+              value={stats?.completionPercentage || 0}
               className="mt-2 h-2"
             />
           </CardContent>
         </Card>
       </div>
 
-      {/* Filter Buttons */}
+      {/* Active Achievements Header */}
       <Card>
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="flex items-center gap-2">
                 <Trophy className="w-5 h-5" />
-                Tus Logros
+                Cadenas de Logros Activas
               </CardTitle>
               <CardDescription>
-                Desbloquea logros completando desafíos
+                Completa logros manualmente para desbloquear el siguiente nivel
               </CardDescription>
             </div>
-            <Button onClick={fetchAchievements} variant="outline" size="sm">
+            <Button onClick={fetchActiveAchievements} variant="outline" size="sm">
               <RefreshCw className="w-4 h-4" />
             </Button>
           </div>
         </CardHeader>
-        <CardContent>
-          <div className="flex gap-2">
-            <Button
-              variant={filter === 'ALL' ? 'default' : 'outline'}
-              size="sm"
-              onClick={() => setFilter('ALL')}
-            >
-              Todos ({totalAchievements})
-            </Button>
-            <Button
-              variant={filter === 'UNLOCKED' ? 'default' : 'outline'}
-              size="sm"
-              onClick={() => setFilter('UNLOCKED')}
-            >
-              Desbloqueados ({unlockedCount})
-            </Button>
-            <Button
-              variant={filter === 'LOCKED' ? 'default' : 'outline'}
-              size="sm"
-              onClick={() => setFilter('LOCKED')}
-            >
-              Bloqueados ({totalAchievements - unlockedCount})
-            </Button>
-          </div>
-        </CardContent>
       </Card>
 
-      {/* Achievements Grid */}
+      {/* Active Achievements Grid */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {filteredAchievements.length > 0 ? (
-          filteredAchievements.map((achievement) => {
+        {activeAchievements.length > 0 ? (
+          activeAchievements.map((activeAch) => {
+            const achievement = activeAch.achievement;
             const rarityConfig = RARITY_CONFIG[achievement.rarity as keyof typeof RARITY_CONFIG];
             const IconComponent = rarityConfig?.icon || Trophy;
+            const isCompleted = activeAch.userAchievement?.completed || false;
+            const chainCompleted = activeAch.chainCompleted || false;
 
             return (
               <Card
                 key={achievement.id}
                 className={`transition-all ${
-                  achievement.isUnlocked
-                    ? `bg-gradient-to-br ${rarityConfig?.bgGradient} hover:shadow-lg`
-                    : 'opacity-60'
+                  chainCompleted
+                    ? `bg-gradient-to-br ${rarityConfig?.bgGradient} border-2 border-green-400`
+                    : isCompleted
+                    ? `bg-gradient-to-br ${rarityConfig?.bgGradient} opacity-75`
+                    : `bg-gradient-to-br ${rarityConfig?.bgGradient} hover:shadow-lg`
                 }`}
               >
                 <CardHeader className="pb-3">
                   <div className="flex items-start justify-between gap-2">
-                    <div className="flex items-center gap-2">
-                      {achievement.isUnlocked ? (
-                        <IconComponent className="w-6 h-6 text-amber-500" />
-                      ) : (
-                        <Lock className="w-6 h-6 text-slate-400" />
-                      )}
-                      <div>
-                        <CardTitle className="text-lg">{achievement.name}</CardTitle>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        {chainCompleted ? (
+                          <CheckCircle className="w-6 h-6 text-green-600" />
+                        ) : isCompleted ? (
+                          <CheckCircle className="w-6 h-6 text-slate-400" />
+                        ) : (
+                          <IconComponent className="w-6 h-6 text-amber-500" />
+                        )}
+                        <Badge className={rarityConfig?.color} variant="outline">
+                          Level {achievement.level}
+                        </Badge>
                       </div>
+                      <CardTitle className="text-lg">{achievement.name}</CardTitle>
+                      <p className="text-xs text-slate-500 mt-1">{activeAch.chainName}</p>
                     </div>
-                    <Badge className={rarityConfig?.color}>
-                      {achievement.rarity}
-                    </Badge>
                   </div>
                 </CardHeader>
 
@@ -284,39 +292,51 @@ export default function AchievementsView({ userId }: AchievementsViewProps) {
                     </div>
                   )}
 
-                  {/* Progress */}
-                  {!achievement.isUnlocked && achievement.progress !== undefined && achievement.target && (
-                    <div>
-                      <div className="flex justify-between text-xs text-slate-600 mb-1">
-                        <span>
-                          {achievement.progress} / {achievement.target}
-                        </span>
-                        <span>
-                          {Math.round((achievement.progress / achievement.target) * 100)}%
-                        </span>
-                      </div>
-                      <Progress
-                        value={(achievement.progress / achievement.target) * 100}
-                        className="h-2"
-                      />
-                    </div>
-                  )}
-
-                  {/* Points */}
-                  <div className="flex items-center justify-between pt-2 border-t">
-                    <div className="flex items-center gap-1">
-                      <Award className="w-4 h-4 text-amber-500" />
-                      <span className="font-medium text-amber-600">
-                        {achievement.points} puntos
-                      </span>
-                    </div>
-
-                    {achievement.isUnlocked && achievement.unlockedAt && (
-                      <span className="text-xs text-slate-500">
-                        {new Date(achievement.unlockedAt).toLocaleDateString('es-ES')}
-                      </span>
-                    )}
+                  {/* Rewards */}
+                  <div className="flex items-center gap-2 py-2 border-t">
+                    <Award className="w-4 h-4 text-amber-500" />
+                    <span className="font-medium text-amber-600">
+                      +{achievement.points} XP
+                    </span>
+                    <span className="text-slate-400">•</span>
+                    <span className="font-medium text-amber-600">
+                      +{Math.floor(achievement.points / 10)} Coins
+                    </span>
                   </div>
+
+                  {/* Action Button */}
+                  {chainCompleted ? (
+                    <div className="flex items-center justify-center p-3 bg-green-100 rounded-lg">
+                      <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                      <span className="font-medium text-green-700">
+                        ¡Cadena Completada!
+                      </span>
+                    </div>
+                  ) : isCompleted ? (
+                    <div className="flex items-center justify-center p-3 bg-slate-100 rounded-lg">
+                      <CheckCircle className="w-5 h-5 text-slate-400 mr-2" />
+                      <span className="text-slate-500">Completado</span>
+                    </div>
+                  ) : (
+                    <Button
+                      onClick={() => handleCompleteAchievement(achievement.id)}
+                      disabled={completing === achievement.id}
+                      className="w-full"
+                      size="lg"
+                    >
+                      {completing === achievement.id ? (
+                        <>
+                          <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+                          Completando...
+                        </>
+                      ) : (
+                        <>
+                          <CheckCircle className="w-4 h-4 mr-2" />
+                          Marcar como Completado
+                        </>
+                      )}
+                    </Button>
+                  )}
                 </CardContent>
               </Card>
             );
@@ -325,13 +345,9 @@ export default function AchievementsView({ userId }: AchievementsViewProps) {
           <div className="col-span-full text-center py-12">
             <Trophy className="w-16 h-16 mx-auto text-slate-300 mb-4" />
             <p className="text-slate-500 mb-4">
-              {filter === 'UNLOCKED'
-                ? 'Aún no has desbloqueado ningún logro'
-                : filter === 'LOCKED'
-                ? 'No hay logros bloqueados'
-                : 'No hay logros disponibles'}
+              No hay logros activos disponibles
             </p>
-            <Button onClick={fetchAchievements} variant="outline">
+            <Button onClick={fetchActiveAchievements} variant="outline">
               <RefreshCw className="w-4 h-4 mr-2" />
               Actualizar
             </Button>
