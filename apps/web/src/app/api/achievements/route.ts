@@ -35,9 +35,9 @@ export async function GET(request: NextRequest) {
     });
 
     // Map to create a complete picture
-    const achievements = allAchievements.map(achievement => {
+    const achievements = allAchievements.map((achievement: any) => {
       const userAchievement = userAchievements.find(
-        ua => ua.achievementId === achievement.id
+        (ua: any) => ua.achievementId === achievement.id
       );
 
       return {
@@ -61,10 +61,10 @@ export async function GET(request: NextRequest) {
       achievements,
       stats: {
         total: achievements.length,
-        unlocked: achievements.filter(a => a.isUnlocked).length,
+        unlocked: achievements.filter((a: any) => a.isUnlocked).length,
         points: achievements
-          .filter(a => a.isUnlocked)
-          .reduce((sum, a) => sum + a.points, 0),
+          .filter((a: any) => a.isUnlocked)
+          .reduce((sum: number, a: any) => sum + a.points, 0),
       },
     });
   } catch (error) {
