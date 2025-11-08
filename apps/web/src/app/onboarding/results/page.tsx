@@ -53,11 +53,27 @@ export default function OnboardingResultsPage() {
     }
   }, [status, session, router]);
 
+  // Auto-refresh when page gains focus
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (!document.hidden && session?.user?.id) {
+        fetchUserData();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [session?.user?.id]);
+
   const fetchUserData = async () => {
     try {
-      const res = await fetch('/api/user/profile', {
+      const res = await fetch(`/api/user/profile?t=${Date.now()}`, {
+        cache: 'no-store',
         headers: {
           'x-user-id': session?.user?.id as string,
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
         },
       });
 

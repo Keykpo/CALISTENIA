@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
+import { updateAxisXP, type HexagonProfileWithXP, type HexagonAxis } from '@/lib/hexagon-progression';
 
 export const runtime = 'nodejs';
 
@@ -98,6 +99,7 @@ export async function POST(req: NextRequest) {
     // Award points to user
     const user = await prisma.user.findUnique({
       where: { id: userId },
+      include: { hexagonProfile: true },
     });
 
     if (user) {
@@ -112,6 +114,56 @@ export async function POST(req: NextRequest) {
           virtualCoins: newCoins,
           currentLevel: newLevel,
         },
+      });
+
+      // Apply XP to hexagon profile - distribute evenly across all axes
+      let hexProfile = user.hexagonProfile;
+
+      if (!hexProfile) {
+        hexProfile = await prisma.hexagonProfile.create({
+          data: {
+            userId,
+            relativeStrength: 0,
+            muscularEndurance: 0,
+            balanceControl: 0,
+            jointMobility: 0,
+            bodyTension: 0,
+            skillTechnique: 0,
+            relativeStrengthXP: 0,
+            muscularEnduranceXP: 0,
+            balanceControlXP: 0,
+            jointMobilityXP: 0,
+            bodyTensionXP: 0,
+            skillTechniqueXP: 0,
+          },
+        });
+      }
+
+      // Distribute achievement XP evenly across all axes
+      const xpPerAxis = Math.round(achievement.points / 6);
+      const axes: HexagonAxis[] = [
+        'relativeStrength',
+        'muscularEndurance',
+        'balanceControl',
+        'jointMobility',
+        'bodyTension',
+        'skillTechnique',
+      ];
+
+      let updatedProfile = hexProfile as HexagonProfileWithXP;
+      const updates: Record<string, any> = {};
+
+      for (const axis of axes) {
+        updatedProfile = updateAxisXP(updatedProfile, axis, xpPerAxis);
+        updates[axis] = updatedProfile[axis as keyof HexagonProfileWithXP];
+        updates[`${axis}XP`] = updatedProfile[`${axis}XP` as keyof HexagonProfileWithXP];
+        updates[`${axis}Level`] = updatedProfile[`${axis}Level` as keyof HexagonProfileWithXP];
+      }
+
+      // Save hexagon updates
+      await prisma.hexagonProfile.update({
+        where: { userId },
+        data: updates,
       });
     }
 
