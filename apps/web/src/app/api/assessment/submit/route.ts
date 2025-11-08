@@ -108,11 +108,14 @@ export async function POST(req: NextRequest) {
       updatedGoals.push(data.goal);
     }
 
+    // 🔥 INTERRUPTOR DEL BUCLE - Actualizar usuario con assessment completado
     await prisma.user.update({
       where: { id: userId },
       data: {
         fitnessLevel: data.overallLevel,
         goals: JSON.stringify(updatedGoals),
+        hasCompletedAssessment: true,  // 🎯 INTERRUPTOR ACTIVADO
+        assessmentDate: new Date(),    // Registro de cuándo completó
       },
     });
 
@@ -172,6 +175,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       success: true,
       message: 'Evaluación completada exitosamente',
+      redirectTo: '/onboarding/results',
       results: {
         fitnessLevel: data.overallLevel,
         hexagonProfile: hexagonValues,
