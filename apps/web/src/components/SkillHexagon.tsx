@@ -3,7 +3,7 @@
 import { Card } from '@/components/ui/card';
 import { useEffect, useState } from 'react';
 
-interface HexagonProfile {
+export interface HexagonProfile {
   relativeStrength: number;
   muscularEndurance: number;
   balanceControl: number;
@@ -12,17 +12,33 @@ interface HexagonProfile {
   skillTechnique: number;
 }
 
-interface ResultsHexagonProps {
+interface SkillHexagonProps {
   profile: HexagonProfile;
+  showCard?: boolean;
+  animated?: boolean;
+  title?: string;
+  description?: string;
+  size?: number;
 }
 
-export default function ResultsHexagon({ profile }: ResultsHexagonProps) {
-  const [animated, setAnimated] = useState(false);
+export default function SkillHexagon({
+  profile,
+  showCard = true,
+  animated = true,
+  title = 'Your Skill Hexagon',
+  description,
+  size = 400
+}: SkillHexagonProps) {
+  const [animationTriggered, setAnimationTriggered] = useState(false);
 
   useEffect(() => {
-    // Trigger animation after mount
-    setTimeout(() => setAnimated(true), 100);
-  }, []);
+    if (animated) {
+      // Trigger animation after mount
+      setTimeout(() => setAnimationTriggered(true), 100);
+    } else {
+      setAnimationTriggered(true);
+    }
+  }, [animated]);
 
   const categories = [
     { key: 'relativeStrength', label: 'Relative Strength', value: profile.relativeStrength },
@@ -58,14 +74,16 @@ export default function ResultsHexagon({ profile }: ResultsHexagonProps) {
   // Create path string for the hexagon
   const pathString = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ') + ' Z';
 
-  return (
-    <Card className="p-6">
-      <h3 className="text-lg font-semibold text-slate-900 mb-4">Your Skill Hexagon</h3>
+  const content = (
+    <div className="w-full">
+      {title && showCard && (
+        <h3 className="text-lg font-semibold text-slate-900 mb-4">{title}</h3>
+      )}
 
       <svg
         viewBox="0 0 400 450"
         className="w-full h-auto"
-        style={{ maxWidth: '400px', margin: '0 auto' }}
+        style={{ maxWidth: `${size}px`, margin: '0 auto' }}
       >
         {/* Background concentric hexagons */}
         {[0.2, 0.4, 0.6, 0.8, 1.0].map((scale, idx) => {
@@ -105,10 +123,10 @@ export default function ResultsHexagon({ profile }: ResultsHexagonProps) {
           fill="rgba(59, 130, 246, 0.2)"
           stroke="rgb(59, 130, 246)"
           strokeWidth="2"
-          className="transition-all duration-1000 ease-out"
+          className={animated ? "transition-all duration-1000 ease-out" : ""}
           style={{
-            opacity: animated ? 1 : 0,
-            transform: animated ? 'scale(1)' : 'scale(0)',
+            opacity: animationTriggered ? 1 : 0,
+            transform: animationTriggered ? 'scale(1)' : 'scale(0)',
             transformOrigin: 'center',
           }}
         />
@@ -121,10 +139,10 @@ export default function ResultsHexagon({ profile }: ResultsHexagonProps) {
             cy={p.y}
             r="6"
             fill="rgb(59, 130, 246)"
-            className="transition-all duration-1000 ease-out"
+            className={animated ? "transition-all duration-1000 ease-out" : ""}
             style={{
-              opacity: animated ? 1 : 0,
-              transitionDelay: `${i * 100}ms`,
+              opacity: animationTriggered ? 1 : 0,
+              transitionDelay: animated ? `${i * 100}ms` : '0ms',
             }}
           />
         ))}
@@ -161,9 +179,17 @@ export default function ResultsHexagon({ profile }: ResultsHexagonProps) {
         })}
       </svg>
 
-      <div className="mt-4 text-center text-sm text-slate-600">
-        <p>This hexagon shows your current skill levels across 6 key calisthenics dimensions.</p>
-      </div>
-    </Card>
+      {description && (
+        <div className="mt-4 text-center text-sm text-slate-600">
+          <p>{description}</p>
+        </div>
+      )}
+    </div>
   );
+
+  if (showCard) {
+    return <Card className="p-6">{content}</Card>;
+  }
+
+  return content;
 }

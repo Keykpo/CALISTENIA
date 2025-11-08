@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight, Loader2, Sparkles } from 'lucide-react';
-import ResultsHexagon from './components/ResultsHexagon';
+import SkillHexagon from '@/components/SkillHexagon';
 import LevelBadge from './components/LevelBadge';
 import RecommendationCard from './components/RecommendationCard';
 
@@ -226,7 +226,8 @@ export default function OnboardingResultsPage() {
   };
 
   const handleContinue = () => {
-    router.push('/dashboard');
+    // Redirect to routines page to see personalized workout plan
+    router.push('/routines');
   };
 
   if (loading || status === 'loading') {
@@ -266,7 +267,13 @@ export default function OnboardingResultsPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           {/* Left Column - Hexagon */}
           <div>
-            <ResultsHexagon profile={userData.hexagonProfile} />
+            <SkillHexagon
+              profile={userData.hexagonProfile}
+              showCard={true}
+              animated={true}
+              title="Your Skill Hexagon"
+              description="This hexagon shows your current skill levels across 6 key calisthenics dimensions."
+            />
           </div>
 
           {/* Right Column - Level Badge and Summary */}

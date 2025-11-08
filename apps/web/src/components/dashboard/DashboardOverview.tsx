@@ -3,7 +3,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import {
   TrendingUp,
   Zap,
@@ -13,9 +12,9 @@ import {
   Calendar,
   Activity,
   RefreshCw,
-  AlertCircle
+  Dumbbell
 } from 'lucide-react';
-import HexagonRadar from '../HexagonRadar';
+import SkillHexagon from '../SkillHexagon';
 import Link from 'next/link';
 
 interface DashboardOverviewProps {
@@ -56,24 +55,6 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
 
   return (
     <div className="space-y-6">
-      {/* Assessment Alert */}
-      {!userData?.user?.hasCompletedAssessment && (
-        <Alert className="border-blue-200 bg-blue-50">
-          <AlertCircle className="h-4 w-4 text-blue-600" />
-          <AlertTitle className="text-blue-900">Complete Your Initial Assessment</AlertTitle>
-          <AlertDescription className="text-blue-800">
-            <p className="mb-3">
-              To get personalized routines based on your level and goals, complete the assessment questionnaire.
-            </p>
-            <Link href="/onboarding/assessment">
-              <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
-                Take Assessment
-              </Button>
-            </Link>
-          </AlertDescription>
-        </Alert>
-      )}
-
       {/* Stats Grid */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {/* Level Card */}
@@ -96,13 +77,13 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
         {/* XP Card */}
         <Card className="bg-gradient-to-br from-purple-500 to-purple-600 text-white border-0">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Experiencia</CardTitle>
+            <CardTitle className="text-sm font-medium">Experience</CardTitle>
             <TrendingUp className="h-4 w-4 opacity-80" />
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold">{stats.totalXP}</div>
             <p className="text-xs mt-1 opacity-90">
-              +{Math.floor(xpInCurrentLevel / 10) || 0} hoy
+              +{Math.floor(xpInCurrentLevel / 10) || 0} today
             </p>
           </CardContent>
         </Card>
@@ -110,13 +91,13 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
         {/* Coins Card */}
         <Card className="bg-gradient-to-br from-amber-500 to-amber-600 text-white border-0">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Monedas</CardTitle>
+            <CardTitle className="text-sm font-medium">Coins</CardTitle>
             <Award className="h-4 w-4 opacity-80" />
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold">{stats.coins}</div>
             <p className="text-xs mt-1 opacity-90">
-              Canjea en la tienda
+              Redeem in shop
             </p>
           </CardContent>
         </Card>
@@ -124,13 +105,13 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
         {/* Streak Card */}
         <Card className="bg-gradient-to-br from-orange-500 to-orange-600 text-white border-0">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Racha Diaria</CardTitle>
+            <CardTitle className="text-sm font-medium">Daily Streak</CardTitle>
             <Flame className="h-4 w-4 opacity-80" />
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold">{stats.dailyStreak}</div>
             <p className="text-xs mt-1 opacity-90">
-              {stats.dailyStreak > 0 ? '¡Sigue así!' : 'Completa misiones hoy'}
+              {stats.dailyStreak > 0 ? 'Keep it up!' : 'Complete missions today'}
             </p>
           </CardContent>
         </Card>
@@ -142,9 +123,9 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle>Perfil de Habilidades</CardTitle>
+                <CardTitle>Skill Profile</CardTitle>
                 <CardDescription>
-                  Tu hexágono se actualiza al completar misiones
+                  Your hexagon updates as you complete missions and workouts
                 </CardDescription>
               </div>
               <Activity className="h-5 w-5 text-slate-400" />
@@ -152,7 +133,12 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
           </CardHeader>
           <CardContent>
             <div className="flex justify-center">
-              <HexagonRadar values={hexagonData} size={300} />
+              <SkillHexagon
+                profile={hexagonData}
+                showCard={false}
+                animated={false}
+                size={300}
+              />
             </div>
           </CardContent>
         </Card>
@@ -162,9 +148,9 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle>Misiones de Hoy</CardTitle>
+                <CardTitle>Today's Missions</CardTitle>
                 <CardDescription>
-                  Completa todas para aumentar tu racha
+                  Complete all to increase your streak
                 </CardDescription>
               </div>
               <Target className="h-5 w-5 text-slate-400" />
@@ -174,7 +160,7 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
             <div>
               <div className="flex justify-between text-sm mb-2">
                 <span className="text-slate-600">
-                  {completedMissions} de {totalMissions} completadas
+                  {completedMissions} of {totalMissions} completed
                 </span>
                 <span className="font-medium text-blue-600">
                   {Math.round(missionProgress)}%
@@ -232,7 +218,7 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
               ) : (
                 <div className="text-center py-8 text-slate-500">
                   <Target className="w-12 h-12 mx-auto mb-2 opacity-30" />
-                  <p>No hay misiones disponibles</p>
+                  <p>No missions available</p>
                   <Button
                     variant="outline"
                     size="sm"
@@ -240,7 +226,7 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
                     onClick={onRefresh}
                   >
                     <RefreshCw className="w-4 h-4 mr-2" />
-                    Actualizar
+                    Refresh
                   </Button>
                 </div>
               )}
@@ -249,14 +235,46 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
         </Card>
       </div>
 
+      {/* Quick Actions */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Quick Actions</CardTitle>
+          <CardDescription>
+            Jump into your training
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Link href="/routines">
+              <Button variant="outline" className="w-full justify-start h-auto py-4">
+                <Dumbbell className="w-5 h-5 mr-3 text-blue-600" />
+                <div className="text-left">
+                  <div className="font-semibold">Start Workout</div>
+                  <div className="text-xs text-slate-600">Access your personalized routine</div>
+                </div>
+              </Button>
+            </Link>
+            <Link href="/dashboard?tab=missions">
+              <Button variant="outline" className="w-full justify-start h-auto py-4">
+                <Target className="w-5 h-5 mr-3 text-purple-600" />
+                <div className="text-left">
+                  <div className="font-semibold">View All Missions</div>
+                  <div className="text-xs text-slate-600">See daily and weekly challenges</div>
+                </div>
+              </Button>
+            </Link>
+          </div>
+        </CardContent>
+      </Card>
+
       {/* Recent Activity */}
       <Card>
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle>Progreso Semanal</CardTitle>
+              <CardTitle>Weekly Progress</CardTitle>
               <CardDescription>
-                Tu actividad en los últimos 7 días
+                Your activity in the last 7 days
               </CardDescription>
             </div>
             <Calendar className="h-5 w-5 text-slate-400" />
@@ -267,7 +285,7 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
             {Array.from({ length: 7 }).map((_, i) => {
               const date = new Date();
               date.setDate(date.getDate() - (6 - i));
-              const dayName = date.toLocaleDateString('es-ES', { weekday: 'short' });
+              const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
               const activity = Math.random() > 0.5; // TODO: Replace with real data
 
               return (
