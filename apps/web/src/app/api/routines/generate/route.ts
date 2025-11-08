@@ -66,12 +66,14 @@ function loadExercises(): Exercise[] {
   }
 }
 
-// Map fitness level to difficulty levels
+// Map fitness level to NEW difficulty levels (FIG Chart standardization)
 const DIFFICULTY_BY_LEVEL: Record<string, string[]> = {
-  BEGINNER: ['D (Beginner)', 'C (Novice)'],
-  INTERMEDIATE: ['C (Novice)', 'B (Intermediate)'],
-  ADVANCED: ['B (Intermediate)', 'A (Advanced)'],
-  EXPERT: ['A (Advanced)', 'S (Expert)'],
+  BEGINNER: ['BEGINNER', 'INTERMEDIATE'],
+  INTERMEDIATE: ['INTERMEDIATE', 'BEGINNER'],
+  ADVANCED: ['INTERMEDIATE', 'ADVANCED'],
+  ELITE: ['ADVANCED', 'ELITE'],
+  // Legacy support
+  EXPERT: ['ADVANCED', 'ELITE'],
 };
 
 // Map goal to category focus
