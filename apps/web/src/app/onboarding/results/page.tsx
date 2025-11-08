@@ -9,6 +9,7 @@ import { ArrowRight, Loader2, Sparkles } from 'lucide-react';
 import SkillHexagon from '@/components/SkillHexagon';
 import LevelBadge from './components/LevelBadge';
 import RecommendationCard from './components/RecommendationCard';
+import { calculateOverallLevel, getLevelProgress, type HexagonProfileWithXP } from '@/lib/hexagon-progression';
 
 type FitnessLevel = 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'EXPERT';
 
@@ -30,6 +31,7 @@ interface Exercise {
 
 interface UserData {
   fitnessLevel: FitnessLevel;
+  levelProgress: number; // Progress percentage within current level
   hexagonProfile: HexagonProfile;
   recommendations: Exercise[];
 }
@@ -62,18 +64,42 @@ export default function OnboardingResultsPage() {
       if (res.ok) {
         const data = await res.json();
 
+        // Calculate level from hexagon (SINGLE SOURCE OF TRUTH)
+        const hexProfile = data.hexagonProfile || {
+          relativeStrength: 5,
+          muscularEndurance: 5,
+          balanceControl: 5,
+          jointMobility: 5,
+          bodyTension: 5,
+          skillTechnique: 5,
+          relativeStrengthXP: 0,
+          muscularEnduranceXP: 0,
+          balanceControlXP: 0,
+          jointMobilityXP: 0,
+          bodyTensionXP: 0,
+          skillTechniqueXP: 0,
+        };
+
+        const calculatedLevel = calculateOverallLevel(hexProfile as HexagonProfileWithXP);
+
+        // Calculate average XP across all axes
+        const averageXP = (
+          (hexProfile.relativeStrengthXP || 0) +
+          (hexProfile.muscularEnduranceXP || 0) +
+          (hexProfile.balanceControlXP || 0) +
+          (hexProfile.jointMobilityXP || 0) +
+          (hexProfile.bodyTensionXP || 0) +
+          (hexProfile.skillTechniqueXP || 0)
+        ) / 6;
+
+        const levelProgress = getLevelProgress(averageXP);
+
         // Set user data with hexagon profile
         setUserData({
-          fitnessLevel: data.fitnessLevel || 'BEGINNER',
-          hexagonProfile: data.hexagonProfile || {
-            relativeStrength: 5,
-            muscularEndurance: 5,
-            balanceControl: 5,
-            jointMobility: 5,
-            bodyTension: 5,
-            skillTechnique: 5,
-          },
-          recommendations: getRecommendations(data.fitnessLevel || 'BEGINNER'),
+          fitnessLevel: calculatedLevel as FitnessLevel,
+          levelProgress,
+          hexagonProfile: hexProfile,
+          recommendations: getRecommendations(calculatedLevel as FitnessLevel),
         });
       }
     } catch (error) {
@@ -81,6 +107,7 @@ export default function OnboardingResultsPage() {
       // Set default data if fetch fails
       setUserData({
         fitnessLevel: 'BEGINNER',
+        levelProgress: 0,
         hexagonProfile: {
           relativeStrength: 5,
           muscularEndurance: 5,
@@ -278,7 +305,10 @@ export default function OnboardingResultsPage() {
 
           {/* Right Column - Level Badge and Summary */}
           <div className="space-y-6">
-            <LevelBadge level={userData.fitnessLevel} />
+            <LevelBadge
+              level={userData.fitnessLevel}
+              percentage={userData.levelProgress}
+            />
 
             <Card className="p-6">
               <h3 className="text-lg font-semibold text-slate-900 mb-4">
