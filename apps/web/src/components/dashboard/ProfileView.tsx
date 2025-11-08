@@ -189,12 +189,12 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
                     <Calendar className="w-4 h-4 text-slate-400" />
                     <p className="text-lg font-medium">
                       {user.createdAt
-                        ? new Date(user.createdAt).toLocaleDateString('es-ES', {
+                        ? new Date(user.createdAt).toLocaleDateString('en-US', {
                             year: 'numeric',
                             month: 'long',
                             day: 'numeric',
                           })
-                        : 'Desconocido'}
+                        : 'Unknown'}
                     </p>
                   </div>
                 </div>
@@ -211,7 +211,7 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
                       onChange={(e) =>
                         setFormData({ ...formData, firstName: e.target.value })
                       }
-                      placeholder="Tu nombre"
+                      placeholder="Your first name"
                     />
                   </div>
                   <div>
@@ -222,7 +222,7 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
                       onChange={(e) =>
                         setFormData({ ...formData, lastName: e.target.value })
                       }
-                      placeholder="Tu apellido"
+                      placeholder="Your last name"
                     />
                   </div>
                 </div>
