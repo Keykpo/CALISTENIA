@@ -21,19 +21,19 @@ export function useSkillActions({ onSkillUpdated }: UseSkillActionsProps = {}) {
 
       if (response.ok) {
         toast.success(`🎉 ¡Skill Desbloqueada!`, {
-          description: `${skillName} ahora está disponible para entrenar`,
+          description: `${skillName} is now available for training`,
         });
         onSkillUpdated?.();
         return true;
       } else {
         const data = await response.json();
-        toast.error('Error al desbloquear', {
-          description: data.error || 'No se pudo desbloquear la habilidad',
+        toast.error('Error unlocking', {
+          description: data.error || 'Could not unlock the skill',
         });
         return false;
       }
     } catch (error) {
-      toast.error('Error de conexión', {
+      toast.error('Connection error', {
         description: 'No se pudo conectar con el servidor',
       });
       return false;
@@ -80,13 +80,13 @@ export function useSkillActions({ onSkillUpdated }: UseSkillActionsProps = {}) {
         return true;
       } else {
         const data = await response.json();
-        toast.error('Error al completar', {
-          description: data.error || 'No se pudo completar la habilidad',
+        toast.error('Error completing', {
+          description: data.error || 'Could not complete the skill',
         });
         return false;
       }
     } catch (error) {
-      toast.error('Error de conexión', {
+      toast.error('Connection error', {
         description: 'No se pudo conectar con el servidor',
       });
       return false;
@@ -117,19 +117,19 @@ export function useSkillActions({ onSkillUpdated }: UseSkillActionsProps = {}) {
 
       if (response.ok) {
         toast.success('Progreso actualizado', {
-          description: 'Tu progreso ha sido guardado',
+          description: 'Your progress has been saved',
         });
         onSkillUpdated?.();
         return true;
       } else {
         const data = await response.json();
-        toast.error('Error al actualizar', {
-          description: data.error || 'No se pudo actualizar el progreso',
+        toast.error('Error updating', {
+          description: data.error || 'Could not update progress',
         });
         return false;
       }
     } catch (error) {
-      toast.error('Error de conexión', {
+      toast.error('Connection error', {
         description: 'No se pudo conectar con el servidor',
       });
       return false;

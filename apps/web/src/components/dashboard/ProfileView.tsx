@@ -92,26 +92,26 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
               <div>
                 <CardTitle className="flex items-center gap-2">
                   <User className="w-5 h-5" />
-                  Información Personal
+                  Personal Information
                 </CardTitle>
                 <CardDescription>
-                  Gestiona tu perfil y preferencias
+                  Manage your profile and preferences
                 </CardDescription>
               </div>
               {!isEditing ? (
                 <Button onClick={handleEdit} variant="outline" size="sm">
                   <Edit className="w-4 h-4 mr-2" />
-                  Editar
+                  Edit
                 </Button>
               ) : (
                 <div className="flex gap-2">
                   <Button onClick={handleCancel} variant="outline" size="sm">
                     <X className="w-4 h-4 mr-2" />
-                    Cancelar
+                    Cancel
                   </Button>
                   <Button onClick={handleSave} disabled={saving} size="sm">
                     <Save className="w-4 h-4 mr-2" />
-                    {saving ? 'Guardando...' : 'Guardar'}
+                    {saving ? 'Saving...' : 'Save'}
                   </Button>
                 </div>
               )}
@@ -124,15 +124,15 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label className="text-slate-600">Nombre</Label>
+                    <Label className="text-slate-600">First Name</Label>
                     <p className="text-lg font-medium">
-                      {user.firstName || 'No especificado'}
+                      {user.firstName || 'Not specified'}
                     </p>
                   </div>
                   <div>
-                    <Label className="text-slate-600">Apellido</Label>
+                    <Label className="text-slate-600">Last Name</Label>
                     <p className="text-lg font-medium">
-                      {user.lastName || 'No especificado'}
+                      {user.lastName || 'Not specified'}
                     </p>
                   </div>
                 </div>
@@ -147,20 +147,20 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label className="text-slate-600">Altura</Label>
+                    <Label className="text-slate-600">Height</Label>
                     <div className="flex items-center gap-2 mt-1">
                       <Ruler className="w-4 h-4 text-slate-400" />
                       <p className="text-lg font-medium">
-                        {user.height ? `${user.height} cm` : 'No especificado'}
+                        {user.height ? `${user.height} cm` : 'Not specified'}
                       </p>
                     </div>
                   </div>
                   <div>
-                    <Label className="text-slate-600">Peso</Label>
+                    <Label className="text-slate-600">Weight</Label>
                     <div className="flex items-center gap-2 mt-1">
                       <Weight className="w-4 h-4 text-slate-400" />
                       <p className="text-lg font-medium">
-                        {user.weight ? `${user.weight} kg` : 'No especificado'}
+                        {user.weight ? `${user.weight} kg` : 'Not specified'}
                       </p>
                     </div>
                   </div>
@@ -168,7 +168,7 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label className="text-slate-600">Nivel de Fitness</Label>
+                    <Label className="text-slate-600">Fitness Level</Label>
                     <div className="mt-1">
                       <Badge variant="outline" className="text-sm">
                         {user.fitnessLevel || 'BEGINNER'}
@@ -176,15 +176,15 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
                     </div>
                   </div>
                   <div>
-                    <Label className="text-slate-600">Género</Label>
+                    <Label className="text-slate-600">Gender</Label>
                     <p className="text-lg font-medium mt-1">
-                      {user.gender || 'No especificado'}
+                      {user.gender || 'Not specified'}
                     </p>
                   </div>
                 </div>
 
                 <div>
-                  <Label className="text-slate-600">Miembro desde</Label>
+                  <Label className="text-slate-600">Member Since</Label>
                   <div className="flex items-center gap-2 mt-1">
                     <Calendar className="w-4 h-4 text-slate-400" />
                     <p className="text-lg font-medium">
@@ -204,7 +204,7 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="firstName">Nombre</Label>
+                    <Label htmlFor="firstName">First Name</Label>
                     <Input
                       id="firstName"
                       value={formData.firstName}
@@ -215,7 +215,7 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
                     />
                   </div>
                   <div>
-                    <Label htmlFor="lastName">Apellido</Label>
+                    <Label htmlFor="lastName">Last Name</Label>
                     <Input
                       id="lastName"
                       value={formData.lastName}
@@ -229,7 +229,7 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="height">Altura (cm)</Label>
+                    <Label htmlFor="height">Height (cm)</Label>
                     <Input
                       id="height"
                       type="number"
@@ -241,7 +241,7 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
                     />
                   </div>
                   <div>
-                    <Label htmlFor="weight">Peso (kg)</Label>
+                    <Label htmlFor="weight">Weight (kg)</Label>
                     <Input
                       id="weight"
                       type="number"
@@ -256,7 +256,7 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="fitnessLevel">Nivel de Fitness</Label>
+                    <Label htmlFor="fitnessLevel">Fitness Level</Label>
                     <Select
                       value={formData.fitnessLevel}
                       onValueChange={(value) =>
@@ -267,15 +267,15 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="BEGINNER">Principiante</SelectItem>
-                        <SelectItem value="INTERMEDIATE">Intermedio</SelectItem>
-                        <SelectItem value="ADVANCED">Avanzado</SelectItem>
-                        <SelectItem value="EXPERT">Experto</SelectItem>
+                        <SelectItem value="BEGINNER">Beginner</SelectItem>
+                        <SelectItem value="INTERMEDIATE">Intermediate</SelectItem>
+                        <SelectItem value="ADVANCED">Advanced</SelectItem>
+                        <SelectItem value="EXPERT">Expert</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                   <div>
-                    <Label htmlFor="gender">Género</Label>
+                    <Label htmlFor="gender">Gender</Label>
                     <Select
                       value={formData.gender}
                       onValueChange={(value) =>
@@ -283,14 +283,14 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
                       }
                     >
                       <SelectTrigger>
-                        <SelectValue placeholder="Seleccionar" />
+                        <SelectValue placeholder="Select" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="MALE">Masculino</SelectItem>
-                        <SelectItem value="FEMALE">Femenino</SelectItem>
-                        <SelectItem value="OTHER">Otro</SelectItem>
+                        <SelectItem value="MALE">Male</SelectItem>
+                        <SelectItem value="FEMALE">Female</SelectItem>
+                        <SelectItem value="OTHER">Other</SelectItem>
                         <SelectItem value="PREFER_NOT_TO_SAY">
-                          Prefiero no decirlo
+                          Prefer not to say
                         </SelectItem>
                       </SelectContent>
                     </Select>
@@ -306,9 +306,9 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <TrendingUp className="w-5 h-5" />
-              Estadísticas
+              Statistics
             </CardTitle>
-            <CardDescription>Tu progreso hasta ahora</CardDescription>
+            <CardDescription>Your progress so far</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-3">
@@ -327,21 +327,21 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
               </div>
 
               <div className="flex justify-between items-center">
-                <span className="text-sm text-slate-600">Monedas</span>
+                <span className="text-sm text-slate-600">Coins</span>
                 <span className="text-2xl font-bold text-amber-600">
                   {stats.coins || 0}
                 </span>
               </div>
 
               <div className="flex justify-between items-center">
-                <span className="text-sm text-slate-600">Racha</span>
+                <span className="text-sm text-slate-600">Streak</span>
                 <span className="text-2xl font-bold text-orange-600">
                   {stats.dailyStreak || 0}
                 </span>
               </div>
 
               <div className="flex justify-between items-center">
-                <span className="text-sm text-slate-600">Fuerza Total</span>
+                <span className="text-sm text-slate-600">Total Strength</span>
                 <span className="text-2xl font-bold text-green-600">
                   {stats.totalStrength || 0}
                 </span>
@@ -354,8 +354,8 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
       {/* Account Actions */}
       <Card>
         <CardHeader>
-          <CardTitle>Configuración de Cuenta</CardTitle>
-          <CardDescription>Gestiona tu cuenta y privacidad</CardDescription>
+          <CardTitle>Account Settings</CardTitle>
+          <CardDescription>Manage your account and privacy</CardDescription>
         </CardHeader>
         <CardContent className="space-y-3">
           <Button
@@ -363,10 +363,10 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
             className="w-full justify-start"
             onClick={() => signOut({ callbackUrl: '/auth/signin' })}
           >
-            Cerrar Sesión
+            Sign Out
           </Button>
           <Button variant="outline" className="w-full justify-start text-red-600 hover:text-red-700" disabled>
-            Eliminar Cuenta
+            Delete Account
           </Button>
         </CardContent>
       </Card>

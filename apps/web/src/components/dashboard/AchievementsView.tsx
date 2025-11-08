@@ -105,7 +105,7 @@ export default function AchievementsView({ userId }: AchievementsViewProps) {
       }
     } catch (error) {
       console.error('Error fetching active achievements:', error);
-      toast.error('Error al cargar los logros');
+      toast.error('Error loading achievements');
     } finally {
       setLoading(false);
     }
@@ -126,7 +126,7 @@ export default function AchievementsView({ userId }: AchievementsViewProps) {
       const data = await res.json();
 
       if (res.ok && data.success) {
-        toast.success(data.message || '¡Logro completado!');
+        toast.success(data.message || 'Achievement completed!');
 
         if (data.unlockedNext) {
           toast.success('🎉 ' + data.unlockedNext.message, { duration: 5000 });
@@ -135,11 +135,11 @@ export default function AchievementsView({ userId }: AchievementsViewProps) {
         // Refresh achievements
         await fetchActiveAchievements();
       } else {
-        toast.error(data.error || 'Error al completar el logro');
+        toast.error(data.error || 'Error completing achievement');
       }
     } catch (error) {
       console.error('Error completing achievement:', error);
-      toast.error('Error al completar el logro');
+      toast.error('Error completing achievement');
     } finally {
       setCompleting(null);
     }

@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
     if (userAchievement.completed) {
       return NextResponse.json({
         success: false,
-        error: 'Este logro ya ha sido completado',
+        error: 'This achievement has already been completed',
         alreadyCompleted: true,
       });
     }
@@ -150,7 +150,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      message: `¡Logro completado! +${achievement.points} XP`,
+      message: `Achievement completed! +${achievement.points} XP`,
       achievement: completedAchievement,
       rewards: {
         xp: achievement.points,

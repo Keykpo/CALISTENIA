@@ -66,12 +66,14 @@ function loadExercises(): Exercise[] {
   }
 }
 
-// Map fitness level to difficulty levels
+// Map fitness level to NEW difficulty levels (FIG Chart standardization)
 const DIFFICULTY_BY_LEVEL: Record<string, string[]> = {
-  BEGINNER: ['D (Beginner)', 'C (Novice)'],
-  INTERMEDIATE: ['C (Novice)', 'B (Intermediate)'],
-  ADVANCED: ['B (Intermediate)', 'A (Advanced)'],
-  EXPERT: ['A (Advanced)', 'S (Expert)'],
+  BEGINNER: ['BEGINNER', 'INTERMEDIATE'],
+  INTERMEDIATE: ['INTERMEDIATE', 'BEGINNER'],
+  ADVANCED: ['INTERMEDIATE', 'ADVANCED'],
+  ELITE: ['ADVANCED', 'ELITE'],
+  // Legacy support
+  EXPERT: ['ADVANCED', 'ELITE'],
 };
 
 // Map goal to category focus
@@ -207,7 +209,7 @@ function generateRoutine(
     sets: 1,
     repsOrDuration: '30s',
     restSeconds: 30,
-    notes: 'Enfócate en la movilidad y aumentar la temperatura corporal',
+    notes: 'Focus on mobility and increasing body temperature',
   }));
 
   const mainExercises: RoutineExercise[] = [
@@ -236,7 +238,7 @@ function generateRoutine(
     sets: 1,
     repsOrDuration: '2-3 min',
     restSeconds: 0,
-    notes: 'Enfriamiento y estiramiento suave',
+    notes: 'Cool down and gentle stretching',
   }));
 
   // Calculate total duration
@@ -253,9 +255,9 @@ function generateRoutine(
 
   // Generate routine name and description
   const goalNames: Record<string, string> = {
-    strength: 'Fuerza General',
-    muscle: 'Hipertrofia',
-    fat_loss: 'Pérdida de Grasa',
+    strength: 'General Strength',
+    muscle: 'Hypertrophy',
+    fat_loss: 'Fat Loss',
     front_lever: 'Front Lever',
     planche: 'Planche',
     handstand: 'Handstand',
@@ -263,8 +265,8 @@ function generateRoutine(
     general: 'Fitness General',
   };
 
-  const routineName = `Rutina de ${goalNames[goal] || 'Entrenamiento'} - ${fitnessLevel}`;
-  const description = `Rutina personalizada enfocada en ${goalNames[goal]?.toLowerCase() || 'fitness general'} para nivel ${fitnessLevel.toLowerCase()}. Basada en tu evaluación y perfil de habilidades.`;
+  const routineName = `Routine for ${goalNames[goal] || 'Entrenamiento'} - ${fitnessLevel}`;
+  const description = `Personalized routine focused on ${goalNames[goal]?.toLowerCase() || 'general fitness'} for ${fitnessLevel.toLowerCase()}. Based on your assessment and skill profile.`;
 
   return {
     name: routineName,
@@ -301,7 +303,7 @@ export async function POST(req: NextRequest) {
     const userId = await getUserId(req);
     if (!userId) {
       return NextResponse.json(
-        { success: false, error: 'Usuario no autenticado' },
+        { success: false, error: 'User not authenticated' },
         { status: 401 }
       );
     }
@@ -314,7 +316,7 @@ export async function POST(req: NextRequest) {
 
     if (!user) {
       return NextResponse.json(
-        { success: false, error: 'Usuario no encontrado' },
+        { success: false, error: 'User not found' },
         { status: 404 }
       );
     }
@@ -324,7 +326,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          error: 'Debes completar la evaluación de nivel primero',
+          error: 'You must complete the level assessment first',
           redirectTo: '/onboarding/assessment',
         },
         { status: 400 }
@@ -344,7 +346,7 @@ export async function POST(req: NextRequest) {
 
     if (exercises.length === 0) {
       return NextResponse.json(
-        { success: false, error: 'No se pudieron cargar los ejercicios' },
+        { success: false, error: 'Could not load exercises' },
         { status: 500 }
       );
     }
@@ -376,7 +378,7 @@ export async function POST(req: NextRequest) {
   } catch (error: any) {
     console.error('Error generating routine:', error);
     return NextResponse.json(
-      { success: false, error: error?.message || 'Error al generar la rutina' },
+      { success: false, error: error?.message || 'Error generating routine' },
       { status: 500 }
     );
   }
