@@ -23,7 +23,7 @@ function addDays(d: Date, days: number) { const dt = new Date(d); dt.setDate(dt.
 
 export async function GET(req: NextRequest) {
   const userId = await getUserId(req);
-  if (!userId) return NextResponse.json({ success: false, error: 'Usuario no autenticado' }, { status: 401 });
+  if (!userId) return NextResponse.json({ success: false, error: 'User not authenticated' }, { status: 401 });
 
   try {
     // Ensure dev user exists when using header/query fallback
@@ -66,7 +66,7 @@ export async function GET(req: NextRequest) {
                 userId,
                 date: today,
                 type: 'complete_exercises',
-                description: 'Completa 3 ejercicios hoy',
+                description: 'Complete 3 exercises today',
                 target: 3,
                 rewardXP: 25,
                 rewardCoins: 10,
@@ -75,7 +75,7 @@ export async function GET(req: NextRequest) {
                 userId,
                 date: today,
                 type: 'core_focus',
-                description: 'Incluye 1 ejercicio de CORE',
+                description: 'Include 1 CORE exercise',
                 target: 1,
                 rewardXP: 20,
                 rewardCoins: 8,
@@ -84,7 +84,7 @@ export async function GET(req: NextRequest) {
                 userId,
                 date: today,
                 type: 'hydration',
-                description: 'Hidrátate durante el entrenamiento',
+                description: 'Stay hydrated during your workout',
                 target: null,
                 rewardXP: 10,
                 rewardCoins: 5,
@@ -179,15 +179,15 @@ export async function GET(req: NextRequest) {
         const fallback: DevMission[] = [
           {
             id: `${baseId}-1`, userId, date: today, type: 'complete_exercises',
-            description: 'Completa 3 ejercicios hoy', target: 3, progress: 0, completed: false, rewardXP: 25, rewardCoins: 10,
+            description: 'Complete 3 exercises today', target: 3, progress: 0, completed: false, rewardXP: 25, rewardCoins: 10,
           },
           {
             id: `${baseId}-2`, userId, date: today, type: 'core_focus',
-            description: 'Incluye 1 ejercicio de CORE', target: 1, progress: 0, completed: false, rewardXP: 20, rewardCoins: 8,
+            description: 'Include 1 CORE exercise', target: 1, progress: 0, completed: false, rewardXP: 20, rewardCoins: 8,
           },
           {
             id: `${baseId}-3`, userId, date: today, type: 'hydration',
-            description: 'Hidrátate durante el entrenamiento', target: null, progress: 0, completed: false, rewardXP: 10, rewardCoins: 5,
+            description: 'Stay hydrated during your workout', target: null, progress: 0, completed: false, rewardXP: 10, rewardCoins: 5,
           },
         ];
         saveDailyMissions(userId, fallback);
