@@ -492,20 +492,27 @@ model Achievement {
   target Float? // target value to unlock
   unit   String?
 
+  // Chain system
+  level                Int     @default(1) // Level in the chain (1-5)
+  unlocksAchievementId String? @unique // ID of achievement that gets unlocked when this one is completed
+  chainName            String? // Name of the chain (e.g., "Push-up Chain", "Planche Chain")
+
   // Media
   iconUrl  String?
   badgeUrl String?
 
   // Metadata
   points Int               @default(0)
-  rarity AchievementRarity @default(COMMON)
+  rarity AchievementRarity @default(NOVICE)
 
   // Timestamps
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   // Relations
-  userAchievements UserAchievement[]
+  userAchievements   UserAchievement[]
+  unlocksAchievement Achievement?      @relation("AchievementChain", fields: [unlocksAchievementId], references: [id])
+  unlockedBy         Achievement?      @relation("AchievementChain")
 
   @@map("achievements")
 }
@@ -898,10 +905,10 @@ enum AchievementType {
 }
 
 enum AchievementRarity {
-  COMMON
-  UNCOMMON
-  RARE
-  EPIC
+  NOVICE
+  INTERMEDIATE
+  ADVANCED
+  EXPERT
   LEGENDARY
 }
 
