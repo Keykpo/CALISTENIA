@@ -941,11 +941,11 @@ enum SkillCategory {
 }
 
 enum SkillBranch {
-  EMPUJE // Push branch (Flexiones, Fondos, etc.)
-  TRACCION // Pull branch (Dominadas, Muscle-ups, etc.)
-  CORE // Core branch (Planchas, L-sits, Dragon flags, etc.)
-  EQUILIBRIO // Balance/Handstands branch (Pino, Caminata, etc.)
-  TREN_INFERIOR // Lower body branch (Sentadillas, Pistols, etc.)
-  ESTATICOS // Static elements branch (Planche, Front lever, etc.)
-  CALENTAMIENTO // Warm-up and mobility branch
+  PUSH // Push branch (Push-ups, Dips, etc.)
+  PULL // Pull branch (Pull-ups, Muscle-ups, etc.)
+  CORE // Core branch (Planks, L-sits, Dragon flags, etc.)
+  BALANCE // Balance/Handstands branch (Handstand, Handstand walks, etc.)
+  LOWER_BODY // Lower body branch (Squats, Pistols, etc.)
+  STATICS // Static elements branch (Planche, Front lever, etc.)
+  WARM_UP // Warm-up and mobility branch
 }
