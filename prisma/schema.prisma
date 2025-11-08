@@ -117,7 +117,7 @@ model HexagonProfile {
   userId String @unique
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  // Six axes: values normalized 0-10
+  // Six axes: values normalized 0-10 (for visual display)
   relativeStrength  Float @default(0)
   muscularEndurance Float @default(0)
   balanceControl    Float @default(0)
@@ -822,7 +822,7 @@ enum FitnessLevel {
   BEGINNER
   INTERMEDIATE
   ADVANCED
-  EXPERT
+  ELITE
 }
 
 enum ExerciseCategory {

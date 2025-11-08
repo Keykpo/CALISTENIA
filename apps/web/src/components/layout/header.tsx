@@ -18,13 +18,11 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { getInitials } from '@calisthenics/utils';
 
 const navigation = [
-  { name: 'Workouts', href: '/workouts' },
+  { name: 'Dashboard', href: '/dashboard' },
+  { name: 'Routines', href: '/routines' },
   { name: 'Exercises', href: '/exercises' },
-  { name: 'Timer', href: '/timer' },
-  { name: 'Courses', href: '/courses' },
-  { name: 'Progress', href: '/progress' },
   { name: 'Ranking', href: '/ranking' },
-  { name: 'Community', href: '/community' },
+  { name: 'Courses', href: '/courses' },
 ];
 
 export function Header() {
@@ -95,7 +93,7 @@ export function Header() {
                 </div>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
-                  <Link href="/profile">
+                  <Link href="/dashboard?tab=profile">
                     <User className="mr-2 h-4 w-4" />
                     Profile
                   </Link>

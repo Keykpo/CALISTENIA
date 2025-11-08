@@ -171,7 +171,7 @@ export default function DailyMissionsPanel({ userId, onMissionComplete }: DailyM
         <Card>
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-slate-600">
-              XP Ganado Hoy
+              XP Earned Today
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -185,7 +185,7 @@ export default function DailyMissionsPanel({ userId, onMissionComplete }: DailyM
         <Card>
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-slate-600">
-              Monedas Ganadas
+              Coins Earned
             </CardTitle>
           </CardHeader>
           <CardContent>

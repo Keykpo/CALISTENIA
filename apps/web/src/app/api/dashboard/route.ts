@@ -23,7 +23,7 @@ function addDays(d: Date, days: number) { const dt = new Date(d); dt.setDate(dt.
 
 export async function GET(req: NextRequest) {
   const userId = await getUserId(req);
-  if (!userId) return NextResponse.json({ success: false, error: 'Usuario no autenticado' }, { status: 401 });
+  if (!userId) return NextResponse.json({ success: false, error: 'User not authenticated' }, { status: 401 });
 
   try {
     // Ensure dev user exists when using header/query fallback
@@ -66,7 +66,7 @@ export async function GET(req: NextRequest) {
                 userId,
                 date: today,
                 type: 'complete_exercises',
-                description: 'Completa 3 ejercicios hoy',
+                description: 'Complete 3 exercises today',
                 target: 3,
                 rewardXP: 25,
                 rewardCoins: 10,
@@ -75,7 +75,7 @@ export async function GET(req: NextRequest) {
                 userId,
                 date: today,
                 type: 'core_focus',
-                description: 'Incluye 1 ejercicio de CORE',
+                description: 'Include 1 CORE exercise',
                 target: 1,
                 rewardXP: 20,
                 rewardCoins: 8,
@@ -84,7 +84,7 @@ export async function GET(req: NextRequest) {
                 userId,
                 date: today,
                 type: 'hydration',
-                description: 'Hidrátate durante el entrenamiento',
+                description: 'Stay hydrated during your workout',
                 target: null,
                 rewardXP: 10,
                 rewardCoins: 5,
@@ -170,39 +170,71 @@ export async function GET(req: NextRequest) {
       weeklyProgress: counts,
     });
   } catch (e: any) {
-    // Fallback completo en desarrollo si Prisma falla: usar store en memoria
+    // Fallback en desarrollo si Prisma falla: intentar obtener usuario de DB primero
     if (process.env.NODE_ENV === 'development') {
-      const today = startOfDay(new Date());
-      let missionsToday = getDailyMissions(userId) as any;
-      if (!missionsToday || missionsToday.length === 0) {
-        const baseId = `dev-${new Date().toISOString()}`;
-        const fallback: DevMission[] = [
-          {
-            id: `${baseId}-1`, userId, date: today, type: 'complete_exercises',
-            description: 'Completa 3 ejercicios hoy', target: 3, progress: 0, completed: false, rewardXP: 25, rewardCoins: 10,
+      try {
+        // Intentar leer usuario de DB aunque haya fallado la consulta principal
+        const fallbackUser = await prisma.user.findUnique({ where: { id: userId } });
+
+        const today = startOfDay(new Date());
+        let missionsToday = getDailyMissions(userId) as any;
+        if (!missionsToday || missionsToday.length === 0) {
+          const baseId = `dev-${new Date().toISOString()}`;
+          const fallback: DevMission[] = [
+            {
+              id: `${baseId}-1`, userId, date: today, type: 'complete_exercises',
+              description: 'Complete 3 exercises today', target: 3, progress: 0, completed: false, rewardXP: 25, rewardCoins: 10,
+            },
+            {
+              id: `${baseId}-2`, userId, date: today, type: 'core_focus',
+              description: 'Include 1 CORE exercise', target: 1, progress: 0, completed: false, rewardXP: 20, rewardCoins: 8,
+            },
+            {
+              id: `${baseId}-3`, userId, date: today, type: 'hydration',
+              description: 'Stay hydrated during your workout', target: null, progress: 0, completed: false, rewardXP: 10, rewardCoins: 5,
+            },
+          ];
+          saveDailyMissions(userId, fallback);
+          missionsToday = fallback as any;
+        }
+
+        return NextResponse.json({
+          success: true,
+          user: fallbackUser ? {
+            id: fallbackUser.id,
+            email: fallbackUser.email,
+            firstName: fallbackUser.firstName,
+            lastName: fallbackUser.lastName,
+            username: fallbackUser.username,
+            fitnessLevel: fallbackUser.fitnessLevel,
+          } : null,
+          stats: {
+            totalXP: fallbackUser?.totalXP ?? 0,
+            level: fallbackUser?.currentLevel ?? 1,
+            coins: fallbackUser?.virtualCoins ?? 0,
+            dailyStreak: fallbackUser?.dailyStreak ?? 0,
+            totalStrength: fallbackUser?.totalStrength ?? 0,
           },
-          {
-            id: `${baseId}-2`, userId, date: today, type: 'core_focus',
-            description: 'Incluye 1 ejercicio de CORE', target: 1, progress: 0, completed: false, rewardXP: 20, rewardCoins: 8,
-          },
-          {
-            id: `${baseId}-3`, userId, date: today, type: 'hydration',
-            description: 'Hidrátate durante el entrenamiento', target: null, progress: 0, completed: false, rewardXP: 10, rewardCoins: 5,
-          },
-        ];
-        saveDailyMissions(userId, fallback);
-        missionsToday = fallback as any;
+          hexagon: null,
+          recentWorkouts: [],
+          missionsToday,
+          recentAchievements: [],
+          weeklyProgress: {},
+          note: 'dev-fallback-with-user-stats',
+        });
+      } catch (fallbackError) {
+        // Si incluso el fallback falla, devolver valores por defecto
+        return NextResponse.json({
+          success: true,
+          stats: { totalXP: 0, level: 1, coins: 0, dailyStreak: 0, totalStrength: 0 },
+          hexagon: null,
+          recentWorkouts: [],
+          missionsToday: [],
+          recentAchievements: [],
+          weeklyProgress: {},
+          note: 'dev-fallback-minimal',
+        });
       }
-      return NextResponse.json({
-        success: true,
-        stats: { totalXP: 0, level: 1, coins: 0 },
-        hexagon: null,
-        recentWorkouts: [],
-        missionsToday,
-        recentAchievements: [],
-        weeklyProgress: {},
-        note: 'dev-fallback',
-      });
     }
     return NextResponse.json({ success: false, error: String(e?.message || e) }, { status: 500 });
   }

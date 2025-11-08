@@ -11,7 +11,7 @@ import LevelBadge from './components/LevelBadge';
 import RecommendationCard from './components/RecommendationCard';
 import { calculateOverallLevel, getLevelProgress, type HexagonProfileWithXP } from '@/lib/hexagon-progression';
 
-type FitnessLevel = 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'EXPERT';
+// Note: FitnessLevel is now imported from hexagon-progression (BEGINNER | INTERMEDIATE | ADVANCED | ELITE)
 
 interface HexagonProfile {
   relativeStrength: number;
@@ -109,12 +109,12 @@ export default function OnboardingResultsPage() {
         fitnessLevel: 'BEGINNER',
         levelProgress: 0,
         hexagonProfile: {
-          relativeStrength: 5,
-          muscularEndurance: 5,
-          balanceControl: 5,
-          jointMobility: 5,
-          bodyTension: 5,
-          skillTechnique: 5,
+          relativeStrength: 0,
+          muscularEndurance: 0,
+          balanceControl: 0,
+          jointMobility: 0,
+          bodyTension: 0,
+          skillTechnique: 0,
         },
         recommendations: getRecommendations('BEGINNER'),
       });
@@ -215,34 +215,34 @@ export default function OnboardingResultsPage() {
           description: 'Build vertical pushing strength',
         },
       ],
-      EXPERT: [
+      ELITE: [
         {
           name: 'Planche Progressions',
-          difficulty: 'EXPERT',
+          difficulty: 'ELITE',
           category: 'Push',
           description: 'Master advanced straight-arm pushing',
         },
         {
           name: 'One-Arm Pull-ups',
-          difficulty: 'EXPERT',
+          difficulty: 'ELITE',
           category: 'Pull',
           description: 'Achieve elite unilateral pulling strength',
         },
         {
           name: 'Front Lever',
-          difficulty: 'EXPERT',
+          difficulty: 'ELITE',
           category: 'Core',
           description: 'Hold perfect horizontal body position',
         },
         {
           name: 'Freestanding Handstand',
-          difficulty: 'EXPERT',
+          difficulty: 'ELITE',
           category: 'Push',
           description: 'Master balance and control in handstand',
         },
         {
           name: 'Human Flag',
-          difficulty: 'EXPERT',
+          difficulty: 'ELITE',
           category: 'Core',
           description: 'Achieve lateral body control',
         },

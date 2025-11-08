@@ -73,19 +73,19 @@ export async function POST(req: NextRequest) {
   const bodyUserId = (body?.userId as string) || null;
   const userId = bodyUserId || (await getUserId(req));
   if (!userId) {
-    return NextResponse.json({ success: false, error: 'Usuario no autenticado' }, { status: 401 });
+    return NextResponse.json({ success: false, error: 'User not authenticated' }, { status: 401 });
   }
 
   const { missionId, progress } = body || {};
   const missionIdStr = missionId ? String(missionId) : '';
   if (!missionIdStr) {
-    return NextResponse.json({ success: false, error: 'missionId requerido' }, { status: 400 });
+    return NextResponse.json({ success: false, error: 'missionId required' }, { status: 400 });
   }
 
   try {
     const mission = await prisma.dailyMission.findUnique({ where: { id: missionIdStr } });
     if (!mission || mission.userId !== userId) {
-      return NextResponse.json({ success: false, error: 'Misión no encontrada' }, { status: 404 });
+      return NextResponse.json({ success: false, error: 'Mission not found' }, { status: 404 });
     }
 
     if (mission.completed) {
@@ -105,7 +105,7 @@ export async function POST(req: NextRequest) {
     });
 
     if (!user) {
-      return NextResponse.json({ success: false, error: 'Usuario no encontrado' }, { status: 404 });
+      return NextResponse.json({ success: false, error: 'User not found' }, { status: 404 });
     }
 
     // Actualizar XP, coins y nivel
@@ -233,7 +233,7 @@ export async function POST(req: NextRequest) {
           streak: null,
         });
       }
-      return NextResponse.json({ success: false, error: 'Dev: misión no encontrada en memoria' }, { status: 404 });
+      return NextResponse.json({ success: false, error: 'Dev: mission not found in memory' }, { status: 404 });
     }
     return NextResponse.json({ success: false, error: String(e?.message || e) }, { status: 500 });
   }
