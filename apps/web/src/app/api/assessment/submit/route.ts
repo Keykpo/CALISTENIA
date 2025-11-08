@@ -20,12 +20,13 @@ const assessmentSchema = z.object({
   userId: z.string(),
   answers: z.record(z.string()),
   scores: z.object({
-    EMPUJE: z.number(),
-    TRACCION: z.number(),
+    PUSH: z.number(),
+    PULL: z.number(),
     CORE: z.number(),
-    EQUILIBRIO: z.number(),
-    TREN_INFERIOR: z.number(),
-    ESTATICOS: z.number(),
+    BALANCE: z.number(),
+    STATIC: z.number(),
+    MOBILITY: z.number(),
+    ENDURANCE: z.number(),
   }),
   goal: z.string(),
   experience: z.string(),
@@ -60,28 +61,14 @@ export async function POST(req: NextRequest) {
     }
 
     // Calculate hexagon values based on scores
-    // Scores are 1-4, we'll map them to 0-10 for the hexagon
-    const mapScoreToHexagon = (score: number): number => {
-      // Score 1 = 2.0, Score 2 = 4.0, Score 3 = 6.5, Score 4 = 9.0
-      const mapping: Record<number, number> = {
-        1: 2.0,
-        1.5: 3.0,
-        2: 4.0,
-        2.5: 5.0,
-        3: 6.5,
-        3.5: 7.5,
-        4: 9.0,
-      };
-      return mapping[score] || score * 2.25;
-    };
-
+    // Scores from assessment are already on 0-10 scale
     const hexagonValues = {
-      relativeStrength: mapScoreToHexagon((data.scores.EMPUJE + data.scores.TRACCION) / 2),
-      muscularEndurance: mapScoreToHexagon((data.scores.EMPUJE + data.scores.CORE) / 2),
-      balanceControl: mapScoreToHexagon((data.scores.EQUILIBRIO + data.scores.CORE) / 2),
-      jointMobility: mapScoreToHexagon((data.scores.TREN_INFERIOR + data.scores.EQUILIBRIO) / 2),
-      bodyTension: mapScoreToHexagon((data.scores.CORE + data.scores.ESTATICOS) / 2),
-      skillTechnique: mapScoreToHexagon((data.scores.ESTATICOS + data.scores.EQUILIBRIO) / 2),
+      relativeStrength: (data.scores.PUSH + data.scores.PULL) / 2,
+      muscularEndurance: (data.scores.CORE + data.scores.ENDURANCE) / 2,
+      balanceControl: (data.scores.BALANCE + data.scores.STATIC) / 2,
+      jointMobility: (data.scores.MOBILITY + data.scores.BALANCE) / 2,
+      bodyTension: (data.scores.CORE + data.scores.STATIC) / 2,
+      skillTechnique: (data.scores.STATIC + data.scores.BALANCE) / 2,
     };
 
     // Update or create hexagon profile

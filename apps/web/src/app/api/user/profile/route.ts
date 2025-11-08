@@ -39,9 +39,6 @@ export async function GET(request: NextRequest) {
     // Fetch user profile with hexagon profile
     const user = await prisma.user.findUnique({
       where: { id: userId },
-      include: {
-        hexagonProfile: true,
-      },
       select: {
         id: true,
         email: true,
@@ -51,7 +48,16 @@ export async function GET(request: NextRequest) {
         fitnessLevel: true,
         hasCompletedAssessment: true,
         assessmentDate: true,
-        hexagonProfile: true,
+        hexagonProfile: {
+          select: {
+            relativeStrength: true,
+            muscularEndurance: true,
+            balanceControl: true,
+            jointMobility: true,
+            bodyTension: true,
+            skillTechnique: true,
+          },
+        },
         goals: true,
       },
     });
