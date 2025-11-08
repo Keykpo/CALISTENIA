@@ -117,13 +117,29 @@ model HexagonProfile {
   userId String @unique
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  // Six axes: values normalized 0-10
+  // Six axes: values normalized 0-10 (for visual display)
   relativeStrength  Float @default(0)
   muscularEndurance Float @default(0)
   balanceControl    Float @default(0)
   jointMobility     Float @default(0)
   bodyTension       Float @default(0)
   skillTechnique    Float @default(0)
+
+  // XP tracking per axis (for progression)
+  relativeStrengthXP  Int @default(0)
+  muscularEnduranceXP Int @default(0)
+  balanceControlXP    Int @default(0)
+  jointMobilityXP     Int @default(0)
+  bodyTensionXP       Int @default(0)
+  skillTechniqueXP    Int @default(0)
+
+  // Level per axis (BEGINNER, INTERMEDIATE, ADVANCED, ELITE)
+  relativeStrengthLevel  FitnessLevel @default(BEGINNER)
+  muscularEnduranceLevel FitnessLevel @default(BEGINNER)
+  balanceControlLevel    FitnessLevel @default(BEGINNER)
+  jointMobilityLevel     FitnessLevel @default(BEGINNER)
+  bodyTensionLevel       FitnessLevel @default(BEGINNER)
+  skillTechniqueLevel    FitnessLevel @default(BEGINNER)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -806,7 +822,7 @@ enum FitnessLevel {
   BEGINNER
   INTERMEDIATE
   ADVANCED
-  EXPERT
+  ELITE
 }
 
 enum ExerciseCategory {

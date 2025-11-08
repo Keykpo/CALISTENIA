@@ -270,7 +270,7 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
                         <SelectItem value="BEGINNER">Beginner</SelectItem>
                         <SelectItem value="INTERMEDIATE">Intermediate</SelectItem>
                         <SelectItem value="ADVANCED">Advanced</SelectItem>
-                        <SelectItem value="EXPERT">Expert</SelectItem>
+                        <SelectItem value="ELITE">Elite</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>

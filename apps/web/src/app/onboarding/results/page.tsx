@@ -9,8 +9,9 @@ import { ArrowRight, Loader2, Sparkles } from 'lucide-react';
 import SkillHexagon from '@/components/SkillHexagon';
 import LevelBadge from './components/LevelBadge';
 import RecommendationCard from './components/RecommendationCard';
+import { calculateOverallLevel, getLevelProgress, type HexagonProfileWithXP, type FitnessLevel } from '@/lib/hexagon-progression';
 
-type FitnessLevel = 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'EXPERT';
+// Note: FitnessLevel is now imported from hexagon-progression (BEGINNER | INTERMEDIATE | ADVANCED | ELITE)
 
 interface HexagonProfile {
   relativeStrength: number;
@@ -188,34 +189,34 @@ export default function OnboardingResultsPage() {
           description: 'Build vertical pushing strength',
         },
       ],
-      EXPERT: [
+      ELITE: [
         {
           name: 'Planche Progressions',
-          difficulty: 'EXPERT',
+          difficulty: 'ELITE',
           category: 'Push',
           description: 'Master advanced straight-arm pushing',
         },
         {
           name: 'One-Arm Pull-ups',
-          difficulty: 'EXPERT',
+          difficulty: 'ELITE',
           category: 'Pull',
           description: 'Achieve elite unilateral pulling strength',
         },
         {
           name: 'Front Lever',
-          difficulty: 'EXPERT',
+          difficulty: 'ELITE',
           category: 'Core',
           description: 'Hold perfect horizontal body position',
         },
         {
           name: 'Freestanding Handstand',
-          difficulty: 'EXPERT',
+          difficulty: 'ELITE',
           category: 'Push',
           description: 'Master balance and control in handstand',
         },
         {
           name: 'Human Flag',
-          difficulty: 'EXPERT',
+          difficulty: 'ELITE',
           category: 'Core',
           description: 'Achieve lateral body control',
         },
