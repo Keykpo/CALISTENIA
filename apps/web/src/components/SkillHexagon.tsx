@@ -107,13 +107,14 @@ export default function SkillHexagon({
   const content = (
     <div className="w-full">
       {title && showCard && (
-        <h3 className="text-lg font-semibold text-slate-900 mb-4">{title}</h3>
+        <h3 className="text-lg font-semibold text-slate-900 mb-2 sm:mb-4 text-center">{title}</h3>
       )}
 
       <svg
-        viewBox="0 0 400 500"
+        viewBox="0 0 400 480"
         className="w-full h-auto"
         style={{ maxWidth: `${size}px`, margin: '0 auto' }}
+        preserveAspectRatio="xMidYMid meet"
       >
         {/* Background concentric hexagons */}
         {[0.2, 0.4, 0.6, 0.8, 1.0].map((scale, idx) => {
@@ -192,7 +193,11 @@ export default function SkillHexagon({
                 y={labelY - 10}
                 textAnchor="middle"
                 dominantBaseline="middle"
-                className="text-xs font-medium fill-slate-700"
+                className="text-[10px] sm:text-xs font-medium fill-slate-700"
+                style={{
+                  fontSize: 'clamp(9px, 2vw, 12px)',
+                  userSelect: 'none'
+                }}
               >
                 {p.label}
               </text>
@@ -220,10 +225,14 @@ export default function SkillHexagon({
               ) : (
                 <text
                   x={labelX}
-                  y={labelY + 10}
+                  y={labelY + 15}
                   textAnchor="middle"
                   dominantBaseline="middle"
-                  className="text-xs font-semibold fill-blue-600"
+                  className="text-xs sm:text-sm font-semibold fill-blue-600"
+                  style={{
+                    fontSize: 'clamp(10px, 2.5vw, 14px)',
+                    userSelect: 'none'
+                  }}
                 >
                   {p.value.toFixed(1)}
                 </text>

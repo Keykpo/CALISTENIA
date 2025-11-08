@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
+import { calculateOverallLevel, type HexagonProfileWithXP } from '@/lib/hexagon-progression';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -321,8 +322,8 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Check if user has completed assessment
-    if (!user.fitnessLevel) {
+    // Check if user has hexagon profile
+    if (!user.hexagonProfile) {
       return NextResponse.json(
         {
           success: false,
@@ -332,6 +333,9 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
+
+    // Calculate fitness level from hexagon (SINGLE SOURCE OF TRUTH)
+    const calculatedLevel = calculateOverallLevel(user.hexagonProfile as HexagonProfileWithXP);
 
     // Parse goals
     const goals = user.goals ? JSON.parse(user.goals as string) : [];
@@ -356,10 +360,10 @@ export async function POST(req: NextRequest) {
       ? getWeakestBranches(user.hexagonProfile)
       : [];
 
-    // Generate routine
+    // Generate routine using calculated level from hexagon
     const routine = generateRoutine(
       exercises,
-      user.fitnessLevel,
+      calculatedLevel,
       primaryGoal,
       availability,
       user.hexagonProfile,
@@ -370,7 +374,7 @@ export async function POST(req: NextRequest) {
       success: true,
       routine,
       userProfile: {
-        fitnessLevel: user.fitnessLevel,
+        fitnessLevel: calculatedLevel,
         goal: primaryGoal,
         weakestBranches,
       },

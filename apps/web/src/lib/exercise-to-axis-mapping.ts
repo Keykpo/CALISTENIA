@@ -376,3 +376,305 @@ export function generateDailyMissions(
 
   return missions;
 }
+
+/**
+ * Goal-specific missions
+ * Missions tailored to user's training goal
+ */
+export interface GoalMission extends AxisMission {
+  goal: string; // handstand, strength, front_lever, etc.
+}
+
+export const GOAL_SPECIFIC_MISSIONS: Record<string, GoalMission[]> = {
+  handstand: [
+    {
+      id: 'handstand-beginner-wall',
+      targetAxis: 'balanceControl',
+      requiredLevel: 'BEGINNER',
+      description: 'Hold wall handstand for 30 seconds total',
+      exerciseCategory: 'BALANCE',
+      target: 30,
+      targetUnit: 'seconds',
+      rewardXP: 60,
+      rewardCoins: 15,
+      goal: 'handstand',
+    },
+    {
+      id: 'handstand-intermediate-holds',
+      targetAxis: 'balanceControl',
+      requiredLevel: 'INTERMEDIATE',
+      description: 'Hold freestanding handstand 3 x 10 seconds',
+      exerciseCategory: 'BALANCE',
+      target: 30,
+      targetUnit: 'seconds',
+      rewardXP: 120,
+      rewardCoins: 30,
+      goal: 'handstand',
+    },
+    {
+      id: 'handstand-advanced-holds',
+      targetAxis: 'balanceControl',
+      requiredLevel: 'ADVANCED',
+      description: 'Hold freestanding handstand 5 x 15 seconds',
+      exerciseCategory: 'BALANCE',
+      target: 75,
+      targetUnit: 'seconds',
+      rewardXP: 180,
+      rewardCoins: 45,
+      goal: 'handstand',
+    },
+  ],
+
+  strength: [
+    {
+      id: 'strength-beginner-pushups',
+      targetAxis: 'relativeStrength',
+      requiredLevel: 'BEGINNER',
+      description: 'Complete 15 push-ups',
+      exerciseCategory: 'PUSH',
+      target: 15,
+      targetUnit: 'reps',
+      rewardXP: 60,
+      rewardCoins: 15,
+      goal: 'strength',
+    },
+    {
+      id: 'strength-intermediate-pullups',
+      targetAxis: 'relativeStrength',
+      requiredLevel: 'INTERMEDIATE',
+      description: 'Complete 10 pull-ups',
+      exerciseCategory: 'PULL',
+      target: 10,
+      targetUnit: 'reps',
+      rewardXP: 120,
+      rewardCoins: 30,
+      goal: 'strength',
+    },
+    {
+      id: 'strength-advanced-combo',
+      targetAxis: 'relativeStrength',
+      requiredLevel: 'ADVANCED',
+      description: 'Complete 15 dips + 12 pull-ups',
+      exerciseCategory: 'PUSH',
+      target: 27,
+      targetUnit: 'reps',
+      rewardXP: 180,
+      rewardCoins: 45,
+      goal: 'strength',
+    },
+  ],
+
+  front_lever: [
+    {
+      id: 'frontlever-beginner-tuck',
+      targetAxis: 'bodyTension',
+      requiredLevel: 'BEGINNER',
+      description: 'Hold tuck front lever for 15 seconds',
+      exerciseCategory: 'STATICS',
+      target: 15,
+      targetUnit: 'seconds',
+      rewardXP: 60,
+      rewardCoins: 15,
+      goal: 'front_lever',
+    },
+    {
+      id: 'frontlever-intermediate-adv-tuck',
+      targetAxis: 'bodyTension',
+      requiredLevel: 'INTERMEDIATE',
+      description: 'Hold advanced tuck front lever 3 x 10s',
+      exerciseCategory: 'STATICS',
+      target: 30,
+      targetUnit: 'seconds',
+      rewardXP: 120,
+      rewardCoins: 30,
+      goal: 'front_lever',
+    },
+    {
+      id: 'frontlever-advanced-one-leg',
+      targetAxis: 'bodyTension',
+      requiredLevel: 'ADVANCED',
+      description: 'Hold one-leg front lever 5 x 8 seconds',
+      exerciseCategory: 'STATICS',
+      target: 40,
+      targetUnit: 'seconds',
+      rewardXP: 180,
+      rewardCoins: 45,
+      goal: 'front_lever',
+    },
+  ],
+
+  planche: [
+    {
+      id: 'planche-beginner-lean',
+      targetAxis: 'bodyTension',
+      requiredLevel: 'BEGINNER',
+      description: 'Hold planche lean for 30 seconds',
+      exerciseCategory: 'STATICS',
+      target: 30,
+      targetUnit: 'seconds',
+      rewardXP: 60,
+      rewardCoins: 15,
+      goal: 'planche',
+    },
+    {
+      id: 'planche-intermediate-tuck',
+      targetAxis: 'bodyTension',
+      requiredLevel: 'INTERMEDIATE',
+      description: 'Hold tuck planche 4 x 10 seconds',
+      exerciseCategory: 'STATICS',
+      target: 40,
+      targetUnit: 'seconds',
+      rewardXP: 120,
+      rewardCoins: 30,
+      goal: 'planche',
+    },
+    {
+      id: 'planche-advanced-adv-tuck',
+      targetAxis: 'bodyTension',
+      requiredLevel: 'ADVANCED',
+      description: 'Hold advanced tuck planche 5 x 8s',
+      exerciseCategory: 'STATICS',
+      target: 40,
+      targetUnit: 'seconds',
+      rewardXP: 180,
+      rewardCoins: 45,
+      goal: 'planche',
+    },
+  ],
+
+  general: [
+    {
+      id: 'general-beginner-basic',
+      targetAxis: 'muscularEndurance',
+      requiredLevel: 'BEGINNER',
+      description: 'Complete 20 squats + 10 push-ups',
+      exerciseCategory: 'LOWER_BODY',
+      target: 30,
+      targetUnit: 'reps',
+      rewardXP: 60,
+      rewardCoins: 15,
+      goal: 'general',
+    },
+    {
+      id: 'general-intermediate-circuit',
+      targetAxis: 'muscularEndurance',
+      requiredLevel: 'INTERMEDIATE',
+      description: 'Complete full-body circuit (3 rounds)',
+      exerciseCategory: 'CARDIO',
+      target: 3,
+      targetUnit: 'count',
+      rewardXP: 120,
+      rewardCoins: 30,
+      goal: 'general',
+    },
+    {
+      id: 'general-advanced-hiit',
+      targetAxis: 'muscularEndurance',
+      requiredLevel: 'ADVANCED',
+      description: 'Complete 20 min HIIT workout',
+      exerciseCategory: 'CARDIO',
+      target: 1200,
+      targetUnit: 'seconds',
+      rewardXP: 180,
+      rewardCoins: 45,
+      goal: 'general',
+    },
+  ],
+};
+
+/**
+ * Generate 5 daily missions based on user goal and hexagon levels
+ *
+ * Distribution:
+ * - 2 missions focused on user's goal
+ * - 2 missions targeting weakest axes
+ * - 1 bonus mission (streak, recovery, etc.)
+ */
+export function generateGoalBasedDailyMissions(
+  userGoal: string,
+  hexagonLevels: Record<HexagonAxis, 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE'>,
+  count: number = 5
+): AxisMission[] {
+  const missions: AxisMission[] = [];
+
+  // Normalize goal name
+  const goalKey = userGoal.toLowerCase().replace(/[_\s]/g, '_');
+  const goalMissions = GOAL_SPECIFIC_MISSIONS[goalKey] || GOAL_SPECIFIC_MISSIONS['general'];
+
+  // 1. Add 2 goal-specific missions
+  const userLevel = Object.values(hexagonLevels)[0] || 'BEGINNER'; // Use first axis as reference
+  const availableGoalMissions = goalMissions.filter(m => m.requiredLevel === userLevel);
+
+  if (availableGoalMissions.length > 0) {
+    // Pick 2 random goal missions
+    const shuffled = [...availableGoalMissions].sort(() => Math.random() - 0.5);
+    missions.push(...shuffled.slice(0, Math.min(2, shuffled.length)));
+  }
+
+  // 2. Add 2 missions for weakest axes
+  const axesByLevel = (Object.keys(hexagonLevels) as HexagonAxis[]).sort((a, b) => {
+    const levelOrder = { BEGINNER: 0, INTERMEDIATE: 1, ADVANCED: 2, ELITE: 3 };
+    return levelOrder[hexagonLevels[a]] - levelOrder[hexagonLevels[b]];
+  });
+
+  for (let i = 0; i < 2 && missions.length < 4; i++) {
+    const axis = axesByLevel[i];
+    if (!axis) break;
+
+    const level = hexagonLevels[axis];
+    const axisMissions = getMissionsForAxisAndLevel(axis, level);
+
+    if (axisMissions.length > 0) {
+      // Pick random mission for this axis
+      const randomMission = axisMissions[Math.floor(Math.random() * axisMissions.length)];
+      // Avoid duplicates
+      if (!missions.find(m => m.id === randomMission.id)) {
+        missions.push(randomMission);
+      }
+    }
+  }
+
+  // 3. Add 1 bonus mission (always available)
+  const bonusMissions: AxisMission[] = [
+    {
+      id: 'bonus-hydration',
+      targetAxis: 'jointMobility',
+      requiredLevel: 'BEGINNER',
+      description: 'Stay hydrated during workout',
+      exerciseCategory: 'WARM_UP',
+      target: 1,
+      targetUnit: 'count',
+      rewardXP: 10,
+      rewardCoins: 5,
+    },
+    {
+      id: 'bonus-stretching',
+      targetAxis: 'jointMobility',
+      requiredLevel: 'BEGINNER',
+      description: 'Complete 5-minute stretching routine',
+      exerciseCategory: 'FLEXIBILITY',
+      target: 300,
+      targetUnit: 'seconds',
+      rewardXP: 30,
+      rewardCoins: 10,
+    },
+    {
+      id: 'bonus-recovery',
+      targetAxis: 'jointMobility',
+      requiredLevel: 'BEGINNER',
+      description: 'Take a recovery walk (15 minutes)',
+      exerciseCategory: 'CARDIO',
+      target: 900,
+      targetUnit: 'seconds',
+      rewardXP: 25,
+      rewardCoins: 8,
+    },
+  ];
+
+  if (missions.length < count) {
+    const randomBonus = bonusMissions[Math.floor(Math.random() * bonusMissions.length)];
+    missions.push(randomBonus);
+  }
+
+  return missions.slice(0, count);
+}
