@@ -60,14 +60,14 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
       {!userData?.user?.hasCompletedAssessment && (
         <Alert className="border-blue-200 bg-blue-50">
           <AlertCircle className="h-4 w-4 text-blue-600" />
-          <AlertTitle className="text-blue-900">Completa tu Evaluación Inicial</AlertTitle>
+          <AlertTitle className="text-blue-900">Complete Your Initial Assessment</AlertTitle>
           <AlertDescription className="text-blue-800">
             <p className="mb-3">
-              Para obtener rutinas personalizadas según tu nivel y objetivos, completa el cuestionario de evaluación.
+              To get personalized routines based on your level and goals, complete the assessment questionnaire.
             </p>
             <Link href="/onboarding/assessment">
               <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
-                Ir al Cuestionario
+                Take Assessment
               </Button>
             </Link>
           </AlertDescription>
