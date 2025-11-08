@@ -1235,7 +1235,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Párate derecho. Baja en cuclillas y coloca las manos en el suelo. Salta con los pies hacia atrás a posición de plancha. Realiza una flexión. Salta con los pies hacia las manos. Salta verticalmente con los brazos arriba. Aterriza y repite. Ejercicio de cuerpo completo que eleva rápidamente la frecuencia cardíaca.",
+    "howTo": "Stand upright. Squat down y place your hands on the floor. Jump your feet back a plank position. Perform a push-up. Jump your feet to your hands. Jump vertically with arms up. Land and repeat. Full-body exercise that rapidly elevates heart rate.",
     "gifUrl": "https://static.exercisedb.dev/media/dK9394r.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/dK9394r.gif",
     "videoUrl": null
@@ -1603,7 +1603,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Agarra la barra con las palmas hacia ti a la anchura de los shoulders. Cuelga con brazos extendeds. Tira hacia arriba llevando el pecho hacia la barra hasta que la barbilla supere la barra. Baja con control hasta extender completamente los brazos. El agarre supino facilita el movimiento y enfatiza los bíceps.",
+    "howTo": "Grab the bar with palms facing you at shoulder width. Hang with arms extended. Pull up bringing your chest to the bar until your chin passes the bar. Lower with control until arms are fully extended. The supinated grip facilitates the movement and emphasizes the biceps.",
     "gifUrl": "https://static.exercisedb.dev/media/G70mEAJ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/G70mEAJ.gif",
     "videoUrl": null
@@ -1847,7 +1847,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Cuelga de una barra con los brazos extendeds. A diferencia del dead hang, activa los shoulders tirando de los omóplatos hacia abajo y juntándolos. Tu cuerpo debe subir unos centímetros. Keep esta activación. Este ejercicio fortalece la musculatura escapular y es fundamental para dominadas correctas.",
+    "howTo": "Hang from a bar with arms extended. Unlike the dead hang, activate your shoulders by pulling shoulder blades down and together. Your body should rise a few centimeters. Keep this activation. This exercise strengthens scapular musculature and is fundamental for correct pull-ups.",
     "gifUrl": "https://static.exercisedb.dev/media/PXTIwgu.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/PXTIwgu.gif",
     "videoUrl": null
@@ -1868,7 +1868,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Cuelga de una barra con los brazos completamente extendeds y los shoulders relajados. Keep las legs juntas o ligeramente flexionadas. Respira normalmente. Este ejercicio desarrolla fuerza de agarre y resistencia en shoulders. Es la base para todos los ejercicios de tracción.",
+    "howTo": "Hang from a bar with arms completely extended and shoulders relaxed. Keep legs together or slightly bent. Breathe normally. This exercise develops grip strength and shoulder endurance. It is the foundation for all pulling exercises.",
     "gifUrl": "https://static.exercisedb.dev/media/03lzqwk.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/03lzqwk.gif",
     "videoUrl": null
@@ -2164,7 +2164,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Cuélgate de una barra. Levanta las legs rectas hacia arriba hasta tocar la barra con los dedos de los pies. En movimientos estrictos, evita el balanceo. En versión kipping, usa un ligero swing para momentum. Baja con control. Requiere gran fuerza de core y flexibilidad.",
+    "howTo": "Hang from a bar. Raise your legs straight up until your toes touch the bar. In strict movements, avoid swinging. In kipping version, use a slight swing for momentum. Lower with control. Requires great core strength and flexibility.",
     "gifUrl": "https://static.exercisedb.dev/media/I3tsCnC.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/I3tsCnC.gif",
     "videoUrl": null
@@ -2230,7 +2230,7 @@
   {
     "id": "pull_archer_assisted",
     "name": "Dominada Arquero (Asistida)",
-    "description": "Dominada de arquero usando bandas de resistencia o anillas para facilitar el movimiento unilateral.",
+    "description": "Archer pull-up using resistance bands or rings to facilitate unilateral movement.",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -2264,7 +2264,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Desde el colgado, tira explosivamente hacia arriba llevando el pecho a la barra, no solo la barbilla. En el pico, el pecho debe tocar o estar muy cerca de la barra. Baja con control. Este ejercicio desarrolla potencia explosiva de tracción y prepara para muscle ups.",
+    "howTo": "From the hang, pull explosively upward bringing your chest to the bar, not just your chin. At the peak, your chest should touch or be very close to the bar. Lower with control. This exercise develops explosive pulling power and prepares for muscle ups.",
     "gifUrl": "https://static.exercisedb.dev/media/vrhHa6D.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/vrhHa6D.gif",
     "videoUrl": null
@@ -2286,7 +2286,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Agarra la barra con las palmas hacia adelante, separadas más que el ancho de shoulders (aproximadamente 1.5 veces). Tira hacia arriba hasta que la barbilla supere la barra. El agarre ancho enfatiza el trabajo de la espalda superior y los dorsales, haciendo el ejercicio más difícil.",
+    "howTo": "Grab the bar with palms facing forward, separated wider than shoulder width (approximately 1.5 times). Pull up until your chin passes the bar. The wide grip emphasizes upper back and lat work, making the exercise more difficult.",
     "gifUrl": "https://static.exercisedb.dev/media/OYFhXVD.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/OYFhXVD.gif",
     "videoUrl": null
@@ -2309,7 +2309,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Agarra la barra con una sola mano, la other mano libre a un lado o detrás de la espalda. Keep el cuerpo lo más recto posible minimizando rotación. Tira hacia arriba hasta que la barbilla supere la barra usando solo un brazo. Baja con control. Uno de los ejercicios más difíciles de calistenia.",
+    "howTo": "Grab the bar with one hand, the other hand free at your side or behind your back. Keep your body as straight as possible minimizing rotation. Pull up until your chin passes the bar using only one arm. Lower with control. One of the most difficult calisthenics exercises.",
     "gifUrl": "https://static.exercisedb.dev/media/HjdqmZa.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/HjdqmZa.gif",
     "videoUrl": null
@@ -2332,7 +2332,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Agarra la barra con una mano. Con la other mano, agarra la muñeca o el antebrazo del brazo que está en la barra. Tira hacia arriba usando principalmente el brazo en la barra, mientras el otro asiste. Progresivamente reduce la asistencia agarrando más abajo.",
+    "howTo": "Grab the bar with one hand. With the other hand, grab the wrist or forearm of the arm on the bar. Pull up using primarily the arm on the bar, while the other assists. Progressively reduce assistance by gripping lower.",
     "gifUrl": "https://static.exercisedb.dev/media/r1XNRYB.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/r1XNRYB.gif",
     "videoUrl": null
@@ -2373,7 +2373,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Agarra la barra con las manos muy separadas. Tira hacia arriba llevando el cuerpo hacia un lado, manteniendo ese brazo flexionado mientras el otro se extiende. Alterna los lados. Esta variación desarrolla fuerza unilateral necesaria para dominadas a una mano.",
+    "howTo": "Grab the bar with hands very wide apart. Pull up bringing your body to one side, keeping that arm bent while the other extends. Alternate sides. This variation develops unilateral strength necessary for one-arm pull-ups.",
     "gifUrl": "https://static.exercisedb.dev/media/72BC5Za.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/72BC5Za.gif",
     "videoUrl": null
@@ -2396,7 +2396,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca una banda de resistencia en la barra. Agarra la barra y coloca las knees o pies en la banda. La banda te asistirá reduciendo tu peso corporal. Tira hacia arriba hasta que la barbilla supere la barra. Baja con control. Usa bandas progresivamente más ligeras.",
+    "howTo": "Place a resistance band on the bar. Grab the bar y place your knees or feet in the band. The band will assist you by reducing your body weight. Pull up until your chin passes the bar. Lower with control. Use progressively lighter bands.",
     "gifUrl": "https://static.exercisedb.dev/media/r1XNRYB.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/r1XNRYB.gif",
     "videoUrl": null
@@ -2404,7 +2404,7 @@
   {
     "id": "pull_commando",
     "name": "Dominadas Comando",
-    "description": "Dominada con agarre mixto/neutral, tirando de la cabeza hacia un lado de la barra. Introduce trabajo unilateral.",
+    "description": "Dominada with mixed/neutral grip, pulling head to one side of bar. Introduces unilateral work.",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -2437,7 +2437,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Agarra la barra con las palmas hacia adelante a la anchura de los shoulders. Cuelga con brazos completamente extendeds. Tira hacia arriba llevando el pecho hacia la barra hasta que la barbilla supere la barra. Keep el core activado y evita el balanceo. Baja con control hasta extender completamente los brazos.",
+    "howTo": "Grab the bar with palms facing forward at shoulder width. Hang with arms fully extended. Pull up bringing your chest to the bar until your chin passes the bar. Keep your core engaged and avoid swinging. Lower with control until arms are fully extended.",
     "gifUrl": "https://static.exercisedb.dev/media/lBDjFxJ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/0rHfvy9.gif",
     "videoUrl": null
@@ -2524,7 +2524,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Salta o usa un apoyo para llegar a la posición superior de una dominada con la barbilla sobre la barra. Desde ahí, baja lo más lento posible (3-5 segundos mínimo) con control total hasta extender completamente los brazos. Repite. Las negativas son la mejor forma de desarrollar fuerza para dominadas completas.",
+    "howTo": "Jump or use support to reach the top position of a pull-up with chin above the bar. From there, lower as slowly as possible (3-5 seconds minimum) with total control until arms are fully extended. Repeat. Negatives are the best way to develop strength for full pull-ups.",
     "gifUrl": "https://static.exercisedb.dev/media/lBDjFxJ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/50BETrz.gif",
     "videoUrl": null
@@ -2780,8 +2780,8 @@
   },
   {
     "id": "calf_raise_double",
-    "name": "Elevación de Pantorrillas (Dos Piernas)",
-    "description": "Elevación de Pantorrillas (Dos Piernas): a bodyweight exercise in the strength category.",
+    "name": "Calf Raises (Two Legs)",
+    "description": "Calf Raises (Two Legs): a bodyweight exercise in the strength category.",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -2793,7 +2793,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Párate con los pies a la anchura de hips, preferiblemente con las puntas de los pies en un escalón para mayor rango. Levanta los talones lo más alto posible poniéndote en puntas de pies. Keep arriba 1 segundo. Baja con control hasta que los talones estén por debajo del nivel de los dedos (si estás en escalón).",
+    "howTo": "Stand with feet at hip width, preferably with toes on a step for greater range. Raise your heels as high as possible going onto your tiptoes. Hold at the top for 1 second. Lower with control until your heels are below toe level (if you are on a step).",
     "gifUrl": "https://static.exercisedb.dev/media/bJYHBIN.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/jl6uxZV.gif",
     "videoUrl": null
@@ -2965,7 +2965,7 @@
   {
     "id": "skill_frog_stand",
     "name": "Equilibrio de Rana (Frog Stand)",
-    "description": "Nivel E: Equilibrio básico en brazos con knees apoyadas sobre los codos. Desarrolla el equilibrio a baja altura y la fuerza de compresión del core.",
+    "description": "Level E: Basic arm balance con knees supported on elbows. Develops balance at low height and core compression strength.",
     "category": "BALANCE",
     "difficulty": "C (Novice)",
     "unit": "seconds",
@@ -2979,7 +2979,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Colócate en cuclillas con las manos en el suelo delante. Inclínate hacia adelante colocando las knees sobre los codos. Continúa inclinándote hasta que los pies despeguen del suelo. Keep la mirada adelante y el peso sobre las manos. Este es el primer paso hacia el equilibrio de manos.",
+    "howTo": "Get into squat with hands on the floor in front. Lean forward placing knees on elbows. Continue leaning until feet lift off the floor. Keep gaze forward and weight on hands. This is the first step toward handstand balance.",
     "gifUrl": "https://static.exercisedb.dev/media/2Dk4xQV.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/2Dk4xQV.gif",
     "videoUrl": null
@@ -3001,7 +3001,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Comienza en posición de plancha alta con brazos extendeds. Keep las hips bajas. Lleva una knee hacia el pecho rápidamente. Alterna las legs en un movimiento de carrera. Keep el core activado y las hips estables. Aumenta la velocidad para mayor intensidad cardiovascular.",
+    "howTo": "Start in plank position high with arms extended. Keep your hips low. Bring one knee toward chest quickly. Alternate legs in a running motion. Keep core engaged y hips stable. Increase speed for greater cardiovascular intensity.",
     "gifUrl": "https://static.exercisedb.dev/media/RJgzwny.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/RJgzwny.gif",
     "videoUrl": null
@@ -3140,7 +3140,7 @@
   {
     "id": "push_one_arm",
     "name": "Flexiones a Una Mano",
-    "description": "Flexión completa realizada con un solo brazo de apoyo. Requiere fuerza y estabilización del core avanzadas.",
+    "description": "Full push-up performed with one supporting arm. Requires advanced strength and core stabilization.",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -3156,7 +3156,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca una mano en el suelo a la línea media del cuerpo y la other detrás de la espalda. Separa los pies más del ancho de shoulders para estabilidad. Keep el cuerpo lo más recto posible, minimizando la rotación. Baja el pecho al suelo y empuja hacia arriba. Ejercicio que requiere fuerza extrema y control del core.",
+    "howTo": "Place one hand on the floor at your body's midline and the other behind your back. Spread your feet wider than shoulder width for stability. Keep body as straight as possible, minimizing rotation. Lower your chest to the floor and push up. Exercise that requires extreme strength and core control.",
     "gifUrl": "https://static.exercisedb.dev/media/MUic5zN.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/MUic5zN.gif",
     "videoUrl": null
@@ -3164,7 +3164,7 @@
   {
     "id": "push_wide",
     "name": "Flexiones Anchas",
-    "description": "Flexiones con las manos más separadas que el ancho de los shoulders, enfocándose más en el pecho.",
+    "description": "Flexiones with hands wider than shoulder width, focusing more on chest.",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -3178,7 +3178,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca las manos más separadas que la anchura de los shoulders (aproximadamente 1.5 veces más). Keep el cuerpo recto y el core activado. Baja el pecho al suelo permitiendo que los codos se abran hacia los lados. Empuja hacia arriba hasta extender los brazos. Esta variación enfatiza el trabajo del pecho exterior.",
+    "howTo": "Place hands wider than shoulder width (approximately 1.5 times más). Keep your body straight and core engaged. Lower your chest to the floor allowing elbows to flare to the sides. Push up until arms are extended. This variation emphasizes outer chest work.",
     "gifUrl": "https://static.exercisedb.dev/media/JmMVpR3.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Qqi7bko.gif",
     "videoUrl": null
@@ -3186,7 +3186,7 @@
   {
     "id": "push_archer",
     "name": "Flexiones Arquero",
-    "description": "Flexión unilateral donde un brazo se estira hacia el lado mientras el otro flexiona. Paso previo a la flexión a una mano.",
+    "description": "Unilateral push-up where one arm extends to the side while the other bends. Previous step to one-arm push-up.",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -3201,7 +3201,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca las manos muy separadas en el suelo. Baja el cuerpo hacia un lado, manteniendo ese brazo flexionado mientras el otro se extiende completamente. El brazo extended debe quedar recto con la palma en el suelo. Empuja de vuelta al centro y alterna los lados. Progresión directa hacia flexiones a una mano.",
+    "howTo": "Place hands very wide apart on the floor. Lower your body to one side, keeping that arm bent while the other extends completamente. The extended arm should be straight with palm on the floor. Push back to center and alternate sides. Direct progression toward one-arm push-ups.",
     "gifUrl": "https://static.exercisedb.dev/media/A9qxk2F.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/i5cEhka.gif",
     "videoUrl": null
@@ -3209,7 +3209,7 @@
   {
     "id": "push_archer_incline",
     "name": "Flexiones Arquero Inclinadas",
-    "description": "Progresión de arquero con manos elevadas para reducir la dificultad y practicar el movimiento unilateral.",
+    "description": "Archer progression with elevated hands to reduce difficulty and practice unilateral movement.",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -3224,7 +3224,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca las manos en una superficie elevada con una separación muy amplia. Baja el cuerpo hacia un lado, extendiendo completamente el brazo opuesto mientras el otro se flexiona. Alterna los lados en cada repetición. Esta variación desarrolla la fuerza unilateral necesaria para flexiones a una mano.",
+    "howTo": "Place hands on an elevated surface with a very wide separation. Lower your body to one side, fully extending the opposite arm while the other bends. Alternate sides on each repetition. Esta variación develops the unilateral strength necessary for one-arm push-ups.",
     "gifUrl": "https://static.exercisedb.dev/media/A9qxk2F.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/B1EVP9F.gif",
     "videoUrl": null
@@ -3232,7 +3232,7 @@
   {
     "id": "push_standard",
     "name": "Flexiones Completas",
-    "description": "Flexión estándar con cuerpo recto desde los talones hasta la cabeza.",
+    "description": "Flexión estándar with straight body from heels to head.",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -3247,7 +3247,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca las manos en el suelo a la anchura de los shoulders. Keep el cuerpo completamente recto desde los talones hasta la cabeza, con el core activado. Baja el pecho hasta que casi toque el suelo, manteniendo los codos a 45 grados. Empuja hacia arriba hasta extender completamente los brazos. Keep la mirada ligeramente adelante.",
+    "howTo": "Place hands on the floor at shoulder width. Keep your body completely straight from heels to head, with core engaged. Lower your chest until it almost touches the floor, keeping elbows at 45 degrees. Push up until arms are fully extended. Keep your gaze slightly forward.",
     "gifUrl": "https://static.exercisedb.dev/media/I4hDWkc.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/gw9PqGk.gif",
     "videoUrl": null
@@ -3255,7 +3255,7 @@
   {
     "id": "push_hspu_wall",
     "name": "Flexiones de Pino (Asistido en Pared)",
-    "description": "Handstand Push-Up (HSPU) completo asistido con una pared para equilibrio.",
+    "description": "Handstand Push-Up (HSPU) fully assisted with a wall for balance.",
     "category": "STRENGTH",
     "difficulty": "D (Beginner)",
     "unit": "reps",
@@ -3269,7 +3269,7 @@
     ],
     "expReward": 8,
     "coinsReward": 4,
-    "howTo": "Patéate hasta posición de pino contra la pared con brazos extendeds. Keep el cuerpo recto y el core activado. Baja con control hasta que la cabeza toque el suelo. Empuja hacia arriba hasta extender completamente los brazos. Keep los talones tocando la pared para estabilidad. Ejercicio que requiere gran fuerza de shoulders.",
+    "howTo": "Kick up to handstand position against the wall with arms extended. Keep your body straight and core engaged. Lower with control until your head touches the floor. Push up until arms are fully extended. Keep heels touching the wall for stability. Exercise that requires great shoulder strength.",
     "gifUrl": "https://static.exercisedb.dev/media/rQxwMxO.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/qBl14UC.gif",
     "videoUrl": null
@@ -3277,7 +3277,7 @@
   {
     "id": "push_hspu_freestanding",
     "name": "Flexiones de Pino (Libre)",
-    "description": "Flexión de pino realizada mientras se mantiene un pino libre, sin asistencia. Requiere equilibrio y fuerza de élite.",
+    "description": "Flexión de pino realizada mientras se mantiene un pino libre, sin asistencia. Requires elite balance and strength.",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -3291,7 +3291,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Patéate hasta posición de pino libre (sin pared) manteniendo el equilibrio. Keep el cuerpo completamente recto. Baja con control hasta que la cabeza toque el suelo. Empuja hacia arriba hasta extender los brazos, manteniendo el equilibrio en todo momento. Requiere fuerza extrema de shoulders y excelente control del equilibrio.",
+    "howTo": "Kick up to freestanding handstand position (without wall) maintaining balance. Keep body completely straight. Lower with control until your head touches the floor. Push up until arms are extended, maintaining balance at all times. Requires extreme shoulder strength and excellent balance control.",
     "gifUrl": "https://static.exercisedb.dev/media/rQxwMxO.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/rQxwMxO.gif",
     "videoUrl": null
@@ -3299,7 +3299,7 @@
   {
     "id": "push_knees",
     "name": "Flexiones de Rodillas",
-    "description": "Flexiones estándar pero apoyando las knees para reducir la palanca y la dificultad.",
+    "description": "Flexiones estándar but supporting knees to reduce leverage and difficulty.",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -3313,7 +3313,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Colócate en posición de plancha, pero apoya las knees en el suelo. Keep una línea recta desde las knees hasta la cabeza. Baja el pecho al suelo manteniendo los codos a 45 grados del cuerpo. Empuja hacia arriba hasta extender los brazos. Este ejercicio reduce aproximadamente 50% del peso corporal.",
+    "howTo": "Get into plank position, but support your knees on the floor. Keep a straight line from knees to head. Lower your chest to the floor keeping elbows at 45 degrees from body. Push up until arms are extended. This exercise reduces approximately 50% of body weight.",
     "gifUrl": "https://static.exercisedb.dev/media/v3vLFW0.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/v3vLFW0.gif",
     "videoUrl": null
@@ -3321,7 +3321,7 @@
   {
     "id": "push_decline",
     "name": "Flexiones Declinadas",
-    "description": "Flexiones con los pies elevados en un banco. Aumenta la carga y enfoca la parte superior del pecho y shoulders.",
+    "description": "Flexiones with feet elevated on a bench. Increases load and focuses on upper chest and shoulders.",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -3336,7 +3336,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca los pies sobre una superficie elevada (banco) y las manos en el suelo a la anchura de los shoulders. Keep el cuerpo completamente recto. Baja el pecho al suelo manteniendo los codos a 45 grados. Empuja hacia arriba hasta extender los brazos. Esta variación incrementa la carga y enfatiza los shoulders y el pecho superior.",
+    "howTo": "Place feet on an elevated surface (bench) and hands on the floor at shoulder width. Keep body completely straight. Lower your chest to the floor keeping elbows at 45 degrees. Push up until arms are extended. This variation increases the load and emphasizes the shoulders and upper chest.",
     "gifUrl": "https://static.exercisedb.dev/media/i5cEhka.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/i5cEhka.gif",
     "videoUrl": null
@@ -3344,7 +3344,7 @@
   {
     "id": "push_diamond",
     "name": "Flexiones Diamante",
-    "description": "Flexiones con manos juntas formando un diamante. Mayor énfasis en los tríceps.",
+    "description": "Flexiones with hands together forming a diamond. Greater emphasis on triceps.",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -3358,7 +3358,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca las manos juntas bajo el pecho formando un diamante con los dedos índice y pulgar. Keep el cuerpo recto con el core activado. Baja el pecho hacia las manos manteniendo los codos pegados al cuerpo. Empuja hacia arriba hasta extender los brazos. Esta variación pone gran énfasis en los tríceps.",
+    "howTo": "Place hands together under your chest forming a diamond with index fingers and thumbs. Keep your body straight with core engaged. Lower your chest toward your hands keeping elbows close to body. Push up until arms are extended. This variation places great emphasis on the triceps.",
     "gifUrl": "https://static.exercisedb.dev/media/soIB2rj.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/soIB2rj.gif",
     "videoUrl": null
@@ -3366,7 +3366,7 @@
   {
     "id": "push_wall",
     "name": "Flexiones en Pared",
-    "description": "Flexión vertical contra una pared. Ideal para principiantes absolutos para acostumbrar las articulaciones.",
+    "description": "Flexión vertical contra una pared. Ideal for absolute beginners to condition joints.",
     "category": "STRENGTH",
     "difficulty": "D (Beginner)",
     "unit": "reps",
@@ -3380,7 +3380,7 @@
     ],
     "expReward": 8,
     "coinsReward": 4,
-    "howTo": "Párate frente a una pared a un brazo de distancia. Coloca las manos en la pared a la altura del pecho, a la anchura de shoulders. Inclínate hacia la pared flexionando los codos. Empuja de vuelta a la posición inicial. Cuanto más lejos de la pared, más difícil. Excelente para principiantes absolutos.",
+    "howTo": "Stand facing a wall at arm's length. Place hands on the wall at chest height, at the width of shoulders. Lean toward the wall bending elbows. Push back to starting position. The further from the wall, the more difficult. Excellent for absolute beginners.",
     "gifUrl": "https://static.exercisedb.dev/media/qBl14UC.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/qBl14UC.gif",
     "videoUrl": null
@@ -3388,7 +3388,7 @@
   {
     "id": "push_pike",
     "name": "Pike Push-Ups",
-    "description": "Flexión en V invertida (hips altas). Enfoca el trabajo en los shoulders, preparando para el HSPU.",
+    "description": "Flexión en V invertida (hips high). Focuses work on shoulders, preparing for HSPU.",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -3402,7 +3402,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca las manos en el suelo a la anchura de los shoulders. Eleva las hips formando una V invertida con el cuerpo. Las legs deben estar lo más rectas posible. Baja la cabeza hacia el suelo flexionando los codos. Empuja hacia arriba hasta extender los brazos. Este ejercicio enfatiza el trabajo de shoulders.",
+    "howTo": "Place hands on the floor at shoulder width. Raise your hips forming an inverted V with body. Legs should be as straight as possible. Lower your head toward the floor bending elbows. Push up until arms are extended. This exercise emphasizes shoulder work.",
     "gifUrl": "https://static.exercisedb.dev/media/sVvXT5J.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/XPUDTt7.gif",
     "videoUrl": null
@@ -3410,7 +3410,7 @@
   {
     "id": "push_pike_elevated",
     "name": "Flexiones en Pica (Pies Elevados)",
-    "description": "Flexión en pica con pies elevados en un banco. Aumenta la carga sobre los shoulders, acercándose al HSPU.",
+    "description": "Flexión en pica with feet elevated on a bench. Increases load on shoulders, approaching HSPU.",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -3424,7 +3424,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca los pies sobre una superficie elevada (banco) y las manos en el suelo. Forma una V invertida con el cuerpo, manteniendo las hips elevadas. Baja la cabeza hacia el suelo flexionando los codos. Empuja hacia arriba hasta extender los brazos. La elevación aumenta la carga sobre los shoulders.",
+    "howTo": "Place feet on an elevated surface (bench) and hands on the floor. Form an inverted V with your body, keeping hips elevated. Lower your head toward the floor bending elbows. Push up until arms are extended. Elevation increases load on shoulders.",
     "gifUrl": "https://static.exercisedb.dev/media/sVvXT5J.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/XPUDTt7.gif",
     "videoUrl": null
@@ -3432,7 +3432,7 @@
   {
     "id": "push_incline",
     "name": "Flexiones Inclinadas",
-    "description": "Flexiones con manos elevadas en un banco o caja. Reduce la carga del peso corporal.",
+    "description": "Flexiones with hands elevated on a bench or box. Reduces body weight load.",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -3447,7 +3447,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca las manos en una superficie elevada (banco o caja) a la altura del pecho. Keep el cuerpo recto desde la cabeza hasta los talones. Baja el pecho hacia la superficie manteniendo los codos cerca del cuerpo. Empuja hacia arriba hasta extender completamente los brazos. Este ejercicio reduce la carga sobre el pecho, ideal para principiantes.",
+    "howTo": "Place hands on an elevated surface (bench or box) at chest height. Keep your body straight from head to heels. Lower your chest toward the surface keeping elbows close from body. Push up until arms are fully extended. This exercise reduces load on chest, ideal for beginners.",
     "gifUrl": "https://static.exercisedb.dev/media/B1EVP9F.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/B1EVP9F.gif",
     "videoUrl": null
@@ -3493,7 +3493,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Comienza en posición de flexión estándar. Baja con control y luego empuja explosivamente para que las manos despeguen del suelo. Aterriza suavemente con los brazos ligeramente flexionados y baja inmediatamente a la siguiente repetición. Este ejercicio desarrolla potencia explosiva.",
+    "howTo": "Start in standard push-up position. Lower with control then push explosively so that hands leave the floor. Land softly with arms slightly bent and immediately lower to next repetition. This exercise develops explosive power.",
     "gifUrl": "https://static.exercisedb.dev/media/wigSg76.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/i5cEhka.gif",
     "videoUrl": null
@@ -3547,7 +3547,7 @@
   {
     "id": "dips_ring",
     "name": "Ring Dips",
-    "description": "Fondos realizados en anillas gimnásticas. La inestabilidad aumenta drásticamente la dificultad y el reclutamiento del core.",
+    "description": "Fondos realizados on rings gimnásticas. Instability dramatically increases difficulty and core recruitment.",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -3562,7 +3562,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Sube a posición de soporte en anillas con brazos completamente extendeds. Gira ligeramente las anillas hacia afuera (RTO ligero). Baja con control manteniendo las anillas cerca del cuerpo y estables. Los codos deben llegar a 90 grados o más. Empuja hacia arriba hasta extender completamente los brazos. Requiere gran estabilidad del core.",
+    "howTo": "Get into support position on rings with arms completely extended. Slightly rotate rings outward (slight RTO). Lower with control keeping rings close from body and stable. Elbows should reach 90 degrees or more. Push up until arms are fully extended. Requires great core stability.",
     "gifUrl": "https://static.exercisedb.dev/media/ezTvXcr.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/ezTvXcr.gif",
     "videoUrl": null
@@ -3570,7 +3570,7 @@
   {
     "id": "dips_ring_assisted",
     "name": "Fondos en Anillas (Asistidos)",
-    "description": "Fondos en anillas usando bandas elásticas para gestionar la inestabilidad y construir fuerza.",
+    "description": "Fondos on rings using elastic bands to manage instability and build strength.",
     "category": "STRENGTH",
     "difficulty": "D (Beginner)",
     "unit": "reps",
@@ -3586,7 +3586,7 @@
     ],
     "expReward": 8,
     "coinsReward": 4,
-    "howTo": "Coloca una banda en las anillas. Sube a posición de soporte con brazos extendeds y coloca las knees o pies en la banda. La inestabilidad de las anillas requiere más control del core. Baja con control manteniendo las anillas cerca del cuerpo. Empuja hacia arriba hasta extender los brazos, rotando ligeramente las anillas hacia afuera en la parte superior.",
+    "howTo": "Place a band on the rings. Get into support position with arms extended y place your knees or feet in the band. Ring instability requires more core control. Lower with control keeping rings close from body. Push up until arms are extended, slightly rotating rings outward at the top.",
     "gifUrl": "https://static.exercisedb.dev/media/ezTvXcr.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/ezTvXcr.gif",
     "videoUrl": null
@@ -3594,7 +3594,7 @@
   {
     "id": "dips_ring_negatives",
     "name": "Fondos en Anillas (Negativas)",
-    "description": "Fase excéntrica controlada en anillas para construir la fuerza y estabilidad del hombro.",
+    "description": "Controlled eccentric phase on rings to build shoulder strength and stability.",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -3609,7 +3609,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Salta o usa apoyo para llegar a posición de soporte en anillas con brazos extendeds. Keep las anillas giradas ligeramente hacia afuera. Baja lo más lento posible (5-8 segundos) manteniendo control total de las anillas. La inestabilidad de las anillas hace este ejercicio muy demandante. Usa las legs para volver arriba.",
+    "howTo": "Jump or use support to reach support position on rings with arms extended. Keep your rings slightly rotated outward. Lower as slowly as possible (5-8 seconds) maintaining total ring control. Ring instability makes this exercise very demanding. Use legs to return to top.",
     "gifUrl": "https://static.exercisedb.dev/media/ezTvXcr.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/ezTvXcr.gif",
     "videoUrl": null
@@ -3617,7 +3617,7 @@
   {
     "id": "dips_bench_straight_leg",
     "name": "Fondos en Banco (Piernas Rectas)",
-    "description": "Fondos en banco con legs estiradas y talones en el suelo. Aumenta la carga sobre los tríceps.",
+    "description": "Fondos en bench with legs extended and heels on the floor. Increases load on triceps.",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -3631,7 +3631,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Siéntate en el borde de un banco, coloca las manos a los lados de las hips. Desliza las hips fuera del banco con las legs completamente extendeds y solo los talones en el suelo. Baja el cuerpo flexionando los codos hasta 90 grados. Empuja hacia arriba hasta extender los brazos. Mayor dificultad que con knees flexionadas.",
+    "howTo": "Sit on the edge of a bench, place hands at your sides near hips. Slide hips off the bench with legs completely extended and only heels on the floor. Lower your body bending elbows to 90 degrees. Push up until arms are extended. Greater difficulty than with knees bent.",
     "gifUrl": "https://static.exercisedb.dev/media/VuoerH0.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/VuoerH0.gif",
     "videoUrl": null
@@ -3639,7 +3639,7 @@
   {
     "id": "dips_bench_bent_knee",
     "name": "Fondos en Banco (Rodillas Flexionadas)",
-    "description": "Fondos en banco con knees flexionadas y pies en el suelo. Ejercicio básico para tríceps.",
+    "description": "Fondos en bench with knees bent and feet on the floor. Basic triceps exercise.",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -3653,7 +3653,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Siéntate en el borde de un banco, coloca las manos a los lados de las hips. Desliza las hips fuera del banco con las knees flexionadas a 90 grados y los pies en el suelo. Baja el cuerpo flexionando los codos hasta 90 grados. Empuja hacia arriba hasta extender los brazos. Keep los shoulders hacia abajo.",
+    "howTo": "Sit on the edge of a bench, place hands at your sides near hips. Slide hips off the bench with knees bent to 90 degrees and feet on the floor. Lower your body bending elbows to 90 degrees. Push up until arms are extended. Keep shoulders down.",
     "gifUrl": "https://static.exercisedb.dev/media/RrLske5.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/RrLske5.gif",
     "videoUrl": null
@@ -3661,7 +3661,7 @@
   {
     "id": "dips_parallel_bar",
     "name": "Parallel Bar Dips",
-    "description": "Ejercicio fundamental de empuje para pecho, shoulders y tríceps realizado en barras paralelas.",
+    "description": "Fundamental pushing exercise for chest, shoulders and triceps performed on parallel bars.",
     "category": "STRENGTH",
     "difficulty": "B (Intermediate)",
     "unit": "reps",
@@ -3675,7 +3675,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Sube a las barras paralelas con brazos extendeds, cuerpo vertical. Inclínate ligeramente hacia adelante. Baja con control flexionando los codos hasta que estén a 90 grados o los shoulders estén a la altura de los codos. Empuja hacia arriba hasta extender completamente los brazos. Keep el core activado.",
+    "howTo": "Get into parallel bars with arms extended, body vertical. Lean slightly forward. Lower with control bending elbows until they are at 90 degrees or shoulders are at elbow height. Push up until arms are fully extended. Keep core engaged.",
     "gifUrl": "https://static.exercisedb.dev/media/O2K9Vb5.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/O2K9Vb5.gif",
     "videoUrl": null
@@ -3683,7 +3683,7 @@
   {
     "id": "dips_parallel_bar_negatives",
     "name": "Fondos en Paralelas (Negativas)",
-    "description": "Salta a la posición superior y baja de forma lenta y controlada (3-5 segundos). Desarrolla la fuerza excéntrica.",
+    "description": "Jump to top position and lower slowly and controlled (3-5 seconds). Develops eccentric strength.",
     "category": "STRENGTH",
     "difficulty": "B (Intermediate)",
     "unit": "reps",
@@ -3697,7 +3697,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Salta o usa un apoyo para llegar a la posición superior con brazos extendeds en las barras paralelas. Desde ahí, baja lo más lento posible (3-5 segundos mínimo) con control hasta que los codos estén a 90 grados o más. Usa las legs para volver arriba y repetir. Las negativas desarrollan fuerza excéntrica.",
+    "howTo": "Jump or use support para llegar a la posición superior with arms extended on parallel bars. From there, lower as slowly as possible (3-5 seconds minimum) with control until elbows are at 90 degrees o more. Use legs to return to top and repeat. Negatives develop eccentric strength.",
     "gifUrl": "https://static.exercisedb.dev/media/FSF9WOs.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/FSF9WOs.gif",
     "videoUrl": null
@@ -3705,7 +3705,7 @@
   {
     "id": "dips_parallel_bar_assisted",
     "name": "Fondos en Paralelas Asistidos",
-    "description": "Fondos en paralelas usando bandas de resistencia o apoyo de pies para reducir el peso corporal.",
+    "description": "Parallel bar dips using resistance bands or foot support to reduce body weight.",
     "category": "STRENGTH",
     "difficulty": "B (Intermediate)",
     "unit": "reps",
@@ -3720,7 +3720,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Coloca una banda de resistencia en las barras paralelas. Sube a la posición superior con brazos extendeds y coloca las knees o pies en la banda. La banda te asistirá reduciendo el peso corporal. Baja con control hasta que los codos estén a 90 grados. Empuja hacia arriba hasta extender los brazos.",
+    "howTo": "Place a resistance band on parallel bars. Get to top position with arms extended y place your knees or feet in the band. The band will assist by reducing body weight. Lower with control until elbows are at 90 degrees. Push up until arms are extended.",
     "gifUrl": "https://static.exercisedb.dev/media/PAgTVaK.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/FSF9WOs.gif",
     "videoUrl": null
@@ -3728,7 +3728,7 @@
   {
     "id": "dips_90_degree",
     "name": "Fondos RTO a 90 grados",
-    "description": "Un fondo avanzado donde el cuerpo se inclina horizontalmente (a 90 grados) en la parte inferior, con los anillos girados hacia afuera (RTO).",
+    "description": "An advanced dip where body leans horizontally (at 90 degrees) at bottom, with rings turned outward (RTO).",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -3743,7 +3743,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Sube a posición de soporte en anillas con brazos extendeds. Gira las anillas completamente hacia afuera (RTO completo, 90 grados de rotación). Keep esta rotación mientras bajas y subes en el fondo. Este ejercicio requiere fuerza extrema de shoulders y bíceps. Es una de las variaciones más difíciles de fondos.",
+    "howTo": "Get into support position on rings with arms extended. Rotate rings completely outward (full RTO, 90 degrees rotation). Keep this rotation while lowering and rising in the dip. This exercise requires extreme shoulder and bicep strength. It is one of the most difficult dip variations.",
     "gifUrl": "https://static.exercisedb.dev/media/7xeukSt.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/7xeukSt.gif",
     "videoUrl": null
@@ -3751,7 +3751,7 @@
   {
     "id": "dips_russian",
     "name": "Fondos Rusos",
-    "description": "Fondos en paralelas que incluyen una transición sobre el antebrazo, trabajando el codo y el hombro en rangos profundos.",
+    "description": "Parallel bar dips that include a transition over the forearm, working elbow and shoulder in deep ranges.",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -3766,7 +3766,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Comienza en posición de fondo en paralelas. En lugar de bajar verticalmente, lleva el cuerpo hacia adelante y hacia abajo, pasando por encima de las barras. Los shoulders deben ir muy por delante de las manos. Vuelve empujando hacia atrás y arriba. Este ejercicio prepara para la plancha y requiere fuerza extrema de shoulders.",
+    "howTo": "Start in dip position en paralelas. Instead of lowering vertically, bring your body forward and downward, passing above the bars. Shoulders should go far in front of hands. Return by pushing backward and upward. This exercise prepares for planche and requires extreme shoulder strength.",
     "gifUrl": "https://static.exercisedb.dev/media/rWoBmi5.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/rWoBmi5.gif",
     "videoUrl": null
@@ -4730,7 +4730,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Acuéstate boca arriba. Presiona la espalda baja firmemente contra el suelo. Levanta las legs extendeds unos centímetros del suelo y levanta los shoulders y brazos extendeds. Tu cuerpo debe formar una ligera curva cóncava. Keep la espalda baja pegada al suelo. Este ejercicio es fundamental para gimnasia y calistenia.",
+    "howTo": "Lie face up. Press lower back firmly against the floor. Raise legs extended a few centimeters off the floor and raise shoulders and arms extended. Your body should form a slight concave curve. Keep lower back pressed to the floor. This exercise is fundamental for gymnastics and calisthenics.",
     "gifUrl": "https://static.exercisedb.dev/media/BMMolZ3.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/BMMolZ3.gif",
     "videoUrl": null
@@ -4751,7 +4751,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Comienza en posición de hollow body hold. Manteniendo la forma cóncava y la espalda baja contra el suelo, balancea suavemente hacia adelante y atrás. El movimiento debe venir del core, no de impulso de las extremidades. Este ejercicio desarrolla control del core dinámico.",
+    "howTo": "Start in hollow body hold position. Maintaining the concave shape and lower back against the floor, rock gently forward and back. The movement should come from the core, not from limb momentum. This exercise develops dynamic core control.",
     "gifUrl": "https://static.exercisedb.dev/media/BMMolZ3.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/BMMolZ3.gif",
     "videoUrl": null
@@ -4759,7 +4759,7 @@
   {
     "id": "push_hspu_wall_negatives",
     "name": "HSPU en Pared (Negativas)",
-    "description": "Bajar controladamente desde un pino en pared hasta que la cabeza toque el suelo. Construye la fuerza excéntrica.",
+    "description": "Lower controlled from wall handstand until your head touches the floor. Builds eccentric strength.",
     "category": "STRENGTH",
     "difficulty": "D (Beginner)",
     "unit": "reps",
@@ -4773,7 +4773,7 @@
     ],
     "expReward": 8,
     "coinsReward": 4,
-    "howTo": "Patéate hasta posición de pino contra la pared con brazos extendeds. Keep el cuerpo completamente recto. Baja lo más lento posible (3-5 segundos) hasta que la cabeza toque el suelo suavemente. Sal de la posición con cuidado y repite. Las negativas desarrollan fuerza para HSPU completas.",
+    "howTo": "Kick up to handstand position against the wall with arms extended. Keep body completely straight. Lower as slowly as possible (3-5 seconds) until your head touches the floor gently. Exit the position carefully and repeat. Negatives develop strength for full HSPU.",
     "gifUrl": "https://static.exercisedb.dev/media/rQxwMxO.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Y9hNPcN.gif",
     "videoUrl": null
@@ -5614,7 +5614,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Párate con los pies juntos y los brazos a los lados. Salta separando los pies más allá del ancho de shoulders mientras llevas los brazos arriba sobre la cabeza. Salta de nuevo para volver a la posición inicial. Keep un ritmo constante. Ejercicio cardiovascular clásico para calentamiento.",
+    "howTo": "Stand with feet together and arms at sides. Jump spreading feet beyond shoulder width while bringing arms overhead. Jump again to return to starting position. Keep a steady rhythm. Classic cardiovascular exercise for warm-up.",
     "gifUrl": "https://static.exercisedb.dev/media/mbkgB44.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/mbkgB44.gif",
     "videoUrl": null
@@ -6243,7 +6243,7 @@
   {
     "id": "skill_maltese",
     "name": "Maltese",
-    "description": "Una variación de Planche (generalmente en anillas) con los brazos completamente abiertos a los lados, formando una 'T'. Representa un nivel extremo de fuerza y control de shoulders.",
+    "description": "A Planche variation (generally on rings) with arms completamente abiertos a los lados, forming a 'T'. Represents an extreme level of shoulder strength and control.",
     "category": "SKILL_STATIC",
     "difficulty": "C (Novice)",
     "unit": "seconds",
@@ -6258,7 +6258,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Desde posición de soporte en anillas o paralelas, extiende los brazos completamente hacia los lados formando una T con el cuerpo. Keep el cuerpo horizontal. Los brazos deben estar completamente rectos. Este es uno de los elementos de fuerza más difíciles que existen, requiriendo años de entrenamiento.",
+    "howTo": "From support position on rings or parallel bars, extend arms completely to the sides formando una T with body. Keep body horizontal. Arms should be completely straight. This is one of the most difficult strength elements that exists, requiring years of training.",
     "gifUrl": "https://static.exercisedb.dev/media/YRaCa5Y.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/YRaCa5Y.gif",
     "videoUrl": null
@@ -6843,7 +6843,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca la coronilla de la cabeza en el suelo con las manos formando un triángulo para soporte. Los antebrazos deben estar en el suelo. Levanta las hips y camina con los pies hacia la cabeza. Lentamente levanta las legs hacia arriba hasta quedar completamente vertical. Keep el core activado. Usa una pared para apoyo inicial si es necesario.",
+    "howTo": "Place the crown of your head on the floor with hands forming a triangle for support. Forearms should be on the floor. Raise hips and walk feet toward your head. Slowly raise legs upward until completely vertical. Keep core engaged. Use a wall for initial support if necessary.",
     "gifUrl": "https://static.exercisedb.dev/media/5BZHW9s.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/5BZHW9s.gif",
     "videoUrl": null
@@ -6917,7 +6917,7 @@
   {
     "id": "skill_oahs_assisted",
     "name": "Pino a una Mano (Asistido/Tenting)",
-    "description": "Nivel A: Progresiones hacia el pino a una mano, incluyendo cambios de peso, apoyo mínimo de dedos (tenting) o asistencia de pared, para desarrollar la fuerza unilateral y el equilibrio.",
+    "description": "Level A: Progressions toward one-arm handstand, including weight shifts, minimal finger support (tenting) or wall assistance, to develop unilateral strength and balance.",
     "category": "BALANCE",
     "difficulty": "D (Beginner)",
     "unit": "seconds",
@@ -6932,7 +6932,7 @@
     ],
     "expReward": 8,
     "coinsReward": 4,
-    "howTo": "Desde un pino estable, comienza a desplazar el peso hacia un lado mientras la otra mano se levanta ligeramente (tenting). La mano que se levanta puede tocar el suelo ocasionalmente. Gradualmente aumenta el tiempo sin tocar. Puedes usar una pared para apoyo inicial. Prepara para el pino a una mano completo.",
+    "howTo": "From a stable handstand, begin to shift weight to one side while the other hand lifts slightly (tenting). The hand that lifts can touch the floor occasionally. Gradually increase time without touching. You can use a wall for initial support. Prepares for full one-arm handstand.",
     "gifUrl": "https://static.exercisedb.dev/media/xbkPfaw.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/xbkPfaw.gif",
     "videoUrl": null
@@ -6940,7 +6940,7 @@
   {
     "id": "skill_oahs",
     "name": "Pino a Una Mano (OAHS)",
-    "description": "Nivel S: El objetivo final. Equilibrio completo sobre un solo brazo, demostrando un nivel de maestría élite en fuerza y control corporal.",
+    "description": "Level S: The final goal. Full balance on one arm, demonstrating an elite level of mastery in strength and body control.",
     "category": "BALANCE",
     "difficulty": "C (Novice)",
     "unit": "seconds",
@@ -6954,7 +6954,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Desde un pino estable, desplaza el peso completamente hacia un brazo mientras levantas el otro brazo del suelo. Keep el cuerpo lo más recto posible aunque habrá una ligera curva. El brazo libre puede estar extended al lado o sobre el cuerpo. Uno de los equilibrios más difíciles de la calistenia.",
+    "howTo": "From a stable handstand, shift weight completely to one arm while lifting the other arm off the floor. Keep body as straight as possible although there will be a slight curve. The free arm can be extended to the side or over the body. One of the most difficult calisthenics balances.",
     "gifUrl": "https://static.exercisedb.dev/media/MUic5zN.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/MUic5zN.gif",
     "videoUrl": null
@@ -6962,7 +6962,7 @@
   {
     "id": "skill_handstand_wall",
     "name": "Pino Asistido (Pecho a la Pared)",
-    "description": "Nivel C: Pino completo con el pecho mirando a la pared. Permite enfocarse en la alineación (shoulders abiertos, core activo) y la estabilidad sin preocuparse por el equilibrio.",
+    "description": "Level C: Full handstand with chest facing the wall. Allows focusing on alignment (open shoulders, active core) and stability without worrying about balance.",
     "category": "BALANCE",
     "difficulty": "D (Beginner)",
     "unit": "seconds",
@@ -6976,7 +6976,7 @@
     ],
     "expReward": 8,
     "coinsReward": 4,
-    "howTo": "Coloca las manos a unos 15-20cm de la pared. Patéate hacia arriba hasta quedar en posición invertida con el pecho mirando la pared. Keep el cuerpo completamente recto, empujando activamente con los shoulders. Las manos deben estar a la anchura de shoulders. Esta posición desarrolla fuerza de shoulders y acostumbra a estar invertido.",
+    "howTo": "Place hands about 15-20cm from the wall. Kick up to inverted position with chest facing the wall. Keep body completely straight, actively pushing with shoulders. Hands should be at the width of shoulders. This position develops shoulder strength and accustoms to being inverted.",
     "gifUrl": "https://static.exercisedb.dev/media/sVQCCeG.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/sVQCCeG.gif",
     "videoUrl": null
@@ -6984,7 +6984,7 @@
   {
     "id": "skill_handstand_freestanding",
     "name": "Pino Libre (Handstand)",
-    "description": "Nivel B: Parada de manos libre sin asistencia. Requiere equilibrio, fuerza y control corporal avanzados, siendo una habilidad fundamental en gimnasia.",
+    "description": "Level B: Free handstand without assistance. Requires advanced balance, strength and body control, being a fundamental skill in gymnastics.",
     "category": "BALANCE",
     "difficulty": "B (Intermediate)",
     "unit": "seconds",
@@ -6998,7 +6998,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Patéate hasta posición vertical sin apoyo de pared. Keep el cuerpo completamente recto desde las manos hasta los pies. Empuja activamente con los shoulders hacia el techo. Mira las manos o ligeramente adelante. Usa pequeños ajustes de dedos y muñecas para mantener balance. Requiere práctica constante para dominar.",
+    "howTo": "Kick up to vertical position without wall support. Keep body completely straight from hands to feet. Push actively with shoulders toward ceiling. Look at hands or slightly forward. Use small finger and wrist adjustments to maintain balance. Requires constant practice to master.",
     "gifUrl": "https://static.exercisedb.dev/media/XooAdhl.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/XooAdhl.gif",
     "videoUrl": null
@@ -7006,7 +7006,7 @@
   {
     "id": "squat_pistol_partial",
     "name": "Pistol Squat (Parcial a Banco)",
-    "description": "Pistol squat bajando hasta sentarse en un banco o caja. Controla el rango de movimiento.",
+    "description": "Pistol squat lowering until sitting on a bench or box. Controls range of motion.",
     "category": "STRENGTH",
     "difficulty": "B (Intermediate)",
     "unit": "reps",
@@ -7025,7 +7025,7 @@
   {
     "id": "squat_pistol",
     "name": "Pistol Squat (Sentadilla Pistola)",
-    "description": "Sentadilla completa a una sola leg, bajando hasta el fondo (isquiotibial a pantorrilla) y volviendo a subir.",
+    "description": "Full single-leg squat, lowering to bottom (hamstring to calf) and rising back up.",
     "category": "STRENGTH",
     "difficulty": "B (Intermediate)",
     "unit": "reps",
@@ -7040,7 +7040,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Párate en una leg, extiende la other adelante paralela al suelo con los brazos extendeds adelante para balance. Baja en sentadilla completa manteniendo la leg libre extended y sin tocar el suelo. Baja hasta que el glúteo casi toque el talón. Empuja hacia arriba hasta pararte completamente. Requiere gran fuerza y equilibrio.",
+    "howTo": "Stand on one leg, extend the other forward parallel to the floor with arms extended forward for balance. Lower into full squat keeping free leg extended and without touching the floor. Lower until glute almost touches heel. Push up to stand completely. Requires great strength and balance.",
     "gifUrl": "https://static.exercisedb.dev/media/nqs5HGV.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/nqs5HGV.gif",
     "videoUrl": null
@@ -7048,7 +7048,7 @@
   {
     "id": "squat_pistol_wushu",
     "name": "Pistol Squat (Wushu)",
-    "description": "Pistol squat agarrando el pie de la leg extended, lo que facilita el equilibrio.",
+    "description": "Pistol squat grabbing the foot of the extended leg, which facilitates balance.",
     "category": "STRENGTH",
     "difficulty": "B (Intermediate)",
     "unit": "reps",
@@ -7066,7 +7066,7 @@
   {
     "id": "squat_pistol_assisted",
     "name": "Pistol Squat Asistida",
-    "description": "Sentadilla a una leg completa (Pistol) usando un poste, TRX o bandas para ayudar con el equilibrio y la fuerza.",
+    "description": "Full one-leg squat (Pistol) using a pole, TRX or bands to help with balance and strength.",
     "category": "STRENGTH",
     "difficulty": "B (Intermediate)",
     "unit": "reps",
@@ -7084,7 +7084,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Párate en una leg frente a un soporte que puedas agarrar. Extiende la other leg adelante. Baja en sentadilla a una leg mientras usas el soporte para balance. Baja lo más que puedas manteniendo la leg libre extended. Usa el soporte mínimamente para subir.",
+    "howTo": "Stand on one leg facing a support you can grab. Extend the other leg forward. Lower into one-leg squat while using support for balance. Lower as far as you can keeping free leg extended. Use support minimally to rise.",
     "gifUrl": "https://static.exercisedb.dev/media/nqs5HGV.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/nqs5HGV.gif",
     "videoUrl": null
@@ -7105,7 +7105,7 @@
     ],
     "expReward": 8,
     "coinsReward": 4,
-    "howTo": "Colócate en posición de flexión pero apoyado en los antebrazos. Los codos deben estar directamente bajo los shoulders. Keep el cuerpo completamente recto desde los talones hasta la cabeza. Activa el core, los glúteos y los cuádriceps. No permitas que las hips bajen o suban. Respira normalmente.",
+    "howTo": "Get into push-up position but supported on forearms. Elbows should be directly under shoulders. Keep your body completely straight from heels to head. Engage core, glutes and quadriceps. Don't let hips sag or rise. Breathe normally.",
     "gifUrl": "https://static.exercisedb.dev/media/VBAWRPG.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/CosupLu.gif",
     "videoUrl": null
@@ -7113,7 +7113,7 @@
   {
     "id": "core_plank",
     "name": "Plancha Abdominal",
-    "description": "Hold isométrico básico. Keep el cuerpo recto como una tabla, activando core y glúteos.",
+    "description": "Hold isométrico básico. Keep your body straight como una tabla, activando core y glúteos.",
     "category": "CORE",
     "difficulty": "D (Beginner)",
     "unit": "seconds",
@@ -7131,7 +7131,7 @@
   {
     "id": "skill_pike_handstand_wall",
     "name": "Plancha Invertida Asistida en Pared",
-    "description": "Nivel F: Camina por la pared hasta una posición de pica (hips a 90º). Acostumbra al cuerpo a la carga invertida y es un paso previo al pino.",
+    "description": "Level F: Walk up the wall to pike position (hips at 90º). Accustoms body to inverted load and is a step prior to handstand.",
     "category": "BALANCE",
     "difficulty": "D (Beginner)",
     "unit": "seconds",
@@ -7163,7 +7163,7 @@
     ],
     "expReward": 8,
     "coinsReward": 4,
-    "howTo": "Acuéstate de lado apoyado en un antebrazo con el codo bajo el hombro. Apila los pies uno sobre otro. Levanta las hips hasta formar una línea recta desde los pies hasta la cabeza. Keep el core activado y no permitas que las hips bajen. La mano libre puede estar en la hip o extended hacia arriba.",
+    "howTo": "Lie on your side supported on one forearm with elbow under shoulder. Stack feet one on top of the other. Raise hips to form a straight line from feet to head. Keep core engaged and don't let hips sag. Free hand can be on hip or extended upward.",
     "gifUrl": "https://static.exercisedb.dev/media/5VXmnV5.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/kk39rUy.gif",
     "videoUrl": null
@@ -7389,7 +7389,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Acuéstate boca arriba con una knee flexionada y el pie en el suelo. Extiende la other leg recta en el aire. Empuja a través del talón de la leg de apoyo para levantar las hips. Forma una línea recta desde la knee de apoyo hasta los shoulders. Aprieta el glúteo arriba. Baja con control.",
+    "howTo": "Lie face up with one knee bent y el pie on the floor. Extend the other leg recta in the air. Push through heel of support leg to raise hips. Form a straight line from support knee to shoulders. Squeeze glute at top. Lower with control.",
     "gifUrl": "https://static.exercisedb.dev/media/rmEukuS.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/aWedzZX.gif",
     "videoUrl": null
@@ -7441,7 +7441,7 @@
   {
     "id": "pull_up",
     "name": "Pull-Up (Agarre Prono)",
-    "description": "Dominada estándar con las palmas mirando hacia adelante (prono). Ejercicio clave para dorsales.",
+    "description": "Standard pull-up with palms facing forward (pronated). Key exercise for lats.",
     "category": "STRENGTH",
     "difficulty": "B (Intermediate)",
     "unit": "reps",
@@ -7949,7 +7949,7 @@
   {
     "id": "row_one_arm",
     "name": "Remo a Una Mano",
-    "description": "Remo horizontal completo utilizando un solo brazo. Requiere una inmensa fuerza anti-rotación del core.",
+    "description": "Full horizontal row using one arm. Requires immense anti-rotation core strength.",
     "category": "STRENGTH",
     "difficulty": "B (Intermediate)",
     "unit": "reps",
@@ -7966,7 +7966,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Colócate bajo una barra baja agarrándola con una sola mano. Keep el cuerpo recto y el core muy activado para evitar rotación. Tira del pecho hacia la barra usando solo un brazo. Baja con control. Requiere gran fuerza unilateral y control del core.",
+    "howTo": "Position yourself under a low bar grabbing it with one hand. Keep your body straight and core very engaged to avoid rotation. Pull chest to bar using only one arm. Lower with control. Requires great unilateral strength and core control.",
     "gifUrl": "https://static.exercisedb.dev/media/Jsgsc27.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Jsgsc27.gif",
     "videoUrl": null
@@ -7974,7 +7974,7 @@
   {
     "id": "row_archer",
     "name": "Remo Arquero",
-    "description": "Remo unilateral donde un brazo tira hacia el pecho mientras el otro se mantiene recto como asistencia.",
+    "description": "Unilateral row where one arm pulls to chest while the other stays straight as assistance.",
     "category": "STRENGTH",
     "difficulty": "B (Intermediate)",
     "unit": "reps",
@@ -7989,7 +7989,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Colócate bajo una barra baja con las manos muy separadas. Tira del cuerpo hacia un lado, manteniendo ese brazo flexionado mientras el otro permanece extended. Alterna los lados. Este ejercicio desarrolla fuerza unilateral y prepara para el remo a una mano.",
+    "howTo": "Position yourself under a low bar with hands very wide apart. Pull body to one side, keeping that arm bent while the other remains extended. Alternate sides. This exercise develops unilateral strength and prepares for one-arm row.",
     "gifUrl": "https://static.exercisedb.dev/media/bKWbrTA.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/bKWbrTA.gif",
     "videoUrl": null
@@ -7997,7 +7997,7 @@
   {
     "id": "row_wide",
     "name": "Remo Australiano (Agarre Ancho)",
-    "description": "Remo horizontal con un agarre ancho (1.5x ancho de shoulders) o codos abriéndose a 90 grados en anillas.",
+    "description": "Remo horizontal con un agarre ancho (1.5x ancho de shoulders) o codos abriéndose a 90 grados on rings.",
     "category": "STRENGTH",
     "difficulty": "B (Intermediate)",
     "unit": "reps",
@@ -8012,7 +8012,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Colócate bajo una barra baja con las manos separadas más que el ancho de shoulders, palmas hacia abajo. Keep el cuerpo recto. Tira del pecho hacia la barra abriendo los codos hacia los lados. Aprieta los omóplatos juntos al final. El agarre ancho enfatiza la espalda superior y los deltoides traseros.",
+    "howTo": "Position yourself under a low bar with hands separated wider than shoulder width, palms down. Keep your body straight. Pull chest to bar opening elbows to the sides. Squeeze shoulder blades together at the end. Wide grip emphasizes upper back and rear delts.",
     "gifUrl": "https://static.exercisedb.dev/media/Mxa7Cr8.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Mxa7Cr8.gif",
     "videoUrl": null
@@ -8035,7 +8035,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Colócate bajo una barra baja con las palmas hacia abajo. Keep el cuerpo recto y el core activado. Tira del pecho hacia la barra llevando los codos hacia atrás. Aprieta los omóplatos al final del movimiento. Baja con control. El agarre prono trabaja más la espalda media y trasera.",
+    "howTo": "Position yourself under a low bar con las palms down. Keep your body straight and core engaged. Pull chest to bar bringing elbows back. Squeeze shoulder blades at end of movement. Lower with control. Pronated grip works more mid and rear back.",
     "gifUrl": "https://static.exercisedb.dev/media/jdiExfW.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/jdiExfW.gif",
     "videoUrl": null
@@ -8057,7 +8057,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Colócate bajo una barra baja con las palmas hacia ti. Keep el cuerpo completamente recto desde los talones hasta la cabeza. Tira del pecho hacia la barra manteniendo los codos cerca del cuerpo. Baja con control hasta extender completamente los brazos. El agarre supino enfatiza los bíceps.",
+    "howTo": "Position yourself under a low bar with palms facing you. Keep your body completely straight from heels to head. Pull chest to bar keeping elbows close from body. Lower with control until arms are fully extended. Supinated grip emphasizes biceps.",
     "gifUrl": "https://static.exercisedb.dev/media/1YUWDNZ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/1YUWDNZ.gif",
     "videoUrl": null
@@ -8081,7 +8081,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Colócate bajo una barra con los pies elevados en un banco, creando una línea horizontal con el cuerpo. Keep el cuerpo completamente recto. Tira del pecho hacia la barra. La elevación de los pies aumenta significativamente la dificultad y la carga sobre la espalda.",
+    "howTo": "Colócate bajo una barra with feet elevated on a bench, creating a horizontal line with body. Keep body completely straight. Pull chest to bar. Feet elevation significantly increases difficulty and load on back.",
     "gifUrl": "https://static.exercisedb.dev/media/jdiExfW.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/jdiExfW.gif",
     "videoUrl": null
@@ -8089,7 +8089,7 @@
   {
     "id": "row_doorway",
     "name": "Remo en Marco de Puerta",
-    "description": "Usando el marco de una puerta o una toalla, inclinarse hacia atrás y tirar del cuerpo. Progresión inicial.",
+    "description": "Usando el marco de una puerta o una toalla, inclinarse hacia atrás y tirar from body. Progresión inicial.",
     "category": "STRENGTH",
     "difficulty": "B (Intermediate)",
     "unit": "reps",
@@ -8104,7 +8104,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Colócate en el marco de una puerta abierta, agarrando ambos lados del marco a la altura del pecho. Inclínate hacia atrás con los brazos extendeds manteniendo el cuerpo recto. Tira de ti mismo hacia el marco llevando el pecho hacia las manos. Vuelve a la posición inicial con control. Cuanto más te inclines, más difícil será.",
+    "howTo": "Get into an open doorway, grabbing both sides of the frame at chest height. Lean backward with arms extended keeping body straight. Pull yourself toward the frame bringing chest toward your hands. Return to starting position with control. The further you lean, the more difficult it will be.",
     "gifUrl": "https://static.exercisedb.dev/media/50BETrz.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/50BETrz.gif",
     "videoUrl": null
@@ -8112,7 +8112,7 @@
   {
     "id": "row_horizontal",
     "name": "Remo Horizontal",
-    "description": "Remo con el cuerpo completamente paralelo al suelo. Requiere una retracción escapular completa.",
+    "description": "Remo with body completamente paralelo al suelo. Requiere una retracción escapular completa.",
     "category": "STRENGTH",
     "difficulty": "B (Intermediate)",
     "unit": "reps",
@@ -8132,7 +8132,7 @@
   {
     "id": "row_horizontal_elevated",
     "name": "Remo Horizontal (Pies Elevados)",
-    "description": "Remo horizontal con los pies elevados en un banco, aumentando la carga sobre la espalda y los brazos.",
+    "description": "Remo horizontal with feet elevated on a bench, aumentando la carga sobre la espalda y los brazos.",
     "category": "STRENGTH",
     "difficulty": "B (Intermediate)",
     "unit": "reps",
@@ -8153,7 +8153,7 @@
   {
     "id": "row_incline",
     "name": "Remo Inclinado (Australiano)",
-    "description": "Remo con el cuerpo inclinado. Cuanto más horizontal esté el cuerpo, más difícil será. Fundamental para la fuerza de espalda.",
+    "description": "Remo with body inclinado. Cuanto más horizontal esté el cuerpo, más difícil será. Fundamental para la fuerza de espalda.",
     "category": "STRENGTH",
     "difficulty": "B (Intermediate)",
     "unit": "reps",
@@ -8193,7 +8193,7 @@
   {
     "id": "row_vertical",
     "name": "Remos Verticales",
-    "description": "Remo en barra o anillas con el cuerpo casi vertical. La menor dificultad.",
+    "description": "Remo en barra o anillas with body casi vertical. La menor dificultad.",
     "category": "STRENGTH",
     "difficulty": "B (Intermediate)",
     "unit": "reps",
@@ -8620,7 +8620,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Cuelga de una barra con brazos extendeds. Sin flexionar los codos, tira de los omóplatos hacia abajo y júntalos. Tu cuerpo subirá unos centímetros. Vuelve a la posición inicial. Este ejercicio activa la musculatura escapular y es fundamental para dominadas correctas.",
+    "howTo": "Hang from a bar with arms extended. Without bending elbows, pull shoulder blades down and together. Your body will rise a few centimeters. Return to starting position. This exercise activates scapular musculature and is fundamental for correct pull-ups.",
     "gifUrl": "https://static.exercisedb.dev/media/uTBt1HV.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/uTBt1HV.gif",
     "videoUrl": null
@@ -8922,7 +8922,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Baja en sentadilla completa. Desde la posición baja, explota hacia arriba saltando lo más alto posible. Aterriza suavemente con las knees ligeramente flexionadas y baja inmediatamente a la siguiente sentadilla. Este ejercicio desarrolla potencia explosiva en las legs.",
+    "howTo": "Lower into full squat. From the low position, explode upward jumping as high as possible. Land softly with knees slightly bent and immediately lower to next squat. This exercise develops explosive power in legs.",
     "gifUrl": "https://static.exercisedb.dev/media/LIlE5Tn.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/wfotm7S.gif",
     "videoUrl": null
@@ -8930,7 +8930,7 @@
   {
     "id": "squat_bodyweight",
     "name": "Sentadillas (Peso Corporal)",
-    "description": "Movimiento fundamental de leg. Baja la hip por debajo de las knees manteniendo el pecho erguido y los talones en el suelo.",
+    "description": "Movimiento fundamental de leg. Baja la hip por debajo de las knees manteniendo el pecho erguido y los talones on the floor.",
     "category": "STRENGTH",
     "difficulty": "C (Novice)",
     "unit": "reps",
@@ -8945,7 +8945,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Párate con los pies a la anchura de shoulders, dedos ligeramente hacia afuera. Baja flexionando knees y hips como si te sentaras, manteniendo el pecho arriba y la espalda recta. Baja hasta que los muslos estén paralelos al suelo o más. Empuja a través de los talones para subir. Keep las knees alineadas con los pies.",
+    "howTo": "Stand with feet at the width of shoulders, toes slightly outward. Lower by bending knees and hips as if sitting, keeping chest up and back straight. Lower until thighs are parallel to floor o more. Push through heels to rise. Keep your knees aligned with feet.",
     "gifUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Bodyweight_Squats.gif/500px-Bodyweight_Squats.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/9E25EOx.gif",
     "videoUrl": null
@@ -8967,7 +8967,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Colócate frente a un soporte (silla, mesa) que puedas agarrar. Agarra el soporte y baja en sentadilla con control. Usa el soporte para ayudarte a subir. Esto te permite aprender la técnica correcta mientras desarrollas fuerza en las legs.",
+    "howTo": "Position yourself facing a support (chair, table) you can grab. Grab support and lower into squat with control. Use support to help you rise. This allows you to learn correct technique while developing leg strength.",
     "gifUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Bodyweight_Squats.gif/500px-Bodyweight_Squats.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/9E25EOx.gif",
     "videoUrl": null
@@ -11145,7 +11145,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Da un paso largo hacia adelante con una leg. Baja hasta que ambas knees estén a 90 grados, la knee trasera cerca del suelo. Empuja con la leg delantera y trae la leg trasera adelante en el siguiente paso. Continúa caminando hacia adelante alternando las legs.",
+    "howTo": "Take a long step forward con una leg. Lower until both knees are at 90 degrees, rear knee near floor. Push with front leg and bring rear leg forward on next step. Continue walking forward alternating legs.",
     "gifUrl": "https://static.exercisedb.dev/media/IZVHb27.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/IZVHb27.gif",
     "videoUrl": null
@@ -11168,7 +11168,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Comienza en posición de zancada con ambas knees a 90 grados. Salta explosivamente cambiando las legs en el aire. Aterriza en posición de zancada con la leg opuesta adelante. Las knees deben estar ligeramente flexionadas al aterrizar. Este ejercicio desarrolla potencia explosiva.",
+    "howTo": "Start in posición de zancada con ambas knees a 90 grados. Shigh explosivamente cambiando las legs in the air. Aterriza en posición de zancada con la leg opuesta forward. Las knees deben estar ligeramente flexionadas al aterrizar. This exercise develops explosive power.",
     "gifUrl": "https://static.exercisedb.dev/media/PM1PZjg.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/PM1PZjg.gif",
     "videoUrl": null
@@ -11190,7 +11190,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Párate con los pies juntos. Da un paso largo hacia atrás con una leg. Baja la knee trasera hacia el suelo hasta que ambas knees estén a 90 grados. La knee delantera debe estar sobre el tobillo. Empuja con la leg delantera para volver a la posición inicial. Alterna las legs.",
+    "howTo": "Stand with feet together. Take a long step hacia atrás con una leg. Lower rear knee toward floor hasta que ambas knees estén a 90 grados. Front knee should be over ankle. Push with front leg para volver a la posición inicial. Alternate legs.",
     "gifUrl": "https://static.exercisedb.dev/media/SSsBDwB.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/XaaRnRn.gif",
     "videoUrl": null
