@@ -151,7 +151,7 @@ export default function AchievementsView({ userId }: AchievementsViewProps) {
         <CardContent className="py-12">
           <div className="text-center">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
-            <p className="text-sm text-slate-600 mt-3">Cargando logros...</p>
+            <p className="text-sm text-slate-600 mt-3">Loading achievements...</p>
           </div>
         </CardContent>
       </Card>
@@ -165,7 +165,7 @@ export default function AchievementsView({ userId }: AchievementsViewProps) {
         <Card>
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-slate-600">
-              Logros Completados
+              Completed Achievements
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -183,7 +183,7 @@ export default function AchievementsView({ userId }: AchievementsViewProps) {
         <Card>
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-slate-600">
-              Cadenas Activas
+              Active Chains
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -200,7 +200,7 @@ export default function AchievementsView({ userId }: AchievementsViewProps) {
         <Card>
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-slate-600">
-              Progreso Global
+              Global Progress
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -222,10 +222,10 @@ export default function AchievementsView({ userId }: AchievementsViewProps) {
             <div>
               <CardTitle className="flex items-center gap-2">
                 <Trophy className="w-5 h-5" />
-                Cadenas de Logros Activas
+                Active Achievement Chains
               </CardTitle>
               <CardDescription>
-                Completa logros manualmente para desbloquear el siguiente nivel
+                Complete achievements manually to unlock the next level
               </CardDescription>
             </div>
             <Button onClick={fetchActiveAchievements} variant="outline" size="sm">
@@ -309,13 +309,13 @@ export default function AchievementsView({ userId }: AchievementsViewProps) {
                     <div className="flex items-center justify-center p-3 bg-green-100 rounded-lg">
                       <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
                       <span className="font-medium text-green-700">
-                        ¡Cadena Completada!
+                        Chain Completed!
                       </span>
                     </div>
                   ) : isCompleted ? (
                     <div className="flex items-center justify-center p-3 bg-slate-100 rounded-lg">
                       <CheckCircle className="w-5 h-5 text-slate-400 mr-2" />
-                      <span className="text-slate-500">Completado</span>
+                      <span className="text-slate-500">Completed</span>
                     </div>
                   ) : (
                     <Button
@@ -345,11 +345,11 @@ export default function AchievementsView({ userId }: AchievementsViewProps) {
           <div className="col-span-full text-center py-12">
             <Trophy className="w-16 h-16 mx-auto text-slate-300 mb-4" />
             <p className="text-slate-500 mb-4">
-              No hay logros activos disponibles
+              No active achievements available
             </p>
             <Button onClick={fetchActiveAchievements} variant="outline">
               <RefreshCw className="w-4 h-4 mr-2" />
-              Actualizar
+              Refresh
             </Button>
           </div>
         )}
