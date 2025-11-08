@@ -4,6 +4,11 @@ import prisma from '@/lib/prisma';
 import { getDailyMissions, saveDailyMissions, DevMission } from '@/lib/dev-missions-store';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
+import {
+  generateGoalBasedDailyMissions,
+  type HexagonAxis,
+} from '@/lib/exercise-to-axis-mapping';
+import { type HexagonProfileWithXP } from '@/lib/hexagon-progression';
 
 async function getUserId(req: NextRequest) {
   try {
@@ -60,36 +65,39 @@ export async function GET(req: NextRequest) {
         });
 
         if (!existingMissions) {
+          // Parse user's primary goal from goals JSON
+          const goals = user?.goals ? JSON.parse(user.goals as string) : [];
+          const primaryGoal = Array.isArray(goals) && goals.length > 0 ? goals[0] : 'general';
+
+          // Extract hexagon levels from profile
+          const hexProfile = hex as HexagonProfileWithXP | null;
+          const hexagonLevels: Record<HexagonAxis, 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE'> = {
+            relativeStrength: (hexProfile?.relativeStrengthLevel || 'BEGINNER') as any,
+            muscularEndurance: (hexProfile?.muscularEnduranceLevel || 'BEGINNER') as any,
+            balanceControl: (hexProfile?.balanceControlLevel || 'BEGINNER') as any,
+            jointMobility: (hexProfile?.jointMobilityLevel || 'BEGINNER') as any,
+            bodyTension: (hexProfile?.bodyTensionLevel || 'BEGINNER') as any,
+            skillTechnique: (hexProfile?.skillTechniqueLevel || 'BEGINNER') as any,
+          };
+
+          // Generate 5 goal-based missions
+          const axisMissions = generateGoalBasedDailyMissions(primaryGoal, hexagonLevels, 5);
+
+          // Convert AxisMission[] to database format
+          const missionsToCreate = axisMissions.map((mission) => ({
+            userId,
+            date: today,
+            type: mission.id,
+            description: mission.description,
+            target: mission.target || null,
+            rewardXP: mission.rewardXP,
+            rewardCoins: mission.rewardCoins,
+            progress: 0,
+            completed: false,
+          }));
+
           await prisma.dailyMission.createMany({
-            data: [
-              {
-                userId,
-                date: today,
-                type: 'complete_exercises',
-                description: 'Complete 3 exercises today',
-                target: 3,
-                rewardXP: 25,
-                rewardCoins: 10,
-              },
-              {
-                userId,
-                date: today,
-                type: 'core_focus',
-                description: 'Include 1 CORE exercise',
-                target: 1,
-                rewardXP: 20,
-                rewardCoins: 8,
-              },
-              {
-                userId,
-                date: today,
-                type: 'hydration',
-                description: 'Stay hydrated during your workout',
-                target: null,
-                rewardXP: 10,
-                rewardCoins: 5,
-              },
-            ],
+            data: missionsToCreate,
           });
         }
       } catch (e) {
@@ -183,15 +191,23 @@ export async function GET(req: NextRequest) {
           const fallback: DevMission[] = [
             {
               id: `${baseId}-1`, userId, date: today, type: 'complete_exercises',
-              description: 'Complete 3 exercises today', target: 3, progress: 0, completed: false, rewardXP: 25, rewardCoins: 10,
+              description: 'Complete 5 exercises today', target: 5, progress: 0, completed: false, rewardXP: 30, rewardCoins: 15,
             },
             {
               id: `${baseId}-2`, userId, date: today, type: 'core_focus',
-              description: 'Include 1 CORE exercise', target: 1, progress: 0, completed: false, rewardXP: 20, rewardCoins: 8,
+              description: 'Include 2 CORE exercises', target: 2, progress: 0, completed: false, rewardXP: 25, rewardCoins: 10,
             },
             {
-              id: `${baseId}-3`, userId, date: today, type: 'hydration',
-              description: 'Stay hydrated during your workout', target: null, progress: 0, completed: false, rewardXP: 10, rewardCoins: 5,
+              id: `${baseId}-3`, userId, date: today, type: 'strength_focus',
+              description: 'Work on strength exercises', target: 2, progress: 0, completed: false, rewardXP: 25, rewardCoins: 10,
+            },
+            {
+              id: `${baseId}-4`, userId, date: today, type: 'balance_focus',
+              description: 'Practice balance exercises', target: 1, progress: 0, completed: false, rewardXP: 20, rewardCoins: 8,
+            },
+            {
+              id: `${baseId}-5`, userId, date: today, type: 'progression',
+              description: 'Increase intensity in 1 exercise', target: 1, progress: 0, completed: false, rewardXP: 35, rewardCoins: 15,
             },
           ];
           saveDailyMissions(userId, fallback);
