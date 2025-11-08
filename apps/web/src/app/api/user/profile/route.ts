@@ -15,6 +15,67 @@ const updateProfileSchema = z.object({
   weight: z.number().optional(),
 });
 
+async function getUserId(req: NextRequest) {
+  try {
+    const session = await getServerSession(authOptions);
+    if (session?.user?.id) return session.user.id as string;
+  } catch {}
+  const headerUser = req.headers.get('x-user-id');
+  if (headerUser) return headerUser;
+  return null;
+}
+
+export async function GET(request: NextRequest) {
+  try {
+    const userId = await getUserId(request);
+
+    if (!userId) {
+      return NextResponse.json(
+        { success: false, error: 'No autenticado' },
+        { status: 401 }
+      );
+    }
+
+    // Fetch user profile with hexagon profile
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      include: {
+        hexagonProfile: true,
+      },
+      select: {
+        id: true,
+        email: true,
+        username: true,
+        firstName: true,
+        lastName: true,
+        fitnessLevel: true,
+        hasCompletedAssessment: true,
+        assessmentDate: true,
+        hexagonProfile: true,
+        goals: true,
+      },
+    });
+
+    if (!user) {
+      return NextResponse.json(
+        { success: false, error: 'Usuario no encontrado' },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({
+      success: true,
+      ...user,
+    });
+  } catch (error) {
+    console.error('Error fetching profile:', error);
+    return NextResponse.json(
+      { success: false, error: 'Error al obtener perfil' },
+      { status: 500 }
+    );
+  }
+}
+
 export async function PATCH(request: NextRequest) {
   try {
     const session = await getServerSession(authOptions);

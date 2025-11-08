@@ -79,7 +79,7 @@ export const authOptions: NextAuthOptions = {
     newUser: '/onboarding',
   },
   callbacks: {
-    async jwt({ token, user, account }) {
+    async jwt({ token, user, account, trigger }) {
       if (user) {
         token.id = user.id;
         token.username = user.username;
@@ -91,6 +91,22 @@ export const authOptions: NextAuthOptions = {
         token.refreshToken = account.refresh_token;
       }
 
+      // Always refresh hasCompletedAssessment from database
+      // This ensures the token stays up-to-date with assessment status
+      if (token.id) {
+        try {
+          const dbUser = await prisma.user.findUnique({
+            where: { id: token.id as string },
+            select: { hasCompletedAssessment: true },
+          });
+          if (dbUser) {
+            token.hasCompletedAssessment = dbUser.hasCompletedAssessment;
+          }
+        } catch (error) {
+          console.error('Error fetching user assessment status:', error);
+        }
+      }
+
       return token;
     },
     async session({ session, token }) {
@@ -99,6 +115,7 @@ export const authOptions: NextAuthOptions = {
         session.user.username = token.username as string;
         session.user.role = token.role as string;
         session.accessToken = token.accessToken as string;
+        session.user.hasCompletedAssessment = token.hasCompletedAssessment as boolean;
       }
 
       return session;

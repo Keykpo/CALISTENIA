@@ -32,8 +32,10 @@ export default function AssessmentPage() {
       });
 
       if (res.ok) {
-        // Redirect to dashboard after successful submission
-        router.push('/dashboard?assessment=complete');
+        const data = await res.json();
+        // Use window.location.href for hard reload to update JWT token
+        const redirectPath = data.redirectTo || '/dashboard';
+        window.location.href = redirectPath;
       } else {
         const error = await res.json();
         console.error('Error submitting assessment:', error);
