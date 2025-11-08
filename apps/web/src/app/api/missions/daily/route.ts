@@ -3,6 +3,12 @@ import prisma from '@/lib/prisma';
 import { saveDailyMissions, DevMission } from '@/lib/dev-missions-store';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
+import {
+  generateGoalBasedDailyMissions,
+  type HexagonAxis,
+  type AxisMission,
+} from '@/lib/exercise-to-axis-mapping';
+import { type HexagonProfileWithXP } from '@/lib/hexagon-progression';
 export const runtime = 'nodejs';
 
 async function getUserId(req: NextRequest) {
@@ -19,129 +25,6 @@ async function getUserId(req: NextRequest) {
 }
 
 function startOfDay(d: Date) { const dt = new Date(d); dt.setHours(0,0,0,0); return dt; }
-
-// Genera misiones adaptativas según nivel y hexágono del usuario
-function generateAdaptiveMissions(
-  userId: string,
-  date: Date,
-  level: string,
-  hexProfile: any
-) {
-  const missions: any[] = [];
-
-  // Misión 1: Ejercicios base (adaptar cantidad según nivel)
-  const exerciseTarget = level === 'BEGINNER' ? 3 : level === 'INTERMEDIATE' ? 5 : 8;
-  missions.push({
-    userId,
-    date,
-    type: 'complete_exercises',
-    description: `Completa ${exerciseTarget} ejercicios hoy`,
-    target: exerciseTarget,
-    rewardXP: exerciseTarget * 5,
-    rewardCoins: Math.floor(exerciseTarget * 2.5),
-  });
-
-  // Misión 2: Enfoque adaptativo según hexágono (debilidad más baja)
-  let focusType = 'core_focus';
-  let focusDesc = 'Incluye 1 ejercicio de CORE';
-  if (hexProfile) {
-    const weakestAxis = getWeakestAxis(hexProfile);
-    if (weakestAxis === 'relativeStrength') {
-      focusType = 'strength_focus';
-      focusDesc = 'Trabaja ejercicios de fuerza (push-ups, pull-ups)';
-    } else if (weakestAxis === 'muscularEndurance') {
-      focusType = 'endurance_focus';
-      focusDesc = 'Realiza ejercicios de resistencia (plank, hold)';
-    } else if (weakestAxis === 'balanceControl') {
-      focusType = 'balance_focus';
-      focusDesc = 'Practica ejercicios de equilibrio';
-    } else if (weakestAxis === 'jointMobility') {
-      focusType = 'mobility_focus';
-      focusDesc = 'Incluye estiramientos y movilidad';
-    }
-  }
-  missions.push({
-    userId,
-    date,
-    type: focusType,
-    description: focusDesc,
-    target: level === 'BEGINNER' ? 1 : level === 'INTERMEDIATE' ? 2 : 3,
-    rewardXP: level === 'BEGINNER' ? 15 : level === 'INTERMEDIATE' ? 25 : 40,
-    rewardCoins: level === 'BEGINNER' ? 5 : level === 'INTERMEDIATE' ? 10 : 15,
-  });
-
-  // Misión 3: Progresión o técnica según nivel
-  if (level === 'BEGINNER') {
-    missions.push({
-      userId,
-      date,
-      type: 'consistency',
-      description: 'Mantén buena forma en todos los ejercicios',
-      target: null,
-      rewardXP: 10,
-      rewardCoins: 5,
-    });
-  } else if (level === 'INTERMEDIATE') {
-    missions.push({
-      userId,
-      date,
-      type: 'progression',
-      description: 'Aumenta reps o intensidad en 1 ejercicio',
-      target: 1,
-      rewardXP: 20,
-      rewardCoins: 10,
-    });
-  } else {
-    missions.push({
-      userId,
-      date,
-      type: 'skill_practice',
-      description: 'Practica una progresión avanzada (handstand, planche, etc.)',
-      target: 1,
-      rewardXP: 50,
-      rewardCoins: 20,
-    });
-  }
-
-  // Misión 4: Bonus si es nivel avanzado
-  if (level === 'EXPERT' || level === 'ADVANCED') {
-    missions.push({
-      userId,
-      date,
-      type: 'volume_challenge',
-      description: 'Completa al menos 100 reps totales hoy',
-      target: 100,
-      rewardXP: 30,
-      rewardCoins: 15,
-    });
-  }
-
-  return missions;
-}
-
-// Encuentra el eje más débil del hexágono
-function getWeakestAxis(hexProfile: any): string {
-  const axes = {
-    relativeStrength: hexProfile.relativeStrength ?? 0,
-    muscularEndurance: hexProfile.muscularEndurance ?? 0,
-    balanceControl: hexProfile.balanceControl ?? 0,
-    jointMobility: hexProfile.jointMobility ?? 0,
-    bodyTension: hexProfile.bodyTension ?? 0,
-    skillTechnique: hexProfile.skillTechnique ?? 0,
-  };
-
-  let weakest = 'relativeStrength';
-  let minValue = axes.relativeStrength;
-
-  for (const [key, value] of Object.entries(axes)) {
-    if (value < minValue) {
-      minValue = value;
-      weakest = key;
-    }
-  }
-
-  return weakest;
-}
 
 export async function GET(req: NextRequest) {
   try {
@@ -175,17 +58,42 @@ export async function GET(req: NextRequest) {
     });
 
     if (existing.length === 0) {
-      // Obtener nivel y hexágono del usuario para adaptar misiones
+      // Get user with hexagon profile to generate goal-based missions
       const user = await prisma.user.findUnique({
         where: { id: userId },
         include: { hexagonProfile: true },
       });
 
-      const level = user?.fitnessLevel || 'BEGINNER';
-      const hexProfile = user?.hexagonProfile;
+      // Parse user's primary goal from goals JSON
+      const goals = user?.goals ? JSON.parse(user.goals as string) : [];
+      const primaryGoal = Array.isArray(goals) && goals.length > 0 ? goals[0] : 'general';
 
-      // Generar misiones adaptativas según nivel
-      const adaptiveMissions = generateAdaptiveMissions(userId, today, level, hexProfile);
+      // Extract hexagon levels from profile
+      const hexProfile = user?.hexagonProfile as HexagonProfileWithXP | null;
+      const hexagonLevels: Record<HexagonAxis, 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE'> = {
+        relativeStrength: (hexProfile?.relativeStrengthLevel || 'BEGINNER') as any,
+        muscularEndurance: (hexProfile?.muscularEnduranceLevel || 'BEGINNER') as any,
+        balanceControl: (hexProfile?.balanceControlLevel || 'BEGINNER') as any,
+        jointMobility: (hexProfile?.jointMobilityLevel || 'BEGINNER') as any,
+        bodyTension: (hexProfile?.bodyTensionLevel || 'BEGINNER') as any,
+        skillTechnique: (hexProfile?.skillTechniqueLevel || 'BEGINNER') as any,
+      };
+
+      // Generate 5 goal-based missions
+      const axisMissions = generateGoalBasedDailyMissions(primaryGoal, hexagonLevels, 5);
+
+      // Convert AxisMission[] to database format
+      const missionsToCreate = axisMissions.map((mission) => ({
+        userId,
+        date: today,
+        type: mission.id, // Use mission ID as type
+        description: mission.description,
+        target: mission.target || null,
+        rewardXP: mission.rewardXP,
+        rewardCoins: mission.rewardCoins,
+        progress: 0,
+        completed: false,
+      }));
 
       // SQLite doesn't support skipDuplicates, so we check first
       const existingCheck = await prisma.dailyMission.findFirst({
@@ -194,7 +102,7 @@ export async function GET(req: NextRequest) {
 
       if (!existingCheck) {
         await prisma.dailyMission.createMany({
-          data: adaptiveMissions,
+          data: missionsToCreate,
         });
       }
     }
@@ -213,36 +121,60 @@ export async function GET(req: NextRequest) {
           userId: userId || 'local-dev',
           date: today,
           type: 'complete_exercises',
-          description: 'Completa 3 ejercicios hoy',
-          target: 3,
+          description: 'Completa 5 ejercicios hoy',
+          target: 5,
           progress: 0,
           completed: false,
-          rewardXP: 25,
-          rewardCoins: 10,
+          rewardXP: 300,
+          rewardCoins: 150,
         },
         {
           id: `${baseId}-2`,
           userId: userId || 'local-dev',
           date: today,
           type: 'core_focus',
-          description: 'Incluye 1 ejercicio de CORE',
-          target: 1,
+          description: 'Incluye 2 ejercicios de CORE',
+          target: 2,
           progress: 0,
           completed: false,
-          rewardXP: 20,
-          rewardCoins: 8,
+          rewardXP: 250,
+          rewardCoins: 100,
         },
         {
           id: `${baseId}-3`,
           userId: userId || 'local-dev',
           date: today,
-          type: 'hydration',
-          description: 'Hidrátate durante el entrenamiento',
-          target: null,
+          type: 'strength_focus',
+          description: 'Trabaja ejercicios de fuerza',
+          target: 2,
           progress: 0,
           completed: false,
-          rewardXP: 10,
-          rewardCoins: 5,
+          rewardXP: 250,
+          rewardCoins: 100,
+        },
+        {
+          id: `${baseId}-4`,
+          userId: userId || 'local-dev',
+          date: today,
+          type: 'balance_focus',
+          description: 'Practica ejercicios de equilibrio',
+          target: 1,
+          progress: 0,
+          completed: false,
+          rewardXP: 200,
+          rewardCoins: 80,
+        },
+        {
+          id: `${baseId}-5`,
+          userId: userId || 'local-dev',
+          date: today,
+          type: 'progression',
+          description: 'Aumenta intensidad en 1 ejercicio',
+          target: 1,
+          progress: 0,
+          completed: false,
+          rewardXP: 350,
+          rewardCoins: 150,
         },
       ];
       // Persistir en el store en memoria para permitir "Complete" durante desarrollo.

@@ -17,6 +17,7 @@ export default function TrainingSessionPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
   const [completed, setCompleted] = useState(false);
+  const [xpGained, setXpGained] = useState<number>(0);
 
   useEffect(() => {
     async function load() {
@@ -60,7 +61,7 @@ export default function TrainingSessionPage() {
     return () => clearInterval(t);
   }, [timeLeft]);
 
-  const next = () => {
+  const next = async () => {
     // Log current exercise to evolve hexagon profile
     if (current) {
       const payload: any = { name: current.name };
@@ -72,7 +73,36 @@ export default function TrainingSessionPage() {
         body: JSON.stringify(payload),
       }).catch(() => {});
     }
+
     if (currentIndex + 1 >= exercises.length) {
+      // Complete the routine and award bonus XP
+      try {
+        const completionPayload = {
+          exercises: exercises.map(ex => ({
+            name: ex.name,
+            category: 'GENERAL', // You can map this from exercise data if available
+            difficulty: 'INTERMEDIATE', // Default difficulty
+            reps: ex.reps,
+            duration: ex.durationSec,
+          })),
+          totalDuration: exercises.reduce((sum, ex) => sum + (ex.durationSec || 30), 0),
+        };
+
+        const response = await fetch('/api/routines/complete', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(completionPayload),
+        });
+
+        const data = await response.json();
+        if (data.success) {
+          console.log('Routine completed! XP gained:', data.xpGained);
+          setXpGained(data.xpGained.total || 0);
+        }
+      } catch (error) {
+        console.error('Error completing routine:', error);
+      }
+
       setCompleted(true);
     } else {
       setCurrentIndex((i) => i + 1);
@@ -112,9 +142,34 @@ export default function TrainingSessionPage() {
 
             {completed && (
               <div className="space-y-4 text-center">
-                <h3 className="text-2xl font-semibold">Session Complete</h3>
-                <p className="text-muted-foreground">Great job! Your progress has been recorded.</p>
-                <Button onClick={() => { setCompleted(false); setCurrentIndex(0); }}>Restart</Button>
+                <div className="space-y-2">
+                  <h3 className="text-2xl font-semibold text-green-600">Session Complete! 🎉</h3>
+                  <p className="text-muted-foreground">Great job! Your progress has been recorded.</p>
+                </div>
+
+                {xpGained > 0 && (
+                  <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-lg p-4">
+                    <div className="flex items-center justify-center gap-2 mb-2">
+                      <span className="text-3xl">⚡</span>
+                      <span className="text-2xl font-bold text-blue-600">+{xpGained.toLocaleString()} XP</span>
+                    </div>
+                    <p className="text-sm text-slate-600">
+                      Routine completion bonus distributed across all skills!
+                    </p>
+                    <p className="text-xs text-slate-500 mt-1">
+                      (~{Math.floor(xpGained / 6)} XP per hexagon axis)
+                    </p>
+                  </div>
+                )}
+
+                <div className="flex gap-2 justify-center">
+                  <Button onClick={() => { setCompleted(false); setCurrentIndex(0); setXpGained(0); }}>
+                    Restart
+                  </Button>
+                  <Button variant="outline" onClick={() => window.location.href = '/dashboard'}>
+                    View Dashboard
+                  </Button>
+                </div>
               </div>
             )}
           </CardContent>

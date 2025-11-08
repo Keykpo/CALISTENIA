@@ -16,17 +16,17 @@ export type HexagonAxis =
 export type ProgressionLevel = 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE';
 
 /**
- * XP thresholds for each level
- * BEGINNER: 0 - 2,000 XP
- * INTERMEDIATE: 2,000 - 5,000 XP
- * ADVANCED: 5,000 - 10,000 XP
- * ELITE: 10,000+ XP
+ * XP thresholds for each level (Realistic 3-year progression)
+ * BEGINNER: 0 - 48,000 XP (~6 months of training)
+ * INTERMEDIATE: 48,000 - 144,000 XP (~1 year of training)
+ * ADVANCED: 144,000 - 384,000 XP (~2 years of training)
+ * ELITE: 384,000+ XP (~3+ years of training)
  */
 export const XP_THRESHOLDS: Record<ProgressionLevel, { min: number; max: number }> = {
-  BEGINNER: { min: 0, max: 2000 },
-  INTERMEDIATE: { min: 2000, max: 5000 },
-  ADVANCED: { min: 5000, max: 10000 },
-  ELITE: { min: 10000, max: Infinity },
+  BEGINNER: { min: 0, max: 48000 },
+  INTERMEDIATE: { min: 48000, max: 144000 },
+  ADVANCED: { min: 144000, max: 384000 },
+  ELITE: { min: 384000, max: Infinity },
 };
 
 /**
