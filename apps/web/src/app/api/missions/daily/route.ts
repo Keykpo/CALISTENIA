@@ -125,8 +125,8 @@ export async function GET(req: NextRequest) {
           target: 5,
           progress: 0,
           completed: false,
-          rewardXP: 30,
-          rewardCoins: 15,
+          rewardXP: 300,
+          rewardCoins: 150,
         },
         {
           id: `${baseId}-2`,
@@ -137,8 +137,8 @@ export async function GET(req: NextRequest) {
           target: 2,
           progress: 0,
           completed: false,
-          rewardXP: 25,
-          rewardCoins: 10,
+          rewardXP: 250,
+          rewardCoins: 100,
         },
         {
           id: `${baseId}-3`,
@@ -149,8 +149,8 @@ export async function GET(req: NextRequest) {
           target: 2,
           progress: 0,
           completed: false,
-          rewardXP: 25,
-          rewardCoins: 10,
+          rewardXP: 250,
+          rewardCoins: 100,
         },
         {
           id: `${baseId}-4`,
@@ -161,8 +161,8 @@ export async function GET(req: NextRequest) {
           target: 1,
           progress: 0,
           completed: false,
-          rewardXP: 20,
-          rewardCoins: 8,
+          rewardXP: 200,
+          rewardCoins: 80,
         },
         {
           id: `${baseId}-5`,
@@ -173,8 +173,8 @@ export async function GET(req: NextRequest) {
           target: 1,
           progress: 0,
           completed: false,
-          rewardXP: 35,
-          rewardCoins: 15,
+          rewardXP: 350,
+          rewardCoins: 150,
         },
       ];
       // Persistir en el store en memoria para permitir "Complete" durante desarrollo.

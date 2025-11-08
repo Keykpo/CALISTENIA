@@ -191,23 +191,23 @@ export async function GET(req: NextRequest) {
           const fallback: DevMission[] = [
             {
               id: `${baseId}-1`, userId, date: today, type: 'complete_exercises',
-              description: 'Complete 5 exercises today', target: 5, progress: 0, completed: false, rewardXP: 30, rewardCoins: 15,
+              description: 'Complete 5 exercises today', target: 5, progress: 0, completed: false, rewardXP: 300, rewardCoins: 150,
             },
             {
               id: `${baseId}-2`, userId, date: today, type: 'core_focus',
-              description: 'Include 2 CORE exercises', target: 2, progress: 0, completed: false, rewardXP: 25, rewardCoins: 10,
+              description: 'Include 2 CORE exercises', target: 2, progress: 0, completed: false, rewardXP: 250, rewardCoins: 100,
             },
             {
               id: `${baseId}-3`, userId, date: today, type: 'strength_focus',
-              description: 'Work on strength exercises', target: 2, progress: 0, completed: false, rewardXP: 25, rewardCoins: 10,
+              description: 'Work on strength exercises', target: 2, progress: 0, completed: false, rewardXP: 250, rewardCoins: 100,
             },
             {
               id: `${baseId}-4`, userId, date: today, type: 'balance_focus',
-              description: 'Practice balance exercises', target: 1, progress: 0, completed: false, rewardXP: 20, rewardCoins: 8,
+              description: 'Practice balance exercises', target: 1, progress: 0, completed: false, rewardXP: 200, rewardCoins: 80,
             },
             {
               id: `${baseId}-5`, userId, date: today, type: 'progression',
-              description: 'Increase intensity in 1 exercise', target: 1, progress: 0, completed: false, rewardXP: 35, rewardCoins: 15,
+              description: 'Increase intensity in 1 exercise', target: 1, progress: 0, completed: false, rewardXP: 350, rewardCoins: 150,
             },
           ];
           saveDailyMissions(userId, fallback);
