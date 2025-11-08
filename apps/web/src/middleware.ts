@@ -6,44 +6,53 @@ export async function middleware(request: NextRequest) {
   const token = await getToken({ req: request as any });
   const { pathname } = request.nextUrl;
 
-  // Public routes that don't require authentication
-  const publicRoutes = ['/auth/signin', '/auth/register', '/auth/forgot-password'];
-  const isPublicRoute = publicRoutes.some(route => pathname.startsWith(route));
+  // Routes that REQUIRE authentication
+  const protectedRoutes = [
+    '/dashboard',
+    '/profile',
+    '/workouts',
+    '/exercises',
+    '/plans',
+    '/achievements',
+    '/settings',
+  ];
 
-  // If not authenticated and trying to access protected route
-  if (!token && !isPublicRoute) {
+  const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
+
+  // If trying to access protected route without authentication
+  if (isProtectedRoute && !token) {
     return NextResponse.redirect(new URL('/auth/signin', request.url));
   }
 
-  // If authenticated, check assessment completion
-  if (token && token.sub) {
+  // If authenticated, check assessment completion for protected routes
+  if (token && token.sub && isProtectedRoute) {
     // Routes that should be accessible even without assessment
     const allowedWithoutAssessment = [
       '/onboarding/assessment',
       '/onboarding/results',
       '/auth/signout',
-      '/api/',
+      '/profile', // Allow profile access
     ];
 
     const isAllowedRoute = allowedWithoutAssessment.some(route =>
       pathname.startsWith(route)
     );
 
-    // Check if user has completed assessment (from token or separate check)
+    // Check if user has completed assessment (from token)
     const hasCompletedAssessment = token.hasCompletedAssessment || false;
 
     // CRITICAL: Redirect to assessment ONLY if:
     // 1. User hasn't completed assessment
-    // 2. User is NOT already on an allowed route
-    // 3. User is NOT on an API route
-    if (!hasCompletedAssessment && !isAllowedRoute && pathname !== '/onboarding/assessment') {
+    // 2. User is on a protected route that requires assessment
+    // 3. User is NOT already on an allowed route
+    if (!hasCompletedAssessment && !isAllowedRoute) {
       return NextResponse.redirect(new URL('/onboarding/assessment', request.url));
     }
+  }
 
-    // If assessment is completed and user tries to access assessment page
-    if (hasCompletedAssessment && pathname === '/onboarding/assessment') {
-      return NextResponse.redirect(new URL('/dashboard', request.url));
-    }
+  // If authenticated and assessment completed, prevent access to assessment page
+  if (token && token.hasCompletedAssessment && pathname === '/onboarding/assessment') {
+    return NextResponse.redirect(new URL('/dashboard', request.url));
   }
 
   return NextResponse.next();
