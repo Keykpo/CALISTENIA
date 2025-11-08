@@ -86,7 +86,7 @@ export default function DailyMissionsPanel({ userId, onMissionComplete }: DailyM
           );
 
           // Show success toast
-          toast.success(`¡Misión completada! +${data.rewards?.xp || 0} XP y +${data.rewards?.coins || 0} monedas`);
+          toast.success(`Mission completed! +${data.rewards?.xp || 0} XP and +${data.rewards?.coins || 0} coins`);
 
           // Notify parent
           onMissionComplete?.();
@@ -94,7 +94,7 @@ export default function DailyMissionsPanel({ userId, onMissionComplete }: DailyM
       }
     } catch (error) {
       console.error('Error completing mission:', error);
-      toast.error("No se pudo completar la misión");
+      toast.error("Could not complete mission");
     } finally {
       setCompleting(null);
     }
@@ -115,16 +115,16 @@ export default function DailyMissionsPanel({ userId, onMissionComplete }: DailyM
 
       if (res.ok && data.success) {
         setMissions(data.missions || []);
-        toast.success(data.message || "¡Misiones actualizadas exitosamente!");
+        toast.success(data.message || "Missions updated successfully!");
 
         // Notify parent to refresh coins
         onMissionComplete?.();
       } else {
-        toast.error(data.error || "No se pudieron generar nuevas misiones");
+        toast.error(data.error || "Could not generate new missions");
       }
     } catch (error) {
       console.error('Error refreshing missions:', error);
-      toast.error("No se pudo refrescar las misiones");
+      toast.error("Could not refresh missions");
     } finally {
       setRefreshing(false);
     }
@@ -142,7 +142,7 @@ export default function DailyMissionsPanel({ userId, onMissionComplete }: DailyM
         <CardContent className="py-12">
           <div className="text-center">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
-            <p className="text-sm text-slate-600 mt-3">Cargando misiones...</p>
+            <p className="text-sm text-slate-600 mt-3">Loading missions...</p>
           </div>
         </CardContent>
       </Card>
@@ -156,7 +156,7 @@ export default function DailyMissionsPanel({ userId, onMissionComplete }: DailyM
         <Card>
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-slate-600">
-              Progreso del Día
+              Daily Progress
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -204,10 +204,10 @@ export default function DailyMissionsPanel({ userId, onMissionComplete }: DailyM
             <div>
               <CardTitle className="flex items-center gap-2">
                 <Target className="w-5 h-5" />
-                Misiones de Hoy
+                Today's Missions
               </CardTitle>
               <CardDescription>
-                Completa todas las misiones para mantener tu racha diaria
+                Complete all missions to maintain your daily streak
               </CardDescription>
             </div>
             <Button
@@ -285,7 +285,7 @@ export default function DailyMissionsPanel({ userId, onMissionComplete }: DailyM
                           <div className="flex items-center gap-1 text-sm">
                             <Award className="w-4 h-4 text-amber-500" />
                             <span className="font-medium text-amber-600">
-                              +{mission.rewardCoins} monedas
+                              +{mission.rewardCoins} coins
                             </span>
                           </div>
                         </div>
@@ -302,12 +302,12 @@ export default function DailyMissionsPanel({ userId, onMissionComplete }: DailyM
                         {completing === mission.id ? (
                           <>
                             <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
-                            Completando...
+                            Completing...
                           </>
                         ) : (
                           <>
                             <CheckCircle2 className="w-4 h-4 mr-2" />
-                            Completar
+                            Complete
                           </>
                         )}
                       </Button>
@@ -319,10 +319,10 @@ export default function DailyMissionsPanel({ userId, onMissionComplete }: DailyM
           ) : (
             <div className="text-center py-12">
               <Target className="w-16 h-16 mx-auto text-slate-300 mb-4" />
-              <p className="text-slate-500 mb-4">No hay misiones disponibles hoy</p>
+              <p className="text-slate-500 mb-4">No missions available today</p>
               <Button onClick={refreshMissions} variant="outline" disabled={refreshing} className="gap-2">
                 <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
-                Generar Misiones
+                Generate Missions
                 <Coins className="w-4 h-4 ml-2" />
                 <span>3</span>
               </Button>
@@ -338,14 +338,14 @@ export default function DailyMissionsPanel({ userId, onMissionComplete }: DailyM
             <div className="text-center">
               <Flame className="w-12 h-12 mx-auto mb-3" />
               <h3 className="text-2xl font-bold mb-2">
-                ¡Todas las misiones completadas!
+                All missions completed!
               </h3>
               <p className="text-green-100 mb-4">
-                Has ganado {totalXP} XP y {totalCoins} monedas hoy
+                You earned {totalXP} XP and {totalCoins} coins today
               </p>
               <div className="flex items-center justify-center gap-2 text-sm">
                 <TrendingUp className="w-4 h-4" />
-                <span>Tu racha diaria ha aumentado</span>
+                <span>Your daily streak has increased</span>
               </div>
             </div>
           </CardContent>

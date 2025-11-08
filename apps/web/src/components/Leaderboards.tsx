@@ -32,21 +32,21 @@ interface LeaderboardsProps {
 }
 
 const branchNames = {
-  EMPUJE: 'Empuje',
-  TRACCION: 'Tracción',
+  PUSH: 'Push',
+  PULL: 'Pull',
   CORE: 'Core',
-  EQUILIBRIO: 'Equilibrio',
-  TREN_INFERIOR: 'Tren Inferior',
-  ESTATICOS: 'Estáticos',
+  BALANCE: 'Balance',
+  LOWER_BODY: 'Lower Body',
+  STATICS: 'Statics',
 };
 
 const branchIcons = {
-  EMPUJE: '💪',
-  TRACCION: '🔥',
+  PUSH: '💪',
+  PULL: '🔥',
   CORE: '⚡',
-  EQUILIBRIO: '🎪',
-  TREN_INFERIOR: '🦵',
-  ESTATICOS: '🗿',
+  BALANCE: '🎪',
+  LOWER_BODY: '🦵',
+  STATICS: '🗿',
 };
 
 export default function Leaderboards({ currentUserId }: LeaderboardsProps) {
@@ -97,7 +97,7 @@ export default function Leaderboards({ currentUserId }: LeaderboardsProps) {
       },
       {
         id: currentUserId || '4',
-        username: 'Tú',
+        username: 'You',
         totalXP: 8420,
         currentLevel: 15,
         completedSkills: 45,
@@ -111,11 +111,11 @@ export default function Leaderboards({ currentUserId }: LeaderboardsProps) {
 
     const mockBranchData: BranchLeaderboard[] = [
       {
-        branch: 'EMPUJE',
+        branch: 'PUSH',
         users: mockGlobalData.slice(0, 10),
       },
       {
-        branch: 'TRACCION',
+        branch: 'PULL',
         users: [...mockGlobalData].sort(() => Math.random() - 0.5).slice(0, 10),
       },
       {
@@ -168,9 +168,9 @@ export default function Leaderboards({ currentUserId }: LeaderboardsProps) {
             <div>
               <h4 className="font-semibold text-sm">{user.username}</h4>
               <div className="flex items-center gap-2 text-xs text-gray-600">
-                <span>Nivel {user.currentLevel}</span>
+                <span>Level {user.currentLevel}</span>
                 <span>•</span>
-                <span>{user.completedSkills} habilidades</span>
+                <span>{user.completedSkills} skills</span>
               </div>
             </div>
           </div>
@@ -187,7 +187,7 @@ export default function Leaderboards({ currentUserId }: LeaderboardsProps) {
               </div>
               <div className="flex items-center gap-1">
                 <TrendingUp className="h-3 w-3" />
-                <span>{user.streak} días</span>
+                <span>{user.streak} days</span>
               </div>
             </div>
           </div>
@@ -210,9 +210,9 @@ export default function Leaderboards({ currentUserId }: LeaderboardsProps) {
         <div>
           <h2 className="text-2xl font-bold flex items-center gap-2">
             <Trophy className="h-6 w-6 text-yellow-500" />
-            Clasificaciones
+            Leaderboards
           </h2>
-          <p className="text-gray-600">Compite con otros atletas de calistenia</p>
+          <p className="text-gray-600">Compete with other calisthenics athletes</p>
         </div>
         
         <div className="flex gap-2">
@@ -221,7 +221,7 @@ export default function Leaderboards({ currentUserId }: LeaderboardsProps) {
             size="sm"
             onClick={() => setTimeRange('all-time')}
           >
-            Todo el tiempo
+            All Time
           </Button>
           <Button
             variant={timeRange === 'monthly' ? 'default' : 'outline'}
@@ -229,7 +229,7 @@ export default function Leaderboards({ currentUserId }: LeaderboardsProps) {
             onClick={() => setTimeRange('monthly')}
           >
             <Calendar className="h-4 w-4 mr-1" />
-            Este mes
+            This Month
           </Button>
         </div>
       </div>
@@ -242,7 +242,7 @@ export default function Leaderboards({ currentUserId }: LeaderboardsProps) {
           </TabsTrigger>
           <TabsTrigger value="branches" className="flex items-center gap-2">
             <Target className="h-4 w-4" />
-            Por Rama
+            By Branch
           </TabsTrigger>
         </TabsList>
 
@@ -251,7 +251,7 @@ export default function Leaderboards({ currentUserId }: LeaderboardsProps) {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Trophy className="h-5 w-5 text-yellow-500" />
-                Clasificación Global
+                Global Ranking
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
@@ -287,24 +287,24 @@ export default function Leaderboards({ currentUserId }: LeaderboardsProps) {
           <CardContent className="p-6">
             <h3 className="font-semibold mb-4 flex items-center gap-2">
               <Target className="h-5 w-5 text-blue-600" />
-              Tu Posición
+              Your Position
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="text-center">
                 <div className="text-2xl font-bold text-blue-600">#15</div>
-                <div className="text-sm text-gray-600">Posición Global</div>
+                <div className="text-sm text-gray-600">Global Rank</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-green-600">8,420</div>
-                <div className="text-sm text-gray-600">XP Total</div>
+                <div className="text-sm text-gray-600">Total XP</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-purple-600">45</div>
-                <div className="text-sm text-gray-600">Habilidades</div>
+                <div className="text-sm text-gray-600">Skills</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-orange-600">12</div>
-                <div className="text-sm text-gray-600">Racha (días)</div>
+                <div className="text-sm text-gray-600">Streak (days)</div>
               </div>
             </div>
           </CardContent>

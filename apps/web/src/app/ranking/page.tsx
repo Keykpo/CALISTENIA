@@ -73,16 +73,16 @@ export default function RankingPage() {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
               <div className="bg-white/20 rounded-lg p-4">
-                <h3 className="font-semibold">Entrena Consistentemente</h3>
-                <p className="text-sm text-purple-100">La constancia es clave para mejorar</p>
+                <h3 className="font-semibold">Train Consistently</h3>
+                <p className="text-sm text-purple-100">Consistency is key to improvement</p>
               </div>
               <div className="bg-white/20 rounded-lg p-4">
-                <h3 className="font-semibold">Desbloquea Habilidades</h3>
-                <p className="text-sm text-purple-100">Cada nueva habilidad suma puntos</p>
+                <h3 className="font-semibold">Unlock Skills</h3>
+                <p className="text-sm text-purple-100">Each new skill adds points</p>
               </div>
               <div className="bg-white/20 rounded-lg p-4">
-                <h3 className="font-semibold">Compite Sanamente</h3>
-                <p className="text-sm text-purple-100">Inspírate en otros atletas</p>
+                <h3 className="font-semibold">Compete Healthily</h3>
+                <p className="text-sm text-purple-100">Get inspired by other athletes</p>
               </div>
             </div>
           </CardContent>

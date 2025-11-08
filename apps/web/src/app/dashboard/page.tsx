@@ -77,7 +77,7 @@ export default function DashboardPage() {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-slate-600">Cargando tu panel...</p>
+          <p className="text-slate-600">Loading your dashboard...</p>
         </div>
       </div>
     );
@@ -95,10 +95,10 @@ export default function DashboardPage() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-slate-900">
-                Hola, {session.user.name || 'Atleta'} 👋
+                Hello, {session.user.name || 'Athlete'} 👋
               </h1>
               <p className="text-sm text-slate-600 mt-1">
-                {new Date().toLocaleDateString('es-ES', {
+                {new Date().toLocaleDateString('en-US', {
                   weekday: 'long',
                   year: 'numeric',
                   month: 'long',
@@ -138,7 +138,7 @@ export default function DashboardPage() {
                   <Flame className="w-5 h-5" />
                   {userData?.stats?.dailyStreak || 0}
                 </div>
-                <div className="text-xs text-slate-600">Racha</div>
+                <div className="text-xs text-slate-600">Streak</div>
               </div>
             </div>
           </div>
@@ -151,11 +151,11 @@ export default function DashboardPage() {
           <TabsList className="grid w-full grid-cols-5 lg:w-auto lg:inline-grid bg-white shadow-sm">
             <TabsTrigger value="overview" className="gap-2">
               <TrendingUp className="w-4 h-4" />
-              <span className="hidden sm:inline">Resumen</span>
+              <span className="hidden sm:inline">Overview</span>
             </TabsTrigger>
             <TabsTrigger value="missions" className="gap-2">
               <Target className="w-4 h-4" />
-              <span className="hidden sm:inline">Misiones</span>
+              <span className="hidden sm:inline">Missions</span>
             </TabsTrigger>
             <TabsTrigger value="skills" className="gap-2">
               <TreePine className="w-4 h-4" />
@@ -163,11 +163,11 @@ export default function DashboardPage() {
             </TabsTrigger>
             <TabsTrigger value="achievements" className="gap-2">
               <Trophy className="w-4 h-4" />
-              <span className="hidden sm:inline">Logros</span>
+              <span className="hidden sm:inline">Achievements</span>
             </TabsTrigger>
             <TabsTrigger value="profile" className="gap-2">
               <UserIcon className="w-4 h-4" />
-              <span className="hidden sm:inline">Perfil</span>
+              <span className="hidden sm:inline">Profile</span>
             </TabsTrigger>
           </TabsList>
 

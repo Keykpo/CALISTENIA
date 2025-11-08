@@ -74,38 +74,38 @@ export default function AchievementSystem({ userStats, onAchievementUnlock }: Ac
   const defaultAchievements: Achievement[] = [
     // Branch Master Achievements
     {
-      id: 'empuje_master',
-      name: 'Maestro del Empuje',
-      description: 'Completa todas las habilidades de la rama Empuje',
+      id: 'push_master',
+      name: 'Push Master',
+      description: 'Complete all Push branch skills',
       icon: '💪',
       type: 'BRANCH_MASTER',
       rarity: 'EPIC',
-      requirement: { type: 'BRANCH_COMPLETE', value: 100, branch: 'EMPUJE' },
-      reward: { xp: 500, coins: 200, title: 'Maestro del Empuje' },
+      requirement: { type: 'BRANCH_COMPLETE', value: 100, branch: 'PUSH' },
+      reward: { xp: 500, coins: 200, title: 'Push Master' },
       progress: 0,
       isUnlocked: false,
     },
     {
-      id: 'traccion_master',
-      name: 'Señor de la Tracción',
-      description: 'Completa todas las habilidades de la rama Tracción',
+      id: 'pull_master',
+      name: 'Pull Master',
+      description: 'Complete all Pull branch skills',
       icon: '🔥',
       type: 'BRANCH_MASTER',
       rarity: 'EPIC',
-      requirement: { type: 'BRANCH_COMPLETE', value: 100, branch: 'TRACCION' },
-      reward: { xp: 500, coins: 200, title: 'Señor de la Tracción' },
+      requirement: { type: 'BRANCH_COMPLETE', value: 100, branch: 'PULL' },
+      reward: { xp: 500, coins: 200, title: 'Pull Master' },
       progress: 0,
       isUnlocked: false,
     },
     {
       id: 'core_master',
-      name: 'Núcleo de Acero',
-      description: 'Completa todas las habilidades de la rama Core',
+      name: 'Steel Core',
+      description: 'Complete all Core branch skills',
       icon: '⚡',
       type: 'BRANCH_MASTER',
       rarity: 'EPIC',
       requirement: { type: 'BRANCH_COMPLETE', value: 100, branch: 'CORE' },
-      reward: { xp: 500, coins: 200, title: 'Núcleo de Acero' },
+      reward: { xp: 500, coins: 200, title: 'Steel Core' },
       progress: 0,
       isUnlocked: false,
     },
@@ -113,8 +113,8 @@ export default function AchievementSystem({ userStats, onAchievementUnlock }: Ac
     // Streak Achievements
     {
       id: 'streak_7',
-      name: 'Semana Perfecta',
-      description: 'Entrena 7 días consecutivos',
+      name: 'Perfect Week',
+      description: 'Train for 7 consecutive days',
       icon: '🔥',
       type: 'STREAK',
       rarity: 'COMMON',
@@ -125,25 +125,25 @@ export default function AchievementSystem({ userStats, onAchievementUnlock }: Ac
     },
     {
       id: 'streak_30',
-      name: 'Mes Imparable',
-      description: 'Entrena 30 días consecutivos',
+      name: 'Unstoppable Month',
+      description: 'Train for 30 consecutive days',
       icon: '🔥',
       type: 'STREAK',
       rarity: 'RARE',
       requirement: { type: 'STREAK', value: 30 },
-      reward: { xp: 300, coins: 150, title: 'Imparable' },
+      reward: { xp: 300, coins: 150, title: 'Unstoppable' },
       progress: 0,
       isUnlocked: false,
     },
     {
       id: 'streak_100',
-      name: 'Centurión',
-      description: 'Entrena 100 días consecutivos',
+      name: 'Centurion',
+      description: 'Train for 100 consecutive days',
       icon: '🔥',
       type: 'STREAK',
       rarity: 'LEGENDARY',
       requirement: { type: 'STREAK', value: 100 },
-      reward: { xp: 1000, coins: 500, title: 'Centurión' },
+      reward: { xp: 1000, coins: 500, title: 'Centurion' },
       progress: 0,
       isUnlocked: false,
     },
@@ -151,8 +151,8 @@ export default function AchievementSystem({ userStats, onAchievementUnlock }: Ac
     // Speed Achievements
     {
       id: 'speed_demon',
-      name: 'Demonio de la Velocidad',
-      description: 'Completa una habilidad en menos de 3 días',
+      name: 'Speed Demon',
+      description: 'Complete a skill in less than 3 days',
       icon: '⚡',
       type: 'SPEED',
       rarity: 'RARE',
@@ -165,25 +165,25 @@ export default function AchievementSystem({ userStats, onAchievementUnlock }: Ac
     // Dedication Achievements
     {
       id: 'dedication_50',
-      name: 'Guerrero Dedicado',
-      description: 'Completa 50 habilidades',
+      name: 'Dedicated Warrior',
+      description: 'Complete 50 skills',
       icon: '🛡️',
       type: 'DEDICATION',
       rarity: 'RARE',
       requirement: { type: 'SKILLS_COMPLETED', value: 50 },
-      reward: { xp: 400, coins: 200, title: 'Guerrero' },
+      reward: { xp: 400, coins: 200, title: 'Warrior' },
       progress: 0,
       isUnlocked: false,
     },
     {
       id: 'dedication_100',
-      name: 'Leyenda Viviente',
-      description: 'Completa 100 habilidades',
+      name: 'Living Legend',
+      description: 'Complete 100 skills',
       icon: '👑',
       type: 'LEGEND',
       rarity: 'LEGENDARY',
       requirement: { type: 'SKILLS_COMPLETED', value: 100 },
-      reward: { xp: 1000, coins: 1000, title: 'Leyenda Viviente' },
+      reward: { xp: 1000, coins: 1000, title: 'Living Legend' },
       progress: 0,
       isUnlocked: false,
     },
@@ -191,8 +191,8 @@ export default function AchievementSystem({ userStats, onAchievementUnlock }: Ac
     // Explorer Achievements
     {
       id: 'explorer',
-      name: 'Explorador',
-      description: 'Desbloquea al menos una habilidad de cada rama',
+      name: 'Explorer',
+      description: 'Unlock at least one skill from each branch',
       icon: '🎯',
       type: 'EXPLORER',
       rarity: 'COMMON',
@@ -286,7 +286,7 @@ export default function AchievementSystem({ userStats, onAchievementUnlock }: Ac
                 <div className="flex items-center space-x-3">
                   <div className="text-2xl">{achievement.icon}</div>
                   <div>
-                    <h4 className="font-bold">¡Logro Desbloqueado!</h4>
+                    <h4 className="font-bold">Achievement Unlocked!</h4>
                     <p className="text-sm opacity-90">{achievement.name}</p>
                   </div>
                   <Trophy className="w-6 h-6 ml-auto" />
@@ -335,7 +335,7 @@ export default function AchievementSystem({ userStats, onAchievementUnlock }: Ac
                 {/* Progress Bar */}
                 <div className="space-y-2">
                   <div className="flex justify-between text-xs text-gray-500">
-                    <span>Progreso</span>
+                    <span>Progress</span>
                     <span>{achievement.progress}/{achievement.requirement.value}</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
@@ -371,7 +371,7 @@ export default function AchievementSystem({ userStats, onAchievementUnlock }: Ac
                 
                 {achievement.isUnlocked && achievement.unlockedAt && (
                   <div className="mt-2 text-xs text-gray-500">
-                    Desbloqueado: {new Date(achievement.unlockedAt).toLocaleDateString()}
+                    Unlocked: {new Date(achievement.unlockedAt).toLocaleDateString()}
                   </div>
                 )}
               </CardContent>
