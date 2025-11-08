@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import StatsDisplay from '@/components/StatsDisplay'
 import { Zap, Medal } from 'lucide-react'
 
 type MissionType = 'easy' | 'medium' | 'hard'
@@ -327,15 +328,16 @@ export default function MissionsPage() {
             <p className="text-gray-600">Complete quick tasks to earn XP and coins.</p>
           </div>
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <Zap className="w-5 h-5 text-blue-600" />
-              <span className="font-semibold">{xp} XP</span>
+            <StatsDisplay
+              xp={xp}
+              coins={coins}
+              variant="default"
+              showLabels={false}
+            />
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-orange-50 to-orange-100 border border-orange-200 rounded-md">
+              <span className="text-sm font-bold text-orange-700">{streak}</span>
+              <span className="text-xs font-medium text-orange-600">day streak 🔥</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Medal className="w-5 h-5 text-yellow-600" />
-              <span className="font-semibold">{coins}</span>
-            </div>
-            <div className="text-sm text-gray-700">Streak: {streak} days 🔥</div>
             <Button variant="outline" onClick={handleReroll} disabled={rerollUsedToday || coins < rerollCost}>
               Reroll (-{rerollCost})
             </Button>

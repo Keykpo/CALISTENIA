@@ -24,6 +24,7 @@ import DailyMissionsPanel from '@/components/dashboard/DailyMissionsPanel';
 import SkillTreeView from '@/components/dashboard/SkillTreeView';
 import AchievementsView from '@/components/dashboard/AchievementsView';
 import ProfileView from '@/components/dashboard/ProfileView';
+import StatsDisplay from '@/components/StatsDisplay';
 
 export default function DashboardPage() {
   const { data: session, status } = useSession();
@@ -111,37 +112,21 @@ export default function DashboardPage() {
             </div>
 
             {/* Quick Stats */}
-            <div className="hidden md:flex items-center gap-6">
-              <div className="text-center">
-                <div className="flex items-center justify-center gap-1 text-lg font-bold text-blue-600">
-                  <Zap className="w-5 h-5" />
-                  {userData?.stats?.level || 1}
+            <div className="hidden md:flex items-center gap-2">
+              <StatsDisplay
+                level={userData?.stats?.level || 1}
+                xp={userData?.stats?.totalXP || 0}
+                coins={userData?.stats?.coins || 0}
+                variant="default"
+                showLabels={false}
+              />
+              <div className="flex items-center gap-2 ml-2">
+                <div className="w-px h-8 bg-slate-300"></div>
+                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-orange-50 to-orange-100 border border-orange-200 rounded-md">
+                  <Flame className="w-4 h-4 fill-orange-500 text-orange-500" />
+                  <span className="text-sm font-bold text-orange-700">{userData?.stats?.dailyStreak || 0}</span>
+                  <span className="text-xs font-medium text-orange-600">day streak</span>
                 </div>
-                <div className="text-xs text-slate-600">Level</div>
-              </div>
-
-              <div className="text-center">
-                <div className="flex items-center justify-center gap-1 text-lg font-bold text-purple-600">
-                  <Trophy className="w-5 h-5" />
-                  {userData?.stats?.totalXP || 0}
-                </div>
-                <div className="text-xs text-slate-600">XP</div>
-              </div>
-
-              <div className="text-center">
-                <div className="flex items-center justify-center gap-1 text-lg font-bold text-amber-600">
-                  <Award className="w-5 h-5" />
-                  {userData?.stats?.coins || 0}
-                </div>
-                <div className="text-xs text-slate-600">Coins</div>
-              </div>
-
-              <div className="text-center">
-                <div className="flex items-center justify-center gap-1 text-lg font-bold text-orange-600">
-                  <Flame className="w-5 h-5" />
-                  {userData?.stats?.dailyStreak || 0}
-                </div>
-                <div className="text-xs text-slate-600">Streak</div>
               </div>
             </div>
           </div>

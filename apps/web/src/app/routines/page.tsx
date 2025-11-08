@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import StatsDisplay from '@/components/StatsDisplay';
 import {
   Dumbbell,
   Clock,
@@ -69,6 +70,7 @@ export default function RoutinesPage() {
   const [userProfile, setUserProfile] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [userStats, setUserStats] = useState<{ xp: number; coins: number; level: number }>({ xp: 0, coins: 0, level: 1 });
 
   useEffect(() => {
     if (status === 'unauthenticated') {
@@ -107,6 +109,25 @@ export default function RoutinesPage() {
       if (data.success && data.routine) {
         setRoutine(data.routine);
         setUserProfile(data.userProfile);
+      }
+
+      // Fetch user stats for display
+      try {
+        const statsRes = await fetch('/api/dashboard', {
+          headers: { 'x-user-id': session?.user?.id as string }
+        });
+        if (statsRes.ok) {
+          const statsData = await statsRes.json();
+          if (statsData.stats) {
+            setUserStats({
+              xp: statsData.stats.totalXP || 0,
+              coins: statsData.stats.coins || 0,
+              level: statsData.stats.level || 1
+            });
+          }
+        }
+      } catch (e) {
+        console.error('Error fetching user stats:', e);
       }
     } catch (e: any) {
       console.error('[Routines] Error generating routine:', e);
@@ -191,6 +212,15 @@ export default function RoutinesPage() {
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Dashboard
               </Button>
+              <div className="hidden sm:block">
+                <StatsDisplay
+                  level={userStats.level}
+                  xp={userStats.xp}
+                  coins={userStats.coins}
+                  variant="compact"
+                  showLabels={false}
+                />
+              </div>
             </div>
             <Button onClick={generateRoutine} variant="outline" size="sm">
               <RefreshCw className="w-4 h-4 mr-2" />
