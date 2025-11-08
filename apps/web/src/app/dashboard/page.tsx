@@ -49,9 +49,12 @@ export default function DashboardPage() {
   const fetchDashboardData = async () => {
     try {
       setLoading(true);
-      const res = await fetch('/api/dashboard', {
+      const res = await fetch(`/api/dashboard?t=${Date.now()}`, {
+        method: 'GET',
+        cache: 'no-store',
         headers: {
           'x-user-id': session?.user?.id as string,
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
         },
       });
 
