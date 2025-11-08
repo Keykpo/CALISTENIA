@@ -74,14 +74,15 @@ export async function POST(req: NextRequest) {
 
     // Calculate initial XP based on assessment scores and overall level
     // Formula: (visualValue / 10) * XP_threshold_for_level
+    // Using new realistic XP thresholds (48k/144k/384k system)
     const levelToBaseXP: Record<string, number> = {
-      BEGINNER: 500,      // Mid-point of BEGINNER range (0-2000)
-      INTERMEDIATE: 3500, // Mid-point of INTERMEDIATE range (2000-5000)
-      ADVANCED: 7500,     // Mid-point of ADVANCED range (5000-10000)
-      EXPERT: 12000,      // Above ELITE threshold (10000+)
+      BEGINNER: 12000,      // 25% of BEGINNER range (0-48k) - will show ~2.5/10 on hexagon
+      INTERMEDIATE: 96000,  // Mid-point of INTERMEDIATE range (48k-144k) - will show ~5/10
+      ADVANCED: 264000,     // Mid-point of ADVANCED range (144k-384k) - will show ~5/10
+      EXPERT: 400000,       // Above ELITE threshold (384k+) - will show elite status
     };
 
-    const baseXP = levelToBaseXP[data.overallLevel] || 500;
+    const baseXP = levelToBaseXP[data.overallLevel] || 12000;
 
     // Calculate XP for each axis based on its score relative to the base
     const initialXP: Partial<Record<HexagonAxis, number>> = {};

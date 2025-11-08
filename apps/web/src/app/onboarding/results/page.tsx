@@ -9,6 +9,7 @@ import { ArrowRight, Loader2, Sparkles } from 'lucide-react';
 import SkillHexagon from '@/components/SkillHexagon';
 import LevelBadge from './components/LevelBadge';
 import RecommendationCard from './components/RecommendationCard';
+import StatsDisplay from '@/components/StatsDisplay';
 import { calculateOverallLevel, getLevelProgress, type HexagonProfileWithXP } from '@/lib/hexagon-progression';
 
 // Note: FitnessLevel is now imported from hexagon-progression (BEGINNER | INTERMEDIATE | ADVANCED | ELITE)
@@ -285,9 +286,19 @@ export default function OnboardingResultsPage() {
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-3">
             This is Your Level!
           </h1>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-6">
             Based on your assessment, we've created a personalized profile to guide your calisthenics journey.
           </p>
+
+          {/* Initial XP and Coins Display */}
+          <div className="flex justify-center">
+            <StatsDisplay
+              xp={0}
+              coins={0}
+              variant="large"
+              showLabels={true}
+            />
+          </div>
         </div>
 
         {/* Two-column layout */}

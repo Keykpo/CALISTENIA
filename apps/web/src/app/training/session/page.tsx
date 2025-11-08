@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import StatsDisplay from '@/components/StatsDisplay';
 
 type Exercise = {
   id: string;
@@ -18,6 +19,7 @@ export default function TrainingSessionPage() {
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
   const [completed, setCompleted] = useState(false);
   const [xpGained, setXpGained] = useState<number>(0);
+  const [coinsGained, setCoinsGained] = useState<number>(0);
 
   useEffect(() => {
     async function load() {
@@ -117,7 +119,10 @@ export default function TrainingSessionPage() {
       <div className="max-w-2xl mx-auto">
         <Card>
           <CardHeader>
-            <CardTitle>Training Session</CardTitle>
+            <div className="flex items-center justify-between mb-2">
+              <CardTitle>Training Session</CardTitle>
+              <StatsDisplay xp={xpGained} coins={coinsGained} variant="compact" showLabels={false} />
+            </div>
             <CardDescription>Follow the plan and complete each exercise.</CardDescription>
           </CardHeader>
           <CardContent>
