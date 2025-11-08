@@ -31,6 +31,7 @@ interface Exercise {
 
 interface UserData {
   fitnessLevel: FitnessLevel;
+  levelProgress: number; // Progress percentage within current level
   hexagonProfile: HexagonProfile;
   recommendations: Exercise[];
 }
@@ -63,18 +64,39 @@ export default function OnboardingResultsPage() {
       if (res.ok) {
         const data = await res.json();
 
-        // Set user data with hexagon profile
+        // Calculate overall level from hexagon profile (SINGLE SOURCE OF TRUTH)
+        const hexProfile = data.hexagonProfile as HexagonProfileWithXP | undefined;
+        const calculatedLevel = hexProfile
+          ? calculateOverallLevel(hexProfile)
+          : 'BEGINNER' as FitnessLevel;
+
+        // Get average XP for progress calculation
+        const averageXP = hexProfile
+          ? Math.round([
+              hexProfile.relativeStrengthXP || 0,
+              hexProfile.muscularEnduranceXP || 0,
+              hexProfile.balanceControlXP || 0,
+              hexProfile.jointMobilityXP || 0,
+              hexProfile.bodyTensionXP || 0,
+              hexProfile.skillTechniqueXP || 0,
+            ].reduce((sum, xp) => sum + xp, 0) / 6)
+          : 0;
+
+        const levelProgress = getLevelProgress(averageXP);
+
+        // Set user data with calculated level
         setUserData({
-          fitnessLevel: data.fitnessLevel || 'BEGINNER',
-          hexagonProfile: data.hexagonProfile || {
-            relativeStrength: 5,
-            muscularEndurance: 5,
-            balanceControl: 5,
-            jointMobility: 5,
-            bodyTension: 5,
-            skillTechnique: 5,
+          fitnessLevel: calculatedLevel,
+          levelProgress,
+          hexagonProfile: hexProfile || {
+            relativeStrength: 0,
+            muscularEndurance: 0,
+            balanceControl: 0,
+            jointMobility: 0,
+            bodyTension: 0,
+            skillTechnique: 0,
           },
-          recommendations: getRecommendations(data.fitnessLevel || 'BEGINNER'),
+          recommendations: getRecommendations(calculatedLevel),
         });
       }
     } catch (error) {
@@ -82,13 +104,14 @@ export default function OnboardingResultsPage() {
       // Set default data if fetch fails
       setUserData({
         fitnessLevel: 'BEGINNER',
+        levelProgress: 0,
         hexagonProfile: {
-          relativeStrength: 5,
-          muscularEndurance: 5,
-          balanceControl: 5,
-          jointMobility: 5,
-          bodyTension: 5,
-          skillTechnique: 5,
+          relativeStrength: 0,
+          muscularEndurance: 0,
+          balanceControl: 0,
+          jointMobility: 0,
+          bodyTension: 0,
+          skillTechnique: 0,
         },
         recommendations: getRecommendations('BEGINNER'),
       });
@@ -279,7 +302,10 @@ export default function OnboardingResultsPage() {
 
           {/* Right Column - Level Badge and Summary */}
           <div className="space-y-6">
-            <LevelBadge level={userData.fitnessLevel} />
+            <LevelBadge
+              level={userData.fitnessLevel}
+              percentage={userData.levelProgress}
+            />
 
             <Card className="p-6">
               <h3 className="text-lg font-semibold text-slate-900 mb-4">
