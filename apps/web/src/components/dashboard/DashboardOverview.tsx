@@ -15,8 +15,9 @@ import {
   Dumbbell
 } from 'lucide-react';
 import SkillHexagon from '../SkillHexagon';
+import XPProgressCard from '../XPProgressCard';
 import Link from 'next/link';
-import { getVisualValueFromXP, getLevelFromXP, type HexagonProfileWithXP } from '@/lib/hexagon-progression';
+import { getVisualValueFromXP, getLevelFromXP, type HexagonProfileWithXP, type HexagonAxis } from '@/lib/hexagon-progression';
 
 interface DashboardOverviewProps {
   userData: any;
@@ -293,6 +294,58 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
           </div>
         </CardContent>
       </Card>
+
+      {/* XP Progress Details */}
+      {hexProfile && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Skill Progression</CardTitle>
+            <CardDescription>
+              Track your XP progress across all hexagon axes
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <XPProgressCard
+                axis="relativeStrength"
+                currentXP={hexProfile.relativeStrengthXP || 0}
+                axisLabel="Relative Strength"
+                compact={true}
+              />
+              <XPProgressCard
+                axis="muscularEndurance"
+                currentXP={hexProfile.muscularEnduranceXP || 0}
+                axisLabel="Muscular Endurance"
+                compact={true}
+              />
+              <XPProgressCard
+                axis="balanceControl"
+                currentXP={hexProfile.balanceControlXP || 0}
+                axisLabel="Balance & Control"
+                compact={true}
+              />
+              <XPProgressCard
+                axis="jointMobility"
+                currentXP={hexProfile.jointMobilityXP || 0}
+                axisLabel="Joint Mobility"
+                compact={true}
+              />
+              <XPProgressCard
+                axis="bodyTension"
+                currentXP={hexProfile.bodyTensionXP || 0}
+                axisLabel="Body Tension"
+                compact={true}
+              />
+              <XPProgressCard
+                axis="skillTechnique"
+                currentXP={hexProfile.skillTechniqueXP || 0}
+                axisLabel="Skill Technique"
+                compact={true}
+              />
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Recent Activity */}
       <Card>
