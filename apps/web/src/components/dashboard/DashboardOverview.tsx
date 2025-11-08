@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import SkillHexagon from '../SkillHexagon';
 import Link from 'next/link';
+import { getVisualValueFromXP, getLevelFromXP, type HexagonProfileWithXP } from '@/lib/hexagon-progression';
 
 interface DashboardOverviewProps {
   userData: any;
@@ -43,8 +44,34 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
   const xpNeededForLevel = nextLevelXP - currentLevelXP;
   const levelProgress = (xpInCurrentLevel / xpNeededForLevel) * 100;
 
-  // Hexagon data
-  const hexagonData = userData?.hexagon || {
+  // Hexagon data - calculate visual values from XP
+  const hexProfile = userData?.hexagon as HexagonProfileWithXP | null;
+  const hexagonData = hexProfile ? {
+    relativeStrength: getVisualValueFromXP(
+      hexProfile.relativeStrengthXP || 0,
+      getLevelFromXP(hexProfile.relativeStrengthXP || 0)
+    ),
+    muscularEndurance: getVisualValueFromXP(
+      hexProfile.muscularEnduranceXP || 0,
+      getLevelFromXP(hexProfile.muscularEnduranceXP || 0)
+    ),
+    balanceControl: getVisualValueFromXP(
+      hexProfile.balanceControlXP || 0,
+      getLevelFromXP(hexProfile.balanceControlXP || 0)
+    ),
+    jointMobility: getVisualValueFromXP(
+      hexProfile.jointMobilityXP || 0,
+      getLevelFromXP(hexProfile.jointMobilityXP || 0)
+    ),
+    bodyTension: getVisualValueFromXP(
+      hexProfile.bodyTensionXP || 0,
+      getLevelFromXP(hexProfile.bodyTensionXP || 0)
+    ),
+    skillTechnique: getVisualValueFromXP(
+      hexProfile.skillTechniqueXP || 0,
+      getLevelFromXP(hexProfile.skillTechniqueXP || 0)
+    ),
+  } : {
     relativeStrength: 0,
     muscularEndurance: 0,
     balanceControl: 0,
