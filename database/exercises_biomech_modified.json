@@ -1588,7 +1588,7 @@
   },
   {
     "id": "pull_chin_up",
-    "name": "Chin-ups (Agarre Supino)",
+    "name": "Chin-ups (Supinated Grip)",
     "description": "Pull-up with palms facing towards you (supinated). Places more emphasis on the biceps.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
@@ -1832,8 +1832,8 @@
   },
   {
     "id": "skill_active_hang",
-    "name": "Colgado Activo (Active Hang)",
-    "description": "Hang from the bar with active shoulders (depressed, away from the ears) and a hollow body. Foundational scapular control for pulling and preparation for advanced movements like the muscle up.",
+    "name": "Active Hang",
+    "description": "Hang from the bar with active shoulders (depressed, away from the ears) and a hollow body. Foundational scapular control.",
     "category": "SKILL_STATIC",
     "difficulty": "INTERMEDIATE",
     "unit": "seconds",
@@ -1854,8 +1854,8 @@
   },
   {
     "id": "pull_dead_hang",
-    "name": "Colgado Pasivo (Dead Hang)",
-    "description": "Colgado Pasivo (Dead Hang): a bodyweight exercise in the skill_static category.",
+    "name": "Dead Hang",
+    "description": "Dead Hang: a bodyweight exercise in the skill_static category.",
     "category": "SKILL_STATIC",
     "difficulty": "INTERMEDIATE",
     "unit": "seconds",
@@ -2193,7 +2193,7 @@
   },
   {
     "id": "pull_one_arm_assisted_finger",
-    "name": "Dominada a Un Brazo (Asistida con Dedos)",
+    "name": "One-Arm Pull-up (Finger Assisted)",
     "description": "Perform the pull-up with one arm while the other assists minimally, grabbing the wrist or using one or two fingers.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
@@ -2211,7 +2211,7 @@
   },
   {
     "id": "pull_one_arm_negatives",
-    "name": "Dominada a Un Brazo (Negativas)",
+    "name": "One-Arm Pull-up (Negatives)",
     "description": "Controlled eccentric (lowering) with one arm. Caution: High stress on the elbow.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
@@ -2229,7 +2229,7 @@
   },
   {
     "id": "pull_archer_assisted",
-    "name": "Dominada Arquero (Asistida)",
+    "name": "Archer Pull-up (Assisted)",
     "description": "Archer pull-up using resistance bands or rings to facilitate unilateral movement.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
@@ -2249,8 +2249,8 @@
   },
   {
     "id": "pull_explosive_c2b",
-    "name": "Dominada Explosiva (Pecho a la Barra)",
-    "description": "Execute a pull-up with maximal speed and explosive intent. Aim to pull high enough that the chest or sternum contacts the bar (C2B). Foundational for the pulling phase of the muscle up.",
+    "name": "Explosive Pull-up (Chest to Bar)",
+    "description": "Execute a pull-up with maximal speed and explosive intent. Aim to pull high enough that the chest or sternum contacts the bar.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -2271,8 +2271,8 @@
   },
   {
     "id": "pull_wide_grip",
-    "name": "Dominadas (Agarre Ancho)",
-    "description": "Dominadas (Agarre Ancho): a bodyweight exercise in the strength category.",
+    "name": "Pull-ups (Wide Grip)",
+    "description": "Wide Grip Pull-ups: a bodyweight exercise in the strength category.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -2316,8 +2316,8 @@
   },
   {
     "id": "pull_one_arm_assisted",
-    "name": "Dominadas a Una Mano (Asistidas)",
-    "description": "Dominadas a Una Mano (Asistidas): a bodyweight exercise in the strength category.",
+    "name": "One-Arm Pull-ups (Assisted)",
+    "description": "One-Arm Pull-ups (Assisted): a bodyweight exercise in the strength category.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -2339,7 +2339,7 @@
   },
   {
     "id": "pull_wide",
-    "name": "Dominadas Anchas",
+    "name": "Wide Pull-ups",
     "description": "Pronated pull-up with a grip significantly wider than shoulder-width.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
@@ -2357,8 +2357,8 @@
   },
   {
     "id": "pull_archer",
-    "name": "Archer Pull-Ups",
-    "description": "Dominada unilateral donde un brazo tira mientras el otro se mantiene recto como asistencia.",
+    "name": "Archer Pull-ups",
+    "description": "Unilateral pull-up where one arm pulls while the other remains straight as assistance.",
     "category": "STRENGTH",
     "difficulty": "BEGINNER",
     "unit": "reps",
@@ -2380,8 +2380,8 @@
   },
   {
     "id": "pull_assisted_band",
-    "name": "Dominadas Asistidas (Banda)",
-    "description": "Dominadas Asistidas (Banda): a bodyweight exercise in the strength category.",
+    "name": "Assisted Pull-ups (Band)",
+    "description": "Assisted Pull-ups (Band): a bodyweight exercise in the strength category.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -2403,8 +2403,8 @@
   },
   {
     "id": "pull_commando",
-    "name": "Dominadas Comando",
-    "description": "Dominada with mixed/neutral grip, pulling head to one side of bar. Introduces unilateral work.",
+    "name": "Commando Pull-ups",
+    "description": "Pull-up with mixed/neutral grip, pulling head to one side of bar. Introduces unilateral work.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -2964,10 +2964,10 @@
   },
   {
     "id": "skill_frog_stand",
-    "name": "Equilibrio de Rana (Frog Stand)",
-    "description": "Level E: Basic arm balance con knees supported on elbows. Develops balance at low height and core compression strength.",
+    "name": "Frog Stand",
+    "description": "Level E: Basic arm balance with knees supported on elbows. Develops balance at low height and core compression strength.",
     "category": "BALANCE",
-    "difficulty": "INTERMEDIATE",
+    "difficulty": "BEGINNER",
     "unit": "seconds",
     "muscleGroups": [
       "CORE",
@@ -3139,10 +3139,10 @@
   },
   {
     "id": "push_one_arm",
-    "name": "Flexiones a Una Mano",
+    "name": "One-Arm Push-ups",
     "description": "Full push-up performed with one supporting arm. Requires advanced strength and core stabilization.",
     "category": "STRENGTH",
-    "difficulty": "INTERMEDIATE",
+    "difficulty": "ELITE",
     "unit": "reps",
     "muscleGroups": [
       "CHEST",
@@ -3163,8 +3163,8 @@
   },
   {
     "id": "push_wide",
-    "name": "Flexiones Anchas",
-    "description": "Flexiones with hands wider than shoulder width, focusing more on chest.",
+    "name": "Wide Push-ups",
+    "description": "Push-ups with hands wider than shoulder width, focusing more on chest.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -3185,8 +3185,8 @@
   },
   {
     "id": "push_archer",
-    "name": "Flexiones Arquero",
-    "description": "Unilateral push-up where one arm extends to the side while the other bends. Previous step to one-arm push-up.",
+    "name": "Archer Push-ups",
+    "description": "Unilateral push-up where one arm pulls while the other remains straight as assistance.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -3208,7 +3208,7 @@
   },
   {
     "id": "push_archer_incline",
-    "name": "Flexiones Arquero Inclinadas",
+    "name": "Incline Archer Push-ups",
     "description": "Archer progression with elevated hands to reduce difficulty and practice unilateral movement.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
@@ -3231,8 +3231,8 @@
   },
   {
     "id": "push_standard",
-    "name": "Flexiones Completas",
-    "description": "Flexión estándar with straight body from heels to head.",
+    "name": "Standard Push-ups",
+    "description": "Standard push-up with straight body from heels to head.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -3254,7 +3254,7 @@
   },
   {
     "id": "push_hspu_wall",
-    "name": "Flexiones de Pino (Asistido en Pared)",
+    "name": "Handstand Push-ups (Wall Assisted)",
     "description": "Handstand Push-Up (HSPU) fully assisted with a wall for balance.",
     "category": "STRENGTH",
     "difficulty": "BEGINNER",
@@ -3276,10 +3276,10 @@
   },
   {
     "id": "push_hspu_freestanding",
-    "name": "Flexiones de Pino (Libre)",
-    "description": "Flexión de pino realizada mientras se mantiene un pino libre, sin asistencia. Requires elite balance and strength.",
+    "name": "Handstand Push-ups (Freestanding)",
+    "description": "Handstand push-up performed while maintaining a freestanding handstand, without assistance. Requires elite balance and strength.",
     "category": "STRENGTH",
-    "difficulty": "INTERMEDIATE",
+    "difficulty": "ADVANCED",
     "unit": "reps",
     "muscleGroups": [
       "SHOULDERS",
@@ -3298,8 +3298,8 @@
   },
   {
     "id": "push_knees",
-    "name": "Flexiones de Rodillas",
-    "description": "Flexiones estándar but supporting knees to reduce leverage and difficulty.",
+    "name": "Knee Push-ups",
+    "description": "Standard push-ups but supporting knees to reduce leverage and difficulty.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -3320,8 +3320,8 @@
   },
   {
     "id": "push_decline",
-    "name": "Flexiones Declinadas",
-    "description": "Flexiones with feet elevated on a bench. Increases load and focuses on upper chest and shoulders.",
+    "name": "Decline Push-ups",
+    "description": "Push-ups with feet elevated on a bench. Increases load and focuses on upper chest and shoulders.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -3343,8 +3343,8 @@
   },
   {
     "id": "push_diamond",
-    "name": "Flexiones Diamante",
-    "description": "Flexiones with hands together forming a diamond. Greater emphasis on triceps.",
+    "name": "Diamond Push-ups",
+    "description": "Push-ups with hands together forming a diamond. Greater emphasis on triceps.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -3365,8 +3365,8 @@
   },
   {
     "id": "push_wall",
-    "name": "Flexiones en Pared",
-    "description": "Flexión vertical contra una pared. Ideal for absolute beginners to condition joints.",
+    "name": "Wall Push-ups",
+    "description": "Vertical push-up against a wall. Ideal for absolute beginners to condition joints.",
     "category": "STRENGTH",
     "difficulty": "BEGINNER",
     "unit": "reps",
@@ -3409,8 +3409,8 @@
   },
   {
     "id": "push_pike_elevated",
-    "name": "Flexiones en Pica (Pies Elevados)",
-    "description": "Flexión en pica with feet elevated on a bench. Increases load on shoulders, approaching HSPU.",
+    "name": "Pike Push-ups (Feet Elevated)",
+    "description": "Pike push-ups with feet elevated on a bench. Increases load on shoulders, approaching HSPU.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -3431,8 +3431,8 @@
   },
   {
     "id": "push_incline",
-    "name": "Flexiones Inclinadas",
-    "description": "Flexiones with hands elevated on a bench or box. Reduces body weight load.",
+    "name": "Incline Push-ups",
+    "description": "Push-ups with hands elevated on a bench or box. Reduces body weight load.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -3500,7 +3500,7 @@
   },
   {
     "id": "push_pseudo_planche",
-    "name": "Flexiones Pseudo Planche",
+    "name": "Pseudo Planche Push-ups",
     "description": "Advanced static hold that builds straight‑arm pressing strength and full‑body anti‑extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
     "category": "STRENGTH",
     "difficulty": "ELITE",
@@ -3547,7 +3547,7 @@
   {
     "id": "dips_ring",
     "name": "Ring Dips",
-    "description": "Fondos realizados on rings gimnásticas. Instability dramatically increases difficulty and core recruitment.",
+    "description": "Dips performed on gymnastic rings. Instability dramatically increases difficulty and core recruitment.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -3569,8 +3569,8 @@
   },
   {
     "id": "dips_ring_assisted",
-    "name": "Fondos en Anillas (Asistidos)",
-    "description": "Fondos on rings using elastic bands to manage instability and build strength.",
+    "name": "Ring Dips (Assisted)",
+    "description": "Ring dips using elastic bands to manage instability and build strength.",
     "category": "STRENGTH",
     "difficulty": "BEGINNER",
     "unit": "reps",
@@ -3593,7 +3593,7 @@
   },
   {
     "id": "dips_ring_negatives",
-    "name": "Fondos en Anillas (Negativas)",
+    "name": "Ring Dips (Negatives)",
     "description": "Controlled eccentric phase on rings to build shoulder strength and stability.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
@@ -3616,8 +3616,8 @@
   },
   {
     "id": "dips_bench_straight_leg",
-    "name": "Fondos en Banco (Piernas Rectas)",
-    "description": "Fondos en bench with legs extended and heels on the floor. Increases load on triceps.",
+    "name": "Bench Dips (Straight Legs)",
+    "description": "Bench dips with legs extended and heels on the floor. Increases load on triceps.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -3638,8 +3638,8 @@
   },
   {
     "id": "dips_bench_bent_knee",
-    "name": "Fondos en Banco (Rodillas Flexionadas)",
-    "description": "Fondos en bench with knees bent and feet on the floor. Basic triceps exercise.",
+    "name": "Bench Dips (Bent Knees)",
+    "description": "Bench dips with knees bent and feet on the floor. Basic triceps exercise.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -3682,7 +3682,7 @@
   },
   {
     "id": "dips_parallel_bar_negatives",
-    "name": "Fondos en Paralelas (Negativas)",
+    "name": "Parallel Bar Dips (Negatives)",
     "description": "Jump to top position and lower slowly and controlled (3-5 seconds). Develops eccentric strength.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
@@ -3704,7 +3704,7 @@
   },
   {
     "id": "dips_parallel_bar_assisted",
-    "name": "Fondos en Paralelas Asistidos",
+    "name": "Assisted Parallel Bar Dips",
     "description": "Parallel bar dips using resistance bands or foot support to reduce body weight.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
@@ -3727,10 +3727,10 @@
   },
   {
     "id": "dips_90_degree",
-    "name": "Fondos RTO a 90 grados",
+    "name": "RTO Dips 90 Degrees",
     "description": "An advanced dip where body leans horizontally (at 90 degrees) at bottom, with rings turned outward (RTO).",
     "category": "STRENGTH",
-    "difficulty": "INTERMEDIATE",
+    "difficulty": "ELITE",
     "unit": "reps",
     "muscleGroups": [
       "TRICEPS",
@@ -3750,10 +3750,10 @@
   },
   {
     "id": "dips_russian",
-    "name": "Fondos Rusos",
+    "name": "Russian Dips",
     "description": "Parallel bar dips that include a transition over the forearm, working elbow and shoulder in deep ranges.",
     "category": "STRENGTH",
-    "difficulty": "INTERMEDIATE",
+    "difficulty": "ADVANCED",
     "unit": "reps",
     "muscleGroups": [
       "TRICEPS",
@@ -4758,7 +4758,7 @@
   },
   {
     "id": "push_hspu_wall_negatives",
-    "name": "HSPU en Pared (Negativas)",
+    "name": "Wall HSPU (Negatives)",
     "description": "Lower controlled from wall handstand until your head touches the floor. Builds eccentric strength.",
     "category": "STRENGTH",
     "difficulty": "BEGINNER",
@@ -6243,7 +6243,7 @@
   {
     "id": "skill_maltese",
     "name": "Maltese",
-    "description": "A Planche variation (generally on rings) with arms completamente abiertos a los lados, forming a 'T'. Represents an extreme level of shoulder strength and control.",
+    "description": "A Planche variation (generally on rings) with arms completely extended to the sides, forming a 'T'. Represents an extreme level of shoulder strength and control.",
     "category": "SKILL_STATIC",
     "difficulty": "INTERMEDIATE",
     "unit": "seconds",
@@ -6828,8 +6828,8 @@
   },
   {
     "id": "skill_headstand",
-    "name": "Parada de Cabeza (Headstand)",
-    "description": "Nivel D: Inversión completa apoyada en una base triangular (cabeza y manos). Enseña la alineación invertida y construye confianza boca abajo.",
+    "name": "Headstand",
+    "description": "Level D: Complete inversion supported on a triangular base (head and hands). Teaches inverted alignment and builds shoulder strength.",
     "category": "BALANCE",
     "difficulty": "INTERMEDIATE",
     "unit": "seconds",
@@ -6916,10 +6916,10 @@
   },
   {
     "id": "skill_oahs_assisted",
-    "name": "Pino a una Mano (Asistido/Tenting)",
-    "description": "Level A: Progressions toward one-arm handstand, including weight shifts, minimal finger support (tenting) or wall assistance, to develop unilateral strength and balance.",
+    "name": "One-Arm Handstand (Assisted/Tenting)",
+    "description": "Level A: Progressions toward one-arm handstand, including weight shifts, minimal finger support (tenting) or wall assistance. Develops unilateral strength and balance.",
     "category": "BALANCE",
-    "difficulty": "BEGINNER",
+    "difficulty": "ADVANCED",
     "unit": "seconds",
     "muscleGroups": [
       "SHOULDERS",
@@ -6939,10 +6939,10 @@
   },
   {
     "id": "skill_oahs",
-    "name": "Pino a Una Mano (OAHS)",
+    "name": "One-Arm Handstand (OAHS)",
     "description": "Level S: The final goal. Full balance on one arm, demonstrating an elite level of mastery in strength and body control.",
     "category": "BALANCE",
-    "difficulty": "INTERMEDIATE",
+    "difficulty": "ELITE",
     "unit": "seconds",
     "muscleGroups": [
       "SHOULDERS",
@@ -6961,7 +6961,7 @@
   },
   {
     "id": "skill_handstand_wall",
-    "name": "Pino Asistido (Pecho a la Pared)",
+    "name": "Wall Handstand (Chest to Wall)",
     "description": "Level C: Full handstand with chest facing the wall. Allows focusing on alignment (open shoulders, active core) and stability without worrying about balance.",
     "category": "BALANCE",
     "difficulty": "BEGINNER",
@@ -6983,7 +6983,7 @@
   },
   {
     "id": "skill_handstand_freestanding",
-    "name": "Pino Libre (Handstand)",
+    "name": "Freestanding Handstand",
     "description": "Level B: Free handstand without assistance. Requires advanced balance, strength and body control, being a fundamental skill in gymnastics.",
     "category": "BALANCE",
     "difficulty": "INTERMEDIATE",
@@ -7024,7 +7024,7 @@
   },
   {
     "id": "squat_pistol",
-    "name": "Pistol Squat (Sentadilla Pistola)",
+    "name": "Pistol Squat",
     "description": "Full single-leg squat, lowering to bottom (hamstring to calf) and rising back up.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
@@ -7440,7 +7440,7 @@
   },
   {
     "id": "pull_up",
-    "name": "Pull-Up (Agarre Prono)",
+    "name": "Pull-Up (Pronated Grip)",
     "description": "Standard pull-up with palms facing forward (pronated). Key exercise for lats.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
@@ -7948,7 +7948,7 @@
   },
   {
     "id": "row_one_arm",
-    "name": "Remo a Una Mano",
+    "name": "One-Arm Row",
     "description": "Full horizontal row using one arm. Requires immense anti-rotation core strength.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
@@ -7973,7 +7973,7 @@
   },
   {
     "id": "row_archer",
-    "name": "Remo Arquero",
+    "name": "Archer Row",
     "description": "Unilateral row where one arm pulls to chest while the other stays straight as assistance.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
@@ -7996,8 +7996,8 @@
   },
   {
     "id": "row_wide",
-    "name": "Remo Australiano (Agarre Ancho)",
-    "description": "Remo horizontal con un agarre ancho (1.5x ancho de shoulders) o codos abriéndose a 90 grados on rings.",
+    "name": "Australian Row (Wide Grip)",
+    "description": "Horizontal row with wide grip (1.5x shoulder width) or elbows opening at 90 degrees on rings.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -8019,8 +8019,8 @@
   },
   {
     "id": "row_overhand",
-    "name": "Remo Australiano (Agarre Prono)",
-    "description": "Remo Australiano (Agarre Prono): a bodyweight exercise in the strength category.",
+    "name": "Australian Row (Pronated Grip)",
+    "description": "Australian Row (Pronated Grip): a bodyweight exercise in the strength category.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -8042,8 +8042,8 @@
   },
   {
     "id": "row_underhand",
-    "name": "Remo Australiano (Agarre Supino)",
-    "description": "Remo Australiano (Agarre Supino): a bodyweight exercise in the strength category.",
+    "name": "Australian Row (Supinated Grip)",
+    "description": "Australian Row (Supinated Grip): a bodyweight exercise in the strength category.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -8064,8 +8064,8 @@
   },
   {
     "id": "row_elevated_feet",
-    "name": "Remo Australiano (Pies Elevados)",
-    "description": "Remo Australiano (Pies Elevados): a bodyweight exercise in the strength category.",
+    "name": "Australian Row (Feet Elevated)",
+    "description": "Australian Row (Feet Elevated): a bodyweight exercise in the strength category.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -8088,8 +8088,8 @@
   },
   {
     "id": "row_doorway",
-    "name": "Remo en Marco de Puerta",
-    "description": "Usando el marco de una puerta o una toalla, inclinarse hacia atrás y tirar from body. Progresión inicial.",
+    "name": "Doorway Row",
+    "description": "Using a doorway frame or towel, lean back and pull toward body. Initial progression.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -8111,8 +8111,8 @@
   },
   {
     "id": "row_horizontal",
-    "name": "Remo Horizontal",
-    "description": "Remo with body completamente paralelo al suelo. Requiere una retracción escapular completa.",
+    "name": "Horizontal Row",
+    "description": "Row with body completely parallel to the floor. Requires complete scapular retraction.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -8131,8 +8131,8 @@
   },
   {
     "id": "row_horizontal_elevated",
-    "name": "Remo Horizontal (Pies Elevados)",
-    "description": "Remo horizontal with feet elevated on a bench, aumentando la carga sobre la espalda y los brazos.",
+    "name": "Horizontal Row (Feet Elevated)",
+    "description": "Horizontal row with feet elevated on a bench, increasing load on back and arms.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -8152,8 +8152,8 @@
   },
   {
     "id": "row_incline",
-    "name": "Remo Inclinado (Australiano)",
-    "description": "Remo with body inclinado. Cuanto más horizontal esté el cuerpo, más difícil será. Fundamental para la fuerza de espalda.",
+    "name": "Incline Row (Australian)",
+    "description": "Row with body inclined. The more horizontal the body, the harder it is. Fundamental for back strength.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -8172,7 +8172,7 @@
   },
   {
     "id": "row_tuck_front_lever",
-    "name": "Remos en Tuck Front Lever",
+    "name": "Tuck Front Lever Rows",
     "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
     "category": "STRENGTH",
     "difficulty": "ADVANCED",
@@ -8192,8 +8192,8 @@
   },
   {
     "id": "row_vertical",
-    "name": "Remos Verticales",
-    "description": "Remo en barra o anillas with body casi vertical. La menor dificultad.",
+    "name": "Vertical Rows",
+    "description": "Row on bar or rings with body nearly vertical. The least difficulty.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -8211,8 +8211,8 @@
   },
   {
     "id": "pull_scapular",
-    "name": "Retracciones Escapulares (Colgado)",
-    "description": "Colgando de la barra, deprimir y retraer las escápulas (juntar los omóplatos) sin doblar los codos. Activa la espalda.",
+    "name": "Scapular Retractions (Hanging)",
+    "description": "Hanging from bar, depress and retract scapulae (bring shoulder blades together) without bending elbows. Activates the back.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -8929,8 +8929,8 @@
   },
   {
     "id": "squat_bodyweight",
-    "name": "Sentadillas (Peso Corporal)",
-    "description": "Movimiento fundamental de leg. Baja la hip por debajo de las knees manteniendo el pecho erguido y los talones on the floor.",
+    "name": "Bodyweight Squats",
+    "description": "Fundamental leg movement. Lower hips below knees keeping chest up and heels on the floor.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
