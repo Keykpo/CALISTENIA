@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { success: false, error: 'No autenticado' },
+        { success: false, error: 'Not authenticated' },
         { status: 401 }
       );
     }
@@ -64,7 +64,7 @@ export async function GET(request: NextRequest) {
 
     if (!user) {
       return NextResponse.json(
-        { success: false, error: 'Usuario no encontrado' },
+        { success: false, error: 'User not found' },
         { status: 404 }
       );
     }
@@ -76,7 +76,7 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error('Error fetching profile:', error);
     return NextResponse.json(
-      { success: false, error: 'Error al obtener perfil' },
+      { success: false, error: 'Error fetching profile' },
       { status: 500 }
     );
   }
@@ -88,7 +88,7 @@ export async function PATCH(request: NextRequest) {
 
     if (!session?.user?.email) {
       return NextResponse.json(
-        { success: false, error: 'No autenticado' },
+        { success: false, error: 'Not authenticated' },
         { status: 401 }
       );
     }
@@ -98,7 +98,7 @@ export async function PATCH(request: NextRequest) {
 
     if (!validation.success) {
       return NextResponse.json(
-        { success: false, error: 'Datos inválidos', details: validation.error },
+        { success: false, error: 'Invalid data', details: validation.error },
         { status: 400 }
       );
     }
@@ -131,7 +131,7 @@ export async function PATCH(request: NextRequest) {
   } catch (error) {
     console.error('Error updating profile:', error);
     return NextResponse.json(
-      { success: false, error: 'Error al actualizar perfil' },
+      { success: false, error: 'Error updating profile' },
       { status: 500 }
     );
   }

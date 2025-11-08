@@ -3,10 +3,11 @@
 import { Card } from '@/components/ui/card';
 import { Trophy, Award, Star, Crown } from 'lucide-react';
 
-type FitnessLevel = 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'EXPERT';
+type FitnessLevel = 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE';
 
 interface LevelBadgeProps {
   level: FitnessLevel;
+  percentage?: number; // Optional percentage for progress bar
 }
 
 const levelConfig: Record<FitnessLevel, {
@@ -37,8 +38,8 @@ const levelConfig: Record<FitnessLevel, {
     gradient: 'from-purple-400 to-purple-600',
     textColor: 'text-purple-700',
   },
-  EXPERT: {
-    label: 'Expert',
+  ELITE: {
+    label: 'Elite',
     description: 'Mastering the most challenging calisthenics movements',
     icon: Crown,
     gradient: 'from-amber-400 to-orange-600',
@@ -46,9 +47,14 @@ const levelConfig: Record<FitnessLevel, {
   },
 };
 
-export default function LevelBadge({ level }: LevelBadgeProps) {
+export default function LevelBadge({ level, percentage }: LevelBadgeProps) {
   const config = levelConfig[level];
   const Icon = config.icon;
+
+  // Calculate percentage if not provided (fallback for backward compatibility)
+  const displayPercentage = percentage !== undefined
+    ? percentage
+    : level === 'BEGINNER' ? 25 : level === 'INTERMEDIATE' ? 50 : level === 'ADVANCED' ? 75 : 100;
 
   return (
     <Card className="p-6 relative overflow-hidden">
@@ -82,12 +88,12 @@ export default function LevelBadge({ level }: LevelBadgeProps) {
             <div
               className={`h-full bg-gradient-to-r ${config.gradient} transition-all duration-1000 ease-out`}
               style={{
-                width: level === 'BEGINNER' ? '25%' : level === 'INTERMEDIATE' ? '50%' : level === 'ADVANCED' ? '75%' : '100%',
+                width: `${Math.min(displayPercentage, 100)}%`,
               }}
             />
           </div>
           <span className="text-xs font-medium text-slate-600">
-            {level === 'BEGINNER' ? '25%' : level === 'INTERMEDIATE' ? '50%' : level === 'ADVANCED' ? '75%' : '100%'}
+            {Math.round(displayPercentage)}%
           </span>
         </div>
       </div>

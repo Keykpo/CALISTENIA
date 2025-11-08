@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
     const userId = await getUserId(req);
     if (!userId) {
       return NextResponse.json(
-        { success: false, error: 'Usuario no autenticado' },
+        { success: false, error: 'User not authenticated' },
         { status: 401 }
       );
     }
@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
 
     if (!achievementId) {
       return NextResponse.json(
-        { success: false, error: 'achievementId es requerido' },
+        { success: false, error: 'achievementId is required' },
         { status: 400 }
       );
     }
@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
 
     if (!achievement) {
       return NextResponse.json(
-        { success: false, error: 'Logro no encontrado' },
+        { success: false, error: 'Achievement not found' },
         { status: 404 }
       );
     }
@@ -158,13 +158,13 @@ export async function POST(req: NextRequest) {
       },
       unlockedNext: unlockedAchievement ? {
         id: achievement.unlocksAchievementId,
-        message: '¡Nuevo logro desbloqueado en la cadena!',
+        message: 'New achievement unlocked in the chain!',
       } : null,
     });
   } catch (error: any) {
     console.error('Error completing achievement:', error);
     return NextResponse.json(
-      { success: false, error: error?.message || 'Error al completar el logro' },
+      { success: false, error: error?.message || 'Error completing achievement' },
       { status: 500 }
     );
   }
