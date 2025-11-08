@@ -9,7 +9,7 @@ import { ArrowRight, Loader2, Sparkles } from 'lucide-react';
 import SkillHexagon from '@/components/SkillHexagon';
 import LevelBadge from './components/LevelBadge';
 import RecommendationCard from './components/RecommendationCard';
-import { calculateOverallLevel, getLevelProgress, type HexagonProfileWithXP, type FitnessLevel } from '@/lib/hexagon-progression';
+import { calculateOverallLevel, getLevelProgress, type HexagonProfileWithXP } from '@/lib/hexagon-progression';
 
 // Note: FitnessLevel is now imported from hexagon-progression (BEGINNER | INTERMEDIATE | ADVANCED | ELITE)
 
@@ -64,39 +64,42 @@ export default function OnboardingResultsPage() {
       if (res.ok) {
         const data = await res.json();
 
-        // Calculate overall level from hexagon profile (SINGLE SOURCE OF TRUTH)
-        const hexProfile = data.hexagonProfile as HexagonProfileWithXP | undefined;
-        const calculatedLevel = hexProfile
-          ? calculateOverallLevel(hexProfile)
-          : 'BEGINNER' as FitnessLevel;
+        // Calculate level from hexagon (SINGLE SOURCE OF TRUTH)
+        const hexProfile = data.hexagonProfile || {
+          relativeStrength: 5,
+          muscularEndurance: 5,
+          balanceControl: 5,
+          jointMobility: 5,
+          bodyTension: 5,
+          skillTechnique: 5,
+          relativeStrengthXP: 0,
+          muscularEnduranceXP: 0,
+          balanceControlXP: 0,
+          jointMobilityXP: 0,
+          bodyTensionXP: 0,
+          skillTechniqueXP: 0,
+        };
 
-        // Get average XP for progress calculation
-        const averageXP = hexProfile
-          ? Math.round([
-              hexProfile.relativeStrengthXP || 0,
-              hexProfile.muscularEnduranceXP || 0,
-              hexProfile.balanceControlXP || 0,
-              hexProfile.jointMobilityXP || 0,
-              hexProfile.bodyTensionXP || 0,
-              hexProfile.skillTechniqueXP || 0,
-            ].reduce((sum, xp) => sum + xp, 0) / 6)
-          : 0;
+        const calculatedLevel = calculateOverallLevel(hexProfile as HexagonProfileWithXP);
+
+        // Calculate average XP across all axes
+        const averageXP = (
+          (hexProfile.relativeStrengthXP || 0) +
+          (hexProfile.muscularEnduranceXP || 0) +
+          (hexProfile.balanceControlXP || 0) +
+          (hexProfile.jointMobilityXP || 0) +
+          (hexProfile.bodyTensionXP || 0) +
+          (hexProfile.skillTechniqueXP || 0)
+        ) / 6;
 
         const levelProgress = getLevelProgress(averageXP);
 
-        // Set user data with calculated level
+        // Set user data with hexagon profile
         setUserData({
-          fitnessLevel: calculatedLevel,
+          fitnessLevel: calculatedLevel as FitnessLevel,
           levelProgress,
-          hexagonProfile: hexProfile || {
-            relativeStrength: 0,
-            muscularEndurance: 0,
-            balanceControl: 0,
-            jointMobility: 0,
-            bodyTension: 0,
-            skillTechnique: 0,
-          },
-          recommendations: getRecommendations(calculatedLevel),
+          hexagonProfile: hexProfile,
+          recommendations: getRecommendations(calculatedLevel as FitnessLevel),
         });
       }
     } catch (error) {

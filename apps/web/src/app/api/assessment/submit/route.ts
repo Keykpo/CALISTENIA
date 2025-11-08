@@ -3,6 +3,7 @@ import prisma from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { z } from 'zod';
+import { initializeHexagonProfile, type HexagonAxis } from '@/lib/hexagon-progression';
 
 export const runtime = 'nodejs';
 
@@ -62,7 +63,7 @@ export async function POST(req: NextRequest) {
 
     // Calculate hexagon values based on scores
     // Scores from assessment are already on 0-10 scale
-    const hexagonValues = {
+    const scoreAverages = {
       relativeStrength: (data.scores.PUSH + data.scores.PULL) / 2,
       muscularEndurance: (data.scores.CORE + data.scores.ENDURANCE) / 2,
       balanceControl: (data.scores.BALANCE + data.scores.STATIC) / 2,
@@ -71,17 +72,81 @@ export async function POST(req: NextRequest) {
       skillTechnique: (data.scores.STATIC + data.scores.BALANCE) / 2,
     };
 
-    // Update or create hexagon profile
+    // Calculate initial XP based on assessment scores and overall level
+    // Formula: (visualValue / 10) * XP_threshold_for_level
+    const levelToBaseXP: Record<string, number> = {
+      BEGINNER: 500,      // Mid-point of BEGINNER range (0-2000)
+      INTERMEDIATE: 3500, // Mid-point of INTERMEDIATE range (2000-5000)
+      ADVANCED: 7500,     // Mid-point of ADVANCED range (5000-10000)
+      EXPERT: 12000,      // Above ELITE threshold (10000+)
+    };
+
+    const baseXP = levelToBaseXP[data.overallLevel] || 500;
+
+    // Calculate XP for each axis based on its score relative to the base
+    const initialXP: Partial<Record<HexagonAxis, number>> = {};
+    Object.entries(scoreAverages).forEach(([axis, score]) => {
+      // Convert 0-10 score to XP multiplier (0.5 to 1.5 range)
+      const multiplier = 0.5 + (score / 10);
+      initialXP[axis as HexagonAxis] = Math.round(baseXP * multiplier);
+    });
+
+    // Initialize complete hexagon profile with XP
+    const hexagonProfile = initializeHexagonProfile(initialXP);
+
+    // Update or create hexagon profile with full XP data
     if (user.hexagonProfile) {
       await prisma.hexagonProfile.update({
         where: { userId },
-        data: hexagonValues,
+        data: {
+          // Visual values (0-10)
+          relativeStrength: hexagonProfile.relativeStrength,
+          muscularEndurance: hexagonProfile.muscularEndurance,
+          balanceControl: hexagonProfile.balanceControl,
+          jointMobility: hexagonProfile.jointMobility,
+          bodyTension: hexagonProfile.bodyTension,
+          skillTechnique: hexagonProfile.skillTechnique,
+          // XP values
+          relativeStrengthXP: hexagonProfile.relativeStrengthXP,
+          muscularEnduranceXP: hexagonProfile.muscularEnduranceXP,
+          balanceControlXP: hexagonProfile.balanceControlXP,
+          jointMobilityXP: hexagonProfile.jointMobilityXP,
+          bodyTensionXP: hexagonProfile.bodyTensionXP,
+          skillTechniqueXP: hexagonProfile.skillTechniqueXP,
+          // Level values
+          relativeStrengthLevel: hexagonProfile.relativeStrengthLevel,
+          muscularEnduranceLevel: hexagonProfile.muscularEnduranceLevel,
+          balanceControlLevel: hexagonProfile.balanceControlLevel,
+          jointMobilityLevel: hexagonProfile.jointMobilityLevel,
+          bodyTensionLevel: hexagonProfile.bodyTensionLevel,
+          skillTechniqueLevel: hexagonProfile.skillTechniqueLevel,
+        },
       });
     } else {
       await prisma.hexagonProfile.create({
         data: {
           userId,
-          ...hexagonValues,
+          // Visual values (0-10)
+          relativeStrength: hexagonProfile.relativeStrength,
+          muscularEndurance: hexagonProfile.muscularEndurance,
+          balanceControl: hexagonProfile.balanceControl,
+          jointMobility: hexagonProfile.jointMobility,
+          bodyTension: hexagonProfile.bodyTension,
+          skillTechnique: hexagonProfile.skillTechnique,
+          // XP values
+          relativeStrengthXP: hexagonProfile.relativeStrengthXP,
+          muscularEnduranceXP: hexagonProfile.muscularEnduranceXP,
+          balanceControlXP: hexagonProfile.balanceControlXP,
+          jointMobilityXP: hexagonProfile.jointMobilityXP,
+          bodyTensionXP: hexagonProfile.bodyTensionXP,
+          skillTechniqueXP: hexagonProfile.skillTechniqueXP,
+          // Level values
+          relativeStrengthLevel: hexagonProfile.relativeStrengthLevel,
+          muscularEnduranceLevel: hexagonProfile.muscularEnduranceLevel,
+          balanceControlLevel: hexagonProfile.balanceControlLevel,
+          jointMobilityLevel: hexagonProfile.jointMobilityLevel,
+          bodyTensionLevel: hexagonProfile.bodyTensionLevel,
+          skillTechniqueLevel: hexagonProfile.skillTechniqueLevel,
         },
       });
     }
@@ -165,10 +230,11 @@ export async function POST(req: NextRequest) {
       redirectTo: '/onboarding/results',
       results: {
         fitnessLevel: data.overallLevel,
-        hexagonProfile: hexagonValues,
+        hexagonProfile: hexagonProfile,
         goal: data.goal,
         branchScores: data.scores,
         suggestedStrength,
+        initialXP, // Include initial XP for debugging/reference
       },
     });
   } catch (error: any) {

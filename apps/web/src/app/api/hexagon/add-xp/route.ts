@@ -121,7 +121,7 @@ export async function POST(req: NextRequest) {
 }
 
 /**
- * POST /api/hexagon/add-xp-batch
+ * PUT /api/hexagon/add-xp
  * Add XP to multiple axes at once
  *
  * Body: {

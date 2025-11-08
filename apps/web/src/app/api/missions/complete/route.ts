@@ -3,6 +3,7 @@ import prisma from '@/lib/prisma';
 import { completeMissionById, getMissionById } from '@/lib/dev-missions-store';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
+import { updateAxisXP, type HexagonProfileWithXP, type HexagonAxis } from '@/lib/hexagon-progression';
 export const runtime = 'nodejs';
 
 async function getUserId(req: NextRequest) {
@@ -20,52 +21,51 @@ async function getUserId(req: NextRequest) {
 
 function startOfDay(d: Date) { const dt = new Date(d); dt.setHours(0,0,0,0); return dt; }
 
-// Calcula el delta del hexágono según el tipo de misión
-function calculateHexagonDelta(missionType: string) {
-  const delta = {
-    relativeStrength: 0,
-    muscularEndurance: 0,
-    balanceControl: 0,
-    jointMobility: 0,
-    bodyTension: 0,
-    skillTechnique: 0,
-  };
+// Map mission types to hexagon axes and XP rewards
+function getMissionXPRewards(missionType: string, rewardXP: number): Partial<Record<HexagonAxis, number>> {
+  const rewards: Partial<Record<HexagonAxis, number>> = {};
 
   switch (missionType) {
     case 'complete_exercises':
-      delta.skillTechnique = 0.1;
-      delta.muscularEndurance = 0.05;
+      rewards.skillTechnique = rewardXP * 0.6;
+      rewards.muscularEndurance = rewardXP * 0.4;
       break;
     case 'strength_focus':
+      rewards.relativeStrength = rewardXP * 0.7;
+      rewards.bodyTension = rewardXP * 0.3;
+      break;
     case 'core_focus':
-      delta.relativeStrength = 0.2;
-      delta.bodyTension = 0.1;
+      rewards.bodyTension = rewardXP * 0.7;
+      rewards.relativeStrength = rewardXP * 0.3;
       break;
     case 'endurance_focus':
-      delta.muscularEndurance = 0.2;
-      delta.bodyTension = 0.1;
+      rewards.muscularEndurance = rewardXP * 0.7;
+      rewards.bodyTension = rewardXP * 0.3;
       break;
     case 'balance_focus':
-      delta.balanceControl = 0.2;
-      delta.skillTechnique = 0.1;
+      rewards.balanceControl = rewardXP * 0.7;
+      rewards.skillTechnique = rewardXP * 0.3;
       break;
     case 'mobility_focus':
-      delta.jointMobility = 0.2;
-      delta.balanceControl = 0.05;
+      rewards.jointMobility = rewardXP * 0.7;
+      rewards.balanceControl = rewardXP * 0.3;
       break;
     case 'skill_practice':
-      delta.skillTechnique = 0.3;
-      delta.balanceControl = 0.1;
+      rewards.skillTechnique = rewardXP * 0.7;
+      rewards.balanceControl = rewardXP * 0.3;
       break;
     case 'volume_challenge':
-      delta.muscularEndurance = 0.3;
-      delta.relativeStrength = 0.1;
+      rewards.muscularEndurance = rewardXP * 0.7;
+      rewards.relativeStrength = rewardXP * 0.3;
+      break;
+    case 'hydration':
+      // No hexagon XP for hydration, only coins
       break;
     default:
-      delta.skillTechnique = 0.05;
+      rewards.skillTechnique = rewardXP;
   }
 
-  return delta;
+  return rewards;
 }
 
 export async function POST(req: NextRequest) {
@@ -141,20 +141,54 @@ export async function POST(req: NextRequest) {
       lastCompleted = today;
     }
 
-    // Actualizar hexágono si existe
-    if (user.hexagonProfile) {
-      const delta = calculateHexagonDelta(mission.type);
-      await prisma.hexagonProfile.update({
-        where: { userId },
-        data: {
-          relativeStrength: Math.min(10, (user.hexagonProfile.relativeStrength ?? 0) + delta.relativeStrength),
-          muscularEndurance: Math.min(10, (user.hexagonProfile.muscularEndurance ?? 0) + delta.muscularEndurance),
-          balanceControl: Math.min(10, (user.hexagonProfile.balanceControl ?? 0) + delta.balanceControl),
-          jointMobility: Math.min(10, (user.hexagonProfile.jointMobility ?? 0) + delta.jointMobility),
-          bodyTension: Math.min(10, (user.hexagonProfile.bodyTension ?? 0) + delta.bodyTension),
-          skillTechnique: Math.min(10, (user.hexagonProfile.skillTechnique ?? 0) + delta.skillTechnique),
-        },
-      });
+    // Update hexagon with XP system
+    const xpRewards = getMissionXPRewards(mission.type, updated.rewardXP);
+
+    if (Object.keys(xpRewards).length > 0) {
+      // Get or create hexagon profile
+      let hexProfile = user.hexagonProfile;
+
+      if (!hexProfile) {
+        hexProfile = await prisma.hexagonProfile.create({
+          data: {
+            userId,
+            relativeStrength: 0,
+            muscularEndurance: 0,
+            balanceControl: 0,
+            jointMobility: 0,
+            bodyTension: 0,
+            skillTechnique: 0,
+            relativeStrengthXP: 0,
+            muscularEnduranceXP: 0,
+            balanceControlXP: 0,
+            jointMobilityXP: 0,
+            bodyTensionXP: 0,
+            skillTechniqueXP: 0,
+          },
+        });
+      }
+
+      // Update each axis with XP rewards
+      let updatedProfile = hexProfile as HexagonProfileWithXP;
+      const updates: Record<string, any> = {};
+
+      for (const [axis, xp] of Object.entries(xpRewards)) {
+        if (xp > 0) {
+          updatedProfile = updateAxisXP(updatedProfile, axis as HexagonAxis, Math.round(xp));
+
+          updates[axis] = updatedProfile[axis as keyof HexagonProfileWithXP];
+          updates[`${axis}XP`] = updatedProfile[`${axis}XP` as keyof HexagonProfileWithXP];
+          updates[`${axis}Level`] = updatedProfile[`${axis}Level` as keyof HexagonProfileWithXP];
+        }
+      }
+
+      // Save all updates to database
+      if (Object.keys(updates).length > 0) {
+        await prisma.hexagonProfile.update({
+          where: { userId },
+          data: updates,
+        });
+      }
     }
 
     // Actualizar usuario

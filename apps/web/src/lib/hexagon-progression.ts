@@ -1,14 +1,10 @@
 /**
  * Hexagon Progression System
  *
- * This file contains all the logic for hexagon skill progression:
- * - XP to Level conversion per axis
- * - Level to normalized value (0-10) conversion
- * - Overall level calculation from hexagon axes
- * - XP requirements per level
+ * Manages XP, levels, and progression for each hexagon axis.
+ * Single Source of Truth for all progression calculations.
  */
 
-export type FitnessLevel = 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE';
 export type HexagonAxis =
   | 'relativeStrength'
   | 'muscularEndurance'
@@ -17,16 +13,35 @@ export type HexagonAxis =
   | 'bodyTension'
   | 'skillTechnique';
 
-export interface HexagonProfile {
+export type ProgressionLevel = 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE';
+
+/**
+ * XP thresholds for each level
+ * BEGINNER: 0 - 2,000 XP
+ * INTERMEDIATE: 2,000 - 5,000 XP
+ * ADVANCED: 5,000 - 10,000 XP
+ * ELITE: 10,000+ XP
+ */
+export const XP_THRESHOLDS: Record<ProgressionLevel, { min: number; max: number }> = {
+  BEGINNER: { min: 0, max: 2000 },
+  INTERMEDIATE: { min: 2000, max: 5000 },
+  ADVANCED: { min: 5000, max: 10000 },
+  ELITE: { min: 10000, max: Infinity },
+};
+
+/**
+ * Extended HexagonProfile with XP tracking
+ */
+export interface HexagonProfileWithXP {
+  // Visual values (0-10)
   relativeStrength: number;
   muscularEndurance: number;
   balanceControl: number;
   jointMobility: number;
   bodyTension: number;
   skillTechnique: number;
-}
 
-export interface HexagonProfileWithXP extends HexagonProfile {
+  // XP values
   relativeStrengthXP: number;
   muscularEnduranceXP: number;
   balanceControlXP: number;
@@ -34,100 +49,123 @@ export interface HexagonProfileWithXP extends HexagonProfile {
   bodyTensionXP: number;
   skillTechniqueXP: number;
 
-  relativeStrengthLevel: FitnessLevel;
-  muscularEnduranceLevel: FitnessLevel;
-  balanceControlLevel: FitnessLevel;
-  jointMobilityLevel: FitnessLevel;
-  bodyTensionLevel: FitnessLevel;
-  skillTechniqueLevel: FitnessLevel;
+  // Level values
+  relativeStrengthLevel: ProgressionLevel;
+  muscularEnduranceLevel: ProgressionLevel;
+  balanceControlLevel: ProgressionLevel;
+  jointMobilityLevel: ProgressionLevel;
+  bodyTensionLevel: ProgressionLevel;
+  skillTechniqueLevel: ProgressionLevel;
 }
 
 /**
- * XP Requirements for each level transition
- * As specified by the user:
- * - BEGINNER → INTERMEDIATE: 2,000 XP
- * - INTERMEDIATE → ADVANCED: 5,000 XP
- * - ADVANCED → ELITE: 10,000 XP
+ * Calculate level from XP
  */
-export const XP_REQUIREMENTS: Record<FitnessLevel, number> = {
-  BEGINNER: 0,        // Start of BEGINNER
-  INTERMEDIATE: 2000, // Need 2,000 XP to reach INTERMEDIATE
-  ADVANCED: 7000,     // Need 7,000 total XP (2k + 5k) to reach ADVANCED
-  ELITE: 17000,       // Need 17,000 total XP (2k + 5k + 10k) to reach ELITE
-};
-
-/**
- * Calculate the fitness level based on XP earned in an axis
- */
-export function getLevelFromXP(xp: number): FitnessLevel {
-  if (xp >= XP_REQUIREMENTS.ELITE) return 'ELITE';
-  if (xp >= XP_REQUIREMENTS.ADVANCED) return 'ADVANCED';
-  if (xp >= XP_REQUIREMENTS.INTERMEDIATE) return 'INTERMEDIATE';
+export function getLevelFromXP(xp: number): ProgressionLevel {
+  if (xp >= XP_THRESHOLDS.ELITE.min) return 'ELITE';
+  if (xp >= XP_THRESHOLDS.ADVANCED.min) return 'ADVANCED';
+  if (xp >= XP_THRESHOLDS.INTERMEDIATE.min) return 'INTERMEDIATE';
   return 'BEGINNER';
 }
 
 /**
- * Get XP remaining to reach next level
+ * Calculate visual value (0-10) from XP and level
+ *
+ * Each level spans 2.5 points on the visual scale:
+ * BEGINNER: 0-2.5
+ * INTERMEDIATE: 2.5-5.0
+ * ADVANCED: 5.0-7.5
+ * ELITE: 7.5-10.0
  */
-export function getXPToNextLevel(xp: number): { remaining: number; nextLevel: FitnessLevel | null } {
-  const currentLevel = getLevelFromXP(xp);
+export function getVisualValueFromXP(xp: number, level: ProgressionLevel): number {
+  const thresholds = XP_THRESHOLDS[level];
+  const levelStart = thresholds.min;
+  const levelEnd = thresholds.max === Infinity ? 20000 : thresholds.max; // Cap ELITE at 20k for visual
 
-  if (currentLevel === 'ELITE') {
-    return { remaining: 0, nextLevel: null };
-  }
+  const progressInLevel = (xp - levelStart) / (levelEnd - levelStart);
+  const clampedProgress = Math.max(0, Math.min(1, progressInLevel));
 
-  const nextLevelMap: Record<FitnessLevel, FitnessLevel | null> = {
-    BEGINNER: 'INTERMEDIATE',
-    INTERMEDIATE: 'ADVANCED',
-    ADVANCED: 'ELITE',
-    ELITE: null,
+  // Each level = 2.5 points on visual scale
+  const levelBaseValues: Record<ProgressionLevel, number> = {
+    BEGINNER: 0,
+    INTERMEDIATE: 2.5,
+    ADVANCED: 5.0,
+    ELITE: 7.5,
   };
 
-  const nextLevel = nextLevelMap[currentLevel];
-  if (!nextLevel) {
-    return { remaining: 0, nextLevel: null };
-  }
+  const baseValue = levelBaseValues[level];
+  const visualValue = baseValue + clampedProgress * 2.5;
 
-  const remaining = XP_REQUIREMENTS[nextLevel] - xp;
-  return { remaining, nextLevel };
+  return Math.min(10, Math.max(0, visualValue));
 }
 
 /**
- * Convert level to normalized value (0-10) for hexagon display
- * This maps the level to a visual representation
+ * Get XP progress percentage within current level
  */
-export function levelToNormalizedValue(level: FitnessLevel, xp: number): number {
-  const ranges: Record<FitnessLevel, { min: number; max: number }> = {
-    BEGINNER: { min: 0, max: 2.5 },      // 0.0 - 2.5
-    INTERMEDIATE: { min: 2.5, max: 5.0 }, // 2.5 - 5.0
-    ADVANCED: { min: 5.0, max: 7.5 },    // 5.0 - 7.5
-    ELITE: { min: 7.5, max: 10.0 },      // 7.5 - 10.0
-  };
+export function getLevelProgress(xp: number): number {
+  const level = getLevelFromXP(xp);
+  const thresholds = XP_THRESHOLDS[level];
 
-  const range = ranges[level];
-  const levelStartXP = XP_REQUIREMENTS[level];
-  const { remaining, nextLevel } = getXPToNextLevel(xp);
+  const levelStart = thresholds.min;
+  const levelEnd = thresholds.max === Infinity ? 20000 : thresholds.max;
 
-  if (!nextLevel) {
-    // Max level (ELITE) - scale from 7.5 to 10 based on total XP beyond threshold
-    const extraXP = xp - XP_REQUIREMENTS.ELITE;
-    const progress = Math.min(extraXP / 10000, 1); // Cap at extra 10k XP for max visual
-    return range.min + (range.max - range.min) * progress;
-  }
-
-  const totalXPNeeded = XP_REQUIREMENTS[nextLevel] - levelStartXP;
-  const xpInCurrentLevel = xp - levelStartXP;
-  const progress = xpInCurrentLevel / totalXPNeeded;
-
-  return range.min + (range.max - range.min) * progress;
+  const progress = ((xp - levelStart) / (levelEnd - levelStart)) * 100;
+  return Math.min(100, Math.max(0, Math.round(progress)));
 }
 
 /**
- * Calculate overall user level from hexagon axes
- * Uses the AVERAGE of all 6 axes to determine overall level
- * This is the SINGLE SOURCE OF TRUTH for user level
+ * Calculate overall level from average XP across all axes
  */
-export function calculateOverallLevel(profile: Partial<HexagonProfileWithXP>): FitnessLevel {
+export function calculateOverallLevel(profile: Partial<HexagonProfileWithXP>): ProgressionLevel {
+  const axes: (keyof Pick<HexagonProfileWithXP,
+    'relativeStrengthXP' | 'muscularEnduranceXP' | 'balanceControlXP' |
+    'jointMobilityXP' | 'bodyTensionXP' | 'skillTechniqueXP'>)[] = [
+    'relativeStrengthXP',
+    'muscularEnduranceXP',
+    'balanceControlXP',
+    'jointMobilityXP',
+    'bodyTensionXP',
+    'skillTechniqueXP',
+  ];
+
+  const totalXP = axes.reduce((sum, axis) => sum + (profile[axis] || 0), 0);
+  const averageXP = totalXP / axes.length;
+
+  return getLevelFromXP(averageXP);
+}
+
+/**
+ * Update a single axis with XP
+ * Returns updated profile with recalculated level and visual value
+ */
+export function updateAxisXP(
+  profile: HexagonProfileWithXP,
+  axis: HexagonAxis,
+  xpToAdd: number
+): HexagonProfileWithXP {
+  const xpKey = `${axis}XP` as keyof HexagonProfileWithXP;
+  const levelKey = `${axis}Level` as keyof HexagonProfileWithXP;
+
+  const currentXP = (profile[xpKey] as number) || 0;
+  const newXP = currentXP + xpToAdd;
+
+  const newLevel = getLevelFromXP(newXP);
+  const newVisualValue = getVisualValueFromXP(newXP, newLevel);
+
+  return {
+    ...profile,
+    [axis]: newVisualValue,
+    [xpKey]: newXP,
+    [levelKey]: newLevel,
+  };
+}
+
+/**
+ * Initialize a hexagon profile with default values
+ */
+export function initializeHexagonProfile(
+  initialXP: Partial<Record<HexagonAxis, number>> = {}
+): HexagonProfileWithXP {
   const axes: HexagonAxis[] = [
     'relativeStrength',
     'muscularEndurance',
@@ -137,121 +175,70 @@ export function calculateOverallLevel(profile: Partial<HexagonProfileWithXP>): F
     'skillTechnique',
   ];
 
-  // Get XP values for all axes
-  const xpValues = axes.map(axis => {
-    const xpField = `${axis}XP` as keyof HexagonProfileWithXP;
-    return (profile[xpField] as number) || 0;
+  let profile: Partial<HexagonProfileWithXP> = {};
+
+  axes.forEach(axis => {
+    const xp = initialXP[axis] || 0;
+    const level = getLevelFromXP(xp);
+    const visualValue = getVisualValueFromXP(xp, level);
+
+    profile[axis] = visualValue;
+    profile[`${axis}XP` as keyof HexagonProfileWithXP] = xp;
+    profile[`${axis}Level` as keyof HexagonProfileWithXP] = level;
   });
 
-  // Calculate average XP across all axes
-  const averageXP = xpValues.reduce((sum, xp) => sum + xp, 0) / axes.length;
-
-  // Return level based on average XP
-  return getLevelFromXP(averageXP);
+  return profile as HexagonProfileWithXP;
 }
 
 /**
- * Calculate progress percentage within current level
- * Used for progress bars
+ * Get XP required to reach next level
  */
-export function getLevelProgress(xp: number): number {
-  const currentLevel = getLevelFromXP(xp);
-  const { remaining, nextLevel } = getXPToNextLevel(xp);
+export function getXPToNextLevel(currentXP: number): number {
+  const currentLevel = getLevelFromXP(currentXP);
 
-  if (!nextLevel) {
-    return 100; // Max level
+  if (currentLevel === 'ELITE') {
+    return 0; // Already at max level
   }
 
-  const levelStartXP = XP_REQUIREMENTS[currentLevel];
-  const levelEndXP = XP_REQUIREMENTS[nextLevel];
-  const totalXPNeeded = levelEndXP - levelStartXP;
-  const xpInCurrentLevel = xp - levelStartXP;
+  const levelOrder: ProgressionLevel[] = ['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'ELITE'];
+  const currentIndex = levelOrder.indexOf(currentLevel);
+  const nextLevel = levelOrder[currentIndex + 1];
 
-  return Math.round((xpInCurrentLevel / totalXPNeeded) * 100);
+  return XP_THRESHOLDS[nextLevel].min - currentXP;
 }
 
 /**
- * Get level configuration for display
+ * Format XP display
  */
-export interface LevelConfig {
-  level: FitnessLevel;
-  label: string;
-  description: string;
-  color: string;
-  gradient: string;
-  percentage: number;
-}
-
-export function getLevelConfig(level: FitnessLevel, xp?: number): LevelConfig {
-  const configs: Record<FitnessLevel, Omit<LevelConfig, 'percentage' | 'level'>> = {
-    BEGINNER: {
-      label: 'Beginner',
-      description: 'Starting your calisthenics journey with foundational movements',
-      color: 'text-green-700',
-      gradient: 'from-green-400 to-emerald-600',
-    },
-    INTERMEDIATE: {
-      label: 'Intermediate',
-      description: 'Building strength and mastering core exercises',
-      color: 'text-blue-700',
-      gradient: 'from-blue-400 to-blue-600',
-    },
-    ADVANCED: {
-      label: 'Advanced',
-      description: 'Pushing limits with advanced skills and techniques',
-      color: 'text-purple-700',
-      gradient: 'from-purple-400 to-purple-600',
-    },
-    ELITE: {
-      label: 'Elite',
-      description: 'Mastering the most challenging calisthenics movements',
-      color: 'text-amber-700',
-      gradient: 'from-amber-400 to-orange-600',
-    },
-  };
-
-  const config = configs[level];
-  const percentage = xp !== undefined ? getLevelProgress(xp) : 0;
-
-  return {
-    level,
-    ...config,
-    percentage,
-  };
+export function formatXP(xp: number): string {
+  if (xp >= 1000) {
+    return `${(xp / 1000).toFixed(1)}k`;
+  }
+  return xp.toString();
 }
 
 /**
- * Update hexagon profile with new XP
- * Returns updated profile with recalculated levels and normalized values
+ * Get level color (for UI)
  */
-export function updateAxisXP(
-  profile: HexagonProfileWithXP,
-  axis: HexagonAxis,
-  xpToAdd: number
-): HexagonProfileWithXP {
-  const xpField = `${axis}XP` as keyof HexagonProfileWithXP;
-  const levelField = `${axis}Level` as keyof HexagonProfileWithXP;
-
-  const newXP = ((profile[xpField] as number) || 0) + xpToAdd;
-  const newLevel = getLevelFromXP(newXP);
-  const newNormalizedValue = levelToNormalizedValue(newLevel, newXP);
-
-  return {
-    ...profile,
-    [axis]: newNormalizedValue,
-    [xpField]: newXP,
-    [levelField]: newLevel,
+export function getLevelColor(level: ProgressionLevel): string {
+  const colors: Record<ProgressionLevel, string> = {
+    BEGINNER: 'text-slate-600',
+    INTERMEDIATE: 'text-blue-600',
+    ADVANCED: 'text-purple-600',
+    ELITE: 'text-amber-600',
   };
+  return colors[level];
 }
 
 /**
- * Axis display names
+ * Get level badge background color (for UI)
  */
-export const AXIS_LABELS: Record<HexagonAxis, string> = {
-  relativeStrength: 'Relative Strength',
-  muscularEndurance: 'Muscular Endurance',
-  balanceControl: 'Balance Control',
-  jointMobility: 'Joint Mobility',
-  bodyTension: 'Body Tension',
-  skillTechnique: 'Skill Technique',
-};
+export function getLevelBadgeColor(level: ProgressionLevel): string {
+  const colors: Record<ProgressionLevel, string> = {
+    BEGINNER: 'bg-slate-100 border-slate-300',
+    INTERMEDIATE: 'bg-blue-100 border-blue-300',
+    ADVANCED: 'bg-purple-100 border-purple-300',
+    ELITE: 'bg-amber-100 border-amber-300',
+  };
+  return colors[level];
+}

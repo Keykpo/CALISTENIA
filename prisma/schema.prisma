@@ -125,7 +125,7 @@ model HexagonProfile {
   bodyTension       Float @default(0)
   skillTechnique    Float @default(0)
 
-  // XP tracking per axis (for progression)
+  // XP tracking per axis
   relativeStrengthXP  Int @default(0)
   muscularEnduranceXP Int @default(0)
   balanceControlXP    Int @default(0)
@@ -133,13 +133,13 @@ model HexagonProfile {
   bodyTensionXP       Int @default(0)
   skillTechniqueXP    Int @default(0)
 
-  // Level per axis (BEGINNER, INTERMEDIATE, ADVANCED, ELITE)
-  relativeStrengthLevel  FitnessLevel @default(BEGINNER)
-  muscularEnduranceLevel FitnessLevel @default(BEGINNER)
-  balanceControlLevel    FitnessLevel @default(BEGINNER)
-  jointMobilityLevel     FitnessLevel @default(BEGINNER)
-  bodyTensionLevel       FitnessLevel @default(BEGINNER)
-  skillTechniqueLevel    FitnessLevel @default(BEGINNER)
+  // Level per axis (BEGINNER/INTERMEDIATE/ADVANCED/ELITE)
+  relativeStrengthLevel  String @default("BEGINNER")
+  muscularEnduranceLevel String @default("BEGINNER")
+  balanceControlLevel    String @default("BEGINNER")
+  jointMobilityLevel     String @default("BEGINNER")
+  bodyTensionLevel       String @default("BEGINNER")
+  skillTechniqueLevel    String @default("BEGINNER")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
