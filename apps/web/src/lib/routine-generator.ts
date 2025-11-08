@@ -1,4 +1,4 @@
-// Generador de rutinas personalizadas para calistenia
+// Personalized routine generator for calisthenics
 
 export type RoutineConfig = {
   userId: string;
@@ -43,7 +43,7 @@ const EXERCISE_LIBRARY: Record<string, RoutineExercise[]> = {
       sets: 1,
       duration: 60,
       rest: 0,
-      notes: 'Movilidad general',
+      notes: 'General mobility',
     },
     {
       name: 'Arm Circles',
@@ -51,7 +51,7 @@ const EXERCISE_LIBRARY: Record<string, RoutineExercise[]> = {
       sets: 2,
       reps: 10,
       rest: 10,
-      notes: 'Cada dirección',
+      notes: 'Each direction',
     },
     {
       name: 'Wrist Rotations',
@@ -68,7 +68,7 @@ const EXERCISE_LIBRARY: Record<string, RoutineExercise[]> = {
       sets: 3,
       reps: 10,
       rest: 60,
-      notes: 'Mantén el core activo',
+      notes: 'Keep core engaged',
     },
     {
       name: 'Incline Push-ups',
@@ -115,7 +115,7 @@ const EXERCISE_LIBRARY: Record<string, RoutineExercise[]> = {
       sets: 4,
       reps: 8,
       rest: 90,
-      notes: 'Cada lado',
+      notes: 'Each side',
     },
     {
       name: 'Pseudo Planche Push-ups',
@@ -139,7 +139,7 @@ const EXERCISE_LIBRARY: Record<string, RoutineExercise[]> = {
       sets: 3,
       reps: 8,
       rest: 60,
-      notes: 'Barra baja',
+      notes: 'Low bar',
     },
     {
       name: 'Scapular Pull-ups',
@@ -285,7 +285,7 @@ const EXERCISE_LIBRARY: Record<string, RoutineExercise[]> = {
       sets: 3,
       reps: 10,
       rest: 60,
-      notes: 'Cada pierna',
+      notes: 'Each leg',
     },
     {
       name: 'Calf Raises',
@@ -309,7 +309,7 @@ const EXERCISE_LIBRARY: Record<string, RoutineExercise[]> = {
       sets: 3,
       reps: 10,
       rest: 60,
-      notes: 'Cada pierna',
+      notes: 'Each leg',
     },
     {
       name: 'Single Leg Calf Raises',
@@ -317,7 +317,7 @@ const EXERCISE_LIBRARY: Record<string, RoutineExercise[]> = {
       sets: 3,
       reps: 15,
       rest: 45,
-      notes: 'Cada pierna',
+      notes: 'Each leg',
     },
   ],
   legs_advanced: [
@@ -327,7 +327,7 @@ const EXERCISE_LIBRARY: Record<string, RoutineExercise[]> = {
       sets: 3,
       reps: 5,
       rest: 90,
-      notes: 'Cada pierna',
+      notes: 'Each leg',
     },
     {
       name: 'Shrimp Squats',
@@ -335,7 +335,7 @@ const EXERCISE_LIBRARY: Record<string, RoutineExercise[]> = {
       sets: 3,
       reps: 6,
       rest: 90,
-      notes: 'Cada pierna',
+      notes: 'Each leg',
     },
     {
       name: 'Explosive Lunges',
@@ -359,7 +359,7 @@ const EXERCISE_LIBRARY: Record<string, RoutineExercise[]> = {
       sets: 2,
       duration: 30,
       rest: 10,
-      notes: 'Cada pierna',
+      notes: 'Each leg',
     },
     {
       name: 'Hamstring Stretch',
@@ -395,21 +395,21 @@ export class RoutineGenerator {
 
   private getTrainingDays(daysPerWeek: number): string[] {
     const allDays = [
-      'Lunes',
-      'Martes',
-      'Miércoles',
-      'Jueves',
-      'Viernes',
-      'Sábado',
-      'Domingo',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday',
     ];
 
     const patterns: Record<number, string[]> = {
-      2: ['Lunes', 'Jueves'],
-      3: ['Lunes', 'Miércoles', 'Viernes'],
-      4: ['Lunes', 'Martes', 'Jueves', 'Viernes'],
-      5: ['Lunes', 'Martes', 'Miércoles', 'Viernes', 'Sábado'],
-      6: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+      2: ['Monday', 'Thursday'],
+      3: ['Monday', 'Wednesday', 'Friday'],
+      4: ['Monday', 'Tuesday', 'Thursday', 'Friday'],
+      5: ['Monday', 'Tuesday', 'Wednesday', 'Friday', 'Saturday'],
+      6: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       7: allDays,
     };
 
@@ -496,11 +496,11 @@ export class RoutineGenerator {
 
   private getFocusLabel(focus: string): string {
     const labels: Record<string, string> = {
-      push: 'Empuje (Push)',
-      pull: 'Tracción (Pull)',
-      legs: 'Tren Inferior',
-      full_body: 'Cuerpo Completo',
-      skills: 'Habilidades Avanzadas',
+      push: 'Push',
+      pull: 'Pull',
+      legs: 'Legs',
+      full_body: 'Full Body',
+      skills: 'Advanced Skills',
     };
     return labels[focus] || 'General';
   }
@@ -524,7 +524,7 @@ export class RoutineGenerator {
   }
 }
 
-// Función helper para generar rutina
+// Helper function to generate routine
 export function generateRoutine(config: RoutineConfig): WorkoutRoutine[] {
   const generator = new RoutineGenerator(config);
   return generator.generate();
