@@ -99,12 +99,14 @@ export default function FigLevelSkillPath({
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {progressionsByCategory[category].map((progression) => {
                 const branchLevel = userSkillProgress[progression.goal] || 'BEGINNER';
+                const hasCompletedAssessment = progression.goal in userSkillProgress;
                 return (
                   <ProgressionCard
                     key={progression.goal}
                     progression={progression}
                     userLevel={branchLevel}
                     userId={userId}
+                    hasCompletedAssessment={hasCompletedAssessment}
                     onProgressUpdate={onProgressUpdate}
                   />
                 );
@@ -121,10 +123,11 @@ interface ProgressionCardProps {
   progression: SkillProgression;
   userLevel: DifficultyLevel;
   userId: string;
+  hasCompletedAssessment: boolean;
   onProgressUpdate?: () => void;
 }
 
-function ProgressionCard({ progression, userLevel, userId, onProgressUpdate }: ProgressionCardProps) {
+function ProgressionCard({ progression, userLevel, userId, hasCompletedAssessment, onProgressUpdate }: ProgressionCardProps) {
   const [expanded, setExpanded] = useState(false);
   const [showAssessment, setShowAssessment] = useState(false);
   const [showDurationSelect, setShowDurationSelect] = useState(false);
@@ -135,8 +138,8 @@ function ProgressionCard({ progression, userLevel, userId, onProgressUpdate }: P
 
   // Check if user has done assessment for this branch
   React.useEffect(() => {
-    setHasAssessment(!!userLevel && userLevel !== 'BEGINNER');
-  }, [userLevel]);
+    setHasAssessment(hasCompletedAssessment);
+  }, [hasCompletedAssessment]);
 
   const handleTrainNowClick = () => {
     // If no assessment data exists, show assessment
@@ -440,6 +443,7 @@ function ProgressionCard({ progression, userLevel, userId, onProgressUpdate }: P
           onOpenChange={setShowTrainingSession}
           sessionId={currentSession.id}
           sessionData={currentSession}
+          xpAwarded={currentSession.xpAwarded || 0}
           onComplete={handleSessionComplete}
         />
       )}
