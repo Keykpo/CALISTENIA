@@ -276,6 +276,7 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
       <UnifiedSkillAssessment
         userId={userId}
         hexagonProfile={migrateToUnifiedHexagon(hexProfile)}
+        userFitnessLevel={userData?.user?.fitnessLevel}
         onUpdate={onUpdate}
       />
 

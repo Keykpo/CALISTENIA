@@ -334,9 +334,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Calculate fitness level from hexagon (SINGLE SOURCE OF TRUTH)
+    // Calculate fitness level from hexagon, fallback to DB value
     const unifiedProfile = migrateToUnifiedHexagon(user.hexagonProfile);
     const calculatedLevel = calculateUnifiedOverallLevel(unifiedProfile);
+    const fitnessLevel = user.hexagonProfile ? calculatedLevel : (user.fitnessLevel || 'BEGINNER');
 
     // Parse goals
     const goals = user.goals ? JSON.parse(user.goals as string) : [];
@@ -361,10 +362,10 @@ export async function POST(req: NextRequest) {
       ? getWeakestBranches(user.hexagonProfile)
       : [];
 
-    // Generate routine using calculated level from hexagon
+    // Generate routine using fitness level (with DB fallback)
     const routine = generateRoutine(
       exercises,
-      calculatedLevel,
+      fitnessLevel,
       primaryGoal,
       availability,
       user.hexagonProfile,
@@ -375,7 +376,7 @@ export async function POST(req: NextRequest) {
       success: true,
       routine,
       userProfile: {
-        fitnessLevel: calculatedLevel,
+        fitnessLevel: fitnessLevel,
         goal: primaryGoal,
         weakestBranches,
       },

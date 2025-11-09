@@ -19,17 +19,20 @@ import {
   UNIFIED_AXIS_METADATA,
   getAllUnifiedAxes,
   getUnifiedLevelProgress,
+  type UnifiedFitnessLevel,
 } from '@/lib/unified-hexagon-system';
 
 interface UnifiedSkillAssessmentProps {
   userId: string;
   hexagonProfile: UnifiedHexagonProfile | null;
+  userFitnessLevel?: UnifiedFitnessLevel | null;
   onUpdate?: () => void;
 }
 
 export default function UnifiedSkillAssessment({
   userId,
   hexagonProfile,
+  userFitnessLevel,
   onUpdate,
 }: UnifiedSkillAssessmentProps) {
   const router = useRouter();
@@ -37,6 +40,7 @@ export default function UnifiedSkillAssessment({
   console.log('[UNIFIED_SKILL_ASSESSMENT] Props received:', {
     userId,
     hasHexagonProfile: !!hexagonProfile,
+    userFitnessLevel,
     hexagonProfileKeys: hexagonProfile ? Object.keys(hexagonProfile) : null,
     hexagonProfileSample: hexagonProfile ? {
       balance: hexagonProfile.balance,
@@ -51,11 +55,20 @@ export default function UnifiedSkillAssessment({
     router.push('/dashboard?tab=skills');
   };
 
-  // Calculate overall level and stats
-  const overallLevel = hexagonProfile
+  // Calculate overall level and stats - use DB fitness level as fallback
+  const calculatedLevel = hexagonProfile
     ? calculateUnifiedOverallLevel(hexagonProfile)
     : 'BEGINNER';
+  const overallLevel = hexagonProfile ? calculatedLevel : (userFitnessLevel || 'BEGINNER');
   const levelBadgeColor = getUnifiedLevelBadgeColor(overallLevel);
+
+  console.log('[UNIFIED_SKILL_ASSESSMENT] Level calculation:', {
+    hasHexagon: !!hexagonProfile,
+    calculatedFromHexagon: calculatedLevel,
+    userFitnessLevelFromDB: userFitnessLevel,
+    finalLevel: overallLevel,
+    usingFallback: !hexagonProfile,
+  });
 
   const axes = getAllUnifiedAxes();
   const axisBreakdown = axes.map(axis => {
