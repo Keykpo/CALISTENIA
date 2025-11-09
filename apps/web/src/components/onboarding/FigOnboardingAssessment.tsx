@@ -81,8 +81,8 @@ export default function FigOnboardingAssessment({
   const [isCompleted, setIsCompleted] = useState(false);
 
   const currentSkill = ONBOARDING_SKILLS[currentSkillIndex];
-  const skillQuestions = SKILL_ASSESSMENTS[currentSkill];
-  const currentQuestion = skillQuestions[currentQuestionIndex];
+  const skillQuestions = SKILL_ASSESSMENTS[currentSkill] || [];
+  const currentQuestion = skillQuestions[currentQuestionIndex] || { question: '', options: [] };
 
   const totalSkills = ONBOARDING_SKILLS.length;
   const questionsPerSkill = 3;
@@ -134,7 +134,8 @@ export default function FigOnboardingAssessment({
 
     ONBOARDING_SKILLS.forEach(skill => {
       const skillAnswers = answers[skill] || {};
-      const totalScore = Object.values(skillAnswers).reduce((sum, points) => sum + points, 0);
+      const scores = Object.keys(skillAnswers).map(key => skillAnswers[parseInt(key)] || 0);
+      const totalScore = scores.reduce((sum: number, points: number) => sum + points, 0);
       const level = calculateLevelFromScore(totalScore);
 
       assessmentResults.push({
@@ -153,7 +154,7 @@ export default function FigOnboardingAssessment({
   const isLastQuestion = currentSkillIndex === ONBOARDING_SKILLS.length - 1 &&
     currentQuestionIndex === skillQuestions.length - 1;
 
-  const Icon = SKILL_ICONS[currentSkill] || Trophy;
+  const Icon = (SKILL_ICONS as any)[currentSkill] || Trophy;
 
   if (isCompleted) {
     return (
