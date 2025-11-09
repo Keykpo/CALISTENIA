@@ -3,6 +3,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import { Badge } from '@/components/ui/badge';
 import {
   TrendingUp,
   Zap,
@@ -12,17 +13,44 @@ import {
   Calendar,
   Activity,
   RefreshCw,
-  Dumbbell
+  Dumbbell,
+  Play,
+  Star,
+  CheckCircle2,
+  ArrowRight
 } from 'lucide-react';
 import UnifiedHexagon from '../UnifiedHexagon';
 import XPProgressCard from '../XPProgressCard';
 import Link from 'next/link';
-import { migrateToUnifiedHexagon, type OldHexagonProfile } from '@/lib/unified-hexagon-system';
+import { migrateToUnifiedHexagon, calculateUnifiedOverallLevel, getUnifiedLevelProgress, type OldHexagonProfile, type UnifiedFitnessLevel } from '@/lib/unified-hexagon-system';
 
 interface DashboardOverviewProps {
   userData: any;
   onRefresh: () => void;
 }
+
+const LEVEL_INFO: Record<UnifiedFitnessLevel, { color: string; bgColor: string; gradient: string }> = {
+  BEGINNER: {
+    color: 'text-green-700',
+    bgColor: 'bg-green-50',
+    gradient: 'from-green-500 to-emerald-600'
+  },
+  INTERMEDIATE: {
+    color: 'text-blue-700',
+    bgColor: 'bg-blue-50',
+    gradient: 'from-blue-500 to-indigo-600'
+  },
+  ADVANCED: {
+    color: 'text-orange-700',
+    bgColor: 'bg-orange-50',
+    gradient: 'from-orange-500 to-red-600'
+  },
+  ELITE: {
+    color: 'text-purple-700',
+    bgColor: 'bg-purple-50',
+    gradient: 'from-purple-500 to-pink-600'
+  }
+};
 
 export default function DashboardOverview({ userData, onRefresh }: DashboardOverviewProps) {
   const stats = userData?.stats || {
@@ -38,231 +66,287 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
   const totalMissions = missions.length;
   const missionProgress = totalMissions > 0 ? (completedMissions / totalMissions) * 100 : 0;
 
-  // Calculate XP progress to next level
-  const currentLevelXP = (stats.level - 1) * 100;
-  const nextLevelXP = stats.level * 100;
-  const xpInCurrentLevel = stats.totalXP - currentLevelXP;
-  const xpNeededForLevel = nextLevelXP - currentLevelXP;
-  const levelProgress = (xpInCurrentLevel / xpNeededForLevel) * 100;
-
-  // Hexagon data - use stored visual values directly from database
-  // The values are already calculated and saved during assessment/updates
+  // Hexagon data
   const hexProfile = userData?.hexagon as OldHexagonProfile | null;
+  const unifiedProfile = migrateToUnifiedHexagon(hexProfile);
+  const fitnessLevel = calculateUnifiedOverallLevel(unifiedProfile);
+  const levelInfo = LEVEL_INFO[fitnessLevel];
 
-  console.log('[DASHBOARD_OVERVIEW] Raw userData received:', {
-    hasUserData: !!userData,
-    hasHexagon: !!userData?.hexagon,
-    userData: userData ? Object.keys(userData) : null,
-  });
+  // Calculate average XP
+  const averageXP = (
+    (unifiedProfile.balanceXP || 0) +
+    (unifiedProfile.strengthXP || 0) +
+    (unifiedProfile.staticHoldsXP || 0) +
+    (unifiedProfile.coreXP || 0) +
+    (unifiedProfile.enduranceXP || 0) +
+    (unifiedProfile.mobilityXP || 0)
+  ) / 6;
 
-  console.log('[DASHBOARD_OVERVIEW] Hexagon data:', {
+  const levelProgress = getUnifiedLevelProgress(averageXP);
+
+  console.log('[DASHBOARD_OVERVIEW] Level Calculation Debug:', {
     hasHexProfile: !!hexProfile,
-    hexProfileKeys: hexProfile ? Object.keys(hexProfile) : null,
-    visualValues: hexProfile ? {
-      relativeStrength: hexProfile.relativeStrength,
-      muscularEndurance: hexProfile.muscularEndurance,
-      balanceControl: hexProfile.balanceControl,
-      jointMobility: hexProfile.jointMobility,
-      bodyTension: hexProfile.bodyTension,
-      skillTechnique: hexProfile.skillTechnique,
-    } : null,
-    xpValues: hexProfile ? {
-      relativeStrengthXP: hexProfile.relativeStrengthXP,
-      muscularEnduranceXP: hexProfile.muscularEnduranceXP,
-      balanceControlXP: hexProfile.balanceControlXP,
-      jointMobilityXP: hexProfile.jointMobilityXP,
-      bodyTensionXP: hexProfile.bodyTensionXP,
-      skillTechniqueXP: hexProfile.skillTechniqueXP,
-    } : null,
+    hexProfileData: hexProfile,
+    unifiedProfile: {
+      balanceXP: unifiedProfile.balanceXP,
+      strengthXP: unifiedProfile.strengthXP,
+      staticHoldsXP: unifiedProfile.staticHoldsXP,
+      coreXP: unifiedProfile.coreXP,
+      enduranceXP: unifiedProfile.enduranceXP,
+      mobilityXP: unifiedProfile.mobilityXP,
+      balanceLevel: unifiedProfile.balanceLevel,
+      strengthLevel: unifiedProfile.strengthLevel,
+    },
+    calculatedFitnessLevel: fitnessLevel,
+    averageXP,
+    levelProgress,
+    userFitnessLevelFromDB: userData?.user?.fitnessLevel,
   });
 
-  const hexagonData = hexProfile ? {
-    relativeStrength: hexProfile.relativeStrength || 0,
-    muscularEndurance: hexProfile.muscularEndurance || 0,
-    balanceControl: hexProfile.balanceControl || 0,
-    jointMobility: hexProfile.jointMobility || 0,
-    bodyTension: hexProfile.bodyTension || 0,
-    skillTechnique: hexProfile.skillTechnique || 0,
-  } : {
-    relativeStrength: 0,
-    muscularEndurance: 0,
-    balanceControl: 0,
-    jointMobility: 0,
-    bodyTension: 0,
-    skillTechnique: 0
-  };
+  // If no hexagon profile exists, show warning
+  if (!hexProfile) {
+    return (
+      <div className="space-y-6">
+        <Card className="bg-yellow-50 border-2 border-yellow-300">
+          <CardHeader>
+            <CardTitle className="text-yellow-900 flex items-center gap-2">
+              <Target className="w-5 h-5" />
+              No Hexagon Profile Found
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-yellow-800">
+              Your hexagon profile hasn't been created yet. Please complete the FIG assessment to generate your profile.
+            </p>
+            <div className="bg-white rounded-lg p-4 border border-yellow-200">
+              <p className="text-sm font-mono text-slate-600">
+                Debug Info:
+              </p>
+              <pre className="text-xs mt-2 overflow-x-auto">
+                {JSON.stringify({ hasHexProfile: !!hexProfile, userData: userData ? Object.keys(userData) : null }, null, 2)}
+              </pre>
+            </div>
+            <Link href="/onboarding/assessment">
+              <Button className="w-full bg-yellow-600 hover:bg-yellow-700">
+                Complete Assessment Now
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
-      {/* Stats Grid */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {/* Level Card */}
-        <Card className="bg-gradient-to-br from-blue-500 to-blue-600 text-white border-0">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Level</CardTitle>
-            <Zap className="h-4 w-4 opacity-80" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold">{stats.level}</div>
-            <div className="mt-3">
-              <Progress value={levelProgress} className="h-2 bg-blue-300" />
-              <p className="text-xs mt-1 opacity-90">
-                {xpInCurrentLevel} / {xpNeededForLevel} XP
-              </p>
+      {/* Hero Card - Level and Progress */}
+      <Card className={`bg-gradient-to-br ${levelInfo.gradient} text-white border-0 shadow-xl overflow-hidden relative`}>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full blur-3xl -ml-24 -mb-24"></div>
+
+        <CardContent className="pt-8 pb-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Level Info */}
+            <div className="lg:col-span-2">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                  <Star className="w-7 h-7 text-white" fill="currentColor" />
+                </div>
+                <div>
+                  <p className="text-sm opacity-90">Current Level</p>
+                  <h2 className="text-3xl font-black">{fitnessLevel}</h2>
+                </div>
+              </div>
+
+              <div className="space-y-2 mb-6">
+                <div className="flex justify-between text-sm">
+                  <span className="opacity-90">Progress to next level</span>
+                  <span className="font-bold">{Math.round(levelProgress)}%</span>
+                </div>
+                <Progress value={levelProgress} className="h-3 bg-white/20" />
+                <p className="text-xs opacity-75">
+                  {Math.round(averageXP).toLocaleString()} XP average across all skills
+                </p>
+              </div>
+
+              <div className="flex gap-3">
+                <Link href="/routines" className="flex-1">
+                  <Button className="w-full bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30">
+                    <Play className="w-4 h-4 mr-2" />
+                    Start Workout
+                  </Button>
+                </Link>
+                <Link href="/onboarding/assessment" className="flex-1">
+                  <Button variant="outline" className="w-full bg-transparent hover:bg-white/10 border-white/30 text-white">
+                    <RefreshCw className="w-4 h-4 mr-2" />
+                    Reassess Skills
+                  </Button>
+                </Link>
+              </div>
             </div>
-          </CardContent>
-        </Card>
 
-        {/* XP Card */}
-        <Card className="bg-gradient-to-br from-purple-500 to-purple-600 text-white border-0">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Experience</CardTitle>
-            <TrendingUp className="h-4 w-4 opacity-80" />
+            {/* Stats Summary */}
+            <div className="grid grid-cols-2 lg:grid-cols-1 gap-3">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                <div className="flex items-center gap-2 mb-1">
+                  <Zap className="w-4 h-4 opacity-80" />
+                  <span className="text-xs opacity-75">Level</span>
+                </div>
+                <p className="text-2xl font-bold">{stats.level}</p>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                <div className="flex items-center gap-2 mb-1">
+                  <Award className="w-4 h-4 opacity-80" />
+                  <span className="text-xs opacity-75">Coins</span>
+                </div>
+                <p className="text-2xl font-bold">{stats.coins}</p>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                <div className="flex items-center gap-2 mb-1">
+                  <Flame className="w-4 h-4 opacity-80" />
+                  <span className="text-xs opacity-75">Streak</span>
+                </div>
+                <p className="text-2xl font-bold">{stats.dailyStreak}</p>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                <div className="flex items-center gap-2 mb-1">
+                  <TrendingUp className="w-4 h-4 opacity-80" />
+                  <span className="text-xs opacity-75">Total XP</span>
+                </div>
+                <p className="text-2xl font-bold">{stats.totalXP}</p>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <div className="grid gap-6 lg:grid-cols-2">
+        {/* Hexagon Profile - Full Size */}
+        <Card className="shadow-lg border-2 lg:col-span-2">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <div>
+                <CardTitle className="text-2xl font-bold">Your Hexagon Profile</CardTitle>
+                <CardDescription className="text-base">
+                  Each axis represents a fundamental physical ability
+                </CardDescription>
+              </div>
+              <Activity className="h-6 w-6 text-blue-500" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">{stats.totalXP}</div>
-            <p className="text-xs mt-1 opacity-90">
-              +{Math.floor(xpInCurrentLevel / 10) || 0} today
-            </p>
-          </CardContent>
-        </Card>
-
-        {/* Coins Card */}
-        <Card className="bg-gradient-to-br from-amber-500 to-amber-600 text-white border-0">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Coins</CardTitle>
-            <Award className="h-4 w-4 opacity-80" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold">{stats.coins}</div>
-            <p className="text-xs mt-1 opacity-90">
-              Redeem in shop
-            </p>
-          </CardContent>
-        </Card>
-
-        {/* Streak Card */}
-        <Card className="bg-gradient-to-br from-orange-500 to-orange-600 text-white border-0">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Daily Streak</CardTitle>
-            <Flame className="h-4 w-4 opacity-80" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold">{stats.dailyStreak}</div>
-            <p className="text-xs mt-1 opacity-90">
-              {stats.dailyStreak > 0 ? 'Keep it up!' : 'Complete missions today'}
-            </p>
+            <div className="flex justify-center mb-6">
+              <UnifiedHexagon
+                profile={unifiedProfile}
+                showCard={false}
+                animated={true}
+                size={450}
+                showRanks={true}
+                showAxisDetails={false}
+              />
+            </div>
+            <div className="text-center">
+              <Link href="/onboarding/results">
+                <Button variant="outline" className="px-6">
+                  View Detailed Analysis & Insights
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+            </div>
           </CardContent>
         </Card>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        {/* Hexagon Profile */}
-        <Card>
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <div>
-                <CardTitle>Skill Profile</CardTitle>
-                <CardDescription>
-                  Your hexagon updates as you complete missions and workouts
-                </CardDescription>
-              </div>
-              <Activity className="h-5 w-5 text-slate-400" />
-            </div>
-          </CardHeader>
-          <CardContent>
-            <div className="flex justify-center">
-              <UnifiedHexagon
-                profile={migrateToUnifiedHexagon(hexProfile)}
-                showCard={false}
-                animated={false}
-                size={300}
-                showAxisDetails={false}
-              />
-            </div>
-          </CardContent>
-        </Card>
 
-        {/* Daily Missions Progress */}
-        <Card>
+        {/* Daily Missions */}
+        <Card className="shadow-lg border-2">
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle>Today's Missions</CardTitle>
+                <CardTitle className="text-xl">Today's Missions</CardTitle>
                 <CardDescription>
-                  Complete all to increase your streak
+                  Complete to earn XP and maintain your streak
                 </CardDescription>
               </div>
-              <Target className="h-5 w-5 text-slate-400" />
+              <Target className="h-5 w-5 text-purple-500" />
             </div>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div>
-              <div className="flex justify-between text-sm mb-2">
-                <span className="text-slate-600">
-                  {completedMissions} of {totalMissions} completed
+            {/* Progress Bar */}
+            <div className="bg-slate-50 rounded-xl p-4 border border-slate-200">
+              <div className="flex justify-between items-center mb-3">
+                <span className="text-sm font-semibold text-slate-700">
+                  Daily Progress
                 </span>
-                <span className="font-medium text-blue-600">
-                  {Math.round(missionProgress)}%
-                </span>
+                <Badge variant={missionProgress === 100 ? "default" : "secondary"}>
+                  {completedMissions}/{totalMissions}
+                </Badge>
               </div>
               <Progress value={missionProgress} className="h-3" />
+              <p className="text-xs text-slate-600 mt-2">
+                {missionProgress === 100
+                  ? '🎉 All missions completed! Great work!'
+                  : `${Math.round(missionProgress)}% complete - Keep going!`}
+              </p>
             </div>
 
-            <div className="space-y-2 max-h-60 overflow-y-auto">
+            {/* Mission List */}
+            <div className="space-y-2 max-h-[300px] overflow-y-auto">
               {missions.length > 0 ? (
-                missions.map((mission: any) => (
+                missions.slice(0, 5).map((mission: any) => (
                   <div
                     key={mission.id}
-                    className={`flex items-center justify-between p-3 rounded-lg border ${
+                    className={`flex items-start gap-3 p-3 rounded-lg border-2 transition-all ${
                       mission.completed
                         ? 'bg-green-50 border-green-200'
-                        : 'bg-slate-50 border-slate-200'
+                        : 'bg-white border-slate-200 hover:border-blue-300'
                     }`}
                   >
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                          mission.completed
-                            ? 'bg-green-500 border-green-500'
-                            : 'border-slate-300'
-                        }`}
-                      >
-                        {mission.completed && (
-                          <svg
-                            className="w-3 h-3 text-white"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={3}
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                        )}
-                      </div>
-                      <span className={mission.completed ? 'line-through text-slate-500' : ''}>
-                        {mission.description}
-                      </span>
+                    <div className={`flex-shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center mt-0.5 ${
+                      mission.completed
+                        ? 'bg-green-500 border-green-500'
+                        : 'border-slate-300'
+                    }`}>
+                      {mission.completed && (
+                        <CheckCircle2 className="w-3 h-3 text-white" />
+                      )}
                     </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <span className="text-purple-600 font-medium">
+                    <div className="flex-1 min-w-0">
+                      <p className={`text-sm font-medium ${mission.completed ? 'line-through text-slate-500' : 'text-slate-900'}`}>
+                        {mission.description}
+                      </p>
+                      {mission.target && (
+                        <p className="text-xs text-slate-600 mt-1">
+                          Progress: {mission.progress || 0} / {mission.target}
+                        </p>
+                      )}
+                    </div>
+                    <div className="flex flex-col items-end gap-1">
+                      <Badge variant="outline" className="text-xs">
                         +{mission.rewardXP} XP
-                      </span>
+                      </Badge>
+                      {mission.rewardCoins > 0 && (
+                        <Badge variant="outline" className="text-xs text-amber-700">
+                          +{mission.rewardCoins} 🪙
+                        </Badge>
+                      )}
                     </div>
                   </div>
                 ))
               ) : (
-                <div className="text-center py-8 text-slate-500">
-                  <Target className="w-12 h-12 mx-auto mb-2 opacity-30" />
-                  <p>No missions available</p>
+                <div className="text-center py-12 text-slate-500">
+                  <Target className="w-16 h-16 mx-auto mb-3 opacity-20" />
+                  <p className="font-medium">No missions available</p>
+                  <p className="text-sm mt-1">Check back tomorrow for new challenges</p>
                   <Button
                     variant="outline"
                     size="sm"
-                    className="mt-3"
+                    className="mt-4"
                     onClick={onRefresh}
                   >
                     <RefreshCw className="w-4 h-4 mr-2" />
@@ -271,132 +355,181 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
                 </div>
               )}
             </div>
+
+            {missions.length > 5 && (
+              <div className="text-center pt-2">
+                <Link href="/dashboard?tab=missions">
+                  <Button variant="link" size="sm">
+                    View all missions ({missions.length})
+                    <ArrowRight className="w-4 h-4 ml-1" />
+                  </Button>
+                </Link>
+              </div>
+            )}
           </CardContent>
         </Card>
       </div>
 
-      {/* Quick Actions */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Quick Actions</CardTitle>
-          <CardDescription>
-            Jump into your training
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Link href="/routines">
-              <Button variant="outline" className="w-full justify-start h-auto py-4">
-                <Dumbbell className="w-5 h-5 mr-3 text-blue-600" />
-                <div className="text-left">
-                  <div className="font-semibold">Start Workout</div>
-                  <div className="text-xs text-slate-600">Access your personalized routine</div>
-                </div>
-              </Button>
-            </Link>
-            <Link href="/dashboard?tab=missions">
-              <Button variant="outline" className="w-full justify-start h-auto py-4">
-                <Target className="w-5 h-5 mr-3 text-purple-600" />
-                <div className="text-left">
-                  <div className="font-semibold">View All Missions</div>
-                  <div className="text-xs text-slate-600">See daily and weekly challenges</div>
-                </div>
-              </Button>
-            </Link>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* XP Progress Details */}
+      {/* Skill Progression XP Cards */}
       {hexProfile && (
-        <Card>
+        <Card className="shadow-lg border-2">
           <CardHeader>
-            <CardTitle>Skill Progression</CardTitle>
+            <CardTitle className="text-xl">Skill Progression</CardTitle>
             <CardDescription>
               Track your XP progress across all hexagon axes
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {(() => {
-                const migratedProfile = migrateToUnifiedHexagon(hexProfile);
-                return (
-                  <>
-                    <XPProgressCard
-                      axis="strength"
-                      currentXP={migratedProfile.strengthXP}
-                      compact={true}
-                    />
-                    <XPProgressCard
-                      axis="endurance"
-                      currentXP={migratedProfile.enduranceXP}
-                      compact={true}
-                    />
-                    <XPProgressCard
-                      axis="balance"
-                      currentXP={migratedProfile.balanceXP}
-                      compact={true}
-                    />
-                    <XPProgressCard
-                      axis="mobility"
-                      currentXP={migratedProfile.mobilityXP}
-                      compact={true}
-                    />
-                    <XPProgressCard
-                      axis="core"
-                      currentXP={migratedProfile.coreXP}
-                      compact={true}
-                    />
-                    <XPProgressCard
-                      axis="staticHolds"
-                      currentXP={migratedProfile.staticHoldsXP}
-                      compact={true}
-                    />
-                  </>
-                );
-              })()}
+              <XPProgressCard
+                axis="strength"
+                currentXP={unifiedProfile.strengthXP}
+                compact={true}
+              />
+              <XPProgressCard
+                axis="endurance"
+                currentXP={unifiedProfile.enduranceXP}
+                compact={true}
+              />
+              <XPProgressCard
+                axis="balance"
+                currentXP={unifiedProfile.balanceXP}
+                compact={true}
+              />
+              <XPProgressCard
+                axis="mobility"
+                currentXP={unifiedProfile.mobilityXP}
+                compact={true}
+              />
+              <XPProgressCard
+                axis="core"
+                currentXP={unifiedProfile.coreXP}
+                compact={true}
+              />
+              <XPProgressCard
+                axis="staticHolds"
+                currentXP={unifiedProfile.staticHoldsXP}
+                compact={true}
+              />
             </div>
           </CardContent>
         </Card>
       )}
 
-      {/* Recent Activity */}
-      <Card>
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <div>
-              <CardTitle>Weekly Progress</CardTitle>
-              <CardDescription>
-                Your activity in the last 7 days
-              </CardDescription>
-            </div>
-            <Calendar className="h-5 w-5 text-slate-400" />
-          </div>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-7 gap-2">
-            {Array.from({ length: 7 }).map((_, i) => {
-              const date = new Date();
-              date.setDate(date.getDate() - (6 - i));
-              const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
-              const activity = Math.random() > 0.5; // TODO: Replace with real data
+      {/* Quick Actions & Weekly Activity */}
+      <div className="grid gap-6 lg:grid-cols-2">
+        {/* Quick Actions */}
+        <Card className="shadow-lg border-2">
+          <CardHeader>
+            <CardTitle className="text-xl">Quick Actions</CardTitle>
+            <CardDescription>
+              Jump into your training
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              <Link href="/routines">
+                <Button variant="outline" className="w-full justify-start h-auto py-4 hover:bg-blue-50 hover:border-blue-300 transition-all">
+                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                    <Dumbbell className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <div className="text-left">
+                    <div className="font-semibold text-slate-900">Start Workout</div>
+                    <div className="text-xs text-slate-600">Access your personalized routine</div>
+                  </div>
+                  <ArrowRight className="w-5 h-5 ml-auto text-slate-400" />
+                </Button>
+              </Link>
 
-              return (
-                <div key={i} className="flex flex-col items-center gap-2">
-                  <div
-                    className={`w-full aspect-square rounded-lg ${
-                      activity ? 'bg-green-500' : 'bg-slate-200'
-                    }`}
-                  />
-                  <span className="text-xs text-slate-600 capitalize">
-                    {dayName}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-        </CardContent>
-      </Card>
+              <Link href="/dashboard?tab=missions">
+                <Button variant="outline" className="w-full justify-start h-auto py-4 hover:bg-purple-50 hover:border-purple-300 transition-all">
+                  <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
+                    <Target className="w-5 h-5 text-purple-600" />
+                  </div>
+                  <div className="text-left">
+                    <div className="font-semibold text-slate-900">View All Missions</div>
+                    <div className="text-xs text-slate-600">See daily and weekly challenges</div>
+                  </div>
+                  <ArrowRight className="w-5 h-5 ml-auto text-slate-400" />
+                </Button>
+              </Link>
+
+              <Link href="/dashboard?tab=achievements">
+                <Button variant="outline" className="w-full justify-start h-auto py-4 hover:bg-amber-50 hover:border-amber-300 transition-all">
+                  <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center mr-3">
+                    <Award className="w-5 h-5 text-amber-600" />
+                  </div>
+                  <div className="text-left">
+                    <div className="font-semibold text-slate-900">Achievements</div>
+                    <div className="text-xs text-slate-600">View your unlocked badges</div>
+                  </div>
+                  <ArrowRight className="w-5 h-5 ml-auto text-slate-400" />
+                </Button>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Weekly Progress */}
+        <Card className="shadow-lg border-2">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <div>
+                <CardTitle className="text-xl">Weekly Activity</CardTitle>
+                <CardDescription>
+                  Your training consistency this week
+                </CardDescription>
+              </div>
+              <Calendar className="h-5 w-5 text-green-500" />
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-7 gap-2">
+              {Array.from({ length: 7 }).map((_, i) => {
+                const date = new Date();
+                date.setDate(date.getDate() - (6 - i));
+                const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+
+                // TODO: Replace with real workout data from weeklyProgress
+                const hasActivity = userData?.weeklyProgress?.[date.toISOString().slice(0, 10)] > 0;
+                const isToday = i === 6;
+
+                return (
+                  <div key={i} className="flex flex-col items-center gap-2">
+                    <div
+                      className={`w-full aspect-square rounded-lg transition-all ${
+                        hasActivity
+                          ? 'bg-green-500 shadow-lg'
+                          : isToday
+                          ? 'bg-blue-200 border-2 border-blue-400 border-dashed'
+                          : 'bg-slate-200'
+                      }`}
+                      title={hasActivity ? 'Workout completed' : 'No activity'}
+                    />
+                    <span className={`text-xs font-medium ${isToday ? 'text-blue-600' : 'text-slate-600'}`}>
+                      {dayName}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="mt-4 flex justify-center gap-4 text-xs text-slate-600">
+              <div className="flex items-center gap-1">
+                <div className="w-3 h-3 bg-green-500 rounded"></div>
+                <span>Active</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <div className="w-3 h-3 bg-slate-200 rounded"></div>
+                <span>Rest</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <div className="w-3 h-3 bg-blue-200 border-2 border-blue-400 border-dashed rounded"></div>
+                <span>Today</span>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 import prisma from '@/lib/prisma';
 import { getDailyMissions, saveDailyMissions, DevMission } from '@/lib/dev-missions-store';
 import { getServerSession } from 'next-auth';
@@ -189,7 +191,7 @@ export async function GET(req: NextRequest) {
       } : null,
     });
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       success: true,
       user: {
         id: user?.id,
@@ -218,6 +220,13 @@ export async function GET(req: NextRequest) {
       recentAchievements,
       weeklyProgress: counts,
     });
+
+    // Prevent caching
+    response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    response.headers.set('Pragma', 'no-cache');
+    response.headers.set('Expires', '0');
+
+    return response;
   } catch (e: any) {
     // Fallback en desarrollo si Prisma falla: intentar obtener usuario de DB primero
     if (process.env.NODE_ENV === 'development') {
