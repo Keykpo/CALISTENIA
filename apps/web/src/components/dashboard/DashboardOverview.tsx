@@ -51,8 +51,15 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
   // The values are already calculated and saved during assessment/updates
   const hexProfile = userData?.hexagon as HexagonProfileWithXP | null;
 
-  console.log('📊 Dashboard hexagon data:', {
+  console.log('[DASHBOARD_OVERVIEW] Raw userData received:', {
+    hasUserData: !!userData,
+    hasHexagon: !!userData?.hexagon,
+    userData: userData ? Object.keys(userData) : null,
+  });
+
+  console.log('[DASHBOARD_OVERVIEW] Hexagon data:', {
     hasHexProfile: !!hexProfile,
+    hexProfileKeys: hexProfile ? Object.keys(hexProfile) : null,
     visualValues: hexProfile ? {
       relativeStrength: hexProfile.relativeStrength,
       muscularEndurance: hexProfile.muscularEndurance,
@@ -65,6 +72,9 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
       relativeStrengthXP: hexProfile.relativeStrengthXP,
       muscularEnduranceXP: hexProfile.muscularEnduranceXP,
       balanceControlXP: hexProfile.balanceControlXP,
+      jointMobilityXP: hexProfile.jointMobilityXP,
+      bodyTensionXP: hexProfile.bodyTensionXP,
+      skillTechniqueXP: hexProfile.skillTechniqueXP,
     } : null,
   });
 

@@ -8,7 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Trophy, Loader2 } from 'lucide-react';
 
 export default function AssessmentPage() {
-  const { data: session, status } = useSession();
+  const { data: session, status, update } = useSession();
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
 
@@ -33,8 +33,18 @@ export default function AssessmentPage() {
 
       if (res.ok) {
         const data = await res.json();
+        console.log('[ASSESSMENT] Success, updating session...');
+
+        // CRITICAL: Update the session to refresh JWT token with hasCompletedAssessment = true
+        // This prevents the middleware redirect loop
+        await update();
+
+        // Small delay to ensure token is updated
+        await new Promise(resolve => setTimeout(resolve, 500));
+
         // Use window.location.href for hard reload to update JWT token
-        const redirectPath = data.redirectTo || '/dashboard';
+        const redirectPath = data.redirectTo || '/onboarding/results';
+        console.log('[ASSESSMENT] Redirecting to:', redirectPath);
         window.location.href = redirectPath;
       } else {
         const error = await res.json();

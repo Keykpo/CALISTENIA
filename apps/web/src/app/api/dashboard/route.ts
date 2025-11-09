@@ -48,7 +48,34 @@ export async function GET(req: NextRequest) {
         user = await prisma.user.findUnique({ where: { id: userId } });
       }
     }
-    const hex = await prisma.hexagonProfile.findUnique({ where: { userId } });
+
+    // Fetch hexagon profile with all necessary fields
+    const hex = await prisma.hexagonProfile.findUnique({
+      where: { userId },
+      select: {
+        // Visual values (0-10)
+        relativeStrength: true,
+        muscularEndurance: true,
+        balanceControl: true,
+        jointMobility: true,
+        bodyTension: true,
+        skillTechnique: true,
+        // XP values (required for calculations)
+        relativeStrengthXP: true,
+        muscularEnduranceXP: true,
+        balanceControlXP: true,
+        jointMobilityXP: true,
+        bodyTensionXP: true,
+        skillTechniqueXP: true,
+        // Level values (required for mode calculation)
+        relativeStrengthLevel: true,
+        muscularEnduranceLevel: true,
+        balanceControlLevel: true,
+        jointMobilityLevel: true,
+        bodyTensionLevel: true,
+        skillTechniqueLevel: true,
+      },
+    });
     const recentWorkouts = await prisma.workoutHistory.findMany({
       where: { userId },
       orderBy: { completedAt: 'desc' },
@@ -146,6 +173,19 @@ export async function GET(req: NextRequest) {
     // Check if user has completed assessment
     const hasCompletedAssessment = await prisma.userAssessment.findFirst({
       where: { userId },
+    });
+
+    console.log('[DASHBOARD] Hexagon profile data:', {
+      hasHexProfile: !!hex,
+      visualValues: hex ? {
+        relativeStrength: hex.relativeStrength,
+        balanceControl: hex.balanceControl,
+        skillTechnique: hex.skillTechnique,
+      } : null,
+      xpValues: hex ? {
+        relativeStrengthXP: hex.relativeStrengthXP,
+        balanceControlXP: hex.balanceControlXP,
+      } : null,
     });
 
     return NextResponse.json({
