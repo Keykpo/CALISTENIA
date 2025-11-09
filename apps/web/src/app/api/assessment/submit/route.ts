@@ -73,15 +73,15 @@ export async function POST(req: NextRequest) {
     };
 
     // Calculate initial XP based on assessment scores and overall level
-    // Formula: (visualValue / 10) * XP_threshold_for_level
+    // Uses mid-point of each level range to represent realistic 3-year progression
     const levelToBaseXP: Record<string, number> = {
-      BEGINNER: 500,      // Mid-point of BEGINNER range (0-2000)
-      INTERMEDIATE: 3500, // Mid-point of INTERMEDIATE range (2000-5000)
-      ADVANCED: 7500,     // Mid-point of ADVANCED range (5000-10000)
-      EXPERT: 12000,      // Above ELITE threshold (10000+)
+      BEGINNER: 24000,      // Mid-point of BEGINNER range (0-48,000 XP)
+      INTERMEDIATE: 96000,  // Mid-point of INTERMEDIATE range (48,000-144,000 XP)
+      ADVANCED: 264000,     // Mid-point of ADVANCED range (144,000-384,000 XP)
+      EXPERT: 500000,       // Well into ELITE range (384,000+ XP)
     };
 
-    const baseXP = levelToBaseXP[data.overallLevel] || 500;
+    const baseXP = levelToBaseXP[data.overallLevel] || 24000; // Default to BEGINNER mid-point
 
     // Calculate XP for each axis based on its score relative to the base
     const initialXP: Partial<Record<HexagonAxis, number>> = {};

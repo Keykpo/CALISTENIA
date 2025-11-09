@@ -80,7 +80,7 @@ export function getLevelFromXP(xp: number): ProgressionLevel {
 export function getVisualValueFromXP(xp: number, level: ProgressionLevel): number {
   const thresholds = XP_THRESHOLDS[level];
   const levelStart = thresholds.min;
-  const levelEnd = thresholds.max === Infinity ? 20000 : thresholds.max; // Cap ELITE at 20k for visual
+  const levelEnd = thresholds.max === Infinity ? 1000000 : thresholds.max; // Cap ELITE at 1M for visual
 
   const progressInLevel = (xp - levelStart) / (levelEnd - levelStart);
   const clampedProgress = Math.max(0, Math.min(1, progressInLevel));
@@ -107,7 +107,7 @@ export function getLevelProgress(xp: number): number {
   const thresholds = XP_THRESHOLDS[level];
 
   const levelStart = thresholds.min;
-  const levelEnd = thresholds.max === Infinity ? 20000 : thresholds.max;
+  const levelEnd = thresholds.max === Infinity ? 1000000 : thresholds.max;
 
   const progress = ((xp - levelStart) / (levelEnd - levelStart)) * 100;
   return Math.min(100, Math.max(0, Math.round(progress)));
