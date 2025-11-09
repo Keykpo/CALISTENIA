@@ -204,32 +204,43 @@ function ProgressionCard({ progression, userLevel, userId }: ProgressionCardProp
   };
 
   const handleStartTraining = async (duration: number) => {
-    if (!userId || !skillProgress) return;
+    if (!userId || !skillProgress) {
+      console.error('[FIG_TRAINING] Missing userId or skillProgress:', { userId, skillProgress });
+      toast.error('Missing user data. Please try refreshing the page.');
+      return;
+    }
 
     setIsLoading(true);
     try {
+      const requestData = {
+        userId,
+        skillBranch: progression.goal,
+        userLevel: skillProgress.currentLevel,
+        duration,
+      };
+
+      console.log('[FIG_TRAINING] Starting session with:', requestData);
+
       const response = await fetch('/api/training-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userId,
-          skillBranch: progression.goal,
-          userLevel: skillProgress.currentLevel,
-          duration,
-        }),
+        body: JSON.stringify(requestData),
       });
 
       const data = await response.json();
+      console.log('[FIG_TRAINING] Response:', { status: response.status, data });
+
       if (data.success) {
         setCurrentSession(data.session);
         setShowDurationSelect(false);
         setShowTrainingSession(true);
         toast.success('Training session started!');
       } else {
-        toast.error('Failed to start training session');
+        console.error('[FIG_TRAINING] Failed to start session:', data);
+        toast.error(data.error || 'Failed to start training session');
       }
     } catch (error) {
-      console.error('Error starting training:', error);
+      console.error('[FIG_TRAINING] Error starting training:', error);
       toast.error('Failed to start training session');
     } finally {
       setIsLoading(false);
