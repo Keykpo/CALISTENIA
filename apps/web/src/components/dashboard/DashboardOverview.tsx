@@ -15,9 +15,11 @@ import {
   Dumbbell
 } from 'lucide-react';
 import SkillHexagon from '../SkillHexagon';
+import UnifiedHexagon from '../UnifiedHexagon';
 import XPProgressCard from '../XPProgressCard';
 import Link from 'next/link';
 import { type HexagonProfileWithXP, type HexagonAxis } from '@/lib/hexagon-progression';
+import { migrateToUnifiedHexagon } from '@/lib/unified-hexagon-system';
 
 interface DashboardOverviewProps {
   userData: any;
@@ -162,12 +164,22 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
           </CardHeader>
           <CardContent>
             <div className="flex justify-center">
-              <SkillHexagon
-                profile={hexagonData}
-                showCard={false}
-                animated={false}
-                size={300}
-              />
+              {hexProfile ? (
+                <UnifiedHexagon
+                  profile={migrateToUnifiedHexagon(hexProfile)}
+                  showCard={false}
+                  animated={false}
+                  size={300}
+                  showAxisDetails={false}
+                />
+              ) : (
+                <SkillHexagon
+                  profile={hexagonData}
+                  showCard={false}
+                  animated={false}
+                  size={300}
+                />
+              )}
             </div>
           </CardContent>
         </Card>
