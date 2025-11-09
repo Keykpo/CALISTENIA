@@ -14,16 +14,14 @@ import {
   Calendar,
   Ruler,
   Weight,
-  Target,
   Edit,
   Save,
   X,
-  TrendingUp,
-  RefreshCw,
-  AlertTriangle
 } from 'lucide-react';
 import { signOut } from 'next-auth/react';
-import { calculateOverallLevel, getLevelBadgeColor, type HexagonProfileWithXP } from '@/lib/hexagon-progression';
+import { type HexagonProfileWithXP } from '@/lib/hexagon-progression';
+import UnifiedSkillAssessment from '@/components/UnifiedSkillAssessment';
+import { migrateToUnifiedHexagon } from '@/lib/unified-hexagon-system';
 
 interface ProfileViewProps {
   userId: string;
@@ -83,18 +81,9 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
     }
   };
 
-  const handleRecalculate = () => {
-    // Navigate to assessment page
-    router.push('/onboarding/assessment');
-  };
-
   const stats = userData?.stats || {};
   const user = userData?.user || {};
   const hexProfile = userData?.hexagon as HexagonProfileWithXP | null;
-
-  // Calculate dynamic fitness level from hexagon
-  const calculatedLevel = hexProfile ? calculateOverallLevel(hexProfile) : (user.fitnessLevel || 'BEGINNER');
-  const levelBadgeColor = getLevelBadgeColor(calculatedLevel);
 
   return (
     <div className="space-y-6">
@@ -284,76 +273,12 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
           </CardContent>
         </Card>
 
-      {/* Skill Profile Card */}
-      <Card className="border-purple-200 bg-purple-50/30">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Target className="w-5 h-5 text-purple-600" />
-            Skill Profile
-          </CardTitle>
-          <CardDescription>
-            Your current calisthenics level
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <Label className="text-slate-600 mb-2 block">Calisthenics Level</Label>
-              <Badge variant="outline" className={`text-base px-4 py-2 ${levelBadgeColor}`}>
-                {calculatedLevel}
-              </Badge>
-              <p className="text-xs text-slate-500 mt-2">
-                Calculated from your hexagon skill levels
-              </p>
-            </div>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={handleRecalculate}
-            >
-              <RefreshCw className="w-4 h-4 mr-2" />
-              Recalculate
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Skill Level Management */}
-      <Card className="border-blue-200 bg-blue-50/50">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Target className="w-5 h-5 text-blue-600" />
-            Skill Level Assessment
-          </CardTitle>
-          <CardDescription>
-            Update your skill profile by retaking the assessment
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="flex items-start gap-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
-            <AlertTriangle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
-            <div className="text-sm text-amber-900">
-              <p className="font-semibold mb-1">Before recalculating:</p>
-              <ul className="list-disc list-inside space-y-1 text-amber-800">
-                <li>This will update your hexagon skill levels</li>
-                <li>Your training plan will be adjusted accordingly</li>
-                <li>Your progress history will be preserved</li>
-              </ul>
-            </div>
-          </div>
-          <Button
-            onClick={handleRecalculate}
-            className="w-full"
-            variant="default"
-          >
-            <RefreshCw className="w-4 h-4 mr-2" />
-            Retake Skill Assessment
-          </Button>
-          <p className="text-xs text-slate-600 text-center">
-            Recommended if your fitness level has significantly changed or if you made a mistake during initial assessment
-          </p>
-        </CardContent>
-      </Card>
+      {/* Unified Skill Assessment Card */}
+      <UnifiedSkillAssessment
+        userId={userId}
+        hexagonProfile={hexProfile ? migrateToUnifiedHexagon(hexProfile) : null}
+        onUpdate={onUpdate}
+      />
 
       {/* Account Actions */}
       <Card>
