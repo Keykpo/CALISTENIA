@@ -74,6 +74,8 @@ model User {
   trainingGoals     TrainingGoal[]
   primaryGoal       TrainingGoal?      @relation("PrimaryGoal", fields: [primaryGoalId], references: [id])
   hexagonProfile    HexagonProfile?
+  skillProgress     UserSkillProgress[]
+  trainingSessions  TrainingSession[]
 
   @@map("users")
 }
@@ -964,4 +966,87 @@ enum SkillBranch {
   LOWER_BODY // Lower body branch (Squats, Pistols, etc.)
   STATICS // Static elements branch (Planche, Front lever, etc.)
   WARM_UP // Warm-up and mobility branch
+}
+
+// ================================
+// FIG SKILL PROGRESSION & TRAINING
+// ================================
+
+model UserSkillProgress {
+  id           String   @id @default(cuid())
+  userId       String
+  skillBranch  String   // Maps to MasteryGoal (HANDSTAND, PLANCHE, etc.)
+  currentLevel String   // BEGINNER, INTERMEDIATE, ADVANCED, ELITE
+
+  // Assessment data
+  assessmentScore Int      @default(0) // 0-9 points from assessment
+  assessmentDate  DateTime @default(now())
+
+  // Progress tracking
+  sessionsCompleted Int @default(0)
+  totalXPEarned     Int @default(0)
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  trainingSessions TrainingSession[]
+
+  @@unique([userId, skillBranch])
+  @@map("user_skill_progress")
+}
+
+model TrainingSession {
+  id                 String   @id @default(cuid())
+  userId             String
+  userSkillProgressId String
+
+  // Session details
+  skillBranch    String   // Maps to MasteryGoal
+  userLevel      String   // Level at time of session creation
+  duration       Int      // Duration in minutes (10-120)
+  status         String   @default("IN_PROGRESS") // IN_PROGRESS, COMPLETED, CANCELLED
+
+  // Session structure (JSON string for SQLite)
+  sessionData    String   // Contains phases, exercises, sets, reps
+
+  // XP reward
+  xpAwarded      Int      @default(0)
+  hexagonCategory String? // balance, strength, static_holds, core, etc.
+
+  // Timing
+  startedAt      DateTime @default(now())
+  completedAt    DateTime?
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user               User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userSkillProgress  UserSkillProgress @relation(fields: [userSkillProgressId], references: [id], onDelete: Cascade)
+  exerciseCompletions SessionExerciseCompletion[]
+
+  @@map("training_sessions")
+}
+
+model SessionExerciseCompletion {
+  id               String   @id @default(cuid())
+  trainingSessionId String
+  exerciseIndex    Int      // Index in the session exercises array
+  exerciseName     String
+  completed        Boolean  @default(false)
+  completedAt      DateTime?
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  trainingSession TrainingSession @relation(fields: [trainingSessionId], references: [id], onDelete: Cascade)
+
+  @@unique([trainingSessionId, exerciseIndex])
+  @@map("session_exercise_completions")
 }
