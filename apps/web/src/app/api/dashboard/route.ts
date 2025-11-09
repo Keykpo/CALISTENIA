@@ -191,6 +191,12 @@ export async function GET(req: NextRequest) {
       } : null,
     });
 
+    console.log('[DASHBOARD] About to return response with hexagon:', {
+      hexagonIsNull: hex === null,
+      hexagonIsUndefined: hex === undefined,
+      hexagonValue: hex,
+    });
+
     const response = NextResponse.json({
       success: true,
       user: {

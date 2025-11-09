@@ -69,7 +69,11 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
   // Hexagon data
   const hexProfile = userData?.hexagon as OldHexagonProfile | null;
   const unifiedProfile = migrateToUnifiedHexagon(hexProfile);
-  const fitnessLevel = calculateUnifiedOverallLevel(unifiedProfile);
+
+  // Use calculated fitness level from hexagon, fallback to DB value if hexagon is missing
+  const calculatedLevel = calculateUnifiedOverallLevel(unifiedProfile);
+  const dbFitnessLevel = userData?.user?.fitnessLevel as UnifiedFitnessLevel | null;
+  const fitnessLevel = hexProfile ? calculatedLevel : (dbFitnessLevel || 'BEGINNER');
   const levelInfo = LEVEL_INFO[fitnessLevel];
 
   // Calculate average XP
@@ -97,33 +101,35 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
       balanceLevel: unifiedProfile.balanceLevel,
       strengthLevel: unifiedProfile.strengthLevel,
     },
-    calculatedFitnessLevel: fitnessLevel,
+    calculatedFromHexagon: calculatedLevel,
+    dbFitnessLevel: dbFitnessLevel,
+    finalFitnessLevel: fitnessLevel,
+    usingFallback: !hexProfile,
     averageXP,
     levelProgress,
-    userFitnessLevelFromDB: userData?.user?.fitnessLevel,
   });
 
-  // If no hexagon profile exists, show warning
-  if (!hexProfile) {
+  // If no hexagon profile exists AND no DB fitness level, show warning
+  if (!hexProfile && !dbFitnessLevel) {
     return (
       <div className="space-y-6">
         <Card className="bg-yellow-50 border-2 border-yellow-300">
           <CardHeader>
             <CardTitle className="text-yellow-900 flex items-center gap-2">
               <Target className="w-5 h-5" />
-              No Hexagon Profile Found
+              No Fitness Profile Found
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-yellow-800">
-              Your hexagon profile hasn't been created yet. Please complete the FIG assessment to generate your profile.
+              Your fitness profile hasn't been created yet. Please complete the FIG assessment to generate your profile.
             </p>
             <div className="bg-white rounded-lg p-4 border border-yellow-200">
               <p className="text-sm font-mono text-slate-600">
                 Debug Info:
               </p>
               <pre className="text-xs mt-2 overflow-x-auto">
-                {JSON.stringify({ hasHexProfile: !!hexProfile, userData: userData ? Object.keys(userData) : null }, null, 2)}
+                {JSON.stringify({ hasHexProfile: !!hexProfile, hasDBLevel: !!dbFitnessLevel, userData: userData ? Object.keys(userData) : null }, null, 2)}
               </pre>
             </div>
             <Link href="/onboarding/assessment">
@@ -140,6 +146,25 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
 
   return (
     <div className="space-y-6">
+      {/* Warning banner if using DB fallback */}
+      {!hexProfile && dbFitnessLevel && (
+        <Card className="bg-amber-50 border-2 border-amber-300">
+          <CardContent className="pt-4 pb-4">
+            <div className="flex items-center gap-3">
+              <RefreshCw className="w-5 h-5 text-amber-600" />
+              <div className="flex-1">
+                <p className="text-sm text-amber-900 font-medium">
+                  Hexagon data is loading... Showing your fitness level ({dbFitnessLevel}) from database.
+                </p>
+                <p className="text-xs text-amber-700 mt-1">
+                  The hexagon visualization will appear once data is fully loaded. Try refreshing if this persists.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
       {/* Hero Card - Level and Progress */}
       <Card className={`bg-gradient-to-br ${levelInfo.gradient} text-white border-0 shadow-xl overflow-hidden relative`}>
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
