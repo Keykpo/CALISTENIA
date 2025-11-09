@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -14,7 +14,9 @@ import {
   ChevronRight,
   Dumbbell,
   Activity,
-  Flame
+  Flame,
+  Play,
+  Zap
 } from 'lucide-react';
 import {
   FIG_PROGRESSIONS,
@@ -22,6 +24,10 @@ import {
   MasteryGoal,
   SkillProgression
 } from '@/lib/fig-level-progressions';
+import AssessmentDialog from '@/components/AssessmentDialog';
+import DurationSelectionDialog from '@/components/DurationSelectionDialog';
+import TrainingSessionView from '@/components/TrainingSessionView';
+import { toast } from 'react-hot-toast';
 
 interface FigLevelSkillPathProps {
   userLevel: DifficultyLevel;
@@ -101,6 +107,7 @@ export default function FigLevelSkillPath({ userLevel, userId }: FigLevelSkillPa
                   key={progression.goal}
                   progression={progression}
                   userLevel={userLevel}
+                  userId={userId}
                 />
               ))}
             </div>
@@ -114,10 +121,127 @@ export default function FigLevelSkillPath({ userLevel, userId }: FigLevelSkillPa
 interface ProgressionCardProps {
   progression: SkillProgression;
   userLevel: DifficultyLevel;
+  userId?: string;
 }
 
-function ProgressionCard({ progression, userLevel }: ProgressionCardProps) {
+function ProgressionCard({ progression, userLevel, userId }: ProgressionCardProps) {
   const [expanded, setExpanded] = useState(false);
+  const [showAssessment, setShowAssessment] = useState(false);
+  const [showDurationSelect, setShowDurationSelect] = useState(false);
+  const [showTrainingSession, setShowTrainingSession] = useState(false);
+  const [skillProgress, setSkillProgress] = useState<any>(null);
+  const [currentSession, setCurrentSession] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Fetch skill progress on mount
+  useEffect(() => {
+    if (userId) {
+      fetchSkillProgress();
+    }
+  }, [userId, progression.goal]);
+
+  const fetchSkillProgress = async () => {
+    if (!userId) return;
+
+    try {
+      const response = await fetch(
+        `/api/skill-progress?userId=${userId}&skillBranch=${progression.goal}`
+      );
+      const data = await response.json();
+      if (data.progress && data.progress.length > 0) {
+        setSkillProgress(data.progress[0]);
+      }
+    } catch (error) {
+      console.error('Error fetching skill progress:', error);
+    }
+  };
+
+  const handleTrainNowClick = () => {
+    if (!userId) {
+      toast.error('Please log in to start training');
+      return;
+    }
+
+    if (!skillProgress) {
+      // No assessment done yet, show assessment
+      setShowAssessment(true);
+    } else {
+      // Assessment done, show duration selection
+      setShowDurationSelect(true);
+    }
+  };
+
+  const handleAssessmentComplete = async (level: string, score: number) => {
+    if (!userId) return;
+
+    setIsLoading(true);
+    try {
+      const response = await fetch('/api/skill-progress', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId,
+          skillBranch: progression.goal,
+          assessmentScore: score,
+        }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        toast.success(`Assessment complete! You're at ${level} level.`);
+        setSkillProgress(data.progress);
+        setShowAssessment(false);
+        setShowDurationSelect(true);
+      } else {
+        toast.error('Failed to save assessment');
+      }
+    } catch (error) {
+      console.error('Error saving assessment:', error);
+      toast.error('Failed to save assessment');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleStartTraining = async (duration: number) => {
+    if (!userId || !skillProgress) return;
+
+    setIsLoading(true);
+    try {
+      const response = await fetch('/api/training-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId,
+          skillBranch: progression.goal,
+          userLevel: skillProgress.currentLevel,
+          duration,
+        }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setCurrentSession(data.session);
+        setShowDurationSelect(false);
+        setShowTrainingSession(true);
+        toast.success('Training session started!');
+      } else {
+        toast.error('Failed to start training session');
+      }
+    } catch (error) {
+      console.error('Error starting training:', error);
+      toast.error('Failed to start training session');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSessionComplete = () => {
+    setShowTrainingSession(false);
+    setCurrentSession(null);
+    fetchSkillProgress(); // Refresh progress
+    toast.success('Great job! Keep up the good work!');
+  };
 
   // Find user's current step
   const userStepIndex = progression.steps.findIndex(step => step.level === userLevel);
@@ -125,6 +249,39 @@ function ProgressionCard({ progression, userLevel }: ProgressionCardProps) {
   const progressPercentage = currentStep
     ? ((userStepIndex + 1) / progression.steps.length) * 100
     : 0;
+
+  // Determine button state
+  const getTrainNowButton = () => {
+    if (!userId) {
+      return (
+        <Button variant="outline" className="w-full" disabled>
+          Login to Train
+        </Button>
+      );
+    }
+
+    if (!skillProgress) {
+      return (
+        <Button
+          onClick={handleTrainNowClick}
+          className="w-full bg-blue-600 hover:bg-blue-700"
+        >
+          <Target className="w-4 h-4 mr-2" />
+          Start Assessment
+        </Button>
+      );
+    }
+
+    return (
+      <Button
+        onClick={handleTrainNowClick}
+        className="w-full bg-green-600 hover:bg-green-700"
+      >
+        <Zap className="w-4 h-4 mr-2" />
+        Train Now
+      </Button>
+    );
+  };
 
   return (
     <Card className="hover:shadow-lg transition-shadow">
@@ -227,7 +384,40 @@ function ProgressionCard({ progression, userLevel }: ProgressionCardProps) {
             })}
           </div>
         )}
+
+        {/* Train Now Button */}
+        <div className="mt-4 pt-4 border-t">
+          {getTrainNowButton()}
+        </div>
       </CardContent>
+
+      {/* Dialogs */}
+      <AssessmentDialog
+        open={showAssessment}
+        onOpenChange={setShowAssessment}
+        skillBranch={progression.goal}
+        skillName={progression.name}
+        onComplete={handleAssessmentComplete}
+      />
+
+      <DurationSelectionDialog
+        open={showDurationSelect}
+        onOpenChange={setShowDurationSelect}
+        skillName={progression.name}
+        userLevel={skillProgress?.currentLevel || 'BEGINNER'}
+        onStartTraining={handleStartTraining}
+      />
+
+      {currentSession && (
+        <TrainingSessionView
+          open={showTrainingSession}
+          onOpenChange={setShowTrainingSession}
+          sessionId={currentSession.id}
+          sessionData={currentSession}
+          xpAwarded={currentSession.xpAwarded}
+          onComplete={handleSessionComplete}
+        />
+      )}
     </Card>
   );
 }
