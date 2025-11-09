@@ -84,6 +84,12 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    console.log('[USER_PROFILE] Fetched profile:', {
+      userId,
+      hasHexagonProfile: !!user.hexagonProfile,
+      hexagonProfileRaw: user.hexagonProfile,
+    });
+
     return NextResponse.json({
       success: true,
       ...user,
