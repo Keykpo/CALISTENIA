@@ -114,24 +114,83 @@ export function getLevelProgress(xp: number): number {
 }
 
 /**
- * Calculate overall level from average XP across all axes
+ * Calculate overall level from MODE (most frequent) of axis levels
+ * If there's a tie, uses the higher level
+ *
+ * This ensures that the user's general level reflects their actual skill distribution
+ * Example: If 4 axes are INTERMEDIATE and 2 are BEGINNER, level = INTERMEDIATE
  */
 export function calculateOverallLevel(profile: Partial<HexagonProfileWithXP>): ProgressionLevel {
-  const axes: (keyof Pick<HexagonProfileWithXP,
-    'relativeStrengthXP' | 'muscularEnduranceXP' | 'balanceControlXP' |
-    'jointMobilityXP' | 'bodyTensionXP' | 'skillTechniqueXP'>)[] = [
-    'relativeStrengthXP',
-    'muscularEnduranceXP',
-    'balanceControlXP',
-    'jointMobilityXP',
-    'bodyTensionXP',
-    'skillTechniqueXP',
+  const levelAxes: (keyof Pick<HexagonProfileWithXP,
+    'relativeStrengthLevel' | 'muscularEnduranceLevel' | 'balanceControlLevel' |
+    'jointMobilityLevel' | 'bodyTensionLevel' | 'skillTechniqueLevel'>)[] = [
+    'relativeStrengthLevel',
+    'muscularEnduranceLevel',
+    'balanceControlLevel',
+    'jointMobilityLevel',
+    'bodyTensionLevel',
+    'skillTechniqueLevel',
   ];
 
-  const totalXP = axes.reduce((sum, axis) => sum + (profile[axis] || 0), 0);
-  const averageXP = totalXP / axes.length;
+  // Get all level values
+  const levels = levelAxes.map(axis => profile[axis] || 'BEGINNER');
 
-  return getLevelFromXP(averageXP);
+  // Count frequency of each level
+  const levelCounts: Record<string, number> = {};
+  levels.forEach(level => {
+    levelCounts[level] = (levelCounts[level] || 0) + 1;
+  });
+
+  // Find the mode (most frequent level)
+  let maxCount = 0;
+  let modeLevels: ProgressionLevel[] = [];
+
+  Object.entries(levelCounts).forEach(([level, count]) => {
+    if (count > maxCount) {
+      maxCount = count;
+      modeLevels = [level as ProgressionLevel];
+    } else if (count === maxCount) {
+      modeLevels.push(level as ProgressionLevel);
+    }
+  });
+
+  // If there's a tie, return the highest level
+  const levelOrder: ProgressionLevel[] = ['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'ELITE'];
+  modeLevels.sort((a, b) => levelOrder.indexOf(b) - levelOrder.indexOf(a));
+
+  return modeLevels[0] || 'BEGINNER';
+}
+
+/**
+ * Calculate overall level from MEDIAN of axis levels
+ * Alternative approach that provides a middle ground
+ */
+export function calculateOverallLevelMedian(profile: Partial<HexagonProfileWithXP>): ProgressionLevel {
+  const levelAxes: (keyof Pick<HexagonProfileWithXP,
+    'relativeStrengthLevel' | 'muscularEnduranceLevel' | 'balanceControlLevel' |
+    'jointMobilityLevel' | 'bodyTensionLevel' | 'skillTechniqueLevel'>)[] = [
+    'relativeStrengthLevel',
+    'muscularEnduranceLevel',
+    'balanceControlLevel',
+    'jointMobilityLevel',
+    'bodyTensionLevel',
+    'skillTechniqueLevel',
+  ];
+
+  // Get all level values and convert to numeric for sorting
+  const levelOrder: ProgressionLevel[] = ['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'ELITE'];
+  const levelIndices = levelAxes
+    .map(axis => profile[axis] || 'BEGINNER')
+    .map(level => levelOrder.indexOf(level as ProgressionLevel))
+    .sort((a, b) => a - b);
+
+  // Calculate median
+  const mid = Math.floor(levelIndices.length / 2);
+  const medianIndex = levelIndices.length % 2 === 0
+    ? Math.floor((levelIndices[mid - 1] + levelIndices[mid]) / 2)
+    : levelIndices[mid];
+
+  return levelOrder[medianIndex] || 'BEGINNER';
 }
 
 /**

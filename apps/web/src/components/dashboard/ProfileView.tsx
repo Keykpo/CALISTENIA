@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -17,9 +18,12 @@ import {
   Edit,
   Save,
   X,
-  TrendingUp
+  TrendingUp,
+  RefreshCw,
+  AlertTriangle
 } from 'lucide-react';
 import { signOut } from 'next-auth/react';
+import { calculateOverallLevel, getLevelBadgeColor, type HexagonProfileWithXP } from '@/lib/hexagon-progression';
 
 interface ProfileViewProps {
   userId: string;
@@ -28,8 +32,10 @@ interface ProfileViewProps {
 }
 
 export default function ProfileView({ userId, userData, onUpdate }: ProfileViewProps) {
+  const router = useRouter();
   const [isEditing, setIsEditing] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [showRecalculateWarning, setShowRecalculateWarning] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -79,8 +85,18 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
     }
   };
 
+  const handleRecalculate = () => {
+    // Navigate to assessment page
+    router.push('/onboarding/assessment');
+  };
+
   const stats = userData?.stats || {};
   const user = userData?.user || {};
+  const hexProfile = userData?.hexagon as HexagonProfileWithXP | null;
+
+  // Calculate dynamic fitness level from hexagon
+  const calculatedLevel = hexProfile ? calculateOverallLevel(hexProfile) : (user.fitnessLevel || 'BEGINNER');
+  const levelBadgeColor = getLevelBadgeColor(calculatedLevel);
 
   return (
     <div className="space-y-6">
@@ -166,21 +182,32 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <Label className="text-slate-600">Fitness Level</Label>
-                    <div className="mt-1">
-                      <Badge variant="outline" className="text-sm">
-                        {user.fitnessLevel || 'BEGINNER'}
-                      </Badge>
-                    </div>
+                <div>
+                  <Label className="text-slate-600">Calisthenics Level</Label>
+                  <div className="mt-2 flex items-center justify-between">
+                    <Badge variant="outline" className={`text-sm ${levelBadgeColor}`}>
+                      {calculatedLevel}
+                    </Badge>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={handleRecalculate}
+                      className="text-xs"
+                    >
+                      <RefreshCw className="w-3 h-3 mr-1" />
+                      Recalculate
+                    </Button>
                   </div>
-                  <div>
-                    <Label className="text-slate-600">Gender</Label>
-                    <p className="text-lg font-medium mt-1">
-                      {user.gender || 'Not specified'}
-                    </p>
-                  </div>
+                  <p className="text-xs text-slate-500 mt-1">
+                    Calculated from your hexagon skill levels
+                  </p>
+                </div>
+
+                <div>
+                  <Label className="text-slate-600">Gender</Label>
+                  <p className="text-lg font-medium mt-1">
+                    {user.gender || 'Not specified'}
+                  </p>
                 </div>
 
                 <div>
@@ -350,6 +377,43 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
           </CardContent>
         </Card>
       </div>
+
+      {/* Skill Level Management */}
+      <Card className="border-blue-200 bg-blue-50/50">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Target className="w-5 h-5 text-blue-600" />
+            Skill Level Assessment
+          </CardTitle>
+          <CardDescription>
+            Update your skill profile by retaking the assessment
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="flex items-start gap-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+            <AlertTriangle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+            <div className="text-sm text-amber-900">
+              <p className="font-semibold mb-1">Before recalculating:</p>
+              <ul className="list-disc list-inside space-y-1 text-amber-800">
+                <li>This will update your hexagon skill levels</li>
+                <li>Your training plan will be adjusted accordingly</li>
+                <li>Your progress history will be preserved</li>
+              </ul>
+            </div>
+          </div>
+          <Button
+            onClick={handleRecalculate}
+            className="w-full"
+            variant="default"
+          >
+            <RefreshCw className="w-4 h-4 mr-2" />
+            Retake Skill Assessment
+          </Button>
+          <p className="text-xs text-slate-600 text-center">
+            Recommended if your fitness level has significantly changed or if you made a mistake during initial assessment
+          </p>
+        </CardContent>
+      </Card>
 
       {/* Account Actions */}
       <Card>
