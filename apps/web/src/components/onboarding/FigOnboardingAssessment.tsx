@@ -224,6 +224,7 @@ export default function FigOnboardingAssessment({
             {currentQuestion.options.map((option, idx) => (
               <div
                 key={idx}
+                onClick={() => handleAnswerSelect(option.points)}
                 className={`
                   flex items-center space-x-3 p-4 rounded-lg border-2 transition-all cursor-pointer
                   ${currentAnswer === option.points
@@ -235,11 +236,11 @@ export default function FigOnboardingAssessment({
                 <RadioGroupItem value={option.points.toString()} id={`option-${idx}`} />
                 <Label
                   htmlFor={`option-${idx}`}
-                  className="flex-1 cursor-pointer font-medium text-slate-700"
+                  className="flex-1 cursor-pointer font-medium text-slate-700 select-none"
                 >
                   {option.text}
                 </Label>
-                <Badge variant="outline" className="text-xs">
+                <Badge variant="outline" className="text-xs pointer-events-none">
                   {option.points} {option.points === 1 ? 'pt' : 'pts'}
                 </Badge>
               </div>

@@ -5,7 +5,7 @@
  * Used to determine which axis receives XP when an exercise is completed.
  */
 
-import { type HexagonAxis } from './hexagon-progression';
+import { type UnifiedHexagonAxis } from './unified-hexagon-system';
 
 /**
  * Exercise categories from exercises_biomech_modified.json
@@ -26,28 +26,28 @@ export type ExerciseCategory =
  * Map exercise categories to primary hexagon axis
  * Each exercise primarily trains ONE axis, but may contribute to others secondarily
  */
-export const CATEGORY_TO_PRIMARY_AXIS: Record<ExerciseCategory, HexagonAxis> = {
-  PUSH: 'relativeStrength',          // Push-ups, Dips → Strength
-  PULL: 'relativeStrength',          // Pull-ups, Rows → Strength
-  CORE: 'bodyTension',               // Planks, L-sits → Body Tension
-  BALANCE: 'balanceControl',         // Handstands → Balance
-  LOWER_BODY: 'muscularEndurance',   // Squats, Pistols → Endurance
-  LEGS: 'muscularEndurance',         // Leg exercises → Endurance
-  STATICS: 'bodyTension',            // Planche, Lever → Body Tension
-  WARM_UP: 'jointMobility',          // Mobility work → Joint Mobility
-  CARDIO: 'muscularEndurance',       // Cardio → Endurance
-  FLEXIBILITY: 'jointMobility',      // Stretching → Joint Mobility
+export const CATEGORY_TO_PRIMARY_AXIS: Record<ExerciseCategory, UnifiedHexagonAxis> = {
+  PUSH: 'strength',          // Push-ups, Dips → Strength
+  PULL: 'strength',          // Pull-ups, Rows → Strength
+  CORE: 'core',              // Planks, L-sits → Core
+  BALANCE: 'balance',        // Handstands → Balance
+  LOWER_BODY: 'endurance',   // Squats, Pistols → Endurance
+  LEGS: 'endurance',         // Leg exercises → Endurance
+  STATICS: 'staticHolds',    // Planche, Lever → Static Holds
+  WARM_UP: 'mobility',       // Mobility work → Joint Mobility
+  CARDIO: 'endurance',       // Cardio → Endurance
+  FLEXIBILITY: 'mobility',   // Stretching → Joint Mobility
 };
 
 /**
  * Map exercise categories to secondary axes (smaller XP contribution)
  */
-export const CATEGORY_TO_SECONDARY_AXIS: Partial<Record<ExerciseCategory, HexagonAxis[]>> = {
-  PUSH: ['skillTechnique'],          // Also improves technique
-  PULL: ['skillTechnique'],          // Also improves technique
-  BALANCE: ['skillTechnique', 'bodyTension'], // Balance needs tension control
-  STATICS: ['balanceControl', 'skillTechnique'], // Static holds need balance + technique
-  CORE: ['balanceControl'],          // Core work improves balance
+export const CATEGORY_TO_SECONDARY_AXIS: Partial<Record<ExerciseCategory, UnifiedHexagonAxis[]>> = {
+  PUSH: ['staticHolds'],           // Also improves technique
+  PULL: ['staticHolds'],           // Also improves technique
+  BALANCE: ['staticHolds', 'core'], // Balance needs core control
+  STATICS: ['balance', 'core'],    // Static holds need balance + core
+  CORE: ['balance'],               // Core work improves balance
 };
 
 /**
@@ -67,12 +67,12 @@ export const XP_BY_DIFFICULTY: Record<string, { primary: number; secondary: numb
 export function getExerciseXPRewards(
   category: ExerciseCategory,
   difficulty: string
-): Record<HexagonAxis, number> {
+): Partial<Record<UnifiedHexagonAxis, number>> {
   const primaryAxis = CATEGORY_TO_PRIMARY_AXIS[category];
   const secondaryAxes = CATEGORY_TO_SECONDARY_AXIS[category] || [];
   const xpValues = XP_BY_DIFFICULTY[difficulty] || XP_BY_DIFFICULTY.BEGINNER;
 
-  const rewards: Partial<Record<HexagonAxis, number>> = {
+  const rewards: Partial<Record<UnifiedHexagonAxis, number>> = {
     [primaryAxis]: xpValues.primary,
   };
 
@@ -81,7 +81,7 @@ export function getExerciseXPRewards(
     rewards[axis] = (rewards[axis] || 0) + xpValues.secondary;
   });
 
-  return rewards as Record<HexagonAxis, number>;
+  return rewards;
 }
 
 /**
@@ -89,7 +89,7 @@ export function getExerciseXPRewards(
  */
 export interface AxisMission {
   id: string;
-  targetAxis: HexagonAxis;
+  targetAxis: UnifiedHexagonAxis;
   requiredLevel: 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE';
   description: string;
   exerciseCategory: ExerciseCategory;
@@ -103,11 +103,11 @@ export interface AxisMission {
  * Mission pool organized by axis and level
  * These missions are designed to target specific hexagon axes
  */
-export const AXIS_MISSIONS: Record<HexagonAxis, AxisMission[]> = {
-  relativeStrength: [
+export const AXIS_MISSIONS: Record<UnifiedHexagonAxis, AxisMission[]> = {
+  strength: [
     {
       id: 'rel-str-beginner-pushups',
-      targetAxis: 'relativeStrength',
+      targetAxis: 'strength',
       requiredLevel: 'BEGINNER',
       description: 'Complete 15 push-ups',
       exerciseCategory: 'PUSH',
@@ -118,7 +118,7 @@ export const AXIS_MISSIONS: Record<HexagonAxis, AxisMission[]> = {
     },
     {
       id: 'rel-str-beginner-pullups',
-      targetAxis: 'relativeStrength',
+      targetAxis: 'strength',
       requiredLevel: 'BEGINNER',
       description: 'Complete 5 assisted pull-ups',
       exerciseCategory: 'PULL',
@@ -129,7 +129,7 @@ export const AXIS_MISSIONS: Record<HexagonAxis, AxisMission[]> = {
     },
     {
       id: 'rel-str-intermediate-pullups',
-      targetAxis: 'relativeStrength',
+      targetAxis: 'strength',
       requiredLevel: 'INTERMEDIATE',
       description: 'Complete 10 pull-ups',
       exerciseCategory: 'PULL',
@@ -140,7 +140,7 @@ export const AXIS_MISSIONS: Record<HexagonAxis, AxisMission[]> = {
     },
     {
       id: 'rel-str-advanced-dips',
-      targetAxis: 'relativeStrength',
+      targetAxis: 'strength',
       requiredLevel: 'ADVANCED',
       description: 'Complete 20 dips',
       exerciseCategory: 'PUSH',
@@ -154,7 +154,7 @@ export const AXIS_MISSIONS: Record<HexagonAxis, AxisMission[]> = {
   muscularEndurance: [
     {
       id: 'mus-end-beginner-squats',
-      targetAxis: 'muscularEndurance',
+      targetAxis: 'endurance',
       requiredLevel: 'BEGINNER',
       description: 'Complete 30 bodyweight squats',
       exerciseCategory: 'LOWER_BODY',
@@ -165,7 +165,7 @@ export const AXIS_MISSIONS: Record<HexagonAxis, AxisMission[]> = {
     },
     {
       id: 'mus-end-intermediate-lunges',
-      targetAxis: 'muscularEndurance',
+      targetAxis: 'endurance',
       requiredLevel: 'INTERMEDIATE',
       description: 'Complete 40 walking lunges',
       exerciseCategory: 'LEGS',
@@ -176,7 +176,7 @@ export const AXIS_MISSIONS: Record<HexagonAxis, AxisMission[]> = {
     },
     {
       id: 'mus-end-advanced-pistols',
-      targetAxis: 'muscularEndurance',
+      targetAxis: 'endurance',
       requiredLevel: 'ADVANCED',
       description: 'Complete 10 pistol squats per leg',
       exerciseCategory: 'LOWER_BODY',
@@ -190,7 +190,7 @@ export const AXIS_MISSIONS: Record<HexagonAxis, AxisMission[]> = {
   balanceControl: [
     {
       id: 'bal-ctrl-beginner-wall-hs',
-      targetAxis: 'balanceControl',
+      targetAxis: 'balance',
       requiredLevel: 'BEGINNER',
       description: 'Hold wall handstand for 60 seconds total',
       exerciseCategory: 'BALANCE',
@@ -201,7 +201,7 @@ export const AXIS_MISSIONS: Record<HexagonAxis, AxisMission[]> = {
     },
     {
       id: 'bal-ctrl-intermediate-crow',
-      targetAxis: 'balanceControl',
+      targetAxis: 'balance',
       requiredLevel: 'INTERMEDIATE',
       description: 'Hold crow pose for 30 seconds',
       exerciseCategory: 'BALANCE',
@@ -212,7 +212,7 @@ export const AXIS_MISSIONS: Record<HexagonAxis, AxisMission[]> = {
     },
     {
       id: 'bal-ctrl-advanced-freestanding-hs',
-      targetAxis: 'balanceControl',
+      targetAxis: 'balance',
       requiredLevel: 'ADVANCED',
       description: 'Hold freestanding handstand for 10 seconds',
       exerciseCategory: 'BALANCE',
@@ -226,7 +226,7 @@ export const AXIS_MISSIONS: Record<HexagonAxis, AxisMission[]> = {
   jointMobility: [
     {
       id: 'joint-mob-beginner-shoulder',
-      targetAxis: 'jointMobility',
+      targetAxis: 'mobility',
       requiredLevel: 'BEGINNER',
       description: 'Complete 5 minutes of shoulder mobility work',
       exerciseCategory: 'WARM_UP',
@@ -237,7 +237,7 @@ export const AXIS_MISSIONS: Record<HexagonAxis, AxisMission[]> = {
     },
     {
       id: 'joint-mob-intermediate-full-routine',
-      targetAxis: 'jointMobility',
+      targetAxis: 'mobility',
       requiredLevel: 'INTERMEDIATE',
       description: 'Complete full mobility routine (10 exercises)',
       exerciseCategory: 'FLEXIBILITY',
@@ -248,7 +248,7 @@ export const AXIS_MISSIONS: Record<HexagonAxis, AxisMission[]> = {
     },
     {
       id: 'joint-mob-advanced-bridges',
-      targetAxis: 'jointMobility',
+      targetAxis: 'mobility',
       requiredLevel: 'ADVANCED',
       description: 'Hold bridge position for 60 seconds',
       exerciseCategory: 'FLEXIBILITY',
@@ -262,7 +262,7 @@ export const AXIS_MISSIONS: Record<HexagonAxis, AxisMission[]> = {
   bodyTension: [
     {
       id: 'body-ten-beginner-plank',
-      targetAxis: 'bodyTension',
+      targetAxis: 'core',
       requiredLevel: 'BEGINNER',
       description: 'Hold plank for 90 seconds total',
       exerciseCategory: 'CORE',
@@ -273,7 +273,7 @@ export const AXIS_MISSIONS: Record<HexagonAxis, AxisMission[]> = {
     },
     {
       id: 'body-ten-intermediate-lsit',
-      targetAxis: 'bodyTension',
+      targetAxis: 'core',
       requiredLevel: 'INTERMEDIATE',
       description: 'Hold L-sit for 20 seconds',
       exerciseCategory: 'CORE',
@@ -284,7 +284,7 @@ export const AXIS_MISSIONS: Record<HexagonAxis, AxisMission[]> = {
     },
     {
       id: 'body-ten-advanced-frontlever',
-      targetAxis: 'bodyTension',
+      targetAxis: 'core',
       requiredLevel: 'ADVANCED',
       description: 'Hold front lever progression for 15 seconds',
       exerciseCategory: 'STATICS',
@@ -298,7 +298,7 @@ export const AXIS_MISSIONS: Record<HexagonAxis, AxisMission[]> = {
   skillTechnique: [
     {
       id: 'skill-tech-beginner-form',
-      targetAxis: 'skillTechnique',
+      targetAxis: 'staticHolds',
       requiredLevel: 'BEGINNER',
       description: 'Practice 3 different exercises with perfect form',
       exerciseCategory: 'PUSH',
@@ -309,7 +309,7 @@ export const AXIS_MISSIONS: Record<HexagonAxis, AxisMission[]> = {
     },
     {
       id: 'skill-tech-intermediate-muscleup-prog',
-      targetAxis: 'skillTechnique',
+      targetAxis: 'staticHolds',
       requiredLevel: 'INTERMEDIATE',
       description: 'Practice muscle-up progressions (5 sets)',
       exerciseCategory: 'PULL',
@@ -320,7 +320,7 @@ export const AXIS_MISSIONS: Record<HexagonAxis, AxisMission[]> = {
     },
     {
       id: 'skill-tech-advanced-combo',
-      targetAxis: 'skillTechnique',
+      targetAxis: 'staticHolds',
       requiredLevel: 'ADVANCED',
       description: 'Complete 3 advanced skill combinations',
       exerciseCategory: 'STATICS',
@@ -336,7 +336,7 @@ export const AXIS_MISSIONS: Record<HexagonAxis, AxisMission[]> = {
  * Get missions for a specific axis and level
  */
 export function getMissionsForAxisAndLevel(
-  axis: HexagonAxis,
+  axis: UnifiedHexagonAxis,
   level: 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE'
 ): AxisMission[] {
   return AXIS_MISSIONS[axis].filter(mission => mission.requiredLevel === level);
@@ -347,11 +347,11 @@ export function getMissionsForAxisAndLevel(
  * Returns missions that target the weakest axes to encourage balanced development
  */
 export function generateDailyMissions(
-  hexagonLevels: Record<HexagonAxis, 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE'>,
+  hexagonLevels: Record<UnifiedHexagonAxis, 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE'>,
   count: number = 3
 ): AxisMission[] {
   // Sort axes by level (weakest first) to encourage balanced growth
-  const axesByLevel = (Object.keys(hexagonLevels) as HexagonAxis[]).sort((a, b) => {
+  const axesByLevel = (Object.keys(hexagonLevels) as UnifiedHexagonAxis[]).sort((a, b) => {
     const levelOrder = { BEGINNER: 0, INTERMEDIATE: 1, ADVANCED: 2, ELITE: 3 };
     return levelOrder[hexagonLevels[a]] - levelOrder[hexagonLevels[b]];
   });
@@ -389,7 +389,7 @@ export const GOAL_SPECIFIC_MISSIONS: Record<string, GoalMission[]> = {
   handstand: [
     {
       id: 'handstand-beginner-wall',
-      targetAxis: 'balanceControl',
+      targetAxis: 'balance',
       requiredLevel: 'BEGINNER',
       description: 'Hold wall handstand for 30 seconds total',
       exerciseCategory: 'BALANCE',
@@ -401,7 +401,7 @@ export const GOAL_SPECIFIC_MISSIONS: Record<string, GoalMission[]> = {
     },
     {
       id: 'handstand-intermediate-holds',
-      targetAxis: 'balanceControl',
+      targetAxis: 'balance',
       requiredLevel: 'INTERMEDIATE',
       description: 'Hold freestanding handstand 3 x 10 seconds',
       exerciseCategory: 'BALANCE',
@@ -413,7 +413,7 @@ export const GOAL_SPECIFIC_MISSIONS: Record<string, GoalMission[]> = {
     },
     {
       id: 'handstand-advanced-holds',
-      targetAxis: 'balanceControl',
+      targetAxis: 'balance',
       requiredLevel: 'ADVANCED',
       description: 'Hold freestanding handstand 5 x 15 seconds',
       exerciseCategory: 'BALANCE',
@@ -428,7 +428,7 @@ export const GOAL_SPECIFIC_MISSIONS: Record<string, GoalMission[]> = {
   strength: [
     {
       id: 'strength-beginner-pushups',
-      targetAxis: 'relativeStrength',
+      targetAxis: 'strength',
       requiredLevel: 'BEGINNER',
       description: 'Complete 15 push-ups',
       exerciseCategory: 'PUSH',
@@ -440,7 +440,7 @@ export const GOAL_SPECIFIC_MISSIONS: Record<string, GoalMission[]> = {
     },
     {
       id: 'strength-intermediate-pullups',
-      targetAxis: 'relativeStrength',
+      targetAxis: 'strength',
       requiredLevel: 'INTERMEDIATE',
       description: 'Complete 10 pull-ups',
       exerciseCategory: 'PULL',
@@ -452,7 +452,7 @@ export const GOAL_SPECIFIC_MISSIONS: Record<string, GoalMission[]> = {
     },
     {
       id: 'strength-advanced-combo',
-      targetAxis: 'relativeStrength',
+      targetAxis: 'strength',
       requiredLevel: 'ADVANCED',
       description: 'Complete 15 dips + 12 pull-ups',
       exerciseCategory: 'PUSH',
@@ -467,7 +467,7 @@ export const GOAL_SPECIFIC_MISSIONS: Record<string, GoalMission[]> = {
   front_lever: [
     {
       id: 'frontlever-beginner-tuck',
-      targetAxis: 'bodyTension',
+      targetAxis: 'core',
       requiredLevel: 'BEGINNER',
       description: 'Hold tuck front lever for 15 seconds',
       exerciseCategory: 'STATICS',
@@ -479,7 +479,7 @@ export const GOAL_SPECIFIC_MISSIONS: Record<string, GoalMission[]> = {
     },
     {
       id: 'frontlever-intermediate-adv-tuck',
-      targetAxis: 'bodyTension',
+      targetAxis: 'core',
       requiredLevel: 'INTERMEDIATE',
       description: 'Hold advanced tuck front lever 3 x 10s',
       exerciseCategory: 'STATICS',
@@ -491,7 +491,7 @@ export const GOAL_SPECIFIC_MISSIONS: Record<string, GoalMission[]> = {
     },
     {
       id: 'frontlever-advanced-one-leg',
-      targetAxis: 'bodyTension',
+      targetAxis: 'core',
       requiredLevel: 'ADVANCED',
       description: 'Hold one-leg front lever 5 x 8 seconds',
       exerciseCategory: 'STATICS',
@@ -506,7 +506,7 @@ export const GOAL_SPECIFIC_MISSIONS: Record<string, GoalMission[]> = {
   planche: [
     {
       id: 'planche-beginner-lean',
-      targetAxis: 'bodyTension',
+      targetAxis: 'core',
       requiredLevel: 'BEGINNER',
       description: 'Hold planche lean for 30 seconds',
       exerciseCategory: 'STATICS',
@@ -518,7 +518,7 @@ export const GOAL_SPECIFIC_MISSIONS: Record<string, GoalMission[]> = {
     },
     {
       id: 'planche-intermediate-tuck',
-      targetAxis: 'bodyTension',
+      targetAxis: 'core',
       requiredLevel: 'INTERMEDIATE',
       description: 'Hold tuck planche 4 x 10 seconds',
       exerciseCategory: 'STATICS',
@@ -530,7 +530,7 @@ export const GOAL_SPECIFIC_MISSIONS: Record<string, GoalMission[]> = {
     },
     {
       id: 'planche-advanced-adv-tuck',
-      targetAxis: 'bodyTension',
+      targetAxis: 'core',
       requiredLevel: 'ADVANCED',
       description: 'Hold advanced tuck planche 5 x 8s',
       exerciseCategory: 'STATICS',
@@ -545,7 +545,7 @@ export const GOAL_SPECIFIC_MISSIONS: Record<string, GoalMission[]> = {
   general: [
     {
       id: 'general-beginner-basic',
-      targetAxis: 'muscularEndurance',
+      targetAxis: 'endurance',
       requiredLevel: 'BEGINNER',
       description: 'Complete 20 squats + 10 push-ups',
       exerciseCategory: 'LOWER_BODY',
@@ -557,7 +557,7 @@ export const GOAL_SPECIFIC_MISSIONS: Record<string, GoalMission[]> = {
     },
     {
       id: 'general-intermediate-circuit',
-      targetAxis: 'muscularEndurance',
+      targetAxis: 'endurance',
       requiredLevel: 'INTERMEDIATE',
       description: 'Complete full-body circuit (3 rounds)',
       exerciseCategory: 'CARDIO',
@@ -569,7 +569,7 @@ export const GOAL_SPECIFIC_MISSIONS: Record<string, GoalMission[]> = {
     },
     {
       id: 'general-advanced-hiit',
-      targetAxis: 'muscularEndurance',
+      targetAxis: 'endurance',
       requiredLevel: 'ADVANCED',
       description: 'Complete 20 min HIIT workout',
       exerciseCategory: 'CARDIO',
@@ -592,7 +592,7 @@ export const GOAL_SPECIFIC_MISSIONS: Record<string, GoalMission[]> = {
  */
 export function generateGoalBasedDailyMissions(
   userGoal: string,
-  hexagonLevels: Record<HexagonAxis, 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE'>,
+  hexagonLevels: Record<UnifiedHexagonAxis, 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE'>,
   count: number = 5
 ): AxisMission[] {
   const missions: AxisMission[] = [];
@@ -612,7 +612,7 @@ export function generateGoalBasedDailyMissions(
   }
 
   // 2. Add 2 missions for weakest axes
-  const axesByLevel = (Object.keys(hexagonLevels) as HexagonAxis[]).sort((a, b) => {
+  const axesByLevel = (Object.keys(hexagonLevels) as UnifiedHexagonAxis[]).sort((a, b) => {
     const levelOrder = { BEGINNER: 0, INTERMEDIATE: 1, ADVANCED: 2, ELITE: 3 };
     return levelOrder[hexagonLevels[a]] - levelOrder[hexagonLevels[b]];
   });
@@ -638,7 +638,7 @@ export function generateGoalBasedDailyMissions(
   const bonusMissions: AxisMission[] = [
     {
       id: 'bonus-hydration',
-      targetAxis: 'jointMobility',
+      targetAxis: 'mobility',
       requiredLevel: 'BEGINNER',
       description: 'Stay hydrated during workout',
       exerciseCategory: 'WARM_UP',
@@ -649,7 +649,7 @@ export function generateGoalBasedDailyMissions(
     },
     {
       id: 'bonus-stretching',
-      targetAxis: 'jointMobility',
+      targetAxis: 'mobility',
       requiredLevel: 'BEGINNER',
       description: 'Complete 5-minute stretching routine',
       exerciseCategory: 'FLEXIBILITY',
@@ -660,7 +660,7 @@ export function generateGoalBasedDailyMissions(
     },
     {
       id: 'bonus-recovery',
-      targetAxis: 'jointMobility',
+      targetAxis: 'mobility',
       requiredLevel: 'BEGINNER',
       description: 'Take a recovery walk (15 minutes)',
       exerciseCategory: 'CARDIO',

@@ -1,8 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import prisma from '@/lib/prisma';
-import { getHexagonXPField, getHexagonLevelField } from '@/lib/skill-hexagon-mapping';
-import { getLevelFromXP } from '@/lib/xp-calculator';
+import {
+  getUnifiedAxisXPField,
+  getUnifiedAxisLevelField,
+  getUnifiedLevelFromXP,
+} from '@/lib/unified-hexagon-system';
+import { getUnifiedPrimaryAxis } from '@/lib/unified-fig-hexagon-mapping';
+import { MasteryGoal } from '@/lib/fig-level-progressions';
 
 export const runtime = 'nodejs';
 
@@ -72,8 +77,13 @@ export async function PUT(req: NextRequest) {
 
     // Award XP to hexagon profile
     if (session.hexagonCategory) {
-      const xpField = getHexagonXPField(session.hexagonCategory as any);
-      const levelField = getHexagonLevelField(session.hexagonCategory as any);
+      // Convert skill branch to unified axis
+      const skillBranch = session.hexagonCategory as MasteryGoal;
+      const unifiedAxis = getUnifiedPrimaryAxis(skillBranch);
+
+      // Get database field names for the unified axis
+      const xpField = getUnifiedAxisXPField(unifiedAxis);
+      const levelField = getUnifiedAxisLevelField(unifiedAxis);
 
       // Get or create hexagon profile
       let hexagonProfile = session.user.hexagonProfile;
@@ -91,7 +101,7 @@ export async function PUT(req: NextRequest) {
       const newXP = currentXP + session.xpAwarded;
 
       // Calculate new level
-      const newLevel = getLevelFromXP(newXP);
+      const newLevel = getUnifiedLevelFromXP(newXP);
 
       // Update hexagon profile
       await prisma.hexagonProfile.update({

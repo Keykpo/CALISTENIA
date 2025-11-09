@@ -19,9 +19,8 @@ import {
   X,
 } from 'lucide-react';
 import { signOut } from 'next-auth/react';
-import { type HexagonProfileWithXP } from '@/lib/hexagon-progression';
 import UnifiedSkillAssessment from '@/components/UnifiedSkillAssessment';
-import { migrateToUnifiedHexagon } from '@/lib/unified-hexagon-system';
+import { migrateToUnifiedHexagon, type OldHexagonProfile } from '@/lib/unified-hexagon-system';
 
 interface ProfileViewProps {
   userId: string;
@@ -83,7 +82,7 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
 
   const stats = userData?.stats || {};
   const user = userData?.user || {};
-  const hexProfile = userData?.hexagon as HexagonProfileWithXP | null;
+  const hexProfile = userData?.hexagon as OldHexagonProfile | null;
 
   return (
     <div className="space-y-6">

@@ -2,7 +2,15 @@ import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import { updateAxisXP, type HexagonAxis, type HexagonProfileWithXP } from '@/lib/hexagon-progression';
+import {
+  updateUnifiedAxisXP,
+  type UnifiedHexagonAxis,
+  migrateToUnifiedHexagon,
+  getUnifiedAxisXPField,
+  getUnifiedAxisLevelField,
+  getUnifiedAxisVisualField,
+  getAllUnifiedAxes,
+} from '@/lib/unified-hexagon-system';
 
 async function getUserId(req: NextRequest) {
   try {
@@ -54,7 +62,8 @@ export async function POST(req: NextRequest) {
       }, { status: 404 });
     }
 
-    const hexProfile = user.hexagonProfile as HexagonProfileWithXP;
+    // Migrate to unified profile
+    const hexProfile = migrateToUnifiedHexagon(user.hexagonProfile);
 
     // Calculate routine completion bonus: 5,000 XP distributed equally
     const ROUTINE_COMPLETION_BONUS = 5000;
@@ -62,48 +71,27 @@ export async function POST(req: NextRequest) {
 
     // Update each axis with the bonus
     let updatedProfile = { ...hexProfile };
-    const axes: HexagonAxis[] = [
-      'relativeStrength',
-      'muscularEndurance',
-      'balanceControl',
-      'jointMobility',
-      'bodyTension',
-      'skillTechnique'
-    ];
+    const axes = getAllUnifiedAxes();
 
-    const xpGainedPerAxis: Record<HexagonAxis, number> = {} as Record<HexagonAxis, number>;
+    const xpGainedPerAxis: Partial<Record<UnifiedHexagonAxis, number>> = {};
 
     for (const axis of axes) {
-      updatedProfile = updateAxisXP(updatedProfile, axis, BONUS_PER_AXIS);
+      updatedProfile = updateUnifiedAxisXP(updatedProfile, axis, BONUS_PER_AXIS);
       xpGainedPerAxis[axis] = BONUS_PER_AXIS;
     }
 
-    // Prepare update data for Prisma
-    const updateData: any = {
-      // Visual values (0-10)
-      relativeStrength: updatedProfile.relativeStrength,
-      muscularEndurance: updatedProfile.muscularEndurance,
-      balanceControl: updatedProfile.balanceControl,
-      jointMobility: updatedProfile.jointMobility,
-      bodyTension: updatedProfile.bodyTension,
-      skillTechnique: updatedProfile.skillTechnique,
+    // Prepare update data for Prisma using database field names
+    const updateData: any = {};
 
-      // XP values
-      relativeStrengthXP: updatedProfile.relativeStrengthXP,
-      muscularEnduranceXP: updatedProfile.muscularEnduranceXP,
-      balanceControlXP: updatedProfile.balanceControlXP,
-      jointMobilityXP: updatedProfile.jointMobilityXP,
-      bodyTensionXP: updatedProfile.bodyTensionXP,
-      skillTechniqueXP: updatedProfile.skillTechniqueXP,
+    for (const axis of axes) {
+      const visualField = getUnifiedAxisVisualField(axis);
+      const xpField = getUnifiedAxisXPField(axis);
+      const levelField = getUnifiedAxisLevelField(axis);
 
-      // Level strings
-      relativeStrengthLevel: updatedProfile.relativeStrengthLevel,
-      muscularEnduranceLevel: updatedProfile.muscularEnduranceLevel,
-      balanceControlLevel: updatedProfile.balanceControlLevel,
-      jointMobilityLevel: updatedProfile.jointMobilityLevel,
-      bodyTensionLevel: updatedProfile.bodyTensionLevel,
-      skillTechniqueLevel: updatedProfile.skillTechniqueLevel,
-    };
+      updateData[visualField] = updatedProfile[axis];
+      updateData[xpField] = updatedProfile[`${axis}XP` as keyof typeof updatedProfile];
+      updateData[levelField] = updatedProfile[`${axis}Level` as keyof typeof updatedProfile];
+    }
 
     // Update hexagon profile in database
     await prisma.hexagonProfile.update({
@@ -133,6 +121,12 @@ export async function POST(req: NextRequest) {
       }
     });
 
+    // Calculate which levels changed
+    const levelsChanged: Partial<Record<UnifiedHexagonAxis, boolean>> = {};
+    for (const axis of axes) {
+      levelsChanged[axis] = hexProfile[`${axis}Level` as keyof typeof hexProfile] !== updatedProfile[`${axis}Level` as keyof typeof updatedProfile];
+    }
+
     return NextResponse.json({
       success: true,
       message: 'Routine completed successfully!',
@@ -141,14 +135,7 @@ export async function POST(req: NextRequest) {
         perAxis: xpGainedPerAxis,
       },
       updatedProfile: updatedProfile,
-      levelsChanged: {
-        relativeStrength: hexProfile.relativeStrengthLevel !== updatedProfile.relativeStrengthLevel,
-        muscularEndurance: hexProfile.muscularEnduranceLevel !== updatedProfile.muscularEnduranceLevel,
-        balanceControl: hexProfile.balanceControlLevel !== updatedProfile.balanceControlLevel,
-        jointMobility: hexProfile.jointMobilityLevel !== updatedProfile.jointMobilityLevel,
-        bodyTension: hexProfile.bodyTensionLevel !== updatedProfile.bodyTensionLevel,
-        skillTechnique: hexProfile.skillTechniqueLevel !== updatedProfile.skillTechniqueLevel,
-      }
+      levelsChanged
     });
 
   } catch (error: any) {
