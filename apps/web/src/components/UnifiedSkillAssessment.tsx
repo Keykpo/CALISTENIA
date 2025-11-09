@@ -38,6 +38,18 @@ export default function UnifiedSkillAssessment({
   const router = useRouter();
   const [isRecalculating, setIsRecalculating] = useState(false);
 
+  console.log('[UNIFIED_SKILL_ASSESSMENT] Props received:', {
+    userId,
+    hasHexagonProfile: !!hexagonProfile,
+    hexagonProfileKeys: hexagonProfile ? Object.keys(hexagonProfile) : null,
+    hexagonProfileSample: hexagonProfile ? {
+      balance: hexagonProfile.balance,
+      strength: hexagonProfile.strength,
+      balanceXP: hexagonProfile.balanceXP,
+      strengthXP: hexagonProfile.strengthXP,
+    } : null,
+  });
+
   const handleRecalculate = async () => {
     try {
       setIsRecalculating(true);
