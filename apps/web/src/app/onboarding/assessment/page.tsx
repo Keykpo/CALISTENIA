@@ -3,12 +3,12 @@
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import AssessmentForm, { AssessmentResults } from '@/components/onboarding/AssessmentForm';
+import FigOnboardingAssessment, { FigAssessmentResult } from '@/components/onboarding/FigOnboardingAssessment';
 import { Card, CardContent } from '@/components/ui/card';
 import { Trophy, Loader2 } from 'lucide-react';
 
 export default function AssessmentPage() {
-  const { data: session, status } = useSession();
+  const { data: session, status, update } = useSession();
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
 
@@ -18,32 +18,42 @@ export default function AssessmentPage() {
     }
   }, [status, router]);
 
-  const handleComplete = async (results: AssessmentResults) => {
+  const handleComplete = async (assessments: FigAssessmentResult[]) => {
     try {
       setSubmitting(true);
 
-      const res = await fetch('/api/assessment/submit', {
+      const res = await fetch('/api/assessment/fig-initial', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'x-user-id': session?.user?.id as string,
         },
-        body: JSON.stringify(results),
+        body: JSON.stringify({ assessments }),
       });
 
       if (res.ok) {
         const data = await res.json();
+        console.log('[ASSESSMENT] Success, updating session...');
+
+        // CRITICAL: Update the session to refresh JWT token with hasCompletedAssessment = true
+        // This prevents the middleware redirect loop
+        await update();
+
+        // Small delay to ensure token is updated
+        await new Promise(resolve => setTimeout(resolve, 500));
+
         // Use window.location.href for hard reload to update JWT token
-        const redirectPath = data.redirectTo || '/dashboard';
+        const redirectPath = data.redirectTo || '/onboarding/results';
+        console.log('[ASSESSMENT] Redirecting to:', redirectPath);
         window.location.href = redirectPath;
       } else {
         const error = await res.json();
-        console.error('Error submitting assessment:', error);
+        console.error('Error submitting FIG assessment:', error);
         alert('Error al guardar la evaluación. Por favor intenta de nuevo.');
         setSubmitting(false);
       }
     } catch (error) {
-      console.error('Error submitting assessment:', error);
+      console.error('Error submitting FIG assessment:', error);
       alert('Error al guardar la evaluación. Por favor intenta de nuevo.');
       setSubmitting(false);
     }
@@ -93,16 +103,16 @@ export default function AssessmentPage() {
             </div>
           </div>
           <h1 className="text-3xl font-bold text-slate-900 mb-2">
-            Evaluación de Nivel
+            Evaluación de Habilidades FIG
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Responde estas preguntas para que podamos crear un plan de entrenamiento
-            personalizado basado en tu nivel actual y objetivos.
+            Evalúa tu nivel actual en las habilidades fundamentales de calistenia
+            para crear tu perfil hexagonal y plan de entrenamiento personalizado.
           </p>
         </div>
 
-        {/* Assessment Form */}
-        <AssessmentForm
+        {/* FIG Assessment Component */}
+        <FigOnboardingAssessment
           onComplete={handleComplete}
           userId={session.user.id as string}
         />

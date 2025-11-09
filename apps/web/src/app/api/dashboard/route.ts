@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 import prisma from '@/lib/prisma';
 import { getDailyMissions, saveDailyMissions, DevMission } from '@/lib/dev-missions-store';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import {
   generateGoalBasedDailyMissions,
-  type HexagonAxis,
 } from '@/lib/exercise-to-axis-mapping';
 import { type HexagonProfileWithXP, initializeHexagonProfile } from '@/lib/hexagon-progression';
 
@@ -32,7 +33,36 @@ export async function GET(req: NextRequest) {
 
   try {
     // Ensure dev user exists when using header/query fallback
-    let user = await prisma.user.findUnique({ where: { id: userId } });
+    let user = await prisma.user.findUnique({
+      where: { id: userId },
+      include: {
+        hexagonProfile: {
+          select: {
+            // Visual values (0-10)
+            relativeStrength: true,
+            muscularEndurance: true,
+            balanceControl: true,
+            jointMobility: true,
+            bodyTension: true,
+            skillTechnique: true,
+            // XP values (required for calculations)
+            relativeStrengthXP: true,
+            muscularEnduranceXP: true,
+            balanceControlXP: true,
+            jointMobilityXP: true,
+            bodyTensionXP: true,
+            skillTechniqueXP: true,
+            // Level values (required for mode calculation)
+            relativeStrengthLevel: true,
+            muscularEnduranceLevel: true,
+            balanceControlLevel: true,
+            jointMobilityLevel: true,
+            bodyTensionLevel: true,
+            skillTechniqueLevel: true,
+          },
+        },
+      },
+    });
     if (!user) {
       try {
         user = await prisma.user.create({
@@ -43,9 +73,63 @@ export async function GET(req: NextRequest) {
             goals: '[]',
           },
         });
+        // Refetch with hexagonProfile after creation
+        user = await prisma.user.findUnique({
+          where: { id: userId },
+          include: {
+            hexagonProfile: {
+              select: {
+                relativeStrength: true,
+                muscularEndurance: true,
+                balanceControl: true,
+                jointMobility: true,
+                bodyTension: true,
+                skillTechnique: true,
+                relativeStrengthXP: true,
+                muscularEnduranceXP: true,
+                balanceControlXP: true,
+                jointMobilityXP: true,
+                bodyTensionXP: true,
+                skillTechniqueXP: true,
+                relativeStrengthLevel: true,
+                muscularEnduranceLevel: true,
+                balanceControlLevel: true,
+                jointMobilityLevel: true,
+                bodyTensionLevel: true,
+                skillTechniqueLevel: true,
+              },
+            },
+          },
+        });
       } catch (e) {
         // continue if creation collides with existing email/username
-        user = await prisma.user.findUnique({ where: { id: userId } });
+        user = await prisma.user.findUnique({
+          where: { id: userId },
+          include: {
+            hexagonProfile: {
+              select: {
+                relativeStrength: true,
+                muscularEndurance: true,
+                balanceControl: true,
+                jointMobility: true,
+                bodyTension: true,
+                skillTechnique: true,
+                relativeStrengthXP: true,
+                muscularEnduranceXP: true,
+                balanceControlXP: true,
+                jointMobilityXP: true,
+                bodyTensionXP: true,
+                skillTechniqueXP: true,
+                relativeStrengthLevel: true,
+                muscularEnduranceLevel: true,
+                balanceControlLevel: true,
+                jointMobilityLevel: true,
+                bodyTensionLevel: true,
+                skillTechniqueLevel: true,
+              },
+            },
+          },
+        });
       }
     }
     
@@ -120,15 +204,15 @@ export async function GET(req: NextRequest) {
           const goals = user?.goals ? JSON.parse(user.goals as string) : [];
           const primaryGoal = Array.isArray(goals) && goals.length > 0 ? goals[0] : 'general';
 
-          // Extract hexagon levels from profile
-          const hexProfile = hex as HexagonProfileWithXP | null;
-          const hexagonLevels: Record<HexagonAxis, 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE'> = {
-            relativeStrength: (hexProfile?.relativeStrengthLevel || 'BEGINNER') as any,
-            muscularEndurance: (hexProfile?.muscularEnduranceLevel || 'BEGINNER') as any,
-            balanceControl: (hexProfile?.balanceControlLevel || 'BEGINNER') as any,
-            jointMobility: (hexProfile?.jointMobilityLevel || 'BEGINNER') as any,
-            bodyTension: (hexProfile?.bodyTensionLevel || 'BEGINNER') as any,
-            skillTechnique: (hexProfile?.skillTechniqueLevel || 'BEGINNER') as any,
+          // Extract hexagon levels from profile (migrate to unified)
+          const unifiedProfile = migrateToUnifiedHexagon(hex);
+          const hexagonLevels: Record<UnifiedHexagonAxis, 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE'> = {
+            balance: unifiedProfile.balanceLevel,
+            strength: unifiedProfile.strengthLevel,
+            staticHolds: unifiedProfile.staticHoldsLevel,
+            core: unifiedProfile.coreLevel,
+            endurance: unifiedProfile.enduranceLevel,
+            mobility: unifiedProfile.mobilityLevel,
           };
 
           // Generate 5 goal-based missions
@@ -230,6 +314,13 @@ export async function GET(req: NextRequest) {
       recentAchievements,
       weeklyProgress: counts,
     });
+
+    // Prevent caching
+    response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    response.headers.set('Pragma', 'no-cache');
+    response.headers.set('Expires', '0');
+
+    return response;
   } catch (e: any) {
     console.error('❌ Dashboard error:', e);
     // Fallback en desarrollo si Prisma falla

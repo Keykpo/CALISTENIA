@@ -4,6 +4,9 @@ import { authOptions } from '@/lib/auth';
 import prisma from '@/lib/prisma';
 import { z } from 'zod';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 const updateProfileSchema = z.object({
   fitnessLevel: z.enum(['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'EXPERT']).optional(),
   hasCompletedAssessment: z.boolean().optional(),
@@ -84,10 +87,23 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    return NextResponse.json({
+    console.log('[USER_PROFILE] Fetched profile:', {
+      userId,
+      hasHexagonProfile: !!user.hexagonProfile,
+      hexagonProfileRaw: user.hexagonProfile,
+    });
+
+    const response = NextResponse.json({
       success: true,
       ...user,
     });
+
+    // Prevent caching
+    response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    response.headers.set('Pragma', 'no-cache');
+    response.headers.set('Expires', '0');
+
+    return response;
   } catch (error) {
     console.error('Error fetching profile:', error);
     return NextResponse.json(

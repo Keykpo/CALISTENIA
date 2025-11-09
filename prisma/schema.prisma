@@ -35,7 +35,7 @@ model User {
   gender       Gender?
   height       Float? // in cm
   weight       Float? // in kg
-  fitnessLevel FitnessLevel @default(BEGINNER)
+  fitnessLevel Difficulty @default(BEGINNER) // ✅ Changed from FitnessLevel to Difficulty
   goals        String // JSON string for SQLite compatibility
 
   // User's primary goal
@@ -74,6 +74,8 @@ model User {
   trainingGoals     TrainingGoal[]
   primaryGoal       TrainingGoal?      @relation("PrimaryGoal", fields: [primaryGoalId], references: [id])
   hexagonProfile    HexagonProfile?
+  skillProgress     UserSkillProgress[]
+  trainingSessions  TrainingSession[]
 
   @@map("users")
 }
@@ -165,7 +167,7 @@ model Exercise {
   // Exercise details
   category     ExerciseCategory
   difficulty   Difficulty
-  // New: normalized 5-level rank scale (D, C, B, A, S)
+  // Rank mapping: D→BEGINNER, C+B→INTERMEDIATE, A→ADVANCED, S→ELITE
   rank         Rank?
   muscleGroups String // JSON string for SQLite compatibility
   equipment    String // JSON string for SQLite compatibility
@@ -648,7 +650,7 @@ model Skill {
   description String?
   category    SkillCategory
   difficulty  Difficulty
-  branch      SkillBranch // New: RPG branch classification
+  branch      SkillBranch // RPG branch classification
 
   // Progression requirements
   requiredStrength    Int @default(0) // 0-100 scale
@@ -656,7 +658,7 @@ model Skill {
   requiredFlexibility Int @default(0) // 0-100 scale
   requiredBalance     Int @default(0) // 0-100 scale
 
-  // New: Strength system for progression
+  // Strength system for progression
   strengthRequired Int @default(0) // Minimum strength points needed to unlock this skill
   strengthGained   Int @default(1) // Strength points gained when completing this skill
 
@@ -666,7 +668,6 @@ model Skill {
   order      Int @default(0) // Order within the branch for progression
 
   // Mission/Quest requirements
-
   requiredReps     Int? // Required reps to complete
   requiredDuration Int? // Required duration in seconds
   requiredDays     Int  @default(1) // Required days to demonstrate consistency
@@ -740,7 +741,7 @@ model UserSkill {
   // Skill status
   isUnlocked  Boolean   @default(false)
   unlockedAt  DateTime?
-  isCompleted Boolean   @default(false) // New: tracks if skill mission is completed
+  isCompleted Boolean   @default(false)
   completedAt DateTime?
 
   // Timestamps
@@ -759,7 +760,7 @@ model UserSkill {
 // ================================
 
 model SkillsCalibration {
-  axis        String   @id // e.g., fuerzaRelativa, resistenciaMuscular, controlEquilibrio, movilidadArticular, tensionCorporal, tecnica
+  axis        String   @id
   targetValue Float
   p25         Float?
   p50         Float?
@@ -781,13 +782,13 @@ model TrainingGoal {
   userId String
 
   // Goal details
-  name          String // e.g., "Tuck Planche", "Handstand", "Muscle-up"
+  name          String
   description   String?
-  targetSkillId String? // Optional: link to a specific skill
+  targetSkillId String?
 
   // Goal parameters
   difficulty     Difficulty
-  estimatedWeeks Int? // Estimated time to achieve
+  estimatedWeeks Int?
 
   // Progress tracking
   isActive    Boolean   @default(true)
@@ -808,6 +809,89 @@ model TrainingGoal {
 }
 
 // ================================
+// FIG SKILL PROGRESSION & TRAINING
+// ================================
+
+model UserSkillProgress {
+  id           String   @id @default(cuid())
+  userId       String
+  skillBranch  String   // Maps to MasteryGoal (HANDSTAND, PLANCHE, etc.)
+  currentLevel String   // BEGINNER, INTERMEDIATE, ADVANCED, ELITE
+
+  // Assessment data
+  assessmentScore Int      @default(0) // 0-9 points from assessment
+  assessmentDate  DateTime @default(now())
+
+  // Progress tracking
+  sessionsCompleted Int @default(0)
+  totalXPEarned     Int @default(0)
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user             User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  trainingSessions TrainingSession[]
+
+  @@unique([userId, skillBranch])
+  @@map("user_skill_progress")
+}
+
+model TrainingSession {
+  id                  String   @id @default(cuid())
+  userId              String
+  userSkillProgressId String
+
+  // Session details
+  skillBranch     String   // Maps to MasteryGoal
+  userLevel       String   // Level at time of session creation
+  duration        Int      // Duration in minutes (10-120)
+  status          String   @default("IN_PROGRESS") // IN_PROGRESS, COMPLETED, CANCELLED
+
+  // Session structure (JSON string for SQLite)
+  sessionData     String   // Contains phases, exercises, sets, reps
+
+  // XP reward
+  xpAwarded       Int      @default(0)
+  hexagonCategory String? // balance, strength, static_holds, core, etc.
+
+  // Timing
+  startedAt   DateTime  @default(now())
+  completedAt DateTime?
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user                User                        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userSkillProgress   UserSkillProgress           @relation(fields: [userSkillProgressId], references: [id], onDelete: Cascade)
+  exerciseCompletions SessionExerciseCompletion[]
+
+  @@map("training_sessions")
+}
+
+model SessionExerciseCompletion {
+  id                String   @id @default(cuid())
+  trainingSessionId String
+  exerciseIndex     Int      // Index in the session exercises array
+  exerciseName      String
+  completed         Boolean  @default(false)
+  completedAt       DateTime?
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  trainingSession TrainingSession @relation(fields: [trainingSessionId], references: [id], onDelete: Cascade)
+
+  @@unique([trainingSessionId, exerciseIndex])
+  @@map("session_exercise_completions")
+}
+
+// ================================
 // ENUMS
 // ================================
 
@@ -818,7 +902,13 @@ enum Gender {
   PREFER_NOT_TO_SAY
 }
 
-enum FitnessLevel {
+// ✅ UNIFIED: 4 standard difficulty levels across entire system
+// Replaces FitnessLevel, Difficulty, and maps to Rank
+// BEGINNER (D rank) → Fundamentals & basics
+// INTERMEDIATE (C+B ranks) → Building competency  
+// ADVANCED (A rank) → Proficient & skilled
+// ELITE (S rank) → Mastery & expert level
+enum Difficulty {
   BEGINNER
   INTERMEDIATE
   ADVANCED
@@ -836,20 +926,14 @@ enum ExerciseCategory {
   COOL_DOWN
 }
 
-enum Difficulty {
-  BEGINNER
-  INTERMEDIATE
-  ADVANCED
-  EXPERT
-}
-
-// New 5-level ranking scale for exercises
+// Rank system for fine-grained exercise difficulty
+// Maps to unified Difficulty: D→BEGINNER, C+B→INTERMEDIATE, A→ADVANCED, S→ELITE
 enum Rank {
-  D
-  C
-  B
-  A
-  S
+  D // BEGINNER level
+  C // Lower INTERMEDIATE
+  B // Upper INTERMEDIATE
+  A // ADVANCED level
+  S // ELITE level
 }
 
 enum MuscleGroup {
@@ -920,12 +1004,13 @@ enum AchievementType {
   SPECIAL_EVENT
 }
 
+// Achievement rarity levels (aligned with Difficulty)
 enum AchievementRarity {
-  NOVICE
-  INTERMEDIATE
-  ADVANCED
-  EXPERT
-  LEGENDARY
+  NOVICE       // Beginner-level achievements
+  INTERMEDIATE // Intermediate achievements
+  ADVANCED     // Advanced achievements
+  ELITE        // Elite achievements
+  LEGENDARY    // Special/unique achievements
 }
 
 enum SubscriptionPlan {
@@ -953,15 +1038,15 @@ enum SkillCategory {
   BALANCE
   ADVANCED_SKILLS
   DYNAMIC_MOVEMENTS
-  STATIC_ELEMENTS // New: for advanced static holds
+  STATIC_ELEMENTS
 }
 
 enum SkillBranch {
-  PUSH // Push branch (Push-ups, Dips, etc.)
-  PULL // Pull branch (Pull-ups, Muscle-ups, etc.)
-  CORE // Core branch (Planks, L-sits, Dragon flags, etc.)
-  BALANCE // Balance/Handstands branch (Handstand, Handstand walks, etc.)
+  PUSH       // Push branch (Push-ups, Dips, etc.)
+  PULL       // Pull branch (Pull-ups, Muscle-ups, etc.)
+  CORE       // Core branch (Planks, L-sits, Dragon flags, etc.)
+  BALANCE    // Balance/Handstands branch
   LOWER_BODY // Lower body branch (Squats, Pistols, etc.)
-  STATICS // Static elements branch (Planche, Front lever, etc.)
-  WARM_UP // Warm-up and mobility branch
+  STATICS    // Static elements branch (Planche, Front lever, etc.)
+  WARM_UP    // Warm-up and mobility branch
 }
