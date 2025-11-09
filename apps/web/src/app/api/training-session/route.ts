@@ -3,7 +3,7 @@ import { z } from 'zod';
 import prisma from '@/lib/prisma';
 import { generateTrainingSession } from '@/lib/training-generator';
 import { calculateXP } from '@/lib/xp-calculator';
-import { getHexagonCategory } from '@/lib/skill-hexagon-mapping';
+import { getUnifiedPrimaryAxis } from '@/lib/unified-fig-hexagon-mapping';
 import { MasteryGoal, DifficultyLevel } from '@/lib/fig-level-progressions';
 
 export const runtime = 'nodejs';
@@ -53,8 +53,8 @@ export async function POST(req: NextRequest) {
     // Calculate XP reward
     const xpAwarded = calculateXP(data.duration, data.userLevel as DifficultyLevel);
 
-    // Get hexagon category
-    const hexagonCategory = getHexagonCategory(data.skillBranch as MasteryGoal);
+    // Store skill branch directly - will be converted to hexagon axis on session completion
+    const hexagonCategory = data.skillBranch;
 
     // Create training session record
     const session = await prisma.trainingSession.create({

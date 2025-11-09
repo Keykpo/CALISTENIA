@@ -14,12 +14,10 @@ import {
   RefreshCw,
   Dumbbell
 } from 'lucide-react';
-import SkillHexagon from '../SkillHexagon';
 import UnifiedHexagon from '../UnifiedHexagon';
 import XPProgressCard from '../XPProgressCard';
 import Link from 'next/link';
-import { type HexagonProfileWithXP, type HexagonAxis } from '@/lib/hexagon-progression';
-import { migrateToUnifiedHexagon } from '@/lib/unified-hexagon-system';
+import { migrateToUnifiedHexagon, type OldHexagonProfile } from '@/lib/unified-hexagon-system';
 
 interface DashboardOverviewProps {
   userData: any;
@@ -49,7 +47,7 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
 
   // Hexagon data - use stored visual values directly from database
   // The values are already calculated and saved during assessment/updates
-  const hexProfile = userData?.hexagon as HexagonProfileWithXP | null;
+  const hexProfile = userData?.hexagon as OldHexagonProfile | null;
 
   console.log('[DASHBOARD_OVERVIEW] Raw userData received:', {
     hasUserData: !!userData,
@@ -320,42 +318,43 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <XPProgressCard
-                axis="relativeStrength"
-                currentXP={hexProfile.relativeStrengthXP || 0}
-                axisLabel="Relative Strength"
-                compact={true}
-              />
-              <XPProgressCard
-                axis="muscularEndurance"
-                currentXP={hexProfile.muscularEnduranceXP || 0}
-                axisLabel="Muscular Endurance"
-                compact={true}
-              />
-              <XPProgressCard
-                axis="balanceControl"
-                currentXP={hexProfile.balanceControlXP || 0}
-                axisLabel="Balance & Control"
-                compact={true}
-              />
-              <XPProgressCard
-                axis="jointMobility"
-                currentXP={hexProfile.jointMobilityXP || 0}
-                axisLabel="Joint Mobility"
-                compact={true}
-              />
-              <XPProgressCard
-                axis="bodyTension"
-                currentXP={hexProfile.bodyTensionXP || 0}
-                axisLabel="Body Tension"
-                compact={true}
-              />
-              <XPProgressCard
-                axis="skillTechnique"
-                currentXP={hexProfile.skillTechniqueXP || 0}
-                axisLabel="Skill Technique"
-                compact={true}
-              />
+              {(() => {
+                const migratedProfile = migrateToUnifiedHexagon(hexProfile);
+                return (
+                  <>
+                    <XPProgressCard
+                      axis="strength"
+                      currentXP={migratedProfile.strengthXP}
+                      compact={true}
+                    />
+                    <XPProgressCard
+                      axis="endurance"
+                      currentXP={migratedProfile.enduranceXP}
+                      compact={true}
+                    />
+                    <XPProgressCard
+                      axis="balance"
+                      currentXP={migratedProfile.balanceXP}
+                      compact={true}
+                    />
+                    <XPProgressCard
+                      axis="mobility"
+                      currentXP={migratedProfile.mobilityXP}
+                      compact={true}
+                    />
+                    <XPProgressCard
+                      axis="core"
+                      currentXP={migratedProfile.coreXP}
+                      compact={true}
+                    />
+                    <XPProgressCard
+                      axis="staticHolds"
+                      currentXP={migratedProfile.staticHoldsXP}
+                      compact={true}
+                    />
+                  </>
+                );
+              })()}
             </div>
           </CardContent>
         </Card>

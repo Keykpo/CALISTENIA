@@ -410,3 +410,60 @@ export function migrateToUnifiedHexagon(oldProfile: OldHexagonProfile | null | u
     mobilityLevel: (oldProfile.jointMobilityLevel as UnifiedProgressionLevel) || 'BEGINNER',
   };
 }
+
+/**
+ * Database compatibility helpers
+ * Maps between UnifiedHexagonAxis and database field names
+ */
+
+// Map unified axis names to database field names
+const UNIFIED_AXIS_TO_DB_FIELD: Record<UnifiedHexagonAxis, string> = {
+  balance: 'balanceControl',
+  strength: 'relativeStrength',
+  staticHolds: 'skillTechnique',
+  core: 'bodyTension',
+  endurance: 'muscularEndurance',
+  mobility: 'jointMobility',
+};
+
+// Reverse map: database field names to unified axis names
+const DB_FIELD_TO_UNIFIED_AXIS: Record<string, UnifiedHexagonAxis> = {
+  balanceControl: 'balance',
+  relativeStrength: 'strength',
+  skillTechnique: 'staticHolds',
+  bodyTension: 'core',
+  muscularEndurance: 'endurance',
+  jointMobility: 'mobility',
+};
+
+/**
+ * Get database XP field name for a unified axis
+ * Example: 'balance' → 'balanceControlXP'
+ */
+export function getUnifiedAxisXPField(axis: UnifiedHexagonAxis): string {
+  return `${UNIFIED_AXIS_TO_DB_FIELD[axis]}XP`;
+}
+
+/**
+ * Get database level field name for a unified axis
+ * Example: 'balance' → 'balanceControlLevel'
+ */
+export function getUnifiedAxisLevelField(axis: UnifiedHexagonAxis): string {
+  return `${UNIFIED_AXIS_TO_DB_FIELD[axis]}Level`;
+}
+
+/**
+ * Get database visual field name for a unified axis
+ * Example: 'balance' → 'balanceControl'
+ */
+export function getUnifiedAxisVisualField(axis: UnifiedHexagonAxis): string {
+  return UNIFIED_AXIS_TO_DB_FIELD[axis];
+}
+
+/**
+ * Convert database field name to unified axis
+ * Example: 'balanceControl' → 'balance'
+ */
+export function dbFieldToUnifiedAxis(dbField: string): UnifiedHexagonAxis | null {
+  return DB_FIELD_TO_UNIFIED_AXIS[dbField] || null;
+}

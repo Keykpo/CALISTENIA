@@ -6,9 +6,8 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import {
   generateGoalBasedDailyMissions,
-  type HexagonAxis,
 } from '@/lib/exercise-to-axis-mapping';
-import { type HexagonProfileWithXP } from '@/lib/hexagon-progression';
+import { type UnifiedHexagonAxis, migrateToUnifiedHexagon } from '@/lib/unified-hexagon-system';
 
 async function getUserId(req: NextRequest) {
   try {
@@ -96,15 +95,15 @@ export async function GET(req: NextRequest) {
           const goals = user?.goals ? JSON.parse(user.goals as string) : [];
           const primaryGoal = Array.isArray(goals) && goals.length > 0 ? goals[0] : 'general';
 
-          // Extract hexagon levels from profile
-          const hexProfile = hex as HexagonProfileWithXP | null;
-          const hexagonLevels: Record<HexagonAxis, 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE'> = {
-            relativeStrength: (hexProfile?.relativeStrengthLevel || 'BEGINNER') as any,
-            muscularEndurance: (hexProfile?.muscularEnduranceLevel || 'BEGINNER') as any,
-            balanceControl: (hexProfile?.balanceControlLevel || 'BEGINNER') as any,
-            jointMobility: (hexProfile?.jointMobilityLevel || 'BEGINNER') as any,
-            bodyTension: (hexProfile?.bodyTensionLevel || 'BEGINNER') as any,
-            skillTechnique: (hexProfile?.skillTechniqueLevel || 'BEGINNER') as any,
+          // Extract hexagon levels from profile (migrate to unified)
+          const unifiedProfile = migrateToUnifiedHexagon(hex);
+          const hexagonLevels: Record<UnifiedHexagonAxis, 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE'> = {
+            balance: unifiedProfile.balanceLevel,
+            strength: unifiedProfile.strengthLevel,
+            staticHolds: unifiedProfile.staticHoldsLevel,
+            core: unifiedProfile.coreLevel,
+            endurance: unifiedProfile.enduranceLevel,
+            mobility: unifiedProfile.mobilityLevel,
           };
 
           // Generate 5 goal-based missions
