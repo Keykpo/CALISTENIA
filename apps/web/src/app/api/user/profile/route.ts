@@ -50,12 +50,27 @@ export async function GET(request: NextRequest) {
         assessmentDate: true,
         hexagonProfile: {
           select: {
+            // Visual values (0-10)
             relativeStrength: true,
             muscularEndurance: true,
             balanceControl: true,
             jointMobility: true,
             bodyTension: true,
             skillTechnique: true,
+            // XP values (required for calculations)
+            relativeStrengthXP: true,
+            muscularEnduranceXP: true,
+            balanceControlXP: true,
+            jointMobilityXP: true,
+            bodyTensionXP: true,
+            skillTechniqueXP: true,
+            // Level values (required for mode calculation)
+            relativeStrengthLevel: true,
+            muscularEnduranceLevel: true,
+            balanceControlLevel: true,
+            jointMobilityLevel: true,
+            bodyTensionLevel: true,
+            skillTechniqueLevel: true,
           },
         },
         goals: true,

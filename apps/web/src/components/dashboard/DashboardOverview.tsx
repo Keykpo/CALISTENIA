@@ -17,7 +17,7 @@ import {
 import SkillHexagon from '../SkillHexagon';
 import XPProgressCard from '../XPProgressCard';
 import Link from 'next/link';
-import { getVisualValueFromXP, getLevelFromXP, type HexagonProfileWithXP, type HexagonAxis } from '@/lib/hexagon-progression';
+import { type HexagonProfileWithXP, type HexagonAxis } from '@/lib/hexagon-progression';
 
 interface DashboardOverviewProps {
   userData: any;
@@ -45,33 +45,34 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
   const xpNeededForLevel = nextLevelXP - currentLevelXP;
   const levelProgress = (xpInCurrentLevel / xpNeededForLevel) * 100;
 
-  // Hexagon data - calculate visual values from XP
+  // Hexagon data - use stored visual values directly from database
+  // The values are already calculated and saved during assessment/updates
   const hexProfile = userData?.hexagon as HexagonProfileWithXP | null;
+
+  console.log('📊 Dashboard hexagon data:', {
+    hasHexProfile: !!hexProfile,
+    visualValues: hexProfile ? {
+      relativeStrength: hexProfile.relativeStrength,
+      muscularEndurance: hexProfile.muscularEndurance,
+      balanceControl: hexProfile.balanceControl,
+      jointMobility: hexProfile.jointMobility,
+      bodyTension: hexProfile.bodyTension,
+      skillTechnique: hexProfile.skillTechnique,
+    } : null,
+    xpValues: hexProfile ? {
+      relativeStrengthXP: hexProfile.relativeStrengthXP,
+      muscularEnduranceXP: hexProfile.muscularEnduranceXP,
+      balanceControlXP: hexProfile.balanceControlXP,
+    } : null,
+  });
+
   const hexagonData = hexProfile ? {
-    relativeStrength: getVisualValueFromXP(
-      hexProfile.relativeStrengthXP || 0,
-      getLevelFromXP(hexProfile.relativeStrengthXP || 0)
-    ),
-    muscularEndurance: getVisualValueFromXP(
-      hexProfile.muscularEnduranceXP || 0,
-      getLevelFromXP(hexProfile.muscularEnduranceXP || 0)
-    ),
-    balanceControl: getVisualValueFromXP(
-      hexProfile.balanceControlXP || 0,
-      getLevelFromXP(hexProfile.balanceControlXP || 0)
-    ),
-    jointMobility: getVisualValueFromXP(
-      hexProfile.jointMobilityXP || 0,
-      getLevelFromXP(hexProfile.jointMobilityXP || 0)
-    ),
-    bodyTension: getVisualValueFromXP(
-      hexProfile.bodyTensionXP || 0,
-      getLevelFromXP(hexProfile.bodyTensionXP || 0)
-    ),
-    skillTechnique: getVisualValueFromXP(
-      hexProfile.skillTechniqueXP || 0,
-      getLevelFromXP(hexProfile.skillTechniqueXP || 0)
-    ),
+    relativeStrength: hexProfile.relativeStrength || 0,
+    muscularEndurance: hexProfile.muscularEndurance || 0,
+    balanceControl: hexProfile.balanceControl || 0,
+    jointMobility: hexProfile.jointMobility || 0,
+    bodyTension: hexProfile.bodyTension || 0,
+    skillTechnique: hexProfile.skillTechnique || 0,
   } : {
     relativeStrength: 0,
     muscularEndurance: 0,

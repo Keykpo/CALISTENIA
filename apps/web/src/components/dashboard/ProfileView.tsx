@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -17,9 +18,12 @@ import {
   Edit,
   Save,
   X,
-  TrendingUp
+  TrendingUp,
+  RefreshCw,
+  AlertTriangle
 } from 'lucide-react';
 import { signOut } from 'next-auth/react';
+import { calculateOverallLevel, getLevelBadgeColor, type HexagonProfileWithXP } from '@/lib/hexagon-progression';
 
 interface ProfileViewProps {
   userId: string;
@@ -28,14 +32,15 @@ interface ProfileViewProps {
 }
 
 export default function ProfileView({ userId, userData, onUpdate }: ProfileViewProps) {
+  const router = useRouter();
   const [isEditing, setIsEditing] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [showRecalculateWarning, setShowRecalculateWarning] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     height: '',
     weight: '',
-    fitnessLevel: 'BEGINNER',
     gender: '',
   });
 
@@ -46,7 +51,6 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
       lastName: userData?.user?.lastName || '',
       height: userData?.user?.height || '',
       weight: userData?.user?.weight || '',
-      fitnessLevel: userData?.user?.fitnessLevel || 'BEGINNER',
       gender: userData?.user?.gender || '',
     });
     setIsEditing(true);
@@ -79,14 +83,23 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
     }
   };
 
+  const handleRecalculate = () => {
+    // Navigate to assessment page
+    router.push('/onboarding/assessment');
+  };
+
   const stats = userData?.stats || {};
   const user = userData?.user || {};
+  const hexProfile = userData?.hexagon as HexagonProfileWithXP | null;
+
+  // Calculate dynamic fitness level from hexagon
+  const calculatedLevel = hexProfile ? calculateOverallLevel(hexProfile) : (user.fitnessLevel || 'BEGINNER');
+  const levelBadgeColor = getLevelBadgeColor(calculatedLevel);
 
   return (
     <div className="space-y-6">
-      <div className="grid gap-6 lg:grid-cols-3">
-        {/* Profile Card */}
-        <Card className="lg:col-span-2">
+      {/* Personal Information Card */}
+      <Card>
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
@@ -168,34 +181,25 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label className="text-slate-600">Fitness Level</Label>
-                    <div className="mt-1">
-                      <Badge variant="outline" className="text-sm">
-                        {user.fitnessLevel || 'BEGINNER'}
-                      </Badge>
-                    </div>
-                  </div>
-                  <div>
                     <Label className="text-slate-600">Gender</Label>
                     <p className="text-lg font-medium mt-1">
                       {user.gender || 'Not specified'}
                     </p>
                   </div>
-                </div>
-
-                <div>
-                  <Label className="text-slate-600">Member Since</Label>
-                  <div className="flex items-center gap-2 mt-1">
-                    <Calendar className="w-4 h-4 text-slate-400" />
-                    <p className="text-lg font-medium">
-                      {user.createdAt
-                        ? new Date(user.createdAt).toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric',
-                          })
-                        : 'Unknown'}
-                    </p>
+                  <div>
+                    <Label className="text-slate-600">Member Since</Label>
+                    <div className="flex items-center gap-2 mt-1">
+                      <Calendar className="w-4 h-4 text-slate-400" />
+                      <p className="text-lg font-medium">
+                        {user.createdAt
+                          ? new Date(user.createdAt).toLocaleDateString('en-US', {
+                              year: 'numeric',
+                              month: 'long',
+                              day: 'numeric',
+                            })
+                          : 'Unknown'}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -254,102 +258,102 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="fitnessLevel">Fitness Level</Label>
-                    <Select
-                      value={formData.fitnessLevel}
-                      onValueChange={(value) =>
-                        setFormData({ ...formData, fitnessLevel: value })
-                      }
-                    >
-                      <SelectTrigger>
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="BEGINNER">Beginner</SelectItem>
-                        <SelectItem value="INTERMEDIATE">Intermediate</SelectItem>
-                        <SelectItem value="ADVANCED">Advanced</SelectItem>
-                        <SelectItem value="ELITE">Elite</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div>
-                    <Label htmlFor="gender">Gender</Label>
-                    <Select
-                      value={formData.gender}
-                      onValueChange={(value) =>
-                        setFormData({ ...formData, gender: value })
-                      }
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="MALE">Male</SelectItem>
-                        <SelectItem value="FEMALE">Female</SelectItem>
-                        <SelectItem value="OTHER">Other</SelectItem>
-                        <SelectItem value="PREFER_NOT_TO_SAY">
-                          Prefer not to say
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
+                <div>
+                  <Label htmlFor="gender">Gender</Label>
+                  <Select
+                    value={formData.gender}
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, gender: value })
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="MALE">Male</SelectItem>
+                      <SelectItem value="FEMALE">Female</SelectItem>
+                      <SelectItem value="OTHER">Other</SelectItem>
+                      <SelectItem value="PREFER_NOT_TO_SAY">
+                        Prefer not to say
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
             )}
           </CardContent>
         </Card>
 
-        {/* Stats Card */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <TrendingUp className="w-5 h-5" />
-              Statistics
-            </CardTitle>
-            <CardDescription>Your progress so far</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-3">
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-slate-600">Level</span>
-                <span className="text-2xl font-bold text-blue-600">
-                  {stats.level || 1}
-                </span>
-              </div>
-
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-slate-600">XP Total</span>
-                <span className="text-2xl font-bold text-purple-600">
-                  {stats.totalXP || 0}
-                </span>
-              </div>
-
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-slate-600">Coins</span>
-                <span className="text-2xl font-bold text-amber-600">
-                  {stats.coins || 0}
-                </span>
-              </div>
-
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-slate-600">Streak</span>
-                <span className="text-2xl font-bold text-orange-600">
-                  {stats.dailyStreak || 0}
-                </span>
-              </div>
-
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-slate-600">Total Strength</span>
-                <span className="text-2xl font-bold text-green-600">
-                  {stats.totalStrength || 0}
-                </span>
-              </div>
+      {/* Skill Profile Card */}
+      <Card className="border-purple-200 bg-purple-50/30">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Target className="w-5 h-5 text-purple-600" />
+            Skill Profile
+          </CardTitle>
+          <CardDescription>
+            Your current calisthenics level
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <Label className="text-slate-600 mb-2 block">Calisthenics Level</Label>
+              <Badge variant="outline" className={`text-base px-4 py-2 ${levelBadgeColor}`}>
+                {calculatedLevel}
+              </Badge>
+              <p className="text-xs text-slate-500 mt-2">
+                Calculated from your hexagon skill levels
+              </p>
             </div>
-          </CardContent>
-        </Card>
-      </div>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleRecalculate}
+            >
+              <RefreshCw className="w-4 h-4 mr-2" />
+              Recalculate
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Skill Level Management */}
+      <Card className="border-blue-200 bg-blue-50/50">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Target className="w-5 h-5 text-blue-600" />
+            Skill Level Assessment
+          </CardTitle>
+          <CardDescription>
+            Update your skill profile by retaking the assessment
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="flex items-start gap-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+            <AlertTriangle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+            <div className="text-sm text-amber-900">
+              <p className="font-semibold mb-1">Before recalculating:</p>
+              <ul className="list-disc list-inside space-y-1 text-amber-800">
+                <li>This will update your hexagon skill levels</li>
+                <li>Your training plan will be adjusted accordingly</li>
+                <li>Your progress history will be preserved</li>
+              </ul>
+            </div>
+          </div>
+          <Button
+            onClick={handleRecalculate}
+            className="w-full"
+            variant="default"
+          >
+            <RefreshCw className="w-4 h-4 mr-2" />
+            Retake Skill Assessment
+          </Button>
+          <p className="text-xs text-slate-600 text-center">
+            Recommended if your fitness level has significantly changed or if you made a mistake during initial assessment
+          </p>
+        </CardContent>
+      </Card>
 
       {/* Account Actions */}
       <Card>
