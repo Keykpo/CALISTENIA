@@ -67,8 +67,8 @@ export default function UnifiedSkillAssessment({
   };
 
   const handleRetakeAssessments = () => {
-    // Navigate to assessment page
-    router.push('/onboarding/assessment');
+    // Navigate to FIG Skill Path where assessments can be taken
+    router.push('/dashboard?tab=skills');
   };
 
   // Calculate overall level and stats
@@ -231,7 +231,15 @@ export default function UnifiedSkillAssessment({
           </Button>
 
           <p className="text-xs text-slate-600 text-center leading-relaxed">
-            Retake assessments if your fitness level has significantly changed or if you want to update your skill profile
+            {averageScore === 0 ? (
+              <>
+                <strong>No FIG assessments found.</strong> Complete skill assessments in the FIG Level Skill Path to build your hexagon profile.
+              </>
+            ) : (
+              <>
+                Retake assessments if your fitness level has significantly changed or if you want to update your skill profile.
+              </>
+            )}
           </p>
         </div>
       </CardContent>
