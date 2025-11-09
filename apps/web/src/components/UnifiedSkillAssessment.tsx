@@ -8,11 +8,8 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import {
   Target,
-  RefreshCw,
-  AlertTriangle,
   TrendingUp,
   Activity,
-  Loader2,
 } from 'lucide-react';
 import UnifiedHexagon from './UnifiedHexagon';
 import {
@@ -36,7 +33,6 @@ export default function UnifiedSkillAssessment({
   onUpdate,
 }: UnifiedSkillAssessmentProps) {
   const router = useRouter();
-  const [isRecalculating, setIsRecalculating] = useState(false);
 
   console.log('[UNIFIED_SKILL_ASSESSMENT] Props received:', {
     userId,
@@ -49,34 +45,6 @@ export default function UnifiedSkillAssessment({
       strengthXP: hexagonProfile.strengthXP,
     } : null,
   });
-
-  const handleRecalculate = async () => {
-    try {
-      setIsRecalculating(true);
-
-      // Call API to recalculate hexagon from FIG assessments
-      const res = await fetch('/api/hexagon/recalculate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-user-id': userId,
-        },
-      });
-
-      if (res.ok) {
-        // Refresh data
-        if (onUpdate) {
-          onUpdate();
-        }
-      } else {
-        console.error('Failed to recalculate hexagon');
-      }
-    } catch (error) {
-      console.error('Error recalculating hexagon:', error);
-    } finally {
-      setIsRecalculating(false);
-    }
-  };
 
   const handleRetakeAssessments = () => {
     // Navigate to FIG Skill Path where assessments can be taken
@@ -202,37 +170,7 @@ export default function UnifiedSkillAssessment({
         </div>
 
         {/* Action Buttons */}
-        <div className="space-y-3 pt-4 border-t border-slate-200">
-          <Button
-            onClick={handleRecalculate}
-            className="w-full bg-indigo-600 hover:bg-indigo-700"
-            disabled={isRecalculating}
-          >
-            {isRecalculating ? (
-              <>
-                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                Recalculating...
-              </>
-            ) : (
-              <>
-                <RefreshCw className="w-4 h-4 mr-2" />
-                Recalculate from FIG Assessments
-              </>
-            )}
-          </Button>
-
-          <div className="flex items-start gap-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
-            <AlertTriangle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
-            <div className="text-xs text-amber-900">
-              <p className="font-semibold mb-1">Before retaking assessments:</p>
-              <ul className="list-disc list-inside space-y-0.5 text-amber-800">
-                <li>Your hexagon will be recalculated</li>
-                <li>Training recommendations will update</li>
-                <li>Progress history is preserved</li>
-              </ul>
-            </div>
-          </div>
-
+        <div className="pt-4 border-t border-slate-200">
           <Button
             onClick={handleRetakeAssessments}
             className="w-full"
@@ -242,7 +180,7 @@ export default function UnifiedSkillAssessment({
             Retake FIG Skill Assessments
           </Button>
 
-          <p className="text-xs text-slate-600 text-center leading-relaxed">
+          <p className="text-xs text-slate-600 text-center leading-relaxed mt-3">
             {averageScore === 0 ? (
               <>
                 <strong>No FIG assessments found.</strong> Complete skill assessments in the FIG Level Skill Path to build your hexagon profile.
