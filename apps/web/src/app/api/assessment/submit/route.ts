@@ -122,6 +122,26 @@ export async function POST(req: NextRequest) {
           skillTechniqueLevel: hexagonProfile.skillTechniqueLevel,
         },
       });
+      console.log('✅ Hexagon profile UPDATED:', {
+        userId,
+        overallLevel: data.overallLevel,
+        baseXP,
+        visualValues: {
+          relativeStrength: hexagonProfile.relativeStrength,
+          muscularEndurance: hexagonProfile.muscularEndurance,
+          balanceControl: hexagonProfile.balanceControl,
+        },
+        xpValues: {
+          relativeStrengthXP: hexagonProfile.relativeStrengthXP,
+          muscularEnduranceXP: hexagonProfile.muscularEnduranceXP,
+          balanceControlXP: hexagonProfile.balanceControlXP,
+        },
+        levels: {
+          relativeStrengthLevel: hexagonProfile.relativeStrengthLevel,
+          muscularEnduranceLevel: hexagonProfile.muscularEnduranceLevel,
+          balanceControlLevel: hexagonProfile.balanceControlLevel,
+        },
+      });
     } else {
       await prisma.hexagonProfile.create({
         data: {
@@ -147,6 +167,26 @@ export async function POST(req: NextRequest) {
           jointMobilityLevel: hexagonProfile.jointMobilityLevel,
           bodyTensionLevel: hexagonProfile.bodyTensionLevel,
           skillTechniqueLevel: hexagonProfile.skillTechniqueLevel,
+        },
+      });
+      console.log('✅ Hexagon profile CREATED:', {
+        userId,
+        overallLevel: data.overallLevel,
+        baseXP,
+        visualValues: {
+          relativeStrength: hexagonProfile.relativeStrength,
+          muscularEndurance: hexagonProfile.muscularEndurance,
+          balanceControl: hexagonProfile.balanceControl,
+        },
+        xpValues: {
+          relativeStrengthXP: hexagonProfile.relativeStrengthXP,
+          muscularEnduranceXP: hexagonProfile.muscularEnduranceXP,
+          balanceControlXP: hexagonProfile.balanceControlXP,
+        },
+        levels: {
+          relativeStrengthLevel: hexagonProfile.relativeStrengthLevel,
+          muscularEnduranceLevel: hexagonProfile.muscularEnduranceLevel,
+          balanceControlLevel: hexagonProfile.balanceControlLevel,
         },
       });
     }
