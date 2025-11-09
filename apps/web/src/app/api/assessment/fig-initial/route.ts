@@ -224,7 +224,7 @@ export async function POST(req: NextRequest) {
         mobility: mobilityValue,
       },
       overallLevel,
-      redirectTo: '/dashboard',
+      redirectTo: '/onboarding/results',
     });
 
   } catch (error: any) {

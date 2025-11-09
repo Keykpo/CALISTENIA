@@ -6,21 +6,16 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight, Loader2, Sparkles } from 'lucide-react';
-import SkillHexagon from '@/components/SkillHexagon';
+import UnifiedHexagon from '@/components/UnifiedHexagon';
 import LevelBadge from './components/LevelBadge';
 import RecommendationCard from './components/RecommendationCard';
-import { calculateOverallLevel, getLevelProgress, type HexagonProfileWithXP } from '@/lib/hexagon-progression';
-
-// Note: FitnessLevel is now imported from hexagon-progression (BEGINNER | INTERMEDIATE | ADVANCED | ELITE)
-
-interface HexagonProfile {
-  relativeStrength: number;
-  muscularEndurance: number;
-  balanceControl: number;
-  jointMobility: number;
-  bodyTension: number;
-  skillTechnique: number;
-}
+import {
+  migrateToUnifiedHexagon,
+  calculateUnifiedOverallLevel,
+  getUnifiedLevelProgress,
+  type UnifiedHexagonProfile,
+  type UnifiedFitnessLevel,
+} from '@/lib/unified-hexagon-system';
 
 interface Exercise {
   name: string;
@@ -30,9 +25,9 @@ interface Exercise {
 }
 
 interface UserData {
-  fitnessLevel: FitnessLevel;
+  fitnessLevel: UnifiedFitnessLevel;
   levelProgress: number; // Progress percentage within current level
-  hexagonProfile: HexagonProfile;
+  hexagonProfile: UnifiedHexagonProfile;
   recommendations: Exercise[];
 }
 
@@ -80,58 +75,40 @@ export default function OnboardingResultsPage() {
       if (res.ok) {
         const data = await res.json();
 
-        // Calculate level from hexagon (SINGLE SOURCE OF TRUTH)
-        const hexProfile = data.hexagonProfile || {
-          relativeStrength: 5,
-          muscularEndurance: 5,
-          balanceControl: 5,
-          jointMobility: 5,
-          bodyTension: 5,
-          skillTechnique: 5,
-          relativeStrengthXP: 0,
-          muscularEnduranceXP: 0,
-          balanceControlXP: 0,
-          jointMobilityXP: 0,
-          bodyTensionXP: 0,
-          skillTechniqueXP: 0,
-        };
+        // Migrate to unified hexagon system
+        const unifiedProfile = migrateToUnifiedHexagon(data.hexagonProfile);
 
-        const calculatedLevel = calculateOverallLevel(hexProfile as HexagonProfileWithXP);
+        // Calculate level from unified hexagon (SINGLE SOURCE OF TRUTH)
+        const calculatedLevel = calculateUnifiedOverallLevel(unifiedProfile);
 
-        // Calculate average XP across all axes
+        // Calculate average XP across all unified axes
         const averageXP = (
-          (hexProfile.relativeStrengthXP || 0) +
-          (hexProfile.muscularEnduranceXP || 0) +
-          (hexProfile.balanceControlXP || 0) +
-          (hexProfile.jointMobilityXP || 0) +
-          (hexProfile.bodyTensionXP || 0) +
-          (hexProfile.skillTechniqueXP || 0)
+          (unifiedProfile.balanceXP || 0) +
+          (unifiedProfile.strengthXP || 0) +
+          (unifiedProfile.staticHoldsXP || 0) +
+          (unifiedProfile.coreXP || 0) +
+          (unifiedProfile.enduranceXP || 0) +
+          (unifiedProfile.mobilityXP || 0)
         ) / 6;
 
-        const levelProgress = getLevelProgress(averageXP);
+        const levelProgress = getUnifiedLevelProgress(averageXP);
 
-        // Set user data with hexagon profile
+        // Set user data with unified hexagon profile
         setUserData({
-          fitnessLevel: calculatedLevel as FitnessLevel,
+          fitnessLevel: calculatedLevel,
           levelProgress,
-          hexagonProfile: hexProfile,
-          recommendations: getRecommendations(calculatedLevel as FitnessLevel),
+          hexagonProfile: unifiedProfile,
+          recommendations: getRecommendations(calculatedLevel),
         });
       }
     } catch (error) {
       console.error('Error fetching user data:', error);
       // Set default data if fetch fails
+      const defaultProfile = migrateToUnifiedHexagon(null);
       setUserData({
         fitnessLevel: 'BEGINNER',
         levelProgress: 0,
-        hexagonProfile: {
-          relativeStrength: 0,
-          muscularEndurance: 0,
-          balanceControl: 0,
-          jointMobility: 0,
-          bodyTension: 0,
-          skillTechnique: 0,
-        },
+        hexagonProfile: defaultProfile,
         recommendations: getRecommendations('BEGINNER'),
       });
     } finally {
@@ -139,8 +116,8 @@ export default function OnboardingResultsPage() {
     }
   };
 
-  const getRecommendations = (level: FitnessLevel): Exercise[] => {
-    const recommendations: Record<FitnessLevel, Exercise[]> = {
+  const getRecommendations = (level: UnifiedFitnessLevel): Exercise[] => {
+    const recommendations: Record<UnifiedFitnessLevel, Exercise[]> = {
       BEGINNER: [
         {
           name: 'Wall Push-ups',
@@ -269,8 +246,8 @@ export default function OnboardingResultsPage() {
   };
 
   const handleContinue = () => {
-    // Redirect to routines page to see personalized workout plan
-    router.push('/routines');
+    // Redirect to dashboard to see personalized plan
+    router.push('/dashboard');
   };
 
   if (loading || status === 'loading') {
@@ -278,7 +255,7 @@ export default function OnboardingResultsPage() {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
         <div className="text-center">
           <Loader2 className="w-12 h-12 text-blue-600 animate-spin mx-auto mb-4" />
-          <p className="text-slate-600">Loading your results...</p>
+          <p className="text-slate-600">Cargando tus resultados...</p>
         </div>
       </div>
     );
@@ -299,23 +276,25 @@ export default function OnboardingResultsPage() {
             </div>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-3">
-            This is Your Level!
+            ¡Tu Perfil de Habilidades FIG!
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Based on your assessment, we've created a personalized profile to guide your calisthenics journey.
+            Basado en tu evaluación FIG, hemos creado tu perfil hexagonal personalizado
+            que guiará tu progreso en calistenia.
           </p>
         </div>
 
         {/* Two-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          {/* Left Column - Hexagon */}
+          {/* Left Column - Unified Hexagon */}
           <div>
-            <SkillHexagon
+            <UnifiedHexagon
               profile={userData.hexagonProfile}
               showCard={true}
               animated={true}
-              title="Your Skill Hexagon"
-              description="This hexagon shows your current skill levels across 6 key calisthenics dimensions."
+              size={450}
+              showRanks={true}
+              showAxisDetails={true}
             />
           </div>
 
@@ -328,20 +307,20 @@ export default function OnboardingResultsPage() {
 
             <Card className="p-6">
               <h3 className="text-lg font-semibold text-slate-900 mb-4">
-                What's Next?
+                ¿Qué sigue ahora?
               </h3>
               <div className="space-y-3 text-slate-700">
                 <p>
-                  ✓ Your personalized workout plan is ready
+                  ✓ Tu plan de entrenamiento personalizado está listo
                 </p>
                 <p>
-                  ✓ Track your progress with daily missions
+                  ✓ Sigue tu progreso con misiones diarias
                 </p>
                 <p>
-                  ✓ Unlock achievements as you improve
+                  ✓ Desbloquea logros mientras mejoras
                 </p>
                 <p>
-                  ✓ Level up your skills with guided progressions
+                  ✓ Sube de nivel con progresiones guiadas del sistema FIG
                 </p>
               </div>
             </Card>
@@ -351,7 +330,7 @@ export default function OnboardingResultsPage() {
         {/* Recommended Exercises */}
         <div className="mb-12">
           <h2 className="text-2xl font-bold text-slate-900 mb-6">
-            Recommended Exercises to Start
+            Ejercicios Recomendados para Empezar
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {userData.recommendations.slice(0, 5).map((exercise, index) => (
@@ -371,7 +350,7 @@ export default function OnboardingResultsPage() {
             size="lg"
             className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all"
           >
-            Continue with My Personalized Plan
+            Continuar con Mi Plan Personalizado
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
         </div>
