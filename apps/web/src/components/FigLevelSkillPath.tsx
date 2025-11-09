@@ -175,6 +175,29 @@ function ProgressionCard({ progression, userLevel, userId, onProgressUpdate }: P
         
         // Show duration selection
         setShowDurationSelect(true);
+
+        // ✨ Automatically recalculate hexagon after assessment
+        try {
+          console.log('[FIG_ASSESSMENT] Auto-recalculating hexagon after assessment');
+          const hexagonResponse = await fetch('/api/hexagon/recalculate', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'x-user-id': userId,
+            },
+          });
+
+          if (hexagonResponse.ok) {
+            const hexagonData = await hexagonResponse.json();
+            console.log('[FIG_ASSESSMENT] Hexagon recalculated:', hexagonData);
+            toast.success('Your skill hexagon has been updated!', { duration: 3000 });
+          } else {
+            console.warn('[FIG_ASSESSMENT] Failed to auto-recalculate hexagon');
+          }
+        } catch (hexError) {
+          console.error('[FIG_ASSESSMENT] Error auto-recalculating hexagon:', hexError);
+          // Don't show error to user, hexagon can be recalculated manually
+        }
       } else {
         toast.error('Failed to save assessment');
       }
