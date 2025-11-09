@@ -378,7 +378,12 @@ export interface OldHexagonProfile {
   skillTechniqueLevel?: string;
 }
 
-export function migrateToUnifiedHexagon(oldProfile: OldHexagonProfile): UnifiedHexagonProfile {
+export function migrateToUnifiedHexagon(oldProfile: OldHexagonProfile | null | undefined): UnifiedHexagonProfile {
+  // Handle null/undefined profile by returning default profile
+  if (!oldProfile) {
+    return initializeUnifiedHexagonProfile();
+  }
+
   return {
     // Visual values
     balance: oldProfile.balanceControl || 0,

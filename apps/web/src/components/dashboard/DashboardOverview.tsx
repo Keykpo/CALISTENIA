@@ -164,22 +164,13 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
           </CardHeader>
           <CardContent>
             <div className="flex justify-center">
-              {hexProfile ? (
-                <UnifiedHexagon
-                  profile={migrateToUnifiedHexagon(hexProfile)}
-                  showCard={false}
-                  animated={false}
-                  size={300}
-                  showAxisDetails={false}
-                />
-              ) : (
-                <SkillHexagon
-                  profile={hexagonData}
-                  showCard={false}
-                  animated={false}
-                  size={300}
-                />
-              )}
+              <UnifiedHexagon
+                profile={migrateToUnifiedHexagon(hexProfile)}
+                showCard={false}
+                animated={false}
+                size={300}
+                showAxisDetails={false}
+              />
             </div>
           </CardContent>
         </Card>
