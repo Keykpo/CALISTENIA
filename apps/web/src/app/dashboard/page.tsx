@@ -60,14 +60,11 @@ export default function DashboardPage() {
 
       if (res.ok) {
         const data = await res.json();
-
-        console.log('[DASHBOARD_PAGE] Fetched dashboard data:', {
+        console.log('📥 Dashboard page received data:', {
           hasHexagon: !!data.hexagon,
           hexagonData: data.hexagon,
-          userFitnessLevel: data.user?.fitnessLevel,
-          hasCompletedAssessment: data.user?.hasCompletedAssessment
+          stats: data.stats,
         });
-
         setUserData(data);
 
         // Check if user needs to complete assessment

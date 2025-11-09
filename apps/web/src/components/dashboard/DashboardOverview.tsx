@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -53,6 +54,26 @@ const LEVEL_INFO: Record<UnifiedFitnessLevel, { color: string; bgColor: string; 
 };
 
 export default function DashboardOverview({ userData, onRefresh }: DashboardOverviewProps) {
+  const [localHexagon, setLocalHexagon] = useState<HexagonProfileWithXP | null>(null);
+
+  // Fallback: If userData doesn't have hexagon, fetch it directly
+  useEffect(() => {
+    if (userData && !userData.hexagon) {
+      console.log('⚠️ DashboardOverview: No hexagon in userData, fetching directly...');
+      fetch('/api/user/profile')
+        .then(res => res.json())
+        .then(data => {
+          if (data.hexagonProfile) {
+            console.log('✅ DashboardOverview: Fetched hexagon directly:', data.hexagonProfile);
+            setLocalHexagon(data.hexagonProfile);
+          }
+        })
+        .catch(err => console.error('❌ Error fetching hexagon:', err));
+    } else if (userData?.hexagon) {
+      setLocalHexagon(userData.hexagon);
+    }
+  }, [userData]);
+
   const stats = userData?.stats || {
     totalXP: 0,
     level: 1,
@@ -82,25 +103,27 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
     (unifiedProfile.mobilityXP || 0)
   ) / 6;
 
-  const levelProgress = getUnifiedLevelProgress(averageXP);
+  // Hexagon data - use localHexagon which has fallback logic
+  const hexProfile = localHexagon;
 
-  console.log('[DASHBOARD_OVERVIEW] Level Calculation Debug:', {
+  console.log('📊 DashboardOverview - Full userData:', userData);
+  console.log('📊 DashboardOverview - Hexagon data:', {
     hasHexProfile: !!hexProfile,
-    hexProfileData: hexProfile,
-    unifiedProfile: {
-      balanceXP: unifiedProfile.balanceXP,
-      strengthXP: unifiedProfile.strengthXP,
-      staticHoldsXP: unifiedProfile.staticHoldsXP,
-      coreXP: unifiedProfile.coreXP,
-      enduranceXP: unifiedProfile.enduranceXP,
-      mobilityXP: unifiedProfile.mobilityXP,
-      balanceLevel: unifiedProfile.balanceLevel,
-      strengthLevel: unifiedProfile.strengthLevel,
-    },
-    calculatedFitnessLevel: fitnessLevel,
-    averageXP,
-    levelProgress,
-    userFitnessLevelFromDB: userData?.user?.fitnessLevel,
+    hexProfileRaw: hexProfile,
+    source: userData?.hexagon ? 'from userData' : 'from direct fetch',
+    visualValues: hexProfile ? {
+      relativeStrength: hexProfile.relativeStrength,
+      muscularEndurance: hexProfile.muscularEndurance,
+      balanceControl: hexProfile.balanceControl,
+      jointMobility: hexProfile.jointMobility,
+      bodyTension: hexProfile.bodyTension,
+      skillTechnique: hexProfile.skillTechnique,
+    } : null,
+    xpValues: hexProfile ? {
+      relativeStrengthXP: hexProfile.relativeStrengthXP,
+      muscularEnduranceXP: hexProfile.muscularEnduranceXP,
+      balanceControlXP: hexProfile.balanceControlXP,
+    } : null,
   });
 
   // If no hexagon profile exists, show warning

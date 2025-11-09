@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -33,6 +33,7 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
   const [isEditing, setIsEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [showRecalculateWarning, setShowRecalculateWarning] = useState(false);
+  const [localHexagon, setLocalHexagon] = useState<HexagonProfileWithXP | null>(null);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -40,6 +41,24 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
     weight: '',
     gender: '',
   });
+
+  // Fallback: If userData doesn't have hexagon, fetch it directly
+  useEffect(() => {
+    if (userData && !userData.hexagon) {
+      console.log('⚠️ ProfileView: No hexagon in userData, fetching directly...');
+      fetch('/api/user/profile')
+        .then(res => res.json())
+        .then(data => {
+          if (data.hexagonProfile) {
+            console.log('✅ ProfileView: Fetched hexagon directly:', data.hexagonProfile);
+            setLocalHexagon(data.hexagonProfile);
+          }
+        })
+        .catch(err => console.error('❌ ProfileView: Error fetching hexagon:', err));
+    } else if (userData?.hexagon) {
+      setLocalHexagon(userData.hexagon);
+    }
+  }, [userData]);
 
   const handleEdit = () => {
     // Initialize form with current data
@@ -82,7 +101,18 @@ export default function ProfileView({ userId, userData, onUpdate }: ProfileViewP
 
   const stats = userData?.stats || {};
   const user = userData?.user || {};
-  const hexProfile = userData?.hexagon as OldHexagonProfile | null;
+  // Use localHexagon which has fallback logic
+  const hexProfile = localHexagon;
+
+  console.log('👤 ProfileView - Hexagon data:', {
+    hasHexProfile: !!hexProfile,
+    source: userData?.hexagon ? 'from userData' : 'from direct fetch',
+    calculatedFrom: hexProfile ? 'hexagon levels' : 'user.fitnessLevel',
+  });
+
+  // Calculate dynamic fitness level from hexagon
+  const calculatedLevel = hexProfile ? calculateOverallLevel(hexProfile) : (user.fitnessLevel || 'BEGINNER');
+  const levelBadgeColor = getLevelBadgeColor(calculatedLevel);
 
   return (
     <div className="space-y-6">
