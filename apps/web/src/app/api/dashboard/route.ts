@@ -176,7 +176,9 @@ export async function GET(req: NextRequest) {
     });
 
     console.log('[DASHBOARD] Hexagon profile data:', {
+      userId,
       hasHexProfile: !!hex,
+      hexProfileRaw: hex,
       visualValues: hex ? {
         relativeStrength: hex.relativeStrength,
         balanceControl: hex.balanceControl,
