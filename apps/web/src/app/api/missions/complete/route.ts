@@ -3,7 +3,14 @@ import prisma from '@/lib/prisma';
 import { completeMissionById, getMissionById } from '@/lib/dev-missions-store';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import { updateAxisXP, type HexagonProfileWithXP, type HexagonAxis } from '@/lib/hexagon-progression';
+import {
+  updateUnifiedAxisXP,
+  type UnifiedHexagonAxis,
+  migrateToUnifiedHexagon,
+  getUnifiedAxisXPField,
+  getUnifiedAxisLevelField,
+  getUnifiedAxisVisualField,
+} from '@/lib/unified-hexagon-system';
 export const runtime = 'nodejs';
 
 async function getUserId(req: NextRequest) {
@@ -22,47 +29,47 @@ async function getUserId(req: NextRequest) {
 function startOfDay(d: Date) { const dt = new Date(d); dt.setHours(0,0,0,0); return dt; }
 
 // Map mission types to hexagon axes and XP rewards
-function getMissionXPRewards(missionType: string, rewardXP: number): Partial<Record<HexagonAxis, number>> {
-  const rewards: Partial<Record<HexagonAxis, number>> = {};
+function getMissionXPRewards(missionType: string, rewardXP: number): Partial<Record<UnifiedHexagonAxis, number>> {
+  const rewards: Partial<Record<UnifiedHexagonAxis, number>> = {};
 
   switch (missionType) {
     case 'complete_exercises':
-      rewards.skillTechnique = rewardXP * 0.6;
-      rewards.muscularEndurance = rewardXP * 0.4;
+      rewards.staticHolds = rewardXP * 0.6;
+      rewards.endurance = rewardXP * 0.4;
       break;
     case 'strength_focus':
-      rewards.relativeStrength = rewardXP * 0.7;
-      rewards.bodyTension = rewardXP * 0.3;
+      rewards.strength = rewardXP * 0.7;
+      rewards.core = rewardXP * 0.3;
       break;
     case 'core_focus':
-      rewards.bodyTension = rewardXP * 0.7;
-      rewards.relativeStrength = rewardXP * 0.3;
+      rewards.core = rewardXP * 0.7;
+      rewards.strength = rewardXP * 0.3;
       break;
     case 'endurance_focus':
-      rewards.muscularEndurance = rewardXP * 0.7;
-      rewards.bodyTension = rewardXP * 0.3;
+      rewards.endurance = rewardXP * 0.7;
+      rewards.core = rewardXP * 0.3;
       break;
     case 'balance_focus':
-      rewards.balanceControl = rewardXP * 0.7;
-      rewards.skillTechnique = rewardXP * 0.3;
+      rewards.balance = rewardXP * 0.7;
+      rewards.staticHolds = rewardXP * 0.3;
       break;
     case 'mobility_focus':
-      rewards.jointMobility = rewardXP * 0.7;
-      rewards.balanceControl = rewardXP * 0.3;
+      rewards.mobility = rewardXP * 0.7;
+      rewards.balance = rewardXP * 0.3;
       break;
     case 'skill_practice':
-      rewards.skillTechnique = rewardXP * 0.7;
-      rewards.balanceControl = rewardXP * 0.3;
+      rewards.staticHolds = rewardXP * 0.7;
+      rewards.balance = rewardXP * 0.3;
       break;
     case 'volume_challenge':
-      rewards.muscularEndurance = rewardXP * 0.7;
-      rewards.relativeStrength = rewardXP * 0.3;
+      rewards.endurance = rewardXP * 0.7;
+      rewards.strength = rewardXP * 0.3;
       break;
     case 'hydration':
       // No hexagon XP for hydration, only coins
       break;
     default:
-      rewards.skillTechnique = rewardXP;
+      rewards.staticHolds = rewardXP;
   }
 
   return rewards;
@@ -169,16 +176,20 @@ export async function POST(req: NextRequest) {
       }
 
       // Update each axis with XP rewards
-      let updatedProfile = hexProfile as HexagonProfileWithXP;
+      let updatedProfile = migrateToUnifiedHexagon(hexProfile);
       const updates: Record<string, any> = {};
 
       for (const [axis, xp] of Object.entries(xpRewards)) {
         if (xp > 0) {
-          updatedProfile = updateAxisXP(updatedProfile, axis as HexagonAxis, Math.round(xp));
+          updatedProfile = updateUnifiedAxisXP(updatedProfile, axis as UnifiedHexagonAxis, Math.round(xp));
 
-          updates[axis] = updatedProfile[axis as keyof HexagonProfileWithXP];
-          updates[`${axis}XP`] = updatedProfile[`${axis}XP` as keyof HexagonProfileWithXP];
-          updates[`${axis}Level`] = updatedProfile[`${axis}Level` as keyof HexagonProfileWithXP];
+          const visualField = getUnifiedAxisVisualField(axis as UnifiedHexagonAxis);
+          const xpField = getUnifiedAxisXPField(axis as UnifiedHexagonAxis);
+          const levelField = getUnifiedAxisLevelField(axis as UnifiedHexagonAxis);
+
+          updates[visualField] = updatedProfile[axis as keyof typeof updatedProfile];
+          updates[xpField] = updatedProfile[`${axis}XP` as keyof typeof updatedProfile];
+          updates[levelField] = updatedProfile[`${axis}Level` as keyof typeof updatedProfile];
         }
       }
 

@@ -3,10 +3,14 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import prisma from '@/lib/prisma';
 import {
-  updateAxisXP,
-  type HexagonAxis,
-  type HexagonProfileWithXP,
-} from '@/lib/hexagon-progression';
+  updateUnifiedAxisXP,
+  type UnifiedHexagonAxis,
+  type UnifiedHexagonProfile,
+  getUnifiedAxisXPField,
+  getUnifiedAxisLevelField,
+  getUnifiedAxisVisualField,
+  migrateToUnifiedHexagon,
+} from '@/lib/unified-hexagon-system';
 
 async function getUserId(req: NextRequest) {
   try {
@@ -23,7 +27,7 @@ async function getUserId(req: NextRequest) {
  * Add XP to specific hexagon axis
  *
  * Body: {
- *   axis: 'relativeStrength' | 'muscularEndurance' | etc.
+ *   axis: 'balance' | 'strength' | 'staticHolds' | 'core' | 'endurance' | 'mobility'
  *   xp: number
  * }
  */
@@ -47,13 +51,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const validAxes: HexagonAxis[] = [
-      'relativeStrength',
-      'muscularEndurance',
-      'balanceControl',
-      'jointMobility',
-      'bodyTension',
-      'skillTechnique',
+    const validAxes: UnifiedHexagonAxis[] = [
+      'balance',
+      'strength',
+      'staticHolds',
+      'core',
+      'endurance',
+      'mobility',
     ];
 
     if (!validAxes.includes(axis)) {
@@ -89,16 +93,24 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // Update XP using utility function
-    const updatedProfile = updateAxisXP(hexProfile as HexagonProfileWithXP, axis, xp);
+    // Migrate to unified profile
+    const unifiedProfile = migrateToUnifiedHexagon(hexProfile);
 
-    // Save to database
+    // Update XP using unified system
+    const updatedProfile = updateUnifiedAxisXP(unifiedProfile, axis, xp);
+
+    // Get database field names
+    const visualField = getUnifiedAxisVisualField(axis);
+    const xpField = getUnifiedAxisXPField(axis);
+    const levelField = getUnifiedAxisLevelField(axis);
+
+    // Save to database using old field names
     const saved = await prisma.hexagonProfile.update({
       where: { userId },
       data: {
-        [axis]: updatedProfile[axis],
-        [`${axis}XP`]: updatedProfile[`${axis}XP` as keyof HexagonProfileWithXP],
-        [`${axis}Level`]: updatedProfile[`${axis}Level` as keyof HexagonProfileWithXP],
+        [visualField]: updatedProfile[axis],
+        [xpField]: updatedProfile[`${axis}XP` as keyof UnifiedHexagonProfile],
+        [levelField]: updatedProfile[`${axis}Level` as keyof UnifiedHexagonProfile],
       },
     });
 
@@ -106,8 +118,8 @@ export async function POST(req: NextRequest) {
       success: true,
       axis,
       xpAdded: xp,
-      newXP: updatedProfile[`${axis}XP` as keyof HexagonProfileWithXP],
-      newLevel: updatedProfile[`${axis}Level` as keyof HexagonProfileWithXP],
+      newXP: updatedProfile[`${axis}XP` as keyof UnifiedHexagonProfile],
+      newLevel: updatedProfile[`${axis}Level` as keyof UnifiedHexagonProfile],
       newValue: updatedProfile[axis],
       profile: saved,
     });
@@ -173,7 +185,8 @@ export async function PUT(req: NextRequest) {
       });
     }
 
-    let updatedProfile = hexProfile as HexagonProfileWithXP;
+    // Migrate to unified profile
+    let updatedProfile = migrateToUnifiedHexagon(hexProfile);
 
     // Apply all XP rewards
     const updates: Record<string, any> = {};
@@ -181,16 +194,21 @@ export async function PUT(req: NextRequest) {
 
     for (const [axis, xp] of Object.entries(xpRewards)) {
       if (typeof xp === 'number' && xp > 0) {
-        updatedProfile = updateAxisXP(updatedProfile, axis as HexagonAxis, xp);
+        updatedProfile = updateUnifiedAxisXP(updatedProfile, axis as UnifiedHexagonAxis, xp);
 
-        updates[axis] = updatedProfile[axis as keyof HexagonProfileWithXP];
-        updates[`${axis}XP`] = updatedProfile[`${axis}XP` as keyof HexagonProfileWithXP];
-        updates[`${axis}Level`] = updatedProfile[`${axis}Level` as keyof HexagonProfileWithXP];
+        // Get database field names
+        const visualField = getUnifiedAxisVisualField(axis as UnifiedHexagonAxis);
+        const xpField = getUnifiedAxisXPField(axis as UnifiedHexagonAxis);
+        const levelField = getUnifiedAxisLevelField(axis as UnifiedHexagonAxis);
+
+        updates[visualField] = updatedProfile[axis as keyof UnifiedHexagonProfile];
+        updates[xpField] = updatedProfile[`${axis}XP` as keyof UnifiedHexagonProfile];
+        updates[levelField] = updatedProfile[`${axis}Level` as keyof UnifiedHexagonProfile];
 
         axesUpdated.push({
           axis,
           xp,
-          newLevel: String(updatedProfile[`${axis}Level` as keyof HexagonProfileWithXP]),
+          newLevel: String(updatedProfile[`${axis}Level` as keyof UnifiedHexagonProfile]),
         });
       }
     }

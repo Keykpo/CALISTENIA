@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import { calculateOverallLevel, type HexagonProfileWithXP } from '@/lib/hexagon-progression';
+import { calculateUnifiedOverallLevel, migrateToUnifiedHexagon } from '@/lib/unified-hexagon-system';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -335,7 +335,8 @@ export async function POST(req: NextRequest) {
     }
 
     // Calculate fitness level from hexagon (SINGLE SOURCE OF TRUTH)
-    const calculatedLevel = calculateOverallLevel(user.hexagonProfile as HexagonProfileWithXP);
+    const unifiedProfile = migrateToUnifiedHexagon(user.hexagonProfile);
+    const calculatedLevel = calculateUnifiedOverallLevel(unifiedProfile);
 
     // Parse goals
     const goals = user.goals ? JSON.parse(user.goals as string) : [];

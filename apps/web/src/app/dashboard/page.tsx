@@ -68,7 +68,7 @@ export default function DashboardPage() {
         setUserData(data);
 
         // Check if user needs to complete assessment
-        if (!data.user?.fitnessLevel) {
+        if (!data.user?.hasCompletedAssessment) {
           router.push('/onboarding/assessment');
           return;
         }

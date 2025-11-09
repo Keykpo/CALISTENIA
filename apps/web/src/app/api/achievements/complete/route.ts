@@ -2,7 +2,14 @@ import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import { updateAxisXP, type HexagonProfileWithXP, type HexagonAxis } from '@/lib/hexagon-progression';
+import {
+  updateUnifiedAxisXP,
+  migrateToUnifiedHexagon,
+  getAllUnifiedAxes,
+  getUnifiedAxisXPField,
+  getUnifiedAxisLevelField,
+  getUnifiedAxisVisualField,
+} from '@/lib/unified-hexagon-system';
 
 export const runtime = 'nodejs';
 
@@ -141,23 +148,21 @@ export async function POST(req: NextRequest) {
 
       // Distribute achievement XP evenly across all axes
       const xpPerAxis = Math.round(achievement.points / 6);
-      const axes: HexagonAxis[] = [
-        'relativeStrength',
-        'muscularEndurance',
-        'balanceControl',
-        'jointMobility',
-        'bodyTension',
-        'skillTechnique',
-      ];
+      const axes = getAllUnifiedAxes();
 
-      let updatedProfile = hexProfile as HexagonProfileWithXP;
+      let updatedProfile = migrateToUnifiedHexagon(hexProfile);
       const updates: Record<string, any> = {};
 
       for (const axis of axes) {
-        updatedProfile = updateAxisXP(updatedProfile, axis, xpPerAxis);
-        updates[axis] = updatedProfile[axis as keyof HexagonProfileWithXP];
-        updates[`${axis}XP`] = updatedProfile[`${axis}XP` as keyof HexagonProfileWithXP];
-        updates[`${axis}Level`] = updatedProfile[`${axis}Level` as keyof HexagonProfileWithXP];
+        updatedProfile = updateUnifiedAxisXP(updatedProfile, axis, xpPerAxis);
+
+        const visualField = getUnifiedAxisVisualField(axis);
+        const xpField = getUnifiedAxisXPField(axis);
+        const levelField = getUnifiedAxisLevelField(axis);
+
+        updates[visualField] = updatedProfile[axis];
+        updates[xpField] = updatedProfile[`${axis}XP` as keyof typeof updatedProfile];
+        updates[levelField] = updatedProfile[`${axis}Level` as keyof typeof updatedProfile];
       }
 
       // Save hexagon updates
