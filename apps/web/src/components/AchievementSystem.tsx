@@ -227,17 +227,45 @@ export default function AchievementSystem({ userStats, onAchievementUnlock }: Ac
     }
   };
 
+  const applyAchievementRewards = async (achievement: Achievement) => {
+    try {
+      // Call API to apply rewards (XP, coins, and hexagon updates)
+      const response = await fetch('/api/achievements/complete', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          achievementId: achievement.id,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Achievement rewards applied:', data);
+      } else {
+        console.warn('Failed to apply achievement rewards:', await response.text());
+      }
+    } catch (error) {
+      console.error('Error applying achievement rewards:', error);
+    }
+  };
+
   const checkForNewAchievements = () => {
     const updatedAchievements = achievements.map(achievement => {
       const progress = calculateProgress(achievement);
       const wasUnlocked = achievement.isUnlocked;
       const isNowUnlocked = progress >= achievement.requirement.value;
-      
+
       if (!wasUnlocked && isNowUnlocked) {
-        setNewlyUnlocked(prev => [...prev, { ...achievement, isUnlocked: true, progress }]);
-        onAchievementUnlock?.({ ...achievement, isUnlocked: true, progress });
+        const unlockedAchievement = { ...achievement, isUnlocked: true, progress };
+        setNewlyUnlocked(prev => [...prev, unlockedAchievement]);
+        onAchievementUnlock?.(unlockedAchievement);
+
+        // Apply rewards via API
+        applyAchievementRewards(unlockedAchievement);
       }
-      
+
       return {
         ...achievement,
         progress,
@@ -245,7 +273,7 @@ export default function AchievementSystem({ userStats, onAchievementUnlock }: Ac
         unlockedAt: isNowUnlocked && !wasUnlocked ? new Date().toISOString() : achievement.unlockedAt,
       };
     });
-    
+
     setAchievements(updatedAchievements);
   };
 

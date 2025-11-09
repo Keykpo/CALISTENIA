@@ -80,8 +80,8 @@ export default function SkillHexagon({
   ];
 
   // Calculate hexagon points
-  const centerX = 200;
-  const centerY = 200;
+  const centerX = 225;
+  const centerY = 230;
   const maxRadius = 150;
   const angleStep = (Math.PI * 2) / 6;
   const startAngle = -Math.PI / 2; // Start from top
@@ -111,7 +111,7 @@ export default function SkillHexagon({
       )}
 
       <svg
-        viewBox="0 0 400 480"
+        viewBox="0 0 450 520"
         className="w-full h-auto"
         style={{ maxWidth: `${size}px`, margin: '0 auto' }}
         preserveAspectRatio="xMidYMid meet"
