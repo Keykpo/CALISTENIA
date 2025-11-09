@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -25,6 +26,26 @@ interface DashboardOverviewProps {
 }
 
 export default function DashboardOverview({ userData, onRefresh }: DashboardOverviewProps) {
+  const [localHexagon, setLocalHexagon] = useState<HexagonProfileWithXP | null>(null);
+
+  // Fallback: If userData doesn't have hexagon, fetch it directly
+  useEffect(() => {
+    if (userData && !userData.hexagon) {
+      console.log('⚠️ DashboardOverview: No hexagon in userData, fetching directly...');
+      fetch('/api/user/profile')
+        .then(res => res.json())
+        .then(data => {
+          if (data.hexagonProfile) {
+            console.log('✅ DashboardOverview: Fetched hexagon directly:', data.hexagonProfile);
+            setLocalHexagon(data.hexagonProfile);
+          }
+        })
+        .catch(err => console.error('❌ Error fetching hexagon:', err));
+    } else if (userData?.hexagon) {
+      setLocalHexagon(userData.hexagon);
+    }
+  }, [userData]);
+
   const stats = userData?.stats || {
     totalXP: 0,
     level: 1,
@@ -45,12 +66,14 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
   const xpNeededForLevel = nextLevelXP - currentLevelXP;
   const levelProgress = (xpInCurrentLevel / xpNeededForLevel) * 100;
 
-  // Hexagon data - use stored visual values directly from database
-  // The values are already calculated and saved during assessment/updates
-  const hexProfile = userData?.hexagon as HexagonProfileWithXP | null;
+  // Hexagon data - use localHexagon which has fallback logic
+  const hexProfile = localHexagon;
 
-  console.log('📊 Dashboard hexagon data:', {
+  console.log('📊 DashboardOverview - Full userData:', userData);
+  console.log('📊 DashboardOverview - Hexagon data:', {
     hasHexProfile: !!hexProfile,
+    hexProfileRaw: hexProfile,
+    source: userData?.hexagon ? 'from userData' : 'from direct fetch',
     visualValues: hexProfile ? {
       relativeStrength: hexProfile.relativeStrength,
       muscularEndurance: hexProfile.muscularEndurance,
