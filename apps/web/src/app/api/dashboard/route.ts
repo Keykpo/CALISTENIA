@@ -32,7 +32,36 @@ export async function GET(req: NextRequest) {
 
   try {
     // Ensure dev user exists when using header/query fallback
-    let user = await prisma.user.findUnique({ where: { id: userId } });
+    let user = await prisma.user.findUnique({
+      where: { id: userId },
+      include: {
+        hexagonProfile: {
+          select: {
+            // Visual values (0-10)
+            relativeStrength: true,
+            muscularEndurance: true,
+            balanceControl: true,
+            jointMobility: true,
+            bodyTension: true,
+            skillTechnique: true,
+            // XP values (required for calculations)
+            relativeStrengthXP: true,
+            muscularEnduranceXP: true,
+            balanceControlXP: true,
+            jointMobilityXP: true,
+            bodyTensionXP: true,
+            skillTechniqueXP: true,
+            // Level values (required for mode calculation)
+            relativeStrengthLevel: true,
+            muscularEnduranceLevel: true,
+            balanceControlLevel: true,
+            jointMobilityLevel: true,
+            bodyTensionLevel: true,
+            skillTechniqueLevel: true,
+          },
+        },
+      },
+    });
     if (!user) {
       try {
         user = await prisma.user.create({
@@ -43,39 +72,68 @@ export async function GET(req: NextRequest) {
             goals: '[]',
           },
         });
+        // Refetch with hexagonProfile after creation
+        user = await prisma.user.findUnique({
+          where: { id: userId },
+          include: {
+            hexagonProfile: {
+              select: {
+                relativeStrength: true,
+                muscularEndurance: true,
+                balanceControl: true,
+                jointMobility: true,
+                bodyTension: true,
+                skillTechnique: true,
+                relativeStrengthXP: true,
+                muscularEnduranceXP: true,
+                balanceControlXP: true,
+                jointMobilityXP: true,
+                bodyTensionXP: true,
+                skillTechniqueXP: true,
+                relativeStrengthLevel: true,
+                muscularEnduranceLevel: true,
+                balanceControlLevel: true,
+                jointMobilityLevel: true,
+                bodyTensionLevel: true,
+                skillTechniqueLevel: true,
+              },
+            },
+          },
+        });
       } catch (e) {
         // continue if creation collides with existing email/username
-        user = await prisma.user.findUnique({ where: { id: userId } });
+        user = await prisma.user.findUnique({
+          where: { id: userId },
+          include: {
+            hexagonProfile: {
+              select: {
+                relativeStrength: true,
+                muscularEndurance: true,
+                balanceControl: true,
+                jointMobility: true,
+                bodyTension: true,
+                skillTechnique: true,
+                relativeStrengthXP: true,
+                muscularEnduranceXP: true,
+                balanceControlXP: true,
+                jointMobilityXP: true,
+                bodyTensionXP: true,
+                skillTechniqueXP: true,
+                relativeStrengthLevel: true,
+                muscularEnduranceLevel: true,
+                balanceControlLevel: true,
+                jointMobilityLevel: true,
+                bodyTensionLevel: true,
+                skillTechniqueLevel: true,
+              },
+            },
+          },
+        });
       }
     }
 
-    // Fetch hexagon profile with all necessary fields
-    const hex = await prisma.hexagonProfile.findUnique({
-      where: { userId },
-      select: {
-        // Visual values (0-10)
-        relativeStrength: true,
-        muscularEndurance: true,
-        balanceControl: true,
-        jointMobility: true,
-        bodyTension: true,
-        skillTechnique: true,
-        // XP values (required for calculations)
-        relativeStrengthXP: true,
-        muscularEnduranceXP: true,
-        balanceControlXP: true,
-        jointMobilityXP: true,
-        bodyTensionXP: true,
-        skillTechniqueXP: true,
-        // Level values (required for mode calculation)
-        relativeStrengthLevel: true,
-        muscularEnduranceLevel: true,
-        balanceControlLevel: true,
-        jointMobilityLevel: true,
-        bodyTensionLevel: true,
-        skillTechniqueLevel: true,
-      },
-    });
+    // Extract hexagon profile from user data
+    const hex = user?.hexagonProfile ?? null;
     const recentWorkouts = await prisma.workoutHistory.findMany({
       where: { userId },
       orderBy: { completedAt: 'desc' },
