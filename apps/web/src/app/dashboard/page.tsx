@@ -60,6 +60,11 @@ export default function DashboardPage() {
 
       if (res.ok) {
         const data = await res.json();
+        console.log('📥 Dashboard page received data:', {
+          hasHexagon: !!data.hexagon,
+          hexagonData: data.hexagon,
+          stats: data.stats,
+        });
         setUserData(data);
 
         // Check if user needs to complete assessment

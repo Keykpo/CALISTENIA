@@ -8,7 +8,7 @@ import {
   generateGoalBasedDailyMissions,
   type HexagonAxis,
 } from '@/lib/exercise-to-axis-mapping';
-import { type HexagonProfileWithXP } from '@/lib/hexagon-progression';
+import { type HexagonProfileWithXP, initializeHexagonProfile } from '@/lib/hexagon-progression';
 
 async function getUserId(req: NextRequest) {
   try {
@@ -48,7 +48,58 @@ export async function GET(req: NextRequest) {
         user = await prisma.user.findUnique({ where: { id: userId } });
       }
     }
-    const hex = await prisma.hexagonProfile.findUnique({ where: { userId } });
+    
+    let hex = await prisma.hexagonProfile.findUnique({ where: { userId } });
+    
+    // 🔧 FIX: If hexagon doesn't exist, create it based on user's fitness level
+    if (!hex && user) {
+      console.log('🔧 Dashboard: Creating missing hexagon for userId:', userId);
+      const fitnessLevel = user.fitnessLevel || 'BEGINNER';
+      const levelToBaseXP: Record<string, number> = {
+        BEGINNER: 24000,
+        INTERMEDIATE: 96000,
+        ADVANCED: 264000,
+        EXPERT: 500000,
+      };
+
+      const baseXP = levelToBaseXP[fitnessLevel] || 24000;
+      const initialXP = {
+        relativeStrength: baseXP,
+        muscularEndurance: baseXP,
+        balanceControl: baseXP,
+        jointMobility: baseXP,
+        bodyTension: baseXP,
+        skillTechnique: baseXP,
+      };
+
+      const hexagonProfile = initializeHexagonProfile(initialXP);
+
+      hex = await prisma.hexagonProfile.create({
+        data: {
+          userId,
+          relativeStrength: hexagonProfile.relativeStrength,
+          muscularEndurance: hexagonProfile.muscularEndurance,
+          balanceControl: hexagonProfile.balanceControl,
+          jointMobility: hexagonProfile.jointMobility,
+          bodyTension: hexagonProfile.bodyTension,
+          skillTechnique: hexagonProfile.skillTechnique,
+          relativeStrengthXP: hexagonProfile.relativeStrengthXP,
+          muscularEnduranceXP: hexagonProfile.muscularEnduranceXP,
+          balanceControlXP: hexagonProfile.balanceControlXP,
+          jointMobilityXP: hexagonProfile.jointMobilityXP,
+          bodyTensionXP: hexagonProfile.bodyTensionXP,
+          skillTechniqueXP: hexagonProfile.skillTechniqueXP,
+          relativeStrengthLevel: hexagonProfile.relativeStrengthLevel,
+          muscularEnduranceLevel: hexagonProfile.muscularEnduranceLevel,
+          balanceControlLevel: hexagonProfile.balanceControlLevel,
+          jointMobilityLevel: hexagonProfile.jointMobilityLevel,
+          bodyTensionLevel: hexagonProfile.bodyTensionLevel,
+          skillTechniqueLevel: hexagonProfile.skillTechniqueLevel,
+        },
+      });
+      console.log('✅ Dashboard: Hexagon created successfully');
+    }
+    
     const recentWorkouts = await prisma.workoutHistory.findMany({
       where: { userId },
       orderBy: { completedAt: 'desc' },
@@ -148,6 +199,8 @@ export async function GET(req: NextRequest) {
       where: { userId },
     });
 
+    console.log('📤 Dashboard: Sending hexagon:', !!hex, hex ? { relativeStrength: hex.relativeStrength } : null);
+
     return NextResponse.json({
       success: true,
       user: {
@@ -178,10 +231,10 @@ export async function GET(req: NextRequest) {
       weeklyProgress: counts,
     });
   } catch (e: any) {
-    // Fallback en desarrollo si Prisma falla: intentar obtener usuario de DB primero
+    console.error('❌ Dashboard error:', e);
+    // Fallback en desarrollo si Prisma falla
     if (process.env.NODE_ENV === 'development') {
       try {
-        // Intentar leer usuario de DB aunque haya fallado la consulta principal
         const fallbackUser = await prisma.user.findUnique({ where: { id: userId } });
 
         const today = startOfDay(new Date());
@@ -239,7 +292,6 @@ export async function GET(req: NextRequest) {
           note: 'dev-fallback-with-user-stats',
         });
       } catch (fallbackError) {
-        // Si incluso el fallback falla, devolver valores por defecto
         return NextResponse.json({
           success: true,
           stats: { totalXP: 0, level: 1, coins: 0, dailyStreak: 0, totalStrength: 0 },
