@@ -210,8 +210,8 @@ function ProgressionCard({ progression, userLevel, userId, onProgressUpdate }: P
   };
 
   const handleStartTraining = async (duration: number) => {
-    if (!userId || !skillProgress) {
-      console.error('[FIG_TRAINING] Missing userId or skillProgress:', { userId, skillProgress });
+    if (!userId || !userLevel) {
+      console.error('[FIG_TRAINING] Missing userId or userLevel:', { userId, userLevel });
       toast.error('Missing user data. Please try refreshing the page.');
       return;
     }
@@ -221,7 +221,7 @@ function ProgressionCard({ progression, userLevel, userId, onProgressUpdate }: P
       const requestData = {
         userId,
         skillBranch: progression.goal,
-        userLevel: skillProgress.currentLevel,
+        userLevel: userLevel,
         duration,
       };
 
