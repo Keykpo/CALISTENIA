@@ -21,11 +21,18 @@ export default function SkillTreeView({ userId }: SkillTreeViewProps) {
       const res = await fetch(`/api/skill-progress/${userId}`);
       if (res.ok) {
         const data = await res.json();
+        console.log('[SKILL_TREE] Fetched skill progress data:', data);
+
+        // API returns { success: true, progress: [...] }
+        const progressArray = data.progress || data;
+
         // Convert array to object: { "HANDSTAND": "INTERMEDIATE", "PLANCHE": "BEGINNER", ... }
-        const progressMap = data.reduce((acc: Record<string, DifficultyLevel>, item: any) => {
+        const progressMap = progressArray.reduce((acc: Record<string, DifficultyLevel>, item: any) => {
           acc[item.skillBranch] = item.currentLevel as DifficultyLevel;
           return acc;
         }, {});
+
+        console.log('[SKILL_TREE] Mapped skill progress:', progressMap);
         setUserSkillProgress(progressMap);
       }
     } catch (error) {
