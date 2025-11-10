@@ -151,19 +151,9 @@ export default function DashboardAssessmentModal({
 
   const handleClose = () => {
     if (showResults) {
-      console.log('[DASHBOARD_ASSESSMENT] User closing results, will refresh page...');
-      // Reset state
-      setShowResults(false);
-      setResultsData(null);
-
-      // Close modal
-      onOpenChange(false);
-
-      // Force full page reload to ensure fresh data
-      setTimeout(() => {
-        console.log('[DASHBOARD_ASSESSMENT] Reloading page to show updated hexagon...');
-        window.location.reload();
-      }, 500);
+      console.log('[DASHBOARD_ASSESSMENT] User closing results, reloading page...');
+      // Force full page reload immediately to ensure fresh data
+      window.location.reload();
     } else {
       // Just close without refresh
       onOpenChange(false);
