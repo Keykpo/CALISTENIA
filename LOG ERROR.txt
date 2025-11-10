@@ -1,0 +1,216 @@
+04:16:39 - Starting compilation in watch mode...
+@calisthenics/config:dev:
+@calisthenics/types:dev:
+@calisthenics/utils:dev:
+@calisthenics/ui:dev: CLI Building entry: src/index.ts
+@calisthenics/ui:dev: CLI Using tsconfig: tsconfig.json
+@calisthenics/ui:dev: CLI tsup v8.5.0
+@calisthenics/ui:dev: CLI Using tsup config: C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\packages\ui\tsup.config.ts
+@calisthenics/ui:dev: CLI Running in watch mode
+@calisthenics/ui:dev: CLI Target: es2020
+@calisthenics/ui:dev: CLI Cleaning output folder
+@calisthenics/ui:dev: CJS Build start
+@calisthenics/ui:dev: ESM Build start
+@calisthenics/ui:dev: ESM dist\index.mjs     10.69 KB
+@calisthenics/ui:dev: ESM dist\index.mjs.map 18.44 KB
+@calisthenics/ui:dev: ESM ⚡️ Build success in 19ms
+@calisthenics/ui:dev: CJS dist\index.js     14.21 KB
+@calisthenics/ui:dev: CJS dist\index.js.map 19.22 KB
+@calisthenics/ui:dev: CJS ⚡️ Build success in 19ms
+@calisthenics/ui:dev: CLI Watching for changes in "."
+@calisthenics/ui:dev: CLI Ignoring changes in "**/{.git,node_modules}/**" | "dist"
+@calisthenics/web:dev:   ▲ Next.js 14.2.33
+@calisthenics/web:dev:   - Local:        http://localhost:3000
+@calisthenics/web:dev:   - Environments: .env.local
+@calisthenics/web:dev:
+@calisthenics/web:dev:  ✓ Starting...
+@calisthenics/api:dev: 2025-11-10 04:16:39:1639 [error]: uncaughtException: @prisma/client did not initialize yet. Please run "prisma generate" and try to import it again.
+@calisthenics/api:dev: Error: @prisma/client did not initialize yet. Please run "prisma generate" and try to import it again.
+@calisthenics/api:dev:     at new PrismaClient (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\api\node_modules\.prisma\client\default.js:43:11)
+@calisthenics/api:dev:     at new DatabaseService (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\api\src\config\database.ts:7:5)
+@calisthenics/api:dev:     at <anonymous> (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\api\src\config\database.ts:232:12)
+@calisthenics/api:dev:     at Object.<anonymous> (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\api\src\config\database.ts:250:16)
+@calisthenics/api:dev:     at Module._compile (node:internal/modules/cjs/loader:1760:14)
+@calisthenics/api:dev:     at Object.transformer (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\tsx\dist\register-D46fvsV_.cjs:3:1104)
+@calisthenics/api:dev:     at Module.load (node:internal/modules/cjs/loader:1480:32)
+@calisthenics/api:dev:     at Module._load (node:internal/modules/cjs/loader:1299:12)
+@calisthenics/api:dev:     at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+@calisthenics/api:dev:     at wrapModuleLoad (node:internal/modules/cjs/loader:244:24) {
+@calisthenics/api:dev:   "metadata": {
+@calisthenics/api:dev:     "error": {},
+@calisthenics/api:dev:     "stack": "Error: @prisma/client did not initialize yet. Please run \"prisma generate\" and try to import it again.\n    at new PrismaClient (C:\\Users\\FRAN\\Desktop\\CALISTENIA APP\\CALISTENIA\\apps\\api\\node_modules\\.prisma\\client\\default.js:43:11)\n    at new DatabaseService (C:\\Users\\FRAN\\Desktop\\CALISTENIA APP\\CALISTENIA\\apps\\api\\src\\config\\database.ts:7:5)\n    at <anonymous> (C:\\Users\\FRAN\\Desktop\\CALISTENIA APP\\CALISTENIA\\apps\\api\\src\\config\\database.ts:232:12)\n    at Object.<anonymous> (C:\\Users\\FRAN\\Desktop\\CALISTENIA APP\\CALISTENIA\\apps\\api\\src\\config\\database.ts:250:16)\n    at Module._compile (node:internal/modules/cjs/loader:1760:14)\n    at Object.transformer (C:\\Users\\FRAN\\Desktop\\CALISTENIA APP\\CALISTENIA\\node_modules\\tsx\\dist\\register-D46fvsV_.cjs:3:1104)\n    at Module.load (node:internal/modules/cjs/loader:1480:32)\n    at Module._load (node:internal/modules/cjs/loader:1299:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:328:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:244:24)",
+@calisthenics/api:dev:     "exception": true,
+@calisthenics/api:dev:     "date": "Mon Nov 10 2025 04:16:39 GMT-0300 (hora estándar de Argentina)",
+@calisthenics/api:dev:     "process": {
+@calisthenics/api:dev:       "pid": 38664,
+@calisthenics/api:dev:       "uid": null,
+@calisthenics/api:dev:       "gid": null,
+@calisthenics/api:dev:       "cwd": "C:\\Users\\FRAN\\Desktop\\CALISTENIA APP\\CALISTENIA\\apps\\api",
+@calisthenics/api:dev:       "execPath": "C:\\Program Files\\nodejs\\node.exe",
+@calisthenics/api:dev:       "version": "v24.11.0",
+@calisthenics/api:dev:       "argv": [
+@calisthenics/api:dev:         "C:\\Program Files\\nodejs\\node.exe",
+@calisthenics/api:dev:         "C:\\Users\\FRAN\\Desktop\\CALISTENIA APP\\CALISTENIA\\apps\\api\\src\\server.ts"
+@calisthenics/api:dev:       ],
+@calisthenics/api:dev:       "memoryUsage": {
+@calisthenics/api:dev:         "rss": 146644992,
+@calisthenics/api:dev:         "heapTotal": 22077440,
+@calisthenics/api:dev:         "heapUsed": 15819912,
+@calisthenics/api:dev:         "external": 3096456,
+@calisthenics/api:dev:         "arrayBuffers": 125711
+@calisthenics/api:dev:       }
+@calisthenics/api:dev:     },
+@calisthenics/api:dev:     "os": {
+@calisthenics/api:dev:       "loadavg": [
+@calisthenics/api:dev:         0,
+@calisthenics/api:dev:         0,
+@calisthenics/api:dev:         0
+@calisthenics/api:dev:       ],
+@calisthenics/api:dev:       "uptime": 2196826.031
+@calisthenics/api:dev:     },
+@calisthenics/api:dev:     "trace": [
+@calisthenics/api:dev:       {
+@calisthenics/api:dev:         "column": 11,
+@calisthenics/api:dev:         "file": "C:\\Users\\FRAN\\Desktop\\CALISTENIA APP\\CALISTENIA\\apps\\api\\node_modules\\.prisma\\client\\default.js",
+@calisthenics/api:dev:         "function": "new PrismaClient",
+@calisthenics/api:dev:         "line": 43,
+@calisthenics/api:dev:         "method": null,
+@calisthenics/api:dev:         "native": false
+@calisthenics/api:dev:       },
+@calisthenics/api:dev:       {
+@calisthenics/api:dev:         "column": 5,
+@calisthenics/api:dev:         "file": "C:\\Users\\FRAN\\Desktop\\CALISTENIA APP\\CALISTENIA\\apps\\api\\src\\config\\database.ts",
+@calisthenics/api:dev:         "function": "new DatabaseService",
+@calisthenics/api:dev:         "line": 7,
+@calisthenics/api:dev:         "method": null,
+@calisthenics/api:dev:         "native": false
+@calisthenics/api:dev:       },
+@calisthenics/api:dev:       {
+@calisthenics/api:dev:         "column": 12,
+@calisthenics/api:dev:         "file": "C:\\Users\\FRAN\\Desktop\\CALISTENIA APP\\CALISTENIA\\apps\\api\\src\\config\\database.ts",
+@calisthenics/api:dev:         "function": "<anonymous>",
+@calisthenics/api:dev:         "line": 232,
+@calisthenics/api:dev:         "method": null,
+@calisthenics/api:dev:         "native": false
+@calisthenics/api:dev:       },
+@calisthenics/api:dev:       {
+@calisthenics/api:dev:         "column": 16,
+@calisthenics/api:dev:         "file": "C:\\Users\\FRAN\\Desktop\\CALISTENIA APP\\CALISTENIA\\apps\\api\\src\\config\\database.ts",
+@calisthenics/api:dev:         "function": null,
+@calisthenics/api:dev:         "line": 250,
+@calisthenics/api:dev:         "method": null,
+@calisthenics/api:dev:         "native": false
+@calisthenics/api:dev:       },
+@calisthenics/api:dev:       {
+@calisthenics/api:dev:         "column": 14,
+@calisthenics/api:dev:         "file": "node:internal/modules/cjs/loader",
+@calisthenics/api:dev:         "function": "Module._compile",
+@calisthenics/api:dev:         "line": 1760,
+@calisthenics/api:dev:         "method": "_compile",
+@calisthenics/api:dev:         "native": false
+@calisthenics/api:dev:       },
+@calisthenics/api:dev:       {
+@calisthenics/api:dev:         "column": 1104,
+@calisthenics/api:dev:         "file": "C:\\Users\\FRAN\\Desktop\\CALISTENIA APP\\CALISTENIA\\node_modules\\tsx\\dist\\register-D46fvsV_.cjs",
+@calisthenics/api:dev:         "function": "Object.transformer",
+@calisthenics/api:dev:         "line": 3,
+@calisthenics/api:dev:         "method": "transformer",
+@calisthenics/api:dev:         "native": false
+@calisthenics/api:dev:       },
+@calisthenics/api:dev:       {
+@calisthenics/api:dev:         "column": 32,
+@calisthenics/api:dev:         "file": "node:internal/modules/cjs/loader",
+@calisthenics/api:dev:         "function": "Module.load",
+@calisthenics/api:dev:         "line": 1480,
+@calisthenics/api:dev:         "method": "load",
+@calisthenics/api:dev:         "native": false
+@calisthenics/api:dev:       },
+@calisthenics/api:dev:       {
+@calisthenics/api:dev:         "column": 12,
+@calisthenics/api:dev:         "file": "node:internal/modules/cjs/loader",
+@calisthenics/api:dev:         "function": "Module._load",
+@calisthenics/api:dev:         "line": 1299,
+@calisthenics/api:dev:         "method": "_load",
+@calisthenics/api:dev:         "native": false
+@calisthenics/api:dev:       },
+@calisthenics/api:dev:       {
+@calisthenics/api:dev:         "column": 14,
+@calisthenics/api:dev:         "file": "node:diagnostics_channel",
+@calisthenics/api:dev:         "function": "TracingChannel.traceSync",
+@calisthenics/api:dev:         "line": 328,
+@calisthenics/api:dev:         "method": "traceSync",
+@calisthenics/api:dev:         "native": false
+@calisthenics/api:dev:       },
+@calisthenics/api:dev:       {
+@calisthenics/api:dev:         "column": 24,
+@calisthenics/api:dev:         "file": "node:internal/modules/cjs/loader",
+@calisthenics/api:dev:         "function": "wrapModuleLoad",
+@calisthenics/api:dev:         "line": 244,
+@calisthenics/api:dev:         "method": null,
+@calisthenics/api:dev:         "native": false
+@calisthenics/api:dev:       }
+@calisthenics/api:dev:     ]
+@calisthenics/api:dev:   }
+@calisthenics/api:dev: }
+@calisthenics/utils:dev:
+@calisthenics/utils:dev: 04:16:40 - Found 0 errors. Watching for file changes.
+@calisthenics/types:dev:
+@calisthenics/types:dev: 04:16:41 - Found 0 errors. Watching for file changes.
+@calisthenics/config:dev:
+@calisthenics/config:dev: 04:16:41 - Found 0 errors. Watching for file changes.
+@calisthenics/web:dev:  ✓ Ready in 1857ms
+@calisthenics/ui:dev: DTS Build start
+@calisthenics/ui:dev: DTS ⚡️ Build success in 1830ms
+@calisthenics/web:dev:  ✓ Compiled /src/middleware in 153ms (171 modules)
+@calisthenics/web:dev:  ○ Compiling / ...
+@calisthenics/web:dev:  ✓ Compiled / in 2.4s (2732 modules)
+@calisthenics/web:dev:  GET / 200 in 2680ms
+@calisthenics/web:dev:  ✓ Compiled in 332ms (1342 modules)
+@calisthenics/web:dev:  ○ Compiling /auth/signup ...
+@calisthenics/web:dev:  ✓ Compiled /auth/signup in 618ms (2744 modules)
+@calisthenics/web:dev:  GET /auth/signup 200 in 771ms
+@calisthenics/web:dev:  ✓ Compiled /api/auth/[...nextauth] in 232ms (1645 modules)
+@calisthenics/web:dev: [next-auth][warn][DEBUG_ENABLED]
+@calisthenics/web:dev: https://next-auth.js.org/warnings#debug_enabled
+@calisthenics/web:dev:  GET /api/auth/session 200 in 639ms
+@calisthenics/web:dev:  GET /api/auth/session 200 in 15ms
+@calisthenics/web:dev:  ✓ Compiled /api/auth/register in 137ms (1681 modules)
+@calisthenics/web:dev: [REGISTER] Starting registration for: wiuwewe@gmail.com
+@calisthenics/web:dev: prisma:error
+@calisthenics/web:dev: Invalid `prisma.user.findUnique()` invocation:
+@calisthenics/web:dev:
+@calisthenics/web:dev:
+@calisthenics/web:dev: Error querying the database: Error code 14: Unable to open the database file
+@calisthenics/web:dev: [REGISTER] Error: PrismaClientInitializationError:
+@calisthenics/web:dev: Invalid `prisma.user.findUnique()` invocation:
+@calisthenics/web:dev:
+@calisthenics/web:dev:
+@calisthenics/web:dev:  POST /api/auth/register 500 in 191ms
+@calisthenics/web:dev: Error querying the database: Error code 14: Unable to open the database file
+@calisthenics/web:dev:     at ei.handleRequestError (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:7568)
+@calisthenics/web:dev:     at ei.handleAndLogRequestError (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:6593)
+@calisthenics/web:dev:     at ei.request (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:6300)
+@calisthenics/web:dev:     at async a (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:130:9551)
+@calisthenics/web:dev:     at async POST (webpack-internal:///(rsc)/./src/app/api/auth/register/route.ts:48:26)
+@calisthenics/web:dev:     at async C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+@calisthenics/web:dev:     at async eT.execute (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+@calisthenics/web:dev:     at async eT.handle (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+@calisthenics/web:dev:     at async doRender (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1366:42)
+@calisthenics/web:dev:     at async cacheEntry.responseCache.get.routeKind (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1588:28)
+@calisthenics/web:dev:     at async DevServer.renderToResponseWithComponentsImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1496:28)
+@calisthenics/web:dev:     at async DevServer.renderPageComponent (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1924:24)
+@calisthenics/web:dev:     at async DevServer.renderToResponseImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1962:32)
+@calisthenics/web:dev:     at async DevServer.pipeImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:922:25)
+@calisthenics/web:dev:     at async NextNodeServer.handleCatchallRenderRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\next-server.js:272:17)
+@calisthenics/web:dev:     at async DevServer.handleRequestImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:818:17)
+@calisthenics/web:dev:     at async C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+@calisthenics/web:dev:     at async Span.traceAsyncFn (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\trace\trace.js:154:20)
+@calisthenics/web:dev:     at async DevServer.handleRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+@calisthenics/web:dev:     at async invokeRender (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:179:21)
+@calisthenics/web:dev:     at async handleRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:359:24)
+@calisthenics/web:dev:     at async requestHandlerImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:383:13)
+@calisthenics/web:dev:     at async Server.requestListener (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\start-server.js:141:13) {
+@calisthenics/web:dev:   clientVersion: '6.18.0',
+@calisthenics/web:dev:   errorCode: undefined,
+@calisthenics/web:dev:   retryable: undefined
+@calisthenics/web:dev: }
