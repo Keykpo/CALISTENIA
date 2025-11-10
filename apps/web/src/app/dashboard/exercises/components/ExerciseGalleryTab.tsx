@@ -1,11 +1,8 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { useRouter } from 'next/navigation';
 import exercises from '@/data/exercises.json';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import {
   Select,
@@ -14,25 +11,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
-import { Trophy, Coins, Clock, Repeat, Star, Check, Plus, TrendingUp, Target } from 'lucide-react';
+import { TrendingUp, Target, Star, Check } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Exercise,
   rankFromDifficulty,
   normalizeRank,
-  formatRank,
-  getRankColorClass,
-  categoryLabels,
   getUserRankFromFitnessLevel,
 } from './exercise-utils';
+import ExerciseCard from './ExerciseCard';
 
 interface ExerciseGalleryTabProps {
   userFitnessLevel: string;
@@ -49,12 +36,10 @@ export default function ExerciseGalleryTab({
   onToggleFavorite,
   onToggleCompleted,
 }: ExerciseGalleryTabProps) {
-  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRank, setSelectedRank] = useState<string>('all');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedView, setSelectedView] = useState<string>('all');
-  const [selectedExercise, setSelectedExercise] = useState<Exercise | null>(null);
 
   const filteredExercises = useMemo(() => {
     return (exercises as Exercise[])
@@ -270,199 +255,16 @@ export default function ExerciseGalleryTab({
 
       {/* Exercise Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredExercises.map((exercise) => {
-          const isCompleted = completed.has(exercise.id);
-          const isFavorite = favorites.has(exercise.id);
-
-          return (
-            <Card key={exercise.id} className={`hover:shadow-lg transition-shadow ${isCompleted ? 'border-green-500' : ''}`}>
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <CardTitle className="text-lg">{exercise.name}</CardTitle>
-                      {isCompleted && (
-                        <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
-                      )}
-                    </div>
-                    <div className="flex flex-wrap gap-2 mb-2">
-                      <Badge className={getRankColorClass(exercise.rank, exercise.difficulty)}>
-                        {formatRank(exercise.rank, exercise.difficulty)}
-                      </Badge>
-                      <Badge variant="outline">
-                        {categoryLabels[exercise.category as keyof typeof categoryLabels]}
-                      </Badge>
-                    </div>
-                  </div>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => onToggleFavorite(exercise.id)}
-                    className={isFavorite ? 'text-yellow-500' : ''}
-                  >
-                    <Star className={`h-5 w-5 ${isFavorite ? 'fill-current' : ''}`} />
-                  </Button>
-                </div>
-                <CardDescription className="line-clamp-2">{exercise.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {/* Rewards */}
-                  <div className="flex items-center justify-between text-sm">
-                    <div className="flex items-center gap-2">
-                      <Trophy className="w-4 h-4 text-yellow-500" />
-                      <span className="font-semibold">{exercise.expReward} EXP</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Coins className="w-4 h-4 text-amber-500" />
-                      <span className="font-semibold">{exercise.coinsReward} Coins</span>
-                    </div>
-                  </div>
-
-                  {/* Unit type */}
-                  <div className="flex items-center gap-2 text-sm">
-                    {exercise.unit === 'reps' ? (
-                      <Repeat className="w-4 h-4 text-blue-500" />
-                    ) : (
-                      <Clock className="w-4 h-4 text-purple-500" />
-                    )}
-                    <span>
-                      {exercise.unit === 'reps' ? 'Repetitions' : 'Time (seconds)'}
-                    </span>
-                  </div>
-
-                  {/* Muscle Groups */}
-                  <div className="flex flex-wrap gap-1">
-                    {exercise.muscleGroups.slice(0, 3).map((muscle) => (
-                      <Badge key={muscle} variant="secondary" className="text-xs">
-                        {muscle}
-                      </Badge>
-                    ))}
-                    {exercise.muscleGroups.length > 3 && (
-                      <Badge variant="secondary" className="text-xs">
-                        +{exercise.muscleGroups.length - 3}
-                      </Badge>
-                    )}
-                  </div>
-
-                  {/* Quick Actions */}
-                  <div className="grid grid-cols-2 gap-2">
-                    <Button
-                      variant={isCompleted ? "outline" : "default"}
-                      size="sm"
-                      onClick={() => onToggleCompleted(exercise.id)}
-                      className="w-full"
-                    >
-                      {isCompleted ? (
-                        <>
-                          <Check className="h-4 w-4 mr-1" />
-                          Completed
-                        </>
-                      ) : (
-                        <>
-                          <Plus className="h-4 w-4 mr-1" />
-                          Complete
-                        </>
-                      )}
-                    </Button>
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => setSelectedExercise(exercise)}
-                        >
-                          View Details
-                        </Button>
-                      </DialogTrigger>
-                      <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
-                        <DialogHeader>
-                          <DialogTitle className="text-2xl">{selectedExercise?.name}</DialogTitle>
-                          <DialogDescription>
-                            <div className="flex flex-wrap gap-2 mt-2">
-                              <Badge className={getRankColorClass(selectedExercise?.rank, selectedExercise?.difficulty)}>
-                                {formatRank(selectedExercise?.rank, selectedExercise?.difficulty)}
-                              </Badge>
-                              <Badge variant="outline">
-                                {
-                                  categoryLabels[
-                                    selectedExercise?.category as keyof typeof categoryLabels
-                                  ]
-                                }
-                              </Badge>
-                            </div>
-                          </DialogDescription>
-                        </DialogHeader>
-
-                        <div className="space-y-6 mt-4">
-                          <div>
-                            <h3 className="font-semibold text-lg mb-2">Description</h3>
-                            <p className="text-muted-foreground">{selectedExercise?.description}</p>
-                          </div>
-
-                          <div>
-                            <h3 className="font-semibold text-lg mb-2">Rewards</h3>
-                            <div className="flex gap-4">
-                              <div className="flex items-center gap-2">
-                                <Trophy className="w-5 h-5 text-yellow-500" />
-                                <span className="font-semibold">{selectedExercise?.expReward} EXP</span>
-                              </div>
-                              <div className="flex items-center gap-2">
-                                <Coins className="w-5 h-5 text-amber-500" />
-                                <span className="font-semibold">
-                                  {selectedExercise?.coinsReward} Coins
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div>
-                            <h3 className="font-semibold text-lg mb-2">How To Perform</h3>
-                            {selectedExercise?.instructions && selectedExercise.instructions.length > 0 ? (
-                              <div className="bg-muted p-4 rounded-lg">
-                                <ol className="list-decimal list-inside space-y-1 text-sm">
-                                  {selectedExercise.instructions.map((step, idx) => (
-                                    <li key={idx} className="text-muted-foreground">{step}</li>
-                                  ))}
-                                </ol>
-                              </div>
-                            ) : selectedExercise?.howTo ? (
-                              <div className="bg-muted p-4 rounded-lg">
-                                <p className="text-sm text-muted-foreground whitespace-pre-line">
-                                  {selectedExercise.howTo}
-                                </p>
-                              </div>
-                            ) : (
-                              <div className="bg-muted p-4 rounded-lg">
-                                <p className="text-sm text-muted-foreground">
-                                  No instructions available yet for this exercise.
-                                </p>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      </DialogContent>
-                    </Dialog>
-                  </div>
-
-                  <Button
-                    variant="ghost"
-                    className="w-full"
-                    onClick={() => {
-                      const slug = exercise.name
-                        .trim()
-                        .toLowerCase()
-                        .replace(/[^a-z0-9]+/g, '-');
-                      router.push(`/guides/${slug}`);
-                    }}
-                  >
-                    View Full Guide →
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          );
-        })}
+        {filteredExercises.map((exercise) => (
+          <ExerciseCard
+            key={exercise.id}
+            exercise={exercise}
+            isCompleted={completed.has(exercise.id)}
+            isFavorite={favorites.has(exercise.id)}
+            onToggleCompleted={() => onToggleCompleted(exercise.id)}
+            onToggleFavorite={() => onToggleFavorite(exercise.id)}
+          />
+        ))}
       </div>
 
       {/* No results */}

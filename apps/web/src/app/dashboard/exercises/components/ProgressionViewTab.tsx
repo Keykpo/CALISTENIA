@@ -1,10 +1,14 @@
 'use client';
 
+import { useMemo } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Lock, CheckCircle2, PlayCircle, Book } from 'lucide-react';
 import { FIG_PROGRESSIONS, type MasteryGoal } from '@/lib/fig-level-progressions';
+import exercisesData from '@/data/exercises.json';
+import { Exercise } from './exercise-utils';
+import ProgressionExerciseCard from './ProgressionExerciseCard';
 
 interface ProgressionViewTabProps {
   selectedSkill: MasteryGoal | null;
@@ -26,6 +30,14 @@ export default function ProgressionViewTab({
   onBack,
   onStartTraining,
 }: ProgressionViewTabProps) {
+  // Helper function to find exercises by ID
+  const findExercisesByIds = (exerciseIds: string[]): Exercise[] => {
+    const exercises = exercisesData as Exercise[];
+    return exerciseIds
+      .map(id => exercises.find(ex => ex.id === id))
+      .filter((ex): ex is Exercise => ex !== undefined);
+  };
+
   if (!selectedSkill) {
     return (
       <div className="flex flex-col items-center justify-center py-12">
@@ -117,15 +129,33 @@ export default function ProgressionViewTab({
 
               <CardContent>
                 <div className="space-y-3">
-                  {/* Exercise IDs (placeholders) */}
+                  {/* Key Exercises with GIFs */}
                   <div>
-                    <p className="text-sm font-semibold mb-2">Key Exercises:</p>
-                    <div className="flex flex-wrap gap-2">
-                      {step.exerciseIds.map((exerciseId) => (
-                        <Badge key={exerciseId} variant="secondary">
-                          {exerciseId.replace(/-/g, ' ')}
-                        </Badge>
-                      ))}
+                    <p className="text-sm font-semibold mb-3">Key Exercises:</p>
+                    <div className="space-y-2">
+                      {(() => {
+                        const exercises = findExercisesByIds(step.exerciseIds);
+                        if (exercises.length > 0) {
+                          return exercises.map((exercise) => (
+                            <ProgressionExerciseCard key={exercise.id} exercise={exercise} />
+                          ));
+                        } else {
+                          return (
+                            <div className="bg-muted p-3 rounded-lg">
+                              <p className="text-sm text-muted-foreground">
+                                Exercise details will be available soon for:
+                              </p>
+                              <div className="flex flex-wrap gap-2 mt-2">
+                                {step.exerciseIds.map((exerciseId) => (
+                                  <Badge key={exerciseId} variant="secondary">
+                                    {exerciseId.replace(/-/g, ' ')}
+                                  </Badge>
+                                ))}
+                              </div>
+                            </div>
+                          );
+                        }
+                      })()}
                     </div>
                   </div>
 
