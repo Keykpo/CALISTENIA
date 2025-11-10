@@ -1,5 +1,5 @@
 // Seeds de Skills basadas en ejercicios avanzados de calistenia
-// Rank A = ADVANCED, Rank S = EXPERT
+// Rank A = ADVANCED, Rank S = ELITE
 // Organizado por las 7 ramas del skill tree
 
 import { SkillCategory, Difficulty, SkillBranch } from '@prisma/client';
@@ -99,12 +99,12 @@ export const empujeSkills: SkillSeed[] = [
     prerequisiteNames: ['Standard Push-ups'],
   },
 
-  // RANK S (EXPERT)
+  // RANK S (ELITE)
   {
     name: 'One-Arm Push-ups',
     description: 'Push-ups con un solo brazo, máximo control y fuerza',
     category: 'PUSH_MOVEMENTS',
-    difficulty: 'EXPERT',
+    difficulty: 'ELITE',
     branch: 'EMPUJE',
     requiredStrength: 85,
     requiredEndurance: 70,
@@ -123,7 +123,7 @@ export const empujeSkills: SkillSeed[] = [
     name: 'Planche Push-ups',
     description: 'Push-ups desde posición de planche completa',
     category: 'PUSH_MOVEMENTS',
-    difficulty: 'EXPERT',
+    difficulty: 'ELITE',
     branch: 'EMPUJE',
     requiredStrength: 95,
     requiredEndurance: 80,
@@ -142,7 +142,7 @@ export const empujeSkills: SkillSeed[] = [
     name: 'Superman Push-ups',
     description: 'Push-ups con brazos y piernas extendidas en el aire',
     category: 'PUSH_MOVEMENTS',
-    difficulty: 'EXPERT',
+    difficulty: 'ELITE',
     branch: 'EMPUJE',
     requiredStrength: 90,
     requiredEndurance: 75,
@@ -242,12 +242,12 @@ export const traccionSkills: SkillSeed[] = [
     prerequisiteNames: ['Pull-ups', 'Dips'],
   },
 
-  // RANK S (EXPERT)
+  // RANK S (ELITE)
   {
     name: 'One-Arm Pull-ups',
     description: 'Pull-ups con un solo brazo, máxima fuerza de tracción',
     category: 'PULL_MOVEMENTS',
-    difficulty: 'EXPERT',
+    difficulty: 'ELITE',
     branch: 'TRACCION',
     requiredStrength: 90,
     requiredEndurance: 75,
@@ -266,7 +266,7 @@ export const traccionSkills: SkillSeed[] = [
     name: 'Slow Muscle-up',
     description: 'Muscle-up lento y controlado sin kip',
     category: 'PULL_MOVEMENTS',
-    difficulty: 'EXPERT',
+    difficulty: 'ELITE',
     branch: 'TRACCION',
     requiredStrength: 85,
     requiredEndurance: 80,
@@ -285,7 +285,7 @@ export const traccionSkills: SkillSeed[] = [
     name: 'One-Arm Muscle-up',
     description: 'Muscle-up con un solo brazo, skill definitivo de tracción',
     category: 'PULL_MOVEMENTS',
-    difficulty: 'EXPERT',
+    difficulty: 'ELITE',
     branch: 'TRACCION',
     requiredStrength: 98,
     requiredEndurance: 85,
@@ -366,12 +366,12 @@ export const coreSkills: SkillSeed[] = [
     prerequisiteNames: ['Plank'],
   },
 
-  // RANK S (EXPERT)
+  // RANK S (ELITE)
   {
     name: 'Dragon Flag',
     description: 'Extensión horizontal del cuerpo desde la espalda',
     category: 'CORE_STRENGTH',
-    difficulty: 'EXPERT',
+    difficulty: 'ELITE',
     branch: 'CORE',
     requiredStrength: 80,
     requiredEndurance: 85,
@@ -390,7 +390,7 @@ export const coreSkills: SkillSeed[] = [
     name: 'V-sit Hold',
     description: 'L-sit avanzado con cuerpo en forma de V',
     category: 'CORE_STRENGTH',
-    difficulty: 'EXPERT',
+    difficulty: 'ELITE',
     branch: 'CORE',
     requiredStrength: 70,
     requiredEndurance: 80,
@@ -409,7 +409,7 @@ export const coreSkills: SkillSeed[] = [
     name: 'Human Flag',
     description: 'Bandera humana sostenida lateralmente en poste vertical',
     category: 'CORE_STRENGTH',
-    difficulty: 'EXPERT',
+    difficulty: 'ELITE',
     branch: 'CORE',
     requiredStrength: 90,
     requiredEndurance: 85,
@@ -490,12 +490,12 @@ export const equilibrioSkills: SkillSeed[] = [
     prerequisiteNames: ['Free Handstand'],
   },
 
-  // RANK S (EXPERT)
+  // RANK S (ELITE)
   {
     name: 'One-Arm Handstand',
     description: 'Handstand con un solo brazo, máximo balance',
     category: 'BALANCE',
-    difficulty: 'EXPERT',
+    difficulty: 'ELITE',
     branch: 'EQUILIBRIO',
     requiredStrength: 85,
     requiredEndurance: 70,
@@ -514,7 +514,7 @@ export const equilibrioSkills: SkillSeed[] = [
     name: 'Press to Handstand',
     description: 'Entrada a handstand desde el suelo sin impulso',
     category: 'BALANCE',
-    difficulty: 'EXPERT',
+    difficulty: 'ELITE',
     branch: 'EQUILIBRIO',
     requiredStrength: 88,
     requiredEndurance: 75,
@@ -533,7 +533,7 @@ export const equilibrioSkills: SkillSeed[] = [
     name: '90-Degree Push-ups',
     description: 'Push-ups con cuerpo horizontal paralelo al suelo',
     category: 'BALANCE',
-    difficulty: 'EXPERT',
+    difficulty: 'ELITE',
     branch: 'EQUILIBRIO',
     requiredStrength: 92,
     requiredEndurance: 80,
@@ -614,12 +614,12 @@ export const trenInferiorSkills: SkillSeed[] = [
     prerequisiteNames: ['Pistol Squats'],
   },
 
-  // RANK S (EXPERT)
+  // RANK S (ELITE)
   {
     name: 'Weighted Pistol Squats',
     description: 'Pistol squats con peso adicional (mancuerna/chaleco)',
     category: 'LEG_STRENGTH',
-    difficulty: 'EXPERT',
+    difficulty: 'ELITE',
     branch: 'TREN_INFERIOR',
     requiredStrength: 85,
     requiredEndurance: 80,
@@ -638,7 +638,7 @@ export const trenInferiorSkills: SkillSeed[] = [
     name: 'Sissy Squats (Full ROM)',
     description: 'Sentadillas sissy con rango completo de movimiento',
     category: 'LEG_STRENGTH',
-    difficulty: 'EXPERT',
+    difficulty: 'ELITE',
     branch: 'TREN_INFERIOR',
     requiredStrength: 75,
     requiredEndurance: 70,
@@ -657,7 +657,7 @@ export const trenInferiorSkills: SkillSeed[] = [
     name: 'Jumping Pistol Squats',
     description: 'Pistol squats explosivas con salto',
     category: 'LEG_STRENGTH',
-    difficulty: 'EXPERT',
+    difficulty: 'ELITE',
     branch: 'TREN_INFERIOR',
     requiredStrength: 88,
     requiredEndurance: 85,
@@ -757,12 +757,12 @@ export const estaticosSkills: SkillSeed[] = [
     prerequisiteNames: ['German Hang'],
   },
 
-  // RANK S (EXPERT)
+  // RANK S (ELITE)
   {
     name: 'Full Planche',
     description: 'Planche completa con cuerpo horizontal',
     category: 'STATIC_ELEMENTS',
-    difficulty: 'EXPERT',
+    difficulty: 'ELITE',
     branch: 'ESTATICOS',
     requiredStrength: 95,
     requiredEndurance: 85,
@@ -781,7 +781,7 @@ export const estaticosSkills: SkillSeed[] = [
     name: 'Full Front Lever',
     description: 'Front lever completo con piernas extendidas',
     category: 'STATIC_ELEMENTS',
-    difficulty: 'EXPERT',
+    difficulty: 'ELITE',
     branch: 'ESTATICOS',
     requiredStrength: 92,
     requiredEndurance: 88,
@@ -800,7 +800,7 @@ export const estaticosSkills: SkillSeed[] = [
     name: 'Maltese',
     description: 'Planche con brazos extendidos lateralmente',
     category: 'STATIC_ELEMENTS',
-    difficulty: 'EXPERT',
+    difficulty: 'ELITE',
     branch: 'ESTATICOS',
     requiredStrength: 98,
     requiredEndurance: 90,
@@ -819,7 +819,7 @@ export const estaticosSkills: SkillSeed[] = [
     name: 'Victorian',
     description: 'Elemento estático en anillas con cuerpo invertido',
     category: 'STATIC_ELEMENTS',
-    difficulty: 'EXPERT',
+    difficulty: 'ELITE',
     branch: 'ESTATICOS',
     requiredStrength: 96,
     requiredEndurance: 88,
@@ -838,7 +838,7 @@ export const estaticosSkills: SkillSeed[] = [
     name: 'Iron Cross',
     description: 'Cruz de hierro en anillas con brazos extendidos',
     category: 'STATIC_ELEMENTS',
-    difficulty: 'EXPERT',
+    difficulty: 'ELITE',
     branch: 'ESTATICOS',
     requiredStrength: 94,
     requiredEndurance: 86,
