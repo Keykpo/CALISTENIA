@@ -35,7 +35,11 @@ interface Routine {
   exercises: RoutineExercise[];
 }
 
-export default function CustomRoutineBuilder() {
+interface CustomRoutineBuilderProps {
+  onSave?: () => void;
+}
+
+export default function CustomRoutineBuilder({ onSave }: CustomRoutineBuilderProps) {
   const [routine, setRoutine] = useState<Routine>({
     name: '',
     description: '',
@@ -123,8 +127,13 @@ export default function CustomRoutineBuilder() {
           goal: 'CUSTOM',
           exercises: [],
         });
+        // Call onSave callback to refresh the list
+        if (onSave) {
+          onSave();
+        }
       } else {
-        alert('Failed to save routine');
+        const errorData = await response.json();
+        alert(`Failed to save routine: ${errorData.error || 'Unknown error'}`);
       }
     } catch (error) {
       console.error('Error saving routine:', error);
@@ -195,13 +204,13 @@ export default function CustomRoutineBuilder() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="MUSCLE_GAIN">💪 Ganar Músculo</SelectItem>
-                <SelectItem value="WEIGHT_LOSS">🔥 Perder Peso</SelectItem>
-                <SelectItem value="STRENGTH">⚡ Fuerza</SelectItem>
-                <SelectItem value="ENDURANCE">🏃 Resistencia</SelectItem>
-                <SelectItem value="MOBILITY">🤸 Movilidad</SelectItem>
-                <SelectItem value="SKILL_MASTERY">🎯 Dominar Skill</SelectItem>
-                <SelectItem value="CUSTOM">✨ Customizado</SelectItem>
+                <SelectItem value="MUSCLE_GAIN">💪 Muscle Gain</SelectItem>
+                <SelectItem value="WEIGHT_LOSS">🔥 Weight Loss</SelectItem>
+                <SelectItem value="STRENGTH">⚡ Strength</SelectItem>
+                <SelectItem value="ENDURANCE">🏃 Endurance</SelectItem>
+                <SelectItem value="MOBILITY">🤸 Mobility</SelectItem>
+                <SelectItem value="SKILL_MASTERY">🎯 Skill Mastery</SelectItem>
+                <SelectItem value="CUSTOM">✨ Custom</SelectItem>
               </SelectContent>
             </Select>
           </div>

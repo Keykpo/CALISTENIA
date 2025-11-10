@@ -1,0 +1,57 @@
+b:dev:  GET /api/skill-progress/cmhsw68j50000to5wp0c7jepr 200 in 13ms
+@calisthenics/web:dev:  ✓ Compiled /api/training-session in 240ms (1576 modules)
+@calisthenics/web:dev: [TRAINING_SESSION] POST Error: ZodError: [
+@calisthenics/web:dev:   {
+@calisthenics/web:dev:     "code": "invalid_type",
+@calisthenics/web:dev:  POST /api/training-session 400 in 293ms
+@calisthenics/web:dev:     "expected": "string",
+@calisthenics/web:dev:     "received": "undefined",
+@calisthenics/web:dev:     "path": [
+@calisthenics/web:dev:       "userId"
+@calisthenics/web:dev:     ],
+@calisthenics/web:dev:     "message": "Required"
+@calisthenics/web:dev:   }
+@calisthenics/web:dev: ]
+@calisthenics/web:dev:     at get error (webpack-internal:///(rsc)/./node_modules/zod/v3/types.js:134:31)
+@calisthenics/web:dev:     at ZodObject.parse (webpack-internal:///(rsc)/./node_modules/zod/v3/types.js:209:22)
+@calisthenics/web:dev:     at POST (webpack-internal:///(rsc)/./src/app/api/training-session/route.ts:36:41)
+@calisthenics/web:dev:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+@calisthenics/web:dev:     at async C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+@calisthenics/web:dev:     at async eT.execute (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+@calisthenics/web:dev:     at async eT.handle (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+@calisthenics/web:dev:     at async doRender (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1366:42)
+@calisthenics/web:dev:     at async cacheEntry.responseCache.get.routeKind (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1588:28)
+@calisthenics/web:dev:     at async DevServer.renderToResponseWithComponentsImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1496:28)
+@calisthenics/web:dev:     at async DevServer.renderPageComponent (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1924:24)
+@calisthenics/web:dev:     at async DevServer.renderToResponseImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1962:32)
+@calisthenics/web:dev:     at async DevServer.pipeImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:922:25)
+@calisthenics/web:dev:     at async NextNodeServer.handleCatchallRenderRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\next-server.js:272:17)
+@calisthenics/web:dev:     at async DevServer.handleRequestImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:818:17)
+@calisthenics/web:dev:     at async C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+@calisthenics/web:dev:     at async Span.traceAsyncFn (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\trace\trace.js:154:20)
+@calisthenics/web:dev:     at async DevServer.handleRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+@calisthenics/web:dev:     at async invokeRender (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:179:21)
+@calisthenics/web:dev:     at async handleRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:359:24)
+@calisthenics/web:dev:     at async requestHandlerImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:383:13)
+@calisthenics/web:dev:     at async Server.requestListener (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\start-server.js:141:13) {
+@calisthenics/web:dev:   issues: [
+@calisthenics/web:dev:     {
+@calisthenics/web:dev:       code: 'invalid_type',
+@calisthenics/web:dev:       expected: 'string',
+@calisthenics/web:dev:       received: 'undefined',
+@calisthenics/web:dev:       path: [Array],
+@calisthenics/web:dev:       message: 'Required'
+@calisthenics/web:dev:     }
+@calisthenics/web:dev:   ],
+@calisthenics/web:dev:   addIssue: [Function (anonymous)],
+@calisthenics/web:dev:   addIssues: [Function (anonymous)],
+@calisthenics/web:dev:   errors: [
+@calisthenics/web:dev:     {
+@calisthenics/web:dev:       code: 'invalid_type',
+@calisthenics/web:dev:       expected: 'string',
+@calisthenics/web:dev:       received: 'undefined',
+@calisthenics/web:dev:       path: [Array],
+@calisthenics/web:dev:       message: 'Required'
+@calisthenics/web:dev:     }
+@calisthenics/web:dev:   ]
+@calisthenics/web:dev: }

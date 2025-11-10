@@ -104,6 +104,11 @@ export default function ExercisesPage() {
 
   const handleStartTraining = async (skillBranch: MasteryGoal, level: string) => {
     try {
+      if (!session?.user?.id) {
+        alert('Please sign in to start training');
+        return;
+      }
+
       // Create a training session for the selected skill and level
       const response = await fetch('/api/training-session', {
         method: 'POST',
@@ -111,6 +116,7 @@ export default function ExercisesPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          userId: session.user.id,
           skillBranch,
           userLevel: level,
           duration: 60, // Default 60 minutes
@@ -124,7 +130,7 @@ export default function ExercisesPage() {
         window.location.href = `/dashboard/training/${data.session.id}`;
       } else {
         console.error('Failed to create training session:', data.error);
-        alert('Failed to create training session. Please try again.');
+        alert(`Failed to create training session: ${data.error || 'Please try again.'}`);
       }
     } catch (error) {
       console.error('Error starting training:', error);
