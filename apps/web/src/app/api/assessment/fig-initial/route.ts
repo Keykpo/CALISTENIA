@@ -384,12 +384,27 @@ export async function POST(req: NextRequest) {
       message: 'FIG assessments processed successfully',
       assessmentsSaved: savedAssessments.length,
       hexagonProfile: {
+        // Visual values (0-10 scale)
         balance: balanceValue,
         strength: strengthValue,
         staticHolds: staticHoldsValue,
         core: coreValue,
         endurance: enduranceValue,
         mobility: mobilityValue,
+        // XP values (needed for proper reconstruction)
+        balanceXP: balanceXP,
+        strengthXP: strengthXP,
+        staticHoldsXP: staticHoldsXP,
+        coreXP: coreXP,
+        enduranceXP: enduranceXP,
+        mobilityXP: mobilityXP,
+        // Level values
+        balanceLevel: balanceLevel,
+        strengthLevel: strengthLevel,
+        staticHoldsLevel: staticHoldsLevel,
+        coreLevel: coreLevel,
+        enduranceLevel: enduranceLevel,
+        mobilityLevel: mobilityLevel,
       },
       overallLevel,
       redirectTo: '/onboarding/results',
@@ -397,6 +412,7 @@ export async function POST(req: NextRequest) {
         hexagonId: finalVerification.hexagonProfile.id,
         userId: finalVerification.hexagonProfile.userId,
         verified: true,
+        fullHexagon: finalVerification.hexagonProfile,
       }
     });
 

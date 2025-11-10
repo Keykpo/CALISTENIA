@@ -90,23 +90,35 @@ export default function DashboardAssessmentModal({
       if (res.ok) {
         const data = await res.json();
         console.log('[DASHBOARD_ASSESSMENT] ✅ Success!', data);
+        console.log('[DASHBOARD_ASSESSMENT] API Response hexagonProfile:', data.hexagonProfile);
+        console.log('[DASHBOARD_ASSESSMENT] API Response _debug:', data._debug);
 
-        // Create unified profile from the response
+        // The API now returns complete hexagon data including visual values, XP, and levels
         const hexagonProfile = migrateToUnifiedHexagon({
+          // Visual values (0-10 scale)
           balanceControl: data.hexagonProfile.balance,
           relativeStrength: data.hexagonProfile.strength,
           skillTechnique: data.hexagonProfile.staticHolds,
           bodyTension: data.hexagonProfile.core,
           muscularEndurance: data.hexagonProfile.endurance,
           jointMobility: data.hexagonProfile.mobility,
-          // We'll use default XP values since they're already calculated
-          balanceControlXP: 0,
-          relativeStrengthXP: 0,
-          skillTechniqueXP: 0,
-          bodyTensionXP: 0,
-          muscularEnduranceXP: 0,
-          jointMobilityXP: 0,
+          // XP values
+          balanceControlXP: data.hexagonProfile.balanceXP || 0,
+          relativeStrengthXP: data.hexagonProfile.strengthXP || 0,
+          skillTechniqueXP: data.hexagonProfile.staticHoldsXP || 0,
+          bodyTensionXP: data.hexagonProfile.coreXP || 0,
+          muscularEnduranceXP: data.hexagonProfile.enduranceXP || 0,
+          jointMobilityXP: data.hexagonProfile.mobilityXP || 0,
+          // Level values
+          balanceControlLevel: data.hexagonProfile.balanceLevel,
+          relativeStrengthLevel: data.hexagonProfile.strengthLevel,
+          skillTechniqueLevel: data.hexagonProfile.staticHoldsLevel,
+          bodyTensionLevel: data.hexagonProfile.coreLevel,
+          muscularEnduranceLevel: data.hexagonProfile.enduranceLevel,
+          jointMobilityLevel: data.hexagonProfile.mobilityLevel,
         });
+
+        console.log('[DASHBOARD_ASSESSMENT] Created unified hexagon profile:', hexagonProfile);
 
         const fitnessLevel = data.overallLevel as UnifiedFitnessLevel;
 
@@ -118,10 +130,9 @@ export default function DashboardAssessmentModal({
         setShowResults(true);
         setIsSubmitting(false);
 
-        // Wait a bit before triggering the dashboard refresh
-        setTimeout(() => {
-          onComplete();
-        }, 500);
+        // DON'T auto-close - let user click "Ver Mi Dashboard" button
+        // This was causing the modal to close too quickly
+        console.log('[DASHBOARD_ASSESSMENT] Showing results, waiting for user to close...');
       } else {
         const error = await res.json();
         console.error('[DASHBOARD_ASSESSMENT] Error:', error);
@@ -137,13 +148,19 @@ export default function DashboardAssessmentModal({
 
   const handleClose = () => {
     if (showResults) {
-      // Close and refresh
+      console.log('[DASHBOARD_ASSESSMENT] User closing results, refreshing dashboard...');
+      // Close and refresh with a longer delay to ensure data is persisted
       setShowResults(false);
       setResultsData(null);
       onOpenChange(false);
-      onComplete();
+
+      // Wait 2 seconds to ensure database has committed the transaction
+      setTimeout(() => {
+        console.log('[DASHBOARD_ASSESSMENT] Triggering dashboard refresh now...');
+        onComplete();
+      }, 2000);
     } else {
-      // Just close
+      // Just close without refresh
       onOpenChange(false);
     }
   };
