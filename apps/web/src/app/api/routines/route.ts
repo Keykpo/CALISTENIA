@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { name, description, difficulty, exercises } = body;
+    const { name, description, difficulty, goal, exercises } = body;
 
     // Calculate estimated duration
     const estimatedDuration = exercises.reduce((total: number, ex: any) => {
@@ -80,6 +80,7 @@ export async function POST(request: NextRequest) {
         name,
         description: description || '',
         difficulty,
+        goal: goal || 'CUSTOM',
         exercises: JSON.stringify(exercises),
         estimatedDuration: Math.round(estimatedDuration),
       },

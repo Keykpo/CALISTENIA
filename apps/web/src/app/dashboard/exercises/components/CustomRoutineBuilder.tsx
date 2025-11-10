@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,7 +14,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
-import { Plus, Trash2, GripVertical, Save, X } from 'lucide-react';
+import { Plus, Trash2, GripVertical, Save, X, Search, Target } from 'lucide-react';
 import { Exercise } from './exercise-utils';
 import exercisesData from '@/data/exercises.json';
 
@@ -31,6 +31,7 @@ interface Routine {
   name: string;
   description: string;
   difficulty: string;
+  goal: string;
   exercises: RoutineExercise[];
 }
 
@@ -39,10 +40,12 @@ export default function CustomRoutineBuilder() {
     name: '',
     description: '',
     difficulty: 'BEGINNER',
+    goal: 'CUSTOM',
     exercises: [],
   });
 
   const [selectedExerciseId, setSelectedExerciseId] = useState<string>('');
+  const [exerciseSearch, setExerciseSearch] = useState<string>('');
   const [isAdding, setIsAdding] = useState(false);
   const [newExercise, setNewExercise] = useState<Partial<RoutineExercise>>({
     sets: 3,
@@ -52,6 +55,20 @@ export default function CustomRoutineBuilder() {
   });
 
   const exercises = exercisesData as Exercise[];
+
+  // Filter exercises based on search
+  const filteredExercises = useMemo(() => {
+    if (!exerciseSearch.trim()) {
+      return exercises;
+    }
+
+    const searchLower = exerciseSearch.toLowerCase();
+    return exercises.filter(ex =>
+      ex.name.toLowerCase().includes(searchLower) ||
+      ex.muscleGroups?.some((mg: string) => mg.toLowerCase().includes(searchLower)) ||
+      ex.equipment?.some((eq: string) => eq.toLowerCase().includes(searchLower))
+    );
+  }, [exercises, exerciseSearch]);
 
   const handleAddExercise = () => {
     if (!selectedExerciseId) return;
@@ -75,6 +92,7 @@ export default function CustomRoutineBuilder() {
 
     setIsAdding(false);
     setSelectedExerciseId('');
+    setExerciseSearch('');
     setNewExercise({ sets: 3, reps: 10, restTime: 60, order: routine.exercises.length + 1 });
   };
 
@@ -102,6 +120,7 @@ export default function CustomRoutineBuilder() {
           name: '',
           description: '',
           difficulty: 'BEGINNER',
+          goal: 'CUSTOM',
           exercises: [],
         });
       } else {
@@ -163,6 +182,30 @@ export default function CustomRoutineBuilder() {
             </Select>
           </div>
 
+          <div>
+            <Label className="flex items-center gap-2">
+              <Target className="h-4 w-4" />
+              Routine Goal
+            </Label>
+            <Select
+              value={routine.goal}
+              onValueChange={(value) => setRoutine(prev => ({ ...prev, goal: value }))}
+            >
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="MUSCLE_GAIN">💪 Ganar Músculo</SelectItem>
+                <SelectItem value="WEIGHT_LOSS">🔥 Perder Peso</SelectItem>
+                <SelectItem value="STRENGTH">⚡ Fuerza</SelectItem>
+                <SelectItem value="ENDURANCE">🏃 Resistencia</SelectItem>
+                <SelectItem value="MOBILITY">🤸 Movilidad</SelectItem>
+                <SelectItem value="SKILL_MASTERY">🎯 Dominar Skill</SelectItem>
+                <SelectItem value="CUSTOM">✨ Customizado</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
             <span>{routine.exercises.length} exercises</span>
             <span>•</span>
@@ -191,17 +234,39 @@ export default function CustomRoutineBuilder() {
             <Card className="border-2 border-primary">
               <CardContent className="pt-6 space-y-4">
                 <div>
+                  <Label>Search Exercise</Label>
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      placeholder="Search by name, muscle group, or equipment..."
+                      value={exerciseSearch}
+                      onChange={(e) => setExerciseSearch(e.target.value)}
+                      className="pl-10"
+                    />
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    {filteredExercises.length} exercises found
+                  </p>
+                </div>
+
+                <div>
                   <Label>Select Exercise</Label>
                   <Select value={selectedExerciseId} onValueChange={setSelectedExerciseId}>
                     <SelectTrigger>
                       <SelectValue placeholder="Choose an exercise..." />
                     </SelectTrigger>
-                    <SelectContent>
-                      {exercises.slice(0, 50).map((ex) => (
-                        <SelectItem key={ex.id} value={ex.id}>
-                          {ex.name}
-                        </SelectItem>
-                      ))}
+                    <SelectContent className="max-h-[300px]">
+                      {filteredExercises.length === 0 ? (
+                        <div className="p-4 text-center text-sm text-muted-foreground">
+                          No exercises found. Try a different search term.
+                        </div>
+                      ) : (
+                        filteredExercises.map((ex) => (
+                          <SelectItem key={ex.id} value={ex.id}>
+                            {ex.name}
+                          </SelectItem>
+                        ))
+                      )}
                     </SelectContent>
                   </Select>
                 </div>

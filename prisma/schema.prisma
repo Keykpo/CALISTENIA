@@ -1068,6 +1068,7 @@ model CustomRoutine {
   description String?
   exercises   String // JSON: Array of { exerciseId, sets, reps, holdTime, restTime, order }
   difficulty  Difficulty
+  goal        String   @default("CUSTOM") // MUSCLE_GAIN, WEIGHT_LOSS, STRENGTH, ENDURANCE, MOBILITY, SKILL_MASTERY, CUSTOM
   estimatedDuration Int // minutes
   isPublic    Boolean  @default(false)
   isFavorite  Boolean  @default(false)
