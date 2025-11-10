@@ -1,6 +1,6 @@
 ﻿'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import exercises from '@/data/exercises.json';
 import { Button } from '@/components/ui/button';
@@ -141,6 +141,12 @@ const categoryLabels = {
 
 export default function ExercisesPage() {
   const router = useRouter();
+
+  // Redirect to integrated dashboard version
+  useEffect(() => {
+    router.replace('/dashboard/exercises');
+  }, [router]);
+
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRank, setSelectedRank] = useState<string>('all');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');

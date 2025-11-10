@@ -11,6 +11,12 @@ import {
   getUnifiedAxisVisualField,
   getAllUnifiedAxes,
 } from '@/lib/unified-hexagon-system';
+import {
+  trackRoutineCompletion,
+  trackTotalTrainingDays,
+  trackHexagonAxisXP,
+  trackTotalXP,
+} from '@/lib/progressive-achievements';
 
 async function getUserId(req: NextRequest) {
   try {
@@ -127,6 +133,29 @@ export async function POST(req: NextRequest) {
       levelsChanged[axis] = hexProfile[`${axis}Level` as keyof typeof hexProfile] !== updatedProfile[`${axis}Level` as keyof typeof updatedProfile];
     }
 
+    // Track achievements (progressive system)
+    const achievementResults = await Promise.allSettled([
+      // Track routine completion
+      trackRoutineCompletion(userId),
+
+      // Track total training days
+      trackTotalTrainingDays(userId),
+
+      // Track hexagon axis XP for each axis
+      ...axes.map(axis => trackHexagonAxisXP(userId, axis, BONUS_PER_AXIS)),
+
+      // Track total XP
+      trackTotalXP(userId, (user.totalXP || 0) + totalXPGained),
+    ]);
+
+    // Collect unlocked tiers from all achievement updates
+    const allTiersUnlocked: any[] = [];
+    achievementResults.forEach((result) => {
+      if (result.status === 'fulfilled' && result.value.tiersUnlocked.length > 0) {
+        allTiersUnlocked.push(...result.value.tiersUnlocked);
+      }
+    });
+
     return NextResponse.json({
       success: true,
       message: 'Routine completed successfully!',
@@ -135,7 +164,11 @@ export async function POST(req: NextRequest) {
         perAxis: xpGainedPerAxis,
       },
       updatedProfile: updatedProfile,
-      levelsChanged
+      levelsChanged,
+      achievements: {
+        tiersUnlocked: allTiersUnlocked,
+        count: allTiersUnlocked.length,
+      },
     });
 
   } catch (error: any) {

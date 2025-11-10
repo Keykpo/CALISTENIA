@@ -1,0 +1,144 @@
+// ================================
+// PROGRESSIVE ACHIEVEMENTS SYSTEM
+// Sistema de logros progresivos alineado con FIG
+// ================================
+
+/**
+ * Achievement Principal - Representa un logro general
+ * Ejemplo: "Maestro de Rutinas", "Racha Imparable", "Especialista en Balance"
+ */
+model Achievement {
+  id          String @id @default(cuid())
+  key         String @unique // Identificador único (ej: "routine_completions", "daily_streak")
+  name        String // Nombre display (ej: "Maestro de Rutinas")
+  description String // Descripción general
+
+  // Categoría FIG (alineado con sistema FIG)
+  category    AchievementCategory
+
+  // Tipo de tracking
+  type        AchievementType // CUMULATIVE, MILESTONE, STREAK, etc.
+
+  // Media
+  iconUrl     String?
+
+  // Metadata
+  isActive    Boolean @default(true)
+  order       Int     @default(0) // Para ordenar en UI
+
+  // Timestamps
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  tiers              AchievementTier[]
+  userAchievements   UserAchievement[]
+
+  @@map("achievements")
+}
+
+/**
+ * Tier de Achievement - Niveles progresivos de un achievement
+ * Ejemplo para "Maestro de Rutinas":
+ *   - Tier 1: 10 rutinas (BEGINNER, verde)
+ *   - Tier 2: 25 rutinas (INTERMEDIATE, azul)
+ *   - Tier 3: 50 rutinas (ADVANCED, púrpura)
+ *   - Tier 4: 100 rutinas (ELITE, dorado)
+ */
+model AchievementTier {
+  id            String @id @default(cuid())
+  achievementId String
+
+  // Tier info
+  tier          Int                  // 1, 2, 3, 4
+  name          String               // "Principiante", "Intermedio", "Avanzado", "Elite"
+  level         Difficulty           // BEGINNER, INTERMEDIATE, ADVANCED, ELITE (alineado con FIG)
+
+  // Target
+  target        Float                // Valor objetivo (ej: 10 rutinas, 30 días de racha)
+  unit          String?              // Unidad (ej: "rutinas", "días", "skills")
+
+  // Rewards
+  xpReward      Int    @default(0)
+  coinsReward   Int    @default(0)
+
+  // Display
+  color         String               // Color del badge (#hex)
+  badgeUrl      String?              // URL del badge específico de este tier
+
+  // Timestamps
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  achievement   Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+
+  @@unique([achievementId, tier])
+  @@map("achievement_tiers")
+}
+
+/**
+ * User Achievement - Progreso del usuario en un achievement
+ * El progreso es ACUMULATIVO y nunca se reinicia
+ */
+model UserAchievement {
+  id            String @id @default(cuid())
+  userId        String
+  achievementId String
+
+  // Progreso acumulativo (NUNCA se reinicia)
+  currentValue  Float   @default(0) // Valor actual (ej: 15 rutinas completadas)
+
+  // Tier actual alcanzado
+  currentTier   Int     @default(0) // 0 = ninguno, 1-4 = tier alcanzado
+
+  // Tracking de completitud por tier
+  tier1CompletedAt DateTime?
+  tier2CompletedAt DateTime?
+  tier3CompletedAt DateTime?
+  tier4CompletedAt DateTime?
+
+  // Metadata
+  lastUpdated   DateTime @default(now())
+  createdAt     DateTime @default(now())
+
+  // Relations
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  achievement   Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, achievementId])
+  @@map("user_achievements")
+}
+
+// ================================
+// ENUMS
+// ================================
+
+enum AchievementCategory {
+  // Categorías alineadas con FIG
+  BALANCE          // Handstands, equilibrio
+  STRENGTH         // Pull-ups, dips, pushing/pulling
+  STATIC_HOLDS     // Planche, Front Lever, etc.
+  CORE             // Core, ab wheel, etc.
+
+  // Categorías de progreso general
+  ROUTINE_COMPLETION  // Completar rutinas
+  CONSISTENCY         // Rachas diarias
+  SKILL_MASTERY       // Completar skills
+  HEXAGON_GROWTH      // Progreso en ejes del hexágono
+  LEVEL_MILESTONE     // Alcanzar niveles
+  OVERALL_PROGRESS    // Progreso general
+}
+
+enum AchievementType {
+  CUMULATIVE   // Acumulativo (ej: total de rutinas completadas)
+  MILESTONE    // Hito único (ej: alcanzar nivel 20)
+  STREAK       // Racha (ej: 30 días consecutivos)
+  CATEGORY     // Por categoría (ej: 50 skills de BALANCE)
+}
+
+// Reutilizamos el enum Difficulty existente para los niveles FIG
+// BEGINNER -> Verde
+// INTERMEDIATE -> Azul
+// ADVANCED -> Púrpura
+// ELITE -> Dorado
