@@ -27,7 +27,10 @@ export async function GET(
       orderBy: { updatedAt: 'desc' },
     });
 
-    return NextResponse.json(progress, { status: 200 });
+    return NextResponse.json({
+      success: true,
+      progress,
+    }, { status: 200 });
   } catch (err: any) {
     console.error('[SKILL_PROGRESS_BY_USER] GET Error:', err);
 

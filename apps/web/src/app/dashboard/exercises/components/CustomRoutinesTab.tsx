@@ -85,6 +85,12 @@ export default function CustomRoutinesTab() {
     }
   };
 
+  const handleRoutineSaved = () => {
+    // Refresh the routines list and go back to list view
+    fetchRoutines();
+    setActiveView('list');
+  };
+
   if (activeView === 'create') {
     return (
       <div className="space-y-6">
@@ -97,7 +103,7 @@ export default function CustomRoutinesTab() {
             <p className="text-muted-foreground">Build your personalized workout</p>
           </div>
         </div>
-        <CustomRoutineBuilder />
+        <CustomRoutineBuilder onSave={handleRoutineSaved} />
       </div>
     );
   }
