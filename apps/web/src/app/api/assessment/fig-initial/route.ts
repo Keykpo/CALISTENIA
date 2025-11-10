@@ -342,12 +342,42 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    console.log(`[FIG_ASSESSMENT] User ${userId} assessment completed successfully!`, {
+    console.log(`[FIG_ASSESSMENT] ✅ User ${userId} assessment completed successfully!`, {
       userId: updatedUser.id,
       fitnessLevel: updatedUser.fitnessLevel,
       hasCompletedAssessment: updatedUser.hasCompletedAssessment,
       overallLevel,
     });
+
+    // Final verification: Ensure data is persisted by reading it back one more time
+    console.log('[FIG_ASSESSMENT] Final verification - Reading user with hexagon profile...');
+    const finalVerification = await prisma.user.findUnique({
+      where: { id: userId },
+      include: {
+        hexagonProfile: true,
+      },
+    });
+
+    console.log('[FIG_ASSESSMENT] Final verification result:', {
+      userExists: !!finalVerification,
+      hasHexagonProfile: !!finalVerification?.hexagonProfile,
+      hexagonSample: finalVerification?.hexagonProfile ? {
+        balanceControl: finalVerification.hexagonProfile.balanceControl,
+        relativeStrength: finalVerification.hexagonProfile.relativeStrength,
+        balanceControlXP: finalVerification.hexagonProfile.balanceControlXP,
+      } : null,
+    });
+
+    if (!finalVerification?.hexagonProfile) {
+      console.error('[FIG_ASSESSMENT] ❌ CRITICAL: Final verification failed - hexagon profile not found!');
+      return NextResponse.json(
+        {
+          error: 'Data persistence verification failed',
+          details: 'Hexagon profile was not found after save. Please try again.'
+        },
+        { status: 500 }
+      );
+    }
 
     const response = NextResponse.json({
       success: true,
@@ -363,6 +393,11 @@ export async function POST(req: NextRequest) {
       },
       overallLevel,
       redirectTo: '/onboarding/results',
+      _debug: {
+        hexagonId: finalVerification.hexagonProfile.id,
+        userId: finalVerification.hexagonProfile.userId,
+        verified: true,
+      }
     });
 
     // Prevent caching
