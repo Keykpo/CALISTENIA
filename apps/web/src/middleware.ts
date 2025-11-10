@@ -24,36 +24,9 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/auth/signin', request.url));
   }
 
-  // If authenticated, check assessment completion for protected routes
-  if (token && token.sub && isProtectedRoute) {
-    // Routes that should be accessible even without assessment
-    const allowedWithoutAssessment = [
-      '/onboarding/assessment',
-      '/onboarding/results',
-      '/auth/signout',
-      '/profile', // Allow profile access
-    ];
-
-    const isAllowedRoute = allowedWithoutAssessment.some(route =>
-      pathname.startsWith(route)
-    );
-
-    // Check if user has completed assessment (from token)
-    const hasCompletedAssessment = token.hasCompletedAssessment || false;
-
-    // CRITICAL: Redirect to assessment ONLY if:
-    // 1. User hasn't completed assessment
-    // 2. User is on a protected route that requires assessment
-    // 3. User is NOT already on an allowed route
-    if (!hasCompletedAssessment && !isAllowedRoute) {
-      return NextResponse.redirect(new URL('/onboarding/assessment', request.url));
-    }
-  }
-
-  // If authenticated and assessment completed, prevent access to assessment page
-  if (token && token.hasCompletedAssessment && pathname === '/onboarding/assessment') {
-    return NextResponse.redirect(new URL('/dashboard', request.url));
-  }
+  // No longer redirect to assessment - the dashboard modal will handle it
+  // All authenticated users can access the dashboard
+  // The dashboard component will show the assessment modal if needed
 
   return NextResponse.next();
 }
