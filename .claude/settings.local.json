@@ -10,7 +10,8 @@
       "Bash(dir:*)",
       "Bash(npx ts-node:*)",
       "Bash(npx prisma db push:*)",
-      "Bash(npx prisma generate:*)"
+      "Bash(npx prisma generate:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []

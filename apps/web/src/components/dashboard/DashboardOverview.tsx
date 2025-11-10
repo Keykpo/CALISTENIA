@@ -62,7 +62,7 @@ const LEVEL_INFO: Record<UnifiedFitnessLevel, { color: string; bgColor: string; 
 };
 
 export default function DashboardOverview({ userData, onRefresh, userId }: DashboardOverviewProps) {
-  const [autoRefreshAttempted, setAutoRefreshAttempted] = useState(false);
+  const [autoRefreshCount, setAutoRefreshCount] = useState(0);
   const [showAssessmentModal, setShowAssessmentModal] = useState(false);
 
   const stats = userData?.stats || {
@@ -98,19 +98,23 @@ export default function DashboardOverview({ userData, onRefresh, userId }: Dashb
     console.log('[DASHBOARD_OVERVIEW] Auto-refresh check:', {
       hasCompletedAssessment,
       hasHexagonData,
-      autoRefreshAttempted,
+      autoRefreshCount,
       hexProfile,
     });
 
-    // If user completed assessment but hexagon is empty/missing, auto-refresh once
-    if (hasCompletedAssessment && !hasHexagonData && !autoRefreshAttempted) {
-      console.log('[DASHBOARD_OVERVIEW] 🔄 Auto-refreshing dashboard to fetch hexagon data...');
-      setAutoRefreshAttempted(true);
+    // If user completed assessment but hexagon is empty/missing, auto-refresh up to 4 times
+    if (hasCompletedAssessment && !hasHexagonData && autoRefreshCount < 4) {
+      console.log(`[DASHBOARD_OVERVIEW] 🔄 Auto-refreshing dashboard (attempt ${autoRefreshCount + 1}/4)...`);
+
+      const delay = autoRefreshCount === 0 ? 500 : 2000; // First try fast, then slower
+
       setTimeout(() => {
+        console.log(`[DASHBOARD_OVERVIEW] Executing refresh attempt ${autoRefreshCount + 1}...`);
+        setAutoRefreshCount(prev => prev + 1);
         onRefresh();
-      }, 1000);
+      }, delay);
     }
-  }, [userData, hexProfile, autoRefreshAttempted, onRefresh]);
+  }, [userData, hexProfile, autoRefreshCount, onRefresh]);
 
   // Use calculated fitness level from hexagon, fallback to DB value if hexagon is missing
   const calculatedLevel = calculateUnifiedOverallLevel(unifiedProfile);
@@ -173,6 +177,8 @@ export default function DashboardOverview({ userData, onRefresh, userId }: Dashb
 
   const handleAssessmentComplete = () => {
     console.log('[DASHBOARD_OVERVIEW] Assessment complete callback triggered, refreshing dashboard...');
+    // Reset auto-refresh counter to allow new attempts
+    setAutoRefreshCount(0);
     // Trigger immediate refresh
     onRefresh();
   };
@@ -186,6 +192,13 @@ export default function DashboardOverview({ userData, onRefresh, userId }: Dashb
     hexProfile.muscularEndurance > 0 ||
     hexProfile.jointMobility > 0
   );
+
+  console.log('[DASHBOARD_OVERVIEW] CTA Visibility Check:', {
+    hasHexagonData,
+    hexProfile,
+    hasCompletedAssessment: userData?.user?.hasCompletedAssessment,
+    shouldShowCTA: !hasHexagonData,
+  });
 
   // If no hexagon profile exists OR hexagon is empty, show attractive CTA
   // We check for actual data, not just dbFitnessLevel, because user might have

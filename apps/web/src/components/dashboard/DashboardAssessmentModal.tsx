@@ -130,9 +130,12 @@ export default function DashboardAssessmentModal({
         setShowResults(true);
         setIsSubmitting(false);
 
-        // DON'T auto-close - let user click "View My Dashboard" button
-        // This was causing the modal to close too quickly
-        console.log('[DASHBOARD_ASSESSMENT] Showing results, waiting for user to close...');
+        // Auto-close modal after 3 seconds to give user time to see results
+        console.log('[DASHBOARD_ASSESSMENT] Showing results, will auto-close in 3 seconds...');
+        setTimeout(() => {
+          console.log('[DASHBOARD_ASSESSMENT] Auto-closing modal and refreshing dashboard...');
+          handleClose();
+        }, 3000);
       } else {
         const error = await res.json();
         console.error('[DASHBOARD_ASSESSMENT] Error:', error);
@@ -156,14 +159,11 @@ export default function DashboardAssessmentModal({
       // Close modal
       onOpenChange(false);
 
-      // Wait 1.5 seconds to ensure:
-      // 1. Modal close animation completes
-      // 2. Database has committed the transaction
-      // 3. Then trigger refresh
+      // Wait 1 second to ensure modal close animation completes, then trigger refresh
       setTimeout(() => {
         console.log('[DASHBOARD_ASSESSMENT] Triggering dashboard refresh now...');
-        onComplete(); // This calls onRefresh() in DashboardOverview
-      }, 1500);
+        onComplete(); // This calls handleAssessmentComplete() in DashboardOverview
+      }, 1000);
     } else {
       // Just close without refresh
       onOpenChange(false);
@@ -171,7 +171,14 @@ export default function DashboardAssessmentModal({
   };
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog open={open} onOpenChange={(newOpen) => {
+      // If user tries to close while showing results, trigger proper cleanup
+      if (!newOpen && showResults) {
+        handleClose();
+      } else {
+        onOpenChange(newOpen);
+      }
+    }}>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
         {!showResults ? (
           <>
