@@ -76,7 +76,7 @@ export const authOptions: NextAuthOptions = {
     signIn: '/auth/signin',
     error: '/auth/error',
     verifyRequest: '/auth/verify-request',
-    newUser: '/onboarding',
+    newUser: '/dashboard',
   },
   callbacks: {
     async jwt({ token, user, account, trigger }) {
