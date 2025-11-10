@@ -178,25 +178,53 @@ export async function GET(req: NextRequest) {
       where: { userId },
     });
 
-    console.log('[DASHBOARD] Hexagon profile data:', {
-      userId,
-      hasHexProfile: !!hex,
-      hexProfileRaw: hex,
-      visualValues: hex ? {
-        relativeStrength: hex.relativeStrength,
+    console.log('[DASHBOARD] 🔍 Hexagon Profile Data Debug:', {
+      '1_userId': userId,
+      '2_hasHexProfile': !!hex,
+      '3_hexProfileFull': hex,
+      '4_visualValues': hex ? {
         balanceControl: hex.balanceControl,
+        relativeStrength: hex.relativeStrength,
         skillTechnique: hex.skillTechnique,
+        bodyTension: hex.bodyTension,
+        muscularEndurance: hex.muscularEndurance,
+        jointMobility: hex.jointMobility,
       } : null,
-      xpValues: hex ? {
-        relativeStrengthXP: hex.relativeStrengthXP,
+      '5_xpValues': hex ? {
         balanceControlXP: hex.balanceControlXP,
+        relativeStrengthXP: hex.relativeStrengthXP,
+        skillTechniqueXP: hex.skillTechniqueXP,
+        bodyTensionXP: hex.bodyTensionXP,
+        muscularEnduranceXP: hex.muscularEnduranceXP,
+        jointMobilityXP: hex.jointMobilityXP,
       } : null,
+      '6_levelValues': hex ? {
+        balanceControlLevel: hex.balanceControlLevel,
+        relativeStrengthLevel: hex.relativeStrengthLevel,
+        skillTechniqueLevel: hex.skillTechniqueLevel,
+        bodyTensionLevel: hex.bodyTensionLevel,
+        muscularEnduranceLevel: hex.muscularEnduranceLevel,
+        jointMobilityLevel: hex.jointMobilityLevel,
+      } : null,
+      '7_userHasCompletedAssessment': user?.hasCompletedAssessment,
+      '8_userFitnessLevel': user?.fitnessLevel,
     });
+
+    // Double-check: Query hexagon directly to verify it exists
+    if (!hex && user?.id) {
+      const directHexQuery = await prisma.hexagonProfile.findUnique({
+        where: { userId: user.id },
+      });
+      console.log('[DASHBOARD] ⚠️ Direct hexagon query result (hex was null):', {
+        found: !!directHexQuery,
+        data: directHexQuery,
+      });
+    }
 
     console.log('[DASHBOARD] About to return response with hexagon:', {
       hexagonIsNull: hex === null,
       hexagonIsUndefined: hex === undefined,
-      hexagonValue: hex,
+      willReturnNull: !hex,
     });
 
     const response = NextResponse.json({
