@@ -17,11 +17,14 @@ import {
   Play,
   Star,
   CheckCircle2,
-  ArrowRight
+  ArrowRight,
+  Sparkles,
+  Trophy
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import UnifiedHexagon from '../UnifiedHexagon';
 import XPProgressCard from '../XPProgressCard';
+import DashboardAssessmentModal from './DashboardAssessmentModal';
 import Link from 'next/link';
 import { migrateToUnifiedHexagon, calculateUnifiedOverallLevel, getUnifiedLevelProgress, type OldHexagonProfile, type UnifiedFitnessLevel } from '@/lib/unified-hexagon-system';
 import BadgesDisplay from '../badges/BadgesDisplay';
@@ -32,6 +35,7 @@ import SkillProgressChart from '../progress/SkillProgressChart';
 interface DashboardOverviewProps {
   userData: any;
   onRefresh: () => void;
+  userId: string;
 }
 
 const LEVEL_INFO: Record<UnifiedFitnessLevel, { color: string; bgColor: string; gradient: string }> = {
@@ -57,8 +61,9 @@ const LEVEL_INFO: Record<UnifiedFitnessLevel, { color: string; bgColor: string; 
   }
 };
 
-export default function DashboardOverview({ userData, onRefresh }: DashboardOverviewProps) {
+export default function DashboardOverview({ userData, onRefresh, userId }: DashboardOverviewProps) {
   const [autoRefreshAttempted, setAutoRefreshAttempted] = useState(false);
+  const [showAssessmentModal, setShowAssessmentModal] = useState(false);
 
   const stats = userData?.stats || {
     totalXP: 0,
@@ -165,38 +170,165 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
     },
   });
 
-  // If no hexagon profile exists AND no DB fitness level, show warning
+  const handleAssessmentComplete = () => {
+    console.log('[DASHBOARD_OVERVIEW] Assessment completed, refreshing dashboard...');
+    setShowAssessmentModal(false);
+    setTimeout(() => {
+      onRefresh();
+    }, 500);
+  };
+
+  // If no hexagon profile exists AND no DB fitness level, show attractive CTA
   if (!hexProfile && !dbFitnessLevel) {
     return (
-      <div className="space-y-6">
-        <Card className="bg-yellow-50 border-2 border-yellow-300">
-          <CardHeader>
-            <CardTitle className="text-yellow-900 flex items-center gap-2">
-              <Target className="w-5 h-5" />
-              No Fitness Profile Found
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <p className="text-yellow-800">
-              Your fitness profile hasn't been created yet. Please complete the FIG assessment to generate your profile.
-            </p>
-            <div className="bg-white rounded-lg p-4 border border-yellow-200">
-              <p className="text-sm font-mono text-slate-600">
-                Debug Info:
-              </p>
-              <pre className="text-xs mt-2 overflow-x-auto">
-                {JSON.stringify({ hasHexProfile: !!hexProfile, hasDBLevel: !!dbFitnessLevel, userData: userData ? Object.keys(userData) : null }, null, 2)}
-              </pre>
+      <>
+        <DashboardAssessmentModal
+          open={showAssessmentModal}
+          onOpenChange={setShowAssessmentModal}
+          userId={userId}
+          onComplete={handleAssessmentComplete}
+        />
+
+        <div className="space-y-6">
+          {/* Hero CTA Card */}
+          <Card className="border-0 shadow-2xl bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 text-white overflow-hidden relative">
+            {/* Animated background elements */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <div className="absolute top-10 left-10 w-40 h-40 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
+              <div className="absolute bottom-10 right-10 w-56 h-56 bg-white/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
             </div>
-            <Link href="/onboarding/assessment">
-              <Button className="w-full bg-yellow-600 hover:bg-yellow-700">
-                Complete Assessment Now
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
-          </CardContent>
-        </Card>
-      </div>
+
+            <CardContent className="pt-12 pb-12 relative z-10">
+              <div className="text-center max-w-2xl mx-auto">
+                <div className="inline-flex items-center justify-center w-24 h-24 bg-white/20 backdrop-blur-sm rounded-full shadow-2xl mb-6 animate-bounce-slow">
+                  <Target className="w-12 h-12 text-white" />
+                </div>
+
+                <h2 className="text-4xl md:text-5xl font-black mb-4 drop-shadow-lg">
+                  ¡Descubre tu Nivel de Habilidad!
+                </h2>
+
+                <p className="text-xl text-blue-100 mb-8 leading-relaxed">
+                  Completa una breve evaluación de 5 minutos para crear tu perfil hexagonal
+                  personalizado y desbloquear tu plan de entrenamiento adaptado a tu nivel.
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                    <Sparkles className="w-10 h-10 text-yellow-300 mx-auto mb-2" />
+                    <p className="font-semibold text-white mb-1">Perfil Personalizado</p>
+                    <p className="text-sm text-blue-100">Hexágono de habilidades único</p>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                    <Target className="w-10 h-10 text-green-300 mx-auto mb-2" />
+                    <p className="font-semibold text-white mb-1">Misiones Diarias</p>
+                    <p className="text-sm text-blue-100">Adaptadas a tu nivel</p>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                    <TrendingUp className="w-10 h-10 text-orange-300 mx-auto mb-2" />
+                    <p className="font-semibold text-white mb-1">Progresión Clara</p>
+                    <p className="text-sm text-blue-100">Sube de nivel gradualmente</p>
+                  </div>
+                </div>
+
+                <Button
+                  onClick={() => setShowAssessmentModal(true)}
+                  size="lg"
+                  className="bg-white text-blue-700 hover:bg-blue-50 font-bold px-10 py-7 text-xl shadow-2xl hover:shadow-3xl transition-all transform hover:scale-105"
+                >
+                  <Trophy className="w-6 h-6 mr-2" />
+                  Comenzar Evaluación
+                  <ArrowRight className="w-6 h-6 ml-2" />
+                </Button>
+
+                <p className="text-sm text-blue-200 mt-4">
+                  ⏱️ Solo 5 minutos • 📊 6 habilidades • 🎯 100% personalizado
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Preview of what they'll get */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="border-2 border-blue-200 shadow-lg">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Activity className="w-5 h-5 text-blue-600" />
+                  Perfil Hexagonal
+                </CardTitle>
+                <CardDescription>
+                  Visualiza tus 6 áreas de habilidad clave
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="aspect-square bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Activity className="w-12 h-12 text-blue-600" />
+                    </div>
+                    <p className="text-sm text-slate-600">Tu hexágono personalizado</p>
+                    <p className="text-xs text-slate-500 mt-1">aparecerá aquí</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 border-purple-200 shadow-lg">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Zap className="w-5 h-5 text-purple-600" />
+                  Misiones y Objetivos
+                </CardTitle>
+                <CardDescription>
+                  Desafíos diarios basados en tus resultados
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 p-3 bg-purple-50 rounded-lg border border-purple-200">
+                    <CheckCircle2 className="w-5 h-5 text-purple-600" />
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-slate-900">Misión de Fuerza</p>
+                      <p className="text-xs text-slate-600">Adaptada a tu nivel actual</p>
+                    </div>
+                    <Badge className="bg-purple-600">+300 XP</Badge>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                    <CheckCircle2 className="w-5 h-5 text-blue-600" />
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-slate-900">Misión de Balance</p>
+                      <p className="text-xs text-slate-600">Mejora tus debilidades</p>
+                    </div>
+                    <Badge className="bg-blue-600">+250 XP</Badge>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-green-50 rounded-lg border border-green-200">
+                    <CheckCircle2 className="w-5 h-5 text-green-600" />
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-slate-900">Misión de Core</p>
+                      <p className="text-xs text-slate-600">Fortalece tu centro</p>
+                    </div>
+                    <Badge className="bg-green-600">+200 XP</Badge>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        <style jsx>{`
+          @keyframes bounce-slow {
+            0%, 100% {
+              transform: translateY(0);
+            }
+            50% {
+              transform: translateY(-10px);
+            }
+          }
+          .animate-bounce-slow {
+            animation: bounce-slow 2s ease-in-out infinite;
+          }
+        `}</style>
+      </>
     );
   }
 
