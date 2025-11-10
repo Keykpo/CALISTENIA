@@ -2,15 +2,13 @@
 
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import FigOnboardingAssessment, { FigAssessmentResult } from '@/components/onboarding/FigOnboardingAssessment';
-import { Card, CardContent } from '@/components/ui/card';
-import { Trophy, Loader2 } from 'lucide-react';
+import { Trophy } from 'lucide-react';
 
 export default function AssessmentPage() {
   const { data: session, status, update } = useSession();
   const router = useRouter();
-  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     if (status === 'unauthenticated') {
@@ -20,8 +18,6 @@ export default function AssessmentPage() {
 
   const handleComplete = async (assessments: FigAssessmentResult[]) => {
     try {
-      setSubmitting(true);
-
       const res = await fetch('/api/assessment/fig-initial', {
         method: 'POST',
         headers: {
@@ -50,12 +46,10 @@ export default function AssessmentPage() {
         const error = await res.json();
         console.error('Error submitting FIG assessment:', error);
         alert('Error al guardar la evaluación. Por favor intenta de nuevo.');
-        setSubmitting(false);
       }
     } catch (error) {
       console.error('Error submitting FIG assessment:', error);
       alert('Error al guardar la evaluación. Por favor intenta de nuevo.');
-      setSubmitting(false);
     }
   };
 
@@ -72,24 +66,6 @@ export default function AssessmentPage() {
 
   if (!session?.user) {
     return null;
-  }
-
-  if (submitting) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-        <Card className="max-w-md">
-          <CardContent className="pt-12 pb-12 text-center">
-            <Loader2 className="w-12 h-12 text-blue-600 animate-spin mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-slate-900 mb-2">
-              Procesando tu evaluación...
-            </h3>
-            <p className="text-slate-600">
-              Estamos analizando tus respuestas y creando tu perfil personalizado
-            </p>
-          </CardContent>
-        </Card>
-      </div>
-    );
   }
 
   return (

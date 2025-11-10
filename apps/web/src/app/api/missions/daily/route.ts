@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
   try {
     const userId = await getUserId(req);
     if (!userId) {
-      return NextResponse.json({ success: false, error: 'Usuario no autenticado' }, { status: 401 });
+      return NextResponse.json({ success: false, error: 'User not authenticated' }, { status: 401 });
     }
 
     // Ensure the user exists in dev/local mode (header fallback)
@@ -109,10 +109,10 @@ export async function GET(req: NextRequest) {
     const missions = await prisma.dailyMission.findMany({ where: { userId, date: today } });
     return NextResponse.json({ success: true, missions });
   } catch (e: any) {
-    // Fallback en desarrollo: devolver misiones en memoria para no bloquear el UI
+    // Development fallback: return in-memory missions to avoid blocking UI
     if (process.env.NODE_ENV === 'development') {
       const today = startOfDay(new Date());
-      const userId = await getUserId(req); // intentar recuperar userId también en fallback
+      const userId = await getUserId(req);
       const baseId = `dev-${new Date().toISOString()}`;
       const fallbackMissions: DevMission[] = [
         {
@@ -120,7 +120,7 @@ export async function GET(req: NextRequest) {
           userId: userId || 'local-dev',
           date: today,
           type: 'complete_exercises',
-          description: 'Completa 5 ejercicios hoy',
+          description: 'Complete 5 exercises today',
           target: 5,
           progress: 0,
           completed: false,
@@ -132,7 +132,7 @@ export async function GET(req: NextRequest) {
           userId: userId || 'local-dev',
           date: today,
           type: 'core_focus',
-          description: 'Incluye 2 ejercicios de CORE',
+          description: 'Include 2 CORE exercises',
           target: 2,
           progress: 0,
           completed: false,
@@ -144,7 +144,7 @@ export async function GET(req: NextRequest) {
           userId: userId || 'local-dev',
           date: today,
           type: 'strength_focus',
-          description: 'Trabaja ejercicios de fuerza',
+          description: 'Train strength exercises',
           target: 2,
           progress: 0,
           completed: false,
@@ -156,7 +156,7 @@ export async function GET(req: NextRequest) {
           userId: userId || 'local-dev',
           date: today,
           type: 'balance_focus',
-          description: 'Practica ejercicios de equilibrio',
+          description: 'Practice balance exercises',
           target: 1,
           progress: 0,
           completed: false,
@@ -168,7 +168,7 @@ export async function GET(req: NextRequest) {
           userId: userId || 'local-dev',
           date: today,
           type: 'progression',
-          description: 'Aumenta intensidad en 1 ejercicio',
+          description: 'Increase intensity in 1 exercise',
           target: 1,
           progress: 0,
           completed: false,
@@ -176,7 +176,7 @@ export async function GET(req: NextRequest) {
           rewardCoins: 150,
         },
       ];
-      // Persistir en el store en memoria para permitir "Complete" durante desarrollo.
+      // Persist to in-memory store to allow "Complete" during development
       if (userId) {
         saveDailyMissions(userId, fallbackMissions);
       }
