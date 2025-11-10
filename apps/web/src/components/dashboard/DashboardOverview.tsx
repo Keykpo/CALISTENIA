@@ -83,6 +83,7 @@ export default function DashboardOverview({ userData, onRefresh, userId }: Dashb
   const unifiedProfile = migrateToUnifiedHexagon(hexProfile);
 
   // Auto-refresh if hexagon data is missing or empty but user has completed assessment
+  // This helps recover from any race conditions
   useEffect(() => {
     const hasCompletedAssessment = userData?.user?.hasCompletedAssessment;
     const hasHexagonData = hexProfile && (
@@ -178,8 +179,20 @@ export default function DashboardOverview({ userData, onRefresh, userId }: Dashb
     }, 500);
   };
 
-  // If no hexagon profile exists AND no DB fitness level, show attractive CTA
-  if (!hexProfile && !dbFitnessLevel) {
+  // Check if hexagon has any data (not just exists but actually has values)
+  const hasHexagonData = hexProfile && (
+    hexProfile.balanceControl > 0 ||
+    hexProfile.relativeStrength > 0 ||
+    hexProfile.skillTechnique > 0 ||
+    hexProfile.bodyTension > 0 ||
+    hexProfile.muscularEndurance > 0 ||
+    hexProfile.jointMobility > 0
+  );
+
+  // If no hexagon profile exists OR hexagon is empty, show attractive CTA
+  // We check for actual data, not just dbFitnessLevel, because user might have
+  // a default BEGINNER level from registration without completing assessment
+  if (!hasHexagonData) {
     return (
       <>
         <DashboardAssessmentModal
@@ -334,55 +347,6 @@ export default function DashboardOverview({ userData, onRefresh, userId }: Dashb
 
   return (
     <div className="space-y-6">
-      {/* Warning banner if using DB fallback or data is empty */}
-      {(!hexProfile || (hexProfile &&
-        hexProfile.balanceControl === 0 &&
-        hexProfile.relativeStrength === 0 &&
-        hexProfile.skillTechnique === 0)) && dbFitnessLevel && (
-        <Card className="bg-amber-50 border-2 border-amber-300">
-          <CardContent className="pt-4 pb-4">
-            <div className="flex items-center gap-3">
-              <RefreshCw className={`w-5 h-5 text-amber-600 ${autoRefreshAttempted ? '' : 'animate-spin'}`} />
-              <div className="flex-1">
-                <p className="text-sm text-amber-900 font-medium">
-                  {!hexProfile ? 'Hexagon data is loading...' : 'Hexagon data appears empty...'} Showing your fitness level ({dbFitnessLevel}) from database.
-                </p>
-                <p className="text-xs text-amber-700 mt-1">
-                  {autoRefreshAttempted
-                    ? 'Auto-refresh attempted. If hexagon is still empty, you may need to retake the assessment.'
-                    : 'The hexagon visualization will appear once data is fully loaded.'}
-                </p>
-                <details className="mt-2">
-                  <summary className="text-xs text-amber-800 cursor-pointer hover:underline">
-                    Show debug information
-                  </summary>
-                  <pre className="text-xs mt-2 p-2 bg-amber-100 rounded overflow-x-auto">
-                    {JSON.stringify({
-                      hasHexProfile: !!hexProfile,
-                      hasCompletedAssessment: userData?.user?.hasCompletedAssessment,
-                      hexProfileSample: hexProfile ? {
-                        balanceControl: hexProfile.balanceControl,
-                        relativeStrength: hexProfile.relativeStrength,
-                        skillTechnique: hexProfile.skillTechnique,
-                      } : null,
-                      autoRefreshAttempted,
-                    }, null, 2)}
-                  </pre>
-                </details>
-              </div>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={onRefresh}
-                className="border-amber-400 hover:bg-amber-100"
-              >
-                <RefreshCw className="w-4 h-4 mr-2" />
-                Refresh Now
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-      )}
 
       {/* Hero Card - Level and Progress */}
       <Card className={`bg-gradient-to-br ${levelInfo.gradient} text-white border-0 shadow-xl overflow-hidden relative`}>
