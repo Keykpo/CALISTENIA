@@ -84,8 +84,8 @@ export default function RegisterPage() {
         throw new Error(data.error || 'Error al crear la cuenta');
       }
 
-      // Use redirectTo from API response or default to assessment
-      const redirectPath = data.redirectTo || '/onboarding/assessment';
+      // Use redirectTo from API response or default to dashboard
+      const redirectPath = data.redirectTo || '/dashboard';
 
       setSuccess('¡Cuenta creada exitosamente! Iniciando sesión...');
 
@@ -103,7 +103,7 @@ export default function RegisterPage() {
           router.push('/auth/signin?message=account-created');
         }, 2000);
       } else {
-        // Redirigir al cuestionario de evaluación si el auto-login fue exitoso
+        // Redirigir al dashboard - el modal de assessment se mostrará ahí si es necesario
         window.location.href = redirectPath;
       }
 
