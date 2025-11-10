@@ -58,24 +58,31 @@ model User {
   updatedAt DateTime @updatedAt
 
   // Relations
-  accounts          Account[]
-  sessions          Session[]
-  workoutSessions   WorkoutSession[]
-  courseEnrollments CourseEnrollment[]
-  progressEntries   ProgressEntry[]
-  posts             Post[]
-  comments          Comment[]
-  likes             Like[]
-  achievements      UserAchievement[]
-  workoutHistory    WorkoutHistory[]
-  dailyMissions     DailyMission[]
-  subscriptions     Subscription[]
-  userSkills        UserSkill[]
-  trainingGoals     TrainingGoal[]
-  primaryGoal       TrainingGoal?      @relation("PrimaryGoal", fields: [primaryGoalId], references: [id])
-  hexagonProfile    HexagonProfile?
-  skillProgress     UserSkillProgress[]
-  trainingSessions  TrainingSession[]
+  accounts               Account[]
+  sessions               Session[]
+  workoutSessions        WorkoutSession[]
+  courseEnrollments      CourseEnrollment[]
+  progressEntries        ProgressEntry[]
+  posts                  Post[]
+  comments               Comment[]
+  likes                  Like[]
+  achievements           UserAchievement[]
+  workoutHistory         WorkoutHistory[]
+  dailyMissions          DailyMission[]
+  subscriptions          Subscription[]
+  userSkills             UserSkill[]
+  trainingGoals          TrainingGoal[]
+  primaryGoal            TrainingGoal?              @relation("PrimaryGoal", fields: [primaryGoalId], references: [id])
+  hexagonProfile         HexagonProfile?
+  skillProgress          UserSkillProgress[]
+  trainingSessions       TrainingSession[]
+  customRoutines         CustomRoutine[]
+  favoriteSkillBranches  FavoriteSkillBranch[]
+  userBadges             UserBadge[]
+  leaderboardEntries     LeaderboardEntry[]
+  globalLeaderboard      GlobalLeaderboardEntry[]
+  challengeProgress      UserChallengeProgress[]
+  progressSnapshots      SkillProgressSnapshot[]
 
   @@map("users")
 }
@@ -1050,3 +1057,187 @@ enum SkillBranch {
   STATICS    // Static elements branch (Planche, Front lever, etc.)
   WARM_UP    // Warm-up and mobility branch
 }
+// ================================
+// CUSTOM ROUTINES SYSTEM
+// ================================
+
+model CustomRoutine {
+  id          String   @id @default(cuid())
+  userId      String
+  name        String
+  description String?
+  exercises   String // JSON: Array of { exerciseId, sets, reps, holdTime, restTime, order }
+  difficulty  Difficulty
+  estimatedDuration Int // minutes
+  isPublic    Boolean  @default(false)
+  isFavorite  Boolean  @default(false)
+  timesUsed   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("custom_routines")
+}
+
+model FavoriteSkillBranch {
+  id          String   @id @default(cuid())
+  userId      String
+  skillBranch String // HANDSTAND, PLANCHE, etc. (MasteryGoal)
+  createdAt   DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, skillBranch])
+  @@map("favorite_skill_branches")
+}
+
+// ================================
+// BADGES & ACHIEVEMENTS SYSTEM
+// ================================
+
+model Badge {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  iconUrl     String?
+  type        BadgeType
+  requirement String // JSON: { type, target, skillBranch?, etc. }
+  rarity      AchievementRarity @default(NOVICE)
+  xpReward    Int      @default(0)
+  coinsReward Int      @default(0)
+  createdAt   DateTime @default(now())
+
+  userBadges UserBadge[]
+
+  @@map("badges")
+}
+
+model UserBadge {
+  id          String   @id @default(cuid())
+  userId      String
+  badgeId     String
+  earnedAt    DateTime @default(now())
+  progress    Int      @default(0) // For tracking progress towards badge
+  isCompleted Boolean  @default(false)
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  badge Badge @relation(fields: [badgeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, badgeId])
+  @@map("user_badges")
+}
+
+enum BadgeType {
+  SKILL_COMPLETION      // Complete all levels of a skill
+  LEVEL_MASTER         // Reach a specific level in a skill
+  SESSIONS_MILESTONE   // Complete N training sessions
+  STREAK_ACHIEVEMENT   // Maintain streak for N days
+  XP_MILESTONE         // Reach total XP milestone
+  SPECIAL_EVENT        // Special event badges
+}
+
+// ================================
+// LEADERBOARDS SYSTEM
+// ================================
+
+model LeaderboardEntry {
+  id          String   @id @default(cuid())
+  userId      String
+  skillBranch String // HANDSTAND, PLANCHE, etc.
+  score       Int // Based on: level * 1000 + sessions + (XP / 10)
+  rank        Int      @default(0)
+  weekStart   DateTime // Start of the week for this entry
+  weekEnd     DateTime // End of the week
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, skillBranch, weekStart])
+  @@map("leaderboard_entries")
+}
+
+model GlobalLeaderboardEntry {
+  id        String   @id @default(cuid())
+  userId    String
+  totalXP   Int
+  rank      Int      @default(0)
+  weekStart DateTime
+  weekEnd   DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, weekStart])
+  @@map("global_leaderboard_entries")
+}
+
+// ================================
+// WEEKLY CHALLENGES SYSTEM
+// ================================
+
+model WeeklyChallenge {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  type        ChallengeType
+  target      Int // e.g., 100 push-ups, 5 training sessions, etc.
+  xpReward    Int
+  coinsReward Int
+  badgeId     String? // Optional badge reward
+  weekStart   DateTime
+  weekEnd     DateTime
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  userProgress UserChallengeProgress[]
+
+  @@map("weekly_challenges")
+}
+
+model UserChallengeProgress {
+  id          String   @id @default(cuid())
+  userId      String
+  challengeId String
+  progress    Int      @default(0)
+  isCompleted Boolean  @default(false)
+  completedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  challenge WeeklyChallenge @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, challengeId])
+  @@map("user_challenge_progress")
+}
+
+enum ChallengeType {
+  TOTAL_EXERCISES    // Complete N exercises this week
+  TRAINING_SESSIONS  // Complete N training sessions
+  SPECIFIC_SKILL     // Work on specific skill N times
+  XP_TARGET          // Earn N XP this week
+  STREAK_MAINTAIN    // Maintain daily streak
+  CUSTOM             // Custom challenge
+}
+
+// ================================
+// PROGRESS TRACKING & CHARTS
+// ================================
+
+model SkillProgressSnapshot {
+  id          String   @id @default(cuid())
+  userId      String
+  skillBranch String // HANDSTAND, PLANCHE, etc.
+  level       String // BEGINNER, INTERMEDIATE, ADVANCED, ELITE
+  sessions    Int
+  totalXP     Int
+  date        DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("skill_progress_snapshots")
+}
+

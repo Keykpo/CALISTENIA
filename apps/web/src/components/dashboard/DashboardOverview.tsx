@@ -23,6 +23,10 @@ import UnifiedHexagon from '../UnifiedHexagon';
 import XPProgressCard from '../XPProgressCard';
 import Link from 'next/link';
 import { migrateToUnifiedHexagon, calculateUnifiedOverallLevel, getUnifiedLevelProgress, type OldHexagonProfile, type UnifiedFitnessLevel } from '@/lib/unified-hexagon-system';
+import BadgesDisplay from '../badges/BadgesDisplay';
+import LeaderboardDisplay from '../leaderboard/LeaderboardDisplay';
+import WeeklyChallengesDisplay from '../challenges/WeeklyChallengesDisplay';
+import SkillProgressChart from '../progress/SkillProgressChart';
 
 interface DashboardOverviewProps {
   userData: any;
@@ -393,6 +397,54 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
             )}
           </CardContent>
         </Card>
+
+        {/* Quick Access to Exercises */}
+        <Card className="shadow-lg border-2 bg-gradient-to-br from-blue-50 to-indigo-50">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <div>
+                <CardTitle className="text-xl flex items-center gap-2">
+                  <Dumbbell className="h-5 w-5 text-blue-600" />
+                  Exercises Menu
+                </CardTitle>
+                <CardDescription>
+                  Master skills, explore exercises, and build custom routines
+                </CardDescription>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <div className="grid grid-cols-2 gap-3">
+              <div className="bg-white rounded-lg p-4 border-2 border-blue-200">
+                <Target className="h-8 w-8 text-blue-600 mb-2" />
+                <h4 className="font-semibold text-sm mb-1">Skill Paths</h4>
+                <p className="text-xs text-muted-foreground">18 calisthenics progressions</p>
+              </div>
+              <div className="bg-white rounded-lg p-4 border-2 border-purple-200">
+                <TrendingUp className="h-8 w-8 text-purple-600 mb-2" />
+                <h4 className="font-semibold text-sm mb-1">Progressions</h4>
+                <p className="text-xs text-muted-foreground">Track your journey</p>
+              </div>
+              <div className="bg-white rounded-lg p-4 border-2 border-green-200">
+                <Dumbbell className="h-8 w-8 text-green-600 mb-2" />
+                <h4 className="font-semibold text-sm mb-1">Exercise Gallery</h4>
+                <p className="text-xs text-muted-foreground">500+ exercises with GIFs</p>
+              </div>
+              <div className="bg-white rounded-lg p-4 border-2 border-orange-200">
+                <Star className="h-8 w-8 text-orange-600 mb-2" />
+                <h4 className="font-semibold text-sm mb-1">Custom Routines</h4>
+                <p className="text-xs text-muted-foreground">Build your workouts</p>
+              </div>
+            </div>
+            <Link href="/dashboard/exercises" className="block">
+              <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+                <Dumbbell className="w-4 h-4 mr-2" />
+                Explore Exercises
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
       </div>
 
       {/* Skill Progression XP Cards */}
@@ -555,6 +607,18 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
           </CardContent>
         </Card>
       </div>
+
+      {/* Weekly Challenges */}
+      <WeeklyChallengesDisplay />
+
+      {/* Badges and Leaderboard */}
+      <div className="grid gap-6 lg:grid-cols-2">
+        <BadgesDisplay />
+        <LeaderboardDisplay />
+      </div>
+
+      {/* Progress Chart */}
+      <SkillProgressChart />
     </div>
   );
 }
