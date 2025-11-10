@@ -172,11 +172,9 @@ export default function DashboardOverview({ userData, onRefresh, userId }: Dashb
   });
 
   const handleAssessmentComplete = () => {
-    console.log('[DASHBOARD_OVERVIEW] Assessment completed, refreshing dashboard...');
-    setShowAssessmentModal(false);
-    setTimeout(() => {
-      onRefresh();
-    }, 500);
+    console.log('[DASHBOARD_OVERVIEW] Assessment complete callback triggered, refreshing dashboard...');
+    // Trigger immediate refresh
+    onRefresh();
   };
 
   // Check if hexagon has any data (not just exists but actually has values)
@@ -218,29 +216,29 @@ export default function DashboardOverview({ userData, onRefresh, userId }: Dashb
                 </div>
 
                 <h2 className="text-4xl md:text-5xl font-black mb-4 drop-shadow-lg">
-                  ¡Descubre tu Nivel de Habilidad!
+                  Discover Your Skill Level!
                 </h2>
 
                 <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-                  Completa una breve evaluación de 5 minutos para crear tu perfil hexagonal
-                  personalizado y desbloquear tu plan de entrenamiento adaptado a tu nivel.
+                  Complete a brief 5-minute assessment to create your personalized hexagon profile
+                  and unlock a training plan adapted to your level.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                   <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
                     <Sparkles className="w-10 h-10 text-yellow-300 mx-auto mb-2" />
-                    <p className="font-semibold text-white mb-1">Perfil Personalizado</p>
-                    <p className="text-sm text-blue-100">Hexágono de habilidades único</p>
+                    <p className="font-semibold text-white mb-1">Personalized Profile</p>
+                    <p className="text-sm text-blue-100">Unique skills hexagon</p>
                   </div>
                   <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
                     <Target className="w-10 h-10 text-green-300 mx-auto mb-2" />
-                    <p className="font-semibold text-white mb-1">Misiones Diarias</p>
-                    <p className="text-sm text-blue-100">Adaptadas a tu nivel</p>
+                    <p className="font-semibold text-white mb-1">Daily Missions</p>
+                    <p className="text-sm text-blue-100">Adapted to your level</p>
                   </div>
                   <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
                     <TrendingUp className="w-10 h-10 text-orange-300 mx-auto mb-2" />
-                    <p className="font-semibold text-white mb-1">Progresión Clara</p>
-                    <p className="text-sm text-blue-100">Sube de nivel gradualmente</p>
+                    <p className="font-semibold text-white mb-1">Clear Progression</p>
+                    <p className="text-sm text-blue-100">Level up gradually</p>
                   </div>
                 </div>
 
@@ -250,12 +248,12 @@ export default function DashboardOverview({ userData, onRefresh, userId }: Dashb
                   className="bg-white text-blue-700 hover:bg-blue-50 font-bold px-10 py-7 text-xl shadow-2xl hover:shadow-3xl transition-all transform hover:scale-105"
                 >
                   <Trophy className="w-6 h-6 mr-2" />
-                  Comenzar Evaluación
+                  Start Assessment
                   <ArrowRight className="w-6 h-6 ml-2" />
                 </Button>
 
                 <p className="text-sm text-blue-200 mt-4">
-                  ⏱️ Solo 5 minutos • 📊 6 habilidades • 🎯 100% personalizado
+                  ⏱️ Just 5 minutes • 📊 6 skills • 🎯 100% personalized
                 </p>
               </div>
             </CardContent>
@@ -267,10 +265,10 @@ export default function DashboardOverview({ userData, onRefresh, userId }: Dashb
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Activity className="w-5 h-5 text-blue-600" />
-                  Perfil Hexagonal
+                  Hexagon Profile
                 </CardTitle>
                 <CardDescription>
-                  Visualiza tus 6 áreas de habilidad clave
+                  Visualize your 6 key skill areas
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -279,8 +277,8 @@ export default function DashboardOverview({ userData, onRefresh, userId }: Dashb
                     <div className="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Activity className="w-12 h-12 text-blue-600" />
                     </div>
-                    <p className="text-sm text-slate-600">Tu hexágono personalizado</p>
-                    <p className="text-xs text-slate-500 mt-1">aparecerá aquí</p>
+                    <p className="text-sm text-slate-600">Your personalized hexagon</p>
+                    <p className="text-xs text-slate-500 mt-1">will appear here</p>
                   </div>
                 </div>
               </CardContent>
@@ -290,10 +288,10 @@ export default function DashboardOverview({ userData, onRefresh, userId }: Dashb
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Zap className="w-5 h-5 text-purple-600" />
-                  Misiones y Objetivos
+                  Missions & Objectives
                 </CardTitle>
                 <CardDescription>
-                  Desafíos diarios basados en tus resultados
+                  Daily challenges based on your results
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -301,24 +299,24 @@ export default function DashboardOverview({ userData, onRefresh, userId }: Dashb
                   <div className="flex items-center gap-3 p-3 bg-purple-50 rounded-lg border border-purple-200">
                     <CheckCircle2 className="w-5 h-5 text-purple-600" />
                     <div className="flex-1">
-                      <p className="text-sm font-medium text-slate-900">Misión de Fuerza</p>
-                      <p className="text-xs text-slate-600">Adaptada a tu nivel actual</p>
+                      <p className="text-sm font-medium text-slate-900">Strength Mission</p>
+                      <p className="text-xs text-slate-600">Adapted to your current level</p>
                     </div>
                     <Badge className="bg-purple-600">+300 XP</Badge>
                   </div>
                   <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg border border-blue-200">
                     <CheckCircle2 className="w-5 h-5 text-blue-600" />
                     <div className="flex-1">
-                      <p className="text-sm font-medium text-slate-900">Misión de Balance</p>
-                      <p className="text-xs text-slate-600">Mejora tus debilidades</p>
+                      <p className="text-sm font-medium text-slate-900">Balance Mission</p>
+                      <p className="text-xs text-slate-600">Improve your weaknesses</p>
                     </div>
                     <Badge className="bg-blue-600">+250 XP</Badge>
                   </div>
                   <div className="flex items-center gap-3 p-3 bg-green-50 rounded-lg border border-green-200">
                     <CheckCircle2 className="w-5 h-5 text-green-600" />
                     <div className="flex-1">
-                      <p className="text-sm font-medium text-slate-900">Misión de Core</p>
-                      <p className="text-xs text-slate-600">Fortalece tu centro</p>
+                      <p className="text-sm font-medium text-slate-900">Core Mission</p>
+                      <p className="text-xs text-slate-600">Strengthen your center</p>
                     </div>
                     <Badge className="bg-green-600">+200 XP</Badge>
                   </div>

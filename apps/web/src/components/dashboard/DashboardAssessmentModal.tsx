@@ -148,17 +148,22 @@ export default function DashboardAssessmentModal({
 
   const handleClose = () => {
     if (showResults) {
-      console.log('[DASHBOARD_ASSESSMENT] User closing results, refreshing dashboard...');
-      // Close and refresh with a longer delay to ensure data is persisted
+      console.log('[DASHBOARD_ASSESSMENT] User closing results, will refresh dashboard...');
+      // Reset state
       setShowResults(false);
       setResultsData(null);
+
+      // Close modal
       onOpenChange(false);
 
-      // Wait 2 seconds to ensure database has committed the transaction
+      // Wait 1.5 seconds to ensure:
+      // 1. Modal close animation completes
+      // 2. Database has committed the transaction
+      // 3. Then trigger refresh
       setTimeout(() => {
         console.log('[DASHBOARD_ASSESSMENT] Triggering dashboard refresh now...');
-        onComplete();
-      }, 2000);
+        onComplete(); // This calls onRefresh() in DashboardOverview
+      }, 1500);
     } else {
       // Just close without refresh
       onOpenChange(false);
@@ -177,11 +182,11 @@ export default function DashboardAssessmentModal({
                 </div>
               </div>
               <DialogTitle className="text-2xl text-center">
-                Completa tu Evaluación de Habilidades
+                Complete Your Skills Assessment
               </DialogTitle>
               <DialogDescription className="text-center text-base">
-                Responde algunas preguntas sobre tus habilidades actuales para crear tu perfil hexagonal
-                y plan de entrenamiento personalizado. Toma solo 5 minutos.
+                Answer some questions about your current abilities to create your hexagon profile
+                and personalized training plan. Takes only 5 minutes.
               </DialogDescription>
             </DialogHeader>
 
@@ -191,10 +196,10 @@ export default function DashboardAssessmentModal({
                   <CardContent className="pt-12 pb-12 text-center">
                     <Loader2 className="w-16 h-16 text-blue-600 animate-spin mx-auto mb-4" />
                     <h3 className="text-xl font-bold text-slate-900 mb-2">
-                      Procesando tus resultados...
+                      Processing your results...
                     </h3>
                     <p className="text-slate-600">
-                      Creando tu perfil hexagonal personalizado
+                      Creating your personalized hexagon profile
                     </p>
                   </CardContent>
                 </Card>
@@ -215,10 +220,10 @@ export default function DashboardAssessmentModal({
                 </div>
               </div>
               <DialogTitle className="text-3xl text-center font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                ¡Evaluación Completada! 🎉
+                Assessment Complete! 🎉
               </DialogTitle>
               <DialogDescription className="text-center text-lg">
-                Tu perfil hexagonal ha sido creado exitosamente
+                Your hexagon profile has been successfully created
               </DialogDescription>
             </DialogHeader>
 
@@ -230,7 +235,7 @@ export default function DashboardAssessmentModal({
                     <div className="flex items-center gap-3">
                       <Sparkles className="w-6 h-6 text-white" />
                       <div className="text-center">
-                        <p className="text-sm font-medium text-white/80">Tu Nivel Actual</p>
+                        <p className="text-sm font-medium text-white/80">Your Current Level</p>
                         <p className="text-2xl font-black text-white">
                           {LEVEL_INFO[resultsData.fitnessLevel].title}
                         </p>
@@ -246,7 +251,7 @@ export default function DashboardAssessmentModal({
                 <Card className="border-2 border-blue-200 shadow-lg">
                   <CardContent className="pt-6">
                     <h3 className="text-xl font-bold text-center text-slate-900 mb-4">
-                      Tu Perfil Hexagonal
+                      Your Hexagon Profile
                     </h3>
                     <div className="flex justify-center">
                       <UnifiedHexagon
@@ -266,23 +271,23 @@ export default function DashboardAssessmentModal({
               <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200">
                 <CardContent className="pt-6 pb-6">
                   <h3 className="text-lg font-bold text-slate-900 mb-4 text-center">
-                    ¿Qué sigue?
+                    What's Next?
                   </h3>
                   <div className="grid grid-cols-3 gap-3">
                     <div className="text-center p-3 bg-white/80 rounded-lg">
                       <Target className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-                      <p className="text-xs font-semibold text-slate-900">Misiones Diarias</p>
-                      <p className="text-xs text-slate-600">Personalizadas</p>
+                      <p className="text-xs font-semibold text-slate-900">Daily Missions</p>
+                      <p className="text-xs text-slate-600">Personalized</p>
                     </div>
                     <div className="text-center p-3 bg-white/80 rounded-lg">
                       <TrendingUp className="w-8 h-8 text-purple-600 mx-auto mb-2" />
-                      <p className="text-xs font-semibold text-slate-900">Entrenamientos</p>
-                      <p className="text-xs text-slate-600">A tu nivel</p>
+                      <p className="text-xs font-semibold text-slate-900">Workouts</p>
+                      <p className="text-xs text-slate-600">At your level</p>
                     </div>
                     <div className="text-center p-3 bg-white/80 rounded-lg">
                       <Zap className="w-8 h-8 text-orange-600 mx-auto mb-2" />
-                      <p className="text-xs font-semibold text-slate-900">Gana XP</p>
-                      <p className="text-xs text-slate-600">Y sube de nivel</p>
+                      <p className="text-xs font-semibold text-slate-900">Earn XP</p>
+                      <p className="text-xs text-slate-600">And level up</p>
                     </div>
                   </div>
                 </CardContent>
@@ -295,7 +300,7 @@ export default function DashboardAssessmentModal({
                   size="lg"
                   className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold px-10 py-6 text-lg shadow-xl"
                 >
-                  Ver Mi Dashboard
+                  View My Dashboard
                   <ArrowRight className="w-6 h-6 ml-2" />
                 </Button>
               </div>
