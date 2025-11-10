@@ -78,7 +78,6 @@ export default function FigOnboardingAssessment({
   const [currentSkillIndex, setCurrentSkillIndex] = useState(0);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, Record<number, number>>>({});
-  const [isCompleted, setIsCompleted] = useState(false);
 
   const currentSkill = ONBOARDING_SKILLS[currentSkillIndex];
   const skillQuestions = SKILL_ASSESSMENTS[currentSkill] || [];
@@ -145,7 +144,7 @@ export default function FigOnboardingAssessment({
       });
     });
 
-    setIsCompleted(true);
+    console.log('[FIG_ASSESSMENT] Calling onComplete with results:', assessmentResults);
     onComplete(assessmentResults);
   };
 
@@ -155,29 +154,6 @@ export default function FigOnboardingAssessment({
     currentQuestionIndex === skillQuestions.length - 1;
 
   const Icon = (SKILL_ICONS as any)[currentSkill] || Trophy;
-
-  if (isCompleted) {
-    return (
-      <Card className="max-w-2xl mx-auto border-green-200 bg-green-50/30">
-        <CardContent className="pt-12 pb-12 text-center">
-          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle2 className="w-10 h-10 text-green-600" />
-          </div>
-          <h2 className="text-2xl font-bold text-slate-900 mb-2">
-            Assessment Complete!
-          </h2>
-          <p className="text-slate-600 mb-6">
-            Processing your results and creating your personalized training plan...
-          </p>
-          <div className="animate-pulse flex items-center justify-center gap-2">
-            <div className="w-3 h-3 bg-green-600 rounded-full"></div>
-            <div className="w-3 h-3 bg-green-600 rounded-full"></div>
-            <div className="w-3 h-3 bg-green-600 rounded-full"></div>
-          </div>
-        </CardContent>
-      </Card>
-    );
-  }
 
   return (
     <div className="max-w-3xl mx-auto space-y-6">

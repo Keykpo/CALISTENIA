@@ -130,18 +130,18 @@ export default function DashboardAssessmentModal({
         setShowResults(true);
         setIsSubmitting(false);
 
-        // DON'T auto-close - let user click "Ver Mi Dashboard" button
+        // DON'T auto-close - let user click "View My Dashboard" button
         // This was causing the modal to close too quickly
         console.log('[DASHBOARD_ASSESSMENT] Showing results, waiting for user to close...');
       } else {
         const error = await res.json();
         console.error('[DASHBOARD_ASSESSMENT] Error:', error);
-        alert('Error al guardar la evaluación. Por favor intenta de nuevo.');
+        alert('Error saving assessment. Please try again.');
         setIsSubmitting(false);
       }
     } catch (error) {
       console.error('[DASHBOARD_ASSESSMENT] Error:', error);
-      alert('Error al guardar la evaluación. Por favor intenta de nuevo.');
+      alert('Error saving assessment. Please try again.');
       setIsSubmitting(false);
     }
   };
