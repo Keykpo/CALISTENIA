@@ -1,0 +1,299 @@
+ prisma:query SELECT `main`.`users`.`id`, `main`.`users`.`hasCompletedAssessment` FROM `main`.`users` WHERE (`main`.`users`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`users`.`id`, `main`.`users`.`hasCompletedAssessment` FROM `main`.`users` WHERE (`main`.`users`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`users`.`id`, `main`.`users`.`email`, `main`.`users`.`username`, `main`.`users`.`firstName`, `main`.`users`.`lastName`, `main`.`users`.`avatar`, `main`.`users`.`bio`, `main`.`users`.`password`, `main`.`users`.`emailVerified`, `main`.`users`.`isActive`, `main`.`users`.`resetToken`, `main`.`users`.`resetTokenExpiry`, `main`.`users`.`dateOfBirth`, `main`.`users`.`gender`, `main`.`users`.`height`, `main`.`users`.`weight`, `main`.`users`.`fitnessLevel`, `main`.`users`.`goals`, `main`.`users`.`primaryGoalId`, `main`.`users`.`hasCompletedAssessment`, `main`.`users`.`assessmentDate`, `main`.`users`.`totalXP`, `main`.`users`.`currentLevel`, `main`.`users`.`virtualCoins`, `main`.`users`.`totalStrength`, `main`.`users`.`dailyStreak`, `main`.`users`.`lastDailyCompletedAt`, `main`.`users`.`createdAt`, `main`.`users`.`updatedAt` FROM `main`.`users` WHERE (`main`.`users`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`hexagon_profiles`.`id`, `main`.`hexagon_profiles`.`relativeStrength`, `main`.`hexagon_profiles`.`muscularEndurance`, `main`.`hexagon_profiles`.`balanceControl`, `main`.`hexagon_profiles`.`jointMobility`, `main`.`hexagon_profiles`.`bodyTension`, `main`.`hexagon_profiles`.`skillTechnique`, `main`.`hexagon_profiles`.`relativeStrengthXP`, `main`.`hexagon_profiles`.`muscularEnduranceXP`, `main`.`hexagon_profiles`.`balanceControlXP`, `main`.`hexagon_profiles`.`jointMobilityXP`, `main`.`hexagon_profiles`.`bodyTensionXP`, `main`.`hexagon_profiles`.`skillTechniqueXP`, `main`.`hexagon_profiles`.`relativeStrengthLevel`, `main`.`hexagon_profiles`.`muscularEnduranceLevel`, `main`.`hexagon_profiles`.`balanceControlLevel`, `main`.`hexagon_profiles`.`jointMobilityLevel`, `main`.`hexagon_profiles`.`bodyTensionLevel`, `main`.`hexagon_profiles`.`skillTechniqueLevel`, `main`.`hexagon_profiles`.`userId` FROM `main`.`hexagon_profiles` WHERE `main`.`hexagon_profiles`.`userId` IN (?) LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`users`.`id`, `main`.`users`.`email`, `main`.`users`.`username`, `main`.`users`.`firstName`, `main`.`users`.`lastName`, `main`.`users`.`avatar`, `main`.`users`.`bio`, `main`.`users`.`password`, `main`.`users`.`emailVerified`, `main`.`users`.`isActive`, `main`.`users`.`resetToken`, `main`.`users`.`resetTokenExpiry`, `main`.`users`.`dateOfBirth`, `main`.`users`.`gender`, `main`.`users`.`height`, `main`.`users`.`weight`, `main`.`users`.`fitnessLevel`, `main`.`users`.`goals`, `main`.`users`.`primaryGoalId`, `main`.`users`.`hasCompletedAssessment`, `main`.`users`.`assessmentDate`, `main`.`users`.`totalXP`, `main`.`users`.`currentLevel`, `main`.`users`.`virtualCoins`, `main`.`users`.`totalStrength`, `main`.`users`.`dailyStreak`, `main`.`users`.`lastDailyCompletedAt`, `main`.`users`.`createdAt`, `main`.`users`.`updatedAt` FROM `main`.`users` WHERE (`main`.`users`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`hexagon_profiles`.`id`, `main`.`hexagon_profiles`.`relativeStrength`, `main`.`hexagon_profiles`.`muscularEndurance`, `main`.`hexagon_profiles`.`balanceControl`, `main`.`hexagon_profiles`.`jointMobility`, `main`.`hexagon_profiles`.`bodyTension`, `main`.`hexagon_profiles`.`skillTechnique`, `main`.`hexagon_profiles`.`relativeStrengthXP`, `main`.`hexagon_profiles`.`muscularEnduranceXP`, `main`.`hexagon_profiles`.`balanceControlXP`, `main`.`hexagon_profiles`.`jointMobilityXP`, `main`.`hexagon_profiles`.`bodyTensionXP`, `main`.`hexagon_profiles`.`skillTechniqueXP`, `main`.`hexagon_profiles`.`relativeStrengthLevel`, `main`.`hexagon_profiles`.`muscularEnduranceLevel`, `main`.`hexagon_profiles`.`balanceControlLevel`, `main`.`hexagon_profiles`.`jointMobilityLevel`, `main`.`hexagon_profiles`.`bodyTensionLevel`, `main`.`hexagon_profiles`.`skillTechniqueLevel`, `main`.`hexagon_profiles`.`userId` FROM `main`.`hexagon_profiles` WHERE `main`.`hexagon_profiles`.`userId` IN (?) LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`workout_history`.`id`, `main`.`workout_history`.`userId`, `main`.`workout_history`.`sessionId`, `main`.`workout_history`.`completedAt`, `main`.`workout_history`.`difficulty`, `main`.`workout_history`.`streakBonus`, `main`.`workout_history`.`xpEarned`, `main`.`workout_history`.`coinsEarned`, `main`.`workout_history`.`hexagonDelta`, `main`.`workout_history`.`summary` FROM `main`.`workout_history` WHERE `main`.`workout_history`.`userId` = ? ORDER BY `main`.`workout_history`.`completedAt` DESC LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`workout_history`.`id`, `main`.`workout_history`.`userId`, `main`.`workout_history`.`sessionId`, `main`.`workout_history`.`completedAt`, `main`.`workout_history`.`difficulty`, `main`.`workout_history`.`streakBonus`, `main`.`workout_history`.`xpEarned`, `main`.`workout_history`.`coinsEarned`, `main`.`workout_history`.`hexagonDelta`, `main`.`workout_history`.`summary` FROM `main`.`workout_history` WHERE `main`.`workout_history`.`userId` = ? ORDER BY `main`.`workout_history`.`completedAt` DESC LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`daily_missions`.`id`, `main`.`daily_missions`.`userId`, `main`.`daily_missions`.`date`, `main`.`daily_missions`.`type`, `main`.`daily_missions`.`description`, `main`.`daily_missions`.`target`, `main`.`daily_missions`.`progress`, `main`.`daily_missions`.`completed`, `main`.`daily_missions`.`rewardXP`, `main`.`daily_missions`.`rewardCoins`, `main`.`daily_missions`.`createdAt`, `main`.`daily_missions`.`updatedAt` FROM `main`.`daily_missions` WHERE (`main`.`daily_missions`.`userId` = ? AND `main`.`daily_missions`.`date` = ?) ORDER BY `main`.`daily_missions`.`createdAt` ASC LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`daily_missions`.`id`, `main`.`daily_missions`.`userId`, `main`.`daily_missions`.`date`, `main`.`daily_missions`.`type`, `main`.`daily_missions`.`description`, `main`.`daily_missions`.`target`, `main`.`daily_missions`.`progress`, `main`.`daily_missions`.`completed`, `main`.`daily_missions`.`rewardXP`, `main`.`daily_missions`.`rewardCoins`, `main`.`daily_missions`.`createdAt`, `main`.`daily_missions`.`updatedAt` FROM `main`.`daily_missions` WHERE (`main`.`daily_missions`.`userId` = ? AND `main`.`daily_missions`.`date` = ?) ORDER BY `main`.`daily_missions`.`createdAt` ASC LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`daily_missions`.`id`, `main`.`daily_missions`.`userId`, `main`.`daily_missions`.`date`, `main`.`daily_missions`.`type`, `main`.`daily_missions`.`description`, `main`.`daily_missions`.`target`, `main`.`daily_missions`.`progress`, `main`.`daily_missions`.`completed`, `main`.`daily_missions`.`rewardXP`, `main`.`daily_missions`.`rewardCoins`, `main`.`daily_missions`.`createdAt`, `main`.`daily_missions`.`updatedAt` FROM `main`.`daily_missions` WHERE (`main`.`daily_missions`.`userId` = ? AND `main`.`daily_missions`.`date` = ?) LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`daily_missions`.`id`, `main`.`daily_missions`.`userId`, `main`.`daily_missions`.`date`, `main`.`daily_missions`.`type`, `main`.`daily_missions`.`description`, `main`.`daily_missions`.`target`, `main`.`daily_missions`.`progress`, `main`.`daily_missions`.`completed`, `main`.`daily_missions`.`rewardXP`, `main`.`daily_missions`.`rewardCoins`, `main`.`daily_missions`.`createdAt`, `main`.`daily_missions`.`updatedAt` FROM `main`.`daily_missions` WHERE (`main`.`daily_missions`.`userId` = ? AND `main`.`daily_missions`.`date` = ?) LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`daily_missions`.`id`, `main`.`daily_missions`.`userId`, `main`.`daily_missions`.`date`, `main`.`daily_missions`.`type`, `main`.`daily_missions`.`description`, `main`.`daily_missions`.`target`, `main`.`daily_missions`.`progress`, `main`.`daily_missions`.`completed`, `main`.`daily_missions`.`rewardXP`, `main`.`daily_missions`.`rewardCoins`, `main`.`daily_missions`.`createdAt`, `main`.`daily_missions`.`updatedAt` FROM `main`.`daily_missions` WHERE (`main`.`daily_missions`.`userId` = ? AND `main`.`daily_missions`.`date` = ?) ORDER BY `main`.`daily_missions`.`createdAt` ASC LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`daily_missions`.`id`, `main`.`daily_missions`.`userId`, `main`.`daily_missions`.`date`, `main`.`daily_missions`.`type`, `main`.`daily_missions`.`description`, `main`.`daily_missions`.`target`, `main`.`daily_missions`.`progress`, `main`.`daily_missions`.`completed`, `main`.`daily_missions`.`rewardXP`, `main`.`daily_missions`.`rewardCoins`, `main`.`daily_missions`.`createdAt`, `main`.`daily_missions`.`updatedAt` FROM `main`.`daily_missions` WHERE (`main`.`daily_missions`.`userId` = ? AND `main`.`daily_missions`.`date` = ?) ORDER BY `main`.`daily_missions`.`createdAt` ASC LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`user_achievements`.`id`, `main`.`user_achievements`.`userId`, `main`.`user_achievements`.`achievementId`, `main`.`user_achievements`.`progress`, `main`.`user_achievements`.`completed`, `main`.`user_achievements`.`completedAt`, `main`.`user_achievements`.`createdAt`, `main`.`user_achievements`.`updatedAt` FROM `main`.`user_achievements` WHERE (`main`.`user_achievements`.`userId` = ? AND `main`.`user_achievements`.`completed` = ?) ORDER BY `main`.`user_achievements`.`completedAt` DESC LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`user_achievements`.`id`, `main`.`user_achievements`.`userId`, `main`.`user_achievements`.`achievementId`, `main`.`user_achievements`.`progress`, `main`.`user_achievements`.`completed`, `main`.`user_achievements`.`completedAt`, `main`.`user_achievements`.`createdAt`, `main`.`user_achievements`.`updatedAt` FROM `main`.`user_achievements` WHERE (`main`.`user_achievements`.`userId` = ? AND `main`.`user_achievements`.`completed` = ?) ORDER BY `main`.`user_achievements`.`completedAt` DESC LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`workout_history`.`id`, `main`.`workout_history`.`userId`, `main`.`workout_history`.`sessionId`, `main`.`workout_history`.`completedAt`, `main`.`workout_history`.`difficulty`, `main`.`workout_history`.`streakBonus`, `main`.`workout_history`.`xpEarned`, `main`.`workout_history`.`coinsEarned`, `main`.`workout_history`.`hexagonDelta`, `main`.`workout_history`.`summary` FROM `main`.`workout_history` WHERE (`main`.`workout_history`.`userId` = ? AND `main`.`workout_history`.`completedAt` >= ?) LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`workout_history`.`id`, `main`.`workout_history`.`userId`, `main`.`workout_history`.`sessionId`, `main`.`workout_history`.`completedAt`, `main`.`workout_history`.`difficulty`, `main`.`workout_history`.`streakBonus`, `main`.`workout_history`.`xpEarned`, `main`.`workout_history`.`coinsEarned`, `main`.`workout_history`.`hexagonDelta`, `main`.`workout_history`.`summary` FROM `main`.`workout_history` WHERE (`main`.`workout_history`.`userId` = ? AND `main`.`workout_history`.`completedAt` >= ?) LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`users`.`id`, `main`.`users`.`email`, `main`.`users`.`username`, `main`.`users`.`firstName`, `main`.`users`.`lastName`, `main`.`users`.`avatar`, `main`.`users`.`bio`, `main`.`users`.`password`, `main`.`users`.`emailVerified`, `main`.`users`.`isActive`, `main`.`users`.`resetToken`, `main`.`users`.`resetTokenExpiry`, `main`.`users`.`dateOfBirth`, `main`.`users`.`gender`, `main`.`users`.`height`, `main`.`users`.`weight`, `main`.`users`.`fitnessLevel`, `main`.`users`.`goals`, `main`.`users`.`primaryGoalId`, `main`.`users`.`hasCompletedAssessment`, `main`.`users`.`assessmentDate`, `main`.`users`.`totalXP`, `main`.`users`.`currentLevel`, `main`.`users`.`virtualCoins`, `main`.`users`.`totalStrength`, `main`.`users`.`dailyStreak`, `main`.`users`.`lastDailyCompletedAt`, `main`.`users`.`createdAt`, `main`.`users`.`updatedAt` FROM `main`.`users` WHERE (`main`.`users`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+@calisthenics/web:dev:  GET /api/dashboard?t=1762764032925 200 in 219ms
+@calisthenics/web:dev: prisma:query SELECT `main`.`users`.`id`, `main`.`users`.`email`, `main`.`users`.`username`, `main`.`users`.`firstName`, `main`.`users`.`lastName`, `main`.`users`.`avatar`, `main`.`users`.`bio`, `main`.`users`.`password`, `main`.`users`.`emailVerified`, `main`.`users`.`isActive`, `main`.`users`.`resetToken`, `main`.`users`.`resetTokenExpiry`, `main`.`users`.`dateOfBirth`, `main`.`users`.`gender`, `main`.`users`.`height`, `main`.`users`.`weight`, `main`.`users`.`fitnessLevel`, `main`.`users`.`goals`, `main`.`users`.`primaryGoalId`, `main`.`users`.`hasCompletedAssessment`, `main`.`users`.`assessmentDate`, `main`.`users`.`totalXP`, `main`.`users`.`currentLevel`, `main`.`users`.`virtualCoins`, `main`.`users`.`totalStrength`, `main`.`users`.`dailyStreak`, `main`.`users`.`lastDailyCompletedAt`, `main`.`users`.`createdAt`, `main`.`users`.`updatedAt` FROM `main`.`users` WHERE (`main`.`users`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+@calisthenics/web:dev:  GET /api/dashboard?t=1762764032925 200 in 219ms
+@calisthenics/web:dev:  ✓ Compiled /api/progress/snapshots in 136ms (1819 modules)
+@calisthenics/web:dev:  ✓ Compiled (1825 modules)
+@calisthenics/web:dev: Error fetching leaderboard: PrismaClientKnownRequestError:
+@calisthenics/web:dev: Invalid `prisma.globalLeaderboardEntry.findMany()` invocation:
+@calisthenics/web:dev:  GET /api/leaderboard?type=global 500 in 361ms
+@calisthenics/web:dev:
+@calisthenics/web:dev:
+@calisthenics/web:dev: The table `main.global_leaderboard_entries` does not exist in the current database.
+@calisthenics/web:dev:     at ei.handleRequestError (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:7268)
+@calisthenics/web:dev:     at ei.handleAndLogRequestError (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:6593)
+@calisthenics/web:dev:     at ei.request (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:6300)
+@calisthenics/web:dev:     at async a (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:130:9551)
+@calisthenics/web:dev:  GET /api/badges 500 in 364ms
+@calisthenics/web:dev:     at async GET (webpack-internal:///(rsc)/./src/app/api/leaderboard/route.ts:105:25)
+@calisthenics/web:dev:     at async C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+@calisthenics/web:dev:  GET /api/progress/snapshots?skillBranch=HANDSTAND 500 in 365ms
+@calisthenics/web:dev:     at async eT.execute (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+@calisthenics/web:dev:     at async eT.handle (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+@calisthenics/web:dev:     at async doRender (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1366:42)
+@calisthenics/web:dev:  GET /api/challenges 500 in 368ms
+@calisthenics/web:dev:     at async cacheEntry.responseCache.get.routeKind (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1588:28)
+@calisthenics/web:dev:     at async DevServer.renderToResponseWithComponentsImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1496:28)
+@calisthenics/web:dev:     at async DevServer.renderPageComponent (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1924:24)
+@calisthenics/web:dev:     at async DevServer.renderToResponseImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1962:32)
+@calisthenics/web:dev:     at async DevServer.pipeImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:922:25)
+@calisthenics/web:dev:     at async NextNodeServer.handleCatchallRenderRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\next-server.js:272:17)
+@calisthenics/web:dev:     at async DevServer.handleRequestImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:818:17)
+@calisthenics/web:dev:     at async C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+@calisthenics/web:dev:     at async Span.traceAsyncFn (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\trace\trace.js:154:20)
+@calisthenics/web:dev:     at async DevServer.handleRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+@calisthenics/web:dev:     at async invokeRender (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:179:21)
+@calisthenics/web:dev:     at async handleRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:359:24)
+@calisthenics/web:dev:     at async requestHandlerImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:383:13)
+@calisthenics/web:dev:     at async Server.requestListener (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\start-server.js:141:13) {
+@calisthenics/web:dev:   code: 'P2021',
+@calisthenics/web:dev:   meta: {
+@calisthenics/web:dev:     modelName: 'GlobalLeaderboardEntry',
+@calisthenics/web:dev:     table: 'main.global_leaderboard_entries'
+@calisthenics/web:dev:   },
+@calisthenics/web:dev:   clientVersion: '6.18.0'
+@calisthenics/web:dev: }
+@calisthenics/web:dev: Error fetching badges: PrismaClientKnownRequestError:
+@calisthenics/web:dev: Invalid `prisma.userBadge.findMany()` invocation:
+@calisthenics/web:dev:
+@calisthenics/web:dev:
+@calisthenics/web:dev: The table `main.user_badges` does not exist in the current database.
+@calisthenics/web:dev:     at ei.handleRequestError (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:7268)
+@calisthenics/web:dev:     at ei.handleAndLogRequestError (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:6593)
+@calisthenics/web:dev:     at ei.request (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:6300)
+@calisthenics/web:dev:     at async a (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:130:9551)
+@calisthenics/web:dev:     at async GET (webpack-internal:///(rsc)/./src/app/api/badges/route.ts:38:28)
+@calisthenics/web:dev:     at async C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+@calisthenics/web:dev:     at async eT.execute (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+@calisthenics/web:dev:     at async eT.handle (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+@calisthenics/web:dev:     at async doRender (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1366:42)
+@calisthenics/web:dev:     at async cacheEntry.responseCache.get.routeKind (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1588:28)
+@calisthenics/web:dev:     at async DevServer.renderToResponseWithComponentsImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1496:28)
+@calisthenics/web:dev:     at async DevServer.renderPageComponent (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1924:24)
+@calisthenics/web:dev:  GET /api/leaderboard?type=global 500 in 17ms
+@calisthenics/web:dev:     at async DevServer.renderToResponseImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1962:32)
+@calisthenics/web:dev:     at async DevServer.pipeImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:922:25)
+@calisthenics/web:dev:     at async NextNodeServer.handleCatchallRenderRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\next-server.js:272:17)
+@calisthenics/web:dev:     at async DevServer.handleRequestImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:818:17)
+@calisthenics/web:dev:     at async C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+@calisthenics/web:dev:     at async Span.traceAsyncFn (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\trace\trace.js:154:20)
+@calisthenics/web:dev:     at async DevServer.handleRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+@calisthenics/web:dev:     at async invokeRender (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:179:21)
+@calisthenics/web:dev:     at async handleRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:359:24)
+@calisthenics/web:dev:     at async requestHandlerImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:383:13)
+@calisthenics/web:dev:     at async Server.requestListener (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\start-server.js:141:13) {
+@calisthenics/web:dev:   code: 'P2021',
+@calisthenics/web:dev:   meta: { modelName: 'UserBadge', table: 'main.user_badges' },
+@calisthenics/web:dev:   clientVersion: '6.18.0'
+@calisthenics/web:dev: }
+@calisthenics/web:dev:  GET /api/badges 500 in 25ms
+@calisthenics/web:dev: Error fetching progress snapshots: PrismaClientKnownRequestError:
+@calisthenics/web:dev: Invalid `prisma.skillProgressSnapshot.findMany()` invocation:
+@calisthenics/web:dev:
+@calisthenics/web:dev:  GET /api/challenges 500 in 26ms
+@calisthenics/web:dev:
+@calisthenics/web:dev:  GET /api/progress/snapshots?skillBranch=HANDSTAND 500 in 27ms
+@calisthenics/web:dev: The table `main.skill_progress_snapshots` does not exist in the current database.
+@calisthenics/web:dev:     at ei.handleRequestError (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:7268)
+@calisthenics/web:dev:     at ei.handleAndLogRequestError (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:6593)
+@calisthenics/web:dev:     at ei.request (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:6300)
+@calisthenics/web:dev:     at async a (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:130:9551)
+@calisthenics/web:dev:     at async GET (webpack-internal:///(rsc)/./src/app/api/progress/snapshots/route.ts:48:27)
+@calisthenics/web:dev:     at async C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+@calisthenics/web:dev:     at async eT.execute (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+@calisthenics/web:dev:     at async eT.handle (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+@calisthenics/web:dev:     at async doRender (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1366:42)
+@calisthenics/web:dev:     at async cacheEntry.responseCache.get.routeKind (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1588:28)
+@calisthenics/web:dev:     at async DevServer.renderToResponseWithComponentsImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1496:28)
+@calisthenics/web:dev:     at async DevServer.renderPageComponent (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1924:24)
+@calisthenics/web:dev:     at async DevServer.renderToResponseImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1962:32)
+@calisthenics/web:dev:     at async DevServer.pipeImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:922:25)
+@calisthenics/web:dev:     at async NextNodeServer.handleCatchallRenderRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\next-server.js:272:17)
+@calisthenics/web:dev:     at async DevServer.handleRequestImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:818:17)
+@calisthenics/web:dev:     at async C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+@calisthenics/web:dev:     at async Span.traceAsyncFn (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\trace\trace.js:154:20)
+@calisthenics/web:dev:     at async DevServer.handleRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+@calisthenics/web:dev:     at async invokeRender (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:179:21)
+@calisthenics/web:dev:     at async handleRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:359:24)
+@calisthenics/web:dev:     at async requestHandlerImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:383:13)
+@calisthenics/web:dev:     at async Server.requestListener (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\start-server.js:141:13) {
+@calisthenics/web:dev:   code: 'P2021',
+@calisthenics/web:dev:   meta: {
+@calisthenics/web:dev:     modelName: 'SkillProgressSnapshot',
+@calisthenics/web:dev:     table: 'main.skill_progress_snapshots'
+@calisthenics/web:dev:   },
+@calisthenics/web:dev:   clientVersion: '6.18.0'
+@calisthenics/web:dev: }
+@calisthenics/web:dev: Error fetching challenges: PrismaClientKnownRequestError:
+@calisthenics/web:dev: Invalid `prisma.weeklyChallenge.findMany()` invocation:
+@calisthenics/web:dev:
+@calisthenics/web:dev:
+@calisthenics/web:dev: The table `main.weekly_challenges` does not exist in the current database.
+@calisthenics/web:dev:     at ei.handleRequestError (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:7268)
+@calisthenics/web:dev:     at ei.handleAndLogRequestError (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:6593)
+@calisthenics/web:dev:     at ei.request (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:6300)
+@calisthenics/web:dev:     at async a (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:130:9551)
+@calisthenics/web:dev:     at async GET (webpack-internal:///(rsc)/./src/app/api/challenges/route.ts:54:28)
+@calisthenics/web:dev:     at async C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+@calisthenics/web:dev:     at async eT.execute (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+@calisthenics/web:dev:     at async eT.handle (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+@calisthenics/web:dev:     at async doRender (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1366:42)
+@calisthenics/web:dev:     at async cacheEntry.responseCache.get.routeKind (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1588:28)
+@calisthenics/web:dev:     at async DevServer.renderToResponseWithComponentsImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1496:28)
+@calisthenics/web:dev:     at async DevServer.renderPageComponent (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1924:24)
+@calisthenics/web:dev:     at async DevServer.renderToResponseImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1962:32)
+@calisthenics/web:dev:     at async DevServer.pipeImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:922:25)
+@calisthenics/web:dev:     at async NextNodeServer.handleCatchallRenderRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\next-server.js:272:17)
+@calisthenics/web:dev:     at async DevServer.handleRequestImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:818:17)
+@calisthenics/web:dev:     at async C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+@calisthenics/web:dev:     at async Span.traceAsyncFn (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\trace\trace.js:154:20)
+@calisthenics/web:dev:     at async DevServer.handleRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+@calisthenics/web:dev:     at async invokeRender (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:179:21)
+@calisthenics/web:dev:     at async handleRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:359:24)
+@calisthenics/web:dev:     at async requestHandlerImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:383:13)
+@calisthenics/web:dev:     at async Server.requestListener (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\start-server.js:141:13) {
+@calisthenics/web:dev:   code: 'P2021',
+@calisthenics/web:dev:   meta: { modelName: 'WeeklyChallenge', table: 'main.weekly_challenges' },
+@calisthenics/web:dev:   clientVersion: '6.18.0'
+@calisthenics/web:dev: }
+@calisthenics/web:dev: Error fetching leaderboard: PrismaClientKnownRequestError:
+@calisthenics/web:dev: Invalid `prisma.globalLeaderboardEntry.findMany()` invocation:
+@calisthenics/web:dev:
+@calisthenics/web:dev:
+@calisthenics/web:dev: The table `main.global_leaderboard_entries` does not exist in the current database.
+@calisthenics/web:dev:     at ei.handleRequestError (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:7268)
+@calisthenics/web:dev:     at ei.handleAndLogRequestError (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:6593)
+@calisthenics/web:dev:     at ei.request (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:6300)
+@calisthenics/web:dev:     at async a (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:130:9551)
+@calisthenics/web:dev:     at async GET (webpack-internal:///(rsc)/./src/app/api/leaderboard/route.ts:105:25)
+@calisthenics/web:dev:     at async C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+@calisthenics/web:dev:     at async eT.execute (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+@calisthenics/web:dev:     at async eT.handle (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+@calisthenics/web:dev:     at async doRender (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1366:42)
+@calisthenics/web:dev:     at async cacheEntry.responseCache.get.routeKind (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1588:28)
+@calisthenics/web:dev:     at async DevServer.renderToResponseWithComponentsImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1496:28)
+@calisthenics/web:dev:     at async DevServer.renderPageComponent (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1924:24)
+@calisthenics/web:dev:     at async DevServer.renderToResponseImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1962:32)
+@calisthenics/web:dev:     at async DevServer.pipeImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:922:25)
+@calisthenics/web:dev:     at async NextNodeServer.handleCatchallRenderRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\next-server.js:272:17)
+@calisthenics/web:dev:     at async DevServer.handleRequestImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:818:17)
+@calisthenics/web:dev:     at async C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+@calisthenics/web:dev:     at async Span.traceAsyncFn (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\trace\trace.js:154:20)
+@calisthenics/web:dev:     at async DevServer.handleRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+@calisthenics/web:dev:     at async invokeRender (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:179:21)
+@calisthenics/web:dev:     at async handleRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:359:24)
+@calisthenics/web:dev:     at async requestHandlerImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:383:13)
+@calisthenics/web:dev:     at async Server.requestListener (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\start-server.js:141:13) {
+@calisthenics/web:dev:   code: 'P2021',
+@calisthenics/web:dev:   meta: {
+@calisthenics/web:dev:     modelName: 'GlobalLeaderboardEntry',
+@calisthenics/web:dev:     table: 'main.global_leaderboard_entries'
+@calisthenics/web:dev:   },
+@calisthenics/web:dev:   clientVersion: '6.18.0'
+@calisthenics/web:dev: }
+@calisthenics/web:dev: Error fetching badges: PrismaClientKnownRequestError:
+@calisthenics/web:dev: Invalid `prisma.userBadge.findMany()` invocation:
+@calisthenics/web:dev:
+@calisthenics/web:dev:
+@calisthenics/web:dev: The table `main.user_badges` does not exist in the current database.
+@calisthenics/web:dev:     at ei.handleRequestError (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:7268)
+@calisthenics/web:dev:     at ei.handleAndLogRequestError (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:6593)
+@calisthenics/web:dev:     at ei.request (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:6300)
+@calisthenics/web:dev:     at async a (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:130:9551)
+@calisthenics/web:dev:     at async GET (webpack-internal:///(rsc)/./src/app/api/badges/route.ts:38:28)
+@calisthenics/web:dev:     at async C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+@calisthenics/web:dev:     at async eT.execute (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+@calisthenics/web:dev:     at async eT.handle (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+@calisthenics/web:dev:     at async doRender (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1366:42)
+@calisthenics/web:dev:     at async cacheEntry.responseCache.get.routeKind (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1588:28)
+@calisthenics/web:dev:     at async DevServer.renderToResponseWithComponentsImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1496:28)
+@calisthenics/web:dev:     at async DevServer.renderPageComponent (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1924:24)
+@calisthenics/web:dev:     at async DevServer.renderToResponseImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1962:32)
+@calisthenics/web:dev:     at async DevServer.pipeImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:922:25)
+@calisthenics/web:dev:     at async NextNodeServer.handleCatchallRenderRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\next-server.js:272:17)
+@calisthenics/web:dev:     at async DevServer.handleRequestImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:818:17)
+@calisthenics/web:dev:     at async C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+@calisthenics/web:dev:     at async Span.traceAsyncFn (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\trace\trace.js:154:20)
+@calisthenics/web:dev:     at async DevServer.handleRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+@calisthenics/web:dev:     at async invokeRender (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:179:21)
+@calisthenics/web:dev:     at async handleRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:359:24)
+@calisthenics/web:dev:     at async requestHandlerImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:383:13)
+@calisthenics/web:dev:     at async Server.requestListener (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\start-server.js:141:13) {
+@calisthenics/web:dev:   code: 'P2021',
+@calisthenics/web:dev:   meta: { modelName: 'UserBadge', table: 'main.user_badges' },
+@calisthenics/web:dev:   clientVersion: '6.18.0'
+@calisthenics/web:dev: }
+@calisthenics/web:dev: Error fetching challenges: PrismaClientKnownRequestError:
+@calisthenics/web:dev: Invalid `prisma.weeklyChallenge.findMany()` invocation:
+@calisthenics/web:dev:
+@calisthenics/web:dev:
+@calisthenics/web:dev: The table `main.weekly_challenges` does not exist in the current database.
+@calisthenics/web:dev:     at ei.handleRequestError (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:7268)
+@calisthenics/web:dev:     at ei.handleAndLogRequestError (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:6593)
+@calisthenics/web:dev:     at ei.request (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:6300)
+@calisthenics/web:dev:     at async a (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:130:9551)
+@calisthenics/web:dev:     at async GET (webpack-internal:///(rsc)/./src/app/api/challenges/route.ts:54:28)
+@calisthenics/web:dev:     at async C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+@calisthenics/web:dev:     at async eT.execute (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+@calisthenics/web:dev:     at async eT.handle (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+@calisthenics/web:dev:     at async doRender (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1366:42)
+@calisthenics/web:dev:     at async cacheEntry.responseCache.get.routeKind (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1588:28)
+@calisthenics/web:dev:     at async DevServer.renderToResponseWithComponentsImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1496:28)
+@calisthenics/web:dev:     at async DevServer.renderPageComponent (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1924:24)
+@calisthenics/web:dev:     at async DevServer.renderToResponseImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1962:32)
+@calisthenics/web:dev:     at async DevServer.pipeImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:922:25)
+@calisthenics/web:dev:     at async NextNodeServer.handleCatchallRenderRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\next-server.js:272:17)
+@calisthenics/web:dev:     at async DevServer.handleRequestImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:818:17)
+@calisthenics/web:dev:     at async C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+@calisthenics/web:dev:     at async Span.traceAsyncFn (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\trace\trace.js:154:20)
+@calisthenics/web:dev:     at async DevServer.handleRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+@calisthenics/web:dev:     at async invokeRender (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:179:21)
+@calisthenics/web:dev:     at async handleRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:359:24)
+@calisthenics/web:dev:     at async requestHandlerImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:383:13)
+@calisthenics/web:dev:     at async Server.requestListener (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\start-server.js:141:13) {
+@calisthenics/web:dev:   code: 'P2021',
+@calisthenics/web:dev:   meta: { modelName: 'WeeklyChallenge', table: 'main.weekly_challenges' },
+@calisthenics/web:dev:   clientVersion: '6.18.0'
+@calisthenics/web:dev: }
+@calisthenics/web:dev: Error fetching progress snapshots: PrismaClientKnownRequestError:
+@calisthenics/web:dev: Invalid `prisma.skillProgressSnapshot.findMany()` invocation:
+@calisthenics/web:dev:
+@calisthenics/web:dev:
+@calisthenics/web:dev: The table `main.skill_progress_snapshots` does not exist in the current database.
+@calisthenics/web:dev:     at ei.handleRequestError (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:7268)
+@calisthenics/web:dev:     at ei.handleAndLogRequestError (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:6593)
+@calisthenics/web:dev:     at ei.request (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:121:6300)
+@calisthenics/web:dev:     at async a (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\node_modules\@prisma\client\runtime\library.js:130:9551)
+@calisthenics/web:dev:     at async GET (webpack-internal:///(rsc)/./src/app/api/progress/snapshots/route.ts:48:27)
+@calisthenics/web:dev:     at async C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:57228
+@calisthenics/web:dev:     at async eT.execute (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:46851)
+@calisthenics/web:dev:     at async eT.handle (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:6:58760)
+@calisthenics/web:dev:     at async doRender (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1366:42)
+@calisthenics/web:dev:     at async cacheEntry.responseCache.get.routeKind (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1588:28)
+@calisthenics/web:dev:     at async DevServer.renderToResponseWithComponentsImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1496:28)
+@calisthenics/web:dev:     at async DevServer.renderPageComponent (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1924:24)
+@calisthenics/web:dev:     at async DevServer.renderToResponseImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:1962:32)
+@calisthenics/web:dev:     at async DevServer.pipeImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:922:25)
+@calisthenics/web:dev:     at async NextNodeServer.handleCatchallRenderRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\next-server.js:272:17)
+@calisthenics/web:dev:     at async DevServer.handleRequestImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\base-server.js:818:17)
+@calisthenics/web:dev:     at async C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+@calisthenics/web:dev:     at async Span.traceAsyncFn (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\trace\trace.js:154:20)
+@calisthenics/web:dev:     at async DevServer.handleRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+@calisthenics/web:dev:     at async invokeRender (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:179:21)
+@calisthenics/web:dev:     at async handleRequest (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:359:24)
+@calisthenics/web:dev:     at async requestHandlerImpl (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\router-server.js:383:13)
+@calisthenics/web:dev:     at async Server.requestListener (C:\Users\FRAN\Desktop\CALISTENIA APP\CALISTENIA\apps\web\node_modules\next\dist\server\lib\start-server.js:141:13) {
+@calisthenics/web:dev:   code: 'P2021',
+@calisthenics/web:dev:   meta: {
+@calisthenics/web:dev:     modelName: 'SkillProgressSnapshot',
+@calisthenics/web:dev:     table: 'main.skill_progress_snapshots'
+@calisthenics/web:dev:   },
+@calisthenics/web:dev:   clientVersion: '6.18.0'
