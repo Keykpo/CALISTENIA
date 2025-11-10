@@ -23,6 +23,10 @@ import UnifiedHexagon from '../UnifiedHexagon';
 import XPProgressCard from '../XPProgressCard';
 import Link from 'next/link';
 import { migrateToUnifiedHexagon, calculateUnifiedOverallLevel, getUnifiedLevelProgress, type OldHexagonProfile, type UnifiedFitnessLevel } from '@/lib/unified-hexagon-system';
+import BadgesDisplay from '../badges/BadgesDisplay';
+import LeaderboardDisplay from '../leaderboard/LeaderboardDisplay';
+import WeeklyChallengesDisplay from '../challenges/WeeklyChallengesDisplay';
+import SkillProgressChart from '../progress/SkillProgressChart';
 
 interface DashboardOverviewProps {
   userData: any;
@@ -603,6 +607,18 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
           </CardContent>
         </Card>
       </div>
+
+      {/* Weekly Challenges */}
+      <WeeklyChallengesDisplay />
+
+      {/* Badges and Leaderboard */}
+      <div className="grid gap-6 lg:grid-cols-2">
+        <BadgesDisplay />
+        <LeaderboardDisplay />
+      </div>
+
+      {/* Progress Chart */}
+      <SkillProgressChart />
     </div>
   );
 }
