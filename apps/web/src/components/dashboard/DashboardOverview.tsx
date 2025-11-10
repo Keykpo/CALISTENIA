@@ -19,6 +19,7 @@ import {
   CheckCircle2,
   ArrowRight
 } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import UnifiedHexagon from '../UnifiedHexagon';
 import XPProgressCard from '../XPProgressCard';
 import Link from 'next/link';
@@ -57,6 +58,8 @@ const LEVEL_INFO: Record<UnifiedFitnessLevel, { color: string; bgColor: string; 
 };
 
 export default function DashboardOverview({ userData, onRefresh }: DashboardOverviewProps) {
+  const [autoRefreshAttempted, setAutoRefreshAttempted] = useState(false);
+
   const stats = userData?.stats || {
     totalXP: 0,
     level: 1,
@@ -73,6 +76,35 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
   // Hexagon data
   const hexProfile = userData?.hexagon as OldHexagonProfile | null;
   const unifiedProfile = migrateToUnifiedHexagon(hexProfile);
+
+  // Auto-refresh if hexagon data is missing or empty but user has completed assessment
+  useEffect(() => {
+    const hasCompletedAssessment = userData?.user?.hasCompletedAssessment;
+    const hasHexagonData = hexProfile && (
+      hexProfile.balanceControl > 0 ||
+      hexProfile.relativeStrength > 0 ||
+      hexProfile.skillTechnique > 0 ||
+      hexProfile.bodyTension > 0 ||
+      hexProfile.muscularEndurance > 0 ||
+      hexProfile.jointMobility > 0
+    );
+
+    console.log('[DASHBOARD_OVERVIEW] Auto-refresh check:', {
+      hasCompletedAssessment,
+      hasHexagonData,
+      autoRefreshAttempted,
+      hexProfile,
+    });
+
+    // If user completed assessment but hexagon is empty/missing, auto-refresh once
+    if (hasCompletedAssessment && !hasHexagonData && !autoRefreshAttempted) {
+      console.log('[DASHBOARD_OVERVIEW] 🔄 Auto-refreshing dashboard to fetch hexagon data...');
+      setAutoRefreshAttempted(true);
+      setTimeout(() => {
+        onRefresh();
+      }, 1000);
+    }
+  }, [userData, hexProfile, autoRefreshAttempted, onRefresh]);
 
   // Use calculated fitness level from hexagon, fallback to DB value if hexagon is missing
   const calculatedLevel = calculateUnifiedOverallLevel(unifiedProfile);
@@ -92,25 +124,45 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
 
   const levelProgress = getUnifiedLevelProgress(averageXP);
 
-  console.log('[DASHBOARD_OVERVIEW] Level Calculation Debug:', {
-    hasHexProfile: !!hexProfile,
-    hexProfileData: hexProfile,
-    unifiedProfile: {
+  console.log('[DASHBOARD_OVERVIEW] 🔍 Hexagon Data Debug:', {
+    '1_hasHexProfile': !!hexProfile,
+    '2_hexProfileRaw': hexProfile,
+    '3_visualValues': hexProfile ? {
+      balanceControl: hexProfile.balanceControl,
+      relativeStrength: hexProfile.relativeStrength,
+      skillTechnique: hexProfile.skillTechnique,
+      bodyTension: hexProfile.bodyTension,
+      muscularEndurance: hexProfile.muscularEndurance,
+      jointMobility: hexProfile.jointMobility,
+    } : null,
+    '4_xpValues': hexProfile ? {
+      balanceControlXP: hexProfile.balanceControlXP,
+      relativeStrengthXP: hexProfile.relativeStrengthXP,
+      skillTechniqueXP: hexProfile.skillTechniqueXP,
+      bodyTensionXP: hexProfile.bodyTensionXP,
+      muscularEnduranceXP: hexProfile.muscularEnduranceXP,
+      jointMobilityXP: hexProfile.jointMobilityXP,
+    } : null,
+    '5_afterMigration': {
+      balance: unifiedProfile.balance,
+      strength: unifiedProfile.strength,
+      staticHolds: unifiedProfile.staticHolds,
+      core: unifiedProfile.core,
+      endurance: unifiedProfile.endurance,
+      mobility: unifiedProfile.mobility,
       balanceXP: unifiedProfile.balanceXP,
       strengthXP: unifiedProfile.strengthXP,
-      staticHoldsXP: unifiedProfile.staticHoldsXP,
-      coreXP: unifiedProfile.coreXP,
-      enduranceXP: unifiedProfile.enduranceXP,
-      mobilityXP: unifiedProfile.mobilityXP,
-      balanceLevel: unifiedProfile.balanceLevel,
-      strengthLevel: unifiedProfile.strengthLevel,
     },
-    calculatedFromHexagon: calculatedLevel,
-    dbFitnessLevel: dbFitnessLevel,
-    finalFitnessLevel: fitnessLevel,
-    usingFallback: !hexProfile,
-    averageXP,
-    levelProgress,
+    '6_levels': {
+      calculatedFromHexagon: calculatedLevel,
+      dbFitnessLevel: dbFitnessLevel,
+      finalFitnessLevel: fitnessLevel,
+      usingFallback: !hexProfile,
+    },
+    '7_progress': {
+      averageXP,
+      levelProgress,
+    },
   });
 
   // If no hexagon profile exists AND no DB fitness level, show warning
@@ -150,20 +202,51 @@ export default function DashboardOverview({ userData, onRefresh }: DashboardOver
 
   return (
     <div className="space-y-6">
-      {/* Warning banner if using DB fallback */}
-      {!hexProfile && dbFitnessLevel && (
+      {/* Warning banner if using DB fallback or data is empty */}
+      {(!hexProfile || (hexProfile &&
+        hexProfile.balanceControl === 0 &&
+        hexProfile.relativeStrength === 0 &&
+        hexProfile.skillTechnique === 0)) && dbFitnessLevel && (
         <Card className="bg-amber-50 border-2 border-amber-300">
           <CardContent className="pt-4 pb-4">
             <div className="flex items-center gap-3">
-              <RefreshCw className="w-5 h-5 text-amber-600" />
+              <RefreshCw className={`w-5 h-5 text-amber-600 ${autoRefreshAttempted ? '' : 'animate-spin'}`} />
               <div className="flex-1">
                 <p className="text-sm text-amber-900 font-medium">
-                  Hexagon data is loading... Showing your fitness level ({dbFitnessLevel}) from database.
+                  {!hexProfile ? 'Hexagon data is loading...' : 'Hexagon data appears empty...'} Showing your fitness level ({dbFitnessLevel}) from database.
                 </p>
                 <p className="text-xs text-amber-700 mt-1">
-                  The hexagon visualization will appear once data is fully loaded. Try refreshing if this persists.
+                  {autoRefreshAttempted
+                    ? 'Auto-refresh attempted. If hexagon is still empty, you may need to retake the assessment.'
+                    : 'The hexagon visualization will appear once data is fully loaded.'}
                 </p>
+                <details className="mt-2">
+                  <summary className="text-xs text-amber-800 cursor-pointer hover:underline">
+                    Show debug information
+                  </summary>
+                  <pre className="text-xs mt-2 p-2 bg-amber-100 rounded overflow-x-auto">
+                    {JSON.stringify({
+                      hasHexProfile: !!hexProfile,
+                      hasCompletedAssessment: userData?.user?.hasCompletedAssessment,
+                      hexProfileSample: hexProfile ? {
+                        balanceControl: hexProfile.balanceControl,
+                        relativeStrength: hexProfile.relativeStrength,
+                        skillTechnique: hexProfile.skillTechnique,
+                      } : null,
+                      autoRefreshAttempted,
+                    }, null, 2)}
+                  </pre>
+                </details>
               </div>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={onRefresh}
+                className="border-amber-400 hover:bg-amber-100"
+              >
+                <RefreshCw className="w-4 h-4 mr-2" />
+                Refresh Now
+              </Button>
             </div>
           </CardContent>
         </Card>

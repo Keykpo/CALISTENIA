@@ -29,14 +29,23 @@ export default function AssessmentPage() {
 
       if (res.ok) {
         const data = await res.json();
-        console.log('[ASSESSMENT] Success, updating session...');
+        console.log('[ASSESSMENT] ✅ Success! Assessment saved:', {
+          assessmentsSaved: data.assessmentsSaved,
+          overallLevel: data.overallLevel,
+          hexagonVerified: data._debug?.verified,
+          hexagonId: data._debug?.hexagonId,
+        });
 
         // CRITICAL: Update the session to refresh JWT token with hasCompletedAssessment = true
         // This prevents the middleware redirect loop
         await update();
 
-        // Small delay to ensure token is updated
-        await new Promise(resolve => setTimeout(resolve, 500));
+        // Increased delay to ensure:
+        // 1. Session/JWT token is fully updated
+        // 2. Database has committed the transaction
+        // 3. All indexes are updated
+        console.log('[ASSESSMENT] Waiting for data persistence...');
+        await new Promise(resolve => setTimeout(resolve, 1500));
 
         // Use window.location.href for hard reload to update JWT token
         const redirectPath = data.redirectTo || '/onboarding/results';
