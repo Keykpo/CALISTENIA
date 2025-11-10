@@ -184,6 +184,7 @@ export default function DashboardPage() {
             <DashboardOverview
               userData={userData}
               onRefresh={fetchDashboardData}
+              userId={session.user.id as string}
             />
           </TabsContent>
 
