@@ -63,7 +63,14 @@ export default function DashboardPage() {
         console.log('📥 Dashboard page received data:', {
           hasHexagon: !!data.hexagon,
           hexagonData: data.hexagon,
+          hexagonKeys: data.hexagon ? Object.keys(data.hexagon) : null,
+          hexagonValues: data.hexagon ? {
+            relativeStrength: data.hexagon.relativeStrength,
+            balanceControl: data.hexagon.balanceControl,
+            relativeStrengthXP: data.hexagon.relativeStrengthXP,
+          } : null,
           stats: data.stats,
+          fullData: data,
         });
         setUserData(data);
 

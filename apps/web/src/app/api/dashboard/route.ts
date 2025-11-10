@@ -36,31 +36,7 @@ export async function GET(req: NextRequest) {
     let user = await prisma.user.findUnique({
       where: { id: userId },
       include: {
-        hexagonProfile: {
-          select: {
-            // Visual values (0-10)
-            relativeStrength: true,
-            muscularEndurance: true,
-            balanceControl: true,
-            jointMobility: true,
-            bodyTension: true,
-            skillTechnique: true,
-            // XP values (required for calculations)
-            relativeStrengthXP: true,
-            muscularEnduranceXP: true,
-            balanceControlXP: true,
-            jointMobilityXP: true,
-            bodyTensionXP: true,
-            skillTechniqueXP: true,
-            // Level values (required for mode calculation)
-            relativeStrengthLevel: true,
-            muscularEnduranceLevel: true,
-            balanceControlLevel: true,
-            jointMobilityLevel: true,
-            bodyTensionLevel: true,
-            skillTechniqueLevel: true,
-          },
-        },
+        hexagonProfile: true,
       },
     });
     if (!user) {
@@ -77,28 +53,7 @@ export async function GET(req: NextRequest) {
         user = await prisma.user.findUnique({
           where: { id: userId },
           include: {
-            hexagonProfile: {
-              select: {
-                relativeStrength: true,
-                muscularEndurance: true,
-                balanceControl: true,
-                jointMobility: true,
-                bodyTension: true,
-                skillTechnique: true,
-                relativeStrengthXP: true,
-                muscularEnduranceXP: true,
-                balanceControlXP: true,
-                jointMobilityXP: true,
-                bodyTensionXP: true,
-                skillTechniqueXP: true,
-                relativeStrengthLevel: true,
-                muscularEnduranceLevel: true,
-                balanceControlLevel: true,
-                jointMobilityLevel: true,
-                bodyTensionLevel: true,
-                skillTechniqueLevel: true,
-              },
-            },
+            hexagonProfile: true,
           },
         });
       } catch (e) {
@@ -106,28 +61,7 @@ export async function GET(req: NextRequest) {
         user = await prisma.user.findUnique({
           where: { id: userId },
           include: {
-            hexagonProfile: {
-              select: {
-                relativeStrength: true,
-                muscularEndurance: true,
-                balanceControl: true,
-                jointMobility: true,
-                bodyTension: true,
-                skillTechnique: true,
-                relativeStrengthXP: true,
-                muscularEnduranceXP: true,
-                balanceControlXP: true,
-                jointMobilityXP: true,
-                bodyTensionXP: true,
-                skillTechniqueXP: true,
-                relativeStrengthLevel: true,
-                muscularEnduranceLevel: true,
-                balanceControlLevel: true,
-                jointMobilityLevel: true,
-                bodyTensionLevel: true,
-                skillTechniqueLevel: true,
-              },
-            },
+            hexagonProfile: true,
           },
         });
       }
@@ -135,6 +69,16 @@ export async function GET(req: NextRequest) {
 
     // Extract hexagon profile from user data
     const hex = user?.hexagonProfile ?? null;
+
+    console.log('[DASHBOARD_API] User data retrieved:', {
+      userId,
+      userExists: !!user,
+      userFields: user ? Object.keys(user) : null,
+      hasHexagonProfile: !!user?.hexagonProfile,
+      hexagonProfileFields: user?.hexagonProfile ? Object.keys(user.hexagonProfile) : null,
+      hexagonProfileData: user?.hexagonProfile,
+    });
+
     const recentWorkouts = await prisma.workoutHistory.findMany({
       where: { userId },
       orderBy: { completedAt: 'desc' },
