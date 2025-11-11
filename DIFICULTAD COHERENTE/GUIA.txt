@@ -1,0 +1,42 @@
+🤖 Prompt para Claude AI: Sistema de Progresión de Calistenia
+Actúa como un coach experto en calistenia y diseñador de sistemas de progresión para aplicaciones de fitness.
+
+Estoy creando un sistema de progresión de dificultad para mi aplicación. Mi objetivo es tener un camino claro y coherente para todos los niveles de usuario: desde el principiante absoluto ("nuevo nuevo") que nunca ha entrenado, hasta el atleta de élite que domina habilidades maestras.
+
+Te proporcionaré 3 archivos:
+
+exercises.json: Una base de datos masiva de ejercicios generales. Contiene muchos movimientos básicos y de aislamiento (ej. push-ups en la pared, sentadillas, curls de bíceps).
+
+exercises_AS_only.json: Mi lista actual de habilidades de calistenia (ej. Planche, Front Lever). Actualmente, están casi todas marcadas como "A (Advanced)" o "S (Expert)".
+
+OG2ChartsPrint.pdf: Un extracto de un libro profesional (Overcoming Gravity 2) que usa el sistema de dificultad de la Federación Internacional de Gimnasia (FIG). Este PDF clasifica habilidades en niveles como "Basic", "Beginner", "Intermediate", "Advanced" y "Elite".
+
+El Desafío Principal: El sistema del PDF (FIG) es para atletas serios; sus "Basic Skills" (ej. Frog Stand) ya son demasiado difíciles para un principiante real. Al mismo tiempo, mi archivo exercises_AS_only.json es muy "pesado" en la parte superior, sin un camino claro desde cero.
+
+Tu Tarea: Analiza los tres archivos y ayúdame a diseñar un sistema de dificultad unificado y coherente.
+
+Quiero que hagas lo siguiente:
+
+Propón un Sistema de Dificultad: Basado en los archivos, propón un sistema de 5 niveles (ej: Nivel 1: Principiante, Nivel 2: Intermedio, Nivel 3: Avanzado, Nivel 4: Experto, Nivel 5: Maestro).
+
+Re-clasifica las Habilidades de Élite: Toma TODOS los ejercicios de exercises_AS_only.json y re-clasifícalos dentro de tu nuevo sistema de 5 niveles. Usa el PDF (FIG) como guía para mantener la coherencia (ej. si Full Planche Push-up es "Elite" en el PDF, debería ser tu Nivel 5).
+
+Identifica los Ejercicios "Puente" (Lo más importante): Analiza el archivo grande exercises.json e identifica los ejercicios fundamentales que deben ir en tus Niveles 1 (Principiante) y 2 (Intermedio).
+
+Conecta las Progresiones: Explica cómo estos ejercicios "puente" del Nivel 1 y 2 (ej. Incline Push-ups, Ring Rows, Plank) conectan lógicamente con las habilidades del Nivel 3 y 4 (ej. Tuck Planche, Tuck Front Lever) del otro archivo.
+
+Entrégame tu respuesta en este formato:
+
+1. Sistema de Dificultad Propuesto
+(Describe brevemente los 5 niveles que sugieres).
+
+2. Re-clasificación de Habilidades (de exercises_AS_only.json)
+(Usa una lista o tabla mostrando el ejercicio y su nuevo nivel, ej: skill_planche_tuck -> Nivel 3: Avanzado).
+
+3. Ejercicios Fundamentales (de exercises.json)
+(Muestra una lista de ejercicios clave que encontraste para los Niveles 1 y 2, agrupados por nivel).
+
+4. Consejo Estratégico y Progresiones Lógicas
+(Explica cómo un "nuevo nuevo" puede usar los ejercicios del Nivel 1 para, eventualmente, llegar a las habilidades del Nivel 5. Da 2 o 3 ejemplos de cadenas de progresión, como: Wall Push-up -> Incline Push-up -> Push-up -> Archer Push-up -> Tuck Planche Push-up, etc.).
+
+5. Ya esta creado el FIG Level Skill Path, necesito que me ayudes a recalibrar los ejercicios para que TODOS puedan usar la interfaz, desde el nivel mas basico de la calistenia hasta el mas avanzado. Tambien necesito que reformules el cuestionario para medir la aptitud de cada individuo (El assessment) para que tenga mas precision al momento de medir el nivel de habilidad del individuo, de primera pregunta tambien quiero que pregunte la edad, la altura, el genero y el peso del usuario)
