@@ -16,7 +16,7 @@ import {
   ArrowRight,
   Loader2
 } from 'lucide-react';
-import FigOnboardingAssessment, { type FigAssessmentResult } from '@/components/onboarding/FigOnboardingAssessment';
+import FigOnboardingAssessment from '@/components/onboarding/FigOnboardingAssessment';
 import UnifiedHexagon from '@/components/UnifiedHexagon';
 import {
   migrateToUnifiedHexagon,
@@ -24,6 +24,13 @@ import {
   type UnifiedFitnessLevel,
   type UnifiedHexagonProfile,
 } from '@/lib/unified-hexagon-system';
+import {
+  type AssessmentStep1Data,
+  type AssessmentStep2Data,
+  type AssessmentStep3Data,
+  type AssessmentStep4Data,
+  type DifficultyLevel,
+} from '@/lib/assessment-d-s-logic';
 
 interface DashboardAssessmentModalProps {
   open: boolean;
@@ -72,11 +79,17 @@ export default function DashboardAssessmentModal({
     fitnessLevel: UnifiedFitnessLevel;
   } | null>(null);
 
-  const handleAssessmentComplete = async (assessments: FigAssessmentResult[]) => {
+  const handleAssessmentComplete = async (result: {
+    level: DifficultyLevel;
+    step1: AssessmentStep1Data;
+    step2: AssessmentStep2Data;
+    step3: AssessmentStep3Data;
+    step4?: AssessmentStep4Data;
+  }) => {
     try {
       setIsSubmitting(true);
 
-      console.log('[DASHBOARD_ASSESSMENT] Submitting assessments...', { assessments });
+      console.log('[DASHBOARD_ASSESSMENT] Submitting assessment...', result);
 
       const res = await fetch('/api/assessment/fig-initial', {
         method: 'POST',
@@ -84,7 +97,7 @@ export default function DashboardAssessmentModal({
           'Content-Type': 'application/json',
           'x-user-id': userId,
         },
-        body: JSON.stringify({ assessments }),
+        body: JSON.stringify(result),
       });
 
       if (res.ok) {

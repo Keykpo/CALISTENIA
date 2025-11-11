@@ -1,0 +1,95 @@
+@calisthenics/web:dev: [REGISTER] Starting registration for: Francisarroqweeqrqyo20@gmail.com
+@calisthenics/web:dev: prisma:query SELECT `main`.`users`.`id`, `main`.`users`.`email` FROM `main`.`users` WHERE (`main`.`users`.`email` = ? AND 1=1) LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`users`.`id` FROM `main`.`users` WHERE (`main`.`users`.`username` = ? AND 1=1) LIMIT ? OFFSET ?
+@calisthenics/web:dev: [REGISTER] Generated username: francisarroqweeqrqyo20
+@calisthenics/web:dev: [REGISTER] Password hashed successfully
+@calisthenics/web:dev: prisma:query INSERT INTO `main`.`users` (`id`, `email`, `username`, `firstName`, `lastName`, `password`, `emailVerified`, `isActive`, `fitnessLevel`, `goals`, `hasCompletedAssessment`, `totalXP`, `currentLevel`, `virtualCoins`, `totalStrength`, `dailyStreak`, `createdAt`, `updatedAt`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING `id` AS `id`, `email` AS `email`, `firstName` AS `firstName`, `lastName` AS `lastName`, `username` AS `username`, `createdAt` AS `createdAt`
+@calisthenics/web:dev: [REGISTER] User created successfully: cmhubj7p30000toikcm8gc7cl
+@calisthenics/web:dev:  POST /api/auth/register 201 in 343ms
+@calisthenics/web:dev: [next-auth][warn][DEBUG_ENABLED]
+@calisthenics/web:dev: https://next-auth.js.org/warnings#debug_enabled
+@calisthenics/web:dev:  GET /api/auth/providers 200 in 28ms
+@calisthenics/web:dev:  GET /api/auth/csrf 200 in 7ms
+@calisthenics/web:dev: prisma:query SELECT `main`.`users`.`id`, `main`.`users`.`email`, `main`.`users`.`username`, `main`.`users`.`firstName`, `main`.`users`.`lastName`, `main`.`users`.`avatar`, `main`.`users`.`bio`, `main`.`users`.`password`, `main`.`users`.`emailVerified`, `main`.`users`.`isActive`, `main`.`users`.`resetToken`, `main`.`users`.`resetTokenExpiry`, `main`.`users`.`dateOfBirth`, `main`.`users`.`gender`, `main`.`users`.`height`, `main`.`users`.`weight`, `main`.`users`.`fitnessLevel`, `main`.`users`.`goals`, `main`.`users`.`primaryGoalId`, `main`.`users`.`hasCompletedAssessment`, `main`.`users`.`assessmentDate`, `main`.`users`.`difficultyLevel`, `main`.`users`.`visualRank`, `main`.`users`.`totalXP`, `main`.`users`.`currentLevel`, `main`.`users`.`virtualCoins`, `main`.`users`.`totalStrength`, `main`.`users`.`dailyStreak`, `main`.`users`.`lastDailyCompletedAt`, `main`.`users`.`createdAt`, `main`.`users`.`updatedAt` FROM `main`.`users` WHERE (`main`.`users`.`email` = ? AND 1=1) LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`users`.`id`, `main`.`users`.`hasCompletedAssessment` FROM `main`.`users` WHERE (`main`.`users`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+@calisthenics/web:dev: User signed in: { user: 'Francisarroqweeqrqyo20@gmail.com', isNewUser: undefined }
+@calisthenics/web:dev:  POST /api/auth/callback/credentials 200 in 68ms
+@calisthenics/web:dev: prisma:query SELECT `main`.`users`.`id`, `main`.`users`.`hasCompletedAssessment` FROM `main`.`users` WHERE (`main`.`users`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+@calisthenics/web:dev:  GET /api/auth/session 200 in 9ms
+@calisthenics/web:dev:  ○ Compiling /dashboard ...
+@calisthenics/web:dev:  ✓ Compiled /dashboard in 1344ms (3281 modules)
+@calisthenics/web:dev:  GET /dashboard 200 in 1476ms
+@calisthenics/web:dev: [next-auth][warn][DEBUG_ENABLED]
+@calisthenics/web:dev: https://next-auth.js.org/warnings#debug_enabled
+@calisthenics/web:dev: prisma:query SELECT `main`.`users`.`id`, `main`.`users`.`hasCompletedAssessment` FROM `main`.`users` WHERE (`main`.`users`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+@calisthenics/web:dev:  GET /api/auth/session 200 in 20ms
+@calisthenics/web:dev: prisma:query SELECT `main`.`users`.`id`, `main`.`users`.`hasCompletedAssessment` FROM `main`.`users` WHERE (`main`.`users`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+@calisthenics/web:dev:  GET /api/auth/session 200 in 19ms
+@calisthenics/web:dev:  ✓ Compiled /api/dashboard in 168ms (1818 modules)
+@calisthenics/web:dev: [next-auth][warn][DEBUG_ENABLED]
+@calisthenics/web:dev: https://next-auth.js.org/warnings#debug_enabled
+@calisthenics/web:dev: prisma:query SELECT `main`.`users`.`id`, `main`.`users`.`hasCompletedAssessment` FROM `main`.`users` WHERE (`main`.`users`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`users`.`id`, `main`.`users`.`email`, `main`.`users`.`username`, `main`.`users`.`firstName`, `main`.`users`.`lastName`, `main`.`users`.`avatar`, `main`.`users`.`bio`, `main`.`users`.`password`, `main`.`users`.`emailVerified`, `main`.`users`.`isActive`, `main`.`users`.`resetToken`, `main`.`users`.`resetTokenExpiry`, `main`.`users`.`dateOfBirth`, `main`.`users`.`gender`, `main`.`users`.`height`, `main`.`users`.`weight`, `main`.`users`.`fitnessLevel`, `main`.`users`.`goals`, `main`.`users`.`primaryGoalId`, `main`.`users`.`hasCompletedAssessment`, `main`.`users`.`assessmentDate`, `main`.`users`.`difficultyLevel`, `main`.`users`.`visualRank`, `main`.`users`.`totalXP`, `main`.`users`.`currentLevel`, `main`.`users`.`virtualCoins`, `main`.`users`.`totalStrength`, `main`.`users`.`dailyStreak`, `main`.`users`.`lastDailyCompletedAt`, `main`.`users`.`createdAt`, `main`.`users`.`updatedAt` FROM `main`.`users` WHERE (`main`.`users`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`hexagon_profiles`.`id`, `main`.`hexagon_profiles`.`userId`, `main`.`hexagon_profiles`.`relativeStrength`, `main`.`hexagon_profiles`.`muscularEndurance`, `main`.`hexagon_profiles`.`balanceControl`, `main`.`hexagon_profiles`.`jointMobility`, `main`.`hexagon_profiles`.`bodyTension`, `main`.`hexagon_profiles`.`skillTechnique`, `main`.`hexagon_profiles`.`relativeStrengthXP`, `main`.`hexagon_profiles`.`muscularEnduranceXP`, `main`.`hexagon_profiles`.`balanceControlXP`, `main`.`hexagon_profiles`.`jointMobilityXP`, `main`.`hexagon_profiles`.`bodyTensionXP`, `main`.`hexagon_profiles`.`skillTechniqueXP`, `main`.`hexagon_profiles`.`relativeStrengthLevel`, `main`.`hexagon_profiles`.`muscularEnduranceLevel`, `main`.`hexagon_profiles`.`balanceControlLevel`, `main`.`hexagon_profiles`.`jointMobilityLevel`, `main`.`hexagon_profiles`.`bodyTensionLevel`, `main`.`hexagon_profiles`.`skillTechniqueLevel`, `main`.`hexagon_profiles`.`createdAt`, `main`.`hexagon_profiles`.`updatedAt` FROM `main`.`hexagon_profiles` WHERE `main`.`hexagon_profiles`.`userId` IN (?) LIMIT ? OFFSET ?
+@calisthenics/web:dev: [DASHBOARD_API] User data retrieved: {
+@calisthenics/web:dev:   userId: 'cmhubj7p30000toikcm8gc7cl',
+@calisthenics/web:dev:   userExists: true,
+@calisthenics/web:dev:   userFields: [
+@calisthenics/web:dev:     'id',
+@calisthenics/web:dev:     'email',
+@calisthenics/web:dev:     'username',
+@calisthenics/web:dev:     'firstName',
+@calisthenics/web:dev:     'lastName',
+@calisthenics/web:dev:     'avatar',
+@calisthenics/web:dev:     'bio',
+@calisthenics/web:dev:     'password',
+@calisthenics/web:dev:     'emailVerified',
+@calisthenics/web:dev:     'isActive',
+@calisthenics/web:dev:     'resetToken',
+@calisthenics/web:dev:     'resetTokenExpiry',
+@calisthenics/web:dev:     'dateOfBirth',
+@calisthenics/web:dev:     'gender',
+@calisthenics/web:dev:     'height',
+@calisthenics/web:dev:     'weight',
+@calisthenics/web:dev:     'fitnessLevel',
+@calisthenics/web:dev:     'goals',
+@calisthenics/web:dev:     'primaryGoalId',
+@calisthenics/web:dev:     'hasCompletedAssessment',
+@calisthenics/web:dev:     'assessmentDate',
+@calisthenics/web:dev:     'difficultyLevel',
+@calisthenics/web:dev:     'visualRank',
+@calisthenics/web:dev:     'totalXP',
+@calisthenics/web:dev:     'currentLevel',
+@calisthenics/web:dev:     'virtualCoins',
+@calisthenics/web:dev:     'totalStrength',
+@calisthenics/web:dev:     'dailyStreak',
+@calisthenics/web:dev:     'lastDailyCompletedAt',
+@calisthenics/web:dev:     'createdAt',
+@calisthenics/web:dev:     'updatedAt',
+@calisthenics/web:dev:     'hexagonProfile'
+@calisthenics/web:dev:   ],
+@calisthenics/web:dev:   hasHexagonProfile: false,
+@calisthenics/web:dev:   hexagonProfileFields: null,
+@calisthenics/web:dev:   hexagonProfileData: null
+@calisthenics/web:dev: }
+@calisthenics/web:dev: prisma:query SELECT `main`.`workout_history`.`id`, `main`.`workout_history`.`userId`, `main`.`workout_history`.`sessionId`, `main`.`workout_history`.`completedAt`, `main`.`workout_history`.`difficulty`, `main`.`workout_history`.`streakBonus`, `main`.`workout_history`.`xpEarned`, `main`.`workout_history`.`coinsEarned`, `main`.`workout_history`.`hexagonDelta`, `main`.`workout_history`.`summary` FROM `main`.`workout_history` WHERE `main`.`workout_history`.`userId` = ? ORDER BY `main`.`workout_history`.`completedAt` DESC LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`daily_missions`.`id`, `main`.`daily_missions`.`userId`, `main`.`daily_missions`.`date`, `main`.`daily_missions`.`type`, `main`.`daily_missions`.`description`, `main`.`daily_missions`.`target`, `main`.`daily_missions`.`progress`, `main`.`daily_missions`.`completed`, `main`.`daily_missions`.`rewardXP`, `main`.`daily_missions`.`rewardCoins`, `main`.`daily_missions`.`createdAt`, `main`.`daily_missions`.`updatedAt` FROM `main`.`daily_missions` WHERE (`main`.`daily_missions`.`userId` = ? AND `main`.`daily_missions`.`date` = ?) ORDER BY `main`.`daily_missions`.`createdAt` ASC LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`daily_missions`.`id`, `main`.`daily_missions`.`userId`, `main`.`daily_missions`.`date`, `main`.`daily_missions`.`type`, `main`.`daily_missions`.`description`, `main`.`daily_missions`.`target`, `main`.`daily_missions`.`progress`, `main`.`daily_missions`.`completed`, `main`.`daily_missions`.`rewardXP`, `main`.`daily_missions`.`rewardCoins`, `main`.`daily_missions`.`createdAt`, `main`.`daily_missions`.`updatedAt` FROM `main`.`daily_missions` WHERE (`main`.`daily_missions`.`userId` = ? AND `main`.`daily_missions`.`date` = ?) LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`daily_missions`.`id`, `main`.`daily_missions`.`userId`, `main`.`daily_missions`.`date`, `main`.`daily_missions`.`type`, `main`.`daily_missions`.`description`, `main`.`daily_missions`.`target`, `main`.`daily_missions`.`progress`, `main`.`daily_missions`.`completed`, `main`.`daily_missions`.`rewardXP`, `main`.`daily_missions`.`rewardCoins`, `main`.`daily_missions`.`createdAt`, `main`.`daily_missions`.`updatedAt` FROM `main`.`daily_missions` WHERE (`main`.`daily_missions`.`userId` = ? AND `main`.`daily_missions`.`date` = ?) ORDER BY `main`.`daily_missions`.`createdAt` ASC LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`user_achievements`.`id`, `main`.`user_achievements`.`userId`, `main`.`user_achievements`.`achievementId`, `main`.`user_achievements`.`progress`, `main`.`user_achievements`.`completed`, `main`.`user_achievements`.`completedAt`, `main`.`user_achievements`.`createdAt`, `main`.`user_achievements`.`updatedAt` FROM `main`.`user_achievements` WHERE (`main`.`user_achievements`.`userId` = ? AND `main`.`user_achievements`.`completed` = ?) ORDER BY `main`.`user_achievements`.`completedAt` DESC LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`workout_history`.`id`, `main`.`workout_history`.`userId`, `main`.`workout_history`.`sessionId`, `main`.`workout_history`.`completedAt`, `main`.`workout_history`.`difficulty`, `main`.`workout_history`.`streakBonus`, `main`.`workout_history`.`xpEarned`, `main`.`workout_history`.`coinsEarned`, `main`.`workout_history`.`hexagonDelta`, `main`.`workout_history`.`summary` FROM `main`.`workout_history` WHERE (`main`.`workout_history`.`userId` = ? AND `main`.`workout_history`.`completedAt` >= ?) LIMIT ? OFFSET ?
+@calisthenics/web:dev: prisma:query SELECT `main`.`users`.`id`, `main`.`users`.`email`, `main`.`users`.`username`, `main`.`users`.`firstName`, `main`.`users`.`lastName`, `main`.`users`.`avatar`, `main`.`users`.`bio`, `main`.`users`.`password`, `main`.`users`.`emailVerified`, `main`.`users`.`isActive`, `main`.`users`.`resetToken`, `main`.`users`.`resetTokenExpiry`, `main`.`users`.`dateOfBirth`, `main`.`users`.`gender`, `main`.`users`.`height`, `main`.`users`.`weight`, `main`.`users`.`fitnessLevel`, `main`.`users`.`goals`, `main`.`users`.`primaryGoalId`, `main`.`users`.`hasCompletedAssessment`, `main`.`users`.`assessmentDate`, `main`.`users`.`difficultyLevel`, `main`.`users`.`visualRank`, `main`.`users`.`totalXP`, `main`.`users`.`currentLevel`, `main`.`users`.`virtualCoins`, `main`.`users`.`totalStrength`, `main`.`users`.`dailyStreak`, `main`.`users`.`lastDailyCompletedAt`, `main`.`users`.`createdAt`, `main`.`users`.`updatedAt` FROM `main`.`users` WHERE (`main`.`users`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+@calisthenics/web:dev:  GET /api/dashboard?t=1762850269216 200 in 217ms
+@calisthenics/web:dev:  ✓ Compiled /api/assessment/fig-initial in 183ms (1821 modules)
+@calisthenics/web:dev: [D-S_ASSESSMENT] POST request received: { hasUserId: true, userId: 'cmhubj7p30000toikcm8gc7cl' }
+@calisthenics/web:dev: [D-S_ASSESSMENT] Request body: { hasStep1: false, hasStep2: false, hasStep3: false, hasStep4: false }
+@calisthenics/web:dev: [D-S_ASSESSMENT] Validation failed: {
+@calisthenics/web:dev:   formErrors: [],
+@calisthenics/web:dev:  POST /api/assessment/fig-initial 400 in 222ms
+@calisthenics/web:dev:   fieldErrors: {
+@calisthenics/web:dev:     level: [ 'Required' ],
+@calisthenics/web:dev:     step1: [ 'Required' ],
+@calisthenics/web:dev:     step2: [ 'Required' ],
+@calisthenics/web:dev:     step3: [ 'Required' ]
+@calisthenics/web:dev:   }
+@calisthenics/web:dev: }
