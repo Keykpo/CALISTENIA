@@ -43,6 +43,10 @@ model User {
   hasCompletedAssessment Boolean   @default(false)
   assessmentDate         DateTime?
 
+  // D-S Assessment System
+  difficultyLevel Rank?   // D, C, B, A, S level from assessment
+  visualRank      String? // Visual rank like "D+", "C-", "B", "A+", "S-"
+
   // RPG System
   totalXP       Int @default(0) // Total experience points earned
   currentLevel  Int @default(1) // Overall user level
@@ -162,7 +166,7 @@ model HexagonProfile {
 
 model Exercise {
   id           String  @id @default(cuid())
-  name         String
+  name         String  @unique
   description  String?
   instructions String // JSON string for SQLite compatibility
 

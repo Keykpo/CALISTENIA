@@ -1,0 +1,61 @@
+Actúa como un coach experto en calistenia y diseñador de sistemas de progresión para una aplicación de fitness de gamificación.
+
+Estoy recalibrando el sistema de dificultad y el cuestionario de aptitud (assessment) de mi aplicación. Mi objetivo es tener un camino claro y coherente para todos los niveles de usuario: desde el principiante absoluto ("nuevo nuevo") que nunca ha entrenado, hasta el atleta de élite que domina habilidades maestras.
+
+Ya tengo una estructura de UI creada (te mostraré capturas) que se basa en:
+
+5 Niveles de Dificultad: D (Beginner), C (Novice), B (Intermediate), A (Advanced), S (Expert).
+
+Skill Branches: Caminos de progresión para habilidades maestras (ej. Handstand Mastery, L-Sit to Manna).
+
+Te proporcionaré 3 archivos para tu análisis:
+
+exercises.json: Mi base de datos masiva de ejercicios generales.
+
+exercises_AS_only.json: Mi lista actual de habilidades de élite (Planche, Front Lever, etc.), que ya he intentado clasificar.
+
+OG2ChartsPrint.pdf: Un extracto del libro Overcoming Gravity 2 que usa el sistema de dificultad FIG (Basic, Beginner, Intermediate, Advanced, Elite) como nuestra "verdad objetiva" para la dificultad.
+
+El Desafío Principal:
+
+Recalibración: Necesito mapear de forma coherente todos los ejercicios de mis .json a mi sistema D-S.
+
+Inclusión: Mi sistema debe ofrecer un punto de partida real para los "nuevos nuevos". Mi Nivel D (Beginner) debe ser para principiantes absolutos. Esto significa que las "Basic Skills" del PDF (como Frog Stand o Tuck L-Sit) probablemente deberían ser Nivel C (Novice) o B (Intermediate) en mi sistema.
+
+Tu Tarea: Analiza los tres archivos y las capturas de mi UI actual (especialmente el assessment) y ayúdame a refinar todo el sistema.
+
+Quiero que hagas lo siguiente:
+
+Mapeo del Sistema FIG a mi Sistema D-S:
+
+Propón cómo los niveles del PDF (Basic, Beginner, Intermediate, Advanced, Elite) deberían corresponder a mis 5 niveles (D, C, B, A, S) para asegurar que el Nivel D sea accesible para principiantes absolutos.
+
+Re-clasificación de TODOS los Ejercicios:
+
+Nivel D (Beginner) y C (Novice): Identifica en exercises.json los verdaderos ejercicios fundamentales para principiantes (ej. push-up (wall), bodyweight squat, plank) y clasifícalos en D y C.
+
+Nivel B, A, S: Toma los ejercicios de exercises_AS_only.json y los niveles más altos del PDF y re-clasifícalos correctamente en mis niveles B (Intermediate), A (Advanced) y S (Expert).
+
+Filtro: Solo considera ejercicios de body weight o con equipo de calistenia (ignora dumbbell, barbell, kettlebell, etc., a menos que sean absolutamente necesarios para una progresión de habilidad).
+
+Reformulación del Cuestionario de Aptitud (Assessment):
+
+He visto que mi assessment actual (el de las 18 preguntas) empieza en un nivel muy alto (pregunta por Handstand primero). Esto asusta a los principiantes.
+
+Rediseña el flujo completo del assessment para que sirva a todos.
+
+Paso 1: El cuestionario debe empezar preguntando datos demográficos (Edad, Altura, Género, Peso) y Objetivos.
+
+Paso 2: Debe preguntar por el equipo de calistenia disponible (Suelo, Barra, Anillas, Paralelas, Bandas).
+
+Paso 3 (Clave): Debe usar un Test de Nivel Fundamental (ej. "Max Push-ups", "Max Pull-ups", "Max Plank") para filtrar a los usuarios.
+
+Paso 4 (Condicional): Solo si el usuario demuestra fuerza en el Paso 3, debe mostrarle preguntas de habilidades avanzadas (como las que tengo en mis capturas, ej. "Can you do L-Sit pull-ups?").
+
+Lógica del Nuevo Assessment:
+
+Explica la lógica que debo usar para asignar un Nivel (D, C, B, A, o S) al usuario basándome en sus respuestas al nuevo assessment que diseñaste (ej. 'Si Push-ups = 0 y Plank < 20s -> Asignar Nivel D').
+
+Cadenas de Progresión (Ejemplos):
+
+Finalmente, dame 2-3 ejemplos de "cadenas de progresión" completas que muestren cómo un usuario pasa de Nivel D a Nivel S dentro de tu sistema recalibrado (ej. Wall Push-up (D) -> Push-up (C) -> Ring Dips (B) -> Archer Push-up (A) -> Planche Push-up (S)).

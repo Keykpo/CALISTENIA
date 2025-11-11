@@ -1,0 +1,599 @@
+[
+  {
+    "level": "D",
+    "visualRange": "0.0-2.5",
+    "xpRange": "0-48k",
+    "description": "Beginner - Principiante Absoluto",
+    "exercises": {
+      "push": [
+        {
+          "name": "Wall Push-ups",
+          "difficulty": "D",
+          "equipment": "body weight",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "sets": "3x8-15",
+          "xpReward": 8,
+          "progression": "Incline Push-ups"
+        },
+        {
+          "name": "Incline Push-ups (High Bar)",
+          "difficulty": "D",
+          "equipment": "body weight",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "sets": "3x8-12",
+          "xpReward": 10,
+          "progression": "Knee Push-ups"
+        },
+        {
+          "name": "Knee Push-ups",
+          "difficulty": "D",
+          "equipment": "body weight",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "sets": "3x10-15",
+          "xpReward": 10,
+          "progression": "Regular Push-ups"
+        },
+        {
+          "name": "Scapular Push-ups",
+          "difficulty": "D",
+          "equipment": "body weight",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "secondaryAxis": "mobility",
+          "sets": "3x8-12",
+          "xpReward": 8,
+          "progression": "Regular Push-ups"
+        },
+        {
+          "name": "Plank to Push-up Position",
+          "difficulty": "D",
+          "equipment": "body weight",
+          "category": "CORE",
+          "axis": "core",
+          "sets": "3x6-10",
+          "xpReward": 8,
+          "progression": "Incline Push-ups"
+        }
+      ],
+      "pull": [
+        {
+          "name": "Dead Hang",
+          "difficulty": "D",
+          "equipment": "pull-up bar",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "secondaryAxis": "endurance",
+          "sets": "3x10-30s",
+          "xpReward": 8,
+          "progression": "Scapular Pulls"
+        },
+        {
+          "name": "Scapular Pulls (Shrugs on Bar)",
+          "difficulty": "D",
+          "equipment": "pull-up bar",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "sets": "3x6-10",
+          "xpReward": 10,
+          "progression": "Negative Pull-ups"
+        },
+        {
+          "name": "Negative Pull-ups (Slow Eccentric)",
+          "difficulty": "D",
+          "equipment": "pull-up bar",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "sets": "3x3-6 (5s descent)",
+          "xpReward": 12,
+          "progression": "Band-Assisted Pull-ups"
+        },
+        {
+          "name": "Band-Assisted Pull-ups",
+          "difficulty": "D+",
+          "equipment": "pull-up bar, band",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "sets": "3x5-10",
+          "xpReward": 12,
+          "progression": "Regular Pull-ups"
+        },
+        {
+          "name": "Australian Pull-ups / Inverted Rows (Incline)",
+          "difficulty": "D",
+          "equipment": "low bar or rings",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "sets": "3x8-12",
+          "xpReward": 10,
+          "progression": "Horizontal Rows (feet elevated)"
+        }
+      ],
+      "legs": [
+        {
+          "name": "Bodyweight Squat",
+          "difficulty": "D",
+          "equipment": "body weight",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "sets": "3x15-20",
+          "xpReward": 8,
+          "progression": "Lunges"
+        },
+        {
+          "name": "Lunges (Forward)",
+          "difficulty": "D",
+          "equipment": "body weight",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "sets": "3x10 each leg",
+          "xpReward": 8,
+          "progression": "Bulgarian Split Squat"
+        },
+        {
+          "name": "Glute Bridge",
+          "difficulty": "D",
+          "equipment": "body weight",
+          "category": "STRENGTH",
+          "axis": "core",
+          "sets": "3x12-15",
+          "xpReward": 8,
+          "progression": "Single-Leg Glute Bridge"
+        },
+        {
+          "name": "Calf Raises",
+          "difficulty": "D",
+          "equipment": "body weight",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "sets": "3x15-20",
+          "xpReward": 6,
+          "progression": "Single-Leg Calf Raises"
+        },
+        {
+          "name": "Assisted Pistol Squat (with support)",
+          "difficulty": "D+",
+          "equipment": "body weight",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "secondaryAxis": "balance",
+          "sets": "3x5-8 each leg",
+          "xpReward": 12,
+          "progression": "Pistol Squat (full)"
+        }
+      ],
+      "core": [
+        {
+          "name": "Plank Hold",
+          "difficulty": "D",
+          "equipment": "body weight",
+          "category": "CORE",
+          "axis": "core",
+          "sets": "3x15-60s",
+          "xpReward": 8,
+          "progression": "Plank (60s+)"
+        },
+        {
+          "name": "Side Plank",
+          "difficulty": "D",
+          "equipment": "body weight",
+          "category": "CORE",
+          "axis": "core",
+          "sets": "3x15-45s each side",
+          "xpReward": 8,
+          "progression": "Side Plank (60s+)"
+        },
+        {
+          "name": "Dead Bug",
+          "difficulty": "D",
+          "equipment": "body weight",
+          "category": "CORE",
+          "axis": "core",
+          "sets": "3x10-15",
+          "xpReward": 8,
+          "progression": "Hollow Body Hold"
+        },
+        {
+          "name": "Hollow Body Hold",
+          "difficulty": "D+",
+          "equipment": "body weight",
+          "category": "CORE",
+          "axis": "core",
+          "sets": "3x10-30s",
+          "xpReward": 10,
+          "progression": "Hollow Body Rocks"
+        },
+        {
+          "name": "Reverse Crunches",
+          "difficulty": "D",
+          "equipment": "body weight",
+          "category": "CORE",
+          "axis": "core",
+          "sets": "3x10-15",
+          "xpReward": 8,
+          "progression": "Hanging Knee Raises"
+        },
+        {
+          "name": "Bird Dog",
+          "difficulty": "D",
+          "equipment": "body weight",
+          "category": "CORE",
+          "axis": "core",
+          "secondaryAxis": "balance",
+          "sets": "3x10-12 each side",
+          "xpReward": 8,
+          "progression": "Bird Dog Hold (longer)"
+        }
+      ],
+      "balance_mobility": [
+        {
+          "name": "Wall Handstand Hold",
+          "difficulty": "D",
+          "equipment": "body weight",
+          "category": "BALANCE",
+          "axis": "balance",
+          "secondaryAxis": "core",
+          "sets": "3x10-30s",
+          "xpReward": 10,
+          "progression": "Wall HS (60s)"
+        },
+        {
+          "name": "Deep Squat Hold (Asian Squat)",
+          "difficulty": "D",
+          "equipment": "body weight",
+          "category": "MOBILITY",
+          "axis": "mobility",
+          "sets": "3x30-60s",
+          "xpReward": 6,
+          "progression": "Weighted Deep Squat Hold"
+        },
+        {
+          "name": "Wrist Mobility Drills",
+          "difficulty": "D",
+          "equipment": "body weight",
+          "category": "MOBILITY",
+          "axis": "mobility",
+          "sets": "2x10 each direction",
+          "xpReward": 5,
+          "progression": "Wrist strengthening progressions"
+        },
+        {
+          "name": "Shoulder Dislocations (with band/stick)",
+          "difficulty": "D",
+          "equipment": "band or stick",
+          "category": "MOBILITY",
+          "axis": "mobility",
+          "sets": "2x10-15",
+          "xpReward": 6,
+          "progression": "Narrower grip"
+        },
+        {
+          "name": "Cat-Cow Stretch",
+          "difficulty": "D",
+          "equipment": "body weight",
+          "category": "MOBILITY",
+          "axis": "mobility",
+          "sets": "2x10-15",
+          "xpReward": 5,
+          "progression": "Advanced spinal mobility"
+        }
+      ]
+    }
+  },
+  {
+    "level": "C",
+    "visualRange": "2.5-5.0",
+    "xpRange": "48k-144k",
+    "description": "Novice - Novato en Desarrollo",
+    "exercises": {
+      "push": [
+        {
+          "name": "Regular Push-ups",
+          "difficulty": "C",
+          "equipment": "body weight",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "sets": "3x10-20",
+          "xpReward": 12,
+          "progression": "Diamond Push-ups"
+        },
+        {
+          "name": "Diamond Push-ups",
+          "difficulty": "C",
+          "equipment": "body weight",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "secondaryAxis": "core",
+          "sets": "3x8-15",
+          "xpReward": 14,
+          "progression": "Pike Push-ups"
+        },
+        {
+          "name": "Pike Push-ups",
+          "difficulty": "C",
+          "equipment": "body weight",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "secondaryAxis": "balance",
+          "sets": "3x8-12",
+          "xpReward": 14,
+          "progression": "Elevated Pike Push-ups"
+        },
+        {
+          "name": "Archer Push-ups (Assisted)",
+          "difficulty": "C+",
+          "equipment": "body weight",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "sets": "3x6-10 each side",
+          "xpReward": 16,
+          "progression": "Archer Push-ups (full)"
+        },
+        {
+          "name": "Dips (Parallel Bars - Assisted)",
+          "difficulty": "C",
+          "equipment": "parallel bars or rings",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "sets": "3x5-10",
+          "xpReward": 14,
+          "progression": "Dips (full bodyweight)"
+        },
+        {
+          "name": "Dips (Full Bodyweight)",
+          "difficulty": "C+",
+          "equipment": "parallel bars",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "sets": "3x8-15",
+          "xpReward": 16,
+          "progression": "Ring Dips"
+        }
+      ],
+      "pull": [
+        {
+          "name": "Pull-ups (Regular)",
+          "difficulty": "C",
+          "equipment": "pull-up bar",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "sets": "3x5-12",
+          "xpReward": 14,
+          "progression": "Pull-ups (15+ reps)"
+        },
+        {
+          "name": "Chin-ups",
+          "difficulty": "C",
+          "equipment": "pull-up bar",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "sets": "3x6-12",
+          "xpReward": 12,
+          "progression": "Chin-ups (weighted)"
+        },
+        {
+          "name": "Wide-Grip Pull-ups",
+          "difficulty": "C+",
+          "equipment": "pull-up bar",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "secondaryAxis": "staticHolds",
+          "sets": "3x5-10",
+          "xpReward": 16,
+          "progression": "Wide Pull-ups (12+ reps)"
+        },
+        {
+          "name": "Commando Pull-ups",
+          "difficulty": "C",
+          "equipment": "pull-up bar",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "secondaryAxis": "core",
+          "sets": "3x6-10",
+          "xpReward": 14,
+          "progression": "Archer Pull-ups"
+        },
+        {
+          "name": "Australian Pull-ups (Horizontal Rows - Feet Elevated)",
+          "difficulty": "C",
+          "equipment": "low bar or rings",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "sets": "3x10-15",
+          "xpReward": 12,
+          "progression": "Ring Rows"
+        }
+      ],
+      "legs": [
+        {
+          "name": "Jump Squats",
+          "difficulty": "C",
+          "equipment": "body weight",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "secondaryAxis": "endurance",
+          "sets": "3x10-15",
+          "xpReward": 14,
+          "progression": "Weighted Jump Squats"
+        },
+        {
+          "name": "Bulgarian Split Squat",
+          "difficulty": "C",
+          "equipment": "body weight",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "sets": "3x8-12 each leg",
+          "xpReward": 14,
+          "progression": "Weighted Bulgarian Split Squat"
+        },
+        {
+          "name": "Pistol Squat (Assisted - light touch)",
+          "difficulty": "C+",
+          "equipment": "body weight",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "secondaryAxis": "balance",
+          "sets": "3x5-8 each leg",
+          "xpReward": 16,
+          "progression": "Pistol Squat (full)"
+        },
+        {
+          "name": "Nordic Curls (Assisted)",
+          "difficulty": "C",
+          "equipment": "body weight",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "sets": "3x3-6",
+          "xpReward": 14,
+          "progression": "Nordic Curls (full)"
+        },
+        {
+          "name": "Single-Leg Deadlift (Bodyweight)",
+          "difficulty": "C",
+          "equipment": "body weight",
+          "category": "STRENGTH",
+          "axis": "strength",
+          "secondaryAxis": "balance",
+          "sets": "3x8-12 each leg",
+          "xpReward": 12,
+          "progression": "Weighted Single-Leg DL"
+        }
+      ],
+      "core": [
+        {
+          "name": "Tuck L-Sit (Floor or Parallettes)",
+          "difficulty": "C",
+          "equipment": "body weight or parallel bars",
+          "category": "CORE",
+          "axis": "core",
+          "secondaryAxis": "strength",
+          "sets": "3x10-20s",
+          "xpReward": 14,
+          "progression": "L-Sit (one leg extended)",
+          "figLevel": "Basic Skill"
+        },
+        {
+          "name": "L-Hang (Knees Bent)",
+          "difficulty": "C",
+          "equipment": "pull-up bar",
+          "category": "CORE",
+          "axis": "core",
+          "sets": "3x10-20s",
+          "xpReward": 12,
+          "progression": "L-Hang (legs straight)"
+        },
+        {
+          "name": "Hollow Body Hold (30-60s)",
+          "difficulty": "C",
+          "equipment": "body weight",
+          "category": "CORE",
+          "axis": "core",
+          "sets": "3x30-60s",
+          "xpReward": 12,
+          "progression": "Hollow Body Rocks"
+        },
+        {
+          "name": "Arch Body Hold",
+          "difficulty": "C",
+          "equipment": "body weight",
+          "category": "CORE",
+          "axis": "core",
+          "secondaryAxis": "mobility",
+          "sets": "3x20-40s",
+          "xpReward": 12,
+          "progression": "Superman Hold (dynamic)"
+        },
+        {
+          "name": "Hanging Knee Raises",
+          "difficulty": "C",
+          "equipment": "pull-up bar",
+          "category": "CORE",
+          "axis": "core",
+          "sets": "3x10-15",
+          "xpReward": 14,
+          "progression": "Hanging Leg Raises (straight legs)"
+        },
+        {
+          "name": "Ab Wheel Rollouts (from knees)",
+          "difficulty": "C+",
+          "equipment": "ab wheel",
+          "category": "CORE",
+          "axis": "core",
+          "sets": "3x8-12",
+          "xpReward": 16,
+          "progression": "Ab Wheel (standing)"
+        }
+      ],
+      "balance_skills": [
+        {
+          "name": "Frog Stand",
+          "difficulty": "C",
+          "equipment": "body weight",
+          "category": "BALANCE",
+          "axis": "balance",
+          "secondaryAxis": "core",
+          "sets": "3x10-30s",
+          "xpReward": 14,
+          "progression": "Tuck Planche",
+          "figLevel": "Basic Skill"
+        },
+        {
+          "name": "Crow Pose",
+          "difficulty": "C",
+          "equipment": "body weight",
+          "category": "BALANCE",
+          "axis": "balance",
+          "sets": "3x10-30s",
+          "xpReward": 14,
+          "progression": "Crane Pose"
+        },
+        {
+          "name": "Headstand (Wall Support)",
+          "difficulty": "C",
+          "equipment": "body weight",
+          "category": "BALANCE",
+          "axis": "balance",
+          "secondaryAxis": "core",
+          "sets": "3x20-60s",
+          "xpReward": 12,
+          "progression": "Freestanding Headstand"
+        },
+        {
+          "name": "Wall Handstand (Chest to Wall, 60s)",
+          "difficulty": "C+",
+          "equipment": "body weight",
+          "category": "BALANCE",
+          "axis": "balance",
+          "sets": "3x30-60s",
+          "xpReward": 16,
+          "progression": "Freestanding HS practice"
+        },
+        {
+          "name": "Handstand Shoulder Taps (against wall)",
+          "difficulty": "C+",
+          "equipment": "body weight",
+          "category": "BALANCE",
+          "axis": "balance",
+          "secondaryAxis": "strength",
+          "sets": "3x8-12 taps",
+          "xpReward": 16,
+          "progression": "Freestanding HS shoulder taps"
+        },
+        {
+          "name": "Skin the Cat",
+          "difficulty": "C",
+          "equipment": "pull-up bar or rings",
+          "category": "MOBILITY",
+          "axis": "mobility",
+          "secondaryAxis": "strength",
+          "sets": "3x5-8",
+          "xpReward": 14,
+          "progression": "Skin the Cat + German Hang hold",
+          "figLevel": "Basic Skill"
+        }
+      ]
+    }
+  }
+]

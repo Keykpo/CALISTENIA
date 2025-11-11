@@ -1,8 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import prisma from '@/lib/prisma';
-import { MasteryGoal } from '@/lib/fig-level-progressions';
-import { recalculateHexagonFromFigAssessments } from '@/lib/unified-fig-hexagon-mapping';
+import {
+  processAssessment,
+  AssessmentStep1Data,
+  AssessmentStep2Data,
+  AssessmentStep3Data,
+  AssessmentStep4Data,
+  DifficultyLevel,
+  mapDSToUnifiedLevel,
+} from '@/lib/assessment-d-s-logic';
 import {
   getUnifiedLevelFromXP,
   getUnifiedVisualValueFromXP,
@@ -14,49 +21,88 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 /**
- * FIG Assessment Result Schema
+ * D-S Assessment Schema
  */
-const FigAssessmentResultSchema = z.object({
-  skill: z.string(),
-  score: z.number().min(0).max(9),
-  level: z.string(),
+const Step1Schema = z.object({
+  age: z.number().min(13).max(100),
+  height: z.number().min(100).max(250),
+  weight: z.number().min(30).max(200),
+  gender: z.enum(['male', 'female', 'other', 'prefer_not_to_say']),
+  goals: z.array(z.string()).min(1).max(3),
 });
 
-const FigInitialAssessmentSchema = z.object({
-  assessments: z.array(FigAssessmentResultSchema).min(1),
+const Step2Schema = z.object({
+  equipment: z.object({
+    floor: z.boolean(),
+    pullUpBar: z.boolean(),
+    rings: z.boolean(),
+    parallelBars: z.boolean(),
+    resistanceBands: z.boolean(),
+  }),
+});
+
+const Step3Schema = z.object({
+  pushUps: z.number().min(0),
+  dips: z.number().min(0),
+  pullUps: z.number().min(0),
+  deadHangTime: z.number().min(0),
+  plankTime: z.number().min(0),
+  hollowBodyHold: z.number().min(0),
+  squats: z.number().min(0),
+  pistolSquat: z.enum(['no', 'assisted', '1-3', '4-8', '9+']),
+});
+
+const Step4Schema = z.object({
+  handstand: z.enum(['no', 'wall_5-15s', 'wall_15-60s', 'freestanding_5-15s', 'freestanding_15s+']),
+  handstandPushUp: z.enum(['no', 'partial_wall', 'full_wall_1-5', 'full_wall_6+', 'freestanding']),
+  frontLever: z.enum(['no', 'tuck_5-10s', 'adv_tuck_5-10s', 'straddle_3-8s', 'one_leg_3-8s', 'full_3s+']),
+  planche: z.enum(['no', 'frog_tuck_5-10s', 'adv_tuck_5-10s', 'straddle_3-8s', 'full_3s+']),
+  lSit: z.enum(['no', 'tuck_10-20s', 'bent_legs_10-20s', 'full_10-20s', 'full_20s+_or_vsit']),
+  muscleUp: z.enum(['no', 'kipping', 'strict_1-3', 'strict_4+']),
+  archerPullUp: z.enum(['no', 'assisted', 'full_3-5_each', 'full_6+_each']),
+  oneArmPullUp: z.enum(['no', 'band_assisted', '1_rep_clean', '2+_reps']),
+}).optional();
+
+const DSAssessmentSchema = z.object({
+  level: z.enum(['D', 'C', 'B', 'A', 'S']), // Placeholder, will be calculated
+  step1: Step1Schema,
+  step2: Step2Schema,
+  step3: Step3Schema,
+  step4: Step4Schema.optional(),
 });
 
 /**
  * POST /api/assessment/fig-initial
  *
- * Process initial FIG skill assessments from onboarding
+ * Process D-S assessment from 4-step onboarding
  *
  * Request body:
  * {
- *   assessments: [
- *     { skill: 'HANDSTAND', score: 5, level: 'INTERMEDIATE' },
- *     { skill: 'PULL_UPS', score: 3, level: 'BEGINNER' },
- *     ...
- *   ]
+ *   level: 'D', // placeholder
+ *   step1: { age, height, weight, gender, goals },
+ *   step2: { equipment: {...} },
+ *   step3: { pushUps, pullUps, ... },
+ *   step4: { handstand, frontLever, ... } // optional
  * }
  *
  * This endpoint:
- * 1. Saves all assessments to UserSkillProgress
- * 2. Auto-generates hexagon profile from FIG assessments
- * 3. Marks user as completed assessment
- * 4. Redirects to dashboard
+ * 1. Calculates user's D-S level using assessment logic
+ * 2. Calculates hexagon XP for each axis
+ * 3. Saves hexagon profile to database
+ * 4. Marks user as completed assessment
+ * 5. Returns user's assigned level and hexagon data
  */
 export async function POST(req: NextRequest) {
   try {
     const userId = req.headers.get('x-user-id');
 
-    console.log('[FIG_ASSESSMENT] POST request received:', {
+    console.log('[D-S_ASSESSMENT] POST request received:', {
       hasUserId: !!userId,
       userId: userId,
     });
 
     if (!userId) {
-      console.error('[FIG_ASSESSMENT] No user ID provided');
+      console.error('[D-S_ASSESSMENT] No user ID provided');
       return NextResponse.json(
         { error: 'User ID required' },
         { status: 400 }
@@ -65,15 +111,17 @@ export async function POST(req: NextRequest) {
 
     const body = await req.json();
 
-    console.log('[FIG_ASSESSMENT] Request body:', {
-      hasAssessments: !!body.assessments,
-      assessmentsCount: body.assessments?.length,
-      assessments: body.assessments,
+    console.log('[D-S_ASSESSMENT] Request body:', {
+      hasStep1: !!body.step1,
+      hasStep2: !!body.step2,
+      hasStep3: !!body.step3,
+      hasStep4: !!body.step4,
     });
 
-    const parsed = FigInitialAssessmentSchema.safeParse(body);
+    const parsed = DSAssessmentSchema.safeParse(body);
 
     if (!parsed.success) {
+      console.error('[D-S_ASSESSMENT] Validation failed:', parsed.error.flatten());
       return NextResponse.json(
         {
           error: 'Invalid assessment data',
@@ -83,151 +131,89 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { assessments } = parsed.data;
+    const { step1, step2, step3, step4 } = parsed.data;
 
-    console.log(`[FIG_ONBOARDING] Processing ${assessments.length} assessments for user ${userId}`);
+    console.log(`[D-S_ASSESSMENT] Processing assessment for user ${userId}`);
 
-    // Step 1: Save all FIG assessments to UserSkillProgress
-    const savedAssessments = [];
+    // Step 1: Calculate user's level using D-S assessment logic
+    const assessmentResult = processAssessment(
+      step1 as AssessmentStep1Data,
+      step2 as AssessmentStep2Data,
+      step3 as AssessmentStep3Data,
+      step4 as AssessmentStep4Data | undefined
+    );
 
-    for (const assessment of assessments) {
-      const { skill, score, level } = assessment;
-
-      // Upsert skill progress
-      const skillProgress = await prisma.userSkillProgress.upsert({
-        where: {
-          userId_skillBranch: {
-            userId,
-            skillBranch: skill,
-          },
-        },
-        create: {
-          userId,
-          skillBranch: skill,
-          currentLevel: level,
-          assessmentScore: score,
-          assessmentDate: new Date(),
-        },
-        update: {
-          currentLevel: level,
-          assessmentScore: score,
-          assessmentDate: new Date(),
-        },
-      });
-
-      savedAssessments.push(skillProgress);
-      console.log(`[FIG_ONBOARDING] Saved ${skill}: ${level} (score: ${score})`);
-    }
-
-    // Step 2: Auto-generate hexagon profile from FIG assessments
-    const assessmentData = assessments.map((a: any) => ({
-      skill: a.skill as MasteryGoal,
-      level: a.level,
-    }));
-
-    console.log('[FIG_ONBOARDING] Assessment data for hexagon calculation:', assessmentData);
-
-    const calculatedXP = recalculateHexagonFromFigAssessments(assessmentData);
-
-    console.log('[FIG_ONBOARDING] Calculated XP from assessments:', calculatedXP);
-
-    // Map unified axes to old schema field names
-    const balanceXP = calculatedXP.balance || 0;
-    const strengthXP = calculatedXP.strength || 0;
-    const staticHoldsXP = calculatedXP.staticHolds || 0;
-    const coreXP = calculatedXP.core || 0;
-    const enduranceXP = calculatedXP.endurance || 0;
-    const mobilityXP = calculatedXP.mobility || 0;
-
-    console.log('[FIG_ONBOARDING] Mapped XP values:', {
-      balance: balanceXP,
-      strength: strengthXP,
-      staticHolds: staticHoldsXP,
-      core: coreXP,
-      endurance: enduranceXP,
-      mobility: mobilityXP
+    console.log('[D-S_ASSESSMENT] Assessment result:', {
+      assignedLevel: assessmentResult.assignedLevel,
+      unifiedLevel: assessmentResult.unifiedLevel,
+      visualRank: assessmentResult.visualRank,
+      visualValue: assessmentResult.visualValue,
+      estimatedTrainingAge: assessmentResult.estimatedTrainingAge,
     });
 
-    const balanceLevel = getUnifiedLevelFromXP(balanceXP);
-    const strengthLevel = getUnifiedLevelFromXP(strengthXP);
-    const staticHoldsLevel = getUnifiedLevelFromXP(staticHoldsXP);
-    const coreLevel = getUnifiedLevelFromXP(coreXP);
-    const enduranceLevel = getUnifiedLevelFromXP(enduranceXP);
-    const mobilityLevel = getUnifiedLevelFromXP(mobilityXP);
+    // Step 2: Extract hexagon XP values
+    const hexagonXP = assessmentResult.hexagonXP;
 
-    const balanceValue = getUnifiedVisualValueFromXP(balanceXP, balanceLevel);
-    const strengthValue = getUnifiedVisualValueFromXP(strengthXP, strengthLevel);
-    const staticHoldsValue = getUnifiedVisualValueFromXP(staticHoldsXP, staticHoldsLevel);
-    const coreValue = getUnifiedVisualValueFromXP(coreXP, coreLevel);
-    const enduranceValue = getUnifiedVisualValueFromXP(enduranceXP, enduranceLevel);
-    const mobilityValue = getUnifiedVisualValueFromXP(mobilityXP, mobilityLevel);
+    console.log('[D-S_ASSESSMENT] Hexagon XP values:', hexagonXP);
 
-    console.log('[FIG_ONBOARDING] Calculated visual values (0-10):', {
+    // Calculate levels for each axis
+    const balanceLevel = getUnifiedLevelFromXP(hexagonXP.balanceControlXP);
+    const strengthLevel = getUnifiedLevelFromXP(hexagonXP.relativeStrengthXP);
+    const staticHoldsLevel = getUnifiedLevelFromXP(hexagonXP.skillTechniqueXP);
+    const coreLevel = getUnifiedLevelFromXP(hexagonXP.bodyTensionXP);
+    const enduranceLevel = getUnifiedLevelFromXP(hexagonXP.muscularEnduranceXP);
+    const mobilityLevel = getUnifiedLevelFromXP(hexagonXP.jointMobilityXP);
+
+    // Calculate visual values (0-10 scale)
+    const balanceValue = getUnifiedVisualValueFromXP(hexagonXP.balanceControlXP, balanceLevel);
+    const strengthValue = getUnifiedVisualValueFromXP(hexagonXP.relativeStrengthXP, strengthLevel);
+    const staticHoldsValue = getUnifiedVisualValueFromXP(hexagonXP.skillTechniqueXP, staticHoldsLevel);
+    const coreValue = getUnifiedVisualValueFromXP(hexagonXP.bodyTensionXP, coreLevel);
+    const enduranceValue = getUnifiedVisualValueFromXP(hexagonXP.muscularEnduranceXP, enduranceLevel);
+    const mobilityValue = getUnifiedVisualValueFromXP(hexagonXP.jointMobilityXP, mobilityLevel);
+
+    console.log('[D-S_ASSESSMENT] Calculated visual values (0-10):', {
       balance: balanceValue,
       strength: strengthValue,
       staticHolds: staticHoldsValue,
       core: coreValue,
       endurance: enduranceValue,
-      mobility: mobilityValue
+      mobility: mobilityValue,
     });
 
-    console.log('[FIG_ONBOARDING] Calculated levels:', {
+    console.log('[D-S_ASSESSMENT] Calculated levels:', {
       balance: balanceLevel,
       strength: strengthLevel,
       staticHolds: staticHoldsLevel,
       core: coreLevel,
       endurance: enduranceLevel,
-      mobility: mobilityLevel
+      mobility: mobilityLevel,
     });
 
-    // Create/update hexagon profile
-    console.log('[FIG_ASSESSMENT] About to create/update hexagon profile for userId:', userId);
-    console.log('[FIG_ASSESSMENT] Hexagon data to save:', {
-      visualValues: {
-        balanceControl: balanceValue,
-        relativeStrength: strengthValue,
-        skillTechnique: staticHoldsValue,
-        bodyTension: coreValue,
-        muscularEndurance: enduranceValue,
-        jointMobility: mobilityValue,
-      },
-      xpValues: {
-        balanceControlXP: balanceXP,
-        relativeStrengthXP: strengthXP,
-        skillTechniqueXP: staticHoldsXP,
-        bodyTensionXP: coreXP,
-        muscularEnduranceXP: enduranceXP,
-        jointMobilityXP: mobilityXP,
-      },
-      levels: {
-        balanceControlLevel: balanceLevel,
-        relativeStrengthLevel: strengthLevel,
-        skillTechniqueLevel: staticHoldsLevel,
-        bodyTensionLevel: coreLevel,
-        muscularEnduranceLevel: enduranceLevel,
-        jointMobilityLevel: mobilityLevel,
-      }
-    });
+    // Step 3: Save hexagon profile to database
+    console.log('[D-S_ASSESSMENT] Creating/updating hexagon profile...');
 
     let hexagonProfile;
     try {
-      console.log('[FIG_ASSESSMENT] Calling prisma.hexagonProfile.upsert...');
       hexagonProfile = await prisma.hexagonProfile.upsert({
         where: { userId },
         create: {
           userId,
+          // Visual values (0-10 scale)
           balanceControl: balanceValue,
           relativeStrength: strengthValue,
           skillTechnique: staticHoldsValue,
           bodyTension: coreValue,
           muscularEndurance: enduranceValue,
           jointMobility: mobilityValue,
-          balanceControlXP: balanceXP,
-          relativeStrengthXP: strengthXP,
-          skillTechniqueXP: staticHoldsXP,
-          bodyTensionXP: coreXP,
-          muscularEnduranceXP: enduranceXP,
-          jointMobilityXP: mobilityXP,
+          // XP values
+          balanceControlXP: hexagonXP.balanceControlXP,
+          relativeStrengthXP: hexagonXP.relativeStrengthXP,
+          skillTechniqueXP: hexagonXP.skillTechniqueXP,
+          bodyTensionXP: hexagonXP.bodyTensionXP,
+          muscularEnduranceXP: hexagonXP.muscularEnduranceXP,
+          jointMobilityXP: hexagonXP.jointMobilityXP,
+          // Level values
           balanceControlLevel: balanceLevel,
           relativeStrengthLevel: strengthLevel,
           skillTechniqueLevel: staticHoldsLevel,
@@ -236,18 +222,21 @@ export async function POST(req: NextRequest) {
           jointMobilityLevel: mobilityLevel,
         },
         update: {
+          // Visual values (0-10 scale)
           balanceControl: balanceValue,
           relativeStrength: strengthValue,
           skillTechnique: staticHoldsValue,
           bodyTension: coreValue,
           muscularEndurance: enduranceValue,
           jointMobility: mobilityValue,
-          balanceControlXP: balanceXP,
-          relativeStrengthXP: strengthXP,
-          skillTechniqueXP: staticHoldsXP,
-          bodyTensionXP: coreXP,
-          muscularEnduranceXP: enduranceXP,
-          jointMobilityXP: mobilityXP,
+          // XP values
+          balanceControlXP: hexagonXP.balanceControlXP,
+          relativeStrengthXP: hexagonXP.relativeStrengthXP,
+          skillTechniqueXP: hexagonXP.skillTechniqueXP,
+          bodyTensionXP: hexagonXP.bodyTensionXP,
+          muscularEnduranceXP: hexagonXP.muscularEnduranceXP,
+          jointMobilityXP: hexagonXP.jointMobilityXP,
+          // Level values
           balanceControlLevel: balanceLevel,
           relativeStrengthLevel: strengthLevel,
           skillTechniqueLevel: staticHoldsLevel,
@@ -257,70 +246,22 @@ export async function POST(req: NextRequest) {
         },
       });
 
-      console.log('[FIG_ASSESSMENT] Hexagon profile upsert completed successfully!', {
+      console.log('[D-S_ASSESSMENT] Hexagon profile saved successfully:', {
         hexagonId: hexagonProfile.id,
         userId: hexagonProfile.userId,
       });
     } catch (hexagonError) {
-      console.error('[FIG_ASSESSMENT] CRITICAL ERROR: Failed to create/update hexagon profile:', hexagonError);
-      console.error('[FIG_ASSESSMENT] Error details:', {
-        errorMessage: hexagonError instanceof Error ? hexagonError.message : 'Unknown error',
-        errorStack: hexagonError instanceof Error ? hexagonError.stack : null,
-        userId,
-      });
+      console.error('[D-S_ASSESSMENT] CRITICAL ERROR: Failed to create/update hexagon profile:', hexagonError);
       return NextResponse.json(
-        { error: 'Failed to create hexagon profile', details: hexagonError instanceof Error ? hexagonError.message : 'Unknown error' },
+        {
+          error: 'Failed to create hexagon profile',
+          details: hexagonError instanceof Error ? hexagonError.message : 'Unknown error'
+        },
         { status: 500 }
       );
     }
 
-    console.log('[FIG_ONBOARDING] Hexagon profile created/updated successfully:', {
-      hexagonId: hexagonProfile.id,
-      userId: hexagonProfile.userId,
-      visualValues: {
-        balance: balanceValue.toFixed(1),
-        strength: strengthValue.toFixed(1),
-        staticHolds: staticHoldsValue.toFixed(1),
-        core: coreValue.toFixed(1),
-        endurance: enduranceValue.toFixed(1),
-        mobility: mobilityValue.toFixed(1),
-      },
-      xpValues: {
-        balance: hexagonProfile.balanceControlXP,
-        strength: hexagonProfile.relativeStrengthXP,
-        staticHolds: hexagonProfile.skillTechniqueXP,
-        core: hexagonProfile.bodyTensionXP,
-        endurance: hexagonProfile.muscularEnduranceXP,
-        mobility: hexagonProfile.jointMobilityXP,
-      },
-      levels: {
-        balance: hexagonProfile.balanceControlLevel,
-        strength: hexagonProfile.relativeStrengthLevel,
-        staticHolds: hexagonProfile.skillTechniqueLevel,
-        core: hexagonProfile.bodyTensionLevel,
-        endurance: hexagonProfile.muscularEnduranceLevel,
-        mobility: hexagonProfile.jointMobilityLevel,
-      }
-    });
-
-    // Step 3: Verify hexagon was saved
-    console.log('[FIG_ASSESSMENT] Verifying hexagon was saved - reading back from DB...');
-    const verifyHexagon = await prisma.hexagonProfile.findUnique({
-      where: { userId },
-    });
-
-    if (!verifyHexagon) {
-      console.error('[FIG_ASSESSMENT] CRITICAL: Hexagon profile was NOT found in database after upsert!');
-    } else {
-      console.log('[FIG_ASSESSMENT] SUCCESS: Hexagon profile verified in database:', {
-        id: verifyHexagon.id,
-        userId: verifyHexagon.userId,
-        relativeStrength: verifyHexagon.relativeStrength,
-        balanceControl: verifyHexagon.balanceControl,
-      });
-    }
-
-    // Step 3: Calculate overall fitness level from hexagon
+    // Step 4: Calculate overall fitness level
     const overallLevel = calculateUnifiedOverallLevel({
       balanceLevel,
       strengthLevel,
@@ -330,8 +271,10 @@ export async function POST(req: NextRequest) {
       mobilityLevel,
     } as any);
 
-    // Step 4: Mark user as completed assessment
-    console.log('[FIG_ASSESSMENT] Updating user record with fitnessLevel:', overallLevel);
+    console.log('[D-S_ASSESSMENT] Overall fitness level:', overallLevel);
+
+    // Step 5: Save D-S level to user's profile
+    console.log('[D-S_ASSESSMENT] Updating user with D-S level and fitness level...');
 
     const updatedUser = await prisma.user.update({
       where: { id: userId },
@@ -339,18 +282,22 @@ export async function POST(req: NextRequest) {
         hasCompletedAssessment: true,
         assessmentDate: new Date(),
         fitnessLevel: overallLevel,
+        // Store D-S assessment results
+        difficultyLevel: assessmentResult.assignedLevel,
+        visualRank: assessmentResult.visualRank,
       },
     });
 
-    console.log(`[FIG_ASSESSMENT] ✅ User ${userId} assessment completed successfully!`, {
+    console.log(`[D-S_ASSESSMENT] ✅ User ${userId} assessment completed!`, {
       userId: updatedUser.id,
       fitnessLevel: updatedUser.fitnessLevel,
+      assignedLevel: assessmentResult.assignedLevel,
+      visualRank: assessmentResult.visualRank,
       hasCompletedAssessment: updatedUser.hasCompletedAssessment,
-      overallLevel,
     });
 
-    // Final verification: Ensure data is persisted by reading it back one more time
-    console.log('[FIG_ASSESSMENT] Final verification - Reading user with hexagon profile...');
+    // Final verification
+    console.log('[D-S_ASSESSMENT] Final verification - Reading user with hexagon profile...');
     const finalVerification = await prisma.user.findUnique({
       where: { id: userId },
       include: {
@@ -358,18 +305,8 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    console.log('[FIG_ASSESSMENT] Final verification result:', {
-      userExists: !!finalVerification,
-      hasHexagonProfile: !!finalVerification?.hexagonProfile,
-      hexagonSample: finalVerification?.hexagonProfile ? {
-        balanceControl: finalVerification.hexagonProfile.balanceControl,
-        relativeStrength: finalVerification.hexagonProfile.relativeStrength,
-        balanceControlXP: finalVerification.hexagonProfile.balanceControlXP,
-      } : null,
-    });
-
     if (!finalVerification?.hexagonProfile) {
-      console.error('[FIG_ASSESSMENT] ❌ CRITICAL: Final verification failed - hexagon profile not found!');
+      console.error('[D-S_ASSESSMENT] ❌ CRITICAL: Final verification failed - hexagon profile not found!');
       return NextResponse.json(
         {
           error: 'Data persistence verification failed',
@@ -379,10 +316,22 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    console.log('[D-S_ASSESSMENT] Final verification SUCCESS:', {
+      userExists: true,
+      hasHexagonProfile: true,
+      hexagonId: finalVerification.hexagonProfile.id,
+    });
+
+    // Return response
     const response = NextResponse.json({
       success: true,
-      message: 'FIG assessments processed successfully',
-      assessmentsSaved: savedAssessments.length,
+      message: 'D-S assessment processed successfully',
+      assignedLevel: assessmentResult.assignedLevel,
+      visualRank: assessmentResult.visualRank,
+      visualValue: assessmentResult.visualValue,
+      unifiedLevel: assessmentResult.unifiedLevel,
+      estimatedTrainingAge: assessmentResult.estimatedTrainingAge,
+      recommendedExercises: assessmentResult.recommendedStartingExercises,
       hexagonProfile: {
         // Visual values (0-10 scale)
         balance: balanceValue,
@@ -391,13 +340,13 @@ export async function POST(req: NextRequest) {
         core: coreValue,
         endurance: enduranceValue,
         mobility: mobilityValue,
-        // XP values (needed for proper reconstruction)
-        balanceXP: balanceXP,
-        strengthXP: strengthXP,
-        staticHoldsXP: staticHoldsXP,
-        coreXP: coreXP,
-        enduranceXP: enduranceXP,
-        mobilityXP: mobilityXP,
+        // XP values
+        balanceXP: hexagonXP.balanceControlXP,
+        strengthXP: hexagonXP.relativeStrengthXP,
+        staticHoldsXP: hexagonXP.skillTechniqueXP,
+        coreXP: hexagonXP.bodyTensionXP,
+        enduranceXP: hexagonXP.muscularEnduranceXP,
+        mobilityXP: hexagonXP.jointMobilityXP,
         // Level values
         balanceLevel: balanceLevel,
         strengthLevel: strengthLevel,
@@ -424,7 +373,8 @@ export async function POST(req: NextRequest) {
     return response;
 
   } catch (error: any) {
-    console.error('[FIG_ONBOARDING] Error processing assessments:', error);
+    console.error('[D-S_ASSESSMENT] Error processing assessment:', error);
+    console.error('[D-S_ASSESSMENT] Error stack:', error?.stack);
 
     // Handle Prisma errors
     if (error?.code === 'P2002') {
@@ -443,8 +393,9 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(
       {
-        error: 'Failed to process FIG assessments',
+        error: 'Failed to process D-S assessment',
         message: error?.message,
+        stack: error?.stack,
       },
       { status: 500 }
     );

@@ -3,8 +3,15 @@
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import FigOnboardingAssessment, { FigAssessmentResult } from '@/components/onboarding/FigOnboardingAssessment';
+import FigOnboardingAssessment from '@/components/onboarding/FigOnboardingAssessment';
 import { Trophy } from 'lucide-react';
+import {
+  AssessmentStep1Data,
+  AssessmentStep2Data,
+  AssessmentStep3Data,
+  AssessmentStep4Data,
+  DifficultyLevel,
+} from '@/lib/assessment-d-s-logic';
 
 export default function AssessmentPage() {
   const { data: session, status, update } = useSession();
@@ -16,7 +23,13 @@ export default function AssessmentPage() {
     }
   }, [status, router]);
 
-  const handleComplete = async (assessments: FigAssessmentResult[]) => {
+  const handleComplete = async (result: {
+    level: DifficultyLevel;
+    step1: AssessmentStep1Data;
+    step2: AssessmentStep2Data;
+    step3: AssessmentStep3Data;
+    step4?: AssessmentStep4Data;
+  }) => {
     try {
       const res = await fetch('/api/assessment/fig-initial', {
         method: 'POST',
@@ -24,13 +37,13 @@ export default function AssessmentPage() {
           'Content-Type': 'application/json',
           'x-user-id': session?.user?.id as string,
         },
-        body: JSON.stringify({ assessments }),
+        body: JSON.stringify(result),
       });
 
       if (res.ok) {
         const data = await res.json();
         console.log('[ASSESSMENT] ✅ Success! Assessment saved:', {
-          assessmentsSaved: data.assessmentsSaved,
+          assignedLevel: data.assignedLevel,
           overallLevel: data.overallLevel,
           hexagonVerified: data._debug?.verified,
           hexagonId: data._debug?.hexagonId,
@@ -53,12 +66,12 @@ export default function AssessmentPage() {
         window.location.href = redirectPath;
       } else {
         const error = await res.json();
-        console.error('Error submitting FIG assessment:', error);
-        alert('Error al guardar la evaluación. Por favor intenta de nuevo.');
+        console.error('Error submitting assessment:', error);
+        alert('Error saving assessment. Please try again.');
       }
     } catch (error) {
-      console.error('Error submitting FIG assessment:', error);
-      alert('Error al guardar la evaluación. Por favor intenta de nuevo.');
+      console.error('Error submitting assessment:', error);
+      alert('Error saving assessment. Please try again.');
     }
   };
 
