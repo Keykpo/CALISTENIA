@@ -173,10 +173,8 @@ export async function GET(req: NextRequest) {
       counts[k] = (counts[k] ?? 0) + 1;
     }
 
-    // Check if user has completed assessment
-    const hasCompletedAssessment = await prisma.userAssessment.findFirst({
-      where: { userId },
-    });
+    // Check if user has completed assessment (read from user.hasCompletedAssessment field)
+    const hasCompletedAssessment = user?.hasCompletedAssessment || false;
 
     console.log('[DASHBOARD] 🔍 Hexagon Profile Data Debug:', {
       '1_userId': userId,
@@ -240,7 +238,7 @@ export async function GET(req: NextRequest) {
         fitnessLevel: user?.fitnessLevel,
         gender: user?.gender,
         createdAt: user?.createdAt,
-        hasCompletedAssessment: !!hasCompletedAssessment,
+        hasCompletedAssessment: hasCompletedAssessment,
       },
       stats: {
         totalXP: user?.totalXP ?? 0,
