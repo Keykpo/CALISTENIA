@@ -31,6 +31,10 @@ export default function AssessmentPage() {
     step4?: AssessmentStep4Data;
   }) => {
     try {
+      console.log('[ASSESSMENT_DEBUG] Starting assessment submission...');
+      console.log('[ASSESSMENT_DEBUG] User ID:', session?.user?.id);
+      console.log('[ASSESSMENT_DEBUG] Result data:', JSON.stringify(result, null, 2));
+
       const res = await fetch('/api/assessment/fig-initial', {
         method: 'POST',
         headers: {
@@ -39,6 +43,9 @@ export default function AssessmentPage() {
         },
         body: JSON.stringify(result),
       });
+
+      console.log('[ASSESSMENT_DEBUG] Response status:', res.status);
+      console.log('[ASSESSMENT_DEBUG] Response ok:', res.ok);
 
       if (res.ok) {
         const data = await res.json();
@@ -65,12 +72,29 @@ export default function AssessmentPage() {
         console.log('[ASSESSMENT] Redirecting to:', redirectPath);
         window.location.href = redirectPath;
       } else {
-        const error = await res.json();
-        console.error('Error submitting assessment:', error);
-        alert('Error saving assessment. Please try again.');
+        const errorText = await res.text();
+        console.error('[ASSESSMENT_DEBUG] ❌ Request failed!');
+        console.error('[ASSESSMENT_DEBUG] Status:', res.status);
+        console.error('[ASSESSMENT_DEBUG] Status Text:', res.statusText);
+        console.error('[ASSESSMENT_DEBUG] Error response:', errorText);
+
+        let errorData;
+        try {
+          errorData = JSON.parse(errorText);
+        } catch (e) {
+          errorData = { rawError: errorText };
+        }
+
+        console.error('[ASSESSMENT_DEBUG] Parsed error:', errorData);
+        alert(`Error saving assessment: ${errorData.error || errorData.message || 'Unknown error'}. Please try again.`);
       }
     } catch (error) {
-      console.error('Error submitting assessment:', error);
+      console.error('[ASSESSMENT_DEBUG] ❌ Exception occurred!');
+      console.error('[ASSESSMENT_DEBUG] Exception:', error);
+      if (error instanceof Error) {
+        console.error('[ASSESSMENT_DEBUG] Error message:', error.message);
+        console.error('[ASSESSMENT_DEBUG] Error stack:', error.stack);
+      }
       alert('Error saving assessment. Please try again.');
     }
   };

@@ -156,15 +156,53 @@ export default function FigOnboardingAssessment({
   };
 
   const handleComplete = () => {
+    // Validate step1 data
+    if (!step1Data.age || !step1Data.height || !step1Data.weight || !step1Data.goals || step1Data.goals.length === 0) {
+      console.error('[D-S_ASSESSMENT] Step 1 data incomplete:', step1Data);
+      alert('Please complete all required fields in Step 1');
+      return;
+    }
+
+    // Validate step3 data
+    if (
+      step3Data.pushUps === undefined ||
+      step3Data.dips === undefined ||
+      step3Data.pullUps === undefined ||
+      step3Data.deadHangTime === undefined ||
+      step3Data.plankTime === undefined ||
+      step3Data.hollowBodyHold === undefined ||
+      step3Data.squats === undefined ||
+      !step3Data.pistolSquat
+    ) {
+      console.error('[D-S_ASSESSMENT] Step 3 data incomplete:', step3Data);
+      alert('Please complete all required fields in Step 3');
+      return;
+    }
+
     const result = {
       level: 'D' as DifficultyLevel, // Will be calculated on backend
-      step1: step1Data as AssessmentStep1Data,
+      step1: {
+        age: step1Data.age,
+        height: step1Data.height,
+        weight: step1Data.weight,
+        gender: step1Data.gender || 'prefer_not_to_say',
+        goals: step1Data.goals,
+      } as AssessmentStep1Data,
       step2: step2Data,
-      step3: step3Data as AssessmentStep3Data,
+      step3: {
+        pushUps: step3Data.pushUps,
+        dips: step3Data.dips,
+        pullUps: step3Data.pullUps,
+        deadHangTime: step3Data.deadHangTime,
+        plankTime: step3Data.plankTime,
+        hollowBodyHold: step3Data.hollowBodyHold,
+        squats: step3Data.squats,
+        pistolSquat: step3Data.pistolSquat,
+      } as AssessmentStep3Data,
       step4: currentStep === 4 ? (step4Data as AssessmentStep4Data) : undefined,
     };
 
-    console.log('[D-S_ASSESSMENT] Completing with data:', result);
+    console.log('[D-S_ASSESSMENT] Completing with data:', JSON.stringify(result, null, 2));
     onComplete(result);
   };
 
