@@ -15,6 +15,7 @@ import {
   getUnifiedVisualValueFromXP,
   calculateUnifiedOverallLevel,
 } from '@/lib/unified-hexagon-system';
+import { mapAssessmentToFigBranches } from '@/lib/assessment-to-fig-mapping';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -50,6 +51,12 @@ const Step3Schema = z.object({
   hollowBodyHold: z.number().min(0),
   squats: z.number().min(0),
   pistolSquat: z.enum(['no', 'assisted', '1-3', '4-8', '9+']),
+  // 🆕 NEW: Expanded assessment fields
+  lSitAttempt: z.enum(['no', 'tuck', 'one_leg', 'full']).optional(),
+  shoulderMobility: z.enum(['poor', 'average', 'good', 'excellent']).optional(),
+  bridge: z.enum(['no', 'partial', 'full']).optional(),
+  maxPushUpsIn60s: z.number().min(0).optional(),
+  circuitEndurance: z.enum(['cannot_complete', 'long_breaks', 'short_breaks', 'no_breaks']).optional(),
 });
 
 const Step4Schema = z.object({
@@ -61,6 +68,14 @@ const Step4Schema = z.object({
   muscleUp: z.enum(['no', 'kipping', 'strict_1-3', 'strict_4+']),
   archerPullUp: z.enum(['no', 'assisted', 'full_3-5_each', 'full_6+_each']),
   oneArmPullUp: z.enum(['no', 'band_assisted', '1_rep_clean', '2+_reps']),
+  // 🆕 NEW: Advanced skills additions
+  crowPose: z.enum(['no', 'less_than_10s', '10-30s', '30s+']).optional(),
+  backLever: z.enum(['no', 'tuck', 'adv_tuck', 'straddle', 'full']).optional(),
+  ringSupport: z.enum(['no', 'shaky', 'stable_30s', 'stable_60s+_RTO']).optional(),
+  weightedPullUps: z.enum(['no', '+10-20lbs', '+25-40lbs', '+45lbs+']).optional(),
+  weightedDips: z.enum(['no', '+10-20lbs', '+25-40lbs', '+45lbs+']).optional(),
+  humanFlag: z.enum(['no', 'tuck', 'adv_tuck', 'straddle', 'full']).optional(),
+  abWheel: z.enum(['no', 'knees_partial', 'knees_full', 'standing']).optional(),
 }).optional();
 
 const DSAssessmentSchema = z.object({
@@ -150,6 +165,15 @@ export async function POST(req: NextRequest) {
       visualValue: assessmentResult.visualValue,
       estimatedTrainingAge: assessmentResult.estimatedTrainingAge,
     });
+
+    // 🆕 NEW: Step 1b - Map assessment to 17 FIG skill branches
+    console.log('[D-S_ASSESSMENT] Mapping assessment to 17 FIG skill branches...');
+    const figBranchLevels = mapAssessmentToFigBranches(
+      step3 as AssessmentStep3Data,
+      step4 as AssessmentStep4Data | undefined
+    );
+
+    console.log('[D-S_ASSESSMENT] FIG branch levels calculated:', figBranchLevels);
 
     // Step 2: Extract hexagon XP values
     const hexagonXP = assessmentResult.hexagonXP;
@@ -261,6 +285,54 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // 🆕 NEW: Step 3b - Save FIG branch levels to userSkillProgress
+    console.log('[D-S_ASSESSMENT] Saving FIG branch levels to userSkillProgress...');
+
+    try {
+      // Map D-S level (D, C, B, A, S) to UnifiedProgressionLevel (BEGINNER, INTERMEDIATE, ADVANCED, ELITE)
+      const levelMapping: Record<DifficultyLevel, 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE'> = {
+        D: 'BEGINNER',
+        C: 'INTERMEDIATE',
+        B: 'ADVANCED',
+        A: 'ELITE',
+        S: 'ELITE',
+      };
+
+      // Create upsert operations for all 17 branches
+      const branchUpsertOperations = Object.entries(figBranchLevels).map(([skillBranch, dsLevel]) => {
+        const unifiedLevel = levelMapping[dsLevel];
+
+        return prisma.userSkillProgress.upsert({
+          where: {
+            userId_skillBranch: {
+              userId,
+              skillBranch: skillBranch as any,
+            },
+          },
+          create: {
+            userId,
+            skillBranch: skillBranch as any,
+            currentLevel: unifiedLevel,
+            assessmentDate: new Date(),
+            assessmentScore: 0,
+          },
+          update: {
+            currentLevel: unifiedLevel,
+            assessmentDate: new Date(),
+          },
+        });
+      });
+
+      // Execute all upserts in parallel
+      const savedBranches = await Promise.all(branchUpsertOperations);
+
+      console.log(`[D-S_ASSESSMENT] ✅ Successfully saved ${savedBranches.length} FIG branch levels`);
+    } catch (branchError) {
+      console.error('[D-S_ASSESSMENT] ERROR: Failed to save FIG branch levels:', branchError);
+      // Non-critical error - continue execution
+      console.warn('[D-S_ASSESSMENT] Continuing despite FIG branch save error...');
+    }
+
     // Step 4: Calculate overall fitness level
     const overallLevel = calculateUnifiedOverallLevel({
       balanceLevel,
@@ -332,6 +404,7 @@ export async function POST(req: NextRequest) {
       unifiedLevel: assessmentResult.unifiedLevel,
       estimatedTrainingAge: assessmentResult.estimatedTrainingAge,
       recommendedExercises: assessmentResult.recommendedStartingExercises,
+      figBranchLevels: figBranchLevels, // 🆕 NEW: FIG skill branch levels
       hexagonProfile: {
         // Visual values (0-10 scale)
         balance: balanceValue,

@@ -44,26 +44,44 @@ export interface AssessmentStep3Data {
   // Core tests
   plankTime: number; // seconds: 0-15, 16-30, 31-60, 61-90, 91+
   hollowBodyHold: number; // seconds: 0, <10, 10-20, 20-30, 30+
+  lSitAttempt?: 'no' | 'tuck' | 'one_leg' | 'full'; // 🆕 NEW: L-sit capability
 
   // Legs tests
   squats: number; // 0-10, 11-20, 21-40, 41-60, 61+
   pistolSquat: 'no' | 'assisted' | '1-3' | '4-8' | '9+';
+
+  // 🆕 NEW: Mobility tests
+  shoulderMobility?: 'poor' | 'average' | 'good' | 'excellent';
+  bridge?: 'no' | 'partial' | 'full';
+
+  // 🆕 NEW: Endurance tests
+  maxPushUpsIn60s?: number; // Max push-ups in 1 minute
+  circuitEndurance?: 'cannot_complete' | 'long_breaks' | 'short_breaks' | 'no_breaks';
 }
 
 export interface AssessmentStep4Data {
   // Balance skills
   handstand: 'no' | 'wall_5-15s' | 'wall_15-60s' | 'freestanding_5-15s' | 'freestanding_15s+';
   handstandPushUp: 'no' | 'partial_wall' | 'full_wall_1-5' | 'full_wall_6+' | 'freestanding';
+  crowPose?: 'no' | 'less_than_10s' | '10-30s' | '30s+'; // 🆕 NEW: Basic balance indicator
 
   // Static holds
   frontLever: 'no' | 'tuck_5-10s' | 'adv_tuck_5-10s' | 'straddle_3-8s' | 'one_leg_3-8s' | 'full_3s+';
+  backLever?: 'no' | 'tuck' | 'adv_tuck' | 'straddle' | 'full'; // 🆕 NEW
   planche: 'no' | 'frog_tuck_5-10s' | 'adv_tuck_5-10s' | 'straddle_3-8s' | 'full_3s+';
   lSit: 'no' | 'tuck_10-20s' | 'bent_legs_10-20s' | 'full_10-20s' | 'full_20s+_or_vsit';
+  ringSupport?: 'no' | 'shaky' | 'stable_30s' | 'stable_60s+_RTO'; // 🆕 NEW: Ring strength indicator
 
   // Advanced dynamics
   muscleUp: 'no' | 'kipping' | 'strict_1-3' | 'strict_4+';
   archerPullUp: 'no' | 'assisted' | 'full_3-5_each' | 'full_6+_each';
   oneArmPullUp: 'no' | 'band_assisted' | '1_rep_clean' | '2+_reps';
+  weightedPullUps?: 'no' | '+10-20lbs' | '+25-40lbs' | '+45lbs+'; // 🆕 NEW
+  weightedDips?: 'no' | '+10-20lbs' | '+25-40lbs' | '+45lbs+'; // 🆕 NEW
+
+  // Misc advanced skills
+  humanFlag?: 'no' | 'tuck' | 'adv_tuck' | 'straddle' | 'full'; // 🆕 NEW
+  abWheel?: 'no' | 'knees_partial' | 'knees_full' | 'standing'; // 🆕 NEW
 }
 
 export interface HexagonAxisXP {
@@ -329,6 +347,53 @@ export function calculateHexagonXP(
     xp.balanceControlXP += 10000;
   }
 
+  // 🆕 L-Sit attempt = boost core
+  if (step3.lSitAttempt === 'full') {
+    xp.bodyTensionXP += 25000;
+  } else if (step3.lSitAttempt === 'one_leg') {
+    xp.bodyTensionXP += 15000;
+  } else if (step3.lSitAttempt === 'tuck') {
+    xp.bodyTensionXP += 8000;
+  }
+
+  // 🆕 Shoulder mobility = boost mobility axis
+  if (step3.shoulderMobility === 'excellent') {
+    xp.jointMobilityXP += 40000;
+  } else if (step3.shoulderMobility === 'good') {
+    xp.jointMobilityXP += 25000;
+  } else if (step3.shoulderMobility === 'average') {
+    xp.jointMobilityXP += 10000;
+  }
+
+  // 🆕 Bridge ability = boost mobility axis
+  if (step3.bridge === 'full') {
+    xp.jointMobilityXP += 35000;
+  } else if (step3.bridge === 'partial') {
+    xp.jointMobilityXP += 15000;
+  }
+
+  // 🆕 Max push-ups in 60s = boost endurance
+  if (step3.maxPushUpsIn60s) {
+    if (step3.maxPushUpsIn60s >= 40) {
+      xp.muscularEnduranceXP += 50000;
+    } else if (step3.maxPushUpsIn60s >= 30) {
+      xp.muscularEnduranceXP += 35000;
+    } else if (step3.maxPushUpsIn60s >= 20) {
+      xp.muscularEnduranceXP += 20000;
+    } else if (step3.maxPushUpsIn60s >= 10) {
+      xp.muscularEnduranceXP += 10000;
+    }
+  }
+
+  // 🆕 Circuit endurance = boost endurance
+  if (step3.circuitEndurance === 'no_breaks') {
+    xp.muscularEnduranceXP += 40000;
+  } else if (step3.circuitEndurance === 'short_breaks') {
+    xp.muscularEnduranceXP += 25000;
+  } else if (step3.circuitEndurance === 'long_breaks') {
+    xp.muscularEnduranceXP += 10000;
+  }
+
   // Adjust based on Step 4 skills (if provided)
   if (step4) {
     // Handstand skills → balance + core
@@ -419,6 +484,84 @@ export function calculateHexagonXP(
       xp.relativeStrengthXP += 100000;
     } else if (step4.oneArmPullUp === 'band_assisted') {
       xp.relativeStrengthXP += 50000;
+    }
+
+    // 🆕 Crow Pose → balance
+    if (step4.crowPose === '30s+') {
+      xp.balanceControlXP += 25000;
+    } else if (step4.crowPose === '10-30s') {
+      xp.balanceControlXP += 15000;
+    } else if (step4.crowPose === 'less_than_10s') {
+      xp.balanceControlXP += 8000;
+    }
+
+    // 🆕 Back Lever → skillTechnique + strength
+    if (step4.backLever === 'full') {
+      xp.skillTechniqueXP += 120000;
+      xp.relativeStrengthXP += 60000;
+    } else if (step4.backLever === 'straddle') {
+      xp.skillTechniqueXP += 70000;
+      xp.relativeStrengthXP += 35000;
+    } else if (step4.backLever === 'adv_tuck') {
+      xp.skillTechniqueXP += 40000;
+      xp.relativeStrengthXP += 20000;
+    } else if (step4.backLever === 'tuck') {
+      xp.skillTechniqueXP += 20000;
+      xp.relativeStrengthXP += 10000;
+    }
+
+    // 🆕 Ring Support → balance + skillTechnique
+    if (step4.ringSupport === 'stable_60s+_RTO') {
+      xp.balanceControlXP += 80000;
+      xp.skillTechniqueXP += 60000;
+    } else if (step4.ringSupport === 'stable_30s') {
+      xp.balanceControlXP += 40000;
+      xp.skillTechniqueXP += 30000;
+    } else if (step4.ringSupport === 'shaky') {
+      xp.balanceControlXP += 15000;
+      xp.skillTechniqueXP += 10000;
+    }
+
+    // 🆕 Weighted Pull-ups → strength
+    if (step4.weightedPullUps === '+45lbs+') {
+      xp.relativeStrengthXP += 120000;
+    } else if (step4.weightedPullUps === '+25-40lbs') {
+      xp.relativeStrengthXP += 80000;
+    } else if (step4.weightedPullUps === '+10-20lbs') {
+      xp.relativeStrengthXP += 45000;
+    }
+
+    // 🆕 Weighted Dips → strength
+    if (step4.weightedDips === '+45lbs+') {
+      xp.relativeStrengthXP += 110000;
+    } else if (step4.weightedDips === '+25-40lbs') {
+      xp.relativeStrengthXP += 70000;
+    } else if (step4.weightedDips === '+10-20lbs') {
+      xp.relativeStrengthXP += 40000;
+    }
+
+    // 🆕 Human Flag → skillTechnique + core
+    if (step4.humanFlag === 'full') {
+      xp.skillTechniqueXP += 180000;
+      xp.bodyTensionXP += 90000;
+    } else if (step4.humanFlag === 'straddle') {
+      xp.skillTechniqueXP += 100000;
+      xp.bodyTensionXP += 50000;
+    } else if (step4.humanFlag === 'adv_tuck') {
+      xp.skillTechniqueXP += 60000;
+      xp.bodyTensionXP += 30000;
+    } else if (step4.humanFlag === 'tuck') {
+      xp.skillTechniqueXP += 30000;
+      xp.bodyTensionXP += 15000;
+    }
+
+    // 🆕 Ab Wheel → core
+    if (step4.abWheel === 'standing') {
+      xp.bodyTensionXP += 100000;
+    } else if (step4.abWheel === 'knees_full') {
+      xp.bodyTensionXP += 50000;
+    } else if (step4.abWheel === 'knees_partial') {
+      xp.bodyTensionXP += 20000;
     }
   }
 

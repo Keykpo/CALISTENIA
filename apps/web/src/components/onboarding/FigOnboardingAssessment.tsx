@@ -87,6 +87,12 @@ export default function FigOnboardingAssessment({
     hollowBodyHold: undefined,
     squats: undefined,
     pistolSquat: 'no',
+    // 🆕 NEW: Core/Mobility/Endurance additions
+    lSitAttempt: undefined,
+    shoulderMobility: undefined,
+    bridge: undefined,
+    maxPushUpsIn60s: undefined,
+    circuitEndurance: undefined,
   });
 
   // Step 4: Advanced Skills (conditional)
@@ -99,6 +105,14 @@ export default function FigOnboardingAssessment({
     muscleUp: 'no',
     archerPullUp: 'no',
     oneArmPullUp: 'no',
+    // 🆕 NEW: Advanced skills additions
+    crowPose: undefined,
+    backLever: undefined,
+    ringSupport: undefined,
+    weightedPullUps: undefined,
+    weightedDips: undefined,
+    humanFlag: undefined,
+    abWheel: undefined,
   });
 
   const totalSteps = 4;
@@ -577,6 +591,38 @@ export default function FigOnboardingAssessment({
                 ))}
               </RadioGroup>
             </div>
+
+            <div className="space-y-2">
+              <Label>🆕 Can you attempt an L-SIT (lift legs off ground while seated)? *</Label>
+              <RadioGroup
+                value={step3Data.lSitAttempt}
+                onValueChange={(val) => setStep3Data(prev => ({
+                  ...prev,
+                  lSitAttempt: val as AssessmentStep3Data['lSitAttempt']
+                }))}
+              >
+                {[
+                  { label: "No, I can't lift my legs", value: 'no' },
+                  { label: 'Yes, tuck position (knees bent)', value: 'tuck' },
+                  { label: 'Yes, one leg extended', value: 'one_leg' },
+                  { label: 'Yes, full L-sit (both legs straight)', value: 'full' },
+                ].map((option) => (
+                  <div
+                    key={option.value}
+                    className="flex items-center space-x-2 p-2 hover:bg-slate-50 rounded cursor-pointer"
+                    onClick={() => setStep3Data(prev => ({
+                      ...prev,
+                      lSitAttempt: option.value as AssessmentStep3Data['lSitAttempt']
+                    }))}
+                  >
+                    <RadioGroupItem value={option.value} id={`lsit-attempt-${option.value}`} />
+                    <Label htmlFor={`lsit-attempt-${option.value}`} className="cursor-pointer flex-1">
+                      {option.label}
+                    </Label>
+                  </div>
+                ))}
+              </RadioGroup>
+            </div>
           </div>
 
           {/* Legs Tests */}
@@ -638,6 +684,134 @@ export default function FigOnboardingAssessment({
                   >
                     <RadioGroupItem value={option.value} id={`pistol-${option.value}`} />
                     <Label htmlFor={`pistol-${option.value}`} className="cursor-pointer flex-1">
+                      {option.label}
+                    </Label>
+                  </div>
+                ))}
+              </RadioGroup>
+            </div>
+          </div>
+
+          {/* 🆕 NEW: Mobility Tests */}
+          <div className="space-y-3 pt-4 border-t border-green-200">
+            <h3 className="font-semibold text-slate-800 flex items-center gap-2">
+              <span className="text-lg">🧘</span> MOBILITY Test
+            </h3>
+
+            <div className="space-y-2">
+              <Label>🆕 How is your SHOULDER MOBILITY? *</Label>
+              <p className="text-xs text-slate-500">Try: Can you touch both hands behind your back?</p>
+              <RadioGroup
+                value={step3Data.shoulderMobility}
+                onValueChange={(val) => setStep3Data(prev => ({
+                  ...prev,
+                  shoulderMobility: val as AssessmentStep3Data['shoulderMobility']
+                }))}
+              >
+                {[
+                  { label: 'Poor - Cannot touch hands behind back', value: 'poor' },
+                  { label: 'Average - Can barely touch with strain', value: 'average' },
+                  { label: 'Good - Can touch comfortably', value: 'good' },
+                  { label: 'Excellent - Very flexible shoulders', value: 'excellent' },
+                ].map((option) => (
+                  <div
+                    key={option.value}
+                    className="flex items-center space-x-2 p-2 hover:bg-slate-50 rounded cursor-pointer"
+                    onClick={() => setStep3Data(prev => ({
+                      ...prev,
+                      shoulderMobility: option.value as AssessmentStep3Data['shoulderMobility']
+                    }))}
+                  >
+                    <RadioGroupItem value={option.value} id={`shoulder-${option.value}`} />
+                    <Label htmlFor={`shoulder-${option.value}`} className="cursor-pointer flex-1">
+                      {option.label}
+                    </Label>
+                  </div>
+                ))}
+              </RadioGroup>
+            </div>
+
+            <div className="space-y-2">
+              <Label>🆕 Can you do a BRIDGE (back arch)? *</Label>
+              <RadioGroup
+                value={step3Data.bridge}
+                onValueChange={(val) => setStep3Data(prev => ({
+                  ...prev,
+                  bridge: val as AssessmentStep3Data['bridge']
+                }))}
+              >
+                {[
+                  { label: 'No - Cannot do it', value: 'no' },
+                  { label: 'Partial - Can lift hips but not head', value: 'partial' },
+                  { label: 'Full - Can do complete bridge', value: 'full' },
+                ].map((option) => (
+                  <div
+                    key={option.value}
+                    className="flex items-center space-x-2 p-2 hover:bg-slate-50 rounded cursor-pointer"
+                    onClick={() => setStep3Data(prev => ({
+                      ...prev,
+                      bridge: option.value as AssessmentStep3Data['bridge']
+                    }))}
+                  >
+                    <RadioGroupItem value={option.value} id={`bridge-${option.value}`} />
+                    <Label htmlFor={`bridge-${option.value}`} className="cursor-pointer flex-1">
+                      {option.label}
+                    </Label>
+                  </div>
+                ))}
+              </RadioGroup>
+            </div>
+          </div>
+
+          {/* 🆕 NEW: Endurance Tests */}
+          <div className="space-y-3 pt-4 border-t border-orange-200">
+            <h3 className="font-semibold text-slate-800 flex items-center gap-2">
+              <span className="text-lg">⚡</span> ENDURANCE Test
+            </h3>
+
+            <div className="space-y-2">
+              <Label>🆕 How many PUSH-UPS can you do in 60 SECONDS (no rest)? *</Label>
+              <Input
+                type="number"
+                min="0"
+                max="100"
+                placeholder="Enter number (e.g., 25)"
+                value={step3Data.maxPushUpsIn60s ?? ''}
+                onChange={(e) => setStep3Data(prev => ({
+                  ...prev,
+                  maxPushUpsIn60s: e.target.value === '' ? undefined : parseInt(e.target.value)
+                }))}
+                className="max-w-xs"
+              />
+              <p className="text-xs text-slate-500">This tests your muscular endurance, not just max strength</p>
+            </div>
+
+            <div className="space-y-2">
+              <Label>🆕 Can you complete this CIRCUIT without stopping? *</Label>
+              <p className="text-xs text-slate-500 mb-2">Circuit: 10 push-ups + 5 pull-ups + 15 squats (repeat 3 times)</p>
+              <RadioGroup
+                value={step3Data.circuitEndurance}
+                onValueChange={(val) => setStep3Data(prev => ({
+                  ...prev,
+                  circuitEndurance: val as AssessmentStep3Data['circuitEndurance']
+                }))}
+              >
+                {[
+                  { label: 'Cannot complete the circuit', value: 'cannot_complete' },
+                  { label: 'Can complete with long breaks (2+ min)', value: 'long_breaks' },
+                  { label: 'Can complete with short breaks (30s-1min)', value: 'short_breaks' },
+                  { label: 'Can complete without breaks', value: 'no_breaks' },
+                ].map((option) => (
+                  <div
+                    key={option.value}
+                    className="flex items-center space-x-2 p-2 hover:bg-slate-50 rounded cursor-pointer"
+                    onClick={() => setStep3Data(prev => ({
+                      ...prev,
+                      circuitEndurance: option.value as AssessmentStep3Data['circuitEndurance']
+                    }))}
+                  >
+                    <RadioGroupItem value={option.value} id={`circuit-${option.value}`} />
+                    <Label htmlFor={`circuit-${option.value}`} className="cursor-pointer flex-1">
                       {option.label}
                     </Label>
                   </div>
@@ -940,6 +1114,240 @@ export default function FigOnboardingAssessment({
                 >
                   <RadioGroupItem value={option.value} id={`hspu-${option.value}`} />
                   <Label htmlFor={`hspu-${option.value}`} className="cursor-pointer flex-1">
+                    {option.label}
+                  </Label>
+                </div>
+              ))}
+            </RadioGroup>
+          </div>
+
+          {/* 🆕 NEW: Crow Pose */}
+          <div className="space-y-2 pt-4 border-t">
+            <Label>🆕 Can you hold a CROW POSE? *</Label>
+            <RadioGroup
+              value={step4Data.crowPose}
+              onValueChange={(val) => setStep4Data(prev => ({
+                ...prev,
+                crowPose: val as AssessmentStep4Data['crowPose']
+              }))}
+            >
+              {[
+                { label: 'No', value: 'no' },
+                { label: 'Yes, less than 10s', value: 'less_than_10s' },
+                { label: 'Yes, 10-30s', value: '10-30s' },
+                { label: 'Yes, 30s+', value: '30s+' },
+              ].map((option) => (
+                <div
+                  key={option.value}
+                  className="flex items-center space-x-2 p-2 hover:bg-slate-50 rounded cursor-pointer"
+                  onClick={() => setStep4Data(prev => ({
+                    ...prev,
+                    crowPose: option.value as AssessmentStep4Data['crowPose']
+                  }))}
+                >
+                  <RadioGroupItem value={option.value} id={`crow-${option.value}`} />
+                  <Label htmlFor={`crow-${option.value}`} className="cursor-pointer flex-1">
+                    {option.label}
+                  </Label>
+                </div>
+              ))}
+            </RadioGroup>
+          </div>
+
+          {/* 🆕 NEW: Back Lever */}
+          <div className="space-y-2 pt-4 border-t">
+            <Label>🆕 Can you hold a BACK LEVER? *</Label>
+            <RadioGroup
+              value={step4Data.backLever}
+              onValueChange={(val) => setStep4Data(prev => ({
+                ...prev,
+                backLever: val as AssessmentStep4Data['backLever']
+              }))}
+            >
+              {[
+                { label: "No / Don't know what it is", value: 'no' },
+                { label: 'Tuck Back Lever', value: 'tuck' },
+                { label: 'Advanced Tuck', value: 'adv_tuck' },
+                { label: 'Straddle Back Lever', value: 'straddle' },
+                { label: 'Full Back Lever', value: 'full' },
+              ].map((option) => (
+                <div
+                  key={option.value}
+                  className="flex items-center space-x-2 p-2 hover:bg-slate-50 rounded cursor-pointer"
+                  onClick={() => setStep4Data(prev => ({
+                    ...prev,
+                    backLever: option.value as AssessmentStep4Data['backLever']
+                  }))}
+                >
+                  <RadioGroupItem value={option.value} id={`bl-${option.value}`} />
+                  <Label htmlFor={`bl-${option.value}`} className="cursor-pointer flex-1">
+                    {option.label}
+                  </Label>
+                </div>
+              ))}
+            </RadioGroup>
+          </div>
+
+          {/* 🆕 NEW: Ring Support */}
+          <div className="space-y-2 pt-4 border-t">
+            <Label>🆕 Can you hold a stable RING SUPPORT? *</Label>
+            <p className="text-xs text-slate-500">Ring support is the top position on rings with arms straight</p>
+            <RadioGroup
+              value={step4Data.ringSupport}
+              onValueChange={(val) => setStep4Data(prev => ({
+                ...prev,
+                ringSupport: val as AssessmentStep4Data['ringSupport']
+              }))}
+            >
+              {[
+                { label: 'No / Cannot access rings', value: 'no' },
+                { label: 'Yes, but shaky/unstable', value: 'shaky' },
+                { label: 'Yes, stable for 30s', value: 'stable_30s' },
+                { label: 'Yes, stable 60s+ with RTO (rings turned out)', value: 'stable_60s+_RTO' },
+              ].map((option) => (
+                <div
+                  key={option.value}
+                  className="flex items-center space-x-2 p-2 hover:bg-slate-50 rounded cursor-pointer"
+                  onClick={() => setStep4Data(prev => ({
+                    ...prev,
+                    ringSupport: option.value as AssessmentStep4Data['ringSupport']
+                  }))}
+                >
+                  <RadioGroupItem value={option.value} id={`ring-${option.value}`} />
+                  <Label htmlFor={`ring-${option.value}`} className="cursor-pointer flex-1">
+                    {option.label}
+                  </Label>
+                </div>
+              ))}
+            </RadioGroup>
+          </div>
+
+          {/* 🆕 NEW: Weighted Pull-ups */}
+          <div className="space-y-2 pt-4 border-t">
+            <Label>🆕 Can you do WEIGHTED PULL-UPS? *</Label>
+            <RadioGroup
+              value={step4Data.weightedPullUps}
+              onValueChange={(val) => setStep4Data(prev => ({
+                ...prev,
+                weightedPullUps: val as AssessmentStep4Data['weightedPullUps']
+              }))}
+            >
+              {[
+                { label: 'No / Never tried', value: 'no' },
+                { label: 'Yes, +10-20 lbs (4-9 kg)', value: '+10-20lbs' },
+                { label: 'Yes, +25-40 lbs (11-18 kg)', value: '+25-40lbs' },
+                { label: 'Yes, +45 lbs+ (20+ kg)', value: '+45lbs+' },
+              ].map((option) => (
+                <div
+                  key={option.value}
+                  className="flex items-center space-x-2 p-2 hover:bg-slate-50 rounded cursor-pointer"
+                  onClick={() => setStep4Data(prev => ({
+                    ...prev,
+                    weightedPullUps: option.value as AssessmentStep4Data['weightedPullUps']
+                  }))}
+                >
+                  <RadioGroupItem value={option.value} id={`weighted-pullup-${option.value}`} />
+                  <Label htmlFor={`weighted-pullup-${option.value}`} className="cursor-pointer flex-1">
+                    {option.label}
+                  </Label>
+                </div>
+              ))}
+            </RadioGroup>
+          </div>
+
+          {/* 🆕 NEW: Weighted Dips */}
+          <div className="space-y-2 pt-4 border-t">
+            <Label>🆕 Can you do WEIGHTED DIPS? *</Label>
+            <RadioGroup
+              value={step4Data.weightedDips}
+              onValueChange={(val) => setStep4Data(prev => ({
+                ...prev,
+                weightedDips: val as AssessmentStep4Data['weightedDips']
+              }))}
+            >
+              {[
+                { label: 'No / Never tried', value: 'no' },
+                { label: 'Yes, +10-20 lbs (4-9 kg)', value: '+10-20lbs' },
+                { label: 'Yes, +25-40 lbs (11-18 kg)', value: '+25-40lbs' },
+                { label: 'Yes, +45 lbs+ (20+ kg)', value: '+45lbs+' },
+              ].map((option) => (
+                <div
+                  key={option.value}
+                  className="flex items-center space-x-2 p-2 hover:bg-slate-50 rounded cursor-pointer"
+                  onClick={() => setStep4Data(prev => ({
+                    ...prev,
+                    weightedDips: option.value as AssessmentStep4Data['weightedDips']
+                  }))}
+                >
+                  <RadioGroupItem value={option.value} id={`weighted-dip-${option.value}`} />
+                  <Label htmlFor={`weighted-dip-${option.value}`} className="cursor-pointer flex-1">
+                    {option.label}
+                  </Label>
+                </div>
+              ))}
+            </RadioGroup>
+          </div>
+
+          {/* 🆕 NEW: Human Flag */}
+          <div className="space-y-2 pt-4 border-t">
+            <Label>🆕 Can you hold a HUMAN FLAG? *</Label>
+            <RadioGroup
+              value={step4Data.humanFlag}
+              onValueChange={(val) => setStep4Data(prev => ({
+                ...prev,
+                humanFlag: val as AssessmentStep4Data['humanFlag']
+              }))}
+            >
+              {[
+                { label: "No / Don't know what it is", value: 'no' },
+                { label: 'Tuck Flag', value: 'tuck' },
+                { label: 'Advanced Tuck', value: 'adv_tuck' },
+                { label: 'Straddle Flag', value: 'straddle' },
+                { label: 'Full Human Flag', value: 'full' },
+              ].map((option) => (
+                <div
+                  key={option.value}
+                  className="flex items-center space-x-2 p-2 hover:bg-slate-50 rounded cursor-pointer"
+                  onClick={() => setStep4Data(prev => ({
+                    ...prev,
+                    humanFlag: option.value as AssessmentStep4Data['humanFlag']
+                  }))}
+                >
+                  <RadioGroupItem value={option.value} id={`flag-${option.value}`} />
+                  <Label htmlFor={`flag-${option.value}`} className="cursor-pointer flex-1">
+                    {option.label}
+                  </Label>
+                </div>
+              ))}
+            </RadioGroup>
+          </div>
+
+          {/* 🆕 NEW: Ab Wheel */}
+          <div className="space-y-2 pt-4 border-t">
+            <Label>🆕 Can you do AB WHEEL ROLLOUTS? *</Label>
+            <RadioGroup
+              value={step4Data.abWheel}
+              onValueChange={(val) => setStep4Data(prev => ({
+                ...prev,
+                abWheel: val as AssessmentStep4Data['abWheel']
+              }))}
+            >
+              {[
+                { label: 'No / Never tried', value: 'no' },
+                { label: 'Yes, from knees (partial range)', value: 'knees_partial' },
+                { label: 'Yes, from knees (full range)', value: 'knees_full' },
+                { label: 'Yes, standing rollouts', value: 'standing' },
+              ].map((option) => (
+                <div
+                  key={option.value}
+                  className="flex items-center space-x-2 p-2 hover:bg-slate-50 rounded cursor-pointer"
+                  onClick={() => setStep4Data(prev => ({
+                    ...prev,
+                    abWheel: option.value as AssessmentStep4Data['abWheel']
+                  }))}
+                >
+                  <RadioGroupItem value={option.value} id={`abwheel-${option.value}`} />
+                  <Label htmlFor={`abwheel-${option.value}`} className="cursor-pointer flex-1">
                     {option.label}
                   </Label>
                 </div>

@@ -3,60 +3,28 @@ import prisma from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
 import authOptions from '@/lib/auth';
 import { z } from 'zod';
+import {
+  getRewardsFromName,
+  type ExerciseReward,
+  inferCategoryFromName,
+  inferDifficultyFromName,
+} from '@/lib/exercise-rewards';
+import {
+  updateUnifiedAxisXP,
+  migrateToUnifiedHexagon,
+  getUnifiedAxisXPField,
+  getUnifiedAxisLevelField,
+  getUnifiedAxisVisualField,
+  type UnifiedHexagonAxis,
+} from '@/lib/unified-hexagon-system';
 
 const LogSchema = z.object({
   name: z.string().min(2),
   reps: z.number().int().min(0).optional(),
   durationSec: z.number().int().min(0).optional(),
+  category: z.string().optional(), // Optional category override
+  difficulty: z.string().optional(), // Optional difficulty override
 });
-
-function clamp01to10(v: number) {
-  return Math.max(0, Math.min(10, v));
-}
-
-function computeIncrements({ name, reps = 0, durationSec = 0 }: { name: string; reps?: number; durationSec?: number }) {
-  const n = name.toLowerCase();
-  const inc = {
-    relativeStrength: 0,
-    muscularEndurance: 0,
-    balanceControl: 0,
-    jointMobility: 0,
-    bodyTension: 0,
-    skillTechnique: 0.05, // small baseline improvement per exercise
-  };
-
-  // Strength-oriented
-  if (/(push|pull|squat|dip|press|row)/.test(n)) {
-    inc.relativeStrength += Math.min(0.5, reps * 0.03) + Math.min(0.4, durationSec * 0.005);
-  }
-
-  // Endurance-oriented
-  if (/(jumping jacks|burpee|run|cardio|mountain climber|high knees)/.test(n)) {
-    inc.muscularEndurance += Math.min(0.6, (reps || durationSec / 5) * 0.02);
-  }
-
-  // Core tension / static holds
-  if (/(plank|hollow|l-sit|dragon flag|hold|bridge)/.test(n)) {
-    inc.bodyTension += Math.min(0.6, durationSec * 0.01) + Math.min(0.3, reps * 0.02);
-  }
-
-  // Balance & control (handstand, pistols, balance)
-  if (/(handstand|pistol|balance|arabesque|tuck|crow)/.test(n)) {
-    inc.balanceControl += Math.min(0.5, durationSec * 0.01) + Math.min(0.4, reps * 0.02);
-  }
-
-  // Mobility
-  if (/(mobility|stretch|flexibility|hip opener|thoracic|shoulder dislocate)/.test(n)) {
-    inc.jointMobility += Math.min(0.5, durationSec * 0.01) + Math.min(0.3, reps * 0.02);
-  }
-
-  // Technique emphasis (skills)
-  if (/(muscle up|front lever|back lever|planche|human flag)/.test(n)) {
-    inc.skillTechnique += Math.min(0.6, durationSec * 0.01) + Math.min(0.4, reps * 0.02);
-  }
-
-  return inc;
-}
 
 export async function POST(req: Request) {
   try {
@@ -71,48 +39,98 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Invalid payload', issues: parsed.error.flatten() }, { status: 400 });
     }
 
-    const inc = computeIncrements(parsed.data);
+    const { name, reps = 0, durationSec = 0, category, difficulty } = parsed.data;
 
-    // Fetch existing hexagon profile or create defaults
-    const current = await prisma.hexagonProfile.upsert({
+    console.log('[LOG_EXERCISE] Logging exercise:', { name, reps, durationSec, category, difficulty });
+
+    // Get exercise rewards using new system
+    const rewards: ExerciseReward = category && difficulty
+      ? getRewardsFromName(name, 1.0) // If both provided, use them
+      : getRewardsFromName(name, 1.0); // Otherwise infer from name
+
+    console.log('[LOG_EXERCISE] Calculated rewards:', rewards);
+
+    // Get or create hexagon profile
+    let hexProfile = await prisma.hexagonProfile.findUnique({
       where: { userId: session.user.id },
-      create: {
-        userId: session.user.id,
-        relativeStrength: 0,
-        muscularEndurance: 0,
-        balanceControl: 0,
-        jointMobility: 0,
-        bodyTension: 0,
-        skillTechnique: 0,
-      },
-      update: {},
     });
 
-    const updated = await prisma.hexagonProfile.update({
+    if (!hexProfile) {
+      hexProfile = await prisma.hexagonProfile.create({
+        data: {
+          userId: session.user.id,
+          relativeStrength: 0,
+          muscularEndurance: 0,
+          balanceControl: 0,
+          jointMobility: 0,
+          bodyTension: 0,
+          skillTechnique: 0,
+          relativeStrengthXP: 0,
+          muscularEnduranceXP: 0,
+          balanceControlXP: 0,
+          jointMobilityXP: 0,
+          bodyTensionXP: 0,
+          skillTechniqueXP: 0,
+        },
+      });
+    }
+
+    // Migrate to unified profile
+    let updatedProfile = migrateToUnifiedHexagon(hexProfile);
+
+    // Apply XP rewards to each axis
+    const hexagonUpdates: Record<string, any> = {};
+
+    for (const [axis, xp] of Object.entries(rewards.hexagonXP)) {
+      if (xp && xp > 0) {
+        updatedProfile = updateUnifiedAxisXP(updatedProfile, axis as UnifiedHexagonAxis, xp);
+
+        // Get database field names
+        const visualField = getUnifiedAxisVisualField(axis as UnifiedHexagonAxis);
+        const xpField = getUnifiedAxisXPField(axis as UnifiedHexagonAxis);
+        const levelField = getUnifiedAxisLevelField(axis as UnifiedHexagonAxis);
+
+        hexagonUpdates[visualField] = updatedProfile[axis as keyof typeof updatedProfile];
+        hexagonUpdates[xpField] = updatedProfile[`${axis}XP` as keyof typeof updatedProfile];
+        hexagonUpdates[levelField] = updatedProfile[`${axis}Level` as keyof typeof updatedProfile];
+      }
+    }
+
+    // Save hexagon updates
+    const updatedHexagon = await prisma.hexagonProfile.update({
       where: { userId: session.user.id },
-      data: {
-        relativeStrength: clamp01to10(current.relativeStrength + inc.relativeStrength),
-        muscularEndurance: clamp01to10(current.muscularEndurance + inc.muscularEndurance),
-        balanceControl: clamp01to10(current.balanceControl + inc.balanceControl),
-        jointMobility: clamp01to10(current.jointMobility + inc.jointMobility),
-        bodyTension: clamp01to10(current.bodyTension + inc.bodyTension),
-        skillTechnique: clamp01to10(current.skillTechnique + inc.skillTechnique),
-      },
+      data: hexagonUpdates,
     });
 
-    // Basic XP update: reps and time contribute
-    const xpGain = Math.round((parsed.data.reps || 0) * 2 + (parsed.data.durationSec || 0) * 0.5);
-    const user = await prisma.user.update({
+    // Update user's total XP and coins
+    const updatedUser = await prisma.user.update({
       where: { id: session.user.id },
       data: {
-        totalXP: { increment: xpGain },
-        totalStrength: { increment: Math.round((parsed.data.reps || 0) * 0.5 + (parsed.data.durationSec || 0) * 0.2) },
+        totalXP: { increment: rewards.totalXP },
+        virtualCoins: { increment: rewards.coins },
       },
     });
 
-    return NextResponse.json({ ok: true, hexagon: updated, xpGain });
+    console.log('[LOG_EXERCISE] ✅ Exercise logged successfully:', {
+      userId: session.user.id,
+      xpGained: rewards.totalXP,
+      coinsGained: rewards.coins,
+      axesUpdated: Object.keys(rewards.hexagonXP),
+    });
+
+    return NextResponse.json({
+      ok: true,
+      hexagon: updatedHexagon,
+      xpGain: rewards.totalXP,
+      coinsGain: rewards.coins,
+      rewards: rewards,
+      user: {
+        totalXP: updatedUser.totalXP,
+        virtualCoins: updatedUser.virtualCoins,
+      },
+    });
   } catch (error) {
-    console.error('log-exercise error:', error);
+    console.error('[LOG_EXERCISE] Error:', error);
     return NextResponse.json({ error: 'Failed to log exercise' }, { status: 500 });
   }
 }
