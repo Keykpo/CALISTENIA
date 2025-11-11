@@ -80,7 +80,7 @@ export default function AssessmentPage() {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-slate-600">Cargando...</p>
+          <p className="text-slate-600">Loading...</p>
         </div>
       </div>
     );
@@ -101,11 +101,11 @@ export default function AssessmentPage() {
             </div>
           </div>
           <h1 className="text-3xl font-bold text-slate-900 mb-2">
-            Evaluación de Habilidades FIG
+            FIG Skills Assessment
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Evalúa tu nivel actual en las habilidades fundamentales de calistenia
-            para crear tu perfil hexagonal y plan de entrenamiento personalizado.
+            Assess your current level in fundamental calisthenics skills
+            to create your hexagonal profile and personalized training plan.
           </p>
         </div>
 
@@ -118,8 +118,8 @@ export default function AssessmentPage() {
         {/* Footer Info */}
         <div className="mt-8 text-center text-sm text-slate-500">
           <p>
-            Esta evaluación toma aproximadamente 5 minutos. Sé honesto con tus
-            respuestas para obtener los mejores resultados.
+            This assessment takes approximately 5 minutes. Be honest with your
+            answers to get the best results.
           </p>
         </div>
       </div>
