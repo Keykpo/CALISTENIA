@@ -3,9 +3,8 @@
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Dumbbell, Target, TrendingUp, ListChecks } from 'lucide-react';
+import { Dumbbell, TrendingUp, ListChecks } from 'lucide-react';
 import ExerciseGalleryTab from './components/ExerciseGalleryTab';
-import SkillPathsTab from './components/SkillPathsTab';
 import ProgressionViewTab from './components/ProgressionViewTab';
 import CustomRoutinesTab from './components/CustomRoutinesTab';
 import { type MasteryGoal } from '@/lib/fig-level-progressions';
@@ -97,9 +96,8 @@ export default function ExercisesPage() {
     setActiveTab('progressions');
   };
 
-  const handleBackToSkillPaths = () => {
+  const handleBackToProgressions = () => {
     setSelectedSkill(null);
-    setActiveTab('skill-paths');
   };
 
   const handleStartTraining = async (skillBranch: MasteryGoal, level: string) => {
@@ -157,21 +155,16 @@ export default function ExercisesPage() {
 
       {/* Main Tabs */}
       <Tabs value={activeTab} onValueChange={setActiveTab}>
-        <TabsList className="grid w-full grid-cols-4 mb-8">
-          <TabsTrigger value="skill-paths" className="flex items-center gap-2">
-            <Target className="h-4 w-4" />
-            <span className="hidden sm:inline">Skill Paths</span>
-            <span className="sm:hidden">Skills</span>
+        <TabsList className="grid w-full grid-cols-3 mb-8">
+          <TabsTrigger value="gallery" className="flex items-center gap-2">
+            <Dumbbell className="h-4 w-4" />
+            <span className="hidden sm:inline">Exercise Gallery</span>
+            <span className="sm:hidden">Gallery</span>
           </TabsTrigger>
           <TabsTrigger value="progressions" className="flex items-center gap-2">
             <TrendingUp className="h-4 w-4" />
             <span className="hidden sm:inline">Progressions</span>
             <span className="sm:hidden">Progress</span>
-          </TabsTrigger>
-          <TabsTrigger value="gallery" className="flex items-center gap-2">
-            <Dumbbell className="h-4 w-4" />
-            <span className="hidden sm:inline">Exercise Gallery</span>
-            <span className="sm:hidden">Gallery</span>
           </TabsTrigger>
           <TabsTrigger value="routines" className="flex items-center gap-2">
             <ListChecks className="h-4 w-4" />
@@ -180,18 +173,11 @@ export default function ExercisesPage() {
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="skill-paths" className="mt-0">
-          <SkillPathsTab
-            userSkillProgress={userSkillProgress}
-            onSelectSkill={handleSelectSkill}
-          />
-        </TabsContent>
-
         <TabsContent value="progressions" className="mt-0">
           <ProgressionViewTab
             selectedSkill={selectedSkill}
             userCurrentLevel={currentLevel}
-            onBack={handleBackToSkillPaths}
+            onBack={handleBackToProgressions}
             onStartTraining={handleStartTraining}
           />
         </TabsContent>

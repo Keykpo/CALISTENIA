@@ -15,7 +15,19 @@ import {
   Dumbbell,
   Activity,
   Flame,
-  Zap
+  Zap,
+  RefreshCw,
+  Clock,
+  TrendingUp,
+  Star,
+  Calendar,
+  AlertTriangle,
+  Circle,
+  ChevronDown,
+  ChevronUp,
+  PlayCircle,
+  Award,
+  Sparkles
 } from 'lucide-react';
 import {
   FIG_PROGRESSIONS,
@@ -54,12 +66,28 @@ const CATEGORY_NAMES: Record<string, string> = {
   CORE: 'Core & Conditioning',
 };
 
-export default function FigLevelSkillPath({ 
-  userId, 
-  userSkillProgress, 
-  onProgressUpdate 
+const CATEGORY_GRADIENTS: Record<string, string> = {
+  BALANCE: 'from-blue-500 to-indigo-600',
+  STRENGTH: 'from-red-500 to-pink-600',
+  SKILL_STATIC: 'from-purple-500 to-purple-700',
+  CORE: 'from-orange-500 to-red-600',
+};
+
+// Estimated weeks per level (based on training age)
+const ESTIMATED_WEEKS: Record<DifficultyLevel, number> = {
+  BEGINNER: 4,
+  INTERMEDIATE: 8,
+  ADVANCED: 16,
+  ELITE: 24,
+};
+
+export default function FigLevelSkillPath({
+  userId,
+  userSkillProgress,
+  onProgressUpdate
 }: FigLevelSkillPathProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('BALANCE');
+  const [viewMode, setViewMode] = useState<'compact' | 'grid'>('grid');
 
   // Group progressions by category
   const progressionsByCategory = FIG_PROGRESSIONS.reduce((acc, prog) => {
@@ -73,11 +101,31 @@ export default function FigLevelSkillPath({
   return (
     <div className="w-full space-y-6">
       {/* Header */}
-      <div>
-        <h2 className="text-3xl font-bold tracking-tight">FIG Level Skill Path</h2>
-        <p className="text-slate-600 mt-1">
-          Progress through official calisthenics progressions based on FIG standards
-        </p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-3xl font-bold tracking-tight">FIG Level Skill Path</h2>
+          <p className="text-slate-600 mt-1">
+            Progress through official calisthenics progressions based on FIG standards
+          </p>
+        </div>
+
+        {/* View Mode Toggle */}
+        <div className="flex gap-2">
+          <Button
+            variant={viewMode === 'grid' ? 'default' : 'outline'}
+            size="sm"
+            onClick={() => setViewMode('grid')}
+          >
+            Grid View
+          </Button>
+          <Button
+            variant={viewMode === 'compact' ? 'default' : 'outline'}
+            size="sm"
+            onClick={() => setViewMode('compact')}
+          >
+            Compact
+          </Button>
+        </div>
       </div>
 
       {/* Category Tabs */}
@@ -96,7 +144,7 @@ export default function FigLevelSkillPath({
 
         {categories.map((category) => (
           <TabsContent key={category} value={category} className="mt-6">
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <div className={viewMode === 'grid' ? 'grid gap-6 md:grid-cols-2 lg:grid-cols-3' : 'space-y-4'}>
               {progressionsByCategory[category].map((progression) => {
                 const branchLevel = userSkillProgress[progression.goal] || 'BEGINNER';
                 const hasCompletedAssessment = progression.goal in userSkillProgress;
@@ -108,6 +156,7 @@ export default function FigLevelSkillPath({
                     userId={userId}
                     hasCompletedAssessment={hasCompletedAssessment}
                     onProgressUpdate={onProgressUpdate}
+                    viewMode={viewMode}
                   />
                 );
               })}
@@ -125,9 +174,17 @@ interface ProgressionCardProps {
   userId: string;
   hasCompletedAssessment: boolean;
   onProgressUpdate?: () => void;
+  viewMode: 'compact' | 'grid';
 }
 
-function ProgressionCard({ progression, userLevel, userId, hasCompletedAssessment, onProgressUpdate }: ProgressionCardProps) {
+function ProgressionCard({
+  progression,
+  userLevel,
+  userId,
+  hasCompletedAssessment,
+  onProgressUpdate,
+  viewMode
+}: ProgressionCardProps) {
   const [expanded, setExpanded] = useState(false);
   const [showAssessment, setShowAssessment] = useState(false);
   const [showDurationSelect, setShowDurationSelect] = useState(false);
@@ -135,6 +192,7 @@ function ProgressionCard({ progression, userLevel, userId, hasCompletedAssessmen
   const [currentSession, setCurrentSession] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [hasAssessment, setHasAssessment] = useState(false);
+  const [goalLevel, setGoalLevel] = useState<DifficultyLevel | null>(null);
 
   // Check if user has done assessment for this branch
   React.useEffect(() => {
@@ -170,12 +228,12 @@ function ProgressionCard({ progression, userLevel, userId, hasCompletedAssessmen
         toast.success(`Assessment complete! You're at ${level} level in ${progression.name}.`);
         setShowAssessment(false);
         setHasAssessment(true);
-        
+
         // Refresh the parent component to update UI
         if (onProgressUpdate) {
           onProgressUpdate();
         }
-        
+
         // Show duration selection
         setShowDurationSelect(true);
 
@@ -259,82 +317,203 @@ function ProgressionCard({ progression, userLevel, userId, hasCompletedAssessmen
   const handleSessionComplete = () => {
     setShowTrainingSession(false);
     setCurrentSession(null);
-    
+
     // Refresh progress
     if (onProgressUpdate) {
       onProgressUpdate();
     }
-    
+
     toast.success('🎉 Great job! Keep up the good work!');
+  };
+
+  const handleSetGoal = (level: DifficultyLevel) => {
+    setGoalLevel(level);
+    toast.success(`Goal set: Unlock ${level} level in ${progression.name}!`);
   };
 
   // Find user's current step
   const userStepIndex = progression.steps.findIndex(step => step.level === userLevel);
   const currentStep = userStepIndex >= 0 ? progression.steps[userStepIndex] : null;
+  const nextStep = userStepIndex < progression.steps.length - 1 ? progression.steps[userStepIndex + 1] : null;
   const progressPercentage = currentStep
     ? ((userStepIndex + 1) / progression.steps.length) * 100
     : 0;
 
-  // Determine button state
-  const getTrainNowButton = () => {
-    if (!hasAssessment) {
-      return (
-        <Button
-          onClick={handleTrainNowClick}
-          className="w-full bg-blue-600 hover:bg-blue-700"
-          disabled={isLoading}
-        >
-          <Target className="w-4 h-4 mr-2" />
-          {isLoading ? 'Loading...' : 'Start Assessment'}
-        </Button>
-      );
-    }
+  // Calculate estimated weeks to next level
+  const weeksToNext = nextStep ? ESTIMATED_WEEKS[nextStep.level] : 0;
 
-    return (
-      <div className="space-y-2">
-        <Button
-          onClick={handleTrainNowClick}
-          className="w-full bg-green-600 hover:bg-green-700"
-          disabled={isLoading}
-        >
-          <Zap className="w-4 h-4 mr-2" />
-          {isLoading ? 'Loading...' : 'Train Now'}
-        </Button>
-        <div className="flex items-center justify-center gap-2 text-xs text-slate-600">
-          <Badge className={`${DIFFICULTY_COLORS[userLevel]} text-xs py-0`}>
-            {userLevel}
-          </Badge>
-          <span>in this skill</span>
-        </div>
-      </div>
-    );
+  // Mock stats (these would come from API in real implementation)
+  const stats = {
+    timeInvested: 12,
+    sessionsCompleted: 8,
+    streak: 3,
   };
 
+  // Get step status
+  const getStepStatus = (stepIndex: number): 'completed' | 'current' | 'next' | 'locked' => {
+    if (stepIndex < userStepIndex) return 'completed';
+    if (stepIndex === userStepIndex) return 'current';
+    if (stepIndex === userStepIndex + 1) return 'next';
+    return 'locked';
+  };
+
+  // Get prerequisites for next level
+  const getPrerequisites = () => {
+    if (!nextStep) return [];
+
+    const prereqs = [
+      {
+        id: 1,
+        description: `Complete ${currentStep?.level} level exercises consistently`,
+        completed: stats.sessionsCompleted >= 5,
+      },
+      {
+        id: 2,
+        description: `Hold for ${nextStep.level === 'INTERMEDIATE' ? '15s' : nextStep.level === 'ADVANCED' ? '10s' : '5s'}`,
+        completed: false,
+      },
+      {
+        id: 3,
+        description: `Demonstrate proper form and control`,
+        completed: false,
+      },
+    ];
+
+    return prereqs;
+  };
+
+  const Icon = CATEGORY_ICONS[progression.category] || Target;
+
+  // Compact mode
+  if (viewMode === 'compact' && !expanded) {
+    return (
+      <>
+        <Card className="hover:shadow-lg transition-all cursor-pointer" onClick={() => setExpanded(true)}>
+          <CardContent className="p-4">
+            <div className="flex items-center gap-4">
+              {/* Icon */}
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-br ${CATEGORY_GRADIENTS[progression.category]} flex-shrink-0`}>
+                <Icon className="w-6 h-6 text-white" />
+              </div>
+
+              {/* Info */}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-1">
+                  <h3 className="font-semibold text-slate-900 truncate">{progression.name}</h3>
+                  <Badge className={`${DIFFICULTY_COLORS[userLevel]} text-xs`}>
+                    {userLevel}
+                  </Badge>
+                </div>
+                <Progress value={progressPercentage} className="h-1.5" />
+              </div>
+
+              {/* Actions */}
+              <div className="flex items-center gap-2">
+                <Button size="sm" onClick={(e) => { e.stopPropagation(); handleTrainNowClick(); }}>
+                  <Zap className="w-4 h-4" />
+                </Button>
+                <ChevronRight className="w-5 h-5 text-slate-400" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Dialogs */}
+        <AssessmentDialog
+          open={showAssessment}
+          onOpenChange={setShowAssessment}
+          skillBranch={progression.goal}
+          skillName={progression.name}
+          onComplete={handleAssessmentComplete}
+        />
+
+        <DurationSelectionDialog
+          open={showDurationSelect}
+          onOpenChange={setShowDurationSelect}
+          skillName={progression.name}
+          userLevel={userLevel}
+          onStartTraining={handleStartTraining}
+        />
+
+        {currentSession && (
+          <TrainingSessionView
+            open={showTrainingSession}
+            onOpenChange={setShowTrainingSession}
+            sessionId={currentSession.id}
+            sessionData={currentSession}
+            xpAwarded={currentSession.xpAwarded || 0}
+            onComplete={handleSessionComplete}
+          />
+        )}
+      </>
+    );
+  }
+
+  // Grid/Expanded mode
   return (
     <>
-      <Card className="hover:shadow-lg transition-shadow">
+      <Card className="hover:shadow-xl transition-all">
         <CardHeader className="pb-4">
           <div className="flex items-start justify-between gap-2">
-            <div className="flex-1">
-              <CardTitle className="text-lg">{progression.name}</CardTitle>
-              <CardDescription className="text-xs mt-1">
-                {CATEGORY_NAMES[progression.category]}
-              </CardDescription>
+            <div className="flex items-center gap-3 flex-1">
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-br ${CATEGORY_GRADIENTS[progression.category]}`}>
+                <Icon className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <CardTitle className="text-lg">{progression.name}</CardTitle>
+                <CardDescription className="text-xs mt-1">
+                  {CATEGORY_NAMES[progression.category]}
+                </CardDescription>
+              </div>
             </div>
             <Trophy className="w-5 h-5 text-amber-500" />
           </div>
         </CardHeader>
 
         <CardContent className="space-y-4">
+          {/* Progress Stats - NEW */}
+          <div className="grid grid-cols-3 gap-2">
+            <div className="text-center p-3 bg-blue-50 rounded-lg border border-blue-200">
+              <Clock className="w-4 h-4 text-blue-600 mx-auto mb-1" />
+              <p className="text-lg font-bold text-slate-900">{stats.timeInvested}h</p>
+              <p className="text-xs text-slate-600">Time</p>
+            </div>
+            <div className="text-center p-3 bg-purple-50 rounded-lg border border-purple-200">
+              <Dumbbell className="w-4 h-4 text-purple-600 mx-auto mb-1" />
+              <p className="text-lg font-bold text-slate-900">{stats.sessionsCompleted}</p>
+              <p className="text-xs text-slate-600">Sessions</p>
+            </div>
+            <div className="text-center p-3 bg-green-50 rounded-lg border border-green-200">
+              <TrendingUp className="w-4 h-4 text-green-600 mx-auto mb-1" />
+              <p className="text-lg font-bold text-slate-900">~{weeksToNext}w</p>
+              <p className="text-xs text-slate-600">To Next</p>
+            </div>
+          </div>
+
+          {/* Streak - NEW Gamification */}
+          {stats.streak > 0 && (
+            <div className="flex items-center gap-2 p-3 bg-gradient-to-r from-orange-50 to-red-50 rounded-lg border border-orange-200">
+              <Flame className="w-5 h-5 text-orange-600" />
+              <div>
+                <p className="text-sm font-semibold text-orange-900">
+                  {stats.streak} Day Streak! 🔥
+                </p>
+                <p className="text-xs text-orange-700">
+                  Keep training to maintain your momentum
+                </p>
+              </div>
+            </div>
+          )}
+
           {/* Current Progress */}
           <div>
             <div className="flex justify-between text-sm mb-2">
-              <span className="text-slate-600">Progress</span>
+              <span className="text-slate-600">Overall Progress</span>
               <span className="font-semibold">
                 {userStepIndex + 1} / {progression.steps.length} levels
               </span>
             </div>
-            <Progress value={progressPercentage} className="h-2" />
+            <Progress value={progressPercentage} className="h-2.5" />
           </div>
 
           {/* Current Step */}
@@ -351,60 +530,157 @@ function ProgressionCard({ progression, userLevel, userId, hasCompletedAssessmen
             </div>
           )}
 
-          {/* All Steps */}
+          {/* Next Milestone - NEW */}
+          {nextStep && (
+            <div className="p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg border-2 border-purple-200">
+              <div className="flex items-center justify-between mb-2">
+                <h4 className="font-semibold text-purple-900 flex items-center gap-2">
+                  <Target className="w-4 h-4" />
+                  Next Milestone
+                </h4>
+                <Badge className="bg-purple-600 text-white">
+                  ~{weeksToNext} weeks
+                </Badge>
+              </div>
+
+              <Badge className={`${DIFFICULTY_COLORS[nextStep.level]} text-xs mb-2`}>
+                {nextStep.level}
+              </Badge>
+              <p className="text-sm text-purple-700 mb-3">
+                {nextStep.description}
+              </p>
+
+              <div className="flex gap-2">
+                <Button
+                  onClick={() => handleSetGoal(nextStep.level)}
+                  className="flex-1 bg-purple-600 hover:bg-purple-700"
+                  size="sm"
+                >
+                  <Star className="w-3 h-3 mr-1" />
+                  Set as Goal
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => setExpanded(!expanded)}
+                  size="sm"
+                  className="flex-1"
+                >
+                  View Roadmap
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {/* Prerequisites - NEW */}
+          {nextStep && expanded && (
+            <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg">
+              <div className="flex items-start gap-3">
+                <AlertTriangle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                <div className="flex-1">
+                  <h4 className="font-semibold text-amber-900 mb-2">
+                    Prerequisites for {nextStep.level}
+                  </h4>
+                  <ul className="space-y-1.5 text-sm text-amber-800">
+                    {getPrerequisites().map(prereq => (
+                      <li key={prereq.id} className="flex items-center gap-2">
+                        {prereq.completed ? (
+                          <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
+                        ) : (
+                          <Circle className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                        )}
+                        <span className={prereq.completed ? 'line-through text-amber-600' : ''}>
+                          {prereq.description}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Timeline Roadmap - NEW */}
           <Button
             variant="ghost"
             size="sm"
             onClick={() => setExpanded(!expanded)}
-            className="w-full justify-between"
+            className="w-full justify-between hover:bg-slate-100"
           >
-            <span className="text-sm">
-              {expanded ? 'Hide' : 'Show'} Full Progression
+            <span className="text-sm font-medium">
+              {expanded ? 'Hide' : 'Show'} Full Progression Path
             </span>
-            <ChevronRight className={`w-4 h-4 transition-transform ${expanded ? 'rotate-90' : ''}`} />
+            {expanded ? (
+              <ChevronUp className="w-4 h-4" />
+            ) : (
+              <ChevronDown className="w-4 h-4" />
+            )}
           </Button>
 
           {expanded && (
-            <div className="space-y-2 border-t pt-4">
+            <div className="relative pl-8 space-y-4 pt-2">
+              {/* Vertical timeline line */}
+              <div className="absolute left-3 top-6 bottom-6 w-0.5 bg-gradient-to-b from-green-400 via-blue-400 via-purple-400 to-red-400 opacity-30" />
+
               {progression.steps.map((step, index) => {
-                const isCurrentLevel = step.level === userLevel;
-                const isCompleted = index < userStepIndex;
-                const isLocked = index > userStepIndex;
+                const status = getStepStatus(index);
 
                 return (
-                  <div
-                    key={step.level}
-                    className={`p-3 rounded-lg border ${
-                      isCurrentLevel
-                        ? 'bg-blue-50 border-blue-300'
-                        : isCompleted
-                        ? 'bg-green-50 border-green-200'
-                        : 'bg-slate-50 border-slate-200'
-                    }`}
-                  >
-                    <div className="flex items-start gap-2">
-                      {isCompleted ? (
-                        <CheckCircle2 className="w-4 h-4 text-green-600 mt-0.5" />
-                      ) : isLocked ? (
-                        <Lock className="w-4 h-4 text-slate-400 mt-0.5" />
-                      ) : (
-                        <Target className="w-4 h-4 text-blue-600 mt-0.5" />
-                      )}
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <Badge
-                            variant="outline"
-                            className={`text-xs ${DIFFICULTY_COLORS[step.level]}`}
-                          >
-                            {step.level}
-                          </Badge>
-                          {isCurrentLevel && (
-                            <Badge variant="secondary" className="text-xs">
-                              Current
+                  <div key={step.level} className="relative">
+                    {/* Dot indicator */}
+                    <div className={`absolute -left-8 w-6 h-6 rounded-full border-4 flex items-center justify-center
+                      ${status === 'completed' ? 'bg-green-500 border-green-200' : ''}
+                      ${status === 'current' ? 'bg-blue-500 border-blue-200 animate-pulse' : ''}
+                      ${status === 'next' ? 'bg-purple-300 border-purple-200' : ''}
+                      ${status === 'locked' ? 'bg-gray-300 border-gray-200' : ''}
+                    `}>
+                      {status === 'completed' && <CheckCircle2 className="w-3.5 h-3.5 text-white" />}
+                      {status === 'current' && <Target className="w-3.5 h-3.5 text-white" />}
+                      {status === 'next' && <Star className="w-3.5 h-3.5 text-purple-700" />}
+                      {status === 'locked' && <Lock className="w-3.5 h-3.5 text-gray-500" />}
+                    </div>
+
+                    {/* Step card */}
+                    <div className={`p-3 rounded-lg border transition-all
+                      ${status === 'current' ? 'bg-blue-50 border-blue-300 shadow-md' : ''}
+                      ${status === 'completed' ? 'bg-green-50 border-green-200' : ''}
+                      ${status === 'next' ? 'bg-purple-50 border-purple-200' : ''}
+                      ${status === 'locked' ? 'bg-slate-50 border-slate-200 opacity-60' : ''}
+                    `}>
+                      <div className="flex items-start gap-2">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1 flex-wrap">
+                            <Badge
+                              variant="outline"
+                              className={`text-xs ${DIFFICULTY_COLORS[step.level]}`}
+                            >
+                              {step.level}
                             </Badge>
+                            {status === 'current' && (
+                              <Badge variant="secondary" className="text-xs">
+                                You are here
+                              </Badge>
+                            )}
+                            {status === 'next' && (
+                              <Badge className="bg-purple-600 text-white text-xs">
+                                Next goal
+                              </Badge>
+                            )}
+                            {status === 'completed' && (
+                              <Badge className="bg-green-600 text-white text-xs">
+                                Completed
+                              </Badge>
+                            )}
+                          </div>
+                          <p className="text-xs text-slate-700 mb-2">{step.description}</p>
+
+                          {/* Time estimate */}
+                          {status !== 'completed' && (
+                            <div className="flex items-center gap-2 text-xs text-slate-500">
+                              <Clock className="w-3 h-3" />
+                              <span>~{ESTIMATED_WEEKS[step.level]} weeks to master</span>
+                            </div>
                           )}
                         </div>
-                        <p className="text-xs text-slate-700">{step.description}</p>
                       </div>
                     </div>
                   </div>
@@ -413,9 +689,52 @@ function ProgressionCard({ progression, userLevel, userId, hasCompletedAssessmen
             </div>
           )}
 
-          {/* Train Now Button */}
-          <div className="mt-4 pt-4 border-t">
-            {getTrainNowButton()}
+          {/* Action Buttons - NEW Re-assessment + Train */}
+          <div className="mt-4 pt-4 border-t space-y-2">
+            {hasAssessment ? (
+              <>
+                <div className="flex gap-2">
+                  <Button
+                    onClick={handleTrainNowClick}
+                    className="flex-1 bg-green-600 hover:bg-green-700"
+                    disabled={isLoading}
+                  >
+                    <Zap className="w-4 h-4 mr-2" />
+                    {isLoading ? 'Loading...' : 'Train Now'}
+                  </Button>
+
+                  <Button
+                    variant="outline"
+                    onClick={() => setShowAssessment(true)}
+                    disabled={isLoading}
+                  >
+                    <RefreshCw className="w-4 h-4" />
+                  </Button>
+                </div>
+
+                <div className="flex items-center justify-center gap-2 text-xs text-slate-600">
+                  <Badge className={`${DIFFICULTY_COLORS[userLevel]} text-xs py-0`}>
+                    {userLevel}
+                  </Badge>
+                  <span>•</span>
+                  <span>Feel stronger? Re-assess to unlock higher levels</span>
+                </div>
+              </>
+            ) : (
+              <>
+                <Button
+                  onClick={handleTrainNowClick}
+                  className="w-full bg-blue-600 hover:bg-blue-700"
+                  disabled={isLoading}
+                >
+                  <Target className="w-4 h-4 mr-2" />
+                  {isLoading ? 'Loading...' : 'Start Assessment'}
+                </Button>
+                <p className="text-xs text-center text-slate-500">
+                  Complete a quick assessment to unlock personalized training
+                </p>
+              </>
+            )}
           </div>
         </CardContent>
       </Card>
