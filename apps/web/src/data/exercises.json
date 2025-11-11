@@ -23,7 +23,7 @@
   },
   {
     "id": "45-side-bend",
-    "name": "45\u00b0 Side Bend",
+    "name": "45° Side Bend",
     "description": "Stand with your feet shoulder-width apart and your arms extended straight down by your sides.",
     "category": "CORE",
     "difficulty": "NOVICE",
@@ -45,9 +45,9 @@
   {
     "id": "skill_back_lever_adv_tuck",
     "name": "Advanced Tuck Back Lever",
-    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one\u2011leg variations.",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
     "category": "SKILL_STATIC",
-    "difficulty": "EXPERT",
+    "difficulty": "INTERMEDIATE",
     "unit": "seconds",
     "muscleGroups": [
       "BACK",
@@ -60,18 +60,18 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Dead\u2011hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
     "gifUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "skill_front_lever_adv_tuck",
     "name": "Advanced Tuck Front Lever",
-    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one\u2011leg variations.",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
     "category": "SKILL_STATIC",
-    "difficulty": "ADVANCED",
+    "difficulty": "INTERMEDIATE",
     "unit": "seconds",
     "muscleGroups": [
       "BACK",
@@ -84,18 +84,18 @@
     ],
     "expReward": 26,
     "coinsReward": 13,
-    "howTo": "1) Setup: Dead\u2011hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
     "gifUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "skill_planche_adv_tuck",
     "name": "Advanced Tuck Planche",
-    "description": "Advanced static hold that builds straight\u2011arm pressing strength and full\u2011body anti\u2011extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
+    "description": "Advanced static hold that builds straight‑arm pressing strength and full‑body anti‑extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
     "category": "SKILL_STATIC",
-    "difficulty": "EXPERT",
+    "difficulty": "ADVANCED",
     "unit": "seconds",
     "muscleGroups": [
       "SHOULDERS",
@@ -108,11 +108,11 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Hands shoulder\u2011width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced\u2011tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath\u2011holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
+    "howTo": "1) Setup: Hands shoulder‑width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced‑tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath‑holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
     "gifUrl": "https://static.exercisedb.dev/media/LYJodFS.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/LYJodFS.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "core_support_hold",
@@ -284,9 +284,9 @@
   {
     "id": "archer-pull-up",
     "name": "Archer Pull Up",
-    "description": "High\u2011tension pulling pattern where lats and upper back drive the motion with strict scapular control. Focus on keeping elbows tracking and the ribcage down to avoid compensations. Develops strength for unilateral and explosive progressions.",
+    "description": "High‑tension pulling pattern where lats and upper back drive the motion with strict scapular control. Focus on keeping elbows tracking and the ribcage down to avoid compensations. Develops strength for unilateral and explosive progressions.",
     "category": "STRENGTH",
-    "difficulty": "ADVANCED",
+    "difficulty": "INTERMEDIATE",
     "unit": "reps",
     "muscleGroups": [
       "Lats",
@@ -302,12 +302,12 @@
     "gifUrl": "https://static.exercisedb.dev/media/72BC5Za.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/72BC5Za.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "archer-push-up",
     "name": "Archer Push Up",
-    "description": "High\u2011tension horizontal/vertical pressing emphasizing scapular stability and full\u2011body bracing. Chest, anterior deltoids and triceps drive the movement while the core prevents sag or flaring. Bridges the gap to ring variations and straight\u2011arm strength.",
+    "description": "High‑tension horizontal/vertical pressing emphasizing scapular stability and full‑body bracing. Chest, anterior deltoids and triceps drive the movement while the core prevents sag or flaring. Bridges the gap to ring variations and straight‑arm strength.",
     "category": "STRENGTH",
     "difficulty": "ADVANCED",
     "unit": "reps",
@@ -326,7 +326,7 @@
     "gifUrl": "https://static.exercisedb.dev/media/A9qxk2F.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/A9qxk2F.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "arm-slingers-hanging-bent-knee-legs",
@@ -467,7 +467,7 @@
   {
     "id": "back-lever",
     "name": "Back Lever",
-    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one\u2011leg variations.",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
     "category": "STRENGTH",
     "difficulty": "EXPERT",
     "unit": "reps",
@@ -482,18 +482,18 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Dead\u2011hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
     "gifUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "skill_back_lever_one_leg",
     "name": "Back Lever (Una Pierna)",
-    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one\u2011leg variations.",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
     "category": "SKILL_STATIC",
-    "difficulty": "EXPERT",
+    "difficulty": "ADVANCED",
     "unit": "seconds",
     "muscleGroups": [
       "BACK",
@@ -506,11 +506,11 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Dead\u2011hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
     "gifUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "back-pec-stretch",
@@ -1235,7 +1235,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "P\u00e1rate derecho. Baja en cuclillas y coloca las manos en el suelo. Salta con los pies hacia atr\u00e1s a posici\u00f3n de plancha. Realiza una flexi\u00f3n. Salta con los pies hacia las manos. Salta verticalmente con los brazos arriba. Aterriza y repite. Ejercicio de cuerpo completo que eleva r\u00e1pidamente la frecuencia card\u00edaca.",
+    "howTo": "Párate derecho. Baja en cuclillas y coloca las manos en el suelo. Salta con los pies hacia atrás a posición de plancha. Realiza una flexión. Salta con los pies hacia las manos. Salta verticalmente con los brazos arriba. Aterriza y repite. Ejercicio de cuerpo completo que eleva rápidamente la frecuencia cardíaca.",
     "gifUrl": "https://static.exercisedb.dev/media/dK9394r.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/dK9394r.gif",
     "videoUrl": null
@@ -1603,7 +1603,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Agarra la barra con las palmas hacia ti a la anchura de los shoulders. Cuelga con brazos extendeds. Tira hacia arriba llevando el pecho hacia la barra hasta que la barbilla supere la barra. Baja con control hasta extender completamente los brazos. El agarre supino facilita el movimiento y enfatiza los b\u00edceps.",
+    "howTo": "Agarra la barra con las palmas hacia ti a la anchura de los shoulders. Cuelga con brazos extendeds. Tira hacia arriba llevando el pecho hacia la barra hasta que la barbilla supere la barra. Baja con control hasta extender completamente los brazos. El agarre supino facilita el movimiento y enfatiza los bíceps.",
     "gifUrl": "https://static.exercisedb.dev/media/G70mEAJ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/G70mEAJ.gif",
     "videoUrl": null
@@ -1847,7 +1847,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Cuelga de una barra con los brazos extendeds. A diferencia del dead hang, activa los shoulders tirando de los om\u00f3platos hacia abajo y junt\u00e1ndolos. Tu cuerpo debe subir unos cent\u00edmetros. Keep esta activaci\u00f3n. Este ejercicio fortalece la musculatura escapular y es fundamental para dominadas correctas.",
+    "howTo": "Cuelga de una barra con los brazos extendeds. A diferencia del dead hang, activa los shoulders tirando de los omóplatos hacia abajo y juntándolos. Tu cuerpo debe subir unos centímetros. Keep esta activación. Este ejercicio fortalece la musculatura escapular y es fundamental para dominadas correctas.",
     "gifUrl": "https://static.exercisedb.dev/media/PXTIwgu.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/PXTIwgu.gif",
     "videoUrl": null
@@ -1868,7 +1868,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Cuelga de una barra con los brazos completamente extendeds y los shoulders relajados. Keep las legs juntas o ligeramente flexionadas. Respira normalmente. Este ejercicio desarrolla fuerza de agarre y resistencia en shoulders. Es la base para todos los ejercicios de tracci\u00f3n.",
+    "howTo": "Cuelga de una barra con los brazos completamente extendeds y los shoulders relajados. Keep las legs juntas o ligeramente flexionadas. Respira normalmente. Este ejercicio desarrolla fuerza de agarre y resistencia en shoulders. Es la base para todos los ejercicios de tracción.",
     "gifUrl": "https://static.exercisedb.dev/media/03lzqwk.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/03lzqwk.gif",
     "videoUrl": null
@@ -2164,7 +2164,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Cu\u00e9lgate de una barra. Levanta las legs rectas hacia arriba hasta tocar la barra con los dedos de los pies. En movimientos estrictos, evita el balanceo. En versi\u00f3n kipping, usa un ligero swing para momentum. Baja con control. Requiere gran fuerza de core y flexibilidad.",
+    "howTo": "Cuélgate de una barra. Levanta las legs rectas hacia arriba hasta tocar la barra con los dedos de los pies. En movimientos estrictos, evita el balanceo. En versión kipping, usa un ligero swing para momentum. Baja con control. Requiere gran fuerza de core y flexibilidad.",
     "gifUrl": "https://static.exercisedb.dev/media/I3tsCnC.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/I3tsCnC.gif",
     "videoUrl": null
@@ -2264,7 +2264,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Desde el colgado, tira explosivamente hacia arriba llevando el pecho a la barra, no solo la barbilla. En el pico, el pecho debe tocar o estar muy cerca de la barra. Baja con control. Este ejercicio desarrolla potencia explosiva de tracci\u00f3n y prepara para muscle ups.",
+    "howTo": "Desde el colgado, tira explosivamente hacia arriba llevando el pecho a la barra, no solo la barbilla. En el pico, el pecho debe tocar o estar muy cerca de la barra. Baja con control. Este ejercicio desarrolla potencia explosiva de tracción y prepara para muscle ups.",
     "gifUrl": "https://static.exercisedb.dev/media/vrhHa6D.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/vrhHa6D.gif",
     "videoUrl": null
@@ -2286,7 +2286,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Agarra la barra con las palmas hacia adelante, separadas m\u00e1s que el ancho de shoulders (aproximadamente 1.5 veces). Tira hacia arriba hasta que la barbilla supere la barra. El agarre ancho enfatiza el trabajo de la espalda superior y los dorsales, haciendo el ejercicio m\u00e1s dif\u00edcil.",
+    "howTo": "Agarra la barra con las palmas hacia adelante, separadas más que el ancho de shoulders (aproximadamente 1.5 veces). Tira hacia arriba hasta que la barbilla supere la barra. El agarre ancho enfatiza el trabajo de la espalda superior y los dorsales, haciendo el ejercicio más difícil.",
     "gifUrl": "https://static.exercisedb.dev/media/OYFhXVD.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/OYFhXVD.gif",
     "videoUrl": null
@@ -2296,7 +2296,7 @@
     "name": "One-Arm Pull-Ups",
     "description": "The pinnacle of pulling strength: a full pull-up using only one arm.",
     "category": "STRENGTH",
-    "difficulty": "NOVICE",
+    "difficulty": "EXPERT",
     "unit": "reps",
     "muscleGroups": [
       "BACK",
@@ -2309,7 +2309,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Agarra la barra con una sola mano, la other mano libre a un lado o detr\u00e1s de la espalda. Keep el cuerpo lo m\u00e1s recto posible minimizando rotaci\u00f3n. Tira hacia arriba hasta que la barbilla supere la barra usando solo un brazo. Baja con control. Uno de los ejercicios m\u00e1s dif\u00edciles de calistenia.",
+    "howTo": "Agarra la barra con una sola mano, la other mano libre a un lado o detrás de la espalda. Keep el cuerpo lo más recto posible minimizando rotación. Tira hacia arriba hasta que la barbilla supere la barra usando solo un brazo. Baja con control. Uno de los ejercicios más difíciles de calistenia.",
     "gifUrl": "https://static.exercisedb.dev/media/HjdqmZa.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/HjdqmZa.gif",
     "videoUrl": null
@@ -2332,7 +2332,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Agarra la barra con una mano. Con la other mano, agarra la mu\u00f1eca o el antebrazo del brazo que est\u00e1 en la barra. Tira hacia arriba usando principalmente el brazo en la barra, mientras el otro asiste. Progresivamente reduce la asistencia agarrando m\u00e1s abajo.",
+    "howTo": "Agarra la barra con una mano. Con la other mano, agarra la muñeca o el antebrazo del brazo que está en la barra. Tira hacia arriba usando principalmente el brazo en la barra, mientras el otro asiste. Progresivamente reduce la asistencia agarrando más abajo.",
     "gifUrl": "https://static.exercisedb.dev/media/r1XNRYB.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/r1XNRYB.gif",
     "videoUrl": null
@@ -2360,7 +2360,7 @@
     "name": "Archer Pull-Ups",
     "description": "Dominada unilateral donde un brazo tira mientras el otro se mantiene recto como asistencia.",
     "category": "STRENGTH",
-    "difficulty": "NOVICE",
+    "difficulty": "INTERMEDIATE",
     "unit": "reps",
     "muscleGroups": [
       "BACK",
@@ -2373,7 +2373,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Agarra la barra con las manos muy separadas. Tira hacia arriba llevando el cuerpo hacia un lado, manteniendo ese brazo flexionado mientras el otro se extiende. Alterna los lados. Esta variaci\u00f3n desarrolla fuerza unilateral necesaria para dominadas a una mano.",
+    "howTo": "Agarra la barra con las manos muy separadas. Tira hacia arriba llevando el cuerpo hacia un lado, manteniendo ese brazo flexionado mientras el otro se extiende. Alterna los lados. Esta variación desarrolla fuerza unilateral necesaria para dominadas a una mano.",
     "gifUrl": "https://static.exercisedb.dev/media/72BC5Za.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/72BC5Za.gif",
     "videoUrl": null
@@ -2396,7 +2396,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca una banda de resistencia en la barra. Agarra la barra y coloca las knees o pies en la banda. La banda te asistir\u00e1 reduciendo tu peso corporal. Tira hacia arriba hasta que la barbilla supere la barra. Baja con control. Usa bandas progresivamente m\u00e1s ligeras.",
+    "howTo": "Coloca una banda de resistencia en la barra. Agarra la barra y coloca las knees o pies en la banda. La banda te asistirá reduciendo tu peso corporal. Tira hacia arriba hasta que la barbilla supere la barra. Baja con control. Usa bandas progresivamente más ligeras.",
     "gifUrl": "https://static.exercisedb.dev/media/r1XNRYB.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/r1XNRYB.gif",
     "videoUrl": null
@@ -2424,7 +2424,7 @@
     "name": "Pull-Ups",
     "description": "Pull-Ups: a bodyweight exercise in the strength category.",
     "category": "STRENGTH",
-    "difficulty": "NOVICE",
+    "difficulty": "INTERMEDIATE",
     "unit": "reps",
     "muscleGroups": [
       "BACK",
@@ -2445,7 +2445,7 @@
   {
     "id": "pull_l_sit",
     "name": "L-Sit Pull-Ups",
-    "description": "High\u2011tension pulling pattern where lats and upper back drive the motion with strict scapular control. Focus on keeping elbows tracking and the ribcage down to avoid compensations. Develops strength for unilateral and explosive progressions.",
+    "description": "High‑tension pulling pattern where lats and upper back drive the motion with strict scapular control. Focus on keeping elbows tracking and the ribcage down to avoid compensations. Develops strength for unilateral and explosive progressions.",
     "category": "STRENGTH",
     "difficulty": "ADVANCED",
     "unit": "reps",
@@ -2464,7 +2464,7 @@
     "gifUrl": "https://static.exercisedb.dev/media/mExgrF9.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/mExgrF9.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "pull_typewriter",
@@ -2491,7 +2491,7 @@
   {
     "id": "pull_negatives",
     "name": "Negative Pull-Ups",
-    "description": "Jump to the top position and lower as slowly and controlled as possible (3\u20135 seconds).",
+    "description": "Jump to the top position and lower as slowly and controlled as possible (3–5 seconds).",
     "category": "STRENGTH",
     "difficulty": "NOVICE",
     "unit": "reps",
@@ -2524,7 +2524,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Salta o usa un apoyo para llegar a la posici\u00f3n superior de una dominada con la barbilla sobre la barra. Desde ah\u00ed, baja lo m\u00e1s lento posible (3-5 segundos m\u00ednimo) con control total hasta extender completamente los brazos. Repite. Las negativas son la mejor forma de desarrollar fuerza para dominadas completas.",
+    "howTo": "Salta o usa un apoyo para llegar a la posición superior de una dominada con la barbilla sobre la barra. Desde ahí, baja lo más lento posible (3-5 segundos mínimo) con control total hasta extender completamente los brazos. Repite. Las negativas son la mejor forma de desarrollar fuerza para dominadas completas.",
     "gifUrl": "https://static.exercisedb.dev/media/lBDjFxJ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/50BETrz.gif",
     "videoUrl": null
@@ -2645,7 +2645,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Lie on a bench and grip the edge behind your head. Lift the body until only the shoulders touch the bench, keeping a straight body. From this position, lower the straight body as slowly as possible (5\u20138 seconds) while maintaining full rigidity. One of the most challenging core exercises.",
+    "howTo": "Lie on a bench and grip the edge behind your head. Lift the body until only the shoulders touch the bench, keeping a straight body. From this position, lower the straight body as slowly as possible (5–8 seconds) while maintaining full rigidity. One of the most challenging core exercises.",
     "gifUrl": "https://static.exercisedb.dev/media/pQ0Mx1Z.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/szIn2UK.gif",
     "videoUrl": null
@@ -2780,8 +2780,8 @@
   },
   {
     "id": "calf_raise_double",
-    "name": "Elevaci\u00f3n de Pantorrillas (Dos Piernas)",
-    "description": "Elevaci\u00f3n de Pantorrillas (Dos Piernas): a bodyweight exercise in the strength category.",
+    "name": "Elevación de Pantorrillas (Dos Piernas)",
+    "description": "Elevación de Pantorrillas (Dos Piernas): a bodyweight exercise in the strength category.",
     "category": "STRENGTH",
     "difficulty": "NOVICE",
     "unit": "reps",
@@ -2793,7 +2793,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "P\u00e1rate con los pies a la anchura de hips, preferiblemente con las puntas de los pies en un escal\u00f3n para mayor rango. Levanta los talones lo m\u00e1s alto posible poni\u00e9ndote en puntas de pies. Keep arriba 1 segundo. Baja con control hasta que los talones est\u00e9n por debajo del nivel de los dedos (si est\u00e1s en escal\u00f3n).",
+    "howTo": "Párate con los pies a la anchura de hips, preferiblemente con las puntas de los pies en un escalón para mayor rango. Levanta los talones lo más alto posible poniéndote en puntas de pies. Keep arriba 1 segundo. Baja con control hasta que los talones estén por debajo del nivel de los dedos (si estás en escalón).",
     "gifUrl": "https://static.exercisedb.dev/media/bJYHBIN.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/jl6uxZV.gif",
     "videoUrl": null
@@ -2965,9 +2965,9 @@
   {
     "id": "skill_frog_stand",
     "name": "Equilibrio de Rana (Frog Stand)",
-    "description": "Nivel E: Equilibrio b\u00e1sico en brazos con knees apoyadas sobre los codos. Desarrolla el equilibrio a baja altura y la fuerza de compresi\u00f3n del core.",
+    "description": "Nivel E: Equilibrio básico en brazos con knees apoyadas sobre los codos. Desarrolla el equilibrio a baja altura y la fuerza de compresión del core.",
     "category": "BALANCE",
-    "difficulty": "NOVICE",
+    "difficulty": "INTERMEDIATE",
     "unit": "seconds",
     "muscleGroups": [
       "CORE",
@@ -2979,7 +2979,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Col\u00f3cate en cuclillas con las manos en el suelo delante. Incl\u00ednate hacia adelante colocando las knees sobre los codos. Contin\u00faa inclin\u00e1ndote hasta que los pies despeguen del suelo. Keep la mirada adelante y el peso sobre las manos. Este es el primer paso hacia el equilibrio de manos.",
+    "howTo": "Colócate en cuclillas con las manos en el suelo delante. Inclínate hacia adelante colocando las knees sobre los codos. Continúa inclinándote hasta que los pies despeguen del suelo. Keep la mirada adelante y el peso sobre las manos. Este es el primer paso hacia el equilibrio de manos.",
     "gifUrl": "https://static.exercisedb.dev/media/2Dk4xQV.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/2Dk4xQV.gif",
     "videoUrl": null
@@ -3001,7 +3001,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Comienza en posici\u00f3n de plancha alta con brazos extendeds. Keep las hips bajas. Lleva una knee hacia el pecho r\u00e1pidamente. Alterna las legs en un movimiento de carrera. Keep el core activado y las hips estables. Aumenta la velocidad para mayor intensidad cardiovascular.",
+    "howTo": "Comienza en posición de plancha alta con brazos extendeds. Keep las hips bajas. Lleva una knee hacia el pecho rápidamente. Alterna las legs en un movimiento de carrera. Keep el core activado y las hips estables. Aumenta la velocidad para mayor intensidad cardiovascular.",
     "gifUrl": "https://static.exercisedb.dev/media/RJgzwny.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/RJgzwny.gif",
     "videoUrl": null
@@ -3140,7 +3140,7 @@
   {
     "id": "push_one_arm",
     "name": "Flexiones a Una Mano",
-    "description": "Flexi\u00f3n completa realizada con un solo brazo de apoyo. Requiere fuerza y estabilizaci\u00f3n del core avanzadas.",
+    "description": "Flexión completa realizada con un solo brazo de apoyo. Requiere fuerza y estabilización del core avanzadas.",
     "category": "STRENGTH",
     "difficulty": "NOVICE",
     "unit": "reps",
@@ -3156,7 +3156,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca una mano en el suelo a la l\u00ednea media del cuerpo y la other detr\u00e1s de la espalda. Separa los pies m\u00e1s del ancho de shoulders para estabilidad. Keep el cuerpo lo m\u00e1s recto posible, minimizando la rotaci\u00f3n. Baja el pecho al suelo y empuja hacia arriba. Ejercicio que requiere fuerza extrema y control del core.",
+    "howTo": "Coloca una mano en el suelo a la línea media del cuerpo y la other detrás de la espalda. Separa los pies más del ancho de shoulders para estabilidad. Keep el cuerpo lo más recto posible, minimizando la rotación. Baja el pecho al suelo y empuja hacia arriba. Ejercicio que requiere fuerza extrema y control del core.",
     "gifUrl": "https://static.exercisedb.dev/media/MUic5zN.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/MUic5zN.gif",
     "videoUrl": null
@@ -3164,7 +3164,7 @@
   {
     "id": "push_wide",
     "name": "Flexiones Anchas",
-    "description": "Flexiones con las manos m\u00e1s separadas que el ancho de los shoulders, enfoc\u00e1ndose m\u00e1s en el pecho.",
+    "description": "Flexiones con las manos más separadas que el ancho de los shoulders, enfocándose más en el pecho.",
     "category": "STRENGTH",
     "difficulty": "NOVICE",
     "unit": "reps",
@@ -3178,7 +3178,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca las manos m\u00e1s separadas que la anchura de los shoulders (aproximadamente 1.5 veces m\u00e1s). Keep el cuerpo recto y el core activado. Baja el pecho al suelo permitiendo que los codos se abran hacia los lados. Empuja hacia arriba hasta extender los brazos. Esta variaci\u00f3n enfatiza el trabajo del pecho exterior.",
+    "howTo": "Coloca las manos más separadas que la anchura de los shoulders (aproximadamente 1.5 veces más). Keep el cuerpo recto y el core activado. Baja el pecho al suelo permitiendo que los codos se abran hacia los lados. Empuja hacia arriba hasta extender los brazos. Esta variación enfatiza el trabajo del pecho exterior.",
     "gifUrl": "https://static.exercisedb.dev/media/JmMVpR3.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Qqi7bko.gif",
     "videoUrl": null
@@ -3186,7 +3186,7 @@
   {
     "id": "push_archer",
     "name": "Flexiones Arquero",
-    "description": "Flexi\u00f3n unilateral donde un brazo se estira hacia el lado mientras el otro flexiona. Paso previo a la flexi\u00f3n a una mano.",
+    "description": "Flexión unilateral donde un brazo se estira hacia el lado mientras el otro flexiona. Paso previo a la flexión a una mano.",
     "category": "STRENGTH",
     "difficulty": "NOVICE",
     "unit": "reps",
@@ -3201,7 +3201,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca las manos muy separadas en el suelo. Baja el cuerpo hacia un lado, manteniendo ese brazo flexionado mientras el otro se extiende completamente. El brazo extended debe quedar recto con la palma en el suelo. Empuja de vuelta al centro y alterna los lados. Progresi\u00f3n directa hacia flexiones a una mano.",
+    "howTo": "Coloca las manos muy separadas en el suelo. Baja el cuerpo hacia un lado, manteniendo ese brazo flexionado mientras el otro se extiende completamente. El brazo extended debe quedar recto con la palma en el suelo. Empuja de vuelta al centro y alterna los lados. Progresión directa hacia flexiones a una mano.",
     "gifUrl": "https://static.exercisedb.dev/media/A9qxk2F.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/i5cEhka.gif",
     "videoUrl": null
@@ -3209,7 +3209,7 @@
   {
     "id": "push_archer_incline",
     "name": "Flexiones Arquero Inclinadas",
-    "description": "Progresi\u00f3n de arquero con manos elevadas para reducir la dificultad y practicar el movimiento unilateral.",
+    "description": "Progresión de arquero con manos elevadas para reducir la dificultad y practicar el movimiento unilateral.",
     "category": "STRENGTH",
     "difficulty": "NOVICE",
     "unit": "reps",
@@ -3224,7 +3224,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca las manos en una superficie elevada con una separaci\u00f3n muy amplia. Baja el cuerpo hacia un lado, extendiendo completamente el brazo opuesto mientras el otro se flexiona. Alterna los lados en cada repetici\u00f3n. Esta variaci\u00f3n desarrolla la fuerza unilateral necesaria para flexiones a una mano.",
+    "howTo": "Coloca las manos en una superficie elevada con una separación muy amplia. Baja el cuerpo hacia un lado, extendiendo completamente el brazo opuesto mientras el otro se flexiona. Alterna los lados en cada repetición. Esta variación desarrolla la fuerza unilateral necesaria para flexiones a una mano.",
     "gifUrl": "https://static.exercisedb.dev/media/A9qxk2F.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/B1EVP9F.gif",
     "videoUrl": null
@@ -3232,7 +3232,7 @@
   {
     "id": "push_standard",
     "name": "Flexiones Completas",
-    "description": "Flexi\u00f3n est\u00e1ndar con cuerpo recto desde los talones hasta la cabeza.",
+    "description": "Flexión estándar con cuerpo recto desde los talones hasta la cabeza.",
     "category": "STRENGTH",
     "difficulty": "NOVICE",
     "unit": "reps",
@@ -3269,7 +3269,7 @@
     ],
     "expReward": 8,
     "coinsReward": 4,
-    "howTo": "Pat\u00e9ate hasta posici\u00f3n de pino contra la pared con brazos extendeds. Keep el cuerpo recto y el core activado. Baja con control hasta que la cabeza toque el suelo. Empuja hacia arriba hasta extender completamente los brazos. Keep los talones tocando la pared para estabilidad. Ejercicio que requiere gran fuerza de shoulders.",
+    "howTo": "Patéate hasta posición de pino contra la pared con brazos extendeds. Keep el cuerpo recto y el core activado. Baja con control hasta que la cabeza toque el suelo. Empuja hacia arriba hasta extender completamente los brazos. Keep los talones tocando la pared para estabilidad. Ejercicio que requiere gran fuerza de shoulders.",
     "gifUrl": "https://static.exercisedb.dev/media/rQxwMxO.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/qBl14UC.gif",
     "videoUrl": null
@@ -3277,7 +3277,7 @@
   {
     "id": "push_hspu_freestanding",
     "name": "Flexiones de Pino (Libre)",
-    "description": "Flexi\u00f3n de pino realizada mientras se mantiene un pino libre, sin asistencia. Requiere equilibrio y fuerza de \u00e9lite.",
+    "description": "Flexión de pino realizada mientras se mantiene un pino libre, sin asistencia. Requiere equilibrio y fuerza de élite.",
     "category": "STRENGTH",
     "difficulty": "NOVICE",
     "unit": "reps",
@@ -3291,7 +3291,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Pat\u00e9ate hasta posici\u00f3n de pino libre (sin pared) manteniendo el equilibrio. Keep el cuerpo completamente recto. Baja con control hasta que la cabeza toque el suelo. Empuja hacia arriba hasta extender los brazos, manteniendo el equilibrio en todo momento. Requiere fuerza extrema de shoulders y excelente control del equilibrio.",
+    "howTo": "Patéate hasta posición de pino libre (sin pared) manteniendo el equilibrio. Keep el cuerpo completamente recto. Baja con control hasta que la cabeza toque el suelo. Empuja hacia arriba hasta extender los brazos, manteniendo el equilibrio en todo momento. Requiere fuerza extrema de shoulders y excelente control del equilibrio.",
     "gifUrl": "https://static.exercisedb.dev/media/rQxwMxO.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/rQxwMxO.gif",
     "videoUrl": null
@@ -3299,7 +3299,7 @@
   {
     "id": "push_knees",
     "name": "Flexiones de Rodillas",
-    "description": "Flexiones est\u00e1ndar pero apoyando las knees para reducir la palanca y la dificultad.",
+    "description": "Flexiones estándar pero apoyando las knees para reducir la palanca y la dificultad.",
     "category": "STRENGTH",
     "difficulty": "NOVICE",
     "unit": "reps",
@@ -3313,7 +3313,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Col\u00f3cate en posici\u00f3n de plancha, pero apoya las knees en el suelo. Keep una l\u00ednea recta desde las knees hasta la cabeza. Baja el pecho al suelo manteniendo los codos a 45 grados del cuerpo. Empuja hacia arriba hasta extender los brazos. Este ejercicio reduce aproximadamente 50% del peso corporal.",
+    "howTo": "Colócate en posición de plancha, pero apoya las knees en el suelo. Keep una línea recta desde las knees hasta la cabeza. Baja el pecho al suelo manteniendo los codos a 45 grados del cuerpo. Empuja hacia arriba hasta extender los brazos. Este ejercicio reduce aproximadamente 50% del peso corporal.",
     "gifUrl": "https://static.exercisedb.dev/media/v3vLFW0.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/v3vLFW0.gif",
     "videoUrl": null
@@ -3336,7 +3336,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca los pies sobre una superficie elevada (banco) y las manos en el suelo a la anchura de los shoulders. Keep el cuerpo completamente recto. Baja el pecho al suelo manteniendo los codos a 45 grados. Empuja hacia arriba hasta extender los brazos. Esta variaci\u00f3n incrementa la carga y enfatiza los shoulders y el pecho superior.",
+    "howTo": "Coloca los pies sobre una superficie elevada (banco) y las manos en el suelo a la anchura de los shoulders. Keep el cuerpo completamente recto. Baja el pecho al suelo manteniendo los codos a 45 grados. Empuja hacia arriba hasta extender los brazos. Esta variación incrementa la carga y enfatiza los shoulders y el pecho superior.",
     "gifUrl": "https://static.exercisedb.dev/media/i5cEhka.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/i5cEhka.gif",
     "videoUrl": null
@@ -3344,7 +3344,7 @@
   {
     "id": "push_diamond",
     "name": "Flexiones Diamante",
-    "description": "Flexiones con manos juntas formando un diamante. Mayor \u00e9nfasis en los tr\u00edceps.",
+    "description": "Flexiones con manos juntas formando un diamante. Mayor énfasis en los tríceps.",
     "category": "STRENGTH",
     "difficulty": "NOVICE",
     "unit": "reps",
@@ -3358,7 +3358,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca las manos juntas bajo el pecho formando un diamante con los dedos \u00edndice y pulgar. Keep el cuerpo recto con el core activado. Baja el pecho hacia las manos manteniendo los codos pegados al cuerpo. Empuja hacia arriba hasta extender los brazos. Esta variaci\u00f3n pone gran \u00e9nfasis en los tr\u00edceps.",
+    "howTo": "Coloca las manos juntas bajo el pecho formando un diamante con los dedos índice y pulgar. Keep el cuerpo recto con el core activado. Baja el pecho hacia las manos manteniendo los codos pegados al cuerpo. Empuja hacia arriba hasta extender los brazos. Esta variación pone gran énfasis en los tríceps.",
     "gifUrl": "https://static.exercisedb.dev/media/soIB2rj.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/soIB2rj.gif",
     "videoUrl": null
@@ -3366,7 +3366,7 @@
   {
     "id": "push_wall",
     "name": "Flexiones en Pared",
-    "description": "Flexi\u00f3n vertical contra una pared. Ideal para principiantes absolutos para acostumbrar las articulaciones.",
+    "description": "Flexión vertical contra una pared. Ideal para principiantes absolutos para acostumbrar las articulaciones.",
     "category": "STRENGTH",
     "difficulty": "BEGINNER",
     "unit": "reps",
@@ -3380,7 +3380,7 @@
     ],
     "expReward": 8,
     "coinsReward": 4,
-    "howTo": "P\u00e1rate frente a una pared a un brazo de distancia. Coloca las manos en la pared a la altura del pecho, a la anchura de shoulders. Incl\u00ednate hacia la pared flexionando los codos. Empuja de vuelta a la posici\u00f3n inicial. Cuanto m\u00e1s lejos de la pared, m\u00e1s dif\u00edcil. Excelente para principiantes absolutos.",
+    "howTo": "Párate frente a una pared a un brazo de distancia. Coloca las manos en la pared a la altura del pecho, a la anchura de shoulders. Inclínate hacia la pared flexionando los codos. Empuja de vuelta a la posición inicial. Cuanto más lejos de la pared, más difícil. Excelente para principiantes absolutos.",
     "gifUrl": "https://static.exercisedb.dev/media/qBl14UC.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/qBl14UC.gif",
     "videoUrl": null
@@ -3388,7 +3388,7 @@
   {
     "id": "push_pike",
     "name": "Pike Push-Ups",
-    "description": "Flexi\u00f3n en V invertida (hips altas). Enfoca el trabajo en los shoulders, preparando para el HSPU.",
+    "description": "Flexión en V invertida (hips altas). Enfoca el trabajo en los shoulders, preparando para el HSPU.",
     "category": "STRENGTH",
     "difficulty": "NOVICE",
     "unit": "reps",
@@ -3402,7 +3402,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca las manos en el suelo a la anchura de los shoulders. Eleva las hips formando una V invertida con el cuerpo. Las legs deben estar lo m\u00e1s rectas posible. Baja la cabeza hacia el suelo flexionando los codos. Empuja hacia arriba hasta extender los brazos. Este ejercicio enfatiza el trabajo de shoulders.",
+    "howTo": "Coloca las manos en el suelo a la anchura de los shoulders. Eleva las hips formando una V invertida con el cuerpo. Las legs deben estar lo más rectas posible. Baja la cabeza hacia el suelo flexionando los codos. Empuja hacia arriba hasta extender los brazos. Este ejercicio enfatiza el trabajo de shoulders.",
     "gifUrl": "https://static.exercisedb.dev/media/sVvXT5J.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/XPUDTt7.gif",
     "videoUrl": null
@@ -3410,7 +3410,7 @@
   {
     "id": "push_pike_elevated",
     "name": "Flexiones en Pica (Pies Elevados)",
-    "description": "Flexi\u00f3n en pica con pies elevados en un banco. Aumenta la carga sobre los shoulders, acerc\u00e1ndose al HSPU.",
+    "description": "Flexión en pica con pies elevados en un banco. Aumenta la carga sobre los shoulders, acercándose al HSPU.",
     "category": "STRENGTH",
     "difficulty": "NOVICE",
     "unit": "reps",
@@ -3424,7 +3424,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca los pies sobre una superficie elevada (banco) y las manos en el suelo. Forma una V invertida con el cuerpo, manteniendo las hips elevadas. Baja la cabeza hacia el suelo flexionando los codos. Empuja hacia arriba hasta extender los brazos. La elevaci\u00f3n aumenta la carga sobre los shoulders.",
+    "howTo": "Coloca los pies sobre una superficie elevada (banco) y las manos en el suelo. Forma una V invertida con el cuerpo, manteniendo las hips elevadas. Baja la cabeza hacia el suelo flexionando los codos. Empuja hacia arriba hasta extender los brazos. La elevación aumenta la carga sobre los shoulders.",
     "gifUrl": "https://static.exercisedb.dev/media/sVvXT5J.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/XPUDTt7.gif",
     "videoUrl": null
@@ -3493,7 +3493,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Comienza en posici\u00f3n de flexi\u00f3n est\u00e1ndar. Baja con control y luego empuja explosivamente para que las manos despeguen del suelo. Aterriza suavemente con los brazos ligeramente flexionados y baja inmediatamente a la siguiente repetici\u00f3n. Este ejercicio desarrolla potencia explosiva.",
+    "howTo": "Comienza en posición de flexión estándar. Baja con control y luego empuja explosivamente para que las manos despeguen del suelo. Aterriza suavemente con los brazos ligeramente flexionados y baja inmediatamente a la siguiente repetición. Este ejercicio desarrolla potencia explosiva.",
     "gifUrl": "https://static.exercisedb.dev/media/wigSg76.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/i5cEhka.gif",
     "videoUrl": null
@@ -3501,9 +3501,9 @@
   {
     "id": "push_pseudo_planche",
     "name": "Flexiones Pseudo Planche",
-    "description": "Advanced static hold that builds straight\u2011arm pressing strength and full\u2011body anti\u2011extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
+    "description": "Advanced static hold that builds straight‑arm pressing strength and full‑body anti‑extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
     "category": "STRENGTH",
-    "difficulty": "EXPERT",
+    "difficulty": "ADVANCED",
     "unit": "reps",
     "muscleGroups": [
       "SHOULDERS",
@@ -3516,11 +3516,11 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Hands shoulder\u2011width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced\u2011tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath\u2011holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
+    "howTo": "1) Setup: Hands shoulder‑width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced‑tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath‑holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
     "gifUrl": "https://static.exercisedb.dev/media/gw9PqGk.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/gw9PqGk.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "flutter-kicks",
@@ -3547,7 +3547,7 @@
   {
     "id": "dips_ring",
     "name": "Ring Dips",
-    "description": "Fondos realizados en anillas gimn\u00e1sticas. La inestabilidad aumenta dr\u00e1sticamente la dificultad y el reclutamiento del core.",
+    "description": "Fondos realizados en anillas gimnásticas. La inestabilidad aumenta drásticamente la dificultad y el reclutamiento del core.",
     "category": "STRENGTH",
     "difficulty": "NOVICE",
     "unit": "reps",
@@ -3562,7 +3562,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Sube a posici\u00f3n de soporte en anillas con brazos completamente extendeds. Gira ligeramente las anillas hacia afuera (RTO ligero). Baja con control manteniendo las anillas cerca del cuerpo y estables. Los codos deben llegar a 90 grados o m\u00e1s. Empuja hacia arriba hasta extender completamente los brazos. Requiere gran estabilidad del core.",
+    "howTo": "Sube a posición de soporte en anillas con brazos completamente extendeds. Gira ligeramente las anillas hacia afuera (RTO ligero). Baja con control manteniendo las anillas cerca del cuerpo y estables. Los codos deben llegar a 90 grados o más. Empuja hacia arriba hasta extender completamente los brazos. Requiere gran estabilidad del core.",
     "gifUrl": "https://static.exercisedb.dev/media/ezTvXcr.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/ezTvXcr.gif",
     "videoUrl": null
@@ -3570,7 +3570,7 @@
   {
     "id": "dips_ring_assisted",
     "name": "Fondos en Anillas (Asistidos)",
-    "description": "Fondos en anillas usando bandas el\u00e1sticas para gestionar la inestabilidad y construir fuerza.",
+    "description": "Fondos en anillas usando bandas elásticas para gestionar la inestabilidad y construir fuerza.",
     "category": "STRENGTH",
     "difficulty": "BEGINNER",
     "unit": "reps",
@@ -3586,7 +3586,7 @@
     ],
     "expReward": 8,
     "coinsReward": 4,
-    "howTo": "Coloca una banda en las anillas. Sube a posici\u00f3n de soporte con brazos extendeds y coloca las knees o pies en la banda. La inestabilidad de las anillas requiere m\u00e1s control del core. Baja con control manteniendo las anillas cerca del cuerpo. Empuja hacia arriba hasta extender los brazos, rotando ligeramente las anillas hacia afuera en la parte superior.",
+    "howTo": "Coloca una banda en las anillas. Sube a posición de soporte con brazos extendeds y coloca las knees o pies en la banda. La inestabilidad de las anillas requiere más control del core. Baja con control manteniendo las anillas cerca del cuerpo. Empuja hacia arriba hasta extender los brazos, rotando ligeramente las anillas hacia afuera en la parte superior.",
     "gifUrl": "https://static.exercisedb.dev/media/ezTvXcr.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/ezTvXcr.gif",
     "videoUrl": null
@@ -3594,7 +3594,7 @@
   {
     "id": "dips_ring_negatives",
     "name": "Fondos en Anillas (Negativas)",
-    "description": "Fase exc\u00e9ntrica controlada en anillas para construir la fuerza y estabilidad del hombro.",
+    "description": "Fase excéntrica controlada en anillas para construir la fuerza y estabilidad del hombro.",
     "category": "STRENGTH",
     "difficulty": "NOVICE",
     "unit": "reps",
@@ -3609,7 +3609,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Salta o usa apoyo para llegar a posici\u00f3n de soporte en anillas con brazos extendeds. Keep las anillas giradas ligeramente hacia afuera. Baja lo m\u00e1s lento posible (5-8 segundos) manteniendo control total de las anillas. La inestabilidad de las anillas hace este ejercicio muy demandante. Usa las legs para volver arriba.",
+    "howTo": "Salta o usa apoyo para llegar a posición de soporte en anillas con brazos extendeds. Keep las anillas giradas ligeramente hacia afuera. Baja lo más lento posible (5-8 segundos) manteniendo control total de las anillas. La inestabilidad de las anillas hace este ejercicio muy demandante. Usa las legs para volver arriba.",
     "gifUrl": "https://static.exercisedb.dev/media/ezTvXcr.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/ezTvXcr.gif",
     "videoUrl": null
@@ -3617,7 +3617,7 @@
   {
     "id": "dips_bench_straight_leg",
     "name": "Fondos en Banco (Piernas Rectas)",
-    "description": "Fondos en banco con legs estiradas y talones en el suelo. Aumenta la carga sobre los tr\u00edceps.",
+    "description": "Fondos en banco con legs estiradas y talones en el suelo. Aumenta la carga sobre los tríceps.",
     "category": "STRENGTH",
     "difficulty": "NOVICE",
     "unit": "reps",
@@ -3631,7 +3631,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Si\u00e9ntate en el borde de un banco, coloca las manos a los lados de las hips. Desliza las hips fuera del banco con las legs completamente extendeds y solo los talones en el suelo. Baja el cuerpo flexionando los codos hasta 90 grados. Empuja hacia arriba hasta extender los brazos. Mayor dificultad que con knees flexionadas.",
+    "howTo": "Siéntate en el borde de un banco, coloca las manos a los lados de las hips. Desliza las hips fuera del banco con las legs completamente extendeds y solo los talones en el suelo. Baja el cuerpo flexionando los codos hasta 90 grados. Empuja hacia arriba hasta extender los brazos. Mayor dificultad que con knees flexionadas.",
     "gifUrl": "https://static.exercisedb.dev/media/VuoerH0.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/VuoerH0.gif",
     "videoUrl": null
@@ -3639,7 +3639,7 @@
   {
     "id": "dips_bench_bent_knee",
     "name": "Fondos en Banco (Rodillas Flexionadas)",
-    "description": "Fondos en banco con knees flexionadas y pies en el suelo. Ejercicio b\u00e1sico para tr\u00edceps.",
+    "description": "Fondos en banco con knees flexionadas y pies en el suelo. Ejercicio básico para tríceps.",
     "category": "STRENGTH",
     "difficulty": "NOVICE",
     "unit": "reps",
@@ -3653,7 +3653,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Si\u00e9ntate en el borde de un banco, coloca las manos a los lados de las hips. Desliza las hips fuera del banco con las knees flexionadas a 90 grados y los pies en el suelo. Baja el cuerpo flexionando los codos hasta 90 grados. Empuja hacia arriba hasta extender los brazos. Keep los shoulders hacia abajo.",
+    "howTo": "Siéntate en el borde de un banco, coloca las manos a los lados de las hips. Desliza las hips fuera del banco con las knees flexionadas a 90 grados y los pies en el suelo. Baja el cuerpo flexionando los codos hasta 90 grados. Empuja hacia arriba hasta extender los brazos. Keep los shoulders hacia abajo.",
     "gifUrl": "https://static.exercisedb.dev/media/RrLske5.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/RrLske5.gif",
     "videoUrl": null
@@ -3661,7 +3661,7 @@
   {
     "id": "dips_parallel_bar",
     "name": "Parallel Bar Dips",
-    "description": "Ejercicio fundamental de empuje para pecho, shoulders y tr\u00edceps realizado en barras paralelas.",
+    "description": "Ejercicio fundamental de empuje para pecho, shoulders y tríceps realizado en barras paralelas.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -3675,7 +3675,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Sube a las barras paralelas con brazos extendeds, cuerpo vertical. Incl\u00ednate ligeramente hacia adelante. Baja con control flexionando los codos hasta que est\u00e9n a 90 grados o los shoulders est\u00e9n a la altura de los codos. Empuja hacia arriba hasta extender completamente los brazos. Keep el core activado.",
+    "howTo": "Sube a las barras paralelas con brazos extendeds, cuerpo vertical. Inclínate ligeramente hacia adelante. Baja con control flexionando los codos hasta que estén a 90 grados o los shoulders estén a la altura de los codos. Empuja hacia arriba hasta extender completamente los brazos. Keep el core activado.",
     "gifUrl": "https://static.exercisedb.dev/media/O2K9Vb5.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/O2K9Vb5.gif",
     "videoUrl": null
@@ -3683,7 +3683,7 @@
   {
     "id": "dips_parallel_bar_negatives",
     "name": "Fondos en Paralelas (Negativas)",
-    "description": "Salta a la posici\u00f3n superior y baja de forma lenta y controlada (3-5 segundos). Desarrolla la fuerza exc\u00e9ntrica.",
+    "description": "Salta a la posición superior y baja de forma lenta y controlada (3-5 segundos). Desarrolla la fuerza excéntrica.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -3697,7 +3697,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Salta o usa un apoyo para llegar a la posici\u00f3n superior con brazos extendeds en las barras paralelas. Desde ah\u00ed, baja lo m\u00e1s lento posible (3-5 segundos m\u00ednimo) con control hasta que los codos est\u00e9n a 90 grados o m\u00e1s. Usa las legs para volver arriba y repetir. Las negativas desarrollan fuerza exc\u00e9ntrica.",
+    "howTo": "Salta o usa un apoyo para llegar a la posición superior con brazos extendeds en las barras paralelas. Desde ahí, baja lo más lento posible (3-5 segundos mínimo) con control hasta que los codos estén a 90 grados o más. Usa las legs para volver arriba y repetir. Las negativas desarrollan fuerza excéntrica.",
     "gifUrl": "https://static.exercisedb.dev/media/FSF9WOs.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/FSF9WOs.gif",
     "videoUrl": null
@@ -3720,7 +3720,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Coloca una banda de resistencia en las barras paralelas. Sube a la posici\u00f3n superior con brazos extendeds y coloca las knees o pies en la banda. La banda te asistir\u00e1 reduciendo el peso corporal. Baja con control hasta que los codos est\u00e9n a 90 grados. Empuja hacia arriba hasta extender los brazos.",
+    "howTo": "Coloca una banda de resistencia en las barras paralelas. Sube a la posición superior con brazos extendeds y coloca las knees o pies en la banda. La banda te asistirá reduciendo el peso corporal. Baja con control hasta que los codos estén a 90 grados. Empuja hacia arriba hasta extender los brazos.",
     "gifUrl": "https://static.exercisedb.dev/media/PAgTVaK.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/FSF9WOs.gif",
     "videoUrl": null
@@ -3743,7 +3743,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Sube a posici\u00f3n de soporte en anillas con brazos extendeds. Gira las anillas completamente hacia afuera (RTO completo, 90 grados de rotaci\u00f3n). Keep esta rotaci\u00f3n mientras bajas y subes en el fondo. Este ejercicio requiere fuerza extrema de shoulders y b\u00edceps. Es una de las variaciones m\u00e1s dif\u00edciles de fondos.",
+    "howTo": "Sube a posición de soporte en anillas con brazos extendeds. Gira las anillas completamente hacia afuera (RTO completo, 90 grados de rotación). Keep esta rotación mientras bajas y subes en el fondo. Este ejercicio requiere fuerza extrema de shoulders y bíceps. Es una de las variaciones más difíciles de fondos.",
     "gifUrl": "https://static.exercisedb.dev/media/7xeukSt.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/7xeukSt.gif",
     "videoUrl": null
@@ -3751,7 +3751,7 @@
   {
     "id": "dips_russian",
     "name": "Fondos Rusos",
-    "description": "Fondos en paralelas que incluyen una transici\u00f3n sobre el antebrazo, trabajando el codo y el hombro en rangos profundos.",
+    "description": "Fondos en paralelas que incluyen una transición sobre el antebrazo, trabajando el codo y el hombro en rangos profundos.",
     "category": "STRENGTH",
     "difficulty": "NOVICE",
     "unit": "reps",
@@ -3766,7 +3766,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Comienza en posici\u00f3n de fondo en paralelas. En lugar de bajar verticalmente, lleva el cuerpo hacia adelante y hacia abajo, pasando por encima de las barras. Los shoulders deben ir muy por delante de las manos. Vuelve empujando hacia atr\u00e1s y arriba. Este ejercicio prepara para la plancha y requiere fuerza extrema de shoulders.",
+    "howTo": "Comienza en posición de fondo en paralelas. En lugar de bajar verticalmente, lleva el cuerpo hacia adelante y hacia abajo, pasando por encima de las barras. Los shoulders deben ir muy por delante de las manos. Vuelve empujando hacia atrás y arriba. Este ejercicio prepara para la plancha y requiere fuerza extrema de shoulders.",
     "gifUrl": "https://static.exercisedb.dev/media/rWoBmi5.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/rWoBmi5.gif",
     "videoUrl": null
@@ -3864,9 +3864,9 @@
   {
     "id": "frog-planche",
     "name": "Frog Planche",
-    "description": "Advanced static hold that builds straight\u2011arm pressing strength and full\u2011body anti\u2011extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
+    "description": "Advanced static hold that builds straight‑arm pressing strength and full‑body anti‑extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
     "category": "CORE",
-    "difficulty": "EXPERT",
+    "difficulty": "INTERMEDIATE",
     "unit": "reps",
     "muscleGroups": [
       "Abs",
@@ -3879,18 +3879,18 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Hands shoulder\u2011width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced\u2011tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath\u2011holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
+    "howTo": "1) Setup: Hands shoulder‑width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced‑tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath‑holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
     "gifUrl": "https://static.exercisedb.dev/media/rQhGcin.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/rQhGcin.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "front-lever",
     "name": "Front Lever",
-    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one\u2011leg variations.",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
     "category": "CORE",
-    "difficulty": "ADVANCED",
+    "difficulty": "EXPERT",
     "unit": "reps",
     "muscleGroups": [
       "Abs",
@@ -3903,16 +3903,16 @@
     ],
     "expReward": 26,
     "coinsReward": 13,
-    "howTo": "1) Setup: Dead\u2011hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
     "gifUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "skill_front_lever_one_leg",
     "name": "Front Lever (Una Pierna)",
-    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one\u2011leg variations.",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
     "category": "SKILL_STATIC",
     "difficulty": "ADVANCED",
     "unit": "seconds",
@@ -3927,16 +3927,16 @@
     ],
     "expReward": 26,
     "coinsReward": 13,
-    "howTo": "1) Setup: Dead\u2011hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
     "gifUrl": "https://static.exercisedb.dev/media/hbY9wqG.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/hbY9wqG.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "front-lever-reps",
     "name": "Front Lever Reps",
-    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one\u2011leg variations.",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
     "category": "STRENGTH",
     "difficulty": "ADVANCED",
     "unit": "reps",
@@ -3950,11 +3950,11 @@
     ],
     "expReward": 26,
     "coinsReward": 13,
-    "howTo": "1) Setup: Dead\u2011hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
     "gifUrl": "https://static.exercisedb.dev/media/hbY9wqG.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/hbY9wqG.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "front-plank-with-twist",
@@ -3981,7 +3981,7 @@
   {
     "id": "skill_back_lever",
     "name": "Full Back Lever",
-    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one\u2011leg variations.",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
     "category": "SKILL_STATIC",
     "difficulty": "EXPERT",
     "unit": "seconds",
@@ -3996,18 +3996,18 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Dead\u2011hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
     "gifUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "skill_front_lever",
     "name": "Full Front Lever",
-    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one\u2011leg variations.",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
     "category": "SKILL_STATIC",
-    "difficulty": "ADVANCED",
+    "difficulty": "EXPERT",
     "unit": "seconds",
     "muscleGroups": [
       "BACK",
@@ -4020,11 +4020,11 @@
     ],
     "expReward": 26,
     "coinsReward": 13,
-    "howTo": "1) Setup: Dead\u2011hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
     "gifUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "full-maltese",
@@ -4051,7 +4051,7 @@
   {
     "id": "skill_planche",
     "name": "Full Planche",
-    "description": "Advanced static hold that builds straight\u2011arm pressing strength and full\u2011body anti\u2011extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
+    "description": "Advanced static hold that builds straight‑arm pressing strength and full‑body anti‑extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
     "category": "CORE",
     "difficulty": "EXPERT",
     "unit": "reps",
@@ -4066,16 +4066,16 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Hands shoulder\u2011width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced\u2011tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath\u2011holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
+    "howTo": "1) Setup: Hands shoulder‑width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced‑tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath‑holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
     "gifUrl": "https://static.exercisedb.dev/media/YZ4961r.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/YZ4961r.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "full-planche-push-up",
     "name": "Full Planche Push-up",
-    "description": "Advanced static hold that builds straight\u2011arm pressing strength and full\u2011body anti\u2011extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
+    "description": "Advanced static hold that builds straight‑arm pressing strength and full‑body anti‑extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
     "category": "STRENGTH",
     "difficulty": "EXPERT",
     "unit": "reps",
@@ -4090,11 +4090,11 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Hands shoulder\u2011width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced\u2011tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath\u2011holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
+    "howTo": "1) Setup: Hands shoulder‑width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced‑tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath‑holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
     "gifUrl": "https://static.exercisedb.dev/media/gw9PqGk.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/gw9PqGk.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "gironda-sternum-chin",
@@ -4388,7 +4388,7 @@
   {
     "id": "handstand-push-up",
     "name": "Handstand Push-up",
-    "description": "Upside\u2011down straight\u2011arm hold emphasizing shoulder stacking, wrist tolerance, and core rigidity. Promotes balanced line, active shoulders, and fine control through the hands. Builds control for advanced freestanding and press handstand work.",
+    "description": "Upside‑down straight‑arm hold emphasizing shoulder stacking, wrist tolerance, and core rigidity. Promotes balanced line, active shoulders, and fine control through the hands. Builds control for advanced freestanding and press handstand work.",
     "category": "STRENGTH",
     "difficulty": "EXPERT",
     "unit": "reps",
@@ -4407,7 +4407,7 @@
     "gifUrl": "https://static.exercisedb.dev/media/rQxwMxO.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/rQxwMxO.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "hanging-leg-hip-raise",
@@ -4730,7 +4730,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Acu\u00e9state boca arriba. Presiona la espalda baja firmemente contra el suelo. Levanta las legs extendeds unos cent\u00edmetros del suelo y levanta los shoulders y brazos extendeds. Tu cuerpo debe formar una ligera curva c\u00f3ncava. Keep la espalda baja pegada al suelo. Este ejercicio es fundamental para gimnasia y calistenia.",
+    "howTo": "Acuéstate boca arriba. Presiona la espalda baja firmemente contra el suelo. Levanta las legs extendeds unos centímetros del suelo y levanta los shoulders y brazos extendeds. Tu cuerpo debe formar una ligera curva cóncava. Keep la espalda baja pegada al suelo. Este ejercicio es fundamental para gimnasia y calistenia.",
     "gifUrl": "https://static.exercisedb.dev/media/BMMolZ3.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/BMMolZ3.gif",
     "videoUrl": null
@@ -4751,7 +4751,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Comienza en posici\u00f3n de hollow body hold. Manteniendo la forma c\u00f3ncava y la espalda baja contra el suelo, balancea suavemente hacia adelante y atr\u00e1s. El movimiento debe venir del core, no de impulso de las extremidades. Este ejercicio desarrolla control del core din\u00e1mico.",
+    "howTo": "Comienza en posición de hollow body hold. Manteniendo la forma cóncava y la espalda baja contra el suelo, balancea suavemente hacia adelante y atrás. El movimiento debe venir del core, no de impulso de las extremidades. Este ejercicio desarrolla control del core dinámico.",
     "gifUrl": "https://static.exercisedb.dev/media/BMMolZ3.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/BMMolZ3.gif",
     "videoUrl": null
@@ -4759,7 +4759,7 @@
   {
     "id": "push_hspu_wall_negatives",
     "name": "HSPU en Pared (Negativas)",
-    "description": "Bajar controladamente desde un pino en pared hasta que la cabeza toque el suelo. Construye la fuerza exc\u00e9ntrica.",
+    "description": "Bajar controladamente desde un pino en pared hasta que la cabeza toque el suelo. Construye la fuerza excéntrica.",
     "category": "STRENGTH",
     "difficulty": "BEGINNER",
     "unit": "reps",
@@ -4773,7 +4773,7 @@
     ],
     "expReward": 8,
     "coinsReward": 4,
-    "howTo": "Pat\u00e9ate hasta posici\u00f3n de pino contra la pared con brazos extendeds. Keep el cuerpo completamente recto. Baja lo m\u00e1s lento posible (3-5 segundos) hasta que la cabeza toque el suelo suavemente. Sal de la posici\u00f3n con cuidado y repite. Las negativas desarrollan fuerza para HSPU completas.",
+    "howTo": "Patéate hasta posición de pino contra la pared con brazos extendeds. Keep el cuerpo completamente recto. Baja lo más lento posible (3-5 segundos) hasta que la cabeza toque el suelo suavemente. Sal de la posición con cuidado y repite. Las negativas desarrollan fuerza para HSPU completas.",
     "gifUrl": "https://static.exercisedb.dev/media/rQxwMxO.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Y9hNPcN.gif",
     "videoUrl": null
@@ -5614,7 +5614,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "P\u00e1rate con los pies juntos y los brazos a los lados. Salta separando los pies m\u00e1s all\u00e1 del ancho de shoulders mientras llevas los brazos arriba sobre la cabeza. Salta de nuevo para volver a la posici\u00f3n inicial. Keep un ritmo constante. Ejercicio cardiovascular cl\u00e1sico para calentamiento.",
+    "howTo": "Párate con los pies juntos y los brazos a los lados. Salta separando los pies más allá del ancho de shoulders mientras llevas los brazos arriba sobre la cabeza. Salta de nuevo para volver a la posición inicial. Keep un ritmo constante. Ejercicio cardiovascular clásico para calentamiento.",
     "gifUrl": "https://static.exercisedb.dev/media/mbkgB44.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/mbkgB44.gif",
     "videoUrl": null
@@ -5644,7 +5644,7 @@
   {
     "id": "kipping-muscle-up",
     "name": "Kipping Muscle Up",
-    "description": "Advanced bodyweight pattern requiring high scapular control, full\u2011body tension and precise leverage. Keep elbows locked (if straight\u2011arm), brace the core, and maintain clean lines to handle the increased torque.",
+    "description": "Advanced bodyweight pattern requiring high scapular control, full‑body tension and precise leverage. Keep elbows locked (if straight‑arm), brace the core, and maintain clean lines to handle the increased torque.",
     "category": "STRENGTH",
     "difficulty": "EXPERT",
     "unit": "reps",
@@ -5660,16 +5660,16 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Create full\u2011body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
+    "howTo": "1) Setup: Create full‑body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
     "gifUrl": "https://static.exercisedb.dev/media/pM07UxU.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/pM07UxU.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "kipping-muscle-up-with-triple",
     "name": "Kipping Muscle Up With Triple",
-    "description": "Advanced bodyweight pattern requiring high scapular control, full\u2011body tension and precise leverage. Keep elbows locked (if straight\u2011arm), brace the core, and maintain clean lines to handle the increased torque.",
+    "description": "Advanced bodyweight pattern requiring high scapular control, full‑body tension and precise leverage. Keep elbows locked (if straight‑arm), brace the core, and maintain clean lines to handle the increased torque.",
     "category": "STRENGTH",
     "difficulty": "EXPERT",
     "unit": "reps",
@@ -5685,11 +5685,11 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Create full\u2011body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
+    "howTo": "1) Setup: Create full‑body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
     "gifUrl": "https://static.exercisedb.dev/media/znf7t8E.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/znf7t8E.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "knee-touch-crunch",
@@ -5825,9 +5825,9 @@
   {
     "id": "core_l_sit",
     "name": "L-Sit",
-    "description": "High\u2011tension core position that teaches rib\u2011to\u2011pelvis connection and scapular control. Maintaining a consistent hollow line prevents spinal extension and improves transfer to skills and levers.",
+    "description": "High‑tension core position that teaches rib‑to‑pelvis connection and scapular control. Maintaining a consistent hollow line prevents spinal extension and improves transfer to skills and levers.",
     "category": "CORE",
-    "difficulty": "ADVANCED",
+    "difficulty": "INTERMEDIATE",
     "unit": "seconds",
     "muscleGroups": [],
     "equipment": [
@@ -5840,14 +5840,14 @@
     "gifUrl": null,
     "thumbnailUrl": null,
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "core_l_sit_one_leg",
     "name": "L-Sit (Una Pierna)",
-    "description": "High\u2011tension core position that teaches rib\u2011to\u2011pelvis connection and scapular control. Maintaining a consistent hollow line prevents spinal extension and improves transfer to skills and levers.",
+    "description": "High‑tension core position that teaches rib‑to‑pelvis connection and scapular control. Maintaining a consistent hollow line prevents spinal extension and improves transfer to skills and levers.",
     "category": "CORE",
-    "difficulty": "ADVANCED",
+    "difficulty": "INTERMEDIATE",
     "unit": "seconds",
     "muscleGroups": [],
     "equipment": [
@@ -5860,14 +5860,14 @@
     "gifUrl": null,
     "thumbnailUrl": null,
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "l_sit_parallel_bars",
     "name": "L-Sit en Paralelas",
-    "description": "High\u2011tension core position that teaches rib\u2011to\u2011pelvis connection and scapular control. Maintaining a consistent hollow line prevents spinal extension and improves transfer to skills and levers.",
+    "description": "High‑tension core position that teaches rib‑to‑pelvis connection and scapular control. Maintaining a consistent hollow line prevents spinal extension and improves transfer to skills and levers.",
     "category": "SKILL_STATIC",
-    "difficulty": "ADVANCED",
+    "difficulty": "INTERMEDIATE",
     "unit": "seconds",
     "muscleGroups": [
       "CORE",
@@ -5884,14 +5884,14 @@
     "gifUrl": "https://static.exercisedb.dev/media/jTkSc6o.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/jTkSc6o.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "l_sit_floor",
     "name": "L-Sit en Suelo",
-    "description": "High\u2011tension core position that teaches rib\u2011to\u2011pelvis connection and scapular control. Maintaining a consistent hollow line prevents spinal extension and improves transfer to skills and levers.",
+    "description": "High‑tension core position that teaches rib‑to‑pelvis connection and scapular control. Maintaining a consistent hollow line prevents spinal extension and improves transfer to skills and levers.",
     "category": "SKILL_STATIC",
-    "difficulty": "ADVANCED",
+    "difficulty": "INTERMEDIATE",
     "unit": "seconds",
     "muscleGroups": [
       "CORE",
@@ -5908,14 +5908,14 @@
     "gifUrl": "https://static.exercisedb.dev/media/UpWmA5E.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/UpWmA5E.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "l-sit-on-floor",
     "name": "L-sit On Floor",
-    "description": "High\u2011tension core position that teaches rib\u2011to\u2011pelvis connection and scapular control. Maintaining a consistent hollow line prevents spinal extension and improves transfer to skills and levers.",
+    "description": "High‑tension core position that teaches rib‑to‑pelvis connection and scapular control. Maintaining a consistent hollow line prevents spinal extension and improves transfer to skills and levers.",
     "category": "CORE",
-    "difficulty": "ADVANCED",
+    "difficulty": "INTERMEDIATE",
     "unit": "reps",
     "muscleGroups": [
       "Abs",
@@ -5930,14 +5930,14 @@
     "gifUrl": "https://static.exercisedb.dev/media/UpWmA5E.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/UpWmA5E.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "lean-planche",
     "name": "Lean Planche",
-    "description": "Advanced static hold that builds straight\u2011arm pressing strength and full\u2011body anti\u2011extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
+    "description": "Advanced static hold that builds straight‑arm pressing strength and full‑body anti‑extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
     "category": "CORE",
-    "difficulty": "EXPERT",
+    "difficulty": "INTERMEDIATE",
     "unit": "reps",
     "muscleGroups": [
       "Abs",
@@ -5950,11 +5950,11 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Hands shoulder\u2011width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced\u2011tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath\u2011holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
+    "howTo": "1) Setup: Hands shoulder‑width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced‑tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath‑holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
     "gifUrl": "https://static.exercisedb.dev/media/LYJodFS.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/LYJodFS.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "left-hook-boxing",
@@ -6243,7 +6243,7 @@
   {
     "id": "skill_maltese",
     "name": "Maltese",
-    "description": "Una variaci\u00f3n de Planche (generalmente en anillas) con los brazos completamente abiertos a los lados, formando una 'T'. Representa un nivel extremo de fuerza y control de shoulders.",
+    "description": "Una variación de Planche (generalmente en anillas) con los brazos completamente abiertos a los lados, formando una 'T'. Representa un nivel extremo de fuerza y control de shoulders.",
     "category": "SKILL_STATIC",
     "difficulty": "NOVICE",
     "unit": "seconds",
@@ -6258,7 +6258,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Desde posici\u00f3n de soporte en anillas o paralelas, extiende los brazos completamente hacia los lados formando una T con el cuerpo. Keep el cuerpo horizontal. Los brazos deben estar completamente rectos. Este es uno de los elementos de fuerza m\u00e1s dif\u00edciles que existen, requiriendo a\u00f1os de entrenamiento.",
+    "howTo": "Desde posición de soporte en anillas o paralelas, extiende los brazos completamente hacia los lados formando una T con el cuerpo. Keep el cuerpo horizontal. Los brazos deben estar completamente rectos. Este es uno de los elementos de fuerza más difíciles que existen, requiriendo años de entrenamiento.",
     "gifUrl": "https://static.exercisedb.dev/media/YRaCa5Y.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/YRaCa5Y.gif",
     "videoUrl": null
@@ -6402,7 +6402,7 @@
   {
     "id": "muscle-up",
     "name": "Muscle Up",
-    "description": "Advanced bodyweight pattern requiring high scapular control, full\u2011body tension and precise leverage. Keep elbows locked (if straight\u2011arm), brace the core, and maintain clean lines to handle the increased torque.",
+    "description": "Advanced bodyweight pattern requiring high scapular control, full‑body tension and precise leverage. Keep elbows locked (if straight‑arm), brace the core, and maintain clean lines to handle the increased torque.",
     "category": "STRENGTH",
     "difficulty": "EXPERT",
     "unit": "reps",
@@ -6418,16 +6418,16 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Create full\u2011body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
+    "howTo": "1) Setup: Create full‑body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
     "gifUrl": "https://static.exercisedb.dev/media/yJUHKTn.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/yJUHKTn.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "skill_muscle_up",
     "name": "Muscle Up (Final Integration)",
-    "description": "Advanced bodyweight pattern requiring high scapular control, full\u2011body tension and precise leverage. Keep elbows locked (if straight\u2011arm), brace the core, and maintain clean lines to handle the increased torque.",
+    "description": "Advanced bodyweight pattern requiring high scapular control, full‑body tension and precise leverage. Keep elbows locked (if straight‑arm), brace the core, and maintain clean lines to handle the increased torque.",
     "category": "STRENGTH",
     "difficulty": "EXPERT",
     "unit": "reps",
@@ -6443,16 +6443,16 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Create full\u2011body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
+    "howTo": "1) Setup: Create full‑body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
     "gifUrl": "https://static.exercisedb.dev/media/Af0EW2I.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Af0EW2I.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "skill_muscle_up_negative",
     "name": "Negative Muscle Up",
-    "description": "Advanced bodyweight pattern requiring high scapular control, full\u2011body tension and precise leverage. Keep elbows locked (if straight\u2011arm), brace the core, and maintain clean lines to handle the increased torque.",
+    "description": "Advanced bodyweight pattern requiring high scapular control, full‑body tension and precise leverage. Keep elbows locked (if straight‑arm), brace the core, and maintain clean lines to handle the increased torque.",
     "category": "STRENGTH",
     "difficulty": "EXPERT",
     "unit": "reps",
@@ -6468,18 +6468,18 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Create full\u2011body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
+    "howTo": "1) Setup: Create full‑body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
     "gifUrl": "https://static.exercisedb.dev/media/Af0EW2I.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Af0EW2I.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "muscle-up-on-vertical-bar-",
     "name": "Muscle-up (on Vertical Bar)",
     "description": "Start by hanging from a vertical bar with your palms facing away from you and your arms fully extended.",
     "category": "STRENGTH",
-    "difficulty": "NOVICE",
+    "difficulty": "EXPERT",
     "unit": "reps",
     "muscleGroups": [
       "Lats",
@@ -6829,7 +6829,7 @@
   {
     "id": "skill_headstand",
     "name": "Parada de Cabeza (Headstand)",
-    "description": "Nivel D: Inversi\u00f3n completa apoyada en una base triangular (cabeza y manos). Ense\u00f1a la alineaci\u00f3n invertida y construye confianza boca abajo.",
+    "description": "Nivel D: Inversión completa apoyada en una base triangular (cabeza y manos). Enseña la alineación invertida y construye confianza boca abajo.",
     "category": "BALANCE",
     "difficulty": "NOVICE",
     "unit": "seconds",
@@ -6843,7 +6843,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Coloca la coronilla de la cabeza en el suelo con las manos formando un tri\u00e1ngulo para soporte. Los antebrazos deben estar en el suelo. Levanta las hips y camina con los pies hacia la cabeza. Lentamente levanta las legs hacia arriba hasta quedar completamente vertical. Keep el core activado. Usa una pared para apoyo inicial si es necesario.",
+    "howTo": "Coloca la coronilla de la cabeza en el suelo con las manos formando un triángulo para soporte. Los antebrazos deben estar en el suelo. Levanta las hips y camina con los pies hacia la cabeza. Lentamente levanta las legs hacia arriba hasta quedar completamente vertical. Keep el core activado. Usa una pared para apoyo inicial si es necesario.",
     "gifUrl": "https://static.exercisedb.dev/media/5BZHW9s.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/5BZHW9s.gif",
     "videoUrl": null
@@ -6917,7 +6917,7 @@
   {
     "id": "skill_oahs_assisted",
     "name": "Pino a una Mano (Asistido/Tenting)",
-    "description": "Nivel A: Progresiones hacia el pino a una mano, incluyendo cambios de peso, apoyo m\u00ednimo de dedos (tenting) o asistencia de pared, para desarrollar la fuerza unilateral y el equilibrio.",
+    "description": "Nivel A: Progresiones hacia el pino a una mano, incluyendo cambios de peso, apoyo mínimo de dedos (tenting) o asistencia de pared, para desarrollar la fuerza unilateral y el equilibrio.",
     "category": "BALANCE",
     "difficulty": "BEGINNER",
     "unit": "seconds",
@@ -6940,7 +6940,7 @@
   {
     "id": "skill_oahs",
     "name": "Pino a Una Mano (OAHS)",
-    "description": "Nivel S: El objetivo final. Equilibrio completo sobre un solo brazo, demostrando un nivel de maestr\u00eda \u00e9lite en fuerza y control corporal.",
+    "description": "Nivel S: El objetivo final. Equilibrio completo sobre un solo brazo, demostrando un nivel de maestría élite en fuerza y control corporal.",
     "category": "BALANCE",
     "difficulty": "NOVICE",
     "unit": "seconds",
@@ -6954,7 +6954,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Desde un pino estable, desplaza el peso completamente hacia un brazo mientras levantas el otro brazo del suelo. Keep el cuerpo lo m\u00e1s recto posible aunque habr\u00e1 una ligera curva. El brazo libre puede estar extended al lado o sobre el cuerpo. Uno de los equilibrios m\u00e1s dif\u00edciles de la calistenia.",
+    "howTo": "Desde un pino estable, desplaza el peso completamente hacia un brazo mientras levantas el otro brazo del suelo. Keep el cuerpo lo más recto posible aunque habrá una ligera curva. El brazo libre puede estar extended al lado o sobre el cuerpo. Uno de los equilibrios más difíciles de la calistenia.",
     "gifUrl": "https://static.exercisedb.dev/media/MUic5zN.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/MUic5zN.gif",
     "videoUrl": null
@@ -6962,7 +6962,7 @@
   {
     "id": "skill_handstand_wall",
     "name": "Pino Asistido (Pecho a la Pared)",
-    "description": "Nivel C: Pino completo con el pecho mirando a la pared. Permite enfocarse en la alineaci\u00f3n (shoulders abiertos, core activo) y la estabilidad sin preocuparse por el equilibrio.",
+    "description": "Nivel C: Pino completo con el pecho mirando a la pared. Permite enfocarse en la alineación (shoulders abiertos, core activo) y la estabilidad sin preocuparse por el equilibrio.",
     "category": "BALANCE",
     "difficulty": "BEGINNER",
     "unit": "seconds",
@@ -6976,7 +6976,7 @@
     ],
     "expReward": 8,
     "coinsReward": 4,
-    "howTo": "Coloca las manos a unos 15-20cm de la pared. Pat\u00e9ate hacia arriba hasta quedar en posici\u00f3n invertida con el pecho mirando la pared. Keep el cuerpo completamente recto, empujando activamente con los shoulders. Las manos deben estar a la anchura de shoulders. Esta posici\u00f3n desarrolla fuerza de shoulders y acostumbra a estar invertido.",
+    "howTo": "Coloca las manos a unos 15-20cm de la pared. Patéate hacia arriba hasta quedar en posición invertida con el pecho mirando la pared. Keep el cuerpo completamente recto, empujando activamente con los shoulders. Las manos deben estar a la anchura de shoulders. Esta posición desarrolla fuerza de shoulders y acostumbra a estar invertido.",
     "gifUrl": "https://static.exercisedb.dev/media/sVQCCeG.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/sVQCCeG.gif",
     "videoUrl": null
@@ -6998,7 +6998,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Pat\u00e9ate hasta posici\u00f3n vertical sin apoyo de pared. Keep el cuerpo completamente recto desde las manos hasta los pies. Empuja activamente con los shoulders hacia el techo. Mira las manos o ligeramente adelante. Usa peque\u00f1os ajustes de dedos y mu\u00f1ecas para mantener balance. Requiere pr\u00e1ctica constante para dominar.",
+    "howTo": "Patéate hasta posición vertical sin apoyo de pared. Keep el cuerpo completamente recto desde las manos hasta los pies. Empuja activamente con los shoulders hacia el techo. Mira las manos o ligeramente adelante. Usa pequeños ajustes de dedos y muñecas para mantener balance. Requiere práctica constante para dominar.",
     "gifUrl": "https://static.exercisedb.dev/media/XooAdhl.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/XooAdhl.gif",
     "videoUrl": null
@@ -7040,7 +7040,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "P\u00e1rate en una leg, extiende la other adelante paralela al suelo con los brazos extendeds adelante para balance. Baja en sentadilla completa manteniendo la leg libre extended y sin tocar el suelo. Baja hasta que el gl\u00fateo casi toque el tal\u00f3n. Empuja hacia arriba hasta pararte completamente. Requiere gran fuerza y equilibrio.",
+    "howTo": "Párate en una leg, extiende la other adelante paralela al suelo con los brazos extendeds adelante para balance. Baja en sentadilla completa manteniendo la leg libre extended y sin tocar el suelo. Baja hasta que el glúteo casi toque el talón. Empuja hacia arriba hasta pararte completamente. Requiere gran fuerza y equilibrio.",
     "gifUrl": "https://static.exercisedb.dev/media/nqs5HGV.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/nqs5HGV.gif",
     "videoUrl": null
@@ -7084,7 +7084,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "P\u00e1rate en una leg frente a un soporte que puedas agarrar. Extiende la other leg adelante. Baja en sentadilla a una leg mientras usas el soporte para balance. Baja lo m\u00e1s que puedas manteniendo la leg libre extended. Usa el soporte m\u00ednimamente para subir.",
+    "howTo": "Párate en una leg frente a un soporte que puedas agarrar. Extiende la other leg adelante. Baja en sentadilla a una leg mientras usas el soporte para balance. Baja lo más que puedas manteniendo la leg libre extended. Usa el soporte mínimamente para subir.",
     "gifUrl": "https://static.exercisedb.dev/media/nqs5HGV.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/nqs5HGV.gif",
     "videoUrl": null
@@ -7105,7 +7105,7 @@
     ],
     "expReward": 8,
     "coinsReward": 4,
-    "howTo": "Col\u00f3cate en posici\u00f3n de flexi\u00f3n pero apoyado en los antebrazos. Los codos deben estar directamente bajo los shoulders. Keep el cuerpo completamente recto desde los talones hasta la cabeza. Activa el core, los gl\u00fateos y los cu\u00e1driceps. No permitas que las hips bajen o suban. Respira normalmente.",
+    "howTo": "Colócate en posición de flexión pero apoyado en los antebrazos. Los codos deben estar directamente bajo los shoulders. Keep el cuerpo completamente recto desde los talones hasta la cabeza. Activa el core, los glúteos y los cuádriceps. No permitas que las hips bajen o suban. Respira normalmente.",
     "gifUrl": "https://static.exercisedb.dev/media/VBAWRPG.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/CosupLu.gif",
     "videoUrl": null
@@ -7113,7 +7113,7 @@
   {
     "id": "core_plank",
     "name": "Plancha Abdominal",
-    "description": "Hold isom\u00e9trico b\u00e1sico. Keep el cuerpo recto como una tabla, activando core y gl\u00fateos.",
+    "description": "Hold isométrico básico. Keep el cuerpo recto como una tabla, activando core y glúteos.",
     "category": "CORE",
     "difficulty": "BEGINNER",
     "unit": "seconds",
@@ -7131,7 +7131,7 @@
   {
     "id": "skill_pike_handstand_wall",
     "name": "Plancha Invertida Asistida en Pared",
-    "description": "Nivel F: Camina por la pared hasta una posici\u00f3n de pica (hips a 90\u00ba). Acostumbra al cuerpo a la carga invertida y es un paso previo al pino.",
+    "description": "Nivel F: Camina por la pared hasta una posición de pica (hips a 90º). Acostumbra al cuerpo a la carga invertida y es un paso previo al pino.",
     "category": "BALANCE",
     "difficulty": "BEGINNER",
     "unit": "seconds",
@@ -7163,7 +7163,7 @@
     ],
     "expReward": 8,
     "coinsReward": 4,
-    "howTo": "Acu\u00e9state de lado apoyado en un antebrazo con el codo bajo el hombro. Apila los pies uno sobre otro. Levanta las hips hasta formar una l\u00ednea recta desde los pies hasta la cabeza. Keep el core activado y no permitas que las hips bajen. La mano libre puede estar en la hip o extended hacia arriba.",
+    "howTo": "Acuéstate de lado apoyado en un antebrazo con el codo bajo el hombro. Apila los pies uno sobre otro. Levanta las hips hasta formar una línea recta desde los pies hasta la cabeza. Keep el core activado y no permitas que las hips bajen. La mano libre puede estar en la hip o extended hacia arriba.",
     "gifUrl": "https://static.exercisedb.dev/media/5VXmnV5.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/kk39rUy.gif",
     "videoUrl": null
@@ -7171,9 +7171,9 @@
   {
     "id": "skill_planche_lean",
     "name": "Planche Lean",
-    "description": "Advanced static hold that builds straight\u2011arm pressing strength and full\u2011body anti\u2011extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
+    "description": "Advanced static hold that builds straight‑arm pressing strength and full‑body anti‑extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
     "category": "SKILL_STATIC",
-    "difficulty": "EXPERT",
+    "difficulty": "INTERMEDIATE",
     "unit": "seconds",
     "muscleGroups": [
       "SHOULDERS",
@@ -7185,16 +7185,16 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Hands shoulder\u2011width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced\u2011tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath\u2011holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
+    "howTo": "1) Setup: Hands shoulder‑width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced‑tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath‑holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
     "gifUrl": "https://static.exercisedb.dev/media/LYJodFS.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/LYJodFS.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "plyo-push-up",
     "name": "Plyo Push Up",
-    "description": "High\u2011tension horizontal/vertical pressing emphasizing scapular stability and full\u2011body bracing. Chest, anterior deltoids and triceps drive the movement while the core prevents sag or flaring. Bridges the gap to ring variations and straight\u2011arm strength.",
+    "description": "High‑tension horizontal/vertical pressing emphasizing scapular stability and full‑body bracing. Chest, anterior deltoids and triceps drive the movement while the core prevents sag or flaring. Bridges the gap to ring variations and straight‑arm strength.",
     "category": "STRENGTH",
     "difficulty": "ADVANCED",
     "unit": "reps",
@@ -7213,7 +7213,7 @@
     "gifUrl": "https://static.exercisedb.dev/media/Snj1wSv.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Snj1wSv.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "posterior-step-to-overhead-reach",
@@ -7389,7 +7389,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Acu\u00e9state boca arriba con una knee flexionada y el pie en el suelo. Extiende la other leg recta en el aire. Empuja a trav\u00e9s del tal\u00f3n de la leg de apoyo para levantar las hips. Forma una l\u00ednea recta desde la knee de apoyo hasta los shoulders. Aprieta el gl\u00fateo arriba. Baja con control.",
+    "howTo": "Acuéstate boca arriba con una knee flexionada y el pie en el suelo. Extiende la other leg recta en el aire. Empuja a través del talón de la leg de apoyo para levantar las hips. Forma una línea recta desde la knee de apoyo hasta los shoulders. Aprieta el glúteo arriba. Baja con control.",
     "gifUrl": "https://static.exercisedb.dev/media/rmEukuS.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/aWedzZX.gif",
     "videoUrl": null
@@ -7441,7 +7441,7 @@
   {
     "id": "pull_up",
     "name": "Pull-Up (Agarre Prono)",
-    "description": "Dominada est\u00e1ndar con las palmas mirando hacia adelante (prono). Ejercicio clave para dorsales.",
+    "description": "Dominada estándar con las palmas mirando hacia adelante (prono). Ejercicio clave para dorsales.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -7949,7 +7949,7 @@
   {
     "id": "row_one_arm",
     "name": "Remo a Una Mano",
-    "description": "Remo horizontal completo utilizando un solo brazo. Requiere una inmensa fuerza anti-rotaci\u00f3n del core.",
+    "description": "Remo horizontal completo utilizando un solo brazo. Requiere una inmensa fuerza anti-rotación del core.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -7966,7 +7966,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Col\u00f3cate bajo una barra baja agarr\u00e1ndola con una sola mano. Keep el cuerpo recto y el core muy activado para evitar rotaci\u00f3n. Tira del pecho hacia la barra usando solo un brazo. Baja con control. Requiere gran fuerza unilateral y control del core.",
+    "howTo": "Colócate bajo una barra baja agarrándola con una sola mano. Keep el cuerpo recto y el core muy activado para evitar rotación. Tira del pecho hacia la barra usando solo un brazo. Baja con control. Requiere gran fuerza unilateral y control del core.",
     "gifUrl": "https://static.exercisedb.dev/media/Jsgsc27.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Jsgsc27.gif",
     "videoUrl": null
@@ -7989,7 +7989,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Col\u00f3cate bajo una barra baja con las manos muy separadas. Tira del cuerpo hacia un lado, manteniendo ese brazo flexionado mientras el otro permanece extended. Alterna los lados. Este ejercicio desarrolla fuerza unilateral y prepara para el remo a una mano.",
+    "howTo": "Colócate bajo una barra baja con las manos muy separadas. Tira del cuerpo hacia un lado, manteniendo ese brazo flexionado mientras el otro permanece extended. Alterna los lados. Este ejercicio desarrolla fuerza unilateral y prepara para el remo a una mano.",
     "gifUrl": "https://static.exercisedb.dev/media/bKWbrTA.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/bKWbrTA.gif",
     "videoUrl": null
@@ -7997,7 +7997,7 @@
   {
     "id": "row_wide",
     "name": "Remo Australiano (Agarre Ancho)",
-    "description": "Remo horizontal con un agarre ancho (1.5x ancho de shoulders) o codos abri\u00e9ndose a 90 grados en anillas.",
+    "description": "Remo horizontal con un agarre ancho (1.5x ancho de shoulders) o codos abriéndose a 90 grados en anillas.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -8012,7 +8012,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Col\u00f3cate bajo una barra baja con las manos separadas m\u00e1s que el ancho de shoulders, palmas hacia abajo. Keep el cuerpo recto. Tira del pecho hacia la barra abriendo los codos hacia los lados. Aprieta los om\u00f3platos juntos al final. El agarre ancho enfatiza la espalda superior y los deltoides traseros.",
+    "howTo": "Colócate bajo una barra baja con las manos separadas más que el ancho de shoulders, palmas hacia abajo. Keep el cuerpo recto. Tira del pecho hacia la barra abriendo los codos hacia los lados. Aprieta los omóplatos juntos al final. El agarre ancho enfatiza la espalda superior y los deltoides traseros.",
     "gifUrl": "https://static.exercisedb.dev/media/Mxa7Cr8.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Mxa7Cr8.gif",
     "videoUrl": null
@@ -8035,7 +8035,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Col\u00f3cate bajo una barra baja con las palmas hacia abajo. Keep el cuerpo recto y el core activado. Tira del pecho hacia la barra llevando los codos hacia atr\u00e1s. Aprieta los om\u00f3platos al final del movimiento. Baja con control. El agarre prono trabaja m\u00e1s la espalda media y trasera.",
+    "howTo": "Colócate bajo una barra baja con las palmas hacia abajo. Keep el cuerpo recto y el core activado. Tira del pecho hacia la barra llevando los codos hacia atrás. Aprieta los omóplatos al final del movimiento. Baja con control. El agarre prono trabaja más la espalda media y trasera.",
     "gifUrl": "https://static.exercisedb.dev/media/jdiExfW.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/jdiExfW.gif",
     "videoUrl": null
@@ -8057,7 +8057,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Col\u00f3cate bajo una barra baja con las palmas hacia ti. Keep el cuerpo completamente recto desde los talones hasta la cabeza. Tira del pecho hacia la barra manteniendo los codos cerca del cuerpo. Baja con control hasta extender completamente los brazos. El agarre supino enfatiza los b\u00edceps.",
+    "howTo": "Colócate bajo una barra baja con las palmas hacia ti. Keep el cuerpo completamente recto desde los talones hasta la cabeza. Tira del pecho hacia la barra manteniendo los codos cerca del cuerpo. Baja con control hasta extender completamente los brazos. El agarre supino enfatiza los bíceps.",
     "gifUrl": "https://static.exercisedb.dev/media/1YUWDNZ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/1YUWDNZ.gif",
     "videoUrl": null
@@ -8081,7 +8081,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Col\u00f3cate bajo una barra con los pies elevados en un banco, creando una l\u00ednea horizontal con el cuerpo. Keep el cuerpo completamente recto. Tira del pecho hacia la barra. La elevaci\u00f3n de los pies aumenta significativamente la dificultad y la carga sobre la espalda.",
+    "howTo": "Colócate bajo una barra con los pies elevados en un banco, creando una línea horizontal con el cuerpo. Keep el cuerpo completamente recto. Tira del pecho hacia la barra. La elevación de los pies aumenta significativamente la dificultad y la carga sobre la espalda.",
     "gifUrl": "https://static.exercisedb.dev/media/jdiExfW.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/jdiExfW.gif",
     "videoUrl": null
@@ -8089,7 +8089,7 @@
   {
     "id": "row_doorway",
     "name": "Remo en Marco de Puerta",
-    "description": "Usando el marco de una puerta o una toalla, inclinarse hacia atr\u00e1s y tirar del cuerpo. Progresi\u00f3n inicial.",
+    "description": "Usando el marco de una puerta o una toalla, inclinarse hacia atrás y tirar del cuerpo. Progresión inicial.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -8104,7 +8104,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Col\u00f3cate en el marco de una puerta abierta, agarrando ambos lados del marco a la altura del pecho. Incl\u00ednate hacia atr\u00e1s con los brazos extendeds manteniendo el cuerpo recto. Tira de ti mismo hacia el marco llevando el pecho hacia las manos. Vuelve a la posici\u00f3n inicial con control. Cuanto m\u00e1s te inclines, m\u00e1s dif\u00edcil ser\u00e1.",
+    "howTo": "Colócate en el marco de una puerta abierta, agarrando ambos lados del marco a la altura del pecho. Inclínate hacia atrás con los brazos extendeds manteniendo el cuerpo recto. Tira de ti mismo hacia el marco llevando el pecho hacia las manos. Vuelve a la posición inicial con control. Cuanto más te inclines, más difícil será.",
     "gifUrl": "https://static.exercisedb.dev/media/50BETrz.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/50BETrz.gif",
     "videoUrl": null
@@ -8112,7 +8112,7 @@
   {
     "id": "row_horizontal",
     "name": "Remo Horizontal",
-    "description": "Remo con el cuerpo completamente paralelo al suelo. Requiere una retracci\u00f3n escapular completa.",
+    "description": "Remo con el cuerpo completamente paralelo al suelo. Requiere una retracción escapular completa.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -8153,7 +8153,7 @@
   {
     "id": "row_incline",
     "name": "Remo Inclinado (Australiano)",
-    "description": "Remo con el cuerpo inclinado. Cuanto m\u00e1s horizontal est\u00e9 el cuerpo, m\u00e1s dif\u00edcil ser\u00e1. Fundamental para la fuerza de espalda.",
+    "description": "Remo con el cuerpo inclinado. Cuanto más horizontal esté el cuerpo, más difícil será. Fundamental para la fuerza de espalda.",
     "category": "STRENGTH",
     "difficulty": "INTERMEDIATE",
     "unit": "reps",
@@ -8173,7 +8173,7 @@
   {
     "id": "row_tuck_front_lever",
     "name": "Remos en Tuck Front Lever",
-    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one\u2011leg variations.",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
     "category": "STRENGTH",
     "difficulty": "ADVANCED",
     "unit": "reps",
@@ -8184,11 +8184,11 @@
     ],
     "expReward": 26,
     "coinsReward": 13,
-    "howTo": "1) Setup: Dead\u2011hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
     "gifUrl": null,
     "thumbnailUrl": null,
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "row_vertical",
@@ -8212,7 +8212,7 @@
   {
     "id": "pull_scapular",
     "name": "Retracciones Escapulares (Colgado)",
-    "description": "Colgando de la barra, deprimir y retraer las esc\u00e1pulas (juntar los om\u00f3platos) sin doblar los codos. Activa la espalda.",
+    "description": "Colgando de la barra, deprimir y retraer las escápulas (juntar los omóplatos) sin doblar los codos. Activa la espalda.",
     "category": "STRENGTH",
     "difficulty": "NOVICE",
     "unit": "reps",
@@ -8421,7 +8421,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Corre en el lugar levantando las knees lo m\u00e1s alto posible hacia el pecho en cada paso. Bombea los brazos coordinadamente. Keep el torso erguido. Aterriza en las puntas de los pies. Aumenta la velocidad para mayor intensidad. Excelente para trabajo cardiovascular y de legs.",
+    "howTo": "Corre en el lugar levantando las knees lo más alto posible hacia el pecho en cada paso. Bombea los brazos coordinadamente. Keep el torso erguido. Aterriza en las puntas de los pies. Aumenta la velocidad para mayor intensidad. Excelente para trabajo cardiovascular y de legs.",
     "gifUrl": "https://static.exercisedb.dev/media/J9zIWig.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/J9zIWig.gif",
     "videoUrl": null
@@ -8620,7 +8620,7 @@
     ],
     "expReward": 18,
     "coinsReward": 9,
-    "howTo": "Cuelga de una barra con brazos extendeds. Sin flexionar los codos, tira de los om\u00f3platos hacia abajo y j\u00fantalos. Tu cuerpo subir\u00e1 unos cent\u00edmetros. Vuelve a la posici\u00f3n inicial. Este ejercicio activa la musculatura escapular y es fundamental para dominadas correctas.",
+    "howTo": "Cuelga de una barra con brazos extendeds. Sin flexionar los codos, tira de los omóplatos hacia abajo y júntalos. Tu cuerpo subirá unos centímetros. Vuelve a la posición inicial. Este ejercicio activa la musculatura escapular y es fundamental para dominadas correctas.",
     "gifUrl": "https://static.exercisedb.dev/media/uTBt1HV.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/uTBt1HV.gif",
     "videoUrl": null
@@ -8922,7 +8922,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Baja en sentadilla completa. Desde la posici\u00f3n baja, explota hacia arriba saltando lo m\u00e1s alto posible. Aterriza suavemente con las knees ligeramente flexionadas y baja inmediatamente a la siguiente sentadilla. Este ejercicio desarrolla potencia explosiva en las legs.",
+    "howTo": "Baja en sentadilla completa. Desde la posición baja, explota hacia arriba saltando lo más alto posible. Aterriza suavemente con las knees ligeramente flexionadas y baja inmediatamente a la siguiente sentadilla. Este ejercicio desarrolla potencia explosiva en las legs.",
     "gifUrl": "https://static.exercisedb.dev/media/LIlE5Tn.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/wfotm7S.gif",
     "videoUrl": null
@@ -8945,7 +8945,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "P\u00e1rate con los pies a la anchura de shoulders, dedos ligeramente hacia afuera. Baja flexionando knees y hips como si te sentaras, manteniendo el pecho arriba y la espalda recta. Baja hasta que los muslos est\u00e9n paralelos al suelo o m\u00e1s. Empuja a trav\u00e9s de los talones para subir. Keep las knees alineadas con los pies.",
+    "howTo": "Párate con los pies a la anchura de shoulders, dedos ligeramente hacia afuera. Baja flexionando knees y hips como si te sentaras, manteniendo el pecho arriba y la espalda recta. Baja hasta que los muslos estén paralelos al suelo o más. Empuja a través de los talones para subir. Keep las knees alineadas con los pies.",
     "gifUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Bodyweight_Squats.gif/500px-Bodyweight_Squats.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/9E25EOx.gif",
     "videoUrl": null
@@ -8967,7 +8967,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Col\u00f3cate frente a un soporte (silla, mesa) que puedas agarrar. Agarra el soporte y baja en sentadilla con control. Usa el soporte para ayudarte a subir. Esto te permite aprender la t\u00e9cnica correcta mientras desarrollas fuerza en las legs.",
+    "howTo": "Colócate frente a un soporte (silla, mesa) que puedas agarrar. Agarra el soporte y baja en sentadilla con control. Usa el soporte para ayudarte a subir. Esto te permite aprender la técnica correcta mientras desarrollas fuerza en las legs.",
     "gifUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Bodyweight_Squats.gif/500px-Bodyweight_Squats.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/9E25EOx.gif",
     "videoUrl": null
@@ -9820,7 +9820,7 @@
   {
     "id": "standing-archer",
     "name": "Standing Archer",
-    "description": "Advanced bodyweight pattern requiring high scapular control, full\u2011body tension and precise leverage. Keep elbows locked (if straight\u2011arm), brace the core, and maintain clean lines to handle the increased torque.",
+    "description": "Advanced bodyweight pattern requiring high scapular control, full‑body tension and precise leverage. Keep elbows locked (if straight‑arm), brace the core, and maintain clean lines to handle the increased torque.",
     "category": "STRENGTH",
     "difficulty": "ADVANCED",
     "unit": "reps",
@@ -9835,11 +9835,11 @@
     ],
     "expReward": 26,
     "coinsReward": 13,
-    "howTo": "1) Setup: Create full\u2011body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
+    "howTo": "1) Setup: Create full‑body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
     "gifUrl": "https://static.exercisedb.dev/media/JF8AkMX.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/JF8AkMX.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "standing-calf-raise-on-a-staircase-",
@@ -9997,7 +9997,7 @@
   {
     "id": "skill_back_lever_straddle",
     "name": "Straddle Back Lever",
-    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one\u2011leg variations.",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
     "category": "SKILL_STATIC",
     "difficulty": "EXPERT",
     "unit": "seconds",
@@ -10012,16 +10012,16 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Dead\u2011hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
     "gifUrl": "https://static.exercisedb.dev/media/HfqciZF.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/HfqciZF.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "skill_front_lever_straddle",
     "name": "Straddle Front Lever",
-    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one\u2011leg variations.",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
     "category": "SKILL_STATIC",
     "difficulty": "ADVANCED",
     "unit": "seconds",
@@ -10036,11 +10036,11 @@
     ],
     "expReward": 26,
     "coinsReward": 13,
-    "howTo": "1) Setup: Dead\u2011hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
     "gifUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "straddle-maltese",
@@ -10067,9 +10067,9 @@
   {
     "id": "skill_planche_straddle",
     "name": "Straddle Planche",
-    "description": "Advanced static hold that builds straight\u2011arm pressing strength and full\u2011body anti\u2011extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
+    "description": "Advanced static hold that builds straight‑arm pressing strength and full‑body anti‑extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
     "category": "CORE",
-    "difficulty": "EXPERT",
+    "difficulty": "ADVANCED",
     "unit": "reps",
     "muscleGroups": [
       "Abs",
@@ -10082,11 +10082,11 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Hands shoulder\u2011width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced\u2011tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath\u2011holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
+    "howTo": "1) Setup: Hands shoulder‑width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced‑tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath‑holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
     "gifUrl": "https://static.exercisedb.dev/media/BL3GHeY.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/BL3GHeY.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "straight-leg-outer-hip-abductor",
@@ -10113,7 +10113,7 @@
   {
     "id": "stretched-full-planche-push-up",
     "name": "Stretched Full Planche Push-up",
-    "description": "Advanced static hold that builds straight\u2011arm pressing strength and full\u2011body anti\u2011extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
+    "description": "Advanced static hold that builds straight‑arm pressing strength and full‑body anti‑extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
     "category": "STRENGTH",
     "difficulty": "EXPERT",
     "unit": "reps",
@@ -10128,16 +10128,16 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Hands shoulder\u2011width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced\u2011tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath\u2011holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
+    "howTo": "1) Setup: Hands shoulder‑width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced‑tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath‑holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
     "gifUrl": "https://static.exercisedb.dev/media/mAYqY4M.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/mAYqY4M.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "superman-push-up",
     "name": "Superman Push-up",
-    "description": "High\u2011tension horizontal/vertical pressing emphasizing scapular stability and full\u2011body bracing. Chest, anterior deltoids and triceps drive the movement while the core prevents sag or flaring. Bridges the gap to ring variations and straight\u2011arm strength.",
+    "description": "High‑tension horizontal/vertical pressing emphasizing scapular stability and full‑body bracing. Chest, anterior deltoids and triceps drive the movement while the core prevents sag or flaring. Bridges the gap to ring variations and straight‑arm strength.",
     "category": "STRENGTH",
     "difficulty": "ADVANCED",
     "unit": "reps",
@@ -10155,7 +10155,7 @@
     "gifUrl": "https://static.exercisedb.dev/media/4GqRrAk.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/4GqRrAk.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "suspended-abdominal-fallout",
@@ -10512,7 +10512,7 @@
   {
     "id": "skill_back_lever_tuck",
     "name": "Tuck Back Lever",
-    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one\u2011leg variations.",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
     "category": "SKILL_STATIC",
     "difficulty": "EXPERT",
     "unit": "seconds",
@@ -10527,11 +10527,11 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Dead\u2011hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
     "gifUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "tuck-crunch",
@@ -10557,7 +10557,7 @@
   {
     "id": "skill_front_lever_tuck",
     "name": "Tuck Front Lever",
-    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one\u2011leg variations.",
+    "description": "Advanced isometric that trains the lats and posterior chain to keep the body horizontal with straight arms. Scapulae stay retracted and depressed, elbows locked, and the core braced to resist hip drop. Key step toward the full lever and one‑leg variations.",
     "category": "SKILL_STATIC",
     "difficulty": "ADVANCED",
     "unit": "seconds",
@@ -10572,18 +10572,18 @@
     ],
     "expReward": 26,
     "coinsReward": 13,
-    "howTo": "1) Setup: Dead\u2011hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
+    "howTo": "1) Setup: Dead‑hang with pronated grip. Lock elbows; retract and depress the shoulder blades before lifting.\n2) Enter/Hold: Bring knees away from chest (advanced tuck). Keep back flat and hips level with shoulders.\n2) Tension: Drive elbows toward hips to engage lats; brace abs to resist hip drop.\n2) Cues: 'Straight arms', 'crush the bar', 'lock the ribs to the pelvis'.\n2) Errors: Bent elbows, rounded upper back, losing scapular set.",
     "gifUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "core_l_sit_tuck",
     "name": "Tuck L-Sit",
-    "description": "High\u2011tension core position that teaches rib\u2011to\u2011pelvis connection and scapular control. Maintaining a consistent hollow line prevents spinal extension and improves transfer to skills and levers.",
+    "description": "High‑tension core position that teaches rib‑to‑pelvis connection and scapular control. Maintaining a consistent hollow line prevents spinal extension and improves transfer to skills and levers.",
     "category": "CORE",
-    "difficulty": "ADVANCED",
+    "difficulty": "INTERMEDIATE",
     "unit": "seconds",
     "muscleGroups": [],
     "equipment": [
@@ -10596,14 +10596,14 @@
     "gifUrl": null,
     "thumbnailUrl": null,
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "skill_planche_tuck",
     "name": "Tuck Planche",
-    "description": "Advanced static hold that builds straight\u2011arm pressing strength and full\u2011body anti\u2011extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
+    "description": "Advanced static hold that builds straight‑arm pressing strength and full‑body anti‑extension control. Requires strong anterior deltoids, triceps, and deep core while the shoulder blades stay protracted and slightly depressed. Increases shoulder torque versus tuck variations and develops control for harder planche progressions.",
     "category": "SKILL_STATIC",
-    "difficulty": "EXPERT",
+    "difficulty": "INTERMEDIATE",
     "unit": "seconds",
     "muscleGroups": [
       "SHOULDERS",
@@ -10616,11 +10616,11 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Hands shoulder\u2011width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced\u2011tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath\u2011holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
+    "howTo": "1) Setup: Hands shoulder‑width; elbows locked. Protract and lightly depress the shoulder blades. Hollow body.\n2) Enter/Hold: Lean forward until shoulders pass the wrists. Keep knees tucked/advanced‑tuck and back flat; push the floor away.\n2) Breathing: Short exhales while maintaining bracing; avoid breath‑holding collapse.\n2) Cues: 'Push tall', 'ribs down', 'squeeze glutes', 'externally rotate the shoulders'.\n2) Errors: Elbow bend, scapular collapse, hips sag or piking.",
     "gifUrl": "https://static.exercisedb.dev/media/YZ4961r.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/YZ4961r.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "twist-hip-lift",
@@ -10778,7 +10778,7 @@
   {
     "id": "core_v_sit",
     "name": "V-Sit",
-    "description": "Advanced bodyweight pattern requiring high scapular control, full\u2011body tension and precise leverage. Keep elbows locked (if straight\u2011arm), brace the core, and maintain clean lines to handle the increased torque.",
+    "description": "Advanced bodyweight pattern requiring high scapular control, full‑body tension and precise leverage. Keep elbows locked (if straight‑arm), brace the core, and maintain clean lines to handle the increased torque.",
     "category": "CORE",
     "difficulty": "EXPERT",
     "unit": "seconds",
@@ -10789,16 +10789,16 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Create full\u2011body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
+    "howTo": "1) Setup: Create full‑body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
     "gifUrl": null,
     "thumbnailUrl": null,
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "v_sit",
     "name": "V-Sit",
-    "description": "Advanced bodyweight pattern requiring high scapular control, full\u2011body tension and precise leverage. Keep elbows locked (if straight\u2011arm), brace the core, and maintain clean lines to handle the increased torque.",
+    "description": "Advanced bodyweight pattern requiring high scapular control, full‑body tension and precise leverage. Keep elbows locked (if straight‑arm), brace the core, and maintain clean lines to handle the increased torque.",
     "category": "SKILL_STATIC",
     "difficulty": "EXPERT",
     "unit": "seconds",
@@ -10812,16 +10812,16 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Create full\u2011body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
+    "howTo": "1) Setup: Create full‑body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
     "gifUrl": "https://static.exercisedb.dev/media/ZuXu4Eq.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/ZuXu4Eq.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "v-sit-on-floor",
     "name": "V-sit On Floor",
-    "description": "Advanced bodyweight pattern requiring high scapular control, full\u2011body tension and precise leverage. Keep elbows locked (if straight\u2011arm), brace the core, and maintain clean lines to handle the increased torque.",
+    "description": "Advanced bodyweight pattern requiring high scapular control, full‑body tension and precise leverage. Keep elbows locked (if straight‑arm), brace the core, and maintain clean lines to handle the increased torque.",
     "category": "CORE",
     "difficulty": "EXPERT",
     "unit": "reps",
@@ -10834,11 +10834,11 @@
     ],
     "expReward": 38,
     "coinsReward": 19,
-    "howTo": "1) Setup: Create full\u2011body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
+    "howTo": "1) Setup: Create full‑body tension before moving; set the shoulders and brace the core.\n2) Execution: Move under control; keep lines clean and leverage consistent.\n2) Cues: 'Stay tight', 'own the range', 'quality over quantity'.\n2) Errors: Rushed tempo, compensations, breaking alignment.",
     "gifUrl": "https://static.exercisedb.dev/media/ZuXu4Eq.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/ZuXu4Eq.gif",
     "videoUrl": null,
-    "coachingTip": "Generate full\u2011body tension; if the core relaxes, leverage breaks and control is lost."
+    "coachingTip": "Generate full‑body tension; if the core relaxes, leverage breaks and control is lost."
   },
   {
     "id": "vertical-leg-raise-on-parallel-bars-",
@@ -11145,7 +11145,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Da un paso largo hacia adelante con una leg. Baja hasta que ambas knees est\u00e9n a 90 grados, la knee trasera cerca del suelo. Empuja con la leg delantera y trae la leg trasera adelante en el siguiente paso. Contin\u00faa caminando hacia adelante alternando las legs.",
+    "howTo": "Da un paso largo hacia adelante con una leg. Baja hasta que ambas knees estén a 90 grados, la knee trasera cerca del suelo. Empuja con la leg delantera y trae la leg trasera adelante en el siguiente paso. Continúa caminando hacia adelante alternando las legs.",
     "gifUrl": "https://static.exercisedb.dev/media/IZVHb27.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/IZVHb27.gif",
     "videoUrl": null
@@ -11168,7 +11168,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "Comienza en posici\u00f3n de zancada con ambas knees a 90 grados. Salta explosivamente cambiando las legs en el aire. Aterriza en posici\u00f3n de zancada con la leg opuesta adelante. Las knees deben estar ligeramente flexionadas al aterrizar. Este ejercicio desarrolla potencia explosiva.",
+    "howTo": "Comienza en posición de zancada con ambas knees a 90 grados. Salta explosivamente cambiando las legs en el aire. Aterriza en posición de zancada con la leg opuesta adelante. Las knees deben estar ligeramente flexionadas al aterrizar. Este ejercicio desarrolla potencia explosiva.",
     "gifUrl": "https://static.exercisedb.dev/media/PM1PZjg.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/PM1PZjg.gif",
     "videoUrl": null
@@ -11190,7 +11190,7 @@
     ],
     "expReward": 12,
     "coinsReward": 6,
-    "howTo": "P\u00e1rate con los pies juntos. Da un paso largo hacia atr\u00e1s con una leg. Baja la knee trasera hacia el suelo hasta que ambas knees est\u00e9n a 90 grados. La knee delantera debe estar sobre el tobillo. Empuja con la leg delantera para volver a la posici\u00f3n inicial. Alterna las legs.",
+    "howTo": "Párate con los pies juntos. Da un paso largo hacia atrás con una leg. Baja la knee trasera hacia el suelo hasta que ambas knees estén a 90 grados. La knee delantera debe estar sobre el tobillo. Empuja con la leg delantera para volver a la posición inicial. Alterna las legs.",
     "gifUrl": "https://static.exercisedb.dev/media/SSsBDwB.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/XaaRnRn.gif",
     "videoUrl": null
