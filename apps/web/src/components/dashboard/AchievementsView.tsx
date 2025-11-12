@@ -86,6 +86,7 @@ export default function AchievementsView({ userId }: AchievementsViewProps) {
   const [stats, setStats] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [completing, setCompleting] = useState<string | null>(null);
+  const [initializing, setInitializing] = useState(false);
 
   useEffect(() => {
     fetchActiveAchievements();
@@ -142,6 +143,32 @@ export default function AchievementsView({ userId }: AchievementsViewProps) {
       toast.error('Error completing achievement');
     } finally {
       setCompleting(null);
+    }
+  };
+
+  const handleInitializeAchievements = async () => {
+    try {
+      setInitializing(true);
+      const res = await fetch('/api/achievements/initialize', {
+        method: 'POST',
+        headers: {
+          'x-user-id': userId,
+        },
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        toast.success(data.message || 'Achievements initialized!');
+        await fetchActiveAchievements();
+      } else {
+        toast.error(data.error || 'Error initializing achievements');
+      }
+    } catch (error) {
+      console.error('Error initializing achievements:', error);
+      toast.error('Error initializing achievements');
+    } finally {
+      setInitializing(false);
     }
   };
 
@@ -225,12 +252,27 @@ export default function AchievementsView({ userId }: AchievementsViewProps) {
                 Active Achievement Chains
               </CardTitle>
               <CardDescription>
-                Complete achievements manually to unlock the next level
+                Achievements unlock automatically as you progress
               </CardDescription>
             </div>
-            <Button onClick={fetchActiveAchievements} variant="outline" size="sm">
-              <RefreshCw className="w-4 h-4" />
-            </Button>
+            <div className="flex gap-2">
+              <Button
+                onClick={handleInitializeAchievements}
+                variant="outline"
+                size="sm"
+                disabled={initializing}
+              >
+                {initializing ? (
+                  <RefreshCw className="w-4 h-4 animate-spin" />
+                ) : (
+                  <Sparkles className="w-4 h-4" />
+                )}
+                <span className="ml-2 hidden sm:inline">Initialize</span>
+              </Button>
+              <Button onClick={fetchActiveAchievements} variant="outline" size="sm">
+                <RefreshCw className="w-4 h-4" />
+              </Button>
+            </div>
           </div>
         </CardHeader>
       </Card>

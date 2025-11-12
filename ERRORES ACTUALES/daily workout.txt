@@ -1,0 +1,20 @@
+
+
+1 of 1 error
+Next.js (14.2.33) is outdated (learn more)
+
+Unhandled Runtime Error
+TypeError: Cannot read properties of undefined (reading 'phases')
+
+Source
+src\components\training\WorkoutSessionTracker.tsx (246:43) @ phases
+
+  244 |     });
+  245 |
+> 246 |     const currentPhase = session.progress.phases[session.currentPhaseIndex];
+      |                                           ^
+  247 |     if (!currentPhase) {
+  248 |       console.log('[WORKOUT] getCurrentExercise: No current phase');
+  249 |       return null;
+Call Stack
+Show collapsed frames

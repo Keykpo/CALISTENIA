@@ -1,0 +1,15 @@
+Module not found: Can't resolve '@/components/ui/checkbox'
+   9 | import { Progress } from '@/components/ui/progress';
+  10 | import { Badge } from '@/components/ui/badge';
+> 11 | import { Checkbox } from '@/components/ui/checkbox';
+     | ^
+  12 | import {
+  13 |   ChevronRight,
+  14 |   ChevronLeft,
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/components/dashboard/DashboardAssessmentModal.tsx
+./src/components/dashboard/DashboardOverview.tsx
+./src/app/dashboard/page.tsx

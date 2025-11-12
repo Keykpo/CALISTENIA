@@ -348,12 +348,24 @@ export async function POST(req: NextRequest) {
     // Step 5: Save D-S level to user's profile
     console.log('[D-S_ASSESSMENT] Updating user with D-S level and fitness level...');
 
+    // Format equipment for storage
+    const userEquipment = {
+      floor: step2.equipment.floor,
+      pullUpBar: step2.equipment.pullUpBar,
+      rings: step2.equipment.rings,
+      parallelBars: step2.equipment.parallelBars,
+      resistanceBands: step2.equipment.resistanceBands,
+    };
+
+    console.log('[D-S_ASSESSMENT] User equipment:', userEquipment);
+
     const updatedUser = await prisma.user.update({
       where: { id: userId },
       data: {
         hasCompletedAssessment: true,
         assessmentDate: new Date(),
         fitnessLevel: overallLevel,
+        equipment: JSON.stringify(userEquipment),
         // Store D-S assessment results
         difficultyLevel: assessmentResult.assignedLevel,
         visualRank: assessmentResult.visualRank,

@@ -19,10 +19,10 @@ import { getInitials } from '@calisthenics/utils';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard' },
-  { name: 'Routines', href: '/routines' },
+  { name: 'Daily Workout', href: '/training/daily-workout' },
+  { name: 'Activity', href: '/activity' },
   { name: 'Exercises', href: '/exercises' },
   { name: 'Ranking', href: '/ranking' },
-  { name: 'Courses', href: '/courses' },
 ];
 
 export function Header() {

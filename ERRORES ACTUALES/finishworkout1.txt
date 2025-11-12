@@ -1,0 +1,34 @@
+[WORKOUT] getCurrentExercise: Found exercise: iron cross stretch - deep variation
+WorkoutSessionTracker.tsx:362  PUT http://localhost:3000/api/training/update-workout-session 500 (Internal Server Error)
+completeSession @ WorkoutSessionTracker.tsx:362
+handleExerciseComplete @ WorkoutSessionTracker.tsx:447
+await in handleExerciseComplete
+handleCompleteExercise @ ExerciseTimer.tsx:122
+callCallback @ react-dom.development.js:20565
+invokeGuardedCallbackImpl @ react-dom.development.js:20614
+invokeGuardedCallback @ react-dom.development.js:20689
+invokeGuardedCallbackAndCatchFirstError @ react-dom.development.js:20703
+executeDispatch @ react-dom.development.js:32128
+processDispatchQueueItemsInOrder @ react-dom.development.js:32160
+processDispatchQueue @ react-dom.development.js:32173
+dispatchEventsForPlugins @ react-dom.development.js:32184
+eval @ react-dom.development.js:32374
+batchedUpdates$1 @ react-dom.development.js:24953
+batchedUpdates @ react-dom.development.js:28844
+dispatchEventForPluginEventSystem @ react-dom.development.js:32373
+dispatchEvent @ react-dom.development.js:30141
+dispatchDiscreteEvent @ react-dom.development.js:30112Understand this error
+ExerciseTimer.tsx:121 [EXERCISE_TIMER] Complete exercise clicked, isLastExercise: true
+WorkoutSessionTracker.tsx:410 [WORKOUT] handleExerciseComplete called
+WorkoutSessionTracker.tsx:248 [WORKOUT] getCurrentExercise: {currentPhaseIndex: 3, currentExerciseIndex: 1, totalPhases: 4}
+WorkoutSessionTracker.tsx:272 [WORKOUT] getCurrentExercise: Found exercise: iron cross stretch - deep variation
+WorkoutSessionTracker.tsx:427 [WORKOUT] Exercise completion: {isLastExercise: true, currentPhaseIndex: 3, currentExerciseIndex: 1, totalPhases: 4, exercisesInCurrentPhase: 2}
+WorkoutSessionTracker.tsx:436 [WORKOUT] Marking exercise as completed...
+WorkoutSessionTracker.tsx:446 [WORKOUT] Last exercise - completing session...
+WorkoutSessionTracker.tsx:459 [WORKOUT] Render state: {loading: false, viewState: 'active', hasRoutine: true, hasSession: true, hasError: false}
+WorkoutSessionTracker.tsx:248 [WORKOUT] getCurrentExercise: {currentPhaseIndex: 3, currentExerciseIndex: 1, totalPhases: 4}currentExerciseIndex: 1currentPhaseIndex: 3totalPhases: 4[[Prototype]]: Objectconstructor: ƒ Object()hasOwnProperty: ƒ hasOwnProperty()isPrototypeOf: ƒ isPrototypeOf()propertyIsEnumerable: ƒ propertyIsEnumerable()toLocaleString: ƒ toLocaleString()toString: ƒ toString()valueOf: ƒ valueOf()__defineGetter__: ƒ __defineGetter__()__defineSetter__: ƒ __defineSetter__()__lookupGetter__: ƒ __lookupGetter__()__lookupSetter__: ƒ __lookupSetter__()__proto__: (...)get __proto__: ƒ __proto__()set __proto__: ƒ __proto__()
+WorkoutSessionTracker.tsx:272 [WORKOUT] getCurrentExercise: Found exercise: iron cross stretch - deep variation
+WorkoutSessionTracker.tsx:459 [WORKOUT] Render state: {loading: false, viewState: 'active', hasRoutine: true, hasSession: true, hasError: false}
+WorkoutSessionTracker.tsx:248 [WORKOUT] getCurrentExercise: {currentPhaseIndex: 3, currentExerciseIndex: 1, totalPhases: 4}currentExerciseIndex: 1currentPhaseIndex: 3totalPhases: 4[[Prototype]]: Object
+WorkoutSessionTracker.tsx:272 [WORKOUT] getCurrentExercise: Found exercise: iron cross stretch - deep variation
+WorkoutSessionTracker.tsx:362  PUT http://localhost:3000/api/training/update-workout-session 500 (Internal Server Error

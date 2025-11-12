@@ -17,6 +17,7 @@ import {
   getUnifiedAxisVisualField,
   type UnifiedHexagonAxis,
 } from '@/lib/unified-hexagon-system';
+import { trackExerciseMastery, trackXPMilestone } from '@/lib/achievement-tracking';
 
 const LogSchema = z.object({
   name: z.string().min(2),
@@ -111,12 +112,49 @@ export async function POST(req: Request) {
       },
     });
 
+    // Save manual exercise log
+    const inferredCategory = category || inferCategoryFromName(name);
+    const log = await prisma.manualExerciseLog.create({
+      data: {
+        userId: session.user.id,
+        name,
+        category: inferredCategory,
+        reps: reps || null,
+        duration: durationSec || null,
+        sets: 1,
+        xpEarned: rewards.totalXP,
+        coinsEarned: rewards.coins,
+      },
+    });
+
+    // Track achievement progress
+    let achievementUpdate = { achieved: [], unlockedNext: [] };
+
+    // Map category to achievement tracking format (PUSH, PULL, CORE, BALANCE)
+    const achievementCategory = inferredCategory.toUpperCase();
+    if (['PUSH', 'PULL', 'CORE', 'BALANCE'].includes(achievementCategory)) {
+      const amount = reps || durationSec || 0;
+      if (amount > 0) {
+        achievementUpdate = await trackExerciseMastery(session.user.id, achievementCategory, amount);
+      }
+    }
+
+    // Also track XP milestone achievements
+    const xpUpdate = await trackXPMilestone(session.user.id);
+    achievementUpdate.achieved.push(...xpUpdate.achieved);
+    achievementUpdate.unlockedNext.push(...xpUpdate.unlockedNext);
+
     console.log('[LOG_EXERCISE] ✅ Exercise logged successfully:', {
       userId: session.user.id,
       xpGained: rewards.totalXP,
       coinsGained: rewards.coins,
       axesUpdated: Object.keys(rewards.hexagonXP),
+      achievementsCompleted: achievementUpdate.achieved.filter((a: any) => a.justCompleted).length,
     });
+
+    if (achievementUpdate.achieved.filter((a: any) => a.justCompleted).length > 0) {
+      console.log('[LOG_EXERCISE] 🏆 Achievements completed:', achievementUpdate.achieved.filter((a: any) => a.justCompleted).length);
+    }
 
     return NextResponse.json({
       ok: true,
@@ -128,9 +166,67 @@ export async function POST(req: Request) {
         totalXP: updatedUser.totalXP,
         virtualCoins: updatedUser.virtualCoins,
       },
+      log,
+      achievements: {
+        completed: achievementUpdate.achieved.filter((a: any) => a.justCompleted),
+        progress: achievementUpdate.achieved.filter((a: any) => !a.justCompleted),
+        unlockedNext: achievementUpdate.unlockedNext,
+      },
     });
   } catch (error) {
     console.error('[LOG_EXERCISE] Error:', error);
     return NextResponse.json({ error: 'Failed to log exercise' }, { status: 500 });
+  }
+}
+
+/**
+ * GET /api/training/log-exercise
+ *
+ * Get manual exercise logs for the current user
+ * Query params:
+ *   - limit: number (default: 50)
+ *   - category: PUSH | PULL | CORE | BALANCE (optional filter)
+ */
+export async function GET(req: Request) {
+  try {
+    const session = await getServerSession(authOptions as any);
+    if (!session?.user?.id) {
+      return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
+    }
+
+    const { searchParams } = new URL(req.url);
+    const limit = parseInt(searchParams.get('limit') || '50');
+    const category = searchParams.get('category');
+
+    const logs = await prisma.manualExerciseLog.findMany({
+      where: {
+        userId: session.user.id,
+        ...(category ? { category } : {}),
+      },
+      orderBy: {
+        loggedAt: 'desc',
+      },
+      take: limit,
+      include: {
+        exercise: {
+          select: {
+            id: true,
+            name: true,
+            category: true,
+            difficulty: true,
+            imageUrl: true,
+          },
+        },
+      },
+    });
+
+    return NextResponse.json({
+      ok: true,
+      logs,
+      total: logs.length,
+    });
+  } catch (error) {
+    console.error('[LOG_EXERCISE] Error fetching logs:', error);
+    return NextResponse.json({ error: 'Failed to fetch exercise logs' }, { status: 500 });
   }
 }

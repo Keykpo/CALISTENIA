@@ -1,0 +1,37 @@
+@calisthenics/web:dev: [START_WORKOUT] Starting session for user: cmhvpyc670000tof0rm1zwo4h
+@calisthenics/web:dev: [START_WORKOUT] Routine structure: {
+@calisthenics/web:dev:   id: 'routine-cmhvpyc670000tof0rm1zwo4h-1762935018258',
+@calisthenics/web:dev:   phasesCount: 4,
+@calisthenics/web:dev:   firstPhaseExercises: 0,
+@calisthenics/web:dev:   firstExerciseName: undefined
+@calisthenics/web:dev: }
+@calisthenics/web:dev: prisma:query INSERT INTO `main`.`workout_sessions` (`id`, `userId`, `startedAt`, `routineId`, `totalDuration`, `estimatedXP`, `estimatedCoins`, `routine`, `currentPhaseIndex`, `currentExerciseIndex`, `completedExercises`, `progress`, `status`, `createdAt`, `updatedAt`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING `id` AS `id`, `userId` AS `userId`, `workoutId` AS `workoutId`, `name` AS `name`, `startTime` AS `startTime`, `startedAt` AS `startedAt`, `endTime` AS `endTime`, `duration` AS `duration`, `calories` AS `calories`, `notes` AS `notes`, `routineId` AS `routineId`, `totalDuration` AS `totalDuration`, `estimatedXP` AS `estimatedXP`, `estimatedCoins` AS `estimatedCoins`, `routine` AS `routine`, `currentPhaseIndex` AS `currentPhaseIndex`, `currentExerciseIndex` AS `currentExerciseIndex`, `completedExercises` AS `completedExercises`, `progress` AS `progress`, `status` AS `status`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+@calisthenics/web:dev: [START_WORKOUT] ✅ Session created: cmhvq0daq0018tof0f9ll0t6q
+@calisthenics/web:dev: [START_WORKOUT] Response structure: {
+@calisthenics/web:dev:   sessionId: 'cmhvq0daq0018tof0f9ll0t6q',
+@calisthenics/web:dev:   routinePhasesCount: 4,
+@calisthenics/web:dev:   progressPhasesCount: 4,
+@calisthenics/web:dev:   firstProgressExercise: undefined,
+@calisthenics/web:dev:   firstRoutineExercise: undefined
+@calisthenics/web:dev: }
+@calisthenics/web:dev:  POST /api/training/start-workout-session 200 in 230ms
+[WORKOUT] Render state: ObjecthasError: falsehasRoutine: falsehasSession: falseloading: trueviewState: "overview"[[Prototype]]: Objectconstructor: ƒ Object()hasOwnProperty: ƒ hasOwnProperty()isPrototypeOf: ƒ isPrototypeOf()propertyIsEnumerable: ƒ propertyIsEnumerable()toLocaleString: ƒ toLocaleString()toString: ƒ toString()valueOf: ƒ valueOf()__defineGetter__: ƒ __defineGetter__()__defineSetter__: ƒ __defineSetter__()__lookupGetter__: ƒ __lookupGetter__()__lookupSetter__: ƒ __lookupSetter__()__proto__: (...)get __proto__: ƒ __proto__()set __proto__: ƒ __proto__()
+WorkoutSessionTracker.tsx:422 [WORKOUT] Render state: ObjecthasError: falsehasRoutine: falsehasSession: falseloading: trueviewState: "overview"[[Prototype]]: Object
+WorkoutSessionTracker.tsx:422 [WORKOUT] Render state: Object
+WorkoutSessionTracker.tsx:422 [WORKOUT] Render state: Object
+WorkoutSessionTracker.tsx:422 [WORKOUT] Render state: Object
+WorkoutSessionTracker.tsx:422 [WORKOUT] Render state: Object
+WorkoutSessionTracker.tsx:422 [WORKOUT] Render state: Object
+WorkoutSessionTracker.tsx:422 [WORKOUT] Render state: Object
+WorkoutSessionTracker.tsx:422 [WORKOUT] Render state: Object
+WorkoutSessionTracker.tsx:422 [WORKOUT] Render state: Object
+WorkoutSessionTracker.tsx:221 [WORKOUT] Session started successfully: cmhvq0daq0018tof0f9ll0t6q
+WorkoutSessionTracker.tsx:422 [WORKOUT] Render state: Object
+WorkoutSessionTracker.tsx:240 [WORKOUT] getCurrentExercise: ObjectcurrentExerciseIndex: 0currentPhaseIndex: 0totalPhases: 4[[Prototype]]: Objectconstructor: ƒ Object()hasOwnProperty: ƒ hasOwnProperty()isPrototypeOf: ƒ isPrototypeOf()propertyIsEnumerable: ƒ propertyIsEnumerable()toLocaleString: ƒ toLocaleString()toString: ƒ toString()valueOf: ƒ valueOf()__defineGetter__: ƒ __defineGetter__()__defineSetter__: ƒ __defineSetter__()__lookupGetter__: ƒ __lookupGetter__()__lookupSetter__: ƒ __lookupSetter__()__proto__: (...)get __proto__: ƒ __proto__()set __proto__: ƒ __proto__()
+WorkoutSessionTracker.tsx:257 [WORKOUT] getCurrentExercise: Missing exercise data Object
+WorkoutSessionTracker.tsx:422 [WORKOUT] Render state: Object
+WorkoutSessionTracker.tsx:240 [WORKOUT] getCurrentExercise: Object
+WorkoutSessionTracker.tsx:257 [WORKOUT] getCurrentExercise: Missing exercise data Object
+hot-reloader-client.js:187 [Fast Refresh] rebuilding
+hot-reloader-client.js:44 [Fast Refresh] done in 60ms
+manifest.json:1  Failed to load resource: the server responded with a status of 404 (Not Found)

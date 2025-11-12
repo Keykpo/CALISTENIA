@@ -37,6 +37,7 @@ model User {
   weight       Float? // in kg
   fitnessLevel Difficulty @default(BEGINNER) // ✅ Changed from FitnessLevel to Difficulty
   goals        String // JSON string for SQLite compatibility
+  equipment    String? // JSON string for available equipment from assessment
 
   // User's primary goal
   primaryGoalId          String?
@@ -87,6 +88,9 @@ model User {
   globalLeaderboard      GlobalLeaderboardEntry[]
   challengeProgress      UserChallengeProgress[]
   progressSnapshots      SkillProgressSnapshot[]
+  exerciseCounters       ExerciseCounter[]
+  manualExerciseLogs     ManualExerciseLog[]
+  dailyRoutines          DailyRoutine[]
 
   @@map("users")
 }
@@ -192,9 +196,10 @@ model Exercise {
   updatedAt DateTime @updatedAt
 
   // Relations
-  workoutExercises WorkoutExercise[]
-  sessionExercises SessionExercise[]
-  exerciseSkills   ExerciseSkill[]
+  workoutExercises   WorkoutExercise[]
+  sessionExercises   SessionExercise[]
+  exerciseSkills     ExerciseSkill[]
+  manualExerciseLogs ManualExerciseLog[]
 
   @@map("exercises")
 }
@@ -260,11 +265,28 @@ model WorkoutSession {
 
   // Session details
   name      String?
-  startTime DateTime
+  startTime DateTime?
+  startedAt DateTime? // For daily routine workout sessions
   endTime   DateTime?
   duration  Int? // actual duration in seconds
   calories  Int? // actual calories burned
   notes     String?
+
+  // Daily routine workout fields
+  routineId            String? // ID of the daily routine
+  totalDuration        Int? // estimated duration in minutes
+  estimatedXP          Int? // estimated XP reward
+  estimatedCoins       Int? // estimated coins reward
+  routine              String? // Complete routine as JSON
+  currentPhaseIndex    Int     @default(0) // Current phase in routine
+  currentExerciseIndex Int     @default(0) // Current exercise in phase
+  completedExercises   String? // JSON array of completed exercise IDs
+  progress             String? // Detailed progress tracking as JSON
+
+  // Completion tracking
+  completedAt DateTime? // When the workout was completed
+  actualXP    Int? // Actual XP earned
+  actualCoins Int? // Actual coins earned
 
   // Session status
   status SessionStatus @default(IN_PROGRESS)
@@ -567,6 +589,50 @@ model UserAchievement {
   @@map("user_achievements")
 }
 
+model ExerciseCounter {
+  id       String @id @default(cuid())
+  userId   String
+  category String // PUSH, PULL, CORE, BALANCE
+  count    Float  @default(0) // Total reps or seconds
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, category])
+  @@map("exercise_counters")
+}
+
+model ManualExerciseLog {
+  id         String   @id @default(cuid())
+  userId     String
+  exerciseId String?
+  category   String // PUSH, PULL, CORE, BALANCE
+  name       String // Exercise name
+
+  // Performance data
+  reps     Int?
+  sets     Int?     @default(1)
+  duration Int? // seconds
+  notes    String?
+
+  // Rewards earned
+  xpEarned    Int @default(0)
+  coinsEarned Int @default(0)
+
+  // Timestamps
+  loggedAt  DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  exercise Exercise? @relation(fields: [exerciseId], references: [id])
+
+  @@map("manual_exercise_logs")
+}
+
 // ================================
 // WORKOUT COMPLETIONS HISTORY
 // ================================
@@ -793,12 +859,17 @@ model TrainingGoal {
   userId String
 
   // Goal details
-  name          String
+  name          String?
   description   String?
   targetSkillId String?
 
+  // New goal system (strength, weight_loss, endurance, etc.)
+  goalType           String? // strength, weight_loss, endurance, muscle_mass, health
+  targetArea         String? // push, pull, core, balance
+  preferredDuration  Int?    // preferred workout duration in minutes
+
   // Goal parameters
-  difficulty     Difficulty
+  difficulty     Difficulty?
   estimatedWeeks Int?
 
   // Progress tracking
@@ -817,6 +888,30 @@ model TrainingGoal {
   usersWithPrimaryGoal User[] @relation("PrimaryGoal")
 
   @@map("training_goals")
+}
+
+model DailyRoutine {
+  id     String @id @default(cuid())
+  userId String
+
+  date              DateTime
+  difficulty        String // BEGINNER, INTERMEDIATE, ADVANCED, ELITE
+  totalDuration     Int // minutes
+  estimatedXP       Int
+  estimatedCoins    Int
+  focusAreas        String // JSON array of UnifiedHexagonAxis
+  routine           String // Complete routine as JSON
+
+  completed         Boolean   @default(false)
+  completedAt       DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, date])
+  @@map("daily_routines")
 }
 
 // ================================

@@ -147,14 +147,26 @@ export default function DashboardAssessmentModal({
         // This was causing the modal to close too quickly
         console.log('[DASHBOARD_ASSESSMENT] Showing results, waiting for user to close...');
       } else {
-        const error = await res.json();
-        console.error('[DASHBOARD_ASSESSMENT] Error:', error);
-        alert('Error saving assessment. Please try again.');
+        console.error('[DASHBOARD_ASSESSMENT] HTTP Error:', res.status, res.statusText);
+        let errorMessage = 'Error saving assessment. Please try again.';
+        try {
+          const error = await res.json();
+          console.error('[DASHBOARD_ASSESSMENT] Error response:', error);
+          errorMessage = `Error: ${error.error || error.message || 'Unknown error'}`;
+          if (error.details) {
+            console.error('[DASHBOARD_ASSESSMENT] Error details:', error.details);
+            errorMessage += `\n\nDetails: ${error.details}`;
+          }
+        } catch (e) {
+          console.error('[DASHBOARD_ASSESSMENT] Failed to parse error response:', e);
+        }
+        alert(errorMessage);
         setIsSubmitting(false);
       }
     } catch (error) {
-      console.error('[DASHBOARD_ASSESSMENT] Error:', error);
-      alert('Error saving assessment. Please try again.');
+      console.error('[DASHBOARD_ASSESSMENT] Exception:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      alert(`Error saving assessment: ${errorMessage}\n\nPlease check the console for details.`);
       setIsSubmitting(false);
     }
   };

@@ -31,6 +31,7 @@ import BadgesDisplay from '../badges/BadgesDisplay';
 import LeaderboardDisplay from '../leaderboard/LeaderboardDisplay';
 import WeeklyChallengesDisplay from '../challenges/WeeklyChallengesDisplay';
 import SkillProgressChart from '../progress/SkillProgressChart';
+import { StreakDisplay } from '../streaks/StreakDisplay';
 
 interface DashboardOverviewProps {
   userData: any;
@@ -377,7 +378,7 @@ export default function DashboardOverview({ userData, onRefresh, userId }: Dashb
               </div>
 
               <div className="flex gap-3">
-                <Link href="/routines" className="flex-1">
+                <Link href="/training/daily-workout" className="flex-1">
                   <Button className="w-full bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30">
                     <Play className="w-4 h-4 mr-2" />
                     Start Workout
@@ -670,6 +671,11 @@ export default function DashboardOverview({ userData, onRefresh, userId }: Dashb
         </Card>
       )}
 
+      {/* Streak Display */}
+      <div className="grid gap-6 lg:grid-cols-1">
+        <StreakDisplay userId={userId} compact={true} />
+      </div>
+
       {/* Quick Actions & Weekly Activity */}
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Quick Actions */}
@@ -682,14 +688,14 @@ export default function DashboardOverview({ userData, onRefresh, userId }: Dashb
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              <Link href="/routines">
+              <Link href="/training/daily-workout">
                 <Button variant="outline" className="w-full justify-start h-auto py-4 hover:bg-blue-50 hover:border-blue-300 transition-all">
                   <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
                     <Dumbbell className="w-5 h-5 text-blue-600" />
                   </div>
                   <div className="text-left">
-                    <div className="font-semibold text-slate-900">Start Workout</div>
-                    <div className="text-xs text-slate-600">Access your personalized routine</div>
+                    <div className="font-semibold text-slate-900">Start Daily Workout</div>
+                    <div className="text-xs text-slate-600">Complete your personalized routine</div>
                   </div>
                   <ArrowRight className="w-5 h-5 ml-auto text-slate-400" />
                 </Button>
@@ -708,14 +714,14 @@ export default function DashboardOverview({ userData, onRefresh, userId }: Dashb
                 </Button>
               </Link>
 
-              <Link href="/dashboard?tab=achievements">
-                <Button variant="outline" className="w-full justify-start h-auto py-4 hover:bg-amber-50 hover:border-amber-300 transition-all">
-                  <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center mr-3">
-                    <Award className="w-5 h-5 text-amber-600" />
+              <Link href="/activity">
+                <Button variant="outline" className="w-full justify-start h-auto py-4 hover:bg-orange-50 hover:border-orange-300 transition-all">
+                  <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mr-3">
+                    <Flame className="w-5 h-5 text-orange-600" />
                   </div>
                   <div className="text-left">
-                    <div className="font-semibold text-slate-900">Achievements</div>
-                    <div className="text-xs text-slate-600">View your unlocked badges</div>
+                    <div className="font-semibold text-slate-900">Activity & Streaks</div>
+                    <div className="text-xs text-slate-600">View calendar and streak details</div>
                   </div>
                   <ArrowRight className="w-5 h-5 ml-auto text-slate-400" />
                 </Button>
@@ -744,7 +750,6 @@ export default function DashboardOverview({ userData, onRefresh, userId }: Dashb
                 date.setDate(date.getDate() - (6 - i));
                 const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
 
-                // TODO: Replace with real workout data from weeklyProgress
                 const hasActivity = userData?.weeklyProgress?.[date.toISOString().slice(0, 10)] > 0;
                 const isToday = i === 6;
 
@@ -780,6 +785,14 @@ export default function DashboardOverview({ userData, onRefresh, userId }: Dashb
                 <div className="w-3 h-3 bg-blue-200 border-2 border-blue-400 border-dashed rounded"></div>
                 <span>Today</span>
               </div>
+            </div>
+            <div className="mt-4 text-center">
+              <Link href="/activity">
+                <Button variant="link" size="sm">
+                  View Full Calendar
+                  <ArrowRight className="w-4 h-4 ml-1" />
+                </Button>
+              </Link>
             </div>
           </CardContent>
         </Card>
