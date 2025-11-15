@@ -34,7 +34,9 @@
       "Bash(node scripts/validate-exercise-data.js:*)",
       "Bash(node scripts/fix-invalid-categories.js:*)",
       "Bash(node scripts/smart-categorize-exercises.js:*)",
-      "Bash(node scripts/test-routine-generator-v3.js:*)"
+      "Bash(node scripts/test-routine-generator-v3.js:*)",
+      "Bash(timeout /t 3 /nobreak)",
+      "Bash(node scripts/test-assessment-v3.js:*)"
     ],
     "deny": [],
     "ask": []
