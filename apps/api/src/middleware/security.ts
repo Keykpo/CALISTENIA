@@ -68,7 +68,7 @@ export const helmetConfig = helmet({
     },
   },
   crossOriginEmbedderPolicy: false, // Disable for API
-  crossOriginOpenerPolicy: { policy: 'cross-origin' },
+  crossOriginOpenerPolicy: { policy: 'unsafe-none' },
   crossOriginResourcePolicy: { policy: 'cross-origin' },
   dnsPrefetchControl: { allow: false },
   frameguard: { action: 'deny' },

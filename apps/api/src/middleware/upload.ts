@@ -34,7 +34,7 @@ const defaultOptions: FileUploadOptions = {
     'application/pdf',
   ],
   allowedExtensions: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.mp4', '.webm', '.pdf'],
-  destination: config.fileStorage.uploadPath,
+  destination: config.storage.local.uploadDir,
   compress: true,
   quality: 80,
   maxWidth: 1920,
@@ -230,7 +230,7 @@ export const profilePictureUpload = createUploadMiddleware({
   maxSize: 5 * 1024 * 1024, // 5MB
   allowedMimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
   allowedExtensions: ['.jpg', '.jpeg', '.png', '.webp'],
-  destination: path.join(config.fileStorage.uploadPath, 'profiles'),
+  destination: path.join(config.storage.local.uploadDir, 'profiles'),
   filename: (req, file) => {
     const userId = req.user?.id || 'anonymous';
     const ext = path.extname(file.originalname);
@@ -250,7 +250,7 @@ export const exerciseMediaUpload = createUploadMiddleware({
     'video/webm',
   ],
   allowedExtensions: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.mp4', '.webm'],
-  destination: path.join(config.fileStorage.uploadPath, 'exercises'),
+  destination: path.join(config.storage.local.uploadDir, 'exercises'),
   filename: (req, file) => {
     const exerciseId = req.params.exerciseId || req.body.exerciseId || 'new';
     const ext = path.extname(file.originalname);
@@ -270,7 +270,7 @@ export const courseContentUpload = createUploadMiddleware({
     'application/pdf',
   ],
   allowedExtensions: ['.jpg', '.jpeg', '.png', '.webp', '.mp4', '.webm', '.pdf'],
-  destination: path.join(config.fileStorage.uploadPath, 'courses'),
+  destination: path.join(config.storage.local.uploadDir, 'courses'),
   filename: (req, file) => {
     const courseId = req.params.courseId || req.body.courseId || 'new';
     const ext = path.extname(file.originalname);
@@ -288,7 +288,7 @@ export const documentUpload = createUploadMiddleware({
     'text/plain',
   ],
   allowedExtensions: ['.pdf', '.doc', '.docx', '.txt'],
-  destination: path.join(config.fileStorage.uploadPath, 'documents'),
+  destination: path.join(config.storage.local.uploadDir, 'documents'),
 });
 
 // Avatar upload with compression

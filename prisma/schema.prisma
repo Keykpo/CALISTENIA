@@ -27,6 +27,7 @@ model User {
   password         String?
   emailVerified    DateTime?
   isActive         Boolean   @default(true)
+  role             UserRole  @default(USER)
   resetToken       String?
   resetTokenExpiry DateTime?
 
@@ -47,6 +48,14 @@ model User {
   // D-S Assessment System
   difficultyLevel Rank?   // D, C, B, A, S level from assessment
   visualRank      String? // Visual rank like "D+", "C-", "B", "A+", "S-"
+
+  // Strength metrics for V3 Routine Generator gating system
+  pullUpsMax      Int?    // Max pull-ups without weight
+  dipsMax         Int?    // Max dips without weight
+  pushUpsMax      Int?    // Max push-ups
+  weightedPullUps Float?  // Additional weight in kg for pull-ups
+  weightedDips    Float?  // Additional weight in kg for dips
+  masteryGoals    String? // JSON array of MasteryGoal (PLANCHE, FRONT_LEVER, etc.)
 
   // RPG System
   totalXP       Int @default(0) // Total experience points earned
@@ -112,6 +121,7 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+  @@index([userId])
   @@map("accounts")
 }
 
@@ -975,6 +985,9 @@ model TrainingSession {
   userSkillProgress   UserSkillProgress           @relation(fields: [userSkillProgressId], references: [id], onDelete: Cascade)
   exerciseCompletions SessionExerciseCompletion[]
 
+  @@index([userId])
+  @@index([userId, createdAt])
+  @@index([userId, status])
   @@map("training_sessions")
 }
 
@@ -1008,6 +1021,12 @@ enum Gender {
   PREFER_NOT_TO_SAY
 }
 
+enum UserRole {
+  USER
+  PREMIUM
+  ADMIN
+}
+
 // ✅ UNIFIED: 4 standard difficulty levels across entire system
 // Replaces FitnessLevel, Difficulty, and maps to Rank
 // BEGINNER (D rank) → Fundamentals & basics
@@ -1022,14 +1041,17 @@ enum Difficulty {
 }
 
 enum ExerciseCategory {
-  STRENGTH
-  CARDIO
-  FLEXIBILITY
-  BALANCE
-  ENDURANCE
-  MOBILITY
-  WARM_UP
-  COOL_DOWN
+  PUSH           // Push exercises (push-ups, dips, etc.)
+  PULL           // Pull exercises (pull-ups, rows, etc.)
+  CORE           // Core and abs exercises
+  SKILL_STATIC   // Static skills (planche, front lever, handstand, etc.)
+  LEGS           // Leg exercises (squats, lunges, etc.)
+  CARDIO         // Cardio exercises
+  BALANCE        // Balance exercises
+  MOBILITY       // Mobility exercises
+  FLEXIBILITY    // Flexibility and stretching
+  WARM_UP        // Warm-up exercises
+  COOL_DOWN      // Cool-down exercises
 }
 
 // Rank system for fine-grained exercise difficulty

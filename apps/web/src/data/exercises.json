@@ -4,7 +4,7 @@
     "name": "push-up inside leg kick",
     "description": "Step:1 Start in a push-up position with your hands slightly wider than shoulder-width apart and your feet together.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -27,14 +27,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/0br45wL.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/0br45wL.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "ZZTGMKh",
     "name": "one arm against wall",
     "description": "Step:1 Stand facing a wall with your feet shoulder-width apart.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -55,14 +56,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/ZZTGMKh.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/ZZTGMKh.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "x6KpKpq",
     "name": "close-grip push-up",
     "description": "Step:1 Start in a high plank position with your hands placed close together, directly under your shoulders.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -82,7 +84,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/x6KpKpq.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/x6KpKpq.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "72BC5Za",
@@ -112,14 +115,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/72BC5Za.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/72BC5Za.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "B"
   },
   {
     "id": "LQFOrMn",
     "name": "chest dip on straight bar",
     "description": "Step:1 Grab the parallel bars with your palms facing down and your arms fully extended.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -141,14 +145,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/LQFOrMn.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/LQFOrMn.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "RtyAsy1",
     "name": "arms apart circular toe touch (male)",
     "description": "Step:1 Stand with your feet shoulder-width apart and arms extended to the sides.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -170,14 +175,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/RtyAsy1.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/RtyAsy1.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "VPPtusI",
     "name": "inverted row bent knees",
     "description": "Step:1 Set up a bar at waist height and lie underneath it.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "upper back",
@@ -199,14 +205,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/VPPtusI.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/VPPtusI.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "XooAdhl",
     "name": "handstand",
     "description": "Step:1 Find an open space with enough room to perform a handstand.",
     "category": "SKILL_STATIC",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -229,14 +236,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/XooAdhl.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/XooAdhl.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "gw9PqGk",
     "name": "full planche push-up",
     "description": "Step:1 Start in a push-up position with your hands placed slightly wider than shoulder-width apart.",
     "category": "SKILL_STATIC",
-    "difficulty": "EXPERT",
+    "difficulty": "ELITE",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -260,14 +268,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/gw9PqGk.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/gw9PqGk.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "S"
   },
   {
     "id": "IaGQCrC",
     "name": "suspended push-up",
     "description": "Step:1 Find a suspension trainer and adjust it to an appropriate height.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -290,14 +299,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/IaGQCrC.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/IaGQCrC.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "CI6baTY",
     "name": "bottoms-up",
     "description": "Step:1 Lie flat on your back with your legs extended and your arms by your sides.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -318,7 +328,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/CI6baTY.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/CI6baTY.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "1jXLYEw",
@@ -347,7 +358,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/1jXLYEw.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/1jXLYEw.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "oQRJYkC",
@@ -376,14 +388,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/oQRJYkC.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/oQRJYkC.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "DIVyqrU",
     "name": "sphinx",
     "description": "Step:1 Lie face down on the ground with your forearms flat on the floor, elbows directly under your shoulders.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "spine",
@@ -404,14 +417,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/DIVyqrU.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/DIVyqrU.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "isAAZWA",
     "name": "side-to-side chin",
     "description": "Step:1 Stand with your feet shoulder-width apart and your knees slightly bent.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -434,14 +448,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/isAAZWA.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/isAAZWA.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "s0HKO2I",
     "name": "bodyweight kneeling triceps extension",
     "description": "Step:1 Kneel down on the ground with your knees hip-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -463,14 +478,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/s0HKO2I.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/s0HKO2I.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "zkgRrbK",
     "name": "hyperextension (on bench)",
     "description": "Step:1 Adjust the hyperextension bench so that your hips are resting comfortably on the pad and your feet are secured.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "spine",
@@ -491,14 +507,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/zkgRrbK.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/zkgRrbK.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "BMMolZ3",
     "name": "tuck crunch",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -518,7 +535,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/BMMolZ3.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/BMMolZ3.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "5VXmnV5",
@@ -546,7 +564,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/5VXmnV5.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/5VXmnV5.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "CB8WET1",
@@ -576,14 +595,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/CB8WET1.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/CB8WET1.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "zYmNaoY",
     "name": "elevator",
     "description": "Step:1 Stand with your feet shoulder-width apart and your knees slightly bent.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "upper back",
@@ -604,14 +624,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/zYmNaoY.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/zYmNaoY.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "NKJ8o6x",
     "name": "pelvic tilt",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -632,14 +653,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/NKJ8o6x.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/NKJ8o6x.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "nCU1Ekp",
     "name": "reverse crunch",
     "description": "Step:1 Lie flat on your back with your arms extended along your sides.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -659,14 +681,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/nCU1Ekp.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/nCU1Ekp.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "f9lVSSI",
     "name": "astride jumps (male)",
     "description": "Step:1 Stand with your feet shoulder-width apart.",
     "category": "CARDIO",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -689,14 +712,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/f9lVSSI.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/f9lVSSI.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "wXvUZC8",
     "name": "push and pull bodyweight",
     "description": "Step:1 Start in a push-up position with your hands slightly wider than shoulder-width apart and your body in a straight line.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -718,14 +742,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/wXvUZC8.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/wXvUZC8.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "YRaCa5Y",
     "name": "full maltese",
     "description": "Step:1 Start by standing with your feet shoulder-width apart and your arms extended straight out to the sides.",
     "category": "CORE",
-    "difficulty": "EXPERT",
+    "difficulty": "ELITE",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -746,14 +771,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/YRaCa5Y.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/YRaCa5Y.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "S"
   },
   {
     "id": "ZNgOYQU",
     "name": "vertical leg raise (on parallel bars)",
     "description": "Step:1 Hang from the parallel bars with your arms fully extended and your body straight.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -773,14 +799,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/ZNgOYQU.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/ZNgOYQU.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "Wgbn9qo",
     "name": "triceps dip (between benches)",
     "description": "Step:1 Sit on a bench with your hands gripping the edge of the bench, fingers pointing forward.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -802,14 +829,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/Wgbn9qo.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Wgbn9qo.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "O2K9Vb5",
     "name": "wide-grip chest dip on high parallel bars",
     "description": "Step:1 Position yourself on the parallel bars with your arms fully extended and your body suspended in the air.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -830,14 +858,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/O2K9Vb5.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/O2K9Vb5.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "LkoAWAE",
     "name": "elbow dips",
     "description": "Step:1 Sit on the edge of a bench or chair with your hands gripping the edge next to your hips.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -859,14 +888,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/LkoAWAE.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/LkoAWAE.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "QpXqiq8",
     "name": "suspended split squat",
     "description": "Step:1 Stand facing away from a suspension trainer with your feet shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "quads",
@@ -888,7 +918,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/QpXqiq8.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/QpXqiq8.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "rmEukuS",
@@ -916,7 +947,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/rmEukuS.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/rmEukuS.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "17bqEXD",
@@ -943,14 +975,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/17bqEXD.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/17bqEXD.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "WCAvOfC",
     "name": "side-to-side toe touch (male)",
     "description": "Step:1 Stand with your feet shoulder-width apart and your arms extended to the sides.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -970,7 +1003,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/WCAvOfC.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/WCAvOfC.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "VO2qeJg",
@@ -999,14 +1033,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/VO2qeJg.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/VO2qeJg.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "lBDjFxJ",
     "name": "pull-up",
     "description": "Step:1 Hang from a pull-up bar with your palms facing away from you and your arms fully extended.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -1028,7 +1063,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/lBDjFxJ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/lBDjFxJ.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "QFmz6ch",
@@ -1056,14 +1092,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/QFmz6ch.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/QFmz6ch.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "oLrKqDH",
     "name": "run",
     "description": "Step:1 Start by standing upright with your feet hip-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -1085,14 +1122,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/oLrKqDH.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/oLrKqDH.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "gUjqdei",
     "name": "curtsey squat",
     "description": "Step:1 Stand with your feet shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -1115,14 +1153,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/gUjqdei.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/gUjqdei.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "Qoujh3Q",
     "name": "wind sprints",
     "description": "Step:1 Find an open space or a track to perform the exercise.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -1144,14 +1183,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/Qoujh3Q.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Qoujh3Q.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "13TpY4H",
     "name": "raise single arm push-up",
     "description": "Step:1 Start in a push-up position with your hands slightly wider than shoulder-width apart and your feet together.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -1173,14 +1213,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/13TpY4H.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/13TpY4H.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "yJUHKTn",
     "name": "muscle up",
     "description": "Step:1 Start by hanging from a pull-up bar with your palms facing away from you and your arms fully extended.",
     "category": "PULL",
-    "difficulty": "EXPERT",
+    "difficulty": "ELITE",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -1205,14 +1246,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/yJUHKTn.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/yJUHKTn.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "A"
   },
   {
     "id": "NCmbLCw",
     "name": "push-up (wall) v. 2",
     "description": "Step:1 Stand facing a wall, about arm's length away.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -1235,14 +1277,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/NCmbLCw.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/NCmbLCw.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "ZOuKWir",
     "name": "kneeling push-up (male)",
     "description": "Step:1 Start by kneeling on the ground with your hands shoulder-width apart, fingers pointing forward.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -1263,14 +1306,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/ZOuKWir.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/ZOuKWir.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "HbSG1Pw",
     "name": "isometric chest squeeze",
     "description": "Step:1 Stand with your feet shoulder-width apart and your knees slightly bent.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -1292,14 +1336,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/HbSG1Pw.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/HbSG1Pw.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "cuKYxhu",
     "name": "standing pelvic tilt",
     "description": "Step:1 Stand with your feet shoulder-width apart and your knees slightly bent.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "spine",
@@ -1319,7 +1364,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/cuKYxhu.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/cuKYxhu.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "BWnJR72",
@@ -1346,14 +1392,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/BWnJR72.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/BWnJR72.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "CcWEoWV",
     "name": "short stride run",
     "description": "Step:1 Find an open space or a treadmill to perform the exercise.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -1375,7 +1422,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/CcWEoWV.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/CcWEoWV.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "uOV3Itw",
@@ -1402,14 +1450,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/uOV3Itw.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/uOV3Itw.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "5BZHW9s",
     "name": "squat to overhead reach with twist",
     "description": "Step:1 Stand with your feet shoulder-width apart and toes slightly turned out.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "quads",
@@ -1431,14 +1480,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/5BZHW9s.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/5BZHW9s.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "7xeukSt",
     "name": "scapula dips",
     "description": "Step:1 Start by standing with your feet shoulder-width apart and your arms extended in front of you.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "traps",
@@ -1460,14 +1510,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/7xeukSt.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/7xeukSt.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "xbkPfaw",
     "name": "bodyweight standing one arm row",
     "description": "Step:1 Stand with your feet shoulder-width apart, knees slightly bent, and hold a dumbbell in one hand.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "upper back",
@@ -1490,14 +1541,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/xbkPfaw.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/xbkPfaw.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "bKWbrTA",
     "name": "one arm towel row",
     "description": "Step:1 Stand with your feet shoulder-width apart, knees slightly bent, and hold a towel with one hand.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "upper back",
@@ -1519,14 +1571,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/bKWbrTA.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/bKWbrTA.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "5MRH8H2",
     "name": "ski step",
     "description": "Step:1 Stand with your feet shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -1550,7 +1603,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/5MRH8H2.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/5MRH8H2.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "xGgAGPm",
@@ -1578,14 +1632,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/xGgAGPm.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/xGgAGPm.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "MUic5zN",
     "name": "single arm push-up",
     "description": "Step:1 Start in a push-up position with your hands shoulder-width apart and one hand placed slightly wider than the other.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -1607,14 +1662,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/MUic5zN.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/MUic5zN.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "mbkgB44",
     "name": "jackknife sit-up",
     "description": "Step:1 Lie flat on your back with your legs extended and your arms overhead.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -1633,14 +1689,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/mbkgB44.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/mbkgB44.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "1YB40kg",
     "name": "incline close-grip push-up",
     "description": "Step:1 Place your hands on an elevated surface, such as a bench or step, slightly wider than shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -1661,14 +1718,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/1YB40kg.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/1YB40kg.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "Snj1wSv",
     "name": "plyo push up",
     "description": "Step:1 Start in a high plank position with your hands slightly wider than shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -1690,14 +1748,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/Snj1wSv.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Snj1wSv.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "y5p0H8a",
     "name": "run (equipment)",
     "description": "Step:1 Start by standing upright with your feet hip-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -1719,14 +1778,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/y5p0H8a.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/y5p0H8a.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "zd4P4B2",
     "name": "stalder press",
     "description": "Step:1 Start by standing with your feet shoulder-width apart and your arms extended overhead.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -1748,14 +1808,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/zd4P4B2.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/zd4P4B2.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "75Bgtjy",
     "name": "potty squat",
     "description": "Step:1 Stand with your feet shoulder-width apart, toes pointing slightly outward.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -1777,14 +1838,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/75Bgtjy.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/75Bgtjy.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "AQIhRjM",
     "name": "lying elbow to knee",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -1807,14 +1869,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/AQIhRjM.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/AQIhRjM.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "9WTm7dq",
     "name": "chest dip",
     "description": "Step:1 Position yourself on parallel bars with your arms fully extended and your body straight.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -1835,14 +1898,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/9WTm7dq.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/9WTm7dq.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "HjdqmZa",
     "name": "one arm chin-up",
     "description": "Step:1 Stand facing a pull-up bar with your feet shoulder-width apart.",
     "category": "PULL",
-    "difficulty": "EXPERT",
+    "difficulty": "ELITE",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -1865,7 +1929,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/HjdqmZa.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/HjdqmZa.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "S"
   },
   {
     "id": "Z5YStHW",
@@ -1892,14 +1957,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/Z5YStHW.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Z5YStHW.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "v3vLFW0",
     "name": "close-grip push-up (on knees)",
     "description": "Step:1 Start by getting on your hands and knees, with your hands shoulder-width apart and your knees hip-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -1920,14 +1986,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/v3vLFW0.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/v3vLFW0.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "LYJodFS",
     "name": "lean planche",
     "description": "Step:1 Start in a push-up position with your hands shoulder-width apart and your body straight.",
     "category": "SKILL_STATIC",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -1949,14 +2016,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/LYJodFS.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/LYJodFS.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "4Jt8QsQ",
     "name": "push-up on lower arms",
     "description": "Step:1 Start in a plank position with your forearms on the ground and elbows directly below your shoulders.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -1977,14 +2045,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/4Jt8QsQ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/4Jt8QsQ.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "HfqciZF",
     "name": "straddle maltese",
     "description": "Step:1 Start by hanging from a pair of rings with your arms fully extended and your body in a straight line.",
     "category": "CORE",
-    "difficulty": "EXPERT",
+    "difficulty": "ELITE",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -2005,14 +2074,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/HfqciZF.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/HfqciZF.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "S"
   },
   {
     "id": "qcNN2FN",
     "name": "butt-ups",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -2034,14 +2104,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/qcNN2FN.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/qcNN2FN.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "pM07UxU",
     "name": "kipping muscle up",
     "description": "Step:1 Start by hanging from a pull-up bar with an overhand grip, hands slightly wider than shoulder-width apart.",
     "category": "PULL",
-    "difficulty": "EXPERT",
+    "difficulty": "ELITE",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -2066,14 +2137,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/pM07UxU.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/pM07UxU.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "A"
   },
   {
     "id": "rWoBmi5",
     "name": "korean dips",
     "description": "Step:1 Position yourself between two parallel bars with your arms extended and supporting your body weight.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -2094,14 +2166,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/rWoBmi5.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/rWoBmi5.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "YZ4961r",
     "name": "full planche",
     "description": "Step:1 Start in a push-up position with your hands shoulder-width apart and your fingers pointing forward.",
     "category": "SKILL_STATIC",
-    "difficulty": "EXPERT",
+    "difficulty": "ELITE",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -2124,14 +2197,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/YZ4961r.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/YZ4961r.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "S"
   },
   {
     "id": "SLKj2pX",
     "name": "cocoons",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -2152,14 +2226,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/SLKj2pX.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/SLKj2pX.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "jTkSc6o",
     "name": "side hip (on parallel bars)",
     "description": "Step:1 Stand between two parallel bars with your feet shoulder-width apart.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -2180,7 +2255,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/jTkSc6o.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/jTkSc6o.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "BReCuOn",
@@ -2208,14 +2284,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/BReCuOn.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/BReCuOn.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "qaZVsGk",
     "name": "alternate heel touchers",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -2235,14 +2312,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/qaZVsGk.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/qaZVsGk.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "XgWyAiA",
     "name": "chest dip (on dip-pull-up cage)",
     "description": "Step:1 Adjust the dip bars to a height that allows you to comfortably grip them.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -2268,14 +2346,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/XgWyAiA.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/XgWyAiA.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "P9GFBME",
     "name": "spider crawl push up",
     "description": "Step:1 Start in a push-up position with your hands slightly wider than shoulder-width apart and your feet together.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -2297,14 +2376,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/P9GFBME.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/P9GFBME.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "tnaj0mT",
     "name": "swing 360",
     "description": "Step:1 Stand with your feet shoulder-width apart and knees slightly bent.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -2325,14 +2405,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/tnaj0mT.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/tnaj0mT.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "T2mxWqc",
     "name": "chin-up",
     "description": "Step:1 Hang from a pull-up bar with your palms facing towards you and your hands shoulder-width apart.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -2354,14 +2435,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/T2mxWqc.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/T2mxWqc.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "AR0ig3o",
     "name": "flexion leg sit up (bent knee)",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -2382,14 +2464,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/AR0ig3o.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/AR0ig3o.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "wpbD28t",
     "name": "side push-up",
     "description": "Step:1 Start by lying on your side with your legs extended and stacked on top of each other.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -2412,14 +2495,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/wpbD28t.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/wpbD28t.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "yT9tk17",
     "name": "twisted leg raise (female)",
     "description": "Step:1 Lie flat on your back with your legs extended and your arms by your sides.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -2441,14 +2525,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/yT9tk17.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/yT9tk17.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "11wrviz",
     "name": "isometric wipers",
     "description": "Step:1 Start by lying flat on your back on a mat or bench.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -2472,14 +2557,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/11wrviz.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/11wrviz.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "bZGHsAZ",
     "name": "inverted row",
     "description": "Step:1 Set up a bar at waist height or use a suspension trainer.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "upper back",
@@ -2502,14 +2588,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/bZGHsAZ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/bZGHsAZ.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "pQ0Mx1Z",
     "name": "flag",
     "description": "Step:1 Start by gripping a vertical pole with both hands, palms facing each other, and arms fully extended.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -2531,14 +2618,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/pQ0Mx1Z.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/pQ0Mx1Z.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "AX1kB0o",
     "name": "twist hip lift",
     "description": "Step:1 Lie on your back with your knees bent and feet flat on the ground.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -2560,14 +2648,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/AX1kB0o.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/AX1kB0o.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "PrQbjvB",
     "name": "push to run",
     "description": "Step:1 Start in a push-up position with your hands shoulder-width apart and your body in a straight line.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -2590,14 +2679,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/PrQbjvB.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/PrQbjvB.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "uTv34oq",
     "name": "bodyweight standing row (with towel)",
     "description": "Step:1 Stand with your feet shoulder-width apart and hold a towel in front of you with both hands.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "upper back",
@@ -2618,14 +2708,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/uTv34oq.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/uTv34oq.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "mExgrF9",
     "name": "bench pull-ups",
     "description": "Step:1 Position yourself under a bar or a sturdy horizontal surface that is at chest height.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -2649,7 +2740,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/mExgrF9.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/mExgrF9.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "aWedzZX",
@@ -2677,14 +2769,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/aWedzZX.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/aWedzZX.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "gscGLOU",
     "name": "bodyweight side lying biceps curl",
     "description": "Step:1 Lie on your side with your legs extended and your head supported by your arm.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "biceps",
@@ -2703,14 +2796,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/gscGLOU.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/gscGLOU.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "F7vjXqT",
     "name": "incline push-up (on box)",
     "description": "Step:1 Place your hands on the edge of a box or elevated surface, slightly wider than shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -2731,7 +2825,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/F7vjXqT.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/F7vjXqT.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "OYFhXVD",
@@ -2761,14 +2856,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/OYFhXVD.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/OYFhXVD.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "kjJ3VoQ",
     "name": "crunch (hands overhead)",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -2788,14 +2884,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/kjJ3VoQ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/kjJ3VoQ.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "yq3GAJX",
     "name": "hands reversed clasped circular toe touch (male)",
     "description": "Step:1 Stand with your feet shoulder-width apart and your arms extended to the sides.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -2819,14 +2916,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/yq3GAJX.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/yq3GAJX.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "G70mEAJ",
     "name": "chin-ups (narrow parallel grip)",
     "description": "Step:1 Hang from a pull-up bar with a narrow parallel grip, palms facing towards you.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "upper back",
@@ -2848,7 +2946,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/G70mEAJ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/G70mEAJ.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "RKjH6Lt",
@@ -2877,14 +2976,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/RKjH6Lt.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/RKjH6Lt.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "6HmFgmx",
     "name": "standing calf raise (on a staircase)",
     "description": "Step:1 Stand on the edge of a step or a sturdy platform with your heels hanging off and your toes on the step.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "calves",
@@ -2905,14 +3005,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/6HmFgmx.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/6HmFgmx.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "6FMU51h",
     "name": "semi squat jump (male)",
     "description": "Step:1 Stand with your feet shoulder-width apart.",
     "category": "CARDIO",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -2934,7 +3035,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/6FMU51h.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/6FMU51h.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "f38OEuO",
@@ -2963,14 +3065,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/f38OEuO.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/f38OEuO.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "rQhGcin",
     "name": "frog planche",
     "description": "Step:1 Start in a push-up position with your hands shoulder-width apart and your feet together.",
     "category": "SKILL_STATIC",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -2992,14 +3095,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/rQhGcin.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/rQhGcin.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "JF8AkMX",
     "name": "standing archer",
     "description": "Step:1 Stand with your feet shoulder-width apart and your knees slightly bent.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "upper back",
@@ -3023,7 +3127,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/JF8AkMX.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/JF8AkMX.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "WL4EmxJ",
@@ -3052,14 +3157,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/WL4EmxJ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/WL4EmxJ.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "mweqJin",
     "name": "quick feet v. 2",
     "description": "Step:1 Stand with your feet shoulder-width apart and your arms by your sides.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "quads",
@@ -3079,14 +3185,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/mweqJin.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/mweqJin.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "9E25EOx",
     "name": "split squats",
     "description": "Step:1 Stand with your feet shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "quads",
@@ -3109,14 +3216,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/9E25EOx.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/9E25EOx.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "R1WYG5D",
     "name": "suspended reverse crunch",
     "description": "Step:1 Hang from a pull-up bar with your arms fully extended and your palms facing away from you.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -3135,14 +3243,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/R1WYG5D.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/R1WYG5D.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "ZgsNQ6d",
     "name": "inchworm",
     "description": "Step:1 Start in a standing position with your feet hip-width apart.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -3164,14 +3273,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/ZgsNQ6d.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/ZgsNQ6d.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "UVo2Qs2",
     "name": "flutter kicks",
     "description": "Step:1 Lie flat on your back with your legs extended and your hands by your sides.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -3191,14 +3301,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/UVo2Qs2.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/UVo2Qs2.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "i5cEhka",
     "name": "decline push-up",
     "description": "Step:1 Place your hands on the ground slightly wider than shoulder-width apart, with your feet elevated on a stable surface.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -3219,7 +3330,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/i5cEhka.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/i5cEhka.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "Qqi7bko",
@@ -3248,14 +3360,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/Qqi7bko.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Qqi7bko.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "c8f5cSY",
     "name": "side lying hip adduction (male)",
     "description": "Step:1 Lie on your side with your legs straight and stacked on top of each other.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "adductors",
@@ -3276,7 +3389,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/c8f5cSY.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/c8f5cSY.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "99rWm7w",
@@ -3304,14 +3418,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/99rWm7w.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/99rWm7w.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "I3tsCnC",
     "name": "hanging leg raise",
     "description": "Step:1 Hang from a pull-up bar with your arms fully extended and your palms facing away from you.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "time",
     "muscleGroups": [
       "abs",
@@ -3332,14 +3447,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/I3tsCnC.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/I3tsCnC.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "DQ0cqkT",
     "name": "three bench dip",
     "description": "Step:1 Sit on a bench with your hands gripping the edge, fingers pointing forward.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -3361,7 +3477,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/DQ0cqkT.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/DQ0cqkT.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "9c6T1YX",
@@ -3394,14 +3511,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/9c6T1YX.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/9c6T1YX.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "zfNHMN9",
     "name": "skater hops",
     "description": "Step:1 Stand with your feet shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -3426,14 +3544,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/zfNHMN9.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/zfNHMN9.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "6ZCiYWQ",
     "name": "sit-up with arms on chest",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -3453,14 +3572,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/6ZCiYWQ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/6ZCiYWQ.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "cQ19bBP",
     "name": "rocky pull-up pulldown",
     "description": "Step:1 Stand in front of a pull-up bar with your feet shoulder-width apart.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -3483,7 +3603,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/cQ19bBP.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/cQ19bBP.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "ezTvXcr",
@@ -3512,14 +3633,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/ezTvXcr.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/ezTvXcr.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "OrETs32",
     "name": "reverse hyper on flat bench",
     "description": "Step:1 Lie face down on a flat bench with your hips at the edge and your legs hanging off the bench.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -3541,7 +3663,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/OrETs32.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/OrETs32.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "0mB6wHO",
@@ -3569,14 +3692,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/0mB6wHO.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/0mB6wHO.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "pZwUsKB",
     "name": "iron cross stretch",
     "description": "Step:1 Lie flat on your back with your arms extended out to the sides.",
     "category": "WARM_UP",
-    "difficulty": "EXPERT",
+    "difficulty": "ELITE",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -3598,14 +3722,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/pZwUsKB.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/pZwUsKB.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "S"
   },
   {
     "id": "mr7pkqP",
     "name": "jack burpee",
     "description": "Step:1 Start in a standing position with your feet shoulder-width apart.",
     "category": "CARDIO",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -3632,7 +3757,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/mr7pkqP.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/mr7pkqP.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "jDOKRM5",
@@ -3661,7 +3787,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/jDOKRM5.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/jDOKRM5.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "x2chWLO",
@@ -3689,14 +3816,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/x2chWLO.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/x2chWLO.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "wd4ds3s",
     "name": "bodyweight standing row",
     "description": "Step:1 Stand with your feet shoulder-width apart and knees slightly bent.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "upper back",
@@ -3719,14 +3847,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/wd4ds3s.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/wd4ds3s.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "ealLwvX",
     "name": "high knee against wall",
     "description": "Step:1 Stand facing a wall with your feet hip-width apart.",
     "category": "CARDIO",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -3751,14 +3880,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/ealLwvX.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/ealLwvX.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "1ZFqTDN",
     "name": "air bike",
     "description": "Step:1 Lie flat on your back with your hands placed behind your head.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -3778,14 +3908,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/1ZFqTDN.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/1ZFqTDN.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "Bn6TXyO",
     "name": "sit-up v. 2",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -3805,7 +3936,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/Bn6TXyO.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Bn6TXyO.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "UtmIqcI",
@@ -3833,14 +3965,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/UtmIqcI.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/UtmIqcI.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "v7p5bYl",
     "name": "kick out sit",
     "description": "Step:1 Sit on the edge of a bench or chair with your feet flat on the ground and your knees bent at a 90-degree angle.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "hamstrings",
@@ -3861,14 +3994,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/v7p5bYl.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/v7p5bYl.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "RrLske5",
     "name": "bench dip (knees bent)",
     "description": "Step:1 Sit on the edge of a bench or chair with your hands gripping the edge next to your hips.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -3890,14 +4024,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/RrLske5.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/RrLske5.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "196HJGw",
     "name": "hip raise (bent knee)",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -3918,14 +4053,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/196HJGw.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/196HJGw.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "OyoZ3Pu",
     "name": "leg pull in flat bench",
     "description": "Step:1 Sit on a flat bench with your legs extended straight out in front of you.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -3946,14 +4082,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/OyoZ3Pu.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/OyoZ3Pu.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "Vvwjz6N",
     "name": "glute-ham raise",
     "description": "Step:1 Adjust the glute-ham raise machine to fit your body.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "hamstrings",
@@ -3976,14 +4113,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/Vvwjz6N.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Vvwjz6N.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "BaE7O6U",
     "name": "hanging oblique knee raise",
     "description": "Step:1 Hang from a pull-up bar with your arms fully extended and your palms facing away from you.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "time",
     "muscleGroups": [
       "abs",
@@ -4004,14 +4142,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/BaE7O6U.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/BaE7O6U.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "LEH9jxP",
     "name": "push-up (wall)",
     "description": "Step:1 Stand facing a wall, about arm's length away.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -4033,14 +4172,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/LEH9jxP.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/LEH9jxP.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "iny3m5y",
     "name": "dead bug",
     "description": "Step:1 Lie flat on your back with your arms extended towards the ceiling.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -4063,14 +4203,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/iny3m5y.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/iny3m5y.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "ZuXu4Eq",
     "name": "v-sit on floor",
     "description": "Step:1 Sit on the floor with your legs extended in front of you.",
     "category": "CORE",
-    "difficulty": "EXPERT",
+    "difficulty": "ELITE",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -4090,14 +4231,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/ZuXu4Eq.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/ZuXu4Eq.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "A"
   },
   {
     "id": "7WaDzyL",
     "name": "side hip abduction",
     "description": "Step:1 Stand with your feet shoulder-width apart and your hands on your hips.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abductors",
@@ -4118,14 +4260,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/7WaDzyL.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/7WaDzyL.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "2jl9K55",
     "name": "spine twist",
     "description": "Step:1 Sit on the ground with your legs extended in front of you.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -4148,7 +4291,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/2jl9K55.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/2jl9K55.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "QY39eBr",
@@ -4174,14 +4318,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/QY39eBr.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/QY39eBr.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "HIgYKAB",
     "name": "seated wide angle pose sequence",
     "description": "Step:1 Sit on the ground with your legs extended in a wide angle.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "hamstrings",
@@ -4205,7 +4350,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/HIgYKAB.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/HIgYKAB.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "UpWmA5E",
@@ -4234,7 +4380,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/UpWmA5E.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/UpWmA5E.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "3xK09Sk",
@@ -4262,14 +4409,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/3xK09Sk.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/3xK09Sk.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "I4hDWkc",
     "name": "push-up",
     "description": "Step:1 Start in a high plank position with your hands slightly wider than shoulder-width apart and your feet together.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -4290,14 +4438,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/I4hDWkc.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/I4hDWkc.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "RJgzwny",
     "name": "mountain climber",
     "description": "Step:1 Start in a high plank position with your hands directly under your shoulders and your body in a straight line.",
     "category": "CARDIO",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -4319,14 +4468,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/RJgzwny.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/RJgzwny.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "IL0JUxR",
     "name": "gironda sternum chin",
     "description": "Step:1 Stand facing a high bar with your feet shoulder-width apart.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -4350,14 +4500,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/IL0JUxR.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/IL0JUxR.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "uX3sUBz",
     "name": "inverted row v. 2",
     "description": "Step:1 Set up a bar at waist height on a Smith machine or use a suspension trainer.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "upper back",
@@ -4379,14 +4530,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/uX3sUBz.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/uX3sUBz.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "arvaszz",
     "name": "modified push up to lower arms",
     "description": "Step:1 Start in a push-up position with your hands directly under your shoulders and your body in a straight line.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "forearms",
@@ -4408,14 +4560,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/arvaszz.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/arvaszz.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "YtgD7Xq",
     "name": "shoulder grip pull-up",
     "description": "Step:1 Grab the pull-up bar with a shoulder-width grip, palms facing away from you.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -4437,14 +4590,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/YtgD7Xq.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/YtgD7Xq.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "GdMa1ET",
     "name": "incline scapula push up",
     "description": "Step:1 Set up an incline bench at a 45-degree angle.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "serratus anterior",
@@ -4467,14 +4621,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/GdMa1ET.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/GdMa1ET.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "4Ml7QFO",
     "name": "hanging straight leg raise",
     "description": "Step:1 Hang from a pull-up bar with your arms fully extended and your palms facing away from you.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "time",
     "muscleGroups": [
       "abs",
@@ -4495,14 +4650,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/4Ml7QFO.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/4Ml7QFO.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "T8UpLkb",
     "name": "mixed grip chin-up",
     "description": "Step:1 Grab the pull-up bar with an underhand grip (palms facing towards you) and your hands slightly wider than shoulder-width apart.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -4525,14 +4681,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/T8UpLkb.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/T8UpLkb.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "xgsGFVM",
     "name": "crab twist toe touch",
     "description": "Step:1 Start by sitting on the ground with your knees bent and feet flat on the floor.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -4553,14 +4710,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/xgsGFVM.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/xgsGFVM.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "LIlE5Tn",
     "name": "jump squat",
     "description": "Step:1 Stand with your feet shoulder-width apart.",
     "category": "CARDIO",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -4583,14 +4741,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/LIlE5Tn.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/LIlE5Tn.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "bWlZvXh",
     "name": "butterfly yoga pose",
     "description": "Step:1 Sit on the floor with your legs extended in front of you.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "adductors",
@@ -4613,14 +4772,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/bWlZvXh.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/bWlZvXh.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "p195zsJ",
     "name": "two toe touch (male)",
     "description": "Step:1 Stand with your feet shoulder-width apart and your arms extended out to the sides.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "spine",
@@ -4641,14 +4801,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/p195zsJ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/p195zsJ.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "dTg95eZ",
     "name": "knee touch crunch",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -4668,14 +4829,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/dTg95eZ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/dTg95eZ.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "Q497lAE",
     "name": "drop push up",
     "description": "Step:1 Start in a high plank position with your hands slightly wider than shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -4696,14 +4858,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/Q497lAE.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Q497lAE.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "CMAxnsG",
     "name": "clock push-up",
     "description": "Step:1 Start in a high plank position with your hands directly under your shoulders and your body in a straight line.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -4726,14 +4889,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/CMAxnsG.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/CMAxnsG.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "ANbbry2",
     "name": "lower back curl",
     "description": "Step:1 Lie flat on your stomach with your legs extended and your arms by your sides.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "spine",
@@ -4753,14 +4917,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/ANbbry2.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/ANbbry2.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "VuoerH0",
     "name": "triceps dip (bench leg)",
     "description": "Step:1 Sit on the edge of a bench with your hands gripping the edge, fingers pointing forward.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -4782,14 +4947,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/VuoerH0.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/VuoerH0.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "guT8YnS",
     "name": "biceps pull-up",
     "description": "Step:1 Hang from a pull-up bar with your palms facing away from you and your hands shoulder-width apart.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "biceps",
@@ -4810,14 +4976,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/guT8YnS.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/guT8YnS.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "b63ZzGe",
     "name": "potty squat with support",
     "description": "Step:1 Stand with your feet shoulder-width apart, toes pointing slightly outward.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -4840,14 +5007,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/b63ZzGe.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/b63ZzGe.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "v2DfH14",
     "name": "bodyweight standing close-grip one arm row",
     "description": "Step:1 Stand with your feet shoulder-width apart, knees slightly bent, and hold a dumbbell in one hand with a neutral grip.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "upper back",
@@ -4868,14 +5036,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/v2DfH14.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/v2DfH14.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "uZKq7lo",
     "name": "forward jump",
     "description": "Step:1 Stand with your feet shoulder-width apart.",
     "category": "CARDIO",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "quads",
@@ -4898,14 +5067,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/uZKq7lo.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/uZKq7lo.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "C31LMnP",
     "name": "one leg squat",
     "description": "Step:1 Stand with your feet shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -4928,14 +5098,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/C31LMnP.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/C31LMnP.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "dK9394r",
     "name": "burpee",
     "description": "Step:1 Start in a standing position with your feet shoulder-width apart.",
     "category": "CARDIO",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -4961,14 +5132,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/dK9394r.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/dK9394r.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "Eh2v5Iu",
     "name": "scissor jumps (male)",
     "description": "Step:1 Stand with your feet shoulder-width apart.",
     "category": "CARDIO",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -4990,7 +5162,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/Eh2v5Iu.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Eh2v5Iu.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "xifhB5W",
@@ -5018,14 +5191,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/xifhB5W.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/xifhB5W.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "01qpYSe",
     "name": "upward facing dog",
     "description": "Step:1 Lie face down on the floor with your legs extended behind you.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "spine",
@@ -5047,14 +5221,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/01qpYSe.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/01qpYSe.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "9ZGZuOD",
     "name": "incline twisting sit-up",
     "description": "Step:1 Set up an incline bench at a 45-degree angle.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -5077,14 +5252,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/9ZGZuOD.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/9ZGZuOD.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "jNU1gFQ",
     "name": "outside leg kick push-up",
     "description": "Step:1 Start in a push-up position with your hands slightly wider than shoulder-width apart and your feet together.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -5106,7 +5282,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/jNU1gFQ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/jNU1gFQ.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "CosupLu",
@@ -5136,14 +5313,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/CosupLu.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/CosupLu.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "Af0EW2I",
     "name": "muscle-up (on vertical bar)",
     "description": "Step:1 Start by hanging from a vertical bar with your palms facing away from you and your arms fully extended.",
     "category": "PULL",
-    "difficulty": "EXPERT",
+    "difficulty": "ELITE",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -5167,7 +5345,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/Af0EW2I.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Af0EW2I.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "A"
   },
   {
     "id": "sU5BrfP",
@@ -5195,14 +5374,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/sU5BrfP.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/sU5BrfP.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "xAySMB0",
     "name": "balance board",
     "description": "Step:1 Place the balance board on a flat surface.",
     "category": "BALANCE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "quads",
@@ -5224,14 +5404,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/xAySMB0.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/xAySMB0.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "hoXt6wv",
     "name": "left hook. boxing",
     "description": "Step:1 Stand with your feet shoulder-width apart and your knees slightly bent.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "delts",
@@ -5253,14 +5434,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/hoXt6wv.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/hoXt6wv.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "tig3PXb",
     "name": "bodyweight standing close-grip row",
     "description": "Step:1 Stand with your feet shoulder-width apart and knees slightly bent.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "upper back",
@@ -5282,7 +5464,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/tig3PXb.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/tig3PXb.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "A9qxk2F",
@@ -5312,14 +5495,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/A9qxk2F.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/A9qxk2F.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "B"
   },
   {
     "id": "VnfUNW7",
     "name": "close grip chin-up",
     "description": "Step:1 Grab the pull-up bar with your palms facing towards you and your hands shoulder-width apart.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -5342,14 +5526,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/VnfUNW7.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/VnfUNW7.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "7aVz15j",
     "name": "triceps dips floor",
     "description": "Step:1 Sit on the edge of a chair or bench with your hands next to your hips, fingers pointing forward.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -5372,7 +5557,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/7aVz15j.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/7aVz15j.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "nqs5HGV",
@@ -5403,14 +5589,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/nqs5HGV.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/nqs5HGV.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "Hy9D21L",
     "name": "45° side bend",
     "description": "Step:1 Stand with your feet shoulder-width apart and your arms extended straight down by your sides.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -5430,14 +5617,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/Hy9D21L.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Hy9D21L.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "0Yz8WdV",
     "name": "bear crawl",
     "description": "Step:1 Start on all fours with your hands directly under your shoulders and your knees directly under your hips.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -5460,7 +5648,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/0Yz8WdV.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/0Yz8WdV.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "m0tCHqc",
@@ -5488,14 +5677,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/m0tCHqc.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/m0tCHqc.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "u5ESqzH",
     "name": "donkey calf raise",
     "description": "Step:1 Stand with your toes on an elevated surface, such as a step or block.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "calves",
@@ -5516,14 +5706,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/u5ESqzH.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/u5ESqzH.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "4GqRrAk",
     "name": "superman push-up",
     "description": "Step:1 Start in a high plank position with your hands slightly wider than shoulder-width apart and your feet together.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -5545,14 +5736,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/4GqRrAk.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/4GqRrAk.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "C5jncD2",
     "name": "standing single leg curl",
     "description": "Step:1 Stand with your feet hip-width apart and your hands on your hips.",
     "category": "BALANCE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "hamstrings",
@@ -5572,14 +5764,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/C5jncD2.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/C5jncD2.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "GaSzzuh",
     "name": "back lever",
     "description": "Step:1 Start by hanging from a pull-up bar with an overhand grip, hands slightly wider than shoulder-width apart.",
     "category": "SKILL_STATIC",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "upper back",
@@ -5602,14 +5795,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/GaSzzuh.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "IZVHb27",
     "name": "walking lunge",
     "description": "Step:1 Stand with your feet shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -5632,7 +5826,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/IZVHb27.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/IZVHb27.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "DeDThfG",
@@ -5660,14 +5855,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/DeDThfG.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/DeDThfG.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "g2oKspu",
     "name": "curl-up",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -5687,14 +5883,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/g2oKspu.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/g2oKspu.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "km2Ljzj",
     "name": "wheel run",
     "description": "Step:1 Start in a plank position with your hands on the wheel and your body straight.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -5716,14 +5913,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/km2Ljzj.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/km2Ljzj.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "U6G2gk9",
     "name": "body-up",
     "description": "Step:1 Start by placing your hands on a raised surface, such as a bench or parallel bars, with your palms facing down and fingers pointing forward.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -5744,7 +5942,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/U6G2gk9.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/U6G2gk9.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "GSDioYu",
@@ -5772,14 +5971,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/GSDioYu.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/GSDioYu.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "X3TCNEU",
     "name": "suspended abdominal fallout",
     "description": "Step:1 Attach a suspension trainer to a high anchor point and adjust the straps to waist height.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -5801,7 +6001,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/X3TCNEU.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/X3TCNEU.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "D9qe7CM",
@@ -5831,14 +6032,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/D9qe7CM.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/D9qe7CM.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "uWpxD4v",
     "name": "arm slingers hanging bent knee legs",
     "description": "Step:1 Hang from a pull-up bar with your arms fully extended and your knees bent at a 90-degree angle.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "time",
     "muscleGroups": [
       "abs",
@@ -5859,14 +6061,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/uWpxD4v.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/uWpxD4v.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "sJFIDIp",
     "name": "biceps leg concentration curl",
     "description": "Step:1 Sit on a bench with your legs spread apart and your feet flat on the ground.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "biceps",
@@ -5886,7 +6089,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/sJFIDIp.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/sJFIDIp.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "2zNKRUB",
@@ -5913,14 +6117,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/2zNKRUB.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/2zNKRUB.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "1g5bPpA",
     "name": "jack jump (male)",
     "description": "Step:1 Stand with your feet together and your arms by your sides.",
     "category": "CARDIO",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -5940,7 +6145,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/1g5bPpA.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/1g5bPpA.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "hCjGsRQ",
@@ -5970,14 +6176,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/hCjGsRQ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/hCjGsRQ.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "K9VL0Jq",
     "name": "lunge with twist",
     "description": "Step:1 Start by standing with your feet shoulder-width apart.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -6000,14 +6207,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/K9VL0Jq.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/K9VL0Jq.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "mWppALS",
     "name": "groin crunch",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -6028,14 +6236,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/mWppALS.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/mWppALS.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "Y9hNPcN",
     "name": "seated side crunch (wall)",
     "description": "Step:1 Sit on the floor with your back against a wall and your legs extended in front of you.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -6057,14 +6266,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/Y9hNPcN.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Y9hNPcN.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "mgejmGP",
     "name": "prisoner half sit-up (male)",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -6084,7 +6294,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/mgejmGP.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/mgejmGP.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "GibBPPg",
@@ -6113,14 +6324,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/GibBPPg.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/GibBPPg.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "epOSYUZ",
     "name": "modified hindu push-up (male)",
     "description": "Step:1 Start in a push-up position with your hands slightly wider than shoulder-width apart and your feet hip-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -6142,7 +6354,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/epOSYUZ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/epOSYUZ.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "JbC2iaV",
@@ -6171,14 +6384,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/JbC2iaV.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/JbC2iaV.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "O4oIqQD",
     "name": "bodyweight standing one arm row (with towel)",
     "description": "Step:1 Stand with your feet shoulder-width apart, knees slightly bent, and hold a towel with one hand.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "upper back",
@@ -6199,14 +6413,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/O4oIqQD.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/O4oIqQD.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "hbY9wqG",
     "name": "front lever reps",
     "description": "Step:1 Hang from a pull-up bar with an overhand grip, palms facing away from you.",
     "category": "SKILL_STATIC",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "upper back",
@@ -6228,14 +6443,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/hbY9wqG.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/hbY9wqG.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "Hgs6Nl1",
     "name": "seated leg raise",
     "description": "Step:1 Sit on a flat bench with your back straight and your feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -6255,14 +6471,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/Hgs6Nl1.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Hgs6Nl1.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "6sYyrRX",
     "name": "bent knee lying twist (male)",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -6284,14 +6501,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/6sYyrRX.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/6sYyrRX.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "bmwlYvD",
     "name": "gorilla chin",
     "description": "Step:1 Stand with your feet shoulder-width apart and your knees slightly bent.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -6314,14 +6532,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/bmwlYvD.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/bmwlYvD.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "QChZi3x",
     "name": "squat to overhead reach",
     "description": "Step:1 Stand with your feet shoulder-width apart and toes slightly turned out.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "quads",
@@ -6343,14 +6562,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/QChZi3x.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/QChZi3x.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "B1EVP9F",
     "name": "incline push-up",
     "description": "Step:1 Place your hands on an elevated surface, such as a bench or step, slightly wider than shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -6371,14 +6591,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/B1EVP9F.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/B1EVP9F.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "9IxJdtC",
     "name": "lying leg-hip raise",
     "description": "Step:1 Lie flat on your back with your legs extended and your arms by your sides.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -6398,14 +6619,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/9IxJdtC.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/9IxJdtC.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "0rHfvy9",
     "name": "inverse leg curl (on pull-up cable machine)",
     "description": "Step:1 Adjust the cable machine so that the ankle straps are at the lowest setting.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "hamstrings",
@@ -6428,14 +6650,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/0rHfvy9.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/0rHfvy9.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "9RT8oQW",
     "name": "bench dip on floor",
     "description": "Step:1 Sit on the edge of a bench or chair with your hands gripping the edge, fingers pointing forward.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -6457,14 +6680,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/9RT8oQW.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/9RT8oQW.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "1GPHRyK",
     "name": "janda sit-up",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -6485,14 +6709,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/1GPHRyK.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/1GPHRyK.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "znP9SIh",
     "name": "hug keens to chest",
     "description": "Step:1 Start by standing with your feet shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -6513,7 +6738,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/znP9SIh.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/znP9SIh.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "PzNxakt",
@@ -6541,14 +6767,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/PzNxakt.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/PzNxakt.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "BbfB8Gb",
     "name": "basic toe touch (male)",
     "description": "Step:1 Stand with your feet shoulder-width apart and your arms by your sides.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -6569,14 +6796,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/BbfB8Gb.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/BbfB8Gb.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "TFqbd8t",
     "name": "crunch floor",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -6596,14 +6824,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/TFqbd8t.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/TFqbd8t.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "4OaumBr",
     "name": "suspended row",
     "description": "Step:1 Set up a suspension trainer at an appropriate height.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "upper back",
@@ -6626,14 +6855,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/4OaumBr.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/4OaumBr.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "QLL2gdc",
     "name": "decline sit-up",
     "description": "Step:1 Lie on a decline bench with your feet secured and your knees bent.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -6654,14 +6884,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/QLL2gdc.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/QLL2gdc.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "PkCN2lv",
     "name": "front lever",
     "description": "Step:1 Start by hanging from a pull-up bar with an overhand grip, hands shoulder-width apart.",
     "category": "SKILL_STATIC",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -6685,14 +6916,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/PkCN2lv.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "pvBMLHA",
     "name": "push-up plus",
     "description": "Step:1 Start in a high plank position with your hands slightly wider than shoulder-width apart and your body in a straight line from head to heels.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -6714,7 +6946,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/pvBMLHA.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/pvBMLHA.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "UpAlold",
@@ -6742,14 +6975,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/UpAlold.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/UpAlold.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "ia6kIIl",
     "name": "half knee bends (male)",
     "description": "Step:1 Stand with your feet shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -6771,14 +7005,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/ia6kIIl.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/ia6kIIl.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "JmMVpR3",
     "name": "wide hand push up",
     "description": "Step:1 Start in a high plank position with your hands wider than shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -6799,7 +7034,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/JmMVpR3.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/JmMVpR3.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "tFToB7l",
@@ -6829,14 +7065,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/tFToB7l.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/tFToB7l.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "soIB2rj",
     "name": "diamond push-up",
     "description": "Step:1 Start in a high plank position with your hands close together, forming a diamond shape with your thumbs and index fingers.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -6857,14 +7094,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/soIB2rj.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/soIB2rj.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "ZSY3MsL",
     "name": "self assisted inverse leg curl (on floor)",
     "description": "Step:1 Lie flat on your back with your legs extended and your arms by your sides.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "hamstrings",
@@ -6887,14 +7125,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/ZSY3MsL.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/ZSY3MsL.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "ErqK3UL",
     "name": "posterior step to overhead reach",
     "description": "Step:1 Stand with your feet hip-width apart and your arms by your sides.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -6919,14 +7158,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/ErqK3UL.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/ErqK3UL.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "zhMwOwE",
     "name": "hyperextension",
     "description": "Step:1 Adjust the hyperextension bench so that your upper thighs are resting on the pad and your feet are secured.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "spine",
@@ -6947,14 +7187,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/zhMwOwE.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/zhMwOwE.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "fNGumX0",
     "name": "back and forth step",
     "description": "Step:1 Stand with your feet shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -6978,14 +7219,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/fNGumX0.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/fNGumX0.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "mQ1tBXn",
     "name": "straight leg outer hip abductor",
     "description": "Step:1 Lie on your side with your legs straight and stacked on top of each other.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abductors",
@@ -7006,14 +7248,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/mQ1tBXn.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/mQ1tBXn.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "MSfvriJ",
     "name": "skin the cat",
     "description": "Step:1 Start by hanging from a bar with your arms fully extended and your body relaxed.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "upper back",
@@ -7035,7 +7278,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/MSfvriJ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/MSfvriJ.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "qOKcgVP",
@@ -7065,14 +7309,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/qOKcgVP.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/qOKcgVP.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "KhHJ338",
     "name": "push-up to side plank",
     "description": "Step:1 Start in a push-up position with your hands shoulder-width apart and your body in a straight line.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "time",
     "muscleGroups": [
       "abs",
@@ -7096,14 +7341,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/KhHJ338.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/KhHJ338.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "PM1PZjg",
     "name": "lunge with jump",
     "description": "Step:1 Start by standing with your feet shoulder-width apart.",
     "category": "CARDIO",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -7125,14 +7371,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/PM1PZjg.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/PM1PZjg.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "jV65tKx",
     "name": "scapula push-up",
     "description": "Step:1 Start in a high plank position with your hands directly under your shoulders and your body in a straight line.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "serratus anterior",
@@ -7153,14 +7400,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/jV65tKx.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/jV65tKx.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "9Ap7miY",
     "name": "decline crunch",
     "description": "Step:1 Lie on a decline bench with your feet secured and your knees bent at a 90-degree angle.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -7180,14 +7428,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/9Ap7miY.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/9Ap7miY.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "Mxa7Cr8",
     "name": "inverted row on bench",
     "description": "Step:1 Set up a bench at a height that allows your body to hang freely underneath it.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "upper back",
@@ -7210,14 +7459,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/Mxa7Cr8.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Mxa7Cr8.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "QUDd8WS",
     "name": "oblique crunches floor",
     "description": "Step:1 Lie on your back with your knees bent and feet flat on the floor.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -7237,14 +7487,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/QUDd8WS.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/QUDd8WS.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "qEse6fe",
     "name": "shoulder tap push-up",
     "description": "Step:1 Start in a high plank position with your hands slightly wider than shoulder-width apart and your body in a straight line from head to heels.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -7267,14 +7518,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/qEse6fe.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/qEse6fe.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "ms7tjSG",
     "name": "inverse leg curl (bench support)",
     "description": "Step:1 Lie face down on a bench with your hips at the edge and your legs extended straight behind you.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "hamstrings",
@@ -7295,14 +7547,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/ms7tjSG.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/ms7tjSG.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "pj0X0tF",
     "name": "hanging straight leg hip raise",
     "description": "Step:1 Hang from a pull-up bar with your arms fully extended and your palms facing away from you.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "time",
     "muscleGroups": [
       "abs",
@@ -7322,14 +7575,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/pj0X0tF.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/pj0X0tF.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "WhuFnR7",
     "name": "lying leg raise flat bench",
     "description": "Step:1 Lie flat on a flat bench with your back pressed against it.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -7349,14 +7603,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/WhuFnR7.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/WhuFnR7.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "FAoIFMw",
     "name": "one arm dip",
     "description": "Step:1 Stand facing away from a bench or chair, with your feet shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -7379,14 +7634,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/FAoIFMw.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/FAoIFMw.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "xdYPUtE",
     "name": "sissy squat",
     "description": "Step:1 Stand with your feet shoulder-width apart and your toes pointing slightly outward.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "quads",
@@ -7408,14 +7664,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/xdYPUtE.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/xdYPUtE.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "sVQCCeG",
     "name": "march sit (wall)",
     "description": "Step:1 Stand with your back against a wall and your feet hip-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -7437,7 +7694,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/sVQCCeG.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/sVQCCeG.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "3uj0Ozg",
@@ -7466,14 +7724,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/3uj0Ozg.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/3uj0Ozg.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "u27Kcdz",
     "name": "bench hip extension",
     "description": "Step:1 Sit on a bench with your back against the bench and your feet flat on the ground.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -7493,14 +7752,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/u27Kcdz.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/u27Kcdz.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "uTBt1HV",
     "name": "scapular pull-up",
     "description": "Step:1 Start by hanging from a pull-up bar with your palms facing away from you and your arms fully extended.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "traps",
@@ -7523,14 +7783,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/uTBt1HV.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/uTBt1HV.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "iQ241UP",
     "name": "half sit-up (male)",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -7550,7 +7811,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/iQ241UP.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/iQ241UP.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "wfotm7S",
@@ -7580,14 +7842,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/wfotm7S.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/wfotm7S.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "VEcJRo2",
     "name": "hanging leg hip raise",
     "description": "Step:1 Hang from a pull-up bar with your arms fully extended and your palms facing away from you.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "time",
     "muscleGroups": [
       "abs",
@@ -7608,14 +7871,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/VEcJRo2.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/VEcJRo2.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "A2upspL",
     "name": "one leg donkey calf raise",
     "description": "Step:1 Stand with your feet shoulder-width apart, toes pointing forward.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "calves",
@@ -7637,14 +7901,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/A2upspL.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/A2upspL.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "yRpV5TC",
     "name": "shoulder tap",
     "description": "Step:1 Start in a high plank position with your hands directly under your shoulders and your body in a straight line.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -7665,14 +7930,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/yRpV5TC.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/yRpV5TC.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "E4PwJqI",
     "name": "self assisted inverse leg curl",
     "description": "Step:1 Lie face down on a leg curl machine with your legs extended and your ankles hooked under the padded lever.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "hamstrings",
@@ -7694,14 +7960,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/E4PwJqI.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/E4PwJqI.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "O95afRA",
     "name": "monster walk",
     "description": "Step:1 Place a resistance band around your ankles.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -7722,14 +7989,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/O95afRA.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/O95afRA.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "bJYHBIN",
     "name": "bodyweight standing calf raise",
     "description": "Step:1 Stand with your feet shoulder-width apart, toes pointing forward.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "calves",
@@ -7750,14 +8018,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/bJYHBIN.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/bJYHBIN.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "szIn2UK",
     "name": "negative crunch",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -7777,14 +8046,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/szIn2UK.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/szIn2UK.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "0V2YQjW",
     "name": "pull up (neutral grip)",
     "description": "Step:1 Hang from a pull-up bar with a neutral grip (palms facing each other) and your arms fully extended.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -7807,14 +8077,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/0V2YQjW.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/0V2YQjW.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "2gPfomN",
     "name": "3/4 sit-up",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -7835,14 +8106,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/2gPfomN.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/2gPfomN.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "jdiExfW",
     "name": "inverted row with straps",
     "description": "Step:1 Set up a suspension trainer or straps at chest height.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "upper back",
@@ -7865,14 +8137,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/jdiExfW.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/jdiExfW.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "KZn52RC",
     "name": "flexion leg sit up (straight arm)",
     "description": "Step:1 Lie flat on your back with your legs extended and arms straight above your head.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -7893,7 +8166,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/KZn52RC.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/KZn52RC.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "X7jbxra",
@@ -7920,14 +8194,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/X7jbxra.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/X7jbxra.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "PXTIwgu",
     "name": "arm slingers hanging straight legs",
     "description": "Step:1 Hang from a pull-up bar with your arms fully extended and your legs straight down.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "time",
     "muscleGroups": [
       "abs",
@@ -7948,14 +8223,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/PXTIwgu.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/PXTIwgu.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "HtfCpfi",
     "name": "star jump (male)",
     "description": "Step:1 Stand with your feet shoulder-width apart and your arms by your sides.",
     "category": "CARDIO",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -7977,14 +8253,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/HtfCpfi.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/HtfCpfi.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "0jp9Rlz",
     "name": "one leg floor calf raise",
     "description": "Step:1 Stand with your feet hip-width apart and place your hands on a wall or sturdy object for balance.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "calves",
@@ -8005,14 +8282,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/0jp9Rlz.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/0jp9Rlz.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "J9zIWig",
     "name": "walking high knees lunge",
     "description": "Step:1 Stand with your feet hip-width apart.",
     "category": "CARDIO",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -8037,14 +8315,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/J9zIWig.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/J9zIWig.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "wbUYILZ",
     "name": "elbow lift - reverse push-up",
     "description": "Step:1 Start by lying face down on the ground with your legs extended and your hands placed directly under your shoulders.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "upper back",
@@ -8065,14 +8344,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/wbUYILZ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/wbUYILZ.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "XIHEoCG",
     "name": "standing calves",
     "description": "Step:1 Stand with your feet shoulder-width apart, toes pointing forward.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "calves",
@@ -8092,14 +8372,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/XIHEoCG.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/XIHEoCG.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "eVxAzgz",
     "name": "incline leg hip raise (leg straight)",
     "description": "Step:1 Lie on an incline bench with your back flat against the bench and your legs extended straight out in front of you.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -8119,14 +8400,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/eVxAzgz.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/eVxAzgz.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "7E06s6d",
     "name": "chest tap push-up (male)",
     "description": "Step:1 Start in a high plank position with your hands slightly wider than shoulder-width apart and your body in a straight line.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -8148,14 +8430,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/7E06s6d.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/7E06s6d.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "NZ5Qqkz",
     "name": "reverse dip",
     "description": "Step:1 Position yourself between two parallel bars with your arms fully extended and your body straight.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -8176,14 +8459,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/NZ5Qqkz.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/NZ5Qqkz.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "YAk5dIw",
     "name": "reverse grip pull-up",
     "description": "Step:1 Grab the pull-up bar with an underhand grip, hands shoulder-width apart.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -8206,14 +8490,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/YAk5dIw.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/YAk5dIw.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "weoDEpH",
     "name": "captains chair straight leg raise",
     "description": "Step:1 Sit on the captain's chair with your back against the backrest and your forearms resting on the arm pads.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -8234,14 +8519,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/weoDEpH.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/weoDEpH.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "kMzUs9Y",
     "name": "forward lunge (male)",
     "description": "Step:1 Stand with your feet hip-width apart and hands on your hips.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -8263,14 +8549,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/kMzUs9Y.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/kMzUs9Y.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "X6C6i5Y",
     "name": "triceps dip",
     "description": "Step:1 Sit on the edge of a bench or chair with your hands gripping the edge, fingers pointing forward.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -8292,14 +8579,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/X6C6i5Y.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/X6C6i5Y.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "Q6bvyen",
     "name": "hanging straight twisting leg hip raise",
     "description": "Step:1 Hang from a pull-up bar with your arms fully extended and your legs straight.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "time",
     "muscleGroups": [
       "abs",
@@ -8322,14 +8610,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/Q6bvyen.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Q6bvyen.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "cJgSTmh",
     "name": "oblique crunch v. 2",
     "description": "Step:1 Lie on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -8350,14 +8639,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/cJgSTmh.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/cJgSTmh.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "XPUDTt7",
     "name": "pike-to-cobra push-up",
     "description": "Step:1 Start in a push-up position with your hands slightly wider than shoulder-width apart and your feet together.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -8382,14 +8672,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/XPUDTt7.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/XPUDTt7.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "FFRP97T",
     "name": "frog crunch",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -8409,7 +8700,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/FFRP97T.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/FFRP97T.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "Uto7l43",
@@ -8438,7 +8730,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/Uto7l43.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Uto7l43.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "uL9CsKm",
@@ -8464,14 +8757,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/uL9CsKm.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/uL9CsKm.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "nuBF9MO",
     "name": "hanging pike",
     "description": "Step:1 Hang from a pull-up bar with your arms fully extended and your palms facing away from you.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "time",
     "muscleGroups": [
       "abs",
@@ -8493,14 +8787,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/nuBF9MO.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/nuBF9MO.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "iPm26QU",
     "name": "box jump down with one leg stabilization",
     "description": "Step:1 Stand in front of a box or platform with your feet shoulder-width apart.",
     "category": "CARDIO",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "calves",
@@ -8523,14 +8818,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/iPm26QU.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/iPm26QU.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "jvp6DiD",
     "name": "elbow-to-knee",
     "description": "Step:1 Start by lying flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -8552,7 +8848,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/jvp6DiD.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/jvp6DiD.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "DFGXwZr",
@@ -8582,7 +8879,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/DFGXwZr.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/DFGXwZr.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "chfnQnM",
@@ -8612,14 +8910,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/chfnQnM.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/chfnQnM.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "C0eCeEt",
     "name": "twisted leg raise",
     "description": "Step:1 Lie flat on your back with your legs extended and your arms by your sides.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -8642,7 +8941,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/C0eCeEt.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/C0eCeEt.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "wigSg76",
@@ -8670,14 +8970,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/wigSg76.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/wigSg76.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "CbFSYC1",
     "name": "rear pull-up",
     "description": "Step:1 Grab the pull-up bar with an overhand grip, slightly wider than shoulder-width apart.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -8700,14 +9001,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/CbFSYC1.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/CbFSYC1.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "LNE3wfo",
     "name": "single leg platform slide",
     "description": "Step:1 Start by standing with one foot on a platform or slide board.",
     "category": "BALANCE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "hamstrings",
@@ -8728,14 +9030,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/LNE3wfo.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/LNE3wfo.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "enxnJcM",
     "name": "quarter sit-up",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -8755,7 +9058,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/enxnJcM.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/enxnJcM.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "qBcKorM",
@@ -8783,14 +9087,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/qBcKorM.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/qBcKorM.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "TDYiji6",
     "name": "jump squat v. 2",
     "description": "Step:1 Stand with your feet shoulder-width apart.",
     "category": "CARDIO",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -8812,14 +9117,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/TDYiji6.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/TDYiji6.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "TV87DNB",
     "name": "inchworm v. 2",
     "description": "Step:1 Start in a standing position with your feet hip-width apart.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -8840,7 +9146,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/TV87DNB.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/TV87DNB.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "h1ezqSu",
@@ -8868,14 +9175,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/h1ezqSu.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/h1ezqSu.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "rQxwMxO",
     "name": "handstand push-up",
     "description": "Step:1 Find a wall and face away from it, standing a few feet away.",
     "category": "SKILL_STATIC",
-    "difficulty": "EXPERT",
+    "difficulty": "ELITE",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -8897,7 +9205,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/rQxwMxO.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/rQxwMxO.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "S"
   },
   {
     "id": "2Dk4xQV",
@@ -8927,14 +9236,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/2Dk4xQV.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/2Dk4xQV.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "50BETrz",
     "name": "biceps narrow pull-ups",
     "description": "Step:1 Hang from a pull-up bar with your palms facing towards you and your hands shoulder-width apart.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "biceps",
@@ -8955,14 +9265,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/50BETrz.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/50BETrz.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "B5xca8s",
     "name": "hands clasped circular toe touch (male)",
     "description": "Step:1 Stand with your feet shoulder-width apart and your hands clasped together in front of your chest.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -8984,14 +9295,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/B5xca8s.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/B5xca8s.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "d1GgzTU",
     "name": "l-pull-up",
     "description": "Step:1 Grab the pull-up bar with an overhand grip, slightly wider than shoulder-width apart.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -9014,14 +9326,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/d1GgzTU.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/d1GgzTU.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "BL3GHeY",
     "name": "straddle planche",
     "description": "Step:1 Start in a push-up position with your hands shoulder-width apart and your feet spread wide apart.",
     "category": "SKILL_STATIC",
-    "difficulty": "EXPERT",
+    "difficulty": "ELITE",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -9043,14 +9356,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/BL3GHeY.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/BL3GHeY.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "S"
   },
   {
     "id": "GwYwElT",
     "name": "self assisted inverse leg curl",
     "description": "Step:1 Lie flat on your back on a mat or bench with your legs extended.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "hamstrings",
@@ -9071,14 +9385,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/GwYwElT.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/GwYwElT.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "SP3hUez",
     "name": "swimmer kicks v. 2 (male)",
     "description": "Step:1 Lie face down on a mat with your arms extended overhead.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -9100,14 +9415,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/SP3hUez.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/SP3hUez.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "XaaRnRn",
     "name": "incline reverse grip push-up",
     "description": "Step:1 Place your hands on the edge of a bench or elevated surface, slightly wider than shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -9128,14 +9444,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/XaaRnRn.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/XaaRnRn.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "6YUfHPL",
     "name": "quads",
     "description": "Step:1 Stand with your feet shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "quads",
@@ -9157,14 +9474,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/6YUfHPL.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/6YUfHPL.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "rbu5UUb",
     "name": "cross body crunch",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -9185,14 +9503,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/rbu5UUb.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/rbu5UUb.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "XVDdcoj",
     "name": "russian twist",
     "description": "Step:1 Sit on the ground with your knees bent and feet flat on the floor.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -9214,14 +9533,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/XVDdcoj.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/XVDdcoj.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "SaDOwk7",
     "name": "backward jump",
     "description": "Step:1 Stand with your feet shoulder-width apart.",
     "category": "CARDIO",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "quads",
@@ -9242,14 +9562,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/SaDOwk7.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/SaDOwk7.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "fSrPP6B",
     "name": "triceps press",
     "description": "Step:1 Stand with your feet shoulder-width apart and your knees slightly bent.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -9269,7 +9590,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/fSrPP6B.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/fSrPP6B.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "NAkmgdx",
@@ -9297,14 +9619,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/NAkmgdx.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/NAkmgdx.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "05Cf2v8",
     "name": "impossible dips",
     "description": "Step:1 Position yourself between two parallel bars with your arms fully extended and your body suspended in the air.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -9326,7 +9649,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/05Cf2v8.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/05Cf2v8.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "u0cNiij",
@@ -9355,14 +9679,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/u0cNiij.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/u0cNiij.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "gdPIyyO",
     "name": "hanging pike with intense",
     "description": "Step:1 Hang from a pull-up bar with your arms fully extended and your palms facing away from you.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "time",
     "muscleGroups": [
       "abs",
@@ -9384,14 +9709,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/gdPIyyO.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/gdPIyyO.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "xcLntTC",
     "name": "slow leg pull in flat bench",
     "description": "Step:1 Sit on a flat bench with your legs extended straight out in front of you.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -9412,14 +9738,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/xcLntTC.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/xcLntTC.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "HZgQPxh",
     "name": "suspended abdominal fallout - inclined variation",
     "description": "Step:1 Attach a suspension trainer to a high anchor point and adjust the straps to waist height.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -9441,7 +9768,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/HZgQPxh.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/HZgQPxh.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "vpleANJ",
@@ -9471,14 +9799,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/vpleANJ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/vpleANJ.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "mAYqY4M",
     "name": "stretched full planche push-up",
     "description": "Step:1 Start in a push-up position with your hands placed slightly wider than shoulder-width apart.",
     "category": "SKILL_STATIC",
-    "difficulty": "EXPERT",
+    "difficulty": "ELITE",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -9502,7 +9831,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/mAYqY4M.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/mAYqY4M.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "S"
   },
   {
     "id": "vobtVkm",
@@ -9530,14 +9860,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/vobtVkm.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/vobtVkm.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "xOXZJRZ",
     "name": "clock push-up extreme",
     "description": "Step:1 Start in a high plank position with your hands directly under your shoulders and your body in a straight line.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -9560,14 +9891,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/xOXZJRZ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/xOXZJRZ.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "v6EKk0O",
     "name": "half knee bends (male) with blunt",
     "description": "Step:1 Stand with your feet shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -9589,14 +9921,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/v6EKk0O.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/v6EKk0O.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "IBj3nsn",
     "name": "quick feet v. 2 with bent",
     "description": "Step:1 Stand with your feet shoulder-width apart and your arms by your sides.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "quads",
@@ -9616,14 +9949,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/IBj3nsn.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/IBj3nsn.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "DoEYq4s",
     "name": "sissy squat isolation",
     "description": "Step:1 Stand with your feet shoulder-width apart and your toes pointing slightly outward.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "quads",
@@ -9645,7 +9979,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/DoEYq4s.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/DoEYq4s.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "fF6GKVh",
@@ -9673,14 +10008,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/fF6GKVh.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/fF6GKVh.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "gMyx3Qn",
     "name": "high style scapula push-up",
     "description": "Step:1 Start in a high plank position with your hands directly under your shoulders and your body in a straight line.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "serratus anterior",
@@ -9701,14 +10037,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/gMyx3Qn.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/gMyx3Qn.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "Ql4g5s8",
     "name": "forward lunge (male) with bench",
     "description": "Step:1 Stand with your feet hip-width apart and hands on your hips.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -9730,14 +10067,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/Ql4g5s8.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Ql4g5s8.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "gTGciXz",
     "name": "alternating bear crawl",
     "description": "Step:1 Start on all fours with your hands directly under your shoulders and your knees directly under your hips.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "cardiovascular system",
@@ -9760,14 +10098,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/gTGciXz.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/gTGciXz.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "IU4QNJ6",
     "name": "pure chin-up",
     "description": "Step:1 Hang from a pull-up bar with your palms facing towards you and your hands shoulder-width apart.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -9789,14 +10128,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/IU4QNJ6.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/IU4QNJ6.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "woLo1QN",
     "name": "incline push-up (on box) - active variation",
     "description": "Step:1 Place your hands on the edge of a box or elevated surface, slightly wider than shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -9817,14 +10157,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/woLo1QN.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/woLo1QN.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "jvEXp4N",
     "name": "endurance style one arm dip",
     "description": "Step:1 Stand facing away from a bench or chair, with your feet shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -9847,14 +10188,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/jvEXp4N.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/jvEXp4N.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "7i4msxz",
     "name": "cocoons with mega",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -9875,14 +10217,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/7i4msxz.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/7i4msxz.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "6Wr0F3W",
     "name": "rounded twisted leg raise (female)",
     "description": "Step:1 Lie flat on your back with your legs extended and your arms by your sides.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -9904,14 +10247,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/6Wr0F3W.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/6Wr0F3W.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "FSF9WOs",
     "name": "wide-grip chest dip on high parallel bars - low variation",
     "description": "Step:1 Position yourself on the parallel bars with your arms fully extended and your body suspended in the air.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "pectorals",
@@ -9932,14 +10276,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/FSF9WOs.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/FSF9WOs.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "Sa8mzWc",
     "name": "hanging pike weak",
     "description": "Step:1 Hang from a pull-up bar with your arms fully extended and your palms facing away from you.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "time",
     "muscleGroups": [
       "abs",
@@ -9961,14 +10306,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/Sa8mzWc.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Sa8mzWc.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "Rsxr3xl",
     "name": "one arm against wall compressed",
     "description": "Step:1 Stand facing a wall with your feet shoulder-width apart.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -9989,7 +10335,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/Rsxr3xl.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/Rsxr3xl.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "EpKrFiv",
@@ -10019,14 +10366,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/EpKrFiv.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/EpKrFiv.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "p5v6rdT",
     "name": "iron cross stretch - deep variation",
     "description": "Step:1 Lie flat on your back with your arms extended out to the sides.",
     "category": "WARM_UP",
-    "difficulty": "EXPERT",
+    "difficulty": "ELITE",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -10048,7 +10396,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/p5v6rdT.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/p5v6rdT.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "S"
   },
   {
     "id": "LzX8YEz",
@@ -10076,14 +10425,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/LzX8YEz.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/LzX8YEz.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "cuC7529",
     "name": "one leg squat - expanded variation",
     "description": "Step:1 Stand with your feet shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -10106,14 +10456,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/cuC7529.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/cuC7529.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "qBl14UC",
     "name": "push-up (wall) with static",
     "description": "Step:1 Stand facing a wall, about arm's length away.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "time",
     "muscleGroups": [
       "pectorals",
@@ -10135,14 +10486,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/qBl14UC.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/qBl14UC.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "iqH55N8",
     "name": "fierce style forward lunge (male)",
     "description": "Step:1 Stand with your feet hip-width apart and hands on your hips.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "glutes",
@@ -10164,14 +10516,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/iqH55N8.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/iqH55N8.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "dVeWXf2",
     "name": "chin-up diagonal",
     "description": "Step:1 Hang from a pull-up bar with your palms facing towards you and your hands shoulder-width apart.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -10193,14 +10546,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/dVeWXf2.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/dVeWXf2.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "mpYUPkA",
     "name": "lying leg-hip raise - contracted variation",
     "description": "Step:1 Lie flat on your back with your legs extended and your arms by your sides.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -10220,14 +10574,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/mpYUPkA.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/mpYUPkA.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "9ZGnq1w",
     "name": "triceps dip (between benches) - extreme variation",
     "description": "Step:1 Sit on a bench with your hands gripping the edge of the bench, fingers pointing forward.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -10249,14 +10604,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/9ZGnq1w.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/9ZGnq1w.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "ninBEOY",
     "name": "twisted side-to-side chin",
     "description": "Step:1 Stand with your feet shoulder-width apart and your knees slightly bent.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -10279,14 +10635,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/ninBEOY.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/ninBEOY.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "kk39rUy",
     "name": "push-up to side plank - athletic variation",
     "description": "Step:1 Start in a push-up position with your hands shoulder-width apart and your body in a straight line.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "time",
     "muscleGroups": [
       "abs",
@@ -10310,14 +10667,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/kk39rUy.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/kk39rUy.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "C"
   },
   {
     "id": "fjjY3N4",
     "name": "inverted style inverse leg curl (on pull-up cable machine)",
     "description": "Step:1 Adjust the cable machine so that the ankle straps are at the lowest setting.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "hamstrings",
@@ -10340,14 +10698,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/fjjY3N4.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/fjjY3N4.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "1IFV9h3",
     "name": "push-up on lower arms - resistance variation",
     "description": "Step:1 Start in a plank position with your forearms on the ground and elbows directly below your shoulders.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -10368,14 +10727,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/1IFV9h3.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/1IFV9h3.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "O3INw8V",
     "name": "improved sphinx",
     "description": "Step:1 Lie face down on the ground with your forearms flat on the floor, elbows directly under your shoulders.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "spine",
@@ -10396,14 +10756,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/O3INw8V.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/O3INw8V.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "MDFxU4b",
     "name": "quads complex",
     "description": "Step:1 Stand with your feet shoulder-width apart.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "quads",
@@ -10425,7 +10786,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/MDFxU4b.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/MDFxU4b.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "6vcvsLS",
@@ -10453,14 +10815,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/6vcvsLS.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/6vcvsLS.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "1YUWDNZ",
     "name": "extended style inverted row",
     "description": "Step:1 Set up a bar at waist height or use a suspension trainer.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "upper back",
@@ -10483,14 +10846,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/1YUWDNZ.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/1YUWDNZ.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "WFucoe6",
     "name": "hanging straight twisting leg hip raise with compound",
     "description": "Step:1 Hang from a pull-up bar with your arms fully extended and your legs straight.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "time",
     "muscleGroups": [
       "abs",
@@ -10513,14 +10877,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/WFucoe6.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/WFucoe6.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "gSO0KpB",
     "name": "sit-up with arms on chest with mini",
     "description": "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "abs",
@@ -10540,7 +10905,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/gSO0KpB.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/gSO0KpB.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "iDGtjyi",
@@ -10569,14 +10935,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/iDGtjyi.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/iDGtjyi.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "znf7t8E",
     "name": "kipping muscle up with triple",
     "description": "Step:1 Start by hanging from a pull-up bar with an overhand grip, hands slightly wider than shoulder-width apart.",
     "category": "PULL",
-    "difficulty": "EXPERT",
+    "difficulty": "ELITE",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -10601,7 +10968,8 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/znf7t8E.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/znf7t8E.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "A"
   },
   {
     "id": "tuIZFDt",
@@ -10629,14 +10997,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/tuIZFDt.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/tuIZFDt.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "BeReYBf",
     "name": "side-to-side chin with reverse",
     "description": "Step:1 Stand with your feet shoulder-width apart and your knees slightly bent.",
     "category": "PULL",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "lats",
@@ -10659,14 +11028,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/BeReYBf.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/BeReYBf.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "VsopqcV",
     "name": "macro style close-grip push-up",
     "description": "Step:1 Start in a high plank position with your hands placed close together, directly under your shoulders.",
     "category": "PUSH",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "reps",
     "muscleGroups": [
       "triceps",
@@ -10686,14 +11056,15 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/VsopqcV.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/VsopqcV.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   },
   {
     "id": "lFBTISi",
     "name": "firm style hanging oblique knee raise",
     "description": "Step:1 Hang from a pull-up bar with your arms fully extended and your palms facing away from you.",
     "category": "CORE",
-    "difficulty": "NOVICE",
+    "difficulty": "BEGINNER",
     "unit": "time",
     "muscleGroups": [
       "abs",
@@ -10714,6 +11085,7 @@
     ],
     "gifUrl": "https://static.exercisedb.dev/media/lFBTISi.gif",
     "thumbnailUrl": "https://static.exercisedb.dev/media/lFBTISi.gif",
-    "videoUrl": null
+    "videoUrl": null,
+    "rank": "D"
   }
 ]

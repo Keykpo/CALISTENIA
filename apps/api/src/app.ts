@@ -126,7 +126,7 @@ app.get('/health', async (req, res) => {
 app.use('/api/v1', routes);
 
 // Serve static files (uploaded files)
-app.use('/uploads', express.static(config.fileStorage.uploadPath, {
+app.use('/uploads', express.static(config.storage.local.uploadDir, {
   maxAge: '1d',
   etag: true,
   lastModified: true,

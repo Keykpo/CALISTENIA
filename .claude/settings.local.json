@@ -26,7 +26,15 @@
       "Bash(taskkill:*)",
       "Bash(del /s /q \"node_modules\\.prisma\")",
       "Bash(timeout /t 5 /nobreak)",
-      "Bash(powershell:*)"
+      "Bash(powershell:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(node scripts/migrate-exercise-difficulties.js:*)",
+      "Bash(node scripts/refine-exercise-ranks.js:*)",
+      "Bash(node scripts/validate-exercise-data.js:*)",
+      "Bash(node scripts/fix-invalid-categories.js:*)",
+      "Bash(node scripts/smart-categorize-exercises.js:*)",
+      "Bash(node scripts/test-routine-generator-v3.js:*)"
     ],
     "deny": [],
     "ask": []

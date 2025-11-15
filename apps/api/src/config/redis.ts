@@ -13,6 +13,11 @@ const redisConfig = {
   keepAlive: 30000,
   connectTimeout: 10000,
   commandTimeout: 5000,
+  maxRetriesPerRequest: 1, // Only try once
+  retryStrategy: (times: number) => {
+    // Don't retry
+    return null;
+  },
 };
 
 // Create Redis client
@@ -72,6 +77,17 @@ class RedisService {
 
   constructor(client: Redis) {
     this.client = client;
+  }
+
+  // Connection methods
+  async connect(): Promise<void> {
+    try {
+      await this.client.connect();
+      logger.info('✅ Redis connected successfully');
+    } catch (error) {
+      logger.error('❌ Redis connection failed:', error);
+      throw error;
+    }
   }
 
   // Basic operations

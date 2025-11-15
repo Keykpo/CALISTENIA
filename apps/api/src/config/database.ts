@@ -247,4 +247,5 @@ process.on('SIGTERM', async () => {
 });
 
 export { db };
+export { db as databaseService };
 export default db;

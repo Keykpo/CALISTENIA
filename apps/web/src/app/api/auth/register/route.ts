@@ -1,19 +1,16 @@
-import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
+import { NextRequest } from "next/server";
 import bcrypt from "bcryptjs";
 import prisma from "@/lib/prisma";
+import { registerSchema } from "@/lib/validations/auth";
+import {
+  apiSuccess,
+  apiValidationError,
+  apiConflict,
+  apiBadRequest,
+  apiInternalError,
+} from "@/lib/api-response";
 
 export const runtime = "nodejs";
-
-const registerSchema = z.object({
-  email: z.string().email("Email inválido"),
-  password: z
-    .string()
-    .min(6, "La contraseña debe tener al menos 6 caracteres"),
-  firstName: z.string().optional(),
-  lastName: z.string().optional(),
-  username: z.string().optional(),
-});
 
 /**
  * Returns default fields for user creation
@@ -53,10 +50,7 @@ export async function POST(req: NextRequest) {
 
     if (existing) {
       console.log('[REGISTER] User already exists:', data.email);
-      return NextResponse.json(
-        { error: "El email ya está registrado" },
-        { status: 409 }
-      );
+      return apiConflict("El email ya está registrado");
     }
 
     // Generate username from email if not provided, ensure uniqueness
@@ -108,97 +102,46 @@ export async function POST(req: NextRequest) {
 
     console.log('[REGISTER] User created successfully:', user.id);
 
-    return NextResponse.json(
-      {
-        success: true,
-        message: "Usuario creado exitosamente",
-        user,
-        redirectTo: '/dashboard'
-      },
-      { status: 201 }
+    return apiSuccess(
+      { user, redirectTo: '/dashboard' },
+      "Usuario creado exitosamente",
+      201
     );
   } catch (err: any) {
     console.error('[REGISTER] Error:', err);
 
-    if (err instanceof z.ZodError) {
-      return NextResponse.json(
-        {
-          error: "Datos inválidos",
-          details: err.errors.map((e: any) => ({
-            field: e.path.join('.'),
-            message: e.message
-          }))
-        },
-        { status: 400 }
-      );
+    // Zod validation errors
+    if (err.name === 'ZodError') {
+      return apiValidationError(err);
     }
 
     // Prisma unique constraint error
     if (err?.code === "P2002") {
       const target = err?.meta?.target;
-      return NextResponse.json(
-        {
-          error: target?.includes('email')
-            ? "El email ya está registrado"
-            : "El nombre de usuario ya existe"
-        },
-        { status: 409 }
-      );
+      const message = target?.includes('email')
+        ? "El email ya está registrado"
+        : "El nombre de usuario ya existe";
+      return apiConflict(message);
     }
 
-    // Prisma foreign key constraint error
+    // Prisma errors
     if (err?.code === "P2003") {
-      return NextResponse.json(
-        { error: "Error de referencia en la base de datos" },
-        { status: 400 }
-      );
+      return apiBadRequest("Error de referencia en la base de datos");
     }
 
-    // Prisma field validation error
     if (err?.code === "P2000") {
-      return NextResponse.json(
-        { error: "Valor demasiado largo para uno de los campos" },
-        { status: 400 }
-      );
+      return apiBadRequest("Valor demasiado largo para uno de los campos");
     }
 
-    // Prisma column doesn't exist error (P2022)
-    // This happens when schema is out of sync with database
     if (err?.code === "P2022") {
       const columnName = err?.meta?.column;
       console.error('[REGISTER] Database schema out of sync. Missing column:', columnName);
-
-      return NextResponse.json(
-        {
-          error: "Error de configuración de base de datos",
-          message: `La columna '${columnName}' no existe en la base de datos`,
-          solution: "Ejecuta en la terminal: npx prisma db push --accept-data-loss",
-          technicalDetails: {
-            code: "P2022",
-            column: columnName,
-            suggestion: "La base de datos necesita ser sincronizada con el schema de Prisma"
-          }
-        },
-        { status: 500 }
+      return apiInternalError(
+        new Error(`La columna '${columnName}' no existe en la base de datos. Ejecuta: npx prisma db push`)
       );
     }
 
-    // Show full error in development
-    if (process.env.NODE_ENV === 'development') {
-      return NextResponse.json(
-        {
-          error: "Error interno del servidor",
-          message: err?.message || String(err),
-          code: err?.code,
-          details: err?.meta
-        },
-        { status: 500 }
-      );
-    }
-
-    return NextResponse.json(
-      { error: "Error interno del servidor" },
-      { status: 500 }
-    );
+    // Generic error handler
+    return apiInternalError(err);
   }
 }

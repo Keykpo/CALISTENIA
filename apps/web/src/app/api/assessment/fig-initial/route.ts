@@ -22,6 +22,57 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 /**
+ * 🆕 V3 HELPER: Convert weighted exercise enum to kg
+ * Used for mapping Step 4 weighted exercises to V3 strength metrics
+ */
+function convertWeightEnumToKg(weightEnum: string): number {
+  // Convert pounds to kg (1 lb = 0.453592 kg)
+  const lbToKg = (lbs: number) => Math.round(lbs * 0.453592 * 10) / 10;
+
+  switch (weightEnum) {
+    case 'no':
+      return 0;
+    case '+10-20lbs':
+      return lbToKg(15); // midpoint: ~6.8 kg
+    case '+25-40lbs':
+      return lbToKg(32.5); // midpoint: ~14.7 kg
+    case '+45lbs+':
+      return lbToKg(50); // conservative estimate: ~22.7 kg
+    default:
+      return 0;
+  }
+}
+
+/**
+ * 🆕 V3 HELPER: Determine training stage from strength metrics
+ * Follows the same logic as routine-generator-v3.ts
+ */
+function determineTrainingStageFromMetrics(
+  pullUpsMax: number,
+  dipsMax: number,
+  weightedPullUpsKg: number,
+  weightedDipsKg: number
+): 'STAGE_1_2' | 'STAGE_3' | 'STAGE_4' {
+  // Assume average body weight of 75kg for percentage calculation
+  const bodyWeightKg = 75;
+  const weightedPullUpPercent = weightedPullUpsKg / bodyWeightKg;
+  const weightedDipPercent = weightedDipsKg / bodyWeightKg;
+
+  // Stage 4: Elite (weighted work at +25% BW for pull-ups OR +40% BW for dips)
+  if (weightedPullUpPercent >= 0.25 || weightedDipPercent >= 0.40) {
+    return 'STAGE_4';
+  }
+
+  // Stage 3: Advanced (12+ pull-ups AND 15+ dips)
+  if (pullUpsMax >= 12 && dipsMax >= 15) {
+    return 'STAGE_3';
+  }
+
+  // Stage 1-2: Foundation (default)
+  return 'STAGE_1_2';
+}
+
+/**
  * D-S Assessment Schema
  */
 const Step1Schema = z.object({
@@ -359,6 +410,29 @@ export async function POST(req: NextRequest) {
 
     console.log('[D-S_ASSESSMENT] User equipment:', userEquipment);
 
+    // 🆕 V3 INTEGRATION: Map assessment data to V3 strength metrics
+    console.log('[D-S_ASSESSMENT] Mapping assessment to V3 strength metrics...');
+
+    const pullUpsMax = step3.pullUps;
+    const dipsMax = step3.dips;
+    const pushUpsMax = step3.pushUps;
+
+    // Convert weighted exercise enums to kg values
+    const weightedPullUpsKg = step4?.weightedPullUps
+      ? convertWeightEnumToKg(step4.weightedPullUps)
+      : 0;
+    const weightedDipsKg = step4?.weightedDips
+      ? convertWeightEnumToKg(step4.weightedDips)
+      : 0;
+
+    console.log('[D-S_ASSESSMENT] V3 Strength Metrics:', {
+      pullUpsMax,
+      dipsMax,
+      pushUpsMax,
+      weightedPullUps: weightedPullUpsKg,
+      weightedDips: weightedDipsKg,
+    });
+
     const updatedUser = await prisma.user.update({
       where: { id: userId },
       data: {
@@ -369,6 +443,13 @@ export async function POST(req: NextRequest) {
         // Store D-S assessment results
         difficultyLevel: assessmentResult.assignedLevel,
         visualRank: assessmentResult.visualRank,
+        // 🆕 V3 STRENGTH METRICS: Store for routine generator V3
+        pullUpsMax,
+        dipsMax,
+        pushUpsMax,
+        weightedPullUps: weightedPullUpsKg,
+        weightedDips: weightedDipsKg,
+        masteryGoals: null, // User can set this later
       },
     });
 
@@ -378,6 +459,13 @@ export async function POST(req: NextRequest) {
       assignedLevel: assessmentResult.assignedLevel,
       visualRank: assessmentResult.visualRank,
       hasCompletedAssessment: updatedUser.hasCompletedAssessment,
+      v3Metrics: {
+        pullUpsMax: updatedUser.pullUpsMax,
+        dipsMax: updatedUser.dipsMax,
+        pushUpsMax: updatedUser.pushUpsMax,
+        weightedPullUps: updatedUser.weightedPullUps,
+        weightedDips: updatedUser.weightedDips,
+      },
     });
 
     // Final verification
@@ -439,6 +527,15 @@ export async function POST(req: NextRequest) {
         coreLevel: coreLevel,
         enduranceLevel: enduranceLevel,
         mobilityLevel: mobilityLevel,
+      },
+      // 🆕 V3 STRENGTH METRICS: Return for frontend display
+      v3StrengthMetrics: {
+        pullUpsMax,
+        dipsMax,
+        pushUpsMax,
+        weightedPullUps: weightedPullUpsKg,
+        weightedDips: weightedDipsKg,
+        trainingStage: determineTrainingStageFromMetrics(pullUpsMax, dipsMax, weightedPullUpsKg, weightedDipsKg),
       },
       overallLevel,
       redirectTo: '/onboarding/results',

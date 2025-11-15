@@ -15,10 +15,15 @@ async function initializeServices(): Promise<void> {
     await databaseService.connect();
     logInfo('Database connected successfully');
 
-    // Connect to Redis
-    logInfo('Connecting to Redis...');
-    await redisService.connect();
-    logInfo('Redis connected successfully');
+    // Connect to Redis (optional)
+    try {
+      logInfo('Connecting to Redis...');
+      await redisService.connect();
+      logInfo('Redis connected successfully');
+    } catch (error) {
+      logWarn('Redis connection failed', { error });
+      logWarn('Cache and session features will be disabled');
+    }
 
     // Verify email configuration (optional)
     if (config.email.enabled) {
@@ -52,7 +57,7 @@ async function startServer(): Promise<void> {
       logInfo(`🚀 Server running on port ${config.server.port}`);
       logInfo(`📱 Environment: ${config.app.environment}`);
       logInfo(`🔗 API URL: ${config.server.apiUrl}`);
-      logInfo(`🌐 Client URL: ${config.server.clientUrl}`);
+      logInfo(`🌐 Client URL: ${config.server.frontendUrl}`);
       
       if (config.app.environment === 'development') {
         logInfo(`📚 API Docs: ${config.server.apiUrl}/api/docs`);

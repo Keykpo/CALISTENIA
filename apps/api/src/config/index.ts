@@ -30,6 +30,13 @@ export const config = {
   isProduction: process.env.NODE_ENV === 'production',
   isTest: process.env.NODE_ENV === 'test',
 
+  // Application
+  app: {
+    environment: process.env.NODE_ENV || 'development',
+    version: process.env.APP_VERSION || '1.0.0',
+    frontendUrl: process.env.FRONTEND_URL || 'http://localhost:3000',
+  },
+
   // Server
   server: {
     port: parseInt(process.env.PORT || '3001', 10),
@@ -53,16 +60,21 @@ export const config = {
 
   // Email
   email: {
+    enabled: process.env.SMTP_ENABLED === 'true' || !!process.env.SMTP_USER,
+    service: process.env.SMTP_SERVICE || 'gmail',
+    host: process.env.SMTP_HOST || 'smtp.gmail.com',
+    port: parseInt(process.env.SMTP_PORT || '587', 10),
+    secure: process.env.SMTP_SECURE === 'true',
+    user: process.env.SMTP_USER,
+    password: process.env.SMTP_PASS,
+    from: process.env.FROM_EMAIL || 'noreply@calisthenics-platform.com',
+    fromName: process.env.FROM_NAME || 'Calisthenics Platform',
     smtp: {
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
       port: parseInt(process.env.SMTP_PORT || '587', 10),
       secure: process.env.SMTP_SECURE === 'true',
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
-    },
-    from: {
-      email: process.env.FROM_EMAIL || 'noreply@calisthenics-platform.com',
-      name: process.env.FROM_NAME || 'Calisthenics Platform',
     },
   },
 
@@ -111,10 +123,13 @@ export const config = {
 
   // Security
   security: {
-    corsOrigins: process.env.CORS_ORIGINS?.split(',') || [
-      'http://localhost:3000',
-      'http://localhost:3001',
-    ],
+    cors: {
+      allowedOrigins: process.env.CORS_ORIGINS?.split(',') || [
+        'http://localhost:3000',
+        'http://localhost:3001',
+      ],
+      credentials: process.env.CORS_CREDENTIALS === 'true' || true,
+    },
     rateLimit: {
       windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '900000', 10), // 15 minutes
       maxRequests: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || '100', 10),
@@ -237,6 +252,7 @@ export const {
   isDevelopment,
   isProduction,
   isTest,
+  app,
   server,
   database,
   jwt,
