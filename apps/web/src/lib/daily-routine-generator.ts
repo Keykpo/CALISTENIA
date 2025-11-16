@@ -520,8 +520,22 @@ export function generateDailyRoutine(
     userId,
     hexagonLevels,
     hexagonXP,
+    equipment,
     forceDay,
   } = params;
+
+  // 🆕 CRITICAL FIX: Filter exercises by available equipment FIRST
+  const availableExercises = allExercises.filter(exercise => {
+    // Every required piece of equipment must be available to the user
+    return exercise.equipment.every(requiredEq =>
+      equipment.includes(requiredEq as EquipmentType) || requiredEq === 'NONE'
+    );
+  });
+
+  console.log('[EXPERT_ROUTINE] ===== EQUIPMENT FILTERING =====');
+  console.log('[EXPERT_ROUTINE] Total exercises:', allExercises.length);
+  console.log('[EXPERT_ROUTINE] User equipment:', equipment);
+  console.log('[EXPERT_ROUTINE] Available exercises after filter:', availableExercises.length);
 
   // STEP 1: Calculate user's training stage
   const stage = calculateUserStage({
@@ -599,7 +613,7 @@ export function generateDailyRoutine(
     // Fallback to STAGE_1_PUSH
     const fallbackTemplate = EXPERT_ROUTINE_TEMPLATES['STAGE_1_PUSH'];
     const fallbackPhases = fallbackTemplate.sections.map(section =>
-      convertExpertSectionToPhase(section, allExercises)
+      convertExpertSectionToPhase(section, availableExercises) // 🆕 Use filtered exercises
     );
     const rewards = calculateRoutineRewards(fallbackPhases);
 
@@ -629,7 +643,7 @@ export function generateDailyRoutine(
 
   // STEP 4: Convert expert template to DailyRoutine format
   const phases = expertTemplate.sections.map(section =>
-    convertExpertSectionToPhase(section, allExercises)
+    convertExpertSectionToPhase(section, availableExercises) // 🆕 Use filtered exercises
   );
 
   // STEP 5: Calculate rewards

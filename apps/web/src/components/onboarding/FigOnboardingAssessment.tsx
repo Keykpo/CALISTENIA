@@ -64,6 +64,8 @@ export default function FigOnboardingAssessment({
     weight: undefined,
     gender: 'prefer_not_to_say',
     goals: [],
+    trainingFrequency: undefined,
+    trainingExperience: undefined,
   });
 
   // Step 2: Equipment
@@ -124,7 +126,9 @@ export default function FigOnboardingAssessment({
       step1Data.age !== undefined &&
       step1Data.height !== undefined &&
       step1Data.weight !== undefined &&
-      step1Data.goals && step1Data.goals.length > 0
+      step1Data.goals && step1Data.goals.length > 0 &&
+      step1Data.trainingFrequency !== undefined &&
+      step1Data.trainingExperience !== undefined
     );
   };
 
@@ -171,7 +175,7 @@ export default function FigOnboardingAssessment({
 
   const handleComplete = () => {
     // Validate step1 data
-    if (!step1Data.age || !step1Data.height || !step1Data.weight || !step1Data.goals || step1Data.goals.length === 0) {
+    if (!step1Data.age || !step1Data.height || !step1Data.weight || !step1Data.goals || step1Data.goals.length === 0 || !step1Data.trainingFrequency || !step1Data.trainingExperience) {
       console.error('[D-S_ASSESSMENT] Step 1 data incomplete:', step1Data);
       alert('Please complete all required fields in Step 1');
       return;
@@ -201,6 +205,8 @@ export default function FigOnboardingAssessment({
         weight: step1Data.weight,
         gender: step1Data.gender || 'prefer_not_to_say',
         goals: step1Data.goals,
+        trainingFrequency: step1Data.trainingFrequency!,
+        trainingExperience: step1Data.trainingExperience!,
       } as AssessmentStep1Data,
       step2: step2Data,
       step3: {
@@ -338,6 +344,88 @@ export default function FigOnboardingAssessment({
               Selected: {step1Data.goals?.length || 0} / 3
             </p>
           </div>
+
+          {/* 🆕 NEW: Training Frequency */}
+          <div className="space-y-3 pt-4 border-t">
+            <Label>How many days per week can you train? *</Label>
+            <p className="text-xs text-slate-500">
+              This helps us assign the right training split for your schedule
+            </p>
+            <RadioGroup
+              value={step1Data.trainingFrequency?.toString()}
+              onValueChange={(val) => setStep1Data(prev => ({
+                ...prev,
+                trainingFrequency: parseInt(val) as 3 | 4 | 5 | 6 | 7
+              }))}
+            >
+              {[
+                { value: 3, label: '3 days (Mon/Wed/Fri)', description: 'Good for beginners or busy schedules' },
+                { value: 4, label: '4 days (Mon/Tue/Thu/Fri)', description: 'Balanced routine' },
+                { value: 5, label: '5 days (Mon-Fri)', description: 'Intermediate commitment' },
+                { value: 6, label: '6 days (Mon-Sat)', description: 'Advanced training' },
+                { value: 7, label: '7 days (Every day)', description: 'Elite athletes only' },
+              ].map((option) => (
+                <div
+                  key={option.value}
+                  className="flex items-center space-x-2 p-3 hover:bg-slate-50 rounded cursor-pointer"
+                  onClick={() => setStep1Data(prev => ({
+                    ...prev,
+                    trainingFrequency: option.value as 3 | 4 | 5 | 6 | 7
+                  }))}
+                >
+                  <RadioGroupItem value={option.value.toString()} id={`freq-${option.value}`} />
+                  <div className="flex-1">
+                    <Label htmlFor={`freq-${option.value}`} className="cursor-pointer font-medium">
+                      {option.label}
+                    </Label>
+                    <p className="text-xs text-slate-500">{option.description}</p>
+                  </div>
+                </div>
+              ))}
+            </RadioGroup>
+          </div>
+
+          {/* 🆕 NEW: Training Experience */}
+          <div className="space-y-3 pt-4 border-t">
+            <Label>How long have you been training calisthenics/fitness? *</Label>
+            <p className="text-xs text-slate-500">
+              This helps us determine your starting level more accurately
+            </p>
+            <RadioGroup
+              value={step1Data.trainingExperience}
+              onValueChange={(val) => setStep1Data(prev => ({
+                ...prev,
+                trainingExperience: val as AssessmentStep1Data['trainingExperience']
+              }))}
+            >
+              {[
+                { value: '0-3months', label: 'Complete beginner (0-3 months)', description: 'Just starting my fitness journey' },
+                { value: '3-6months', label: 'Novice (3-6 months)', description: 'Learning the basics' },
+                { value: '6-12months', label: 'Beginner (6-12 months)', description: 'Building consistency' },
+                { value: '1-2years', label: 'Intermediate (1-2 years)', description: 'Established routine' },
+                { value: '2-3years', label: 'Advanced (2-3 years)', description: 'Solid foundation' },
+                { value: '3-5years', label: 'Very Advanced (3-5 years)', description: 'Experienced athlete' },
+                { value: '5+years', label: 'Elite (5+ years)', description: 'Veteran trainer' },
+              ].map((option) => (
+                <div
+                  key={option.value}
+                  className="flex items-center space-x-2 p-3 hover:bg-slate-50 rounded cursor-pointer"
+                  onClick={() => setStep1Data(prev => ({
+                    ...prev,
+                    trainingExperience: option.value as AssessmentStep1Data['trainingExperience']
+                  }))}
+                >
+                  <RadioGroupItem value={option.value} id={`exp-${option.value}`} />
+                  <div className="flex-1">
+                    <Label htmlFor={`exp-${option.value}`} className="cursor-pointer font-medium">
+                      {option.label}
+                    </Label>
+                    <p className="text-xs text-slate-500">{option.description}</p>
+                  </div>
+                </div>
+              ))}
+            </RadioGroup>
+          </div>
         </CardContent>
       </Card>
     </div>
@@ -450,10 +538,14 @@ export default function FigOnboardingAssessment({
               >
                 {[
                   { label: '0 (Cannot do any)', value: 0 },
-                  { label: '1-3', value: 2 },
-                  { label: '4-8', value: 6 },
-                  { label: '9-15', value: 12 },
-                  { label: '16+', value: 18 },
+                  { label: '1-4', value: 2 },
+                  { label: '5-9', value: 7 },
+                  { label: '10-14', value: 12 },
+                  { label: '15-19', value: 17 },
+                  { label: '20-24', value: 22 },
+                  { label: '25-29', value: 27 },
+                  { label: '30-34', value: 32 },
+                  { label: '35+', value: 37 },
                 ].map((option) => (
                   <div
                     key={option.value}
@@ -485,10 +577,19 @@ export default function FigOnboardingAssessment({
                 {[
                   { label: '0 (Cannot do any)', value: 0 },
                   { label: '1-3', value: 2 },
-                  { label: '4-8', value: 6 },
-                  { label: '9-15', value: 12 },
-                  { label: '16-25', value: 20 },
-                  { label: '26+', value: 28 },
+                  { label: '4-7', value: 5 },
+                  { label: '8-10', value: 9 },
+                  { label: '11-14', value: 12 },
+                  { label: '15-19', value: 17 },
+                  { label: '20-24', value: 22 },
+                  { label: '25-29', value: 27 },
+                  { label: '30-34', value: 32 },
+                  { label: '35-39', value: 37 },
+                  { label: '40-44', value: 42 },
+                  { label: '45-49', value: 47 },
+                  { label: '50-59', value: 54 },
+                  { label: '60-69', value: 64 },
+                  { label: '70+', value: 75 },
                 ].map((option) => (
                   <div
                     key={option.value}

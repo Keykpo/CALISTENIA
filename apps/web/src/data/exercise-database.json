@@ -1,0 +1,2747 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-15",
+  "exercises": [
+    {
+      "id": "incline-push-ups",
+      "name": "Incline Push-ups",
+      "category": "PUSH",
+      "subCategory": "HORIZONTAL_PUSH",
+      "difficulty": "BEGINNER",
+      "targetMuscles": [
+        "Chest",
+        "Anterior Deltoids",
+        "Triceps"
+      ],
+      "equipment": [
+        "Bench",
+        "Box",
+        "Elevated Surface"
+      ],
+      "form": {
+        "setup": [
+          "Superficie a 40-60cm de altura",
+          "Manos a ancho de hombros, ligeramente más anchas",
+          "Cuerpo en línea recta desde cabeza hasta talones",
+          "Core activado, glúteos apretados"
+        ],
+        "execution": [
+          "Baja en 2 segundos manteniendo hollow body position",
+          "Pecho casi toca la superficie",
+          "Codos a ~45° del cuerpo (no abiertos a 90°)",
+          "Sube explosivamente en 1 segundo",
+          "Protracción escapular completa arriba (empujar con hombros)"
+        ]
+      },
+      "commonMistakes": [
+        "Cadera caída o elevada (perder hollow body)",
+        "Codos demasiado abiertos (>60°, riesgo hombros)",
+        "No completar rango de movimiento",
+        "Falta de protracción escapular arriba",
+        "Subir muy lento (perder explosividad)"
+      ],
+      "coachTips": [
+        "Enfócate en la calidad, no la cantidad",
+        "Mantén core activado TODO el tiempo",
+        "Si sientes dolor en hombros, reduce altura o revisa forma",
+        "Dejar 2-3 reps en el tanque (no fallar)",
+        "Cuando puedas hacer 15+ reps limpias, reduce altura"
+      ],
+      "progression": {
+        "easier": "Wall Push-ups",
+        "harder": "Regular Push-ups",
+        "byWeek": [
+          {
+            "week": "1-2",
+            "adjustment": "Altura mayor (60cm)",
+            "targetReps": "8-12 reps",
+            "notes": "Enfoque en forma perfecta"
+          },
+          {
+            "week": "3-4",
+            "adjustment": "Altura media (50cm)",
+            "targetReps": "10-15 reps",
+            "notes": "Aumentar volumen"
+          },
+          {
+            "week": "5+",
+            "adjustment": "Reducir altura gradualmente",
+            "targetReps": "15+ reps",
+            "notes": "Progresar hacia push-ups regulares"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Wall Push-ups",
+          "difficulty": "EASIER",
+          "equipment": [
+            "Wall"
+          ],
+          "when": "No puedes hacer 5 reps de incline"
+        },
+        {
+          "name": "Diamond Incline Push-ups",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Bench"
+          ],
+          "when": "Puedes hacer 20+ reps regulares"
+        }
+      ],
+      "primaryGoal": "STRENGTH",
+      "breathing": {
+        "pattern": "Inhalar al bajar, Exhalar al subir (explosivo)",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "assisted-pull-ups",
+      "name": "Assisted Pull-ups",
+      "category": "PULL",
+      "subCategory": "VERTICAL_PULL",
+      "difficulty": "BEGINNER",
+      "targetMuscles": [
+        "Lats",
+        "Biceps",
+        "Posterior Deltoids",
+        "Core"
+      ],
+      "equipment": [
+        "Pull-up Bar",
+        "Resistance Band"
+      ],
+      "form": {
+        "setup": [
+          "Banda de resistencia colgada de la barra",
+          "Pie o rodilla en la banda",
+          "Agarre pronado (palmas hacia afuera), ancho de hombros",
+          "Cuerpo colgando con brazos completamente extendidos",
+          "Escápulas en posición neutra"
+        ],
+        "execution": [
+          "Iniciar movimiento con depresión escapular",
+          "Tirar con dorsales, no solo brazos",
+          "Llevar pecho hacia la barra",
+          "Barbilla sobre la barra",
+          "Bajar controlado en 2-3 segundos",
+          "Mantener core activado (evitar swing)"
+        ]
+      },
+      "commonMistakes": [
+        "Usar solo brazos (no activar dorsales)",
+        "Kipping/balanceo excesivo",
+        "No completar rango de movimiento (chin over bar)",
+        "Bajar muy rápido (perder control)",
+        "Hombros elevados (falta de depresión escapular)"
+      ],
+      "coachTips": [
+        "Piensa en 'tirar los codos hacia abajo', no solo subir",
+        "Activa dorsales desde el inicio del movimiento",
+        "Controla SIEMPRE la bajada (excéntrica más importante)",
+        "Usa banda más ligera cuando puedas hacer 8+ reps limpias",
+        "Objetivo: eventualmente hacer 1 pull-up sin banda"
+      ],
+      "progression": {
+        "easier": "Negative Pull-ups",
+        "harder": "Regular Pull-ups",
+        "byWeek": [
+          {
+            "week": "1-2",
+            "adjustment": "Banda gruesa (más asistencia)",
+            "targetReps": "5-8 reps",
+            "notes": "Enfoque en forma y activación"
+          },
+          {
+            "week": "3-4",
+            "adjustment": "Misma banda, más reps",
+            "targetReps": "8-12 reps",
+            "notes": "Construir volumen"
+          },
+          {
+            "week": "5-8",
+            "adjustment": "Banda más ligera",
+            "targetReps": "6-10 reps",
+            "notes": "Menos asistencia gradualmente"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Negative Pull-ups",
+          "difficulty": "EASIER",
+          "equipment": [
+            "Pull-up Bar",
+            "Box"
+          ],
+          "when": "No tienes banda de resistencia"
+        },
+        {
+          "name": "Chin-ups Asistidos",
+          "difficulty": "EASIER",
+          "equipment": [
+            "Pull-up Bar",
+            "Resistance Band"
+          ],
+          "when": "Pull-ups son muy difíciles"
+        }
+      ],
+      "primaryGoal": "STRENGTH",
+      "breathing": {
+        "pattern": "Exhalar al subir, Inhalar al bajar",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "weighted-pull-ups",
+      "name": "Weighted Pull-ups",
+      "category": "PULL",
+      "subCategory": "VERTICAL_PULL",
+      "difficulty": "INTERMEDIATE",
+      "targetMuscles": [
+        "Lats",
+        "Biceps",
+        "Posterior Deltoids",
+        "Core"
+      ],
+      "equipment": [
+        "Pull-up Bar",
+        "Dip Belt",
+        "Weight Plates"
+      ],
+      "form": {
+        "setup": [
+          "Cinturón de lastre con peso apropiado",
+          "Agarre pronado, ancho de hombros o ligeramente más",
+          "Cuerpo colgando, core activado",
+          "Peso cuelga sin tocar el suelo"
+        ],
+        "execution": [
+          "Depresión escapular al inicio",
+          "Tirar explosivamente pero controlado",
+          "Pecho hacia la barra (chest to bar)",
+          "Pausa 0.5s arriba",
+          "Bajar controlado en 3 segundos",
+          "Full extension abajo sin relajar hombros"
+        ]
+      },
+      "commonMistakes": [
+        "Peso excesivo (sacrificar forma)",
+        "Bajar muy rápido (perder excéntrica)",
+        "No full extension abajo",
+        "Kipping para completar reps",
+        "Olvidar activación escapular"
+      ],
+      "coachTips": [
+        "Empieza con +5-10% de tu peso corporal",
+        "Prioriza forma perfecta sobre peso añadido",
+        "La fase excéntrica (bajada) construye MÁS fuerza",
+        "Mode 2: 3-6 reps, dejar 1-2 reps en tanque",
+        "Progresión conservadora: +2.5kg cada 2-3 semanas"
+      ],
+      "progression": {
+        "easier": "Regular Pull-ups (high reps)",
+        "harder": "Weighted Pull-ups (+20-30% BW)",
+        "byWeek": [
+          {
+            "week": "1-4",
+            "adjustment": "+10% peso corporal",
+            "targetReps": "4-6 reps",
+            "notes": "Establecer baseline"
+          },
+          {
+            "week": "5-8",
+            "adjustment": "+12.5% peso corporal",
+            "targetReps": "4-6 reps",
+            "notes": "Progresión conservadora"
+          },
+          {
+            "week": "9-12",
+            "adjustment": "+15% peso corporal",
+            "targetReps": "3-5 reps",
+            "notes": "Fuerza máxima"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Weighted Chin-ups",
+          "difficulty": "EASIER",
+          "equipment": [
+            "Pull-up Bar",
+            "Dip Belt"
+          ],
+          "when": "Bíceps más fuertes que dorsales"
+        },
+        {
+          "name": "Weighted L-sit Pull-ups",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Pull-up Bar",
+            "Dip Belt"
+          ],
+          "when": "Añadir trabajo de core"
+        }
+      ],
+      "primaryGoal": "STRENGTH",
+      "breathing": {
+        "pattern": "Inhalar preparando, Exhalar explosivo al subir, Inhalar al bajar",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "tuck-planche",
+      "name": "Tuck Planche",
+      "category": "SKILL_STATIC",
+      "subCategory": "PLANCHE",
+      "difficulty": "INTERMEDIATE",
+      "targetMuscles": [
+        "Anterior Deltoids",
+        "Chest",
+        "Core",
+        "Serratus"
+      ],
+      "equipment": [
+        "Parallettes",
+        "Floor"
+      ],
+      "form": {
+        "setup": [
+          "Parallettes o suelo",
+          "Manos a ancho de hombros",
+          "Dedos apuntando hacia adelante o ligeramente afuera",
+          "Muñecas bien calentadas"
+        ],
+        "execution": [
+          "Lean forward agresivo (hombros DELANTE de manos)",
+          "Rodillas pegadas al pecho (tuck apretado)",
+          "Empujar suelo constantemente (protracción máxima)",
+          "Mirada entre las manos o ligeramente adelante",
+          "Mantener hollow body",
+          "Respiración: shallow, no aguantar"
+        ]
+      },
+      "commonMistakes": [
+        "Lean insuficiente (hombros no adelante suficiente)",
+        "Tuck flojo (rodillas no pegadas al pecho)",
+        "Falta de protracción (escápulas no separadas)",
+        "Aguantar respiración",
+        "Colapso de muñecas (falta calentamiento)"
+      ],
+      "coachTips": [
+        "Mode 1: Holds cortos (5-10s), alta frecuencia",
+        "El lean es MÁS importante que la tuck",
+        "Si tiemblas mucho, estás muy fatigado (parar)",
+        "Calentamiento de muñecas OBLIGATORIO (7 min)",
+        "Progresa LENTO: semanas, no días"
+      ],
+      "progression": {
+        "easier": "Planche Leans",
+        "harder": "Advanced Tuck Planche",
+        "byWeek": [
+          {
+            "week": "1-4",
+            "adjustment": "Holds de 5-8s",
+            "targetReps": "5-8 sets",
+            "notes": "Construir base de fuerza"
+          },
+          {
+            "week": "5-8",
+            "adjustment": "Holds de 8-12s",
+            "targetReps": "5-8 sets",
+            "notes": "Aumentar tiempo bajo tensión"
+          },
+          {
+            "week": "9-12",
+            "adjustment": "Transición a advanced tuck",
+            "targetReps": "Progresión gradual",
+            "notes": "Extender piernas ligeramente"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Tuck Planche on Parallettes",
+          "difficulty": "EASIER",
+          "equipment": [
+            "Parallettes"
+          ],
+          "when": "Muñecas necesitan más rango"
+        },
+        {
+          "name": "Tuck Planche Pushups",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Parallettes",
+            "Floor"
+          ],
+          "when": "Holds de 15s+ consistentes"
+        }
+      ],
+      "primaryGoal": "MASTERY",
+      "breathing": {
+        "pattern": "Respiración shallow (superficial), No aguantar respiración (peligro desmayo), Pequeñas inhalaciones/exhalaciones",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "pistol-squats",
+      "name": "Pistol Squats",
+      "category": "LEGS",
+      "subCategory": "UNILATERAL",
+      "difficulty": "INTERMEDIATE",
+      "targetMuscles": [
+        "Quadriceps",
+        "Glutes",
+        "Hamstrings",
+        "Core",
+        "Balance"
+      ],
+      "equipment": [
+        "None",
+        "TRX (opcional)"
+      ],
+      "form": {
+        "setup": [
+          "De pie en una pierna",
+          "Otra pierna extendida al frente",
+          "Brazos extendidos al frente para balance",
+          "Core activado"
+        ],
+        "execution": [
+          "Bajar controlado sentando atrás (no rodilla adelante)",
+          "Rodilla tracking sobre dedos del pie",
+          "Bajar hasta muslo toca pantorrilla",
+          "Talón pegado al suelo TODO el tiempo",
+          "Subir explosivamente",
+          "Mantener pierna libre extendida"
+        ]
+      },
+      "commonMistakes": [
+        "Rodilla colapsa hacia dentro (valgus)",
+        "Talón se levanta (falta movilidad tobillo)",
+        "Bajar pierna libre (perder tensión)",
+        "Torso colapsa forward excesivamente",
+        "No profundidad completa"
+      ],
+      "coachTips": [
+        "Movilidad de tobillo es CRÍTICA",
+        "Practica goblet squats para mejorar patrón",
+        "Usa TRX/soporte si necesitas al principio",
+        "Balance mejora con práctica constante",
+        "Trabaja ambas piernas por igual"
+      ],
+      "progression": {
+        "easier": "Assisted Pistol Squats (TRX)",
+        "harder": "Weighted Pistol Squats",
+        "byWeek": [
+          {
+            "week": "1-4",
+            "adjustment": "Con asistencia ligera",
+            "targetReps": "5-8 por pierna",
+            "notes": "Construir balance y fuerza"
+          },
+          {
+            "week": "5-8",
+            "adjustment": "Sin asistencia",
+            "targetReps": "6-10 por pierna",
+            "notes": "Perfeccionar forma"
+          },
+          {
+            "week": "9+",
+            "adjustment": "Añadir peso ligero",
+            "targetReps": "5-8 por pierna",
+            "notes": "Progresión a weighted"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Box Pistol Squats",
+          "difficulty": "EASIER",
+          "equipment": [
+            "Box"
+          ],
+          "when": "No puedes completar full ROM"
+        },
+        {
+          "name": "Weighted Pistol Squats",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Kettlebell",
+            "Dumbbell"
+          ],
+          "when": "10+ reps limpias sin peso"
+        }
+      ],
+      "primaryGoal": "STRENGTH",
+      "breathing": {
+        "pattern": "Inhalar al bajar, Exhalar explosivo al subir",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "front-lever-tuck",
+      "name": "Tuck Front Lever",
+      "category": "SKILL_STATIC",
+      "subCategory": "FRONT_LEVER",
+      "difficulty": "INTERMEDIATE",
+      "targetMuscles": [
+        "Lats",
+        "Core",
+        "Biceps",
+        "Posterior Chain"
+      ],
+      "equipment": [
+        "Pull-up Bar"
+      ],
+      "form": {
+        "setup": [
+          "Colgado de la barra, agarre pronado",
+          "Ancho de hombros o ligeramente más",
+          "Core pre-activado"
+        ],
+        "execution": [
+          "Tirar con dorsales para llevar cuerpo horizontal",
+          "Rodillas pegadas al pecho (tuck apretado)",
+          "Cuerpo paralelo al suelo",
+          "Brazos rectos (NO doblar codos)",
+          "Depresión escapular activa",
+          "Mirada neutral"
+        ]
+      },
+      "commonMistakes": [
+        "Codos doblados (facilita demasiado)",
+        "Cadera muy alta o muy baja",
+        "Tuck floja (rodillas no pegadas)",
+        "Falta depresión escapular",
+        "Aguantar respiración"
+      ],
+      "coachTips": [
+        "Mode 1: Holds de 5-10s, alta calidad",
+        "Brazos SIEMPRE rectos es no-negociable",
+        "Practica skin the cat para movilidad hombros",
+        "Progresión lenta: meses, no semanas",
+        "Front lever rows son excelente progresión"
+      ],
+      "progression": {
+        "easier": "Tuck Front Lever Raises",
+        "harder": "Advanced Tuck Front Lever",
+        "byWeek": [
+          {
+            "week": "1-4",
+            "adjustment": "Holds 5-8s",
+            "targetReps": "5-8 sets",
+            "notes": "Construir fuerza base"
+          },
+          {
+            "week": "5-8",
+            "adjustment": "Holds 8-12s",
+            "targetReps": "5-8 sets",
+            "notes": "Consolidar posición"
+          },
+          {
+            "week": "9-12",
+            "adjustment": "Advanced tuck (piernas más extendidas)",
+            "targetReps": "Progresión gradual",
+            "notes": "Extender 1 pierna primero"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "One Leg Front Lever",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Pull-up Bar"
+          ],
+          "when": "Tuck FL holds 15s+"
+        },
+        {
+          "name": "Front Lever Rows",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Pull-up Bar"
+          ],
+          "when": "Trabajar fuerza dinámica"
+        }
+      ],
+      "primaryGoal": "MASTERY",
+      "breathing": {
+        "pattern": "Respiración shallow, No aguantar (riesgo desmayo), Pequeñas respiraciones continuas",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "plank-hold",
+      "name": "Plank Hold",
+      "category": "CORE",
+      "subCategory": "ANTI_EXTENSION",
+      "difficulty": "BEGINNER",
+      "targetMuscles": [
+        "Rectus Abdominis",
+        "Transverse Abdominis",
+        "Obliques",
+        "Shoulders"
+      ],
+      "equipment": [
+        "None"
+      ],
+      "form": {
+        "setup": [
+          "Posición de plancha: codos bajo hombros",
+          "Antebrazos paralelos o manos entrelazadas",
+          "Cuerpo en línea recta desde cabeza hasta talones",
+          "Pies juntos o separados (más fácil separados)"
+        ],
+        "execution": [
+          "Activar core tirando ombligo hacia columna",
+          "Glúteos apretados (evitar cadera caída)",
+          "Cuádriceps activados (piernas rectas)",
+          "Empujar suelo con antebrazos (protracción)",
+          "Mirada al suelo (cuello neutral)",
+          "Respiración continua, no aguantar"
+        ]
+      },
+      "commonMistakes": [
+        "Cadera caída (lordosis lumbar)",
+        "Cadera muy elevada (forma de V invertida)",
+        "Hombros elevados (falta protracción)",
+        "Aguantar respiración",
+        "Mirar hacia adelante (hiperextensión cuello)"
+      ],
+      "coachTips": [
+        "Calidad sobre cantidad: 30s perfectos > 2min mal hechos",
+        "Si cadera cae, PARA inmediatamente",
+        "Practica hollow body hold para mejorar",
+        "Progresión: rodillas → full plank → elevación alternada",
+        "Objetivo inicial: 60s con forma perfecta"
+      ],
+      "progression": {
+        "easier": "Knee Plank",
+        "harder": "RKC Plank",
+        "byWeek": [
+          {
+            "week": "1-2",
+            "adjustment": "20-30s holds",
+            "targetReps": "3-5 sets",
+            "notes": "Construir base de core"
+          },
+          {
+            "week": "3-4",
+            "adjustment": "30-45s holds",
+            "targetReps": "3-5 sets",
+            "notes": "Aumentar tiempo bajo tensión"
+          },
+          {
+            "week": "5+",
+            "adjustment": "45-60s+ holds",
+            "targetReps": "3-5 sets",
+            "notes": "Consolidar fuerza de core"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Knee Plank",
+          "difficulty": "EASIER",
+          "equipment": [
+            "None"
+          ],
+          "when": "No puedes mantener 15s con forma"
+        },
+        {
+          "name": "Side Plank",
+          "difficulty": "HARDER",
+          "equipment": [
+            "None"
+          ],
+          "when": "Trabajar oblicuos"
+        }
+      ],
+      "primaryGoal": "STRENGTH",
+      "breathing": {
+        "pattern": "Respiración shallow pero continua, No aguantar respiración, Inhalar/exhalar controlado",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "incline-rows",
+      "name": "Incline Rows",
+      "category": "PULL",
+      "subCategory": "HORIZONTAL_PULL",
+      "difficulty": "BEGINNER",
+      "targetMuscles": [
+        "Lats",
+        "Rhomboids",
+        "Rear Deltoids",
+        "Biceps"
+      ],
+      "equipment": [
+        "Bar",
+        "TRX",
+        "Table"
+      ],
+      "form": {
+        "setup": [
+          "Barra a altura de cintura (~90cm)",
+          "Agarre pronado, ancho de hombros",
+          "Cuerpo inclinado 45-60° del suelo",
+          "Talones en el suelo, cuerpo recto",
+          "Core activado"
+        ],
+        "execution": [
+          "Tirar pecho hacia la barra",
+          "Codos cerca del cuerpo (45°)",
+          "Apretar escápulas al final del movimiento",
+          "Pausa 1s con pecho tocando barra",
+          "Bajar controlado manteniendo tensión",
+          "Brazos completamente extendidos abajo"
+        ]
+      },
+      "commonMistakes": [
+        "Cadera caída (perder línea corporal)",
+        "Codos muy abiertos (>60°)",
+        "No completar rango de movimiento",
+        "Usar impulso en lugar de control",
+        "Hombros elevados (falta retracción)"
+      ],
+      "coachTips": [
+        "Piensa en 'llevar codos hacia atrás', no solo tirar",
+        "Activa dorsales y romboides conscientemente",
+        "Más inclinado = más difícil",
+        "Cuando hagas 15+ reps limpias, aumenta inclinación",
+        "Progresión hacia horizontal rows"
+      ],
+      "progression": {
+        "easier": "Vertical Rows (más erguido)",
+        "harder": "Horizontal Rows",
+        "byWeek": [
+          {
+            "week": "1-2",
+            "adjustment": "45° inclinación",
+            "targetReps": "8-12 reps",
+            "notes": "Construir base de tirón"
+          },
+          {
+            "week": "3-4",
+            "adjustment": "60° inclinación",
+            "targetReps": "10-15 reps",
+            "notes": "Aumentar dificultad gradualmente"
+          },
+          {
+            "week": "5+",
+            "adjustment": "Casi horizontal",
+            "targetReps": "12-15 reps",
+            "notes": "Preparar para horizontal rows"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "TRX Rows",
+          "difficulty": "SAME",
+          "equipment": [
+            "TRX"
+          ],
+          "when": "Ajuste fácil de dificultad"
+        },
+        {
+          "name": "Archer Rows",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Bar"
+          ],
+          "when": "Preparación unilateral"
+        }
+      ],
+      "primaryGoal": "STRENGTH",
+      "breathing": {
+        "pattern": "Exhalar al tirar hacia arriba, Inhalar al bajar",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "diamond-push-ups",
+      "name": "Diamond Push-ups",
+      "category": "PUSH",
+      "subCategory": "HORIZONTAL_PUSH",
+      "difficulty": "INTERMEDIATE",
+      "targetMuscles": [
+        "Triceps",
+        "Chest",
+        "Anterior Deltoids"
+      ],
+      "equipment": [
+        "None"
+      ],
+      "form": {
+        "setup": [
+          "Manos juntas formando diamante con índices y pulgares",
+          "Diamante bajo el pecho (no bajo la cara)",
+          "Cuerpo en línea recta, core activado",
+          "Pies juntos o separados"
+        ],
+        "execution": [
+          "Bajar controlado en 2-3 segundos",
+          "Pecho toca manos (full ROM)",
+          "Codos cerca del cuerpo",
+          "Subir explosivamente",
+          "Protracción escapular arriba",
+          "Mantener hollow body todo el tiempo"
+        ]
+      },
+      "commonMistakes": [
+        "Cadera caída",
+        "Codos muy abiertos (deben estar cerca)",
+        "No bajar suficiente (ROM incompleto)",
+        "Diamante muy adelante o atrás",
+        "Perder protracción"
+      ],
+      "coachTips": [
+        "Más énfasis en tríceps que push-ups regulares",
+        "Si es muy difícil, empieza en incline",
+        "10+ reps limpias antes de progresar",
+        "Excelente para construir fuerza de press",
+        "Prepara para dips y HSPU"
+      ],
+      "progression": {
+        "easier": "Incline Diamond Push-ups",
+        "harder": "Archer Push-ups",
+        "byWeek": [
+          {
+            "week": "1-2",
+            "adjustment": "Form perfection",
+            "targetReps": "6-10 reps",
+            "notes": "Construir base"
+          },
+          {
+            "week": "3-4",
+            "adjustment": "Aumentar volumen",
+            "targetReps": "10-15 reps",
+            "notes": "Consolidar fuerza"
+          },
+          {
+            "week": "5+",
+            "adjustment": "Hacia progressions",
+            "targetReps": "15+ reps",
+            "notes": "Listo para archer o weighted"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Close-Grip Push-ups",
+          "difficulty": "EASIER",
+          "equipment": [
+            "None"
+          ],
+          "when": "Diamond muy difícil"
+        },
+        {
+          "name": "Decline Diamond Push-ups",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Box"
+          ],
+          "when": "Aumentar dificultad"
+        }
+      ],
+      "primaryGoal": "STRENGTH",
+      "breathing": {
+        "pattern": "Inhalar al bajar, Exhalar explosivo al subir",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "pike-push-ups",
+      "name": "Pike Push-ups",
+      "category": "PUSH",
+      "subCategory": "VERTICAL_PUSH",
+      "difficulty": "INTERMEDIATE",
+      "targetMuscles": [
+        "Anterior Deltoids",
+        "Triceps",
+        "Upper Chest"
+      ],
+      "equipment": [
+        "None"
+      ],
+      "form": {
+        "setup": [
+          "Posición de V invertida (pike)",
+          "Manos ancho de hombros",
+          "Caderas elevadas, piernas casi rectas",
+          "Mirada entre las manos"
+        ],
+        "execution": [
+          "Bajar cabeza hacia el suelo (no adelante)",
+          "Codos a ~45° del cuerpo",
+          "Descender hasta cabeza casi toca suelo",
+          "Empujar hacia arriba verticalmente",
+          "Mantener posición de pike todo el tiempo",
+          "No sacar cadera hacia atrás"
+        ]
+      },
+      "commonMistakes": [
+        "Bajar adelante en lugar de vertical",
+        "Perder posición de pike",
+        "Codos demasiado abiertos",
+        "ROM incompleto",
+        "Cadera moviéndose hacia atrás"
+      ],
+      "coachTips": [
+        "Preparación para handstand push-ups",
+        "Más vertical = más difícil",
+        "Pies en elevación aumenta dificultad",
+        "Enfoque en hombros, no tríceps",
+        "15+ reps = listo para elevated pike"
+      ],
+      "progression": {
+        "easier": "Incline Pike Push-ups",
+        "harder": "Elevated Pike Push-ups",
+        "byWeek": [
+          {
+            "week": "1-2",
+            "adjustment": "Pike básico",
+            "targetReps": "6-10 reps",
+            "notes": "Construir fuerza vertical"
+          },
+          {
+            "week": "3-4",
+            "adjustment": "Más vertical",
+            "targetReps": "8-12 reps",
+            "notes": "Mejorar ángulo"
+          },
+          {
+            "week": "5+",
+            "adjustment": "Pies elevados",
+            "targetReps": "10-15 reps",
+            "notes": "Hacia HSPU progression"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Elevated Pike Push-ups",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Box"
+          ],
+          "when": "15+ reps de pike regular"
+        },
+        {
+          "name": "Wall-Assisted Pike Push-ups",
+          "difficulty": "EASIER",
+          "equipment": [
+            "Wall"
+          ],
+          "when": "Pike muy difícil"
+        }
+      ],
+      "primaryGoal": "STRENGTH",
+      "breathing": {
+        "pattern": "Inhalar al bajar, Exhalar al subir",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "horizontal-rows",
+      "name": "Horizontal Rows",
+      "category": "PULL",
+      "subCategory": "HORIZONTAL_PULL",
+      "difficulty": "INTERMEDIATE",
+      "targetMuscles": [
+        "Lats",
+        "Rhomboids",
+        "Rear Deltoids",
+        "Biceps",
+        "Core"
+      ],
+      "equipment": [
+        "Bar",
+        "TRX",
+        "Rings"
+      ],
+      "form": {
+        "setup": [
+          "Barra a ~60cm del suelo",
+          "Cuerpo completamente horizontal",
+          "Agarre pronado o supino",
+          "Talones en suelo, cuerpo recto",
+          "Core activado (hollow body)"
+        ],
+        "execution": [
+          "Tirar pecho hacia barra",
+          "Apretar escápulas (retracción)",
+          "Pecho toca barra",
+          "Mantener cuerpo recto (no cadera caída)",
+          "Bajar controlado manteniendo tensión",
+          "Full extension sin relajar"
+        ]
+      },
+      "commonMistakes": [
+        "Cadera caída o elevada",
+        "No completar ROM (pecho a barra)",
+        "Usar impulso",
+        "Codos muy abiertos",
+        "Perder tensión en excéntrica"
+      ],
+      "coachTips": [
+        "Progresión natural desde incline rows",
+        "Complemento perfecto para pull-ups",
+        "20+ reps = listo para archer rows",
+        "Variaciones: pronado (back), supino (biceps)",
+        "Mantén core activado SIEMPRE"
+      ],
+      "progression": {
+        "easier": "Incline Rows (60°)",
+        "harder": "Archer Rows",
+        "byWeek": [
+          {
+            "week": "1-2",
+            "adjustment": "Horizontal básico",
+            "targetReps": "8-12 reps",
+            "notes": "Construir base horizontal"
+          },
+          {
+            "week": "3-4",
+            "adjustment": "Aumentar volumen",
+            "targetReps": "12-18 reps",
+            "notes": "Consolidar fuerza"
+          },
+          {
+            "week": "5+",
+            "adjustment": "Hacia unilateral",
+            "targetReps": "15-20 reps",
+            "notes": "Preparar archer rows"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Supinated Rows",
+          "difficulty": "EASIER",
+          "equipment": [
+            "Bar"
+          ],
+          "when": "Más énfasis en bíceps"
+        },
+        {
+          "name": "Wide-Grip Rows",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Bar"
+          ],
+          "when": "Énfasis en dorsales"
+        }
+      ],
+      "primaryGoal": "STRENGTH",
+      "breathing": {
+        "pattern": "Exhalar al tirar, Inhalar al bajar",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "l-sit-progressions",
+      "name": "L-sit Progressions",
+      "category": "CORE",
+      "subCategory": "COMPRESSION",
+      "difficulty": "INTERMEDIATE",
+      "targetMuscles": [
+        "Hip Flexors",
+        "Rectus Abdominis",
+        "Shoulders",
+        "Triceps"
+      ],
+      "equipment": [
+        "Parallettes",
+        "Floor",
+        "Parallel Bars"
+      ],
+      "form": {
+        "setup": [
+          "Sentado con piernas extendidas",
+          "Manos a los lados (parallettes o suelo)",
+          "Dedos apuntando adelante",
+          "Hombros sobre manos"
+        ],
+        "execution": [
+          "Empujar suelo deprimiendo escápulas",
+          "Elevar glúteos del suelo",
+          "Piernas extendidas adelante (tuck → one leg → full L)",
+          "Pies en flexión dorsal",
+          "Mantener hombros deprimidos",
+          "Respiración shallow continua"
+        ]
+      },
+      "commonMistakes": [
+        "Piernas dobladas (no L completa)",
+        "Hombros elevados (falta depresión)",
+        "Lean hacia atrás excesivo",
+        "Aguantar respiración",
+        "Colapso de muñecas"
+      ],
+      "coachTips": [
+        "Progresión: tuck → one leg → straddle → full L",
+        "Parallettes facilitan (más rango para piernas)",
+        "Compression work mejora mucho la L-sit",
+        "Mode 1: holds cortos (10-20s), alta calidad",
+        "Fundamental para front lever y planche"
+      ],
+      "progression": {
+        "easier": "Tuck L-sit",
+        "harder": "Full L-sit",
+        "byWeek": [
+          {
+            "week": "1-4",
+            "adjustment": "Tuck L-sit 10-15s",
+            "targetReps": "5-8 sets",
+            "notes": "Construir base de compresión"
+          },
+          {
+            "week": "5-8",
+            "adjustment": "One leg extended 8-12s",
+            "targetReps": "5-8 sets",
+            "notes": "Progresión gradual"
+          },
+          {
+            "week": "9-12",
+            "adjustment": "Full L-sit attempts",
+            "targetReps": "5-8s holds",
+            "notes": "Hacia L-sit completa"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Straddle L-sit",
+          "difficulty": "EASIER",
+          "equipment": [
+            "Parallettes"
+          ],
+          "when": "Full L muy difícil"
+        },
+        {
+          "name": "V-sit",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Parallettes"
+          ],
+          "when": "L-sit 20s+ consistente"
+        }
+      ],
+      "primaryGoal": "STRENGTH",
+      "breathing": {
+        "pattern": "Respiración shallow, No aguantar, Pequeñas inhalaciones/exhalaciones",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "dips",
+      "name": "Parallel Bar Dips",
+      "category": "PUSH",
+      "subCategory": "VERTICAL_PUSH",
+      "difficulty": "INTERMEDIATE",
+      "targetMuscles": [
+        "Triceps",
+        "Chest",
+        "Anterior Deltoids"
+      ],
+      "equipment": [
+        "Parallel Bars",
+        "Dip Station"
+      ],
+      "form": {
+        "setup": [
+          "Agarre en barras paralelas",
+          "Cuerpo vertical, brazos extendidos",
+          "Hombros deprimidos",
+          "Piernas cruzadas o rectas"
+        ],
+        "execution": [
+          "Bajar controlado doblando codos",
+          "Descender hasta codos a 90° (o ligeramente más)",
+          "Mantener pecho ligeramente adelante",
+          "Codos cerca del cuerpo (énfasis tríceps)",
+          "Subir explosivamente",
+          "Lockout completo arriba sin hiperextensión"
+        ]
+      },
+      "commonMistakes": [
+        "Bajar muy poco (ROM incompleto)",
+        "Codos muy abiertos",
+        "Lean excesivo (convierte en chest dip)",
+        "Hombros elevados",
+        "Kipping/usar impulso"
+      ],
+      "coachTips": [
+        "Fundamental para fuerza de press vertical",
+        "Progresión: negatives → band assist → full dips",
+        "12+ reps = considerar peso añadido",
+        "Lean forward = más pecho, vertical = más tríceps",
+        "Essential para muscle-ups y planche"
+      ],
+      "progression": {
+        "easier": "Assisted Dips (Band)",
+        "harder": "Weighted Dips",
+        "byWeek": [
+          {
+            "week": "1-2",
+            "adjustment": "Bodyweight 5-8 reps",
+            "targetReps": "3-5 sets",
+            "notes": "Construir base"
+          },
+          {
+            "week": "3-4",
+            "adjustment": "Bodyweight 8-12 reps",
+            "targetReps": "3-5 sets",
+            "notes": "Aumentar volumen"
+          },
+          {
+            "week": "5+",
+            "adjustment": "Hacia weighted",
+            "targetReps": "12-15 reps",
+            "notes": "Preparar para peso añadido"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Ring Dips",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Gymnastics Rings"
+          ],
+          "when": "Añadir inestabilidad"
+        },
+        {
+          "name": "Korean Dips",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Parallel Bars"
+          ],
+          "when": "Advanced skill work"
+        }
+      ],
+      "primaryGoal": "STRENGTH",
+      "breathing": {
+        "pattern": "Inhalar al bajar, Exhalar al subir",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "weighted-dips",
+      "name": "Weighted Dips",
+      "category": "PUSH",
+      "subCategory": "VERTICAL_PUSH",
+      "difficulty": "INTERMEDIATE",
+      "targetMuscles": [
+        "Triceps",
+        "Chest",
+        "Anterior Deltoids"
+      ],
+      "equipment": [
+        "Parallel Bars",
+        "Dip Belt",
+        "Weight Plates"
+      ],
+      "form": {
+        "setup": [
+          "Cinturón de lastre con peso apropiado",
+          "Agarre en barras paralelas",
+          "Cuerpo vertical, brazos extendidos",
+          "Peso cuelga sin tocar suelo"
+        ],
+        "execution": [
+          "Bajar controlado en 2-3 segundos",
+          "Codos a 90° o ligeramente más profundo",
+          "Mantener control con peso añadido",
+          "Subir explosivamente",
+          "Lockout completo arriba",
+          "No kipping/balanceo"
+        ]
+      },
+      "commonMistakes": [
+        "Peso excesivo (sacrificar forma)",
+        "ROM incompleto",
+        "Usar impulso/kipping",
+        "Bajar muy rápido",
+        "Lean excesivo"
+      ],
+      "coachTips": [
+        "Empieza con +10-15% de tu peso corporal",
+        "Forma perfecta SIEMPRE antes que peso",
+        "Mode 2: 3-6 reps, cerca del fallo",
+        "Progresión conservadora: +2.5kg cada 2-3 semanas",
+        "Fundamental para planche y muscle-up strength"
+      ],
+      "progression": {
+        "easier": "Bodyweight Dips (high reps)",
+        "harder": "Weighted Dips (+30% BW)",
+        "byWeek": [
+          {
+            "week": "1-4",
+            "adjustment": "+10-15% BW",
+            "targetReps": "4-6 reps",
+            "notes": "Establecer baseline"
+          },
+          {
+            "week": "5-8",
+            "adjustment": "+15-20% BW",
+            "targetReps": "4-6 reps",
+            "notes": "Progresión conservadora"
+          },
+          {
+            "week": "9-12",
+            "adjustment": "+20-25% BW",
+            "targetReps": "3-5 reps",
+            "notes": "Fuerza máxima"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Ring Weighted Dips",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Rings",
+            "Dip Belt"
+          ],
+          "when": "Añadir inestabilidad"
+        },
+        {
+          "name": "L-sit Weighted Dips",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Parallel Bars",
+            "Dip Belt"
+          ],
+          "when": "Trabajo de core añadido"
+        }
+      ],
+      "primaryGoal": "STRENGTH",
+      "breathing": {
+        "pattern": "Inhalar al bajar, Exhalar explosivo al subir",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "archer-push-ups",
+      "name": "Archer Push-ups",
+      "category": "PUSH",
+      "subCategory": "HORIZONTAL_PUSH",
+      "difficulty": "INTERMEDIATE",
+      "targetMuscles": [
+        "Chest",
+        "Triceps",
+        "Anterior Deltoids"
+      ],
+      "equipment": [
+        "None"
+      ],
+      "form": {
+        "setup": [
+          "Manos muy separadas (mucho más que ancho hombros)",
+          "Cuerpo en línea recta",
+          "Core activado",
+          "Pies separados para balance"
+        ],
+        "execution": [
+          "Desplazar peso hacia un lado",
+          "Bajar hacia la mano activa",
+          "Brazo activo dobla, brazo pasivo casi recto",
+          "Pecho hacia mano activa",
+          "Subir y repetir del otro lado",
+          "Alternating o todas a un lado primero"
+        ]
+      },
+      "commonMistakes": [
+        "Brazo pasivo doblado (no es archer real)",
+        "Cadera rotada/caída",
+        "No desplazar suficiente peso",
+        "ROM incompleto",
+        "Perder hollow body"
+      ],
+      "coachTips": [
+        "Progresión directa hacia one-arm push-ups",
+        "Brazo pasivo debe estar CASI recto",
+        "Empieza con manos moderadamente separadas",
+        "6+ reps cada lado = listo para OAP progressions",
+        "Excelente para fuerza de press unilateral"
+      ],
+      "progression": {
+        "easier": "Pseudo Planche Push-ups",
+        "harder": "One-Arm Push-up Progressions",
+        "byWeek": [
+          {
+            "week": "1-2",
+            "adjustment": "Manos moderadamente separadas",
+            "targetReps": "4-8 cada lado",
+            "notes": "Construir base unilateral"
+          },
+          {
+            "week": "3-4",
+            "adjustment": "Manos más separadas",
+            "targetReps": "6-10 cada lado",
+            "notes": "Aumentar dificultad"
+          },
+          {
+            "week": "5+",
+            "adjustment": "Hacia OAP",
+            "targetReps": "8-12 cada lado",
+            "notes": "Preparación OAP"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Elevated Archer Push-ups",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Box"
+          ],
+          "when": "Aumentar ROM"
+        },
+        {
+          "name": "Archer Push-ups on Rings",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Rings"
+          ],
+          "when": "Añadir inestabilidad"
+        }
+      ],
+      "primaryGoal": "STRENGTH",
+      "breathing": {
+        "pattern": "Inhalar al bajar, Exhalar al subir",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "handstand-hold",
+      "name": "Handstand Hold (Wall)",
+      "category": "BALANCE",
+      "subCategory": "HANDSTAND",
+      "difficulty": "INTERMEDIATE",
+      "targetMuscles": [
+        "Shoulders",
+        "Core",
+        "Wrists",
+        "Serratus"
+      ],
+      "equipment": [
+        "Wall"
+      ],
+      "form": {
+        "setup": [
+          "Chest to wall o back to wall",
+          "Manos a ~15cm de la pared",
+          "Dedos separados para balance",
+          "Muñecas bien calentadas"
+        ],
+        "execution": [
+          "Kick up controlado a la pared",
+          "Cuerpo completamente vertical",
+          "Hombros activamente empujando (elevación escapular)",
+          "Core activado (evitar banana back)",
+          "Mirada entre las manos",
+          "Respiración shallow continua"
+        ]
+      },
+      "commonMistakes": [
+        "Banana back (hiperextensión lumbar)",
+        "Hombros hundidos (falta elevación)",
+        "Demasiado peso en pared",
+        "Aguantar respiración",
+        "Muñecas no preparadas (riesgo lesión)"
+      ],
+      "coachTips": [
+        "Chest to wall mejor para fuerza, back to wall para balance",
+        "Calentamiento de muñecas OBLIGATORIO (7+ min)",
+        "Mode 1: Holds de 30-60s, alta frecuencia",
+        "60s consistent = empezar freestanding practice",
+        "Fundamental para HSPU y press handstand"
+      ],
+      "progression": {
+        "easier": "Wall Walks",
+        "harder": "Freestanding Handstand",
+        "byWeek": [
+          {
+            "week": "1-4",
+            "adjustment": "Holds 20-30s",
+            "targetReps": "5-8 sets",
+            "notes": "Construir fuerza de hombros"
+          },
+          {
+            "week": "5-8",
+            "adjustment": "Holds 30-45s",
+            "targetReps": "5-8 sets",
+            "notes": "Aumentar tiempo bajo tensión"
+          },
+          {
+            "week": "9-12",
+            "adjustment": "Holds 45-60s + freestanding practice",
+            "targetReps": "5-8 sets",
+            "notes": "Preparar para freestanding"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Back-to-Wall Handstand",
+          "difficulty": "EASIER",
+          "equipment": [
+            "Wall"
+          ],
+          "when": "Trabajar balance"
+        },
+        {
+          "name": "Chest-to-Wall Handstand",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Wall"
+          ],
+          "when": "Fuerza pura de hombros"
+        }
+      ],
+      "primaryGoal": "MASTERY",
+      "breathing": {
+        "pattern": "Respiración shallow, No aguantar respiración, Inhalaciones/exhalaciones pequeñas",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "advanced-tuck-planche",
+      "name": "Advanced Tuck Planche",
+      "category": "SKILL_STATIC",
+      "subCategory": "PLANCHE",
+      "difficulty": "ADVANCED",
+      "targetMuscles": [
+        "Anterior Deltoids",
+        "Chest",
+        "Core",
+        "Serratus"
+      ],
+      "equipment": [
+        "Parallettes",
+        "Floor"
+      ],
+      "form": {
+        "setup": [
+          "Igual que tuck planche",
+          "Parallettes o suelo",
+          "Manos ancho de hombros",
+          "Muñecas preparadas"
+        ],
+        "execution": [
+          "Lean agresivo (hombros muy adelante)",
+          "Piernas ligeramente MÁS extendidas que tuck",
+          "Rodillas aún dobladas pero más abiertas",
+          "Protracción máxima constante",
+          "Hollow body riguroso",
+          "Respiración shallow continua"
+        ]
+      },
+      "commonMistakes": [
+        "Extender piernas demasiado rápido",
+        "Perder lean (hombros vuelven atrás)",
+        "Falta de protracción",
+        "Hollow body comprometido",
+        "No dominar tuck antes de progresar"
+      ],
+      "coachTips": [
+        "Domina tuck 15s+ antes de progresar",
+        "Mode 1: Holds 6-12s, forma perfecta",
+        "Progresión MUY gradual: meses, no semanas",
+        "Straddle es siguiente paso natural",
+        "Fortaleza de hombros es clave"
+      ],
+      "progression": {
+        "easier": "Tuck Planche",
+        "harder": "Straddle Planche",
+        "byWeek": [
+          {
+            "week": "1-4",
+            "adjustment": "Piernas ligeramente extendidas",
+            "targetReps": "6-10s holds, 6-8 sets",
+            "notes": "Construir adaptación"
+          },
+          {
+            "week": "5-8",
+            "adjustment": "Más extensión gradual",
+            "targetReps": "8-12s holds, 6-8 sets",
+            "notes": "Consolidar posición"
+          },
+          {
+            "week": "9-16",
+            "adjustment": "Hacia straddle",
+            "targetReps": "10-15s holds",
+            "notes": "Preparar siguiente nivel"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "One-Leg Advanced Tuck",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Parallettes"
+          ],
+          "when": "Transición a straddle"
+        },
+        {
+          "name": "Advanced Tuck Planche Push-ups",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Parallettes"
+          ],
+          "when": "Trabajo dinámico"
+        }
+      ],
+      "primaryGoal": "MASTERY",
+      "breathing": {
+        "pattern": "Respiración shallow, No aguantar, Pequeñas inhalaciones continuas",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "front-lever",
+      "name": "Front Lever (Full)",
+      "category": "SKILL_STATIC",
+      "subCategory": "FRONT_LEVER",
+      "difficulty": "ADVANCED",
+      "targetMuscles": [
+        "Lats",
+        "Core",
+        "Posterior Chain",
+        "Biceps"
+      ],
+      "equipment": [
+        "Pull-up Bar"
+      ],
+      "form": {
+        "setup": [
+          "Colgado de la barra",
+          "Agarre pronado, ancho hombros",
+          "Core pre-activado"
+        ],
+        "execution": [
+          "Tirar con dorsales para posición horizontal",
+          "Cuerpo COMPLETAMENTE horizontal",
+          "Piernas totalmente extendidas juntas",
+          "Pies en punta",
+          "Brazos 100% rectos (crucial)",
+          "Depresión escapular activa",
+          "Hollow body máximo"
+        ]
+      },
+      "commonMistakes": [
+        "Codos doblados (invalida el hold)",
+        "Cadera caída (no horizontal)",
+        "Piernas separadas (más fácil pero no full FL)",
+        "Perder depresión escapular",
+        "Aguantar respiración (riesgo desmayo)"
+      ],
+      "coachTips": [
+        "Requiere varios AÑOS de progresión",
+        "Domina advanced tuck, straddle, one-leg primero",
+        "Mode 1: Holds cortos (3-8s), calidad perfecta",
+        "Skin the cat esencial para movilidad",
+        "Front lever rows construyen fuerza específica"
+      ],
+      "progression": {
+        "easier": "Straddle Front Lever",
+        "harder": "Front Lever Pull-ups",
+        "byWeek": [
+          {
+            "week": "1-8",
+            "adjustment": "Holds 3-5s",
+            "targetReps": "6-8 sets",
+            "notes": "Construir hold inicial"
+          },
+          {
+            "week": "9-16",
+            "adjustment": "Holds 5-8s",
+            "targetReps": "6-8 sets",
+            "notes": "Consolidar fuerza"
+          },
+          {
+            "week": "17+",
+            "adjustment": "Holds 8-12s+",
+            "targetReps": "6-8 sets",
+            "notes": "Mastery level"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "German Hang",
+          "difficulty": "EASIER",
+          "equipment": [
+            "Pull-up Bar"
+          ],
+          "when": "Movilidad hombros"
+        },
+        {
+          "name": "Ice Cream Makers",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Pull-up Bar"
+          ],
+          "when": "Trabajo dinámico avanzado"
+        }
+      ],
+      "primaryGoal": "MASTERY",
+      "breathing": {
+        "pattern": "Respiración shallow, No aguantar respiración, Pequeñas respiraciones",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "one-arm-push-up-progressions",
+      "name": "One-Arm Push-up Progressions",
+      "category": "PUSH",
+      "subCategory": "HORIZONTAL_PUSH",
+      "difficulty": "ADVANCED",
+      "targetMuscles": [
+        "Chest",
+        "Triceps",
+        "Anterior Deltoids",
+        "Core"
+      ],
+      "equipment": [
+        "None"
+      ],
+      "form": {
+        "setup": [
+          "Una mano en suelo (ancho normal)",
+          "Otra mano detrás espalda o en muslo",
+          "Pies muy separados (más fácil) o juntos (más difícil)",
+          "Cuerpo girado ~30-45° hacia brazo activo"
+        ],
+        "execution": [
+          "Bajar controlado manteniendo línea corporal",
+          "Pecho casi toca suelo",
+          "Evitar rotación excesiva de torso",
+          "Core máximamente activado (anti-rotación)",
+          "Subir explosivamente",
+          "Mantener hombro no-activo estable"
+        ]
+      },
+      "commonMistakes": [
+        "Pies muy juntos prematuramente",
+        "Rotación excesiva de torso",
+        "ROM incompleto",
+        "Cadera caída o rotada",
+        "No trabajar progresiones (archer, elevated, etc)"
+      ],
+      "coachTips": [
+        "Progresión: Archer → Elevated OAP → Band-assist → Full OAP",
+        "Pies separados NO es trampa, es progresión válida",
+        "Mode 2: 3-6 reps, high quality",
+        "5+ reps cada lado = very advanced",
+        "Trabaja AMBOS lados por igual"
+      ],
+      "progression": {
+        "easier": "Archer Push-ups",
+        "harder": "Full OAP (feet together)",
+        "byWeek": [
+          {
+            "week": "1-4",
+            "adjustment": "Elevated OAP (feet wide)",
+            "targetReps": "3-6 each side",
+            "notes": "Construir base unilateral"
+          },
+          {
+            "week": "5-8",
+            "adjustment": "Floor OAP (feet wide)",
+            "targetReps": "4-8 each side",
+            "notes": "Progresión conservadora"
+          },
+          {
+            "week": "9-16",
+            "adjustment": "Feet closer together",
+            "targetReps": "5-10 each side",
+            "notes": "Hacia OAP completa"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Pseudo Planche OAP",
+          "difficulty": "HARDER",
+          "equipment": [
+            "None"
+          ],
+          "when": "Añadir componente de planche"
+        },
+        {
+          "name": "Clapping OAP",
+          "difficulty": "ELITE",
+          "equipment": [
+            "None"
+          ],
+          "when": "Explosividad extrema"
+        }
+      ],
+      "primaryGoal": "STRENGTH",
+      "breathing": {
+        "pattern": "Inhalar al bajar, Exhalar explosivo al subir",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "dragon-flags",
+      "name": "Dragon Flags",
+      "category": "CORE",
+      "subCategory": "ANTI_EXTENSION",
+      "difficulty": "ADVANCED",
+      "targetMuscles": [
+        "Rectus Abdominis",
+        "Hip Flexors",
+        "Lats",
+        "Entire Core"
+      ],
+      "equipment": [
+        "Bench",
+        "Pull-up Bar"
+      ],
+      "form": {
+        "setup": [
+          "Tumbado en banco",
+          "Manos agarrando detrás de la cabeza (bench/barra)",
+          "Hombros y parte superior espalda en contacto",
+          "Cuerpo recto desde hombros hasta pies"
+        ],
+        "execution": [
+          "Elevar cuerpo completo (hollow body rígido)",
+          "Bajar controlado manteniendo línea recta",
+          "Solo hombros tocan el banco",
+          "Descender lo más cerca posible sin tocar",
+          "Subir de nuevo manteniendo hollow",
+          "NO arquear espalda NUNCA"
+        ]
+      },
+      "commonMistakes": [
+        "Arquear espalda (lordosis - PELIGROSO)",
+        "Doblar caderas (no dragon flag real)",
+        "Bajar muy rápido (perder control)",
+        "No hollow body (romper línea)",
+        "Intentar sin fuerza suficiente (lesión)"
+      ],
+      "coachTips": [
+        "Requiere fuerza de core EXTREMA",
+        "Progresión: tuck → straddle → full",
+        "Negativas primero (bajar controlado)",
+        "Si arqueas espalda baja, PARA inmediatamente",
+        "3-5 reps perfectas > 10 reps malas"
+      ],
+      "progression": {
+        "easier": "Tuck Dragon Flags",
+        "harder": "Weighted Dragon Flags",
+        "byWeek": [
+          {
+            "week": "1-4",
+            "adjustment": "Tuck negatives",
+            "targetReps": "3-6 reps",
+            "notes": "Construir fuerza excéntrica"
+          },
+          {
+            "week": "5-8",
+            "adjustment": "Full negatives",
+            "targetReps": "4-8 reps",
+            "notes": "Consolidar control"
+          },
+          {
+            "week": "9-12",
+            "adjustment": "Full dragon flags",
+            "targetReps": "5-10 reps",
+            "notes": "Mastery level"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Straddle Dragon Flags",
+          "difficulty": "EASIER",
+          "equipment": [
+            "Bench"
+          ],
+          "when": "Progresión intermedia"
+        },
+        {
+          "name": "Weighted Dragon Flags",
+          "difficulty": "ELITE",
+          "equipment": [
+            "Bench",
+            "Ankle Weights"
+          ],
+          "when": "10+ reps perfectas"
+        }
+      ],
+      "primaryGoal": "STRENGTH",
+      "breathing": {
+        "pattern": "Exhalar al subir, Inhalar al bajar controlado",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "handstand-push-ups",
+      "name": "Handstand Push-ups (Wall)",
+      "category": "PUSH",
+      "subCategory": "VERTICAL_PUSH",
+      "difficulty": "ADVANCED",
+      "targetMuscles": [
+        "Anterior Deltoids",
+        "Triceps",
+        "Upper Chest",
+        "Core"
+      ],
+      "equipment": [
+        "Wall"
+      ],
+      "form": {
+        "setup": [
+          "Chest-to-wall handstand",
+          "Manos ~15cm de pared",
+          "Cuerpo vertical",
+          "Core activado máximamente"
+        ],
+        "execution": [
+          "Bajar cabeza controlado hacia suelo",
+          "Descender hasta cabeza toca suelo o muy cerca",
+          "Codos a ~45° del cuerpo",
+          "Empujar explosivamente hacia arriba",
+          "Lockout completo arriba",
+          "Mantener hollow body todo el tiempo"
+        ]
+      },
+      "commonMistakes": [
+        "Banana back (hiperextensión lumbar)",
+        "ROM incompleto (no bajar suficiente)",
+        "Codos muy abiertos",
+        "Kipping/impulso de piernas",
+        "No lockout completo arriba"
+      ],
+      "coachTips": [
+        "Requiere 60s+ handstand hold primero",
+        "Progresión: Pike HSPU → Elevated Pike → Wall HSPU",
+        "Chest-to-wall más difícil que back-to-wall",
+        "Mode 2: 3-8 reps, high quality",
+        "Freestanding HSPU = elite level"
+      ],
+      "progression": {
+        "easier": "Pike Push-ups (elevated)",
+        "harder": "Freestanding HSPU",
+        "byWeek": [
+          {
+            "week": "1-4",
+            "adjustment": "Partial ROM",
+            "targetReps": "3-6 reps",
+            "notes": "Construir fuerza base"
+          },
+          {
+            "week": "5-8",
+            "adjustment": "Full ROM",
+            "targetReps": "4-8 reps",
+            "notes": "Consolidar fuerza"
+          },
+          {
+            "week": "9-12",
+            "adjustment": "Hacia deficit HSPU",
+            "targetReps": "6-10 reps",
+            "notes": "Advanced progression"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Deficit HSPU",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Wall",
+            "Parallettes"
+          ],
+          "when": "Aumentar ROM"
+        },
+        {
+          "name": "Freestanding HSPU",
+          "difficulty": "ELITE",
+          "equipment": [
+            "None"
+          ],
+          "when": "Elite balance + strength"
+        }
+      ],
+      "primaryGoal": "STRENGTH",
+      "breathing": {
+        "pattern": "Inhalar al bajar, Exhalar explosivo al subir",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "muscle-ups",
+      "name": "Muscle-ups (Bar)",
+      "category": "PULL",
+      "subCategory": "DYNAMIC",
+      "difficulty": "ADVANCED",
+      "targetMuscles": [
+        "Lats",
+        "Chest",
+        "Triceps",
+        "Core"
+      ],
+      "equipment": [
+        "Pull-up Bar"
+      ],
+      "form": {
+        "setup": [
+          "Agarre falso (false grip) o regular",
+          "Colgado con brazos rectos",
+          "Hollow body position",
+          "Core pre-activado"
+        ],
+        "execution": [
+          "Pull explosivo llevando pecho a barra",
+          "Transición agresiva sobre la barra",
+          "Cambio de pull a dip en un movimiento",
+          "Press out hasta brazos rectos",
+          "Bajar controlado (negative)",
+          "Strict form (no kipping excesivo)"
+        ]
+      },
+      "commonMistakes": [
+        "Kipping excesivo (no strict)",
+        "No dominar transición",
+        "Falta de explosividad en pull",
+        "Débil en la transición (stuck)",
+        "No trabajar negativas primero"
+      ],
+      "coachTips": [
+        "Requisitos: 12+ strict pull-ups, 15+ dips",
+        "Progresión: Negatives → Band assist → Strict MU",
+        "La transición es la parte más difícil",
+        "Chest-to-bar pull-ups son excelente preparación",
+        "Straight bar más difícil que rings inicialmente"
+      ],
+      "progression": {
+        "easier": "Muscle-up Negatives",
+        "harder": "Strict Bar Muscle-ups (multiple)",
+        "byWeek": [
+          {
+            "week": "1-4",
+            "adjustment": "Negatives + transitions",
+            "targetReps": "5-8 negativas",
+            "notes": "Construir fuerza excéntrica"
+          },
+          {
+            "week": "5-8",
+            "adjustment": "Band-assisted MU",
+            "targetReps": "3-6 reps",
+            "notes": "Practicar movimiento completo"
+          },
+          {
+            "week": "9-12",
+            "adjustment": "Strict MU",
+            "targetReps": "1-5 reps",
+            "notes": "Hacia múltiples reps"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Ring Muscle-ups",
+          "difficulty": "EASIER",
+          "equipment": [
+            "Gymnastics Rings"
+          ],
+          "when": "Transición más fácil"
+        },
+        {
+          "name": "L-sit Muscle-ups",
+          "difficulty": "ELITE",
+          "equipment": [
+            "Pull-up Bar"
+          ],
+          "when": "Core work extremo"
+        }
+      ],
+      "primaryGoal": "STRENGTH",
+      "breathing": {
+        "pattern": "Inhalar preparando, Exhalar explosivo en pull, Inhalar en transición, Exhalar en press",
+        "tips": [
+          "Mantén ritmo constante",
+          "No contengas la respiración",
+          "Exhalar en esfuerzo, inhalar en recuperación"
+        ]
+      }
+    },
+    {
+      "id": "full-planche",
+      "name": "Full Planche",
+      "category": "SKILL_STATIC",
+      "difficulty": "ELITE",
+      "targetMuscles": [
+        "Anterior Deltoids",
+        "Pectorals",
+        "Triceps",
+        "Core",
+        "Scapular Stabilizers"
+      ],
+      "equipment": [
+        "Floor",
+        "Parallettes"
+      ],
+      "primaryGoal": "MASTERY",
+      "form": {
+        "setup": [
+          "Comenzar en plank con manos al nivel de la cadera",
+          "Dedos apuntando hacia atrás o ligeramente hacia afuera",
+          "Escápulas completamente protraídas",
+          "Core y glutes extremadamente tensos"
+        ],
+        "execution": [
+          "Lean forward masivo hasta que los hombros pasen las manos",
+          "Elevar los pies del suelo manteniendo cuerpo completamente horizontal",
+          "Mantener brazos completamente rectos (180°)",
+          "Cuerpo paralelo al suelo, línea perfecta de cabeza a talones",
+          "Sostener la posición con control total"
+        ]
+      },
+      "breathing": {
+        "pattern": "Respiración superficial y controlada durante el hold",
+        "tips": [
+          "No contener la respiración completamente",
+          "Respiraciones cortas por la nariz",
+          "Mantener tensión abdominal constante"
+        ]
+      },
+      "commonMistakes": [
+        "Caderas por encima de la línea horizontal",
+        "Brazos no completamente rectos",
+        "Falta de protracción escapular",
+        "Cabeza demasiado elevada",
+        "Dedos apuntando hacia adelante (menos leverage)"
+      ],
+      "coachTips": [
+        "Requisitos: Dominar Advanced Tuck Planche por 15+ segundos",
+        "Progresión: Tuck → Adv Tuck → Straddle → Half Lay → Full",
+        "Puede tomar 2-4 años de entrenamiento dedicado",
+        "Usar parallettes reduce stress en muñecas",
+        "La fuerza de lean es crucial, practicar planche leans constantemente"
+      ],
+      "progression": {
+        "easier": "Straddle Planche",
+        "harder": "Maltese",
+        "byWeek": [
+          {
+            "week": "1-8",
+            "adjustment": "Straddle Planche holds",
+            "targetReps": "10-15s holds",
+            "notes": "Construir fuerza base en posición más abierta"
+          },
+          {
+            "week": "9-16",
+            "adjustment": "Half Lay Planche",
+            "targetReps": "8-12s holds",
+            "notes": "Acercar las piernas gradualmente"
+          },
+          {
+            "week": "17-24",
+            "adjustment": "Full Planche attempts",
+            "targetReps": "3-8s holds",
+            "notes": "Construir hacia 10+ segundos"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Planche on Parallettes",
+          "difficulty": "EASIER",
+          "equipment": [
+            "Parallettes"
+          ],
+          "when": "Menos stress en muñecas"
+        },
+        {
+          "name": "Ring Planche",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Gymnastics Rings"
+          ],
+          "when": "Inestabilidad extrema"
+        }
+      ]
+    },
+    {
+      "id": "one-arm-pullups",
+      "name": "One-Arm Pull-ups",
+      "category": "PULL",
+      "difficulty": "ELITE",
+      "targetMuscles": [
+        "Lats",
+        "Biceps",
+        "Forearms",
+        "Core",
+        "Grip Strength"
+      ],
+      "equipment": [
+        "Pull-up Bar"
+      ],
+      "primaryGoal": "STRENGTH",
+      "form": {
+        "setup": [
+          "Colgar de la barra con una mano, agarre pronado o supino",
+          "Brazo libre puede estar detrás de la espalda o extendido al lado",
+          "Core tenso para prevenir rotación excesiva del torso",
+          "Escápula del brazo trabajando deprimida y activa"
+        ],
+        "execution": [
+          "Pull explosivo pero controlado hacia arriba",
+          "Llevar barbilla sobre la barra",
+          "Mantener codo cerca del cuerpo",
+          "Permitir ligera rotación del torso (natural)",
+          "Descenso controlado de 3-5 segundos"
+        ]
+      },
+      "breathing": {
+        "pattern": "Exhalar en el pull, inhalar en el descenso",
+        "tips": [
+          "Breath of fire antes del set para activación",
+          "Exhalar explosivamente en la fase concéntrica",
+          "Control respiratorio en negativa"
+        ]
+      },
+      "commonMistakes": [
+        "Usar momentum excesivo (kipping)",
+        "No alcanzar rango completo (chin over bar)",
+        "Falta de control en el descenso",
+        "Rotación excesiva del torso",
+        "Grip demasiado tenso causando fatiga prematura"
+      ],
+      "coachTips": [
+        "Requisitos: 20+ strict pull-ups, 8+ weighted pull-ups (+20kg)",
+        "Progresión: Archer → Assisted OAP → Negatives → Full OAP",
+        "Entrenar ambos brazos equitativamente",
+        "Las negativas son clave para desarrollar fuerza",
+        "Agarre supino es ligeramente más fácil que pronado"
+      ],
+      "progression": {
+        "easier": "One-Arm Pull-up Negatives",
+        "harder": "Typewriter Pull-ups (alternating)",
+        "byWeek": [
+          {
+            "week": "1-6",
+            "adjustment": "OAP Negatives",
+            "targetReps": "3-5 reps (5s descenso)",
+            "notes": "Construir fuerza excéntrica"
+          },
+          {
+            "week": "7-12",
+            "adjustment": "Band-assisted OAP",
+            "targetReps": "2-4 reps",
+            "notes": "Reducir asistencia gradualmente"
+          },
+          {
+            "week": "13-20",
+            "adjustment": "Full OAP attempts",
+            "targetReps": "1-3 reps",
+            "notes": "Hacia múltiples reps limpios"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Supinated OAP",
+          "difficulty": "EASIER",
+          "equipment": [
+            "Pull-up Bar"
+          ],
+          "when": "Más activación de bíceps"
+        },
+        {
+          "name": "Pronated OAP",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Pull-up Bar"
+          ],
+          "when": "Mayor énfasis en lats"
+        }
+      ]
+    },
+    {
+      "id": "maltese",
+      "name": "Maltese",
+      "category": "SKILL_STATIC",
+      "difficulty": "ELITE",
+      "targetMuscles": [
+        "Pectorals",
+        "Anterior Deltoids",
+        "Biceps",
+        "Core",
+        "Scapular Stabilizers"
+      ],
+      "equipment": [
+        "Gymnastics Rings"
+      ],
+      "primaryGoal": "MASTERY",
+      "form": {
+        "setup": [
+          "Comenzar en support hold en anillas",
+          "Anillas giradas hacia afuera (RTO - rings turned out)",
+          "Core completamente tenso, cuerpo recto",
+          "Hombros deprimidos y estables"
+        ],
+        "execution": [
+          "Abrir brazos hacia los lados manteniendo codos rectos",
+          "Cuerpo horizontal, brazos perpendiculares al torso",
+          "Mantener brazos completamente extendidos (crucifijo)",
+          "Control total de las anillas, sin bamboleo",
+          "Sostener la posición con máxima tensión corporal"
+        ]
+      },
+      "breathing": {
+        "pattern": "Respiración mínima y controlada durante el hold",
+        "tips": [
+          "Respiraciones muy superficiales",
+          "No expandir el pecho completamente",
+          "Mantener presión intra-abdominal constante"
+        ]
+      },
+      "commonMistakes": [
+        "Codos flexionados (no es Maltese válido)",
+        "Caderas bajas o altas (no horizontal)",
+        "Anillas bamboleando sin control",
+        "Falta de RTO (rings turned out)",
+        "Intentar sin la fuerza base necesaria (alto riesgo de lesión)"
+      ],
+      "coachTips": [
+        "Requisitos: Full Planche sólido, Iron Cross con control",
+        "Progresión: Iron Cross → Maltese Cross → Full Maltese",
+        "Uno de los skills más difíciles en calistenia",
+        "Riesgo muy alto de lesión en hombros y codos",
+        "Entrenamiento de años (3-5+) necesario",
+        "Consultar con coach experimentado antes de intentar"
+      ],
+      "progression": {
+        "easier": "Iron Cross",
+        "harder": "Victorian",
+        "byWeek": [
+          {
+            "week": "1-12",
+            "adjustment": "Iron Cross mastery",
+            "targetReps": "8-12s holds",
+            "notes": "Perfeccionar prerequisito"
+          },
+          {
+            "week": "13-24",
+            "adjustment": "Maltese leans + band assists",
+            "targetReps": "5-10s assisted",
+            "notes": "Acondicionar tendones y ligamentos"
+          },
+          {
+            "week": "25-40",
+            "adjustment": "Maltese attempts",
+            "targetReps": "2-6s holds",
+            "notes": "Progresión muy gradual"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Straddled Maltese",
+          "difficulty": "EASIER",
+          "equipment": [
+            "Gymnastics Rings"
+          ],
+          "when": "Piernas abiertas reduce leverage"
+        },
+        {
+          "name": "Rings Turned In Maltese",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Gymnastics Rings"
+          ],
+          "when": "Mayor dificultad técnica"
+        }
+      ]
+    },
+    {
+      "id": "human-flag",
+      "name": "Human Flag",
+      "category": "SKILL_STATIC",
+      "difficulty": "ELITE",
+      "targetMuscles": [
+        "Obliques",
+        "Lats",
+        "Shoulders",
+        "Core",
+        "Hip Abductors"
+      ],
+      "equipment": [
+        "Vertical Pole"
+      ],
+      "primaryGoal": "MASTERY",
+      "form": {
+        "setup": [
+          "Agarrar poste vertical con manos en grip mixto",
+          "Mano superior empuja, mano inferior tira",
+          "Manos separadas 60-100cm dependiendo de altura",
+          "Saltar y posicionarse perpendicular al poste"
+        ],
+        "execution": [
+          "Cuerpo completamente horizontal, perpendicular al suelo",
+          "Mano superior empuja con fuerza contra el poste",
+          "Mano inferior tira activamente hacia abajo",
+          "Core extremadamente tenso, cuerpo recto como tabla",
+          "Mantener línea recta de cabeza a pies"
+        ]
+      },
+      "breathing": {
+        "pattern": "Respiración mínima durante el hold",
+        "tips": [
+          "Breath hold parcial durante 3-8 segundos",
+          "Respiraciones pequeñas si hold es más largo",
+          "No perder tensión al respirar"
+        ]
+      },
+      "commonMistakes": [
+        "Caderas caídas (no horizontal)",
+        "Piernas flexionadas en lugar de rectas",
+        "Falta de empuje con brazo superior",
+        "Grip demasiado estrecho o amplio",
+        "No activar obliques del lado inferior"
+      ],
+      "coachTips": [
+        "Requisitos: Dominar Dragon Flags, Side Lever sólido",
+        "Progresión: Tuck Flag → One Leg → Straddle → Full Flag",
+        "Encontrar el grip width ideal es crucial",
+        "Practicar negativas ayuda enormemente",
+        "El poste debe ser de diámetro adecuado (5-8cm)"
+      ],
+      "progression": {
+        "easier": "Straddle Human Flag",
+        "harder": "No-Hands Flag (imposible para 99.9%)",
+        "byWeek": [
+          {
+            "week": "1-6",
+            "adjustment": "Tuck Human Flag",
+            "targetReps": "8-12s holds",
+            "notes": "Desarrollar patrón motor"
+          },
+          {
+            "week": "7-14",
+            "adjustment": "One-leg extended",
+            "targetReps": "6-10s holds",
+            "notes": "Aumentar leverage gradualmente"
+          },
+          {
+            "week": "15-24",
+            "adjustment": "Full Human Flag",
+            "targetReps": "3-8s holds",
+            "notes": "Construir hacia 10+ segundos"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Vertical Flag (on pole)",
+          "difficulty": "EASIER",
+          "equipment": [
+            "Vertical Pole"
+          ],
+          "when": "Cuerpo más vertical, menos leverage"
+        },
+        {
+          "name": "Dragon Flag to Human Flag transition",
+          "difficulty": "ELITE",
+          "equipment": [
+            "Vertical Pole",
+            "Horizontal Bar"
+          ],
+          "when": "Combinación extrema"
+        }
+      ]
+    },
+    {
+      "id": "iron-cross",
+      "name": "Iron Cross",
+      "category": "SKILL_STATIC",
+      "difficulty": "ELITE",
+      "targetMuscles": [
+        "Pectorals",
+        "Anterior Deltoids",
+        "Biceps",
+        "Lats",
+        "Core"
+      ],
+      "equipment": [
+        "Gymnastics Rings"
+      ],
+      "primaryGoal": "MASTERY",
+      "form": {
+        "setup": [
+          "Comenzar en support hold en anillas",
+          "Anillas giradas hacia afuera (RTO)",
+          "Core tenso, cuerpo completamente vertical",
+          "Hombros estables y deprimidos"
+        ],
+        "execution": [
+          "Abrir brazos hacia los lados como crucifijo",
+          "Brazos completamente extendidos, paralelos al suelo",
+          "Cuerpo vertical, sin inclinación adelante/atrás",
+          "Mantener tensión extrema en pecho y hombros",
+          "Sostener posición con control total de anillas"
+        ]
+      },
+      "breathing": {
+        "pattern": "Respiración controlada y superficial",
+        "tips": [
+          "No respiraciones profundas durante hold",
+          "Mantener presión intra-torácica",
+          "Exhalar ligeramente al entrar en posición"
+        ]
+      },
+      "commonMistakes": [
+        "Brazos no completamente extendidos",
+        "Cuerpo inclinado hacia adelante o atrás",
+        "Anillas bamboleando (falta de control)",
+        "Codos hiperextendidos (riesgo de lesión)",
+        "Falta de RTO (rings turned out)"
+      ],
+      "coachTips": [
+        "Requisitos: Full Planche mastery, ring training extenso",
+        "Progresión: Support Hold → Ice Cream Maker → Cross Pulls → Iron Cross",
+        "Alto riesgo de lesión en tendones, progresión lenta crucial",
+        "Skill clásico de gimnasia olímpica",
+        "Puede tomar 2-4 años de entrenamiento específico",
+        "Trabajar con coach experimentado es altamente recomendado"
+      ],
+      "progression": {
+        "easier": "Band-Assisted Iron Cross",
+        "harder": "Maltese",
+        "byWeek": [
+          {
+            "week": "1-8",
+            "adjustment": "Cross Pulls + Supports",
+            "targetReps": "5-10 pulls, 20s+ supports",
+            "notes": "Preparar tendones y músculos"
+          },
+          {
+            "week": "9-20",
+            "adjustment": "Band-assisted Cross",
+            "targetReps": "6-10s holds",
+            "notes": "Reducir asistencia gradualmente"
+          },
+          {
+            "week": "21-36",
+            "adjustment": "Full Iron Cross",
+            "targetReps": "3-8s holds",
+            "notes": "Hacia 10+ segundos sólidos"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Low Iron Cross",
+          "difficulty": "EASIER",
+          "equipment": [
+            "Gymnastics Rings"
+          ],
+          "when": "Brazos ligeramente más bajos que horizontal"
+        },
+        {
+          "name": "Inverted Cross",
+          "difficulty": "ELITE",
+          "equipment": [
+            "Gymnastics Rings"
+          ],
+          "when": "Cruz invertida (extremadamente difícil)"
+        }
+      ]
+    },
+    {
+      "id": "freestanding-hspu",
+      "name": "Freestanding Handstand Push-ups",
+      "category": "PUSH",
+      "difficulty": "ELITE",
+      "targetMuscles": [
+        "Anterior Deltoids",
+        "Triceps",
+        "Upper Chest",
+        "Core",
+        "Stabilizers"
+      ],
+      "equipment": [
+        "Floor"
+      ],
+      "primaryGoal": "MASTERY",
+      "form": {
+        "setup": [
+          "Kick up a handstand freestanding (sin pared)",
+          "Manos al ancho de hombros o ligeramente más amplio",
+          "Dedos apuntando hacia adelante, ligeramente abiertos",
+          "Cuerpo completamente vertical y estable",
+          "Mirada entre las manos para balance"
+        ],
+        "execution": [
+          "Descender controladamente, codos ~45° del torso",
+          "Bajar hasta que cabeza toque suelo o cerca",
+          "Empujar explosivamente de vuelta a handstand",
+          "Mantener balance durante todo el movimiento",
+          "Control total en excéntrico y concéntrico"
+        ]
+      },
+      "breathing": {
+        "pattern": "Inhalar en descenso, exhalar en push",
+        "tips": [
+          "Respiración rítmica para mantener balance",
+          "No contener respiración por mucho tiempo",
+          "Exhalar explosivamente en el push"
+        ]
+      },
+      "commonMistakes": [
+        "Perder balance y caer durante el rep",
+        "No alcanzar profundidad completa (cabeza al suelo)",
+        "Arqueamiento excesivo de espalda",
+        "Codos flaring out demasiado (>60°)",
+        "Falta de control en el descenso (caída libre)"
+      ],
+      "coachTips": [
+        "Requisitos: Handstand freestanding 60s+, Wall HSPU 15+ reps",
+        "Progresión: Wall HSPU → Chest-to-wall → Partial ROM free → Full ROM",
+        "El balance es tan importante como la fuerza",
+        "Practicar freestanding handstand diariamente",
+        "Usar parallettes reduce ROM pero facilita el aprendizaje"
+      ],
+      "progression": {
+        "easier": "Wall Handstand Push-ups (chest-to-wall)",
+        "harder": "90° Push-ups (stalder press)",
+        "byWeek": [
+          {
+            "week": "1-8",
+            "adjustment": "Freestanding HS mastery",
+            "targetReps": "60-90s holds",
+            "notes": "Perfeccionar balance antes de HSPU"
+          },
+          {
+            "week": "9-16",
+            "adjustment": "Partial ROM free HSPU",
+            "targetReps": "5-10 reps",
+            "notes": "Aumentar ROM gradualmente"
+          },
+          {
+            "week": "17-28",
+            "adjustment": "Full ROM free HSPU",
+            "targetReps": "3-8 reps",
+            "notes": "Construir hacia 10+ reps"
+          }
+        ]
+      },
+      "variants": [
+        {
+          "name": "Paralettes Freestanding HSPU",
+          "difficulty": "EASIER",
+          "equipment": [
+            "Parallettes"
+          ],
+          "when": "Mayor ROM pero más fácil de balancear"
+        },
+        {
+          "name": "Deficit Freestanding HSPU",
+          "difficulty": "HARDER",
+          "equipment": [
+            "Yoga Blocks",
+            "Parallettes"
+          ],
+          "when": "Mayor ROM, extremadamente difícil"
+        }
+      ]
+    }
+  ]
+}

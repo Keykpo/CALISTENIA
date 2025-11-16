@@ -20,6 +20,9 @@ export interface AssessmentStep1Data {
   weight: number; // kg
   gender: 'male' | 'female' | 'other' | 'prefer_not_to_say';
   goals: string[]; // Up to 3 primary goals
+  // 🆕 NEW: Training frequency and experience
+  trainingFrequency: 3 | 4 | 5 | 6 | 7; // Days per week
+  trainingExperience: '0-3months' | '3-6months' | '6-12months' | '1-2years' | '2-3years' | '3-5years' | '5+years';
 }
 
 export interface AssessmentStep2Data {
@@ -640,6 +643,61 @@ export function getVisualRank(visualValue: number): string {
 }
 
 // ==========================================
+// TRAINING EXPERIENCE ADJUSTMENT
+// ==========================================
+
+/**
+ * Convert training experience string to months
+ */
+function parseExperienceToMonths(experience: AssessmentStep1Data['trainingExperience']): number {
+  const mapping: Record<typeof experience, number> = {
+    '0-3months': 1.5,
+    '3-6months': 4.5,
+    '6-12months': 9,
+    '1-2years': 18,
+    '2-3years': 30,
+    '3-5years': 48,
+    '5+years': 72,
+  };
+  return mapping[experience];
+}
+
+/**
+ * Adjust sublevel based on training experience
+ *
+ * Logic: If someone has been training for a long time but has low metrics,
+ * they likely have better technique/consistency than a true beginner.
+ * Give them a small boost.
+ */
+function adjustLevelByExperience(
+  baseLevel: DifficultyLevel,
+  trainingExperience: AssessmentStep1Data['trainingExperience']
+): DifficultyLevel {
+  const experienceMonths = parseExperienceToMonths(trainingExperience);
+
+  // If beginner level (D) but training for 1+ year → boost to D+ or C-
+  if (baseLevel === 'D' && experienceMonths >= 12) {
+    console.log('[ASSESSMENT] Experience adjustment: D → C (1+ year experience)');
+    return 'C'; // Boost from D to C
+  }
+
+  // If D-level but training for 6+ months → boost one sublevel
+  if (baseLevel === 'D' && experienceMonths >= 6) {
+    console.log('[ASSESSMENT] Experience adjustment: keeping D (6+ months experience)');
+    return 'D'; // Keep at D (assume they're working on technique)
+  }
+
+  // If C-level but training for 2+ years → boost to B
+  if (baseLevel === 'C' && experienceMonths >= 24) {
+    console.log('[ASSESSMENT] Experience adjustment: C → B (2+ years experience)');
+    return 'B';
+  }
+
+  // Otherwise no adjustment needed
+  return baseLevel;
+}
+
+// ==========================================
 // MAIN ASSESSMENT PROCESSOR
 // ==========================================
 
@@ -653,7 +711,10 @@ export function processAssessment(
   step4?: AssessmentStep4Data
 ): AssessmentResult {
   // Calculate base level from fundamentals
-  const baseLevel = calculateBaseLevelFromStep3(step3);
+  let baseLevel = calculateBaseLevelFromStep3(step3);
+
+  // 🆕 Adjust based on training experience
+  baseLevel = adjustLevelByExperience(baseLevel, step1.trainingExperience);
 
   // Upgrade level if advanced skills are present
   const finalLevel = step4

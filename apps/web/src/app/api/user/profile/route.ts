@@ -39,7 +39,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Fetch user profile with hexagon profile
+    // Fetch user profile with hexagon profile and training metrics
     const user = await prisma.user.findUnique({
       where: { id: userId },
       select: {
@@ -51,6 +51,12 @@ export async function GET(request: NextRequest) {
         fitnessLevel: true,
         hasCompletedAssessment: true,
         assessmentDate: true,
+        // Training sublevel and metrics (for goal inference)
+        trainingSubLevel: true,
+        pullUpsMax: true,
+        dipsMax: true,
+        weightedPullUps: true,
+        weightedDips: true,
         hexagonProfile: {
           select: {
             // Visual values (0-10)

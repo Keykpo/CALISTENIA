@@ -7,12 +7,14 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { ExerciseTimer } from './ExerciseTimer';
 import { RewardNotification } from '@/components/rewards/RewardNotification';
-import { TrainingGoalsDialog, type TrainingGoal } from './TrainingGoalsDialog';
+import { TrainingGoalsDialog } from './TrainingGoalsDialog';
 import { WorkoutCompletionView } from './WorkoutCompletionView';
 import { DurationSelectorButton } from './DurationSelectorButton';
 import { ErrorDiagnostic } from './ErrorDiagnostic';
 import { ExerciseDetailCard } from './ExerciseDetailCard';
 import { findExercisesByNames, type ExerciseDetails } from '@/lib/exercise-database';
+import { inferGoalFromSubLevel, inferGoalFromMetrics } from '@/lib/infer-goal-from-sublevel';
+import { determineSubLevel, type SubLevel } from '@/lib/sublevel-system';
 import {
   Dumbbell,
   Flame,
@@ -118,6 +120,16 @@ export function WorkoutSessionTracker() {
 
   const checkTrainingGoals = async () => {
     try {
+      // 🆕 Load last duration from localStorage if available
+      if (typeof window !== 'undefined') {
+        const lastDuration = localStorage.getItem('lastWorkoutDuration');
+        if (lastDuration) {
+          const duration = parseInt(lastDuration);
+          setPreferredDuration(duration);
+          console.log('[WORKOUT] Loaded last duration from localStorage:', duration);
+        }
+      }
+
       // Check if user has training goals set
       const response = await fetch('/api/training/goals');
       const data = await response.json();
@@ -142,24 +154,74 @@ export function WorkoutSessionTracker() {
 
   const handleDurationChange = (newDuration: number) => {
     setPreferredDuration(newDuration);
+
+    // 🆕 Save new duration preference to localStorage
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('lastWorkoutDuration', newDuration.toString());
+      console.log('[WORKOUT] Updated preferred duration in localStorage:', newDuration);
+    }
+
     // Regenerate routine with new duration
     fetchDailyRoutine();
   };
 
-  const handleGoalsComplete = async (goal: TrainingGoal) => {
+  const handleGoalsComplete = async (duration: number) => {
     try {
+      // Fetch user data to infer goal from their current level
+      const userResponse = await fetch('/api/user/profile');
+      const userData = await userResponse.json();
+
+      console.log('[WORKOUT] User data for goal inference:', userData);
+
+      // Infer goal based on user's sublevel or metrics
+      let inferredGoal;
+
+      if (userData.user?.trainingSubLevel) {
+        // User has sublevel stored in DB - use it directly
+        inferredGoal = inferGoalFromSubLevel(userData.user.trainingSubLevel as SubLevel);
+        console.log('[WORKOUT] Inferred goal from sublevel:', userData.user.trainingSubLevel, inferredGoal);
+      } else if (userData.user?.pullUpsMax !== undefined && userData.user?.dipsMax !== undefined) {
+        // User has metrics - infer from metrics
+        inferredGoal = inferGoalFromMetrics(userData.user.pullUpsMax, userData.user.dipsMax);
+        console.log('[WORKOUT] Inferred goal from metrics:', { pullUps: userData.user.pullUpsMax, dips: userData.user.dipsMax }, inferredGoal);
+      } else {
+        // Fallback - assume beginner
+        inferredGoal = inferGoalFromSubLevel(null);
+        console.log('[WORKOUT] No user data - using beginner default:', inferredGoal);
+      }
+
+      // Create training goal with inferred values
+      const trainingGoal = {
+        primary: inferredGoal.goalType,
+        description: inferredGoal.description,
+        duration: duration,
+      };
+
+      console.log('[WORKOUT] Saving inferred training goal:', trainingGoal);
+
       // Save training goals
       await fetch('/api/training/goals', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(goal),
+        body: JSON.stringify(trainingGoal),
       });
 
       setHasSetGoals(true);
       setShowGoalsDialog(false);
+      setPreferredDuration(duration);
+
+      // 🆕 Save duration preference to localStorage for next time
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('lastWorkoutDuration', duration.toString());
+        console.log('[WORKOUT] Saved preferred duration to localStorage:', duration);
+      }
+
       fetchDailyRoutine();
     } catch (error) {
       console.error('Error saving goals:', error);
+      // Even if there's an error, close dialog and try to continue
+      setShowGoalsDialog(false);
+      fetchDailyRoutine();
     }
   };
 
@@ -770,7 +832,11 @@ export function WorkoutSessionTracker() {
   if (viewState === 'completed' && rewards) {
     return (
       <>
-        <TrainingGoalsDialog open={showGoalsDialog} onComplete={handleGoalsComplete} />
+        <TrainingGoalsDialog
+          open={showGoalsDialog}
+          onComplete={handleGoalsComplete}
+          defaultDuration={preferredDuration}
+        />
         <WorkoutCompletionView
           rewards={rewards}
           streakInfo={streakInfo}

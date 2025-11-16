@@ -57,6 +57,24 @@ model User {
   weightedDips    Float?  // Additional weight in kg for dips
   masteryGoals    String? // JSON array of MasteryGoal (PLANCHE, FRONT_LEVER, etc.)
 
+  // Phase 2: Sublevel System (15 granular levels)
+  trainingSubLevel String? // D_MINUS, D, D_PLUS, C_MINUS, C, C_PLUS, B_MINUS, B, B+, A-, A, A+, S-, S, S+
+
+  // Phase 2: Weekly Progression System
+  currentWeek      Int      @default(1) // Current week in program (for mesocycle tracking)
+  programStartDate DateTime? // When user started their current sublevel program
+
+  // Phase 2: Training Split Preference
+  preferredSplit   String?  // '3_DAY', '4_DAY', '5_DAY', '6_DAY'
+
+  // Phase 3: Unified Hexagon XP System (synced with sublevel)
+  hexagonStrengthXP      Int @default(0) // Strength axis XP
+  hexagonStaticHoldsXP   Int @default(0) // Static holds axis XP
+  hexagonBalanceXP       Int @default(0) // Balance axis XP
+  hexagonCoreXP          Int @default(0) // Core axis XP
+  hexagonEnduranceXP     Int @default(0) // Endurance axis XP
+  hexagonMobilityXP      Int @default(0) // Mobility axis XP
+
   // RPG System
   totalXP       Int @default(0) // Total experience points earned
   currentLevel  Int @default(1) // Overall user level

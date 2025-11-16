@@ -24,6 +24,47 @@ import {
   getProgressionForLevel,
 } from './fig-level-progressions';
 
+// Import detailed warmup and cooldown protocols
+import {
+  generateCompleteWarmup,
+  getWarmupLevelFromStage,
+  determineSessionType as determineWarmupSessionType,
+  getTotalWarmupDuration,
+} from './warmup-protocols';
+import type { SessionType as WarmupSessionType, CompleteWarmup } from '@/types/warmup';
+
+import {
+  getCooldownProtocol,
+  getTotalCooldownDuration,
+} from './cooldown-protocols';
+import type { CooldownProtocol } from '@/types/warmup';
+
+// Import sublevel system
+import {
+  determineSubLevel,
+  getStageFromSubLevel,
+  getSubLevelInfo,
+  type SubLevel,
+  type UserMetrics,
+} from './sublevel-system';
+
+// Import weekly progression system
+import {
+  getWeeklyProgression,
+  applyProgressionToExercise,
+  applyProgressionToRest,
+  type WeeklyProgressionPlan,
+} from './weekly-progression';
+
+// Import training splits
+import {
+  getRecommendedSplit,
+  TRAINING_SPLITS,
+  getTrainingDays,
+  type SplitOption,
+  type DaySchedule,
+} from './training-splits';
+
 // ==========================================
 // TYPES & INTERFACES
 // ==========================================
@@ -47,6 +88,13 @@ export interface RoutineConfig {
   pushUpsMax?: number;
   weightedPullUps?: number; // kg added
   weightedDips?: number; // kg added
+  bodyWeight?: number; // kg
+
+  // PHASE 2: Sublevel System
+  subLevel?: SubLevel; // Precise 15-level granularity
+  weekNumber?: number; // Current week in program (for progression)
+  programStartDate?: Date; // When user started current sublevel
+  preferredSplit?: SplitOption; // User's preferred training split
 
   // Weak points for personalization
   weakPoints?: {
@@ -66,6 +114,16 @@ export interface WorkoutRoutine {
   phases: SessionPhase[];
   totalMinutes: number;
   notes: string[];
+
+  // Detailed warmup and cooldown protocols
+  warmupProtocols?: CompleteWarmup;
+  cooldownProtocol?: CooldownProtocol;
+
+  // PHASE 2: Sublevel & Weekly Progression
+  subLevel?: SubLevel;
+  subLevelInfo?: string; // Display name
+  weeklyProgression?: WeeklyProgressionPlan;
+  weekDescription?: string; // User-friendly week description
 }
 
 export interface SessionPhase {
@@ -204,13 +262,66 @@ export function determineTrainingStage(config: RoutineConfig): TrainingStage {
 export class RoutineGeneratorV3 {
   private config: RoutineConfig;
   private exerciseDatabase: DatabaseExercise[];
+  private weeklyProgression?: WeeklyProgressionPlan;
 
   constructor(config: RoutineConfig, exerciseDatabase: DatabaseExercise[]) {
+    // Determine sublevel if not provided
+    let subLevel = config.subLevel;
+    if (!subLevel && config.pullUpsMax !== undefined) {
+      const metrics: UserMetrics = {
+        pullUpsMax: config.pullUpsMax || 0,
+        dipsMax: config.dipsMax || 0,
+        pushUpsMax: config.pushUpsMax || 0,
+        weightedPullUps: config.weightedPullUps || 0,
+        weightedDips: config.weightedDips || 0,
+        bodyWeight: config.bodyWeight || 75,
+      };
+      subLevel = determineSubLevel(metrics);
+    }
+
+    // Determine stage (use sublevel if available, otherwise old method)
+    const stage = subLevel ? getStageFromSubLevel(subLevel) : determineTrainingStage(config);
+
+    // Determine split if not provided
+    const preferredSplit = config.preferredSplit || (subLevel ? getRecommendedSplit(subLevel) : '3_DAY');
+
     this.config = {
       ...config,
-      stage: determineTrainingStage(config),
+      stage,
+      subLevel,
+      preferredSplit,
+      weekNumber: config.weekNumber || 1,
     };
+
     this.exerciseDatabase = exerciseDatabase;
+
+    // Initialize weekly progression if week number is available
+    if (this.config.subLevel && this.config.weekNumber) {
+      this.weeklyProgression = getWeeklyProgression(
+        this.config.subLevel,
+        this.config.weekNumber
+      );
+    }
+  }
+
+  /**
+   * Map V3 SessionType to Warmup SessionType
+   */
+  private mapToWarmupSessionType(sessionType: SessionType): WarmupSessionType {
+    switch (sessionType) {
+      case 'PUSH':
+      case 'SKILLS_PUSH':
+        return 'PUSH';
+      case 'PULL':
+      case 'SKILLS_PULL':
+        return 'PULL';
+      case 'LEGS':
+        return 'LEGS';
+      case 'FULL_BODY':
+        return 'FULL_BODY';
+      default:
+        return 'FULL_BODY';
+    }
   }
 
   /**
@@ -232,9 +343,16 @@ export class RoutineGeneratorV3 {
   }
 
   /**
-   * Get weekly split based on stage
+   * Get weekly split based on preferred split or stage
    */
   private getWeeklySplit(): (SessionType | 'REST')[] {
+    // Use preferred split from training-splits.ts if available
+    if (this.config.preferredSplit) {
+      const split = TRAINING_SPLITS[this.config.preferredSplit];
+      return split.schedule.map(day => day.sessionType);
+    }
+
+    // Fallback to old logic if no preferred split
     const daysPerWeek = this.config.daysPerWeek;
 
     // STAGE 1-2: Push/Pull/Legs split (Mode 2 only)
@@ -269,8 +387,14 @@ export class RoutineGeneratorV3 {
     const phases: SessionPhase[] = [];
     const notes: string[] = [];
 
+    // Generate detailed warmup and cooldown protocols
+    const warmupSessionType = this.mapToWarmupSessionType(sessionType);
+    const warmupLevel = getWarmupLevelFromStage(this.config.stage);
+    const warmupProtocols = generateCompleteWarmup(warmupSessionType, warmupLevel);
+    const cooldownProtocol = getCooldownProtocol(warmupSessionType);
+
     // PHASE 1: WARM-UP (Mandatory, specific to session type)
-    phases.push(this.createWarmUpPhase(sessionType));
+    phases.push(this.createWarmUpPhase(sessionType, warmupProtocols));
 
     // PHASE 2-5: Depends on stage
     if (this.config.stage === 'STAGE_4') {
@@ -288,9 +412,14 @@ export class RoutineGeneratorV3 {
     }
 
     // PHASE FINAL: COOL-DOWN
-    phases.push(this.createCoolDownPhase());
+    phases.push(this.createCoolDownPhase(sessionType, cooldownProtocol));
 
     const totalMinutes = phases.reduce((sum, phase) => sum + phase.duration, 0);
+
+    // Get sublevel info if available
+    const subLevelInfo = this.config.subLevel
+      ? getSubLevelInfo(this.config.subLevel)
+      : undefined;
 
     return {
       day: this.getDayName(dayIndex),
@@ -299,6 +428,15 @@ export class RoutineGeneratorV3 {
       phases,
       totalMinutes,
       notes,
+      warmupProtocols,
+      cooldownProtocol,
+      // PHASE 2: Sublevel & Progression info
+      subLevel: this.config.subLevel,
+      subLevelInfo: subLevelInfo?.displayName,
+      weeklyProgression: this.weeklyProgression,
+      weekDescription: this.weeklyProgression
+        ? `${this.weeklyProgression.expectedProgress} (Week ${this.weeklyProgression.weekNumber}, ${this.weeklyProgression.weekInCycle}/4 in cycle)`
+        : undefined,
     };
   }
 
@@ -308,123 +446,34 @@ export class RoutineGeneratorV3 {
 
   /**
    * PHASE 1: Warm-up (Specific to session type)
+   * Uses detailed protocols from RUTINAS_POR_NIVEL
    */
-  private createWarmUpPhase(sessionType: SessionType): SessionPhase {
+  private createWarmUpPhase(sessionType: SessionType, warmupProtocols: CompleteWarmup): SessionPhase {
     const exercises: RoutineExercise[] = [];
-    let purpose = '';
 
-    // WRIST WARM-UP (Mandatory before PUSH sessions)
-    if (sessionType === 'PUSH' || sessionType === 'SKILLS_PUSH') {
-      purpose = 'Wrist & Shoulder Preparation (CRITICAL for injury prevention)';
-
-      // Wrist mobility
-      exercises.push({
-        id: 'warmup-wrist-circles',
-        name: 'Wrist Circles',
-        category: 'WARM_UP',
-        difficulty: 'BEGINNER',
-        mode: 'MODE_2_STRENGTH',
-        sets: 2,
-        duration: 30,
-        rest: 15,
-        notes: 'Both directions, full range of motion',
-      });
-
-      exercises.push({
-        id: 'warmup-wrist-rocks',
-        name: 'Wrist Rocks (Palms Down)',
-        category: 'WARM_UP',
-        difficulty: 'BEGINNER',
-        mode: 'MODE_2_STRENGTH',
-        sets: 2,
-        duration: 30,
-        rest: 15,
-        notes: 'Lean back gently to stretch wrist',
-      });
-
-      // Shoulder mobility & scapular activation
-      exercises.push({
-        id: 'warmup-scapula-pushups',
-        name: 'Scapula Push-ups',
-        category: 'WARM_UP',
-        difficulty: 'BEGINNER',
-        mode: 'MODE_2_STRENGTH',
-        sets: 2,
-        reps: 10,
-        rest: 30,
-        notes: 'Protraction and retraction, keep arms straight',
-        coachTips: ['Focus on scapular movement, not arm bending', 'This activates serratus anterior'],
-      });
-    }
-
-    // SHOULDER WARM-UP (Mandatory before PULL sessions)
-    else if (sessionType === 'PULL' || sessionType === 'SKILLS_PULL') {
-      purpose = 'Shoulder & Scapula Preparation';
-
-      exercises.push({
-        id: 'warmup-arm-circles',
-        name: 'Arm Circles',
-        category: 'WARM_UP',
-        difficulty: 'BEGINNER',
-        mode: 'MODE_2_STRENGTH',
-        sets: 2,
-        duration: 30,
-        rest: 15,
-        notes: 'Forward and backward, gradually increasing range',
-      });
-
-      exercises.push({
-        id: 'warmup-scapula-pullups',
-        name: 'Scapula Pull-ups',
-        category: 'WARM_UP',
-        difficulty: 'BEGINNER',
-        mode: 'MODE_2_STRENGTH',
-        sets: 2,
-        reps: 8,
-        rest: 30,
-        notes: 'Depression and elevation, arms stay straight',
-        coachTips: ['Pull shoulder blades down, then release', 'This is the "active shoulder" position'],
-      });
-
-      exercises.push({
-        id: 'warmup-dead-hang',
-        name: 'Dead Hang',
-        category: 'WARM_UP',
-        difficulty: 'BEGINNER',
-        mode: 'MODE_2_STRENGTH',
-        sets: 1,
-        duration: 30,
-        rest: 30,
-        notes: 'Decompress spine, breathe deeply',
-      });
-    }
-
-    // GENERAL WARM-UP (Legs and Full Body)
-    else {
-      purpose = 'General Mobility & Activation';
-
-      const generalWarmup = this.exerciseDatabase.filter(
-        ex => ex.category === 'WARM_UP' && ex.difficulty === 'BEGINNER'
-      ).slice(0, 3);
-
-      generalWarmup.forEach(ex => {
+    // Convert warmup protocols to routine exercises
+    warmupProtocols.protocols.forEach((protocol) => {
+      protocol.exercises.forEach((warmupEx) => {
         exercises.push({
-          id: ex.id,
-          name: ex.name,
-          category: ex.category,
-          difficulty: ex.difficulty,
+          id: `warmup-${warmupEx.name.toLowerCase().replace(/\s+/g, '-')}`,
+          name: warmupEx.name,
+          category: 'WARM_UP',
+          difficulty: 'BEGINNER',
           mode: 'MODE_2_STRENGTH',
           sets: 1,
-          duration: 45,
-          rest: 15,
+          reps: typeof warmupEx.reps === 'number' ? warmupEx.reps : undefined,
+          duration: warmupEx.duration,
+          rest: 10,
+          notes: warmupEx.instructions.join(' • '),
+          coachTips: warmupEx.instructions,
         });
       });
-    }
+    });
 
     return {
-      name: 'Warm-Up',
-      purpose,
-      duration: 10,
+      name: 'Warm-Up (Detailed Protocol)',
+      purpose: `${warmupProtocols.protocols.map(p => p.name).join(' + ')} - CRITICAL for injury prevention`,
+      duration: warmupProtocols.totalDuration,
       exercises,
     };
   }
@@ -576,28 +625,33 @@ export class RoutineGeneratorV3 {
 
   /**
    * PHASE FINAL: Cool-down
+   * Uses detailed protocols from RUTINAS_POR_NIVEL
    */
-  private createCoolDownPhase(): SessionPhase {
-    const cooldownExercises = this.exerciseDatabase
-      .filter(ex => ex.category === 'FLEXIBILITY' || ex.category === 'COOL_DOWN')
-      .slice(0, 3);
+  private createCoolDownPhase(sessionType: SessionType, cooldownProtocol: CooldownProtocol): SessionPhase {
+    const exercises: RoutineExercise[] = [];
 
-    const exercises: RoutineExercise[] = cooldownExercises.map(ex => ({
-      id: ex.id,
-      name: ex.name,
-      category: ex.category,
-      difficulty: ex.difficulty,
-      mode: 'MODE_2_STRENGTH',
-      sets: 1,
-      duration: 30,
-      rest: 10,
-      notes: 'Hold and breathe deeply, static stretching',
-    }));
+    // Convert cooldown protocols to routine exercises
+    cooldownProtocol.phases.forEach((phase) => {
+      phase.exercises.forEach((cooldownEx) => {
+        exercises.push({
+          id: `cooldown-${cooldownEx.name.toLowerCase().replace(/\s+/g, '-')}`,
+          name: cooldownEx.name,
+          category: 'COOL_DOWN',
+          difficulty: 'BEGINNER',
+          mode: 'MODE_2_STRENGTH',
+          sets: 1,
+          duration: cooldownEx.duration,
+          rest: 5,
+          notes: `${cooldownEx.instructions.join(' • ')} | Targets: ${cooldownEx.targetMuscles.join(', ')}`,
+          coachTips: cooldownEx.instructions,
+        });
+      });
+    });
 
     return {
-      name: 'Cool-Down & Flexibility',
-      purpose: 'Recovery and flexibility work',
-      duration: 5,
+      name: 'Cool-Down (Detailed Protocol)',
+      purpose: 'Recovery, flexibility, and transition from training state',
+      duration: cooldownProtocol.totalDuration,
       exercises,
     };
   }
@@ -831,10 +885,29 @@ export class RoutineGeneratorV3 {
    * Map database exercise to routine exercise
    */
   private mapToRoutineExercise(dbEx: DatabaseExercise, mode: TrainingMode): RoutineExercise {
-    const sets = this.getSetsForMode(mode, dbEx.difficulty);
-    const reps = dbEx.unit === 'reps' ? this.getRepsForMode(mode, dbEx.difficulty) : undefined;
-    const duration = dbEx.unit === 'seconds' ? this.getDurationForMode(mode, dbEx.difficulty) : undefined;
-    const rest = this.getRestForMode(mode, dbEx.difficulty);
+    const baseSets = this.getSetsForMode(mode, dbEx.difficulty);
+    const baseReps = dbEx.unit === 'reps' ? this.getRepsForMode(mode, dbEx.difficulty) : undefined;
+    const baseDuration = dbEx.unit === 'seconds' ? this.getDurationForMode(mode, dbEx.difficulty) : undefined;
+    const baseRest = this.getRestForMode(mode, dbEx.difficulty);
+
+    // Apply weekly progression if available
+    let sets = baseSets;
+    let reps = baseReps;
+    let duration = baseDuration;
+    let rest = baseRest;
+
+    if (this.weeklyProgression) {
+      const adjusted = applyProgressionToExercise(
+        baseSets,
+        baseReps,
+        baseDuration,
+        this.weeklyProgression
+      );
+      sets = adjusted.sets;
+      reps = adjusted.reps;
+      duration = adjusted.duration;
+      rest = applyProgressionToRest(baseRest, this.weeklyProgression);
+    }
 
     return {
       id: dbEx.id,

@@ -16,6 +16,9 @@ import {
   calculateUnifiedOverallLevel,
 } from '@/lib/unified-hexagon-system';
 import { mapAssessmentToFigBranches } from '@/lib/assessment-to-fig-mapping';
+// 🆕 UNIFIED HEXAGON SYSTEM
+import { calculateSubLevelFromMetrics, syncHexagonWithSubLevel, sanitizeMetrics } from '@/lib/hexagon-unified';
+import { sublevelToMinXP, sublevelToTier, type SubLevel } from '@/lib/sublevel-to-xp';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -81,6 +84,9 @@ const Step1Schema = z.object({
   weight: z.number().min(30).max(200),
   gender: z.enum(['male', 'female', 'other', 'prefer_not_to_say']),
   goals: z.array(z.string()).min(1).max(3),
+  // 🆕 NEW: Training frequency and experience
+  trainingFrequency: z.number().min(3).max(7),
+  trainingExperience: z.enum(['0-3months', '3-6months', '6-12months', '1-2years', '2-3years', '3-5years', '5+years']),
 });
 
 const Step2Schema = z.object({
@@ -433,6 +439,51 @@ export async function POST(req: NextRequest) {
       weightedDips: weightedDipsKg,
     });
 
+    // 🆕 UNIFIED HEXAGON SYSTEM: Calculate sublevel and sync hexagon XP
+    console.log('[D-S_ASSESSMENT] Calculating unified sublevel from metrics...');
+
+    const performanceMetrics = sanitizeMetrics({
+      pullUpsMax,
+      dipsMax,
+      pushUpsMax,
+      weightedPullUps: weightedPullUpsKg,
+      weightedDips: weightedDipsKg,
+      squatsMax: step3.squats,
+      plankSeconds: step3.plankTime,
+    });
+
+    const trainingSubLevel = calculateSubLevelFromMetrics(performanceMetrics);
+    const unifiedHexagonXP = syncHexagonWithSubLevel(trainingSubLevel, performanceMetrics);
+    const hexagonTier = sublevelToTier(trainingSubLevel);
+
+    console.log('[D-S_ASSESSMENT] Unified system calculated:', {
+      trainingSubLevel,
+      hexagonTier,
+      strengthXP: unifiedHexagonXP.strength,
+      staticHoldsXP: unifiedHexagonXP.staticHolds,
+      balanceXP: unifiedHexagonXP.balance,
+      coreXP: unifiedHexagonXP.core,
+      enduranceXP: unifiedHexagonXP.endurance,
+      mobilityXP: unifiedHexagonXP.mobility,
+    });
+
+    // 🆕 Map training frequency to preferredSplit
+    const frequencyToSplit: Record<number, string> = {
+      3: '3_DAY',
+      4: '4_DAY',
+      5: '5_DAY',
+      6: '6_DAY',
+      7: '6_DAY', // 7 days maps to 6-day split (1 rest day)
+    };
+
+    const preferredSplit = frequencyToSplit[step1.trainingFrequency] || '3_DAY';
+
+    console.log('[D-S_ASSESSMENT] Mapping training frequency to split:', {
+      trainingFrequency: step1.trainingFrequency,
+      preferredSplit,
+      trainingExperience: step1.trainingExperience,
+    });
+
     const updatedUser = await prisma.user.update({
       where: { id: userId },
       data: {
@@ -450,6 +501,19 @@ export async function POST(req: NextRequest) {
         weightedPullUps: weightedPullUpsKg,
         weightedDips: weightedDipsKg,
         masteryGoals: null, // User can set this later
+        // 🆕 TRAINING PREFERENCES: Store from assessment
+        preferredSplit,
+        // 🆕 UNIFIED HEXAGON SYSTEM: Store sublevel (single source of truth)
+        trainingSubLevel: trainingSubLevel as string,
+        // 🆕 UNIFIED HEXAGON XP: Synced with sublevel
+        hexagonStrengthXP: unifiedHexagonXP.strength,
+        hexagonStaticHoldsXP: unifiedHexagonXP.staticHolds,
+        hexagonBalanceXP: unifiedHexagonXP.balance,
+        hexagonCoreXP: unifiedHexagonXP.core,
+        hexagonEnduranceXP: unifiedHexagonXP.endurance,
+        hexagonMobilityXP: unifiedHexagonXP.mobility,
+        // TODO: Add trainingExperience field to schema if needed
+        // trainingExperience: step1.trainingExperience,
       },
     });
 
@@ -536,6 +600,17 @@ export async function POST(req: NextRequest) {
         weightedPullUps: weightedPullUpsKg,
         weightedDips: weightedDipsKg,
         trainingStage: determineTrainingStageFromMetrics(pullUpsMax, dipsMax, weightedPullUpsKg, weightedDipsKg),
+      },
+      // 🆕 UNIFIED HEXAGON SYSTEM: Return sublevel and tier
+      unifiedSystem: {
+        trainingSubLevel,
+        hexagonTier,
+        strengthXP: unifiedHexagonXP.strength,
+        staticHoldsXP: unifiedHexagonXP.staticHolds,
+        balanceXP: unifiedHexagonXP.balance,
+        coreXP: unifiedHexagonXP.core,
+        enduranceXP: unifiedHexagonXP.endurance,
+        mobilityXP: unifiedHexagonXP.mobility,
       },
       overallLevel,
       redirectTo: '/onboarding/results',
