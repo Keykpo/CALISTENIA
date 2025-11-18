@@ -471,3 +471,76 @@ export function useLeaderboard(type: 'global' | 'friends' = 'global') {
     fetchLeaderboard,
   };
 }
+
+// Hook for managing comments
+export function useComments(postId: string) {
+  const [comments, setComments] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  const fetchComments = useCallback(async () => {
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/social/posts/${postId}/comments`);
+      const data = await res.json();
+
+      if (data.success) {
+        setComments(data.comments);
+      }
+    } catch (err) {
+      console.error('Error fetching comments:', err);
+    } finally {
+      setLoading(false);
+    }
+  }, [postId]);
+
+  const addComment = useCallback(async (content: string, parentCommentId?: string) => {
+    try {
+      const res = await fetch(`/api/social/posts/${postId}/comments`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content, parentCommentId }),
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        fetchComments();
+        return { success: true, comment: data.comment };
+      }
+      return { success: false, error: data.error };
+    } catch (err) {
+      console.error('Error adding comment:', err);
+      return { success: false, error: 'Failed to add comment' };
+    }
+  }, [postId, fetchComments]);
+
+  const deleteComment = useCallback(async (commentId: string) => {
+    try {
+      const res = await fetch(`/api/social/posts/${postId}/comments/${commentId}`, {
+        method: 'DELETE',
+      });
+
+      if (res.ok) {
+        fetchComments();
+        return { success: true };
+      }
+      return { success: false };
+    } catch (err) {
+      console.error('Error deleting comment:', err);
+      return { success: false };
+    }
+  }, [postId, fetchComments]);
+
+  useEffect(() => {
+    if (postId) {
+      fetchComments();
+    }
+  }, [postId, fetchComments]);
+
+  return {
+    comments,
+    loading,
+    fetchComments,
+    addComment,
+    deleteComment,
+  };
+}

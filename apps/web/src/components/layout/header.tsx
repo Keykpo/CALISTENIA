@@ -16,10 +16,12 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@calisthenics/ui';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { getInitials } from '@calisthenics/utils';
+import NotificationDropdown from '@/components/social/NotificationDropdown';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard' },
   { name: 'Daily Workout', href: '/training/daily-workout' },
+  { name: 'Social', href: '/social' },
   { name: 'Activity', href: '/activity' },
   { name: 'Exercises', href: '/exercises' },
   { name: 'Ranking', href: '/ranking' },
@@ -60,7 +62,12 @@ export function Header() {
         {/* Right side */}
         <div className="ml-auto flex items-center space-x-4">
           <ThemeToggle />
-          
+
+          {/* Notifications - only show when logged in */}
+          {session?.user?.id && (
+            <NotificationDropdown userId={session.user.id as string} />
+          )}
+
           {status === 'loading' ? (
             <div className="h-8 w-8 animate-pulse rounded-full bg-muted" />
           ) : session ? (

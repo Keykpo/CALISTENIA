@@ -20,6 +20,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import CommentsList from './CommentsList';
 
 interface PostCardProps {
   post: {
@@ -58,6 +59,7 @@ export default function PostCard({
 }: PostCardProps) {
   const [isLiked, setIsLiked] = useState(post.isLiked || false);
   const [likesCount, setLikesCount] = useState(post.likesCount);
+  const [showComments, setShowComments] = useState(false);
 
   const isOwnPost = currentUserId === post.user.id;
   const displayName = post.user.firstName && post.user.lastName
@@ -72,6 +74,7 @@ export default function PostCard({
   };
 
   const handleComment = () => {
+    setShowComments(!showComments);
     onComment?.(post.id);
   };
 
@@ -181,7 +184,7 @@ export default function PostCard({
             variant="ghost"
             size="sm"
             onClick={handleComment}
-            className="flex-1 text-slate-600"
+            className={`flex-1 ${showComments ? 'text-blue-600' : 'text-slate-600'}`}
           >
             <MessageCircle className="h-5 w-5 mr-2" />
             Comment
@@ -196,6 +199,13 @@ export default function PostCard({
             Share
           </Button>
         </div>
+
+        {/* Comments Section */}
+        {showComments && (
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <CommentsList postId={post.id} currentUserId={currentUserId} />
+          </div>
+        )}
       </CardContent>
     </Card>
   );
