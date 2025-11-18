@@ -1,0 +1,628 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Calistenia App - Routines API",
+    "description": "Unified API for generating personalized calisthenics training routines (daily and weekly modes)",
+    "version": "2.0.0",
+    "contact": {
+      "name": "Calistenia Team"
+    }
+  },
+  "servers": [
+    {
+      "url": "/api",
+      "description": "API Base Path"
+    }
+  ],
+  "paths": {
+    "/routines/generate": {
+      "post": {
+        "summary": "Generate Training Routine (Unified)",
+        "description": "Generates a personalized training routine based on user stats, hexagon profile, and preferences. Supports both daily and weekly modes.",
+        "operationId": "generateRoutine",
+        "tags": ["Routines"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenerateRoutineRequest"
+              },
+              "examples": {
+                "daily": {
+                  "summary": "Generate Daily Routine",
+                  "value": {
+                    "mode": "daily",
+                    "duration": 45,
+                    "focusAreas": ["PUSH", "CORE"],
+                    "targetSkill": "FRONT_LEVER"
+                  }
+                },
+                "weekly": {
+                  "summary": "Generate Weekly Routine",
+                  "value": {
+                    "mode": "weekly",
+                    "duration": 60,
+                    "daysPerWeek": 4,
+                    "focusAreas": ["PUSH", "PULL", "LEGS"]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Routine generated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/DailyRoutineResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/WeeklyRoutineResponse"
+                    }
+                  ]
+                },
+                "examples": {
+                  "daily": {
+                    "summary": "Daily Routine Response",
+                    "value": {
+                      "success": true,
+                      "mode": "daily",
+                      "routine": {
+                        "id": "daily-user123-1705593600000",
+                        "date": "2025-01-18",
+                        "dayOfWeek": 3,
+                        "exercises": [],
+                        "totalDuration": 45,
+                        "difficulty": "INTERMEDIATE"
+                      },
+                      "metadata": {
+                        "stage": "STAGE_3",
+                        "userStats": {
+                          "pullUpsMax": 15,
+                          "dipsMax": 20,
+                          "bodyWeight": 75
+                        }
+                      }
+                    }
+                  },
+                  "weekly": {
+                    "summary": "Weekly Routine Response",
+                    "value": {
+                      "success": true,
+                      "mode": "weekly",
+                      "routine": {
+                        "id": "weekly-user123-1705593600000",
+                        "weekStartDate": "2025-01-13",
+                        "daysPerWeek": 4,
+                        "dailyRoutines": [],
+                        "stage": "STAGE_3",
+                        "difficulty": "INTERMEDIATE"
+                      },
+                      "metadata": {
+                        "stage": "STAGE_3"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body or validation error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "success": false,
+                  "error": "Invalid mode. Must be 'daily' or 'weekly'"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid authentication",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "success": false,
+                  "error": "Unauthorized"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "success": false,
+                  "error": "Failed to generate routine"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "sessionAuth": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "Get Latest Routine",
+        "description": "Retrieves the most recent routine for the authenticated user (daily or weekly based on user's last generation)",
+        "operationId": "getLatestRoutine",
+        "tags": ["Routines"],
+        "responses": {
+          "200": {
+            "description": "Latest routine retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/DailyRoutineResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/WeeklyRoutineResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No routine found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "success": false,
+                  "error": "No routine found for user"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        },
+        "security": [
+          {
+            "sessionAuth": []
+          }
+        ]
+      }
+    },
+    "/routines/generate-v3": {
+      "post": {
+        "summary": "Generate Weekly Routine (DEPRECATED)",
+        "description": "⚠️ DEPRECATED: This endpoint will be removed on 2025-03-01. Use /routines/generate with mode='weekly' instead.",
+        "operationId": "generateRoutineV3Deprecated",
+        "deprecated": true,
+        "tags": ["Routines (Deprecated)"],
+        "responses": {
+          "200": {
+            "description": "Routine generated (with deprecation warning)",
+            "headers": {
+              "X-Deprecated": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Indicates this endpoint is deprecated"
+              },
+              "X-Deprecated-Replacement": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Replacement endpoint to use"
+              },
+              "X-Deprecated-Removal-Date": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Date when this endpoint will be removed"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/training/generate-daily-routine": {
+      "post": {
+        "summary": "Generate Daily Routine (DEPRECATED)",
+        "description": "⚠️ DEPRECATED: This endpoint will be removed on 2025-03-01. Use /routines/generate with mode='daily' instead.",
+        "operationId": "generateDailyRoutineDeprecated",
+        "deprecated": true,
+        "tags": ["Routines (Deprecated)"],
+        "responses": {
+          "200": {
+            "description": "Routine generated (with deprecation warning)",
+            "headers": {
+              "X-Deprecated": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Indicates this endpoint is deprecated"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GenerateRoutineRequest": {
+        "type": "object",
+        "required": ["mode"],
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": ["daily", "weekly"],
+            "description": "Generation mode: 'daily' for single day routine, 'weekly' for full week plan"
+          },
+          "duration": {
+            "type": "integer",
+            "minimum": 15,
+            "maximum": 120,
+            "default": 45,
+            "description": "Target workout duration in minutes"
+          },
+          "focusAreas": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["PUSH", "PULL", "LEGS", "CORE", "SKILL_STATIC", "FLEXIBILITY", "CARDIO"]
+            },
+            "description": "Training focus areas for this routine"
+          },
+          "daysPerWeek": {
+            "type": "integer",
+            "minimum": 2,
+            "maximum": 6,
+            "default": 3,
+            "description": "Number of training days per week (only for weekly mode)"
+          },
+          "targetSkill": {
+            "type": "string",
+            "enum": [
+              "FRONT_LEVER",
+              "BACK_LEVER",
+              "PLANCHE",
+              "HANDSTAND",
+              "MUSCLE_UP",
+              "HUMAN_FLAG",
+              "FRONT_SPLIT",
+              "MIDDLE_SPLIT",
+              "PISTOL_SQUAT"
+            ],
+            "description": "Specific skill to prioritize in the routine"
+          },
+          "forceDay": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 6,
+            "description": "Force a specific day of week (0=Sunday, 6=Saturday). For testing/debugging only."
+          }
+        }
+      },
+      "DailyRoutineResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": true
+          },
+          "mode": {
+            "type": "string",
+            "enum": ["daily"],
+            "example": "daily"
+          },
+          "routine": {
+            "$ref": "#/components/schemas/DailyRoutine"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/RoutineMetadata"
+          }
+        }
+      },
+      "WeeklyRoutineResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": true
+          },
+          "mode": {
+            "type": "string",
+            "enum": ["weekly"],
+            "example": "weekly"
+          },
+          "routine": {
+            "$ref": "#/components/schemas/WeeklyRoutine"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/RoutineMetadata"
+          }
+        }
+      },
+      "DailyRoutine": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "daily-user123-1705593600000"
+          },
+          "userId": {
+            "type": "string",
+            "example": "user123"
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "example": "2025-01-18"
+          },
+          "dayOfWeek": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 6,
+            "description": "0=Sunday, 6=Saturday",
+            "example": 3
+          },
+          "sessionType": {
+            "type": "string",
+            "enum": ["PUSH", "PULL", "LEGS", "UPPER", "FULL_BODY", "SKILL"],
+            "example": "PUSH"
+          },
+          "exercises": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExerciseBlock"
+            }
+          },
+          "warmUp": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExerciseBlock"
+            }
+          },
+          "coolDown": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExerciseBlock"
+            }
+          },
+          "totalDuration": {
+            "type": "integer",
+            "description": "Total estimated duration in minutes",
+            "example": 45
+          },
+          "difficulty": {
+            "type": "string",
+            "enum": ["BEGINNER", "INTERMEDIATE", "ADVANCED", "ELITE"],
+            "example": "INTERMEDIATE"
+          },
+          "estimatedXP": {
+            "type": "integer",
+            "example": 450
+          },
+          "estimatedCoins": {
+            "type": "integer",
+            "example": 120
+          }
+        }
+      },
+      "WeeklyRoutine": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "weekly-user123-1705593600000"
+          },
+          "userId": {
+            "type": "string",
+            "example": "user123"
+          },
+          "weekStartDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2025-01-13"
+          },
+          "stage": {
+            "type": "string",
+            "enum": ["STAGE_1", "STAGE_2", "STAGE_3", "STAGE_4"],
+            "example": "STAGE_3"
+          },
+          "difficulty": {
+            "type": "string",
+            "enum": ["BEGINNER", "INTERMEDIATE", "ADVANCED", "ELITE"],
+            "example": "INTERMEDIATE"
+          },
+          "daysPerWeek": {
+            "type": "integer",
+            "example": 4
+          },
+          "dailyRoutines": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DailyRoutine"
+            }
+          },
+          "totalEstimatedXP": {
+            "type": "integer",
+            "example": 1800
+          },
+          "totalEstimatedCoins": {
+            "type": "integer",
+            "example": 480
+          },
+          "weeklyFocusAreas": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": ["PUSH", "PULL", "LEGS", "CORE"]
+          }
+        }
+      },
+      "ExerciseBlock": {
+        "type": "object",
+        "properties": {
+          "exerciseId": {
+            "type": "string",
+            "example": "push-ups-regular"
+          },
+          "exerciseName": {
+            "type": "string",
+            "example": "Push-Ups"
+          },
+          "category": {
+            "type": "string",
+            "example": "PUSH"
+          },
+          "sets": {
+            "type": "integer",
+            "example": 4
+          },
+          "reps": {
+            "type": "integer",
+            "example": 12
+          },
+          "duration": {
+            "type": "integer",
+            "description": "Duration in seconds (for timed exercises)",
+            "example": 30
+          },
+          "restSeconds": {
+            "type": "integer",
+            "example": 90
+          },
+          "notes": {
+            "type": "string",
+            "example": "Focus on full range of motion"
+          },
+          "difficulty": {
+            "type": "string",
+            "enum": ["BEGINNER", "INTERMEDIATE", "ADVANCED", "ELITE"],
+            "example": "INTERMEDIATE"
+          }
+        }
+      },
+      "RoutineMetadata": {
+        "type": "object",
+        "properties": {
+          "stage": {
+            "type": "string",
+            "enum": ["STAGE_1", "STAGE_2", "STAGE_3", "STAGE_4"],
+            "description": "User's calculated training stage",
+            "example": "STAGE_3"
+          },
+          "userStats": {
+            "type": "object",
+            "properties": {
+              "pullUpsMax": {
+                "type": "integer",
+                "example": 15
+              },
+              "dipsMax": {
+                "type": "integer",
+                "example": 20
+              },
+              "pushUpsMax": {
+                "type": "integer",
+                "example": 40
+              },
+              "bodyWeight": {
+                "type": "number",
+                "description": "Body weight in kg",
+                "example": 75
+              },
+              "weightedPullUps": {
+                "type": "number",
+                "description": "Additional weight in kg for pull-ups",
+                "example": 10
+              },
+              "weightedDips": {
+                "type": "number",
+                "description": "Additional weight in kg for dips",
+                "example": 15
+              }
+            }
+          },
+          "generatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-01-18T10:30:00Z"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": false
+          },
+          "error": {
+            "type": "string",
+            "example": "Invalid request"
+          },
+          "details": {
+            "type": "object",
+            "description": "Additional error details (optional)"
+          }
+        }
+      }
+    },
+    "responses": {
+      "UnauthorizedError": {
+        "description": "Unauthorized - Missing or invalid authentication",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "example": {
+              "success": false,
+              "error": "Unauthorized"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "sessionAuth": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "next-auth.session-token",
+        "description": "NextAuth.js session cookie authentication"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Routines",
+      "description": "Unified routine generation endpoints (current)"
+    },
+    {
+      "name": "Routines (Deprecated)",
+      "description": "Legacy endpoints - will be removed on 2025-03-01"
+    }
+  ]
+}

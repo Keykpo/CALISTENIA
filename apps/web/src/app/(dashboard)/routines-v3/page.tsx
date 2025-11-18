@@ -19,7 +19,8 @@ export default function RoutinesV3Page() {
       setLoading(true);
       setError(null);
 
-      const response = await fetch('/api/routines/generate-v3', {
+      // UPDATED: Using new unified endpoint
+      const response = await fetch('/api/routines/generate', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -32,8 +33,16 @@ export default function RoutinesV3Page() {
       }
 
       const data = await response.json();
-      setRoutines(data.routines);
-      setConfig(data.config);
+
+      // Handle both daily and weekly routines
+      if (data.mode === 'weekly') {
+        setRoutines(data.routine.dailyRoutines);
+        setConfig(data.metadata);
+      } else {
+        // If it's daily, wrap it in an array for consistency
+        setRoutines([data.routine]);
+        setConfig(data.metadata);
+      }
     } catch (err: any) {
       console.error('Error fetching routines:', err);
       setError(err.message || 'An error occurred');
@@ -47,14 +56,15 @@ export default function RoutinesV3Page() {
       setLoading(true);
       setError(null);
 
-      const response = await fetch('/api/routines/generate-v3', {
+      // UPDATED: Using new unified endpoint with mode=weekly
+      const response = await fetch('/api/routines/generate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          mode: 'weekly',
           daysPerWeek: 3,
-          minutesPerSession: 60,
         }),
       });
 
@@ -64,8 +74,12 @@ export default function RoutinesV3Page() {
       }
 
       const data = await response.json();
-      setRoutines(data.routines);
-      setConfig(data.config);
+
+      // Extract daily routines from weekly routine
+      if (data.routine.dailyRoutines) {
+        setRoutines(data.routine.dailyRoutines);
+      }
+      setConfig(data.metadata);
     } catch (err: any) {
       console.error('Error generating routines:', err);
       setError(err.message || 'An error occurred');

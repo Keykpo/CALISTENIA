@@ -40,6 +40,9 @@ async function getUserId(req: NextRequest) {
 /**
  * POST /api/routines/generate-v3
  *
+ * @deprecated This endpoint is deprecated and will be removed on 2025-03-01.
+ * Use /api/routines/generate with mode='weekly' instead.
+ *
  * Generates a weekly routine following the Calisthenics Progression Guide V3
  * Implements Mode 1 (skill with buffer) vs Mode 2 (strength to failure)
  *
@@ -57,6 +60,14 @@ async function getUserId(req: NextRequest) {
  * }
  */
 export async function POST(req: NextRequest) {
+  // DEPRECATION WARNING
+  console.warn('═══════════════════════════════════════════════════════════');
+  console.warn('⚠️  DEPRECATED ENDPOINT: /api/routines/generate-v3');
+  console.warn('📅 Will be removed: 2025-03-01');
+  console.warn('🔄 Use instead: /api/routines/generate');
+  console.warn('📖 Migration guide: ROUTINE_SYSTEM_UNIFIED.md');
+  console.warn('═══════════════════════════════════════════════════════════');
+
   try {
     const userId = await getUserId(req);
 
@@ -180,15 +191,29 @@ export async function POST(req: NextRequest) {
       daysPerWeek,
     });
 
-    return NextResponse.json({
-      success: true,
-      routines,
-      config: {
-        stage: config.stage,
-        level: fitnessLevel,
-        masteryGoals: userMasteryGoals,
+    return NextResponse.json(
+      {
+        success: true,
+        routines,
+        config: {
+          stage: config.stage,
+          level: fitnessLevel,
+          masteryGoals: userMasteryGoals,
+        },
+        _deprecated: {
+          message: 'This endpoint is deprecated. Use /api/routines/generate with mode=weekly instead.',
+          removalDate: '2025-03-01',
+          migrationGuide: 'ROUTINE_SYSTEM_UNIFIED.md',
+        },
       },
-    });
+      {
+        headers: {
+          'X-Deprecated': 'true',
+          'X-Deprecated-Replacement': '/api/routines/generate?mode=weekly',
+          'X-Deprecated-Removal-Date': '2025-03-01',
+        },
+      }
+    );
   } catch (error: any) {
     console.error('[ROUTINE_V3] Error:', error);
     return NextResponse.json(

@@ -35,6 +35,9 @@ async function getUserId(req: NextRequest) {
 /**
  * POST /api/training/generate-daily-routine
  *
+ * @deprecated This endpoint is deprecated and will be removed on 2025-03-01.
+ * Use /api/routines/generate with mode='daily' instead.
+ *
  * Generates a personalized daily workout routine based on user's profile
  *
  * Request body:
@@ -50,6 +53,14 @@ async function getUserId(req: NextRequest) {
  * }
  */
 export async function POST(req: NextRequest) {
+  // DEPRECATION WARNING
+  console.warn('═══════════════════════════════════════════════════════════');
+  console.warn('⚠️  DEPRECATED ENDPOINT: /api/training/generate-daily-routine');
+  console.warn('📅 Will be removed: 2025-03-01');
+  console.warn('🔄 Use instead: /api/routines/generate');
+  console.warn('📖 Migration guide: ROUTINE_SYSTEM_UNIFIED.md');
+  console.warn('═══════════════════════════════════════════════════════════');
+
   try {
     const userId = await getUserId(req);
 
@@ -318,10 +329,24 @@ export async function POST(req: NextRequest) {
       // Non-critical, continue
     }
 
-    return NextResponse.json({
-      success: true,
-      routine,
-    });
+    return NextResponse.json(
+      {
+        success: true,
+        routine,
+        _deprecated: {
+          message: 'This endpoint is deprecated. Use /api/routines/generate with mode=daily instead.',
+          removalDate: '2025-03-01',
+          migrationGuide: 'ROUTINE_SYSTEM_UNIFIED.md',
+        },
+      },
+      {
+        headers: {
+          'X-Deprecated': 'true',
+          'X-Deprecated-Replacement': '/api/routines/generate?mode=daily',
+          'X-Deprecated-Removal-Date': '2025-03-01',
+        },
+      }
+    );
   } catch (error: any) {
     console.error('[GENERATE_ROUTINE] Error:', error);
     return NextResponse.json(

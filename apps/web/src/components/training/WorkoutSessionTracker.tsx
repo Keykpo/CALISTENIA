@@ -191,9 +191,13 @@ export function WorkoutSessionTracker() {
       setError(null);
 
       // Include forceDay in request if in dev mode and set
-      const requestBody = devForceDay !== null ? { forceDay: devForceDay } : {};
+      const requestBody: any = { mode: 'daily' };
+      if (devForceDay !== null) {
+        requestBody.forceDay = devForceDay;
+      }
 
-      const response = await fetch('/api/training/generate-daily-routine', {
+      // UPDATED: Using new unified endpoint
+      const response = await fetch('/api/routines/generate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -219,8 +223,14 @@ export function WorkoutSessionTracker() {
 
             if (initData.success) {
               console.log('[WORKOUT] Profile initialized, retrying routine generation...');
-              // Retry fetching routine
-              const retryResponse = await fetch('/api/training/generate-daily-routine');
+              // Retry fetching routine with new unified endpoint
+              const retryResponse = await fetch('/api/routines/generate', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ mode: 'daily' }),
+              });
               const retryData = await retryResponse.json();
 
               if (retryData.success) {
