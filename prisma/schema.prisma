@@ -100,6 +100,7 @@ model User {
   exerciseCounters       ExerciseCounter[]
   manualExerciseLogs     ManualExerciseLog[]
   dailyRoutines          DailyRoutine[]
+  weeklyRoutines         WeeklyRoutine[]
 
   @@map("users")
 }
@@ -915,6 +916,10 @@ model DailyRoutine {
   completed         Boolean   @default(false)
   completedAt       DateTime?
 
+  // Optional: Link to weekly routine
+  weeklyRoutineId   String?
+  weeklyRoutine     WeeklyRoutine? @relation(fields: [weeklyRoutineId], references: [id], onDelete: SetNull)
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -922,6 +927,38 @@ model DailyRoutine {
 
   @@index([userId, date])
   @@map("daily_routines")
+}
+
+model WeeklyRoutine {
+  id     String @id @default(cuid())
+  userId String
+
+  weekStartDate     DateTime // Start of the week (Sunday)
+  stage             String // STAGE_1, STAGE_2, STAGE_3, STAGE_4
+  difficulty        String // BEGINNER, INTERMEDIATE, ADVANCED, ELITE
+  daysPerWeek       Int // 2-6 training days
+
+  totalEstimatedXP    Int
+  totalEstimatedCoins Int
+  weeklyFocusAreas    String // JSON array of UnifiedHexagonAxis
+  notes               String // JSON array of weekly notes
+
+  // Full weekly routine stored as JSON
+  routine           String
+
+  completed         Boolean   @default(false)
+  completedAt       DateTime?
+
+  // Relations
+  dailyRoutines     DailyRoutine[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, weekStartDate])
+  @@map("weekly_routines")
 }
 
 // ================================

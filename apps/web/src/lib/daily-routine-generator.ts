@@ -19,6 +19,11 @@ import {
   type ExpertRoutine,
   type ExpertRoutineSection,
 } from './expert-routine-templates';
+import {
+  validateExerciseDatabase,
+  findExercisesByCategory,
+  getExerciseStats,
+} from './exercise-validation';
 
 export type RoutineDuration = '15min' | '30min' | '45min' | '60min';
 export type EquipmentType = 'NONE' | 'PULL_UP_BAR' | 'RINGS' | 'PARALLEL_BARS' | 'RESISTANCE_BANDS';
@@ -523,6 +528,25 @@ export function generateDailyRoutine(
     forceDay,
   } = params;
 
+  // STEP 0: Validate exercises database
+  console.log('[EXPERT_ROUTINE] Validating exercise database...');
+  const validation = validateExerciseDatabase(allExercises);
+
+  if (!validation.isValid) {
+    console.warn('[EXPERT_ROUTINE] ⚠️ Exercise database has validation issues:');
+    console.warn('[EXPERT_ROUTINE] Invalid exercises:', validation.invalidExercises.length);
+    validation.invalidExercises.slice(0, 5).forEach(({ exercise, validation: v }) => {
+      console.warn(`  - ${exercise.name || exercise.id}: ${v.errors.join(', ')}`);
+    });
+  }
+
+  const stats = getExerciseStats(allExercises);
+  console.log('[EXPERT_ROUTINE] Exercise stats:', {
+    total: stats.total,
+    categories: Object.keys(stats.byCategory).length,
+    validationIssues: stats.validationIssues,
+  });
+
   // STEP 1: Calculate user's training stage
   const stage = calculateUserStage({
     strengthLevel: hexagonLevels.strength,
@@ -673,4 +697,265 @@ function determineOverallDifficulty(
   if (levelCounts.ADVANCED >= 3) return 'ADVANCED';
   if (levelCounts.INTERMEDIATE >= 3) return 'INTERMEDIATE';
   return 'BEGINNER';
+}
+
+/**
+ * WEEKLY ROUTINE GENERATION
+ *
+ * Generates a complete weekly training program using expert templates.
+ * This replaces the need for the V3 system by using the proven Daily system
+ * to generate a full week of workouts.
+ */
+export interface WeeklyRoutineParams extends Omit<GenerateRoutineParams, 'forceDay'> {
+  daysPerWeek?: number; // 2-6 training days (default: 3)
+}
+
+export interface WeeklyRoutine {
+  id: string;
+  userId: string;
+  weekStartDate: Date;
+  stage: UserStage;
+  difficulty: 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE';
+  daysPerWeek: number;
+  dailyRoutines: DailyRoutine[];
+  totalEstimatedXP: number;
+  totalEstimatedCoins: number;
+  weeklyFocusAreas: UnifiedHexagonAxis[];
+  notes: string[];
+}
+
+/**
+ * Generate a complete weekly routine
+ *
+ * Uses the expert template system to generate routines for each training day
+ * according to the weekly split appropriate for the user's stage.
+ *
+ * Example:
+ * - STAGE_1: Push, Pull, Push, REST, Pull, Push, REST
+ * - STAGE_2: Push, Legs, Pull, REST, Push, Pull, REST
+ * - STAGE_3: Weighted Push, Legs, Weighted Pull, REST, Weighted Push, Weighted Pull, REST
+ * - STAGE_4: Skills+Weighted Push, Legs, Skills+Weighted Pull, REST, Skills+Weighted Push, Skills+Weighted Pull, REST
+ */
+export function generateWeeklyRoutine(
+  params: WeeklyRoutineParams,
+  allExercises: Exercise[]
+): WeeklyRoutine {
+  const daysPerWeek = params.daysPerWeek ?? 3;
+
+  // Validate daysPerWeek
+  if (daysPerWeek < 2 || daysPerWeek > 6) {
+    throw new Error('daysPerWeek must be between 2 and 6');
+  }
+
+  // Calculate stage once for consistency
+  const stage = calculateUserStage({
+    strengthLevel: params.hexagonLevels.strength,
+    strengthXP: params.hexagonXP?.strength || 0,
+    balanceLevel: params.hexagonLevels.balance,
+    staticHoldsLevel: params.hexagonLevels.staticHolds,
+  });
+
+  console.log('[WEEKLY_ROUTINE] ===== GENERATING WEEKLY ROUTINE =====');
+  console.log('[WEEKLY_ROUTINE] User Stage:', stage);
+  console.log('[WEEKLY_ROUTINE] Days per week:', daysPerWeek);
+
+  // Get the weekly training pattern for this stage
+  const weeklyPattern = getWeeklyTrainingPattern(stage, daysPerWeek);
+  console.log('[WEEKLY_ROUTINE] Weekly pattern:', weeklyPattern);
+
+  // Generate routine for each training day
+  const dailyRoutines: DailyRoutine[] = [];
+  const weekStartDate = new Date();
+  weekStartDate.setHours(0, 0, 0, 0);
+
+  // Adjust to start from Sunday (day 0)
+  const currentDay = weekStartDate.getDay();
+  weekStartDate.setDate(weekStartDate.getDate() - currentDay);
+
+  for (let dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
+    const sessionType = weeklyPattern[dayOfWeek];
+
+    // Skip REST days
+    if (sessionType === 'REST') {
+      console.log(`[WEEKLY_ROUTINE] Day ${dayOfWeek} (${getDayName(dayOfWeek)}): REST`);
+      continue;
+    }
+
+    console.log(`[WEEKLY_ROUTINE] Generating routine for Day ${dayOfWeek} (${getDayName(dayOfWeek)}): ${sessionType}`);
+
+    // Generate daily routine for this day
+    const dailyRoutine = generateDailyRoutine(
+      {
+        ...params,
+        forceDay: dayOfWeek, // Force the specific day
+      },
+      allExercises
+    );
+
+    // Adjust the date for this specific day
+    const routineDate = new Date(weekStartDate);
+    routineDate.setDate(weekStartDate.getDate() + dayOfWeek);
+    dailyRoutine.date = routineDate;
+
+    dailyRoutines.push(dailyRoutine);
+  }
+
+  // Calculate totals
+  const totalEstimatedXP = dailyRoutines.reduce((sum, r) => sum + r.estimatedXP, 0);
+  const totalEstimatedCoins = dailyRoutines.reduce((sum, r) => sum + r.estimatedCoins, 0);
+
+  // Aggregate focus areas (unique axes across the week)
+  const allFocusAreas = new Set<UnifiedHexagonAxis>();
+  dailyRoutines.forEach(routine => {
+    routine.focusAreas.forEach(axis => allFocusAreas.add(axis));
+  });
+
+  // Determine overall difficulty
+  const difficulty = determineOverallDifficulty(params.hexagonLevels);
+
+  // Generate notes based on stage
+  const notes = generateWeeklyNotes(stage, daysPerWeek);
+
+  console.log('[WEEKLY_ROUTINE] ✅ Weekly routine generated:', {
+    daysGenerated: dailyRoutines.length,
+    totalXP: totalEstimatedXP,
+    totalCoins: totalEstimatedCoins,
+    focusAreas: Array.from(allFocusAreas),
+  });
+
+  return {
+    id: `weekly-${params.userId}-${Date.now()}`,
+    userId: params.userId,
+    weekStartDate,
+    stage,
+    difficulty,
+    daysPerWeek,
+    dailyRoutines,
+    totalEstimatedXP,
+    totalEstimatedCoins,
+    weeklyFocusAreas: Array.from(allFocusAreas),
+    notes,
+  };
+}
+
+/**
+ * Get weekly training pattern based on stage and days per week
+ */
+function getWeeklyTrainingPattern(
+  stage: UserStage,
+  daysPerWeek: number
+): string[] {
+  // Base 7-day patterns for each stage
+  const fullWeekPatterns: Record<UserStage, string[]> = {
+    STAGE_1: [
+      'PUSH',      // Sunday
+      'PULL',      // Monday
+      'PUSH',      // Tuesday
+      'REST',      // Wednesday
+      'PULL',      // Thursday
+      'PUSH',      // Friday
+      'REST',      // Saturday
+    ],
+    STAGE_2: [
+      'PUSH',      // Sunday
+      'LEGS',      // Monday
+      'PULL',      // Tuesday
+      'REST',      // Wednesday
+      'PUSH',      // Thursday
+      'PULL',      // Friday
+      'REST',      // Saturday
+    ],
+    STAGE_3: [
+      'WEIGHTED_PUSH',  // Sunday
+      'LEGS',           // Monday
+      'WEIGHTED_PULL',  // Tuesday
+      'REST',           // Wednesday
+      'WEIGHTED_PUSH',  // Thursday
+      'WEIGHTED_PULL',  // Friday
+      'REST',           // Saturday
+    ],
+    STAGE_4: [
+      'SKILLS_PUSH_WEIGHTED',  // Sunday
+      'LEGS',                  // Monday
+      'SKILLS_PULL_WEIGHTED',  // Tuesday
+      'REST',                  // Wednesday
+      'SKILLS_PUSH_WEIGHTED',  // Thursday
+      'SKILLS_PULL_WEIGHTED',  // Friday
+      'REST',                  // Saturday
+    ],
+  };
+
+  const fullPattern = fullWeekPatterns[stage];
+
+  // If user wants fewer days, remove sessions strategically
+  if (daysPerWeek >= 6) {
+    return fullPattern; // Use full pattern
+  }
+
+  // For fewer days, keep the most important sessions
+  const trainingDays = fullPattern.filter(day => day !== 'REST');
+  const selectedDays = trainingDays.slice(0, daysPerWeek);
+
+  // Distribute across the week with rest days
+  const distributedPattern = ['REST', 'REST', 'REST', 'REST', 'REST', 'REST', 'REST'];
+  let dayIndex = 0;
+
+  for (let i = 0; i < selectedDays.length; i++) {
+    // Skip every other day to ensure rest
+    while (distributedPattern[dayIndex] !== 'REST' && dayIndex < 7) {
+      dayIndex++;
+    }
+    if (dayIndex < 7) {
+      distributedPattern[dayIndex] = selectedDays[i];
+      dayIndex += 2; // Skip next day for rest
+    }
+  }
+
+  return distributedPattern;
+}
+
+/**
+ * Generate weekly notes based on stage
+ */
+function generateWeeklyNotes(stage: UserStage, daysPerWeek: number): string[] {
+  const notes: string[] = [];
+
+  switch (stage) {
+    case 'STAGE_1':
+      notes.push('🏗️ Foundation Stage: Focus on building basic strength with fundamental movements');
+      notes.push('💪 Train to failure (Mode 2) on all exercises to build your strength base');
+      notes.push('⏳ Be patient - this stage builds the "motor" needed for advanced skills');
+      break;
+
+    case 'STAGE_2':
+      notes.push('📈 Consolidation Stage: Building work capacity and introducing basic skills');
+      notes.push('🎯 Continue training to failure, but you can start practicing basic balance skills');
+      notes.push('🦵 Legs are now part of your routine - essential for overall development');
+      break;
+
+    case 'STAGE_3':
+      notes.push('🏋️ Weighted Strength Stage: Time to add external resistance');
+      notes.push('⚡ Weighted pull-ups and dips will unlock advanced skills faster than high reps');
+      notes.push('📊 Track your weight progression carefully - add 2.5kg when you can do 3x10');
+      break;
+
+    case 'STAGE_4':
+      notes.push('🌟 Elite Specialization Stage: Dual-mode training for skill mastery');
+      notes.push('🎭 Mode 1 (Skills): Practice with buffer - stop 2-3 reps before failure');
+      notes.push('💥 Mode 2 (Strength): Weighted work to failure maintains your strength base');
+      notes.push('🧠 Skills require fresh nervous system - never practice when fatigued');
+      break;
+  }
+
+  notes.push(`📅 Training ${daysPerWeek} days per week - consistency is key!`);
+
+  return notes;
+}
+
+/**
+ * Get day name from day of week number
+ */
+function getDayName(dayOfWeek: number): string {
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  return days[dayOfWeek];
 }

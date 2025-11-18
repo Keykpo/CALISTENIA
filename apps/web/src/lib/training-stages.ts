@@ -151,6 +151,8 @@ export const SKILL_GATES: SkillGate[] = [
 
 /**
  * Calculate user's training stage based on hexagon profile
+ *
+ * @deprecated Use calculateUnifiedStage instead for consistent stage calculation
  */
 export function calculateUserStage(hexagonProfile: {
   strengthLevel: string;
@@ -195,6 +197,122 @@ export function calculateUserStage(hexagonProfile: {
 
     default:
       // Default to STAGE_1 (safest)
+      return 'STAGE_1';
+  }
+}
+
+/**
+ * UNIFIED STAGE CALCULATION
+ *
+ * This function unifies stage calculation from multiple data sources:
+ * - Direct performance metrics (pull-ups, dips, weighted work)
+ * - Hexagon profile (strength level and XP)
+ *
+ * Priority:
+ * 1. If performance metrics available, use those (most accurate)
+ * 2. Otherwise, fall back to hexagon profile
+ *
+ * Stage Requirements (from "El Ecosistema de la Calistenia"):
+ * - STAGE_1: Cannot do 1 pull-up or 1 dip (Foundation building)
+ * - STAGE_2: 1-12 pull-ups, 1-15 dips (Consolidation)
+ * - STAGE_3: 12+ pull-ups AND 15+ dips (Weighted calisthenics)
+ * - STAGE_4: 10+ pull-ups with +25% BW OR 10+ dips with +40% BW (Elite specialization)
+ */
+export interface UnifiedStageParams {
+  // Option 1: Direct performance metrics (preferred)
+  pullUpsMax?: number;
+  dipsMax?: number;
+  pushUpsMax?: number;
+  weightedPullUps?: number; // kg added
+  weightedDips?: number; // kg added
+  bodyWeight?: number; // kg (defaults to 75kg if not provided)
+
+  // Option 2: Hexagon profile (fallback)
+  strengthLevel?: string; // 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE'
+  strengthXP?: number;
+  balanceLevel?: string;
+  staticHoldsLevel?: string;
+}
+
+export function calculateUnifiedStage(params: UnifiedStageParams): UserStage {
+  // Try to calculate from direct metrics first (most accurate)
+  if (params.pullUpsMax !== undefined || params.dipsMax !== undefined) {
+    return calculateStageFromMetrics(params);
+  }
+
+  // Fallback to hexagon profile
+  if (params.strengthLevel) {
+    return calculateStageFromHexagon(params);
+  }
+
+  // No data available - default to safest stage
+  console.warn('[STAGE_CALC] No metrics or hexagon data provided, defaulting to STAGE_1');
+  return 'STAGE_1';
+}
+
+/**
+ * Calculate stage from direct performance metrics
+ */
+function calculateStageFromMetrics(params: UnifiedStageParams): UserStage {
+  const pullUps = params.pullUpsMax ?? 0;
+  const dips = params.dipsMax ?? 0;
+  const bodyWeight = params.bodyWeight ?? 75; // Default to 75kg
+
+  // STAGE 4: Elite (Weighted calisthenics + Skills)
+  // Requirement: 10+ pull-ups with +25% BW OR 10+ dips with +40% BW
+  const weightedPullUpPercent = (params.weightedPullUps ?? 0) / bodyWeight;
+  const weightedDipPercent = (params.weightedDips ?? 0) / bodyWeight;
+
+  if (weightedPullUpPercent >= 0.25 || weightedDipPercent >= 0.40) {
+    return 'STAGE_4';
+  }
+
+  // STAGE 3: Advanced (Introduction to weighted work)
+  // Requirement: 12+ pull-ups AND 15+ dips
+  if (pullUps >= 12 && dips >= 15) {
+    return 'STAGE_3';
+  }
+
+  // STAGE 2: Intermediate (Building work capacity)
+  // Requirement: Can do at least 1 pull-up OR 1 dip
+  if (pullUps >= 1 || dips >= 1) {
+    return 'STAGE_2';
+  }
+
+  // STAGE 1: Beginner (Building foundation)
+  return 'STAGE_1';
+}
+
+/**
+ * Calculate stage from hexagon profile
+ */
+function calculateStageFromHexagon(params: UnifiedStageParams): UserStage {
+  const strengthLevel = params.strengthLevel;
+  const strengthXP = params.strengthXP ?? 0;
+
+  switch (strengthLevel) {
+    case 'BEGINNER':
+      return 'STAGE_1';
+
+    case 'INTERMEDIATE':
+      // Sub-divide based on XP
+      if (strengthXP < 144000) {
+        return 'STAGE_2';
+      } else {
+        return 'STAGE_3';
+      }
+
+    case 'ADVANCED':
+      if (strengthXP < 384000) {
+        return 'STAGE_3';
+      } else {
+        return 'STAGE_4';
+      }
+
+    case 'ELITE':
+      return 'STAGE_4';
+
+    default:
       return 'STAGE_1';
   }
 }
