@@ -130,18 +130,27 @@ export async function POST(req: NextRequest) {
         hexProfile = await prisma.hexagonProfile.create({
           data: {
             userId,
+            // Visual values (0-10)
             relativeStrength: 0,
             muscularEndurance: 0,
             balanceControl: 0,
             jointMobility: 0,
             bodyTension: 0,
             skillTechnique: 0,
+            // XP values
             relativeStrengthXP: 0,
             muscularEnduranceXP: 0,
             balanceControlXP: 0,
             jointMobilityXP: 0,
             bodyTensionXP: 0,
             skillTechniqueXP: 0,
+            // Level values
+            relativeStrengthLevel: 'BEGINNER',
+            muscularEnduranceLevel: 'BEGINNER',
+            balanceControlLevel: 'BEGINNER',
+            jointMobilityLevel: 'BEGINNER',
+            bodyTensionLevel: 'BEGINNER',
+            skillTechniqueLevel: 'BEGINNER',
           },
         });
       }

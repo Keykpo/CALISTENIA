@@ -7,7 +7,7 @@ const updateProfileSchema = z.object({
   lastName: z.string().max(50).optional(),
   height: z.string().or(z.number()).optional(),
   weight: z.string().or(z.number()).optional(),
-  fitnessLevel: z.enum(['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'EXPERT']).optional(),
+  fitnessLevel: z.enum(['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'ELITE']).optional(),
   gender: z.enum(['MALE', 'FEMALE', 'OTHER', 'PREFER_NOT_TO_SAY']).optional(),
 });
 

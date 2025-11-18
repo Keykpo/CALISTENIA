@@ -260,7 +260,7 @@ export async function POST(request: NextRequest) {
 
       // FIX CRÍTICO: Paréntesis correctos Y actualizar totalStrength
       let updatedUser = null;
-      if (shouldGrantRewards && (skill.xpReward > 0 || skill.coinReward > 0)) {
+      if (shouldGrantRewards && (skill.xpReward > 0 || skill.coinReward > 0 || skill.strengthGained > 0)) {
         updatedUser = await tx.user.update({
           where: { id: userId },
           data: {

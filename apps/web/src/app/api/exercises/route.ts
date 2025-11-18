@@ -17,7 +17,7 @@ const normalizeIncomingRank = (r?: string) => {
 // Map rank to legacy Difficulty for backward compatibility when needed
 const rankToDifficultyNormalized = (r?: string) => {
   const rr = (r || '').toUpperCase();
-  if (rr === 'S') return 'EXPERT';
+  if (rr === 'S') return 'ELITE';
   if (rr === 'A' || rr === 'B') return 'ADVANCED';
   if (rr === 'C') return 'INTERMEDIATE';
   if (rr === 'D') return 'BEGINNER';
@@ -30,7 +30,7 @@ const createExerciseSchema = z.object({
   instructions: z.array(z.string()).min(1, 'Las instrucciones son requeridas'),
   category: z.enum(['STRENGTH', 'CARDIO', 'FLEXIBILITY', 'BALANCE', 'ENDURANCE', 'MOBILITY', 'WARM_UP', 'COOL_DOWN']),
   // Accept legacy difficulty or new rank. We'll convert rank -> difficulty.
-  difficulty: z.enum(['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'EXPERT']).optional(),
+  difficulty: z.enum(['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'ELITE']).optional(),
   rank: z.enum(['F','E','D','C','B','A','S']).optional(),
   muscleGroups: z.array(z.enum(['CHEST', 'BACK', 'SHOULDERS', 'ARMS', 'CORE', 'LEGS', 'GLUTES', 'FULL_BODY'])),
   equipment: z.array(z.enum(['NONE', 'PULL_UP_BAR', 'RESISTANCE_BANDS', 'DUMBBELLS', 'KETTLEBELL', 'YOGA_MAT', 'FOAM_ROLLER', 'MEDICINE_BALL'])).optional(),

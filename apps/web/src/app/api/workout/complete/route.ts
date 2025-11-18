@@ -3,7 +3,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import prisma from '@/lib/prisma';
 
-type DifficultyEn = 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'EXPERT';
+type DifficultyEn = 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE';
 
 interface CompletedExercise {
   name: string;
@@ -23,7 +23,7 @@ const difficultyBaseXP: Record<DifficultyEn, number> = {
   BEGINNER: 10,
   INTERMEDIATE: 15,
   ADVANCED: 20,
-  EXPERT: 25,
+  ELITE: 25,
 };
 
 const rankMultiplier: Record<NonNullable<CompletedExercise['rank']>, number> = {
@@ -37,7 +37,7 @@ const rankMultiplier: Record<NonNullable<CompletedExercise['rank']>, number> = {
 function toDifficultyEn(input?: string): DifficultyEn {
   if (!input) return 'BEGINNER';
   const key = input.toUpperCase();
-  if (['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'EXPERT'].includes(key)) {
+  if (['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'ELITE'].includes(key)) {
     return key as DifficultyEn;
   }
   // Spanish mapping fallback
@@ -46,7 +46,7 @@ function toDifficultyEn(input?: string): DifficultyEn {
     NOVATO: 'INTERMEDIATE',
     INTERMEDIO: 'INTERMEDIATE',
     AVANZADO: 'ADVANCED',
-    EXPERTO: 'EXPERT',
+    EXPERTO: 'ELITE',
   };
   return map[key] ?? 'BEGINNER';
 }
@@ -91,7 +91,7 @@ function deltaForDifficulty(difficulty: DifficultyEn): number {
     case 'BEGINNER': return 0.25;
     case 'INTERMEDIATE': return 0.35;
     case 'ADVANCED': return 0.45;
-    case 'EXPERT': return 0.6;
+    case 'ELITE': return 0.6;
     default: return 0.3;
   }
 }
@@ -167,7 +167,13 @@ async function getUserFromRequest(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const userId = await getUserFromRequest(req);
-    const body = (await req.json()) as CompleteWorkoutBody;
+
+    let body: CompleteWorkoutBody;
+    try {
+      body = await req.json();
+    } catch (e) {
+      return NextResponse.json({ success: false, error: 'Invalid JSON' }, { status: 400 });
+    }
     const difficulty = toDifficultyEn(body.difficulty);
     const exercises = Array.isArray(body.exercises) ? body.exercises : [];
 

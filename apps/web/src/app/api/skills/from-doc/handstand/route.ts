@@ -17,7 +17,7 @@ type SkillOut = {
   name: string;
   description?: string;
   branch: Branch;
-  difficulty: 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'EXPERT';
+  difficulty: 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE';
   prerequisites: Array<Pick<SkillOut, 'id'|'name'|'branch'|'difficulty'>>;
   physioDemand?: PhysioDemand;
 };
@@ -30,11 +30,11 @@ const slug = (s: string) => normalize(s).replace(/[^a-z0-9]+/g, '-');
 
 function mapNivelToDifficulty(nivel: string): SkillOut['difficulty'] {
   const n = nivel.trim().toUpperCase();
-  // Mapeo básico por letra de nivel (F→BEGINNER, E/D→INTERMEDIATE, C/B→ADVANCED, A→EXPERT)
+  // Mapeo básico por letra de nivel (F→BEGINNER, E/D→INTERMEDIATE, C/B→ADVANCED, A/S→ELITE)
   if (n.startsWith('F')) return 'BEGINNER';
   if (n.startsWith('E') || n.startsWith('D')) return 'INTERMEDIATE';
   if (n.startsWith('C') || n.startsWith('B')) return 'ADVANCED';
-  return 'EXPERT';
+  return 'ELITE';
 }
 
 export async function GET(_req: NextRequest) {

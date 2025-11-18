@@ -72,7 +72,7 @@ export const updateProfileSchema = z.object({
   weight: z.number().min(20).max(300).optional(), // kg
   dateOfBirth: z.string().datetime().optional(),
   gender: z.enum(['MALE', 'FEMALE', 'OTHER', 'PREFER_NOT_TO_SAY']).optional(),
-  fitnessLevel: z.enum(['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'EXPERT']).optional(),
+  fitnessLevel: z.enum(['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'ELITE']).optional(),
 });
 
 // ============================================
@@ -82,7 +82,7 @@ export const updateProfileSchema = z.object({
 export const createWorkoutSchema = z.object({
   name: z.string().min(1).max(100),
   description: z.string().max(500).optional(),
-  difficulty: z.enum(['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'EXPERT']),
+  difficulty: z.enum(['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'ELITE']),
   duration: z.number().int().min(0).max(300).optional(), // minutos
   tags: z.array(z.string()).optional(),
   exercises: z.array(z.object({
@@ -115,7 +115,7 @@ export const createExerciseSchema = z.object({
     'WARM_UP',
     'COOL_DOWN'
   ]),
-  difficulty: z.enum(['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'EXPERT']),
+  difficulty: z.enum(['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'ELITE']),
   muscleGroups: z.array(z.string()).optional(),
   equipment: z.array(z.string()).optional(),
   videoUrl: z.string().url().optional(),

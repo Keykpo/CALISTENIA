@@ -31,7 +31,8 @@ export async function requireRole(requiredRole: string = 'user') {
   if (error) return { error, session: null };
   
   // Verificar role si existe en el session
-  if (session.user.role && session.user.role !== requiredRole && session.user.role !== 'admin') {
+  const userRole = session?.user?.role;
+  if (userRole && userRole !== requiredRole && userRole !== 'admin') {
     return {
       error: NextResponse.json(
         { error: 'No tienes permisos para esta acción' },
