@@ -95,15 +95,28 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false, error: 'Mission not found' }, { status: 404 });
     }
 
-    if (mission.completed) {
+    const target = mission.target ?? progress ?? 1;
+
+    // Use updateMany with completed: false to prevent race conditions
+    const updateResult = await prisma.dailyMission.updateMany({
+      where: {
+        id: missionIdStr,
+        completed: false // Only update if not already completed
+      },
+      data: { progress: target, completed: true },
+    });
+
+    // If no rows were updated, mission was already completed
+    if (updateResult.count === 0) {
       return NextResponse.json({ success: true, alreadyCompleted: true, rewardXP: 0, rewardCoins: 0, streak: null });
     }
 
-    const target = mission.target ?? progress ?? 1;
-    const updated = await prisma.dailyMission.update({
-      where: { id: missionIdStr },
-      data: { progress: target, completed: true },
-    });
+    // Fetch updated mission data
+    const updated = await prisma.dailyMission.findUnique({ where: { id: missionIdStr } });
+
+    if (!updated) {
+      return NextResponse.json({ success: false, error: 'Failed to fetch updated mission' }, { status: 500 });
+    }
 
     // Obtener usuario y hexágono
     const user = await prisma.user.findUnique({

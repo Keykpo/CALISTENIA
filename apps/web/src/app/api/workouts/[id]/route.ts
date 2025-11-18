@@ -9,7 +9,7 @@ const prisma = new PrismaClient();
 const updateWorkoutSchema = z.object({
   name: z.string().min(1, 'El nombre es requerido').optional(),
   description: z.string().optional(),
-  difficulty: z.enum(['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'EXPERT']).optional(),
+  difficulty: z.enum(['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'ELITE']).optional(),
   duration: z.number().optional(),
   calories: z.number().optional(),
   imageUrl: z.string().url().optional(),

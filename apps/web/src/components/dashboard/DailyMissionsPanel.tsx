@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -39,11 +39,7 @@ export default function DailyMissionsPanel({ userId, onMissionComplete }: DailyM
   const [completing, setCompleting] = useState<string | null>(null);
   const [refreshing, setRefreshing] = useState(false);
 
-  useEffect(() => {
-    fetchMissions();
-  }, [userId]);
-
-  const fetchMissions = async () => {
+  const fetchMissions = useCallback(async () => {
     try {
       setLoading(true);
       const res = await fetch('/api/missions/daily', {
@@ -59,7 +55,11 @@ export default function DailyMissionsPanel({ userId, onMissionComplete }: DailyM
     } finally {
       setLoading(false);
     }
-  };
+  }, [userId]);
+
+  useEffect(() => {
+    fetchMissions();
+  }, [fetchMissions]);
 
   const completeMission = async (missionId: string) => {
     try {

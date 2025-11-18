@@ -7,7 +7,7 @@ import { z } from 'zod';
 const createGoalSchema = z.object({
   name: z.string(),
   description: z.string().optional(),
-  difficulty: z.enum(['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'EXPERT']),
+  difficulty: z.enum(['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'ELITE']),
   estimatedWeeks: z.number().optional(),
   skillName: z.string().optional().nullable(),
 });

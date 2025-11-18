@@ -17,7 +17,7 @@ type SkillOut = {
   name: string;
   description?: string;
   branch: Branch;
-  difficulty: 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'EXPERT';
+  difficulty: 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE';
   prerequisites: Array<Pick<SkillOut, 'id'|'name'|'branch'|'difficulty'>>;
   physioDemand?: PhysioDemand;
 };
@@ -32,7 +32,7 @@ const rankToDifficulty = (r: string): SkillOut['difficulty'] => {
   if (rr === 'F' || rr === 'F+') return 'BEGINNER';
   if (rr === 'E' || rr === 'D' || rr === 'D+') return 'INTERMEDIATE';
   if (rr === 'C' || rr === 'B' || rr === 'A' || rr === 'A+') return 'ADVANCED';
-  if (rr === 'S' || rr === 'S+') return 'EXPERT';
+  if (rr === 'S' || rr === 'S+') return 'ELITE';
   return 'BEGINNER';
 };
 

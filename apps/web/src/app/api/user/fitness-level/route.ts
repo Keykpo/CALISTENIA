@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Validar que el nivel de fitness sea válido
-    const validLevels = ['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'EXPERT']
+    const validLevels = ['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'ELITE']
     if (!validLevels.includes(fitnessLevel)) {
       return NextResponse.json(
         { error: 'Nivel de fitness inválido' },

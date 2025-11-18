@@ -97,7 +97,7 @@ export async function PUT(req: NextRequest) {
       }
 
       // Get current XP
-      const currentXP = (hexagonProfile as any)[xpField] || 0;
+      const currentXP = (hexagonProfile[xpField as keyof typeof hexagonProfile] as number) || 0;
       const newXP = currentXP + session.xpAwarded;
 
       // Calculate new level

@@ -62,7 +62,8 @@ export default function UnifiedHexagon({
 
   useEffect(() => {
     if (animated) {
-      setTimeout(() => setAnimationTriggered(true), 100);
+      const timer = setTimeout(() => setAnimationTriggered(true), 100);
+      return () => clearTimeout(timer);
     } else {
       setAnimationTriggered(true);
     }
