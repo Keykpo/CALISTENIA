@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import prisma from '@/lib/prisma';
+import { syncWorkoutToHexagon } from '@/lib/workout-hexagon-sync';
 
 type DifficultyEn = 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ELITE';
 
@@ -274,6 +275,13 @@ export async function POST(req: NextRequest) {
           },
         });
 
+        // Sync with unified XP system for proper level tracking
+        const xpSyncResult = await syncWorkoutToHexagon(
+          userId,
+          exercises.map(ex => ({ name: ex.name, sets: ex.sets || 1 })),
+          difficulty
+        );
+
         hexagonUpdate = {
           before: {
             relativeStrength: hex.relativeStrength,
@@ -286,6 +294,10 @@ export async function POST(req: NextRequest) {
           delta: hexDelta,
           after: updated,
           maxAxis,
+          // Include XP system data
+          xpGains: xpSyncResult.axisXPGains,
+          levelUps: xpSyncResult.levelUps,
+          totalAxisXP: xpSyncResult.totalXPGained,
         };
 
         // Achievement: Primer Paso (first workout)

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 import crypto from 'crypto';
 import { z } from 'zod';
-import { sendMail } from '@/lib/email';
+import { sendMail, emailTemplates } from '@/lib/email';
 
 const prisma = new PrismaClient();
 
@@ -44,18 +44,14 @@ export async function POST(request: NextRequest) {
     });
     
     const resetUrl = `${process.env.NEXTAUTH_URL}/auth/reset-password?token=${resetToken}`;
-    
-    // Send email with the reset link
+
+    // Send email with the reset link using template
+    const template = emailTemplates.resetPassword(resetUrl);
     await sendMail({
       to: user.email,
-      subject: 'Reset your password',
-      html: `
-        <p>Hello,</p>
-        <p>We received a request to reset your password. Click the link below to set a new password:</p>
-        <p><a href="${resetUrl}">${resetUrl}</a></p>
-        <p>This link will expire in 1 hour. If you did not request this, you can safely ignore this email.</p>
-        <p>— Calisthenics Platform</p>
-      `,
+      subject: template.subject,
+      html: template.html,
+      text: template.text,
     });
     
     return NextResponse.json(
